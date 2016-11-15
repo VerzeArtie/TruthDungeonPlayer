@@ -34750,26 +34750,25 @@ namespace DungeonPlayer
 
         public static void Message60003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            if (GroundOne.WE.Truth_CommunicationHanna31_2 == false)
-            {
-                messageList.Add("ハンナ：あら、そう言えば、忘れてたわ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：あらやだ、そう言えば忘れていたわ、アイン。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ん？　何かあるのか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ハンナ：アンタの師匠から預かってるわよ。荷物。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：アンタの師匠から預かってるわよ。荷物。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：あ、ああ。そういや別れ際そんな事言ってたな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：あ、ああ。そういや別れ際そんな事言ってたな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：オバチャン、荷物管理とかもやってるのか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：オバチャン、荷物管理とかもやってるのか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ハンナ：アッハハハハ、やってないわね。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：アッハハハハ、やってないわね。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っえ、でも師匠の荷物を預かってくれてるんだろ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っえ、でも師匠の荷物を預かってくれてるんだろ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ハンナ：ハイハイ、いいからちょっと待ってな、一旦外に出ておくれ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：ハイハイ、いいからちょっと待ってな、一旦外に出ておくれ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っえ？あ、ああ・・・"); eventList.Add(ActionEvent.None);
-            }
+            messageList.Add("アイン：っえ？あ、ああ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("しばらくして・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("ハンナ：アイン、ほらこっちだよ。"); eventList.Add(ActionEvent.None);
 
@@ -34818,9 +34817,11 @@ namespace DungeonPlayer
         {
             GroundOne.WE.Truth_CommunicationHanna31 = true;
 
-            messageList.Add("ハンナ：あら、どうしたんだい。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ども、こんちわー。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、紅茶一杯もらえるかな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：あら、いらっしゃい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：エルモアの紅茶、もらえるかな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ハンナ：はいよ。"); eventList.Add(ActionEvent.None);
 
@@ -34870,7 +34871,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：あ、ああ！　オーケー！"); eventList.Add(ActionEvent.None);
 
-            if (GroundOne.WE.Truth_CommunicationOl31)
+            if (GroundOne.WE.Truth_CommunicationOl31 && GroundOne.WE.AvailableItemBank == false)
             {
                 messageList.Add("ハンナ：あらやだ、そう言えば忘れていたわ、アイン。"); eventList.Add(ActionEvent.None);
 
@@ -34889,7 +34890,50 @@ namespace DungeonPlayer
                 messageList.Add("ハンナ：ハイハイ、いいからちょっと待ってな、一旦外に出ておくれ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：っえ？あ、ああ・・・"); eventList.Add(ActionEvent.None);
-                GroundOne.WE.Truth_CommunicationHanna31_2 = true;
+
+                messageList.Add("しばらくして・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                messageList.Add("ハンナ：アイン、ほらこっちだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。。。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（ホントだ。ちゃんと置いてってくれてたんだな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：ああ見えて、照れ屋だからね。アンタの師匠は。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：アンタに期待してるみたいだったよ。感謝しなさい、ッホラ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ、ああ・・・サンキューな、オバチャン。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：アッハハハハ、アタシじゃなくて、お師匠さんに感謝しなさい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハ・・・確かに。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし突然渡されてもな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：オバチャン、少しだけの間、保管しておいてもらえるか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：ああ、モチロンだよ。少しと言わずしばらくはずっと保管しといてあげるよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：好きな時に持って行くんだね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あと、俺のアイテムも出来れば・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：モチロン構わないよ。預けたいモノは預けていきな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやあ、ホンット助かるぜ、サンキュー！"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE.AvailableItemBank = true;
+
+                messageList.Add("ハンナの宿屋で「荷物の預け・受け取り」が可能になりました！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                messageList.Add("ハンナ：ただ、無限には受け取れないよ。こちらも倉庫は限られてるからね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやいや、少しだけでも。本当助かります。ありがとうございます！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ハンナ：後は、アンタの好きなように整備しな。任せたわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ありがとうございました！使わせてもらいます！どうもです！！"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -37031,7 +37075,7 @@ namespace DungeonPlayer
 
             messageList.Add("ヴェルゼ：いや、これはお願いなのですが。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ヴェルゼ：この私を、アイン君のパーティに加えてもらえませんか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ボクを、アイン君のパーティに加えてもらえませんか？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：なっ！！　マジで！？"); eventList.Add(ActionEvent.None);
 

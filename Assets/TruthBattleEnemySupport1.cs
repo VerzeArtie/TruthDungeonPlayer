@@ -2226,9 +2226,10 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "：ステキでしょ・・・ウィンターソング。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
+
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
-                                        NowFrozen(player, group[ii], 3);
+                                        NowSilence(player, group[ii], 1);
                                     }
                                 }
                                 break;

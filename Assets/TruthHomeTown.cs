@@ -636,7 +636,7 @@ namespace DungeonPlayer
                 MessagePack.Message30000(ref nowMessage, ref nowEvent);
                 tapOK();
             }
-            else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea2 && (!GroundOne.WE.Truth_CommunicationLana31 || !GroundOne.WE.Truth_CommunicationGanz31 || !GroundOne.WE.Truth_CommunicationHanna31 || !GroundOne.WE.Truth_CommunicationOl31 || !GroundOne.WE.Truth_CommunicationSinikia31))
+            else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea2 && (!GroundOne.WE.Truth_CommunicationLana31 || !GroundOne.WE.Truth_CommunicationGanz31 || !GroundOne.WE.Truth_CommunicationHanna31 || !GroundOne.WE.AvailableItemBank || !GroundOne.WE.Truth_CommunicationOl31 || !GroundOne.WE.Truth_CommunicationSinikia31))
             {
                 MessagePack.Message30000(ref nowMessage, ref nowEvent);
                 tapOK();
@@ -2212,17 +2212,17 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
-            #region "荷物預け追加"
-            else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.AvailableItemBank && GroundOne.WE.Truth_CommunicationOl31)
-            {
-                MessagePack.Message60003(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
-            #endregion
             #region "３階開始時"
             else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationHanna31)
             {
                 MessagePack.Message60004(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "荷物預け追加"
+            else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.AvailableItemBank && GroundOne.WE.Truth_CommunicationOl31)
+            {
+                MessagePack.Message60003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
