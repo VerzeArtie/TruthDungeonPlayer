@@ -1464,6 +1464,7 @@ namespace DungeonPlayer
                     GroundOne.TC.CurrentSkillPoint = 100;
                     GroundOne.TC.CurrentMana = GroundOne.TC.MaxMana;
                     GroundOne.TC.MainWeapon = new ItemBackPack(Database.RARE_WHITE_SILVER_SWORD_REPLICA);
+                    GroundOne.TC.SubWeapon = null;
                     GroundOne.TC.MainArmor = new ItemBackPack(Database.RARE_BLACK_AERIAL_ARMOR_REPLICA);
                     GroundOne.TC.Accessory = new ItemBackPack(Database.RARE_HEAVENLY_SKY_WING_REPLICA);
                     GroundOne.TC.Accessory2 = null;

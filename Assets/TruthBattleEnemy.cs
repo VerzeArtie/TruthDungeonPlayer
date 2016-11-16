@@ -1036,6 +1036,17 @@ namespace DungeonPlayer
             player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos * widthScale - player.MainFaceArrow.rectTransform.sizeDelta.x/2.0f, current.y, current.z);
         }
 
+
+        void SelectPlayerArrow(MainCharacter player)
+        {
+            if (player.FirstName == Database.EIN_WOLENCE) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player1Arrow"); }
+            else if (player.FirstName == Database.RANA_AMILIA) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player2Arrow"); ; }
+            else if (player.FirstName == Database.OL_LANDIS) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player3Arrow"); ; }
+            else if (player.FirstName == Database.VERZE_ARTIE) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player4Arrow"); ; }
+            else if (player.FirstName == Database.SINIKIA_KAHLHANZ) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player5Arrow"); ; }
+            else { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player1Arrow"); }
+        }
+
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
             Text charaName, Text fullName, 
             Text life, Image lifeMeter, 
@@ -1144,6 +1155,12 @@ namespace DungeonPlayer
             }
             player.MainFaceArrow = mainFaceArrow;
             if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { player.ShadowFaceArrow2 = shadowFaceArrow2; player.ShadowFaceArrow3 = shadowFaceArrow3; } // 最終戦ヴェルゼのみ、分身の技を使う。
+
+            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
+            {
+                SelectPlayerArrow(player);
+            }
+
             player.DamageLabel = damageLabel;
             player.CriticalLabel = criticalLabel;
 
