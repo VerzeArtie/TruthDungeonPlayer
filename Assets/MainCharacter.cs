@@ -10555,6 +10555,7 @@ namespace DungeonPlayer
             RemovePoison();
             RemoveTemptation();
             RemoveFrozen();
+            RemoveParalyze();
             RemoveNoResurrection();
             RemoveSlow();
             RemoveBlind();
