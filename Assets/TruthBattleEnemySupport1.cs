@@ -2355,7 +2355,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "目くらまし")
                                 {
                                     UpdateBattleText(player.FirstName + "は目くらましを繰り出してきた！\r\n");
-                                    NowBlinded(player, 3);
+                                    NowBlinded(player, 1);
                                 }
                                 else if (player.ActionLabel.text == "連速三段")
                                 {
@@ -2443,7 +2443,7 @@ namespace DungeonPlayer
                                     SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
-                                        NowParalyze(player, group[ii], 2);
+                                        NowParalyze(player, group[ii], 1);
                                     }
                                 }
                                 break;
@@ -2482,7 +2482,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "雹弾乱射")
                                 {
                                     UpdateBattleText(player.FirstName + "は銃口を特定に定めず、乱射してきた！\r\n");
-                                    for (int ii = 0; ii < 10; ii++)
+                                    for (int ii = 0; ii < 5; ii++)
                                     {
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
                                         List<MainCharacter> group = new List<MainCharacter>();
@@ -2494,12 +2494,12 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "ＳＰＬＡＳＨ！")
                                 {
                                     UpdateBattleText(player.FirstName + "：ＳＰＬＡａａａａａａａａａａＳＨ！！\r\n");
-                                    for (int ii = 0; ii < 20; ii++)
+                                    for (int ii = 0; ii < 5; ii++)
                                     {
                                         string sound = String.Empty;
                                         if (ii == 0) { sound = "IceNeedle"; }
 
-                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 0.5f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
+                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
                                         AbstractMagicDamage(player, target, 10, ref damage, 0, sound, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                     }
                                 }
