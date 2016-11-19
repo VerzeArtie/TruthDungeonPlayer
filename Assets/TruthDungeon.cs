@@ -4570,29 +4570,29 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
+                        SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
+                        SetupEnemyName(monsterName[1], monsterName[0], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        SetupEnemyName(monsterName[2], monsterName[2], monsterName[2]);
+                        SetupEnemyName(monsterName[2], monsterName[2], String.Empty);
                     }
                     else if (result == 3)
                     {
-                        SetupEnemyName(monsterName[3], monsterName[0], monsterName[1]);
+                        SetupEnemyName(monsterName[3], monsterName[0], String.Empty);
                     }
                     else if (result == 4)
                     {
-                        SetupEnemyName(monsterName[4], monsterName[1], monsterName[1]);
+                        SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
                     }
                     else
                     {
                         if (GroundOne.MC.Level <= 40)
                         {
-                            SetupEnemyName(monsterName[4], monsterName[2], monsterName[2]);
+                            SetupEnemyName(monsterName[4], monsterName[1], monsterName[2]);
                         }
                         else
                         {
@@ -11273,6 +11273,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(true);
             this.GroupsubMenu.SetActive(true);
             this.GroupMenu.SetActive(true);
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                this.groupArrow.SetActive(true);
+            }
         }
 
         private void TurnToBlack()
@@ -11283,6 +11288,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(false);
             this.GroupsubMenu.SetActive(false);
             this.GroupMenu.SetActive(false);
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                this.groupArrow.SetActive(false);
+            }
         }
 
         private void TurnToWhite()
@@ -11293,6 +11303,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(false);
             this.GroupsubMenu.SetActive(false);
             this.GroupMenu.SetActive(false);
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                this.groupArrow.SetActive(false);
+            }
         }
 
         private void UpdateUnknownTileArea11()
