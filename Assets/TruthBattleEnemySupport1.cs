@@ -2425,7 +2425,7 @@ namespace DungeonPlayer
                                         int tempdata = AP.Math.RandomInteger(group.Count);
                                         if (AbstractMagicDamage(player, group[tempdata], 30, ref damage, 0, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
                                         {
-                                            NowFrozen(player, group[tempdata], 1);
+                                            //NowFrozen(player, group[tempdata], 1);
                                         }
                                     }
                                 }

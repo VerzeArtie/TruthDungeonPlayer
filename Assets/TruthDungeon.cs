@@ -4609,33 +4609,33 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        SetupEnemyName(monsterName[0], monsterName[1], monsterName[1]);
+                        SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        SetupEnemyName(monsterName[1], monsterName[0], monsterName[0]);
+                        SetupEnemyName(monsterName[1], monsterName[0], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
                     }
                     else if (result == 3)
                     {
-                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
+                        SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
                     }
                     else if (result == 4)
                     {
-                        SetupEnemyName(monsterName[4], monsterName[0], monsterName[0]);
+                        SetupEnemyName(monsterName[4], monsterName[0], String.Empty);
                     }
                     else if (result == 5)
                     {
                         if (GroundOne.MC.Level <= 42)
                         {
-                            SetupEnemyName(monsterName[4], monsterName[1], monsterName[1]);
+                            SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
                         }
                         else
                         {
-                            SetupEnemyName(monsterName[5], monsterName[2], monsterName[2]);
+                            SetupEnemyName(monsterName[5], monsterName[2], String.Empty);
                         }
                     }
                 }
