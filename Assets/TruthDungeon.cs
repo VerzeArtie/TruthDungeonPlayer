@@ -7086,7 +7086,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     // area2 看板X2
-                    else if (row == 10 && column == 27 && eventNum == 266)
+                    else if (row == 12 && column == 25 && eventNum == 266)
                     {
                         return true;
                     }
@@ -17262,7 +17262,14 @@ namespace DungeonPlayer
                 {
                     int number = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     #region "AutoMove"
-                    if (number == 1)
+                    if (number == 0)
+                    {
+                        this.nowAutoMoveNumber.Add(102);
+                        this.nowAutoMoveNumber.Add(102);
+                        this.nowAutoMoveNumber.Add(100);
+                        this.nowAutoMoveNumber.Add(100);
+                    }
+                    else if (number == 1)
                     {
                         this.nowAutoMoveNumber.Add(2);
                         this.nowAutoMoveNumber.Add(3);

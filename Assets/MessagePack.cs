@@ -12237,12 +12237,12 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent309 = true;
 
-                messageList.Add("ラナ：続けて正解ルートみたいね。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：おっ、無効に看板が見えるな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：看板だ。読むか？"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：うん、行ってみましょう。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：ええ、お願い。"); eventList.Add(ActionEvent.None);
-
+                messageList.Add("0"); eventList.Add(ActionEvent.AutoMove);
+                
                 messageList.Add("アイン：っしゃ、読むぜ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　　　『　避けるべきである、ならざれば、破壊されるがよい　』"); eventList.Add(ActionEvent.None);
