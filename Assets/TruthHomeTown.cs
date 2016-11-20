@@ -112,7 +112,12 @@ namespace DungeonPlayer
             bool duelVisible = (GroundOne.WE.AvailableDuelColosseum && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
             this.buttonDuel.gameObject.SetActive(duelVisible);
 
-            if (!GroundOne.WE.AlreadyRest)
+            if (GroundOne.DuelMode && GroundOne.enemyName1 == Database.VERZE_ARTIE)
+            {
+                BlackOut(); 
+                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
+            }
+            else if (!GroundOne.WE.AlreadyRest)
             {
                 ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
             }

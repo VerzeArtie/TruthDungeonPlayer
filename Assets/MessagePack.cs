@@ -11682,10 +11682,6 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：ラナがどうしてこんな事をしなくちゃならないんだ・・・っくそ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：・・・う・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ヴェルゼ：ラナさん・・・これは・・・酷い状態です。"); eventList.Add(ActionEvent.None);
-
                 messageList.Add("アイン：すぐに町に戻るぜ。異論はないな？"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("ヴェルゼ：もちろんです、すぐに戻りましょう。"); eventList.Add(ActionEvent.None);
