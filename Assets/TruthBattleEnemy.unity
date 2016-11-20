@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9490196, b: 0.011764706, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8420,6 +8420,7 @@ MonoBehaviour:
   - {fileID: 659928442}
   - {fileID: 642247125}
   - {fileID: 664806881}
+  player1Panel: {fileID: 1371167827}
   player2Arrow: {fileID: 380472935}
   playerActionLabel2: {fileID: 1754280503}
   player2MainObjectBack: {fileID: 2007993149}
@@ -8450,6 +8451,7 @@ MonoBehaviour:
   - {fileID: 1709943358}
   - {fileID: 1251061612}
   - {fileID: 578029728}
+  player2Panel: {fileID: 2092475302}
   player3Arrow: {fileID: 248579205}
   playerActionLabel3: {fileID: 861781366}
   player3MainObjectBack: {fileID: 919573034}
@@ -8480,6 +8482,7 @@ MonoBehaviour:
   - {fileID: 1805637946}
   - {fileID: 1117363316}
   - {fileID: 1144235590}
+  player3Panel: {fileID: 55398993}
   enemy1Arrow: {fileID: 1941943790}
   enemyActionLabel1: {fileID: 330520760}
   enemy1MainObjectBack: {fileID: 1352515706}
@@ -25999,7 +26002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7176471, b: 0.9372549, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -36434,7 +36437,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1079667845}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.23333326
+  m_Size: 0.23333333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38547,7 +38550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.76862746, b: 0.9843137, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
