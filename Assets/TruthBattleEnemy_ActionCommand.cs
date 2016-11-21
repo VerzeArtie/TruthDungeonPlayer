@@ -533,7 +533,7 @@ namespace DungeonPlayer
         private void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
         {
             double lifeGain = PrimaryLogic.FreshHealValue(player, GroundOne.DuelMode);
-            PlayerAbstractLifeGain(player, player, 0, lifeGain, 0, Database.SOUND_FRESH_HEAL, 9);
+            PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_FRESH_HEAL, 9);
         }
 
         /// <summary>
