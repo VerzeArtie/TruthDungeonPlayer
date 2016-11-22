@@ -1214,6 +1214,8 @@ namespace DungeonPlayer
         }
         public void tapOK()
         {
+            bool ForceSkipTapOK = false;
+
             // autosave->exit専用
             if (this.systemMessage.text == this.MESSAGE_AUTOSAVE_EXIT)
             {
@@ -1315,6 +1317,10 @@ namespace DungeonPlayer
                 {
                     mainMessage.text = "";
                 }
+                else if (current == MessagePack.ActionEvent.PlaySound)
+                {
+                    mainMessage.text = "";
+                }
                 else
                 {
                     systemMessagePanel.SetActive(false);
@@ -1340,6 +1346,7 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownBackToTown)
                 {
                     BackToTown();
+                    ButtonVisibleControl(true);
                     GroundOne.StopDungeonMusic();
                     GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 }
@@ -1608,6 +1615,11 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
                 }
+                else if (current == MessagePack.ActionEvent.PlaySound)
+                {
+                    GroundOne.PlaySoundEffect(this.nowMessage[this.nowReading]);
+                    ForceSkipTapOK = true;
+                }
                 else if (current == MessagePack.ActionEvent.Ending)
                 {
                     StartEnding();
@@ -1615,7 +1627,7 @@ namespace DungeonPlayer
                 }
 
                 this.nowReading++;
-                if (this.nowMessage[this.nowReading-1] == "")
+                if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
                 {
                     tapOK();
                 }
@@ -1979,12 +1991,14 @@ namespace DungeonPlayer
 
         public void CallTicketEin()
         {
+            this.groupTicketChoice.SetActive(false);
             MessagePack.Message70019_2(ref nowMessage, ref nowEvent, 1);
             NormalTapOK();
         }
 
         public void CallTicketLana()
         {
+            this.groupTicketChoice.SetActive(false);
             MessagePack.Message70019_2(ref nowMessage, ref nowEvent, 2);
             NormalTapOK();
         }
@@ -2132,6 +2146,7 @@ namespace DungeonPlayer
 
         private void GoToFazilCastle()
         {
+            ButtonVisibleControl(false);
             this.buttonHanna.gameObject.SetActive(false);
             this.buttonDungeon.gameObject.SetActive(false);
             this.buttonRana.gameObject.SetActive(false);

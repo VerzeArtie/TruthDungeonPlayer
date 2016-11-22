@@ -37751,112 +37751,114 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AlreadyGetOneDayItem)
             {
-                messageList.Add("サンディ：【お楽しみ抽選券は正面ゲート向かって右側である！】");
+                messageList.Add("サンディ：【お楽しみ抽選券は正面ゲート向かって右側である！】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：サンキュー。じゃ行ってくるぜ。");
+                messageList.Add("アイン：サンキュー。じゃ行ってくるぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　・・・　しばらく歩いた後　・・・");
+                messageList.Add("　・・・　しばらく歩いた後　・・・"); eventList.Add(ActionEvent.None);
 
                 if (!GroundOne.WE.Truth_FirstOneDayItem)
                 {
-                    messageList.Add("ラナ：あ、あれじゃないの？");
+                    messageList.Add("ラナ：あ、あれじゃないの？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：お、本当だ！　どれどれ・・・");
+                    messageList.Add("アイン：お、本当だ！　どれどれ・・・"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：よし、確かこの箱だったな。");
+                    messageList.Add("アイン：よし、確かこの箱だったな。"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("　【　お楽しみ抽選券をお求めの方は、『発行』ボタンを押してください　】");
+                messageList.Add("　【　お楽しみ抽選券をお求めの方は、『発行』ボタンを押してください　】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：じゃあピっと・・・");
+                messageList.Add("アイン：じゃあピっと・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　【　ッガガガガ・・・　】");
+                messageList.Add("　【　ッガガガガ・・・　】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　【　ありがとうございます。無事に発行されました　】");
+                messageList.Add("　【　ありがとうございます。無事に発行されました　】"); eventList.Add(ActionEvent.None);
 
                 if (!GroundOne.WE.Truth_FirstOneDayItem)
                 {
-                    messageList.Add("アイン：お、おぉ！やったぜ！");
+                    messageList.Add("アイン：お、おぉ！やったぜ！"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("　【　抽選券を持って、そのまま右へお進みください　】");
+                messageList.Add("　【　抽選券を持って、そのまま右へお進みください　】"); eventList.Add(ActionEvent.None);
 
                 if (!GroundOne.WE.Truth_FirstOneDayItem)
                 {
-                    messageList.Add("アイン：っしゃ、次だな！");
+                    messageList.Add("アイン：っしゃ、次だな！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：きっとあれよ。何人か並んでるわ。");
+                    messageList.Add("ラナ：きっとあれよ。何人か並んでるわ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：よし、さっそく並んでみようぜ。");
+                    messageList.Add("アイン：よし、さっそく並んでみようぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・なげえな・・・");
+                    messageList.Add("アイン：・・・なげえな・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：少し待つしかないわね。");
+                    messageList.Add("ラナ：少し待つしかないわね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ふう・・・");
+                    messageList.Add("アイン：ふう・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：ところで、どっちが券を使うの？");
+                    messageList.Add("ラナ：ところで、どっちが券を使うの？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いや、それはどっちでも良いだろう。");
+                    messageList.Add("アイン：いや、それはどっちでも良いだろう。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：えー、何言ってんのよバカアイン？　大事なトコじゃないの。");
+                    messageList.Add("ラナ：えー、何言ってんのよバカアイン？　大事なトコじゃないの。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いやいやいや、抽選なんだから、誰がやっても同じだろ？");
+                    messageList.Add("アイン：いやいやいや、抽選なんだから、誰がやっても同じだろ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：でも、強運の人がやると、立て続けに引き当てる人っているじゃない？");
+                    messageList.Add("ラナ：でも、強運の人がやると、立て続けに引き当てる人っているじゃない？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：確かにたまに居るような、そういう奴は。");
+                    messageList.Add("アイン：確かにたまに居るような、そういう奴は。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：でしょ？だから、私かアインのどっちかで、結果が変わるわけよ♪");
+                    messageList.Add("ラナ：でしょ？だから、私かアインのどっちかで、結果が変わるわけよ♪"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：マジか・・・関係ねえ気もするけどなあ・・・");
+                    messageList.Add("アイン：マジか・・・関係ねえ気もするけどなあ・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：そういうワケだから、どっちが券を使うか決めてちょうだい♪");
+                    messageList.Add("ラナ：そういうワケだから、どっちが券を使うか決めてちょうだい♪"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いやいやいや・・・そうだなあ・・・");
+                    messageList.Add("アイン：いやいやいや・・・そうだなあ・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・");
+                    messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ダメだ、わかんねえ！");
+                    messageList.Add("アイン：ダメだ、わかんねえ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：券を使用する直前で決めよう！！！");
+                    messageList.Add("アイン：券を使用する直前で決めよう！！！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：えっ、何よそれ。　ちゃんと決めてよね。");
+                    messageList.Add("ラナ：えっ、何よそれ。　ちゃんと決めてよね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いやいや、何て言うんだ。決めようが無いぜ。");
+                    messageList.Add("アイン：いやいや、何て言うんだ。決めようが無いぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：その時その時の直観に頼ろう。っな！？");
+                    messageList.Add("アイン：その時その時の直観に頼ろう。っな！？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：うーん、何か釈然としないけど・・・");
+                    messageList.Add("ラナ：うーん、何か釈然としないけど・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：おっ、前が開いたぜ！俺たちの番じゃないか？");
+                    messageList.Add("アイン：おっ、前が開いたぜ！俺たちの番じゃないか？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：あ、本当ね。じゃあさっそくやってみましょ♪");
+                    messageList.Add("ラナ：あ、本当ね。じゃあさっそくやってみましょ♪"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("　【　抽選券をシート挿入口に差し込んでください　】");
+                    messageList.Add("　【　抽選券をシート挿入口に差し込んでください　】"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：よし、じゃあさっそくだが・・・");
+                    messageList.Add("アイン：よし、じゃあさっそくだが・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：どっちがやってみる？");
+                    messageList.Add("ラナ：どっちがやってみる？"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("ラナ：ねえ、どっちがやってみる？");
+                    messageList.Add("ラナ：ねえ、どっちがやってみる？"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("アイン：そうだなあ、ここは・・・");
+                messageList.Add("アイン：そうだなあ、ここは・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownTicketChoice);
             }
             else
             {
-                messageList.Add("サンディ：【お楽しみ抽選券は本日既に発行済となった！】");
+                messageList.Add("サンディ：【お楽しみ抽選券は本日既に発行済となった！】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：そっか、じゃあまた今度だな。");
+                messageList.Add("アイン：そっか、じゃあまた今度だな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("サンディ：【また、参られよ！】");
+                messageList.Add("サンディ：【また、参られよ！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
             }
         }
 
@@ -37938,6 +37940,8 @@ namespace DungeonPlayer
 
             GroundOne.WE.AlreadyGetOneDayItem = true;
             GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
 
             messageList.Add(newItem); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
         }
