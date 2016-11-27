@@ -189,6 +189,7 @@ namespace DungeonPlayer
             GotoHomeTownForce,
             DecisionOpenDoor1,
             HomeTownGetItemFullCheck,
+            HomeTownRemoveItem,
             HomeTownBlackOut,
             HomeTownTurnToNormal,
             HomeTownBackToTown,
@@ -34265,6 +34266,66 @@ namespace DungeonPlayer
 
         public static void Message50006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_CommunicationGanz32 = true;
+            GroundOne.WE2.EquipMaterial_313 += 1;
+
+            messageList.Add("ガンツ：・・・アインよ、良い物を見つけてきたな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おじさん、これは一体？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：この大陸の遥か北にある山脈ウェクスラーには、かつて古代栄樹が生えておったのだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：古代栄樹？？　伝説上のおとぎ話じゃないんですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：今ではおとぎ話として伝えられておるのは、事実だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：古代栄樹は一旦その姿を消滅した後、全く新しい場所で再生が行われる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：その話自体は真実ではあるが、それを信じる者はこの今の時代では数少なかろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っで、このゴツゴツした木の幹の一部みたいなのが・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：そう、これこそまさしく古代栄樹木の幹の断片。よくぞ手に入れた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：アインよ、すまんがこれをワシに託してもらえんかね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っえ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと・・・そこのバカアイン。何考えてるのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っい、いやいやいや。別に何も考えてねえさ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふ～ん、ならいいんだけど♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：と、当然だろ！？　何一つやましい事は考えてねえさ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、自爆しなくても良いのに♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っあ！ったく・・・まあ良いか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、何でもねえんだ。おじさん、受け取ってくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインは【" + Database.EPIC_OLD_TREE_MIKI_DANPEN + "】をガンツへと手渡しました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ガンツ：心遣い、感謝する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：この素材を使って、一つワシなりの最高傑作を作ってみせよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッマジで！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：二言はない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ガンツ：出来上がったら、こちらから連絡する。楽しみにしておれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やった！　すげぇ、楽しみだぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownRemoveItem);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+        }
+
+        public static void Message50007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
             messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ガンツ：アインよ、相変わらず元気そうじゃの。"); eventList.Add(ActionEvent.None);
@@ -34542,7 +34603,7 @@ namespace DungeonPlayer
             return detectName;
         }
 
-        public static void Message50007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message50008(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：ガンツ叔父さん、いますかー？"); eventList.Add(ActionEvent.None);
 
@@ -34603,7 +34664,7 @@ namespace DungeonPlayer
             Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
         }
 
-        public static void Message50008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message50009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
         }
@@ -37957,6 +38018,13 @@ namespace DungeonPlayer
         {
             // after (「あいさつ」でサンディとの会話を増やすか？)
             // messageList.Add("サンディ：【また、参られよ！】"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70022(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("サンディ：【また、参られよ！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
         }
 
         public static void Message79999(ref List<string> messageList, ref List<ActionEvent> eventList)

@@ -7038,6 +7038,24 @@ namespace DungeonPlayer
         }
 
         /// <summary>
+        /// バックパックに対象のアイテムが含まれているかどうかをチェックします。
+        /// </summary>
+        /// <param name="itemName">検索対象となるアイテム名</param>
+        /// <returns>true: 存在する,  false: 存在しない</returns>
+        public bool FindBackPackItem(string itemName)
+        {
+            ItemBackPack[] list = this.GetBackPackInfo();
+            for (int ii = 0; ii < list.Length; ii++)
+            {
+                if (list[ii] != null && list[ii].Name == itemName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// アイテム内容を全面的に入れ替えます。
         /// </summary>
         /// <param name="item"></param>

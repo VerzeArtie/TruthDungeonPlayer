@@ -1309,7 +1309,8 @@ namespace DungeonPlayer
                 {
                     mainMessage.text = "";
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
+                else if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck ||
+                         current == MessagePack.ActionEvent.HomeTownRemoveItem)
                 {
                     mainMessage.text = "";
                 }
@@ -1334,6 +1335,10 @@ namespace DungeonPlayer
                 {
                     Method.GetItemFullCheck(this, GroundOne.MC, this.nowMessage[this.nowReading]);
                     this.nowMessage[this.nowReading] = "";
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownRemoveItem)
+                {
+                    FindAndDeleteItem(Database.EPIC_OLD_TREE_MIKI_DANPEN);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownBlackOut)
                 {
@@ -1362,7 +1367,7 @@ namespace DungeonPlayer
                 {
                     ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
                     this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_MORNING);
-                }    
+                }
                 else if (current == MessagePack.ActionEvent.HomeTownNight)
                 {
                     ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
@@ -1794,24 +1799,31 @@ namespace DungeonPlayer
                 }
             }
             #endregion
+            #region "古代栄樹の幹の断片を所持し、売却する"
+            else if (!GroundOne.WE.Truth_CommunicationGanz32 && FindItemInAllMember(Database.EPIC_OLD_TREE_MIKI_DANPEN))
+            {
+                MessagePack.Message50006(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "４階開始時"
             else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationGanz41)
             {
                 GroundOne.WE.Truth_CommunicationGanz41 = true;
 
-                MessagePack.Message50006(ref nowMessage, ref nowEvent);
+                MessagePack.Message50007(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "現実世界"
             else if (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent601 && !GroundOne.WE2.SeekerEvent604)
             {
-                MessagePack.Message50007(ref nowMessage, ref nowEvent);
+                MessagePack.Message50008(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent604)
             {
-                MessagePack.Message50008(ref nowMessage, ref nowEvent);
+                MessagePack.Message50009(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -1823,7 +1835,41 @@ namespace DungeonPlayer
             }
             #endregion
 	    }
-        
+
+        private bool FindItemInAllMember(string itemName)
+        {
+            bool detectFind = false;
+            if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && GroundOne.MC.FindBackPackItem(itemName))
+            {
+                detectFind = true;
+            }
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && GroundOne.SC.FindBackPackItem(itemName))
+            {
+                detectFind = true;
+            }
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && GroundOne.TC.FindBackPackItem(itemName))
+            {
+                detectFind = true;
+            }
+            return detectFind;
+        }
+
+        private void FindAndDeleteItem(string itemName)
+        {
+            if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && GroundOne.MC.FindBackPackItem(itemName))
+            {
+                GroundOne.MC.DeleteBackPack(new ItemBackPack(Database.EPIC_OLD_TREE_MIKI_DANPEN));
+            }
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && GroundOne.SC.FindBackPackItem(itemName))
+            {
+                GroundOne.SC.DeleteBackPack(new ItemBackPack(Database.EPIC_OLD_TREE_MIKI_DANPEN));
+            }
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && GroundOne.TC.FindBackPackItem(itemName))
+            {
+                GroundOne.TC.DeleteBackPack(new ItemBackPack(Database.EPIC_OLD_TREE_MIKI_DANPEN));
+            }
+        }
+
         private string MessageFormatForLana(int num)
         {
             GameObject tempObj = new GameObject();
@@ -1977,6 +2023,12 @@ namespace DungeonPlayer
             this.panelHide.gameObject.SetActive(false);
             this.groupSelectCastleMenu.SetActive(false);
             MessagePack.Message70020(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        public void CallBacktoHometown()
+        {
+            MessagePack.Message70022(ref nowMessage, ref nowEvent);
             NormalTapOK();
         }
 
@@ -2208,6 +2260,7 @@ namespace DungeonPlayer
             {
                 this.buttonShinikia.gameObject.SetActive(visible);
             }
+            this.groupTicketChoice.SetActive(false);
         }
 
 	    public void tapInn() {
