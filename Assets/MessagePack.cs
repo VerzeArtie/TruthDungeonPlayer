@@ -11438,7 +11438,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：おい、誰に言ってるんだ。ラナ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：っし、しばらく静かに。大丈夫ですから。"); eventList.Add(ActionEvent.None);
+                messageList.Add("ヴェルゼ：しばらく静かに。大丈夫ですから。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：あ、ああ・・・"); eventList.Add(ActionEvent.None);
 
@@ -11446,13 +11446,13 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：私が迷ったわけじゃない。私が迷ってるわけがない。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：でもあなたが迷ったのでしょう？あなたが迷い続けるのが原因なのですよ、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：あなたが迷ったのでしょう？あなたが迷い続けるからでしょう？ラナ・アミリア』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『ラナ：この事に関しては、他人から一方的に決められたくないし、自分自身で決めたくもないの。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：でも、他人からは決められたくない。自分自身でも決めたくない。』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：もし決定しまったとして、受け入れられるかしら？決められないわよこんなの。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：だとすれば、あなたはどうしたいのですか？明確に決定した上で、答えなさい、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：あなたはどうしたいのですか？明確に決定した上で、答えなさい、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：・・・・・・』"); eventList.Add(ActionEvent.None);
 
@@ -11464,9 +11464,9 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：今私が決めた事。それを受け入れるわ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：それがあなた自身、そして、あなたの周りに居る人達にとって決定された事実になるのよ。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：あなた自身が今決めた事、それが決定された事実となるのよ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『ラナ：ええ。決定した事、それを私は受け入れるわ・・・』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：私が今決定した事、それを私は事実として受け入れるわ・・・』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　　＜　ラナは語りを終えると、その場で倒れこんだ　＞"); eventList.Add(ActionEvent.None);
 
@@ -11534,7 +11534,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：こんな結末になるなんて聞いてなかったわ！！』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：それでも決めたのはあなた。  あなた自身が決めてしまった事なのでしょう？』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：でも決めたのはあなた。  あなた自身が決めてしまった事なのでしょう？』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：そんな・・・』"); eventList.Add(ActionEvent.None);
 
@@ -11544,21 +11544,17 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：そうね、私が自分で決めた事。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『ラナ：自分自身の判断で決めた事、これは私の意志よ。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：そうよ、これは自分自身の判断で決めた事、これは私の意志なの。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『呼び声：そう、それであなたはようやく楽になれる。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『呼び声：そう、それであなたはようやく意志を獲得するのよ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『呼び声：不安も消え去る。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『呼び声：楽になれるはず、不安も消え去るはず、安心も得るはず、迷わなくなるの。』"); eventList.Add(ActionEvent.None);
+                
+                messageList.Add("『ラナ：・・・そうね。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『呼び声：確定した安心も得る。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：これでようやく楽になれる。不安や迷いはぜんぶ捨ててしまうわ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『呼び声：あなたは今、ようやく迷わなくてすむようになるの。』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("『ラナ：・・・自分自身で決めた事、受け入れる事で少し楽になれたわ。』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("『ラナ：そうね、不安も迷いも今はもう捨てるわ。』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("『ラナ：たとえ結末を知っていようと私は受け入れるわ。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：たとえどんな結末になる事を知っていようと、私はそれを受け入れるわ。』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『呼び声：そう、決定する事で、ヒトは不安を払拭し、迷いが消え去るもの。』"); eventList.Add(ActionEvent.None);
 
@@ -11624,7 +11620,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：どこで間違えたのかしら。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：決定という行為自体にミスや誤りはないのですよ、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：間違えたのではありません、決定という行為自体にミスや誤りはないのですよ、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：違う・・・だから失敗するの』"); eventList.Add(ActionEvent.None);
 
@@ -11632,9 +11628,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：だから駄目なのよ・・・ダメなの！』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『ラナ：駄目・・・わかってるけど、もうどうにも・・・暗闇しか見えないわ・・・』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("『（呼び声）：ラナ・アミリア、あなたが起因しているのですよ。それは分かっていますか？』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：しかし、あなたが起因しているのは事実。それ自体は分かっていますか？ラナ・アミリア』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：アインがひとりでダンジョンに行くなんて言い出したわ。』"); eventList.Add(ActionEvent.None);
 
@@ -11672,7 +11666,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：・・・ええ、そうね。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『ラナ：この結果なら最善だわ、誰も傷つかないし、誰も嫌な思いはしない。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『ラナ：でもこの結果になるなら良いの、誰も傷つかないし、誰も嫌な思いはしない。』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『呼び声：不幸と幸福は等しきもの。失敗も成功も等しきもの。良いも悪いも等しきもの。』"); eventList.Add(ActionEvent.None);
 
@@ -11724,7 +11718,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：光を見出し、同時に全ての暗闇を抱えなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：光が見えた後、同時に全ての暗闇を抱え込みなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
 
@@ -11732,7 +11726,7 @@ namespace DungeonPlayer
 
                 messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("『（呼び声）：全てを終わらせたくなければ、全てを抱えなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+                messageList.Add("『（呼び声）：全てを終わらせたくなければ、あらゆる事象全てを抱えなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
 
@@ -41683,7 +41677,7 @@ namespace DungeonPlayer
 
             messageList.Add(KIINA + "：１つ。　ライフ・コントロール。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(KIINA + "相手を倒しに行くのではなく、自分の方がライフアドバテンテージが高くする方法です。"); eventList.Add(ActionEvent.None);
+            messageList.Add(KIINA + "：相手を倒しに行くのではなく、自分の方がライフアドバテンテージが高くする方法です。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、それは知ってる。あれは嫌でも嫌になるぜ。"); eventList.Add(ActionEvent.None);
 
@@ -41705,7 +41699,7 @@ namespace DungeonPlayer
 
                 messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
             }
-
+            
             messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);

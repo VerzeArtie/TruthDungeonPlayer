@@ -2364,6 +2364,9 @@ namespace DungeonPlayer
                     group[currentNumber].CurrentLife += lifeGain;
                     mainMessage.text = String.Format(player.GetCharacterSentence(2035), lifeGain.ToString());
                 }
+                this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+                this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+                RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
             }
             // 単体対象の場合
             else
