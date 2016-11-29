@@ -33956,6 +33956,7 @@ namespace DungeonPlayer
 
             GroundOne.WE.AvailableMixSpellSkill = true;
             GroundOne.WE2.AvailableMixSpellSkill = true;
+            Method.AutoSaveTruthWorldEnvironment();
 
             messageList.Add("カール：どうした。まだまだ先は長いぞ。"); eventList.Add(ActionEvent.None);
 
@@ -36348,6 +36349,7 @@ namespace DungeonPlayer
                 // 勝った場合、次の会話へ
                 GroundOne.WE2.WinOnceSinikiaKahlHanz = true;
                 GroundOne.WE2.AvailableArcheTypeCommand = true;
+                Method.AutoSaveTruthWorldEnvironment();
                 GroundOne.MC.Syutyu_Danzetsu = true;
                 GroundOne.WE.AvailableArchetypeCommand = true;
 
@@ -41960,7 +41962,7 @@ namespace DungeonPlayer
 
             messageList.Add("サン：ボクの知る限り"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アインさんはオル・ランディスの愛弟子。"); eventList.Add(ActionEvent.None);
+            messageList.Add("サン：アインさんはオル・ランディスの愛弟子。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　『サン・ユウの目は突如カっと目を見開いた！』　　"); eventList.Add(ActionEvent.None);
 
