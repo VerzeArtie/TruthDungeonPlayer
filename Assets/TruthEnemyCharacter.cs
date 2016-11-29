@@ -4735,6 +4735,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_BRILLIANT_SEA_PRINCE:
                     SetupParameterMonster(65, 700, 550, 700, 2872, 100, (int)(listExp[48]), (int)(listGold[48]));
                     this.baseInstantPoint = 2400;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss21;
@@ -4743,6 +4744,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
                     SetupParameterMonster(66, 300, 500, 800, 3070, 100, (int)(listExp[49]), (int)(listGold[49]));
                     this.baseInstantPoint = 1800;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss22;
@@ -4751,6 +4753,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SHELL_SWORD_KNIGHT:
                     SetupParameterMonster(67, 900, 650, 300, 3368, 100, (int)(listExp[50]), (int)(listGold[50]));
                     this.baseInstantPoint = 3900;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss23;
@@ -4759,6 +4762,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
                     SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[51]), (int)(listGold[51]));
                     this.baseInstantPoint = 2200;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss24;
@@ -4768,6 +4772,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
                     SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[52]), (int)(listGold[52]));
                     this.baseInstantPoint = 2700;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss24;
@@ -4778,6 +4783,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SEA_STAR_ORIGIN_KING:
                     SetupParameterMonster(75, 600, 450, 600, 3852, 100, (int)(listExp[53]), (int)(listGold[53]));
                     this.baseInstantPoint = 12000;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
@@ -4786,6 +4792,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
                     SetupParameterMonster(70, 900, 650, 300, 2662, 100, (int)(listExp[54]), (int)(listGold[54]));
                     this.baseInstantPoint = 5400;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
@@ -4794,6 +4801,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
                     SetupParameterMonster(70, 900, 680, 300, 2662, 100, (int)(listExp[55]), (int)(listGold[55]));
                     this.baseInstantPoint = 3600;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
@@ -5266,6 +5274,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(200, 3000, 4200, 3000, 999999, 500, (int)(listExp[110]), 0);
                     this.baseLife = 9;
                     this.baseInstantPoint = 8000;
+                    this.UseStackCommand = true;
                     this.ResistBlind = true;
                     this.ResistFrozen = true;
                     this.ResistNoResurrection = true;
