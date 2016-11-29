@@ -1059,6 +1059,14 @@ namespace DungeonPlayer
                 else if (player.FirstName == Database.VERZE_ARTIE) { player.ManaSkillPanel.GetComponent<Image>().color = new Color(120.0f / 255.0f, 120.0f / 255.0f, 120.0f / 255.0f, 100f / 255.0f); }
                 else if (player.FirstName == Database.SINIKIA_KAHLHANZ) { player.ManaSkillPanel.GetComponent<Image>().color = new Color(81.0f / 255.0f, 7.0f / 255.0f, 255.0f / 255.0f, 100f / 255.0f); }
             }
+            if (player.meterCurrentInstantPoint != null)
+            {
+                if (player.FirstName == Database.EIN_WOLENCE) { player.meterCurrentInstantPoint.GetComponent<Image>().color = new Color(0.0f / 255.0f, 198.0f / 255.0f, 190.0f / 255.0f, 255.0f / 255.0f); }
+                else if (player.FirstName == Database.RANA_AMILIA) { player.meterCurrentInstantPoint.GetComponent<Image>().color = new Color(248.0f / 255.0f, 124.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f); }
+                else if (player.FirstName == Database.OL_LANDIS) { player.meterCurrentInstantPoint.GetComponent<Image>().color = new Color(249.0f / 255.0f, 243.0f / 255.0f, 4.0f / 255.0f, 255.0f / 255.0f); }
+                else if (player.FirstName == Database.VERZE_ARTIE) { player.meterCurrentInstantPoint.GetComponent<Image>().color = new Color(200.0f / 255.0f, 200.0f / 255.0f, 200.0f / 255.0f, 255.0f / 255.0f); }
+                else if (player.FirstName == Database.SINIKIA_KAHLHANZ) { player.meterCurrentInstantPoint.GetComponent<Image>().color = new Color(124.0f / 255.0f, 4.0f / 255.0f, 233.0f / 255.0f, 255.0f / 255.0f); }
+            }
         }
 
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
@@ -1475,6 +1483,20 @@ namespace DungeonPlayer
                 (player.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE))
             {
                 player.labelCurrentInstantPoint.gameObject.SetActive(true);
+            }
+            if (IsPlayerEnemy(player))
+            {
+                if (((TruthEnemyCharacter)player).UseStackCommand == false && GroundOne.DuelMode == false)
+                {
+                    if (player.meterCurrentInstantPoint != null)
+                    {
+                        player.meterCurrentInstantPoint.gameObject.SetActive(false);
+                    }
+                    if (player.labelCurrentInstantPoint != null)
+                    {
+                        player.labelCurrentInstantPoint.gameObject.SetActive(false);
+                    }
+                }
             }
 
             // 味方側、魔法・スキルをセットアップ
