@@ -2365,11 +2365,11 @@ namespace DungeonPlayer
                     }
                     else if (((TruthEnemyCharacter)player).InitialTarget == TruthEnemyCharacter.TargetLogic.Back)
                     {
-                        if (GroundOne.TC != null && !GroundOne.TC.Dead)
+                        if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && !GroundOne.TC.Dead)
                         {
                             ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.TC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
-                        else if (GroundOne.SC != null && !GroundOne.SC.Dead)
+                        else if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead)
                         {
                             ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.SC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
