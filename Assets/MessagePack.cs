@@ -15522,7 +15522,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：（この依頼人は、恐ろしく腕が立つ、という事だ）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：（報酬を先にし払うという事は）"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：（報酬を先に支払うという事は）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：（相手が逃げようが、闇討ちを狙ってこようが、多勢で突然襲いかかろうが）"); eventList.Add(ActionEvent.None);
 
@@ -15542,7 +15542,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：（その実力は見るまでもない）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：（そして対象の人物を力量を測定するためだけに、その全敗戦歴を残す）"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：（そして対象の人物の力量を測定するためだけに、その全敗戦歴を残す）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：（全敗であれば、DUEL公式戦の新参者と全て対戦ができるからだ）"); eventList.Add(ActionEvent.None);
 

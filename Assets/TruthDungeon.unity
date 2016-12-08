@@ -147,10 +147,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 541768343}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -5}
+  m_AnchoredPosition: {x: 65, y: -5}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &17486204
@@ -950,10 +950,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 541768343}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 65, y: -5}
+  m_AnchoredPosition: {x: 125, y: -5}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &270024842
@@ -2286,8 +2286,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 806601937}
-  - {fileID: 270024841}
   - {fileID: 17486203}
+  - {fileID: 270024841}
   - {fileID: 916804824}
   - {fileID: 436457711}
   m_Father: {fileID: 1408778859}
@@ -4524,6 +4524,7 @@ MonoBehaviour:
   mainPanel: {fileID: 0}
   MainObjectBack: {fileID: 0}
   MainObjectButton: {fileID: 0}
+  ManaSkillPanel: {fileID: 0}
   MainColor: {r: 0, g: 0, b: 0, a: 0}
   labelName: {fileID: 0}
   labelFullName: {fileID: 0}

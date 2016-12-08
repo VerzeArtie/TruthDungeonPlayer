@@ -34,6 +34,12 @@ namespace DungeonPlayer
             GroundOne.Parent.Clear();
         }
 
+        public static void CallTutorial(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.Tutorial);
+        }
+
         public static void CallGameSetting( MotherForm scene)
         {
             GroundOne.Parent.Add(scene);

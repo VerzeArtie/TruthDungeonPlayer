@@ -628,8 +628,15 @@ namespace DungeonPlayer
             GroupMenu.SetActive(true);
         }
 
+        public void Tutorial_Click()
+        {
+            SceneDimension.CallTutorial(this);
+        }
+
         public void GameStart_Click()
         {
+            GroundOne.TutorialMode = false;
+
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、新しく始める事はできません。";
@@ -676,6 +683,7 @@ namespace DungeonPlayer
 
         public void Load_Click()
         {
+            GroundOne.TutorialMode = false;
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、ロードを行う事はできません。";
@@ -689,6 +697,7 @@ namespace DungeonPlayer
 
         public void Config_Click()
         {
+            GroundOne.TutorialMode = false;
             GroundOne.SQL.UpdateOwner(Database.LOG_CONFIG, String.Empty, String.Empty);
             SceneDimension.CallGameSetting(this);
         }
@@ -701,6 +710,7 @@ namespace DungeonPlayer
 
         public void Seeker_Click()
         {
+            GroundOne.TutorialMode = false;
             GroundOne.SQL.UpdateOwner(Database.LOG_START_SEEKER, String.Empty, String.Empty);
             GroundOne.WE2.StartSeeker = true;
             Method.AutoSaveTruthWorldEnvironment();

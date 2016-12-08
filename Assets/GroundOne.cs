@@ -51,7 +51,9 @@ namespace DungeonPlayer
         public static AudioSource soundSource = null; // サウンドソース
 
         public static GameObject bgm = null; // BGM音源
-        public static AudioSource bgmSource = null; // BGMソース
+        public static List<AudioSource> bgmSource = new List<AudioSource>(); // BGMソース
+        private static List<String> BgmName = new List<string>();
+        private static int BgmNumber = 0;
 
         public static int EnableBGM = 100; // ミュージック、デフォルトは100
         public static int EnableSoundEffect = 100; // 効果音、デフォルトは100
@@ -60,6 +62,8 @@ namespace DungeonPlayer
         public static bool SupportLog = true; // SQLサーバーに操作ログを残す　デフォルトはON
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
+
+        public static bool TutorialMode = false; // チュートリアルモードを示すフラグ
 
         // MotherForm
         public static List<MotherForm> Parent;
@@ -199,12 +203,20 @@ namespace DungeonPlayer
                 sound = null;
                 soundSource = null;
                 GameObject.DestroyObject(bgm);
-                GameObject.DestroyObject(bgmSource);
+                for (int ii = 0; ii < bgmSource.Count; ii++)
+                {
+                    //bgmSource[ii].clip.UnloadAudioData();
+                    GameObject.Destroy(bgmSource[ii]);
+                }
                 bgm = null;
                 bgmSource = null;
+                BgmName.Clear();
+                BgmName = null;
+                BgmNumber = 0;
             }
             Truth_KnownTileInfo = null;
             AlreadyInitialize = false;
+            TutorialMode = false;
             InitializeGroundOne(FromGameLoad);
         }
 
@@ -228,7 +240,9 @@ namespace DungeonPlayer
                 sound = new GameObject("sound");
                 soundSource = sound.AddComponent<AudioSource>();
                 bgm = new GameObject("bgm");
-                bgmSource = bgm.AddComponent<AudioSource>();
+                bgmSource = new List<AudioSource>();
+                bgmSource.Add(bgm.AddComponent<AudioSource>());
+                BgmName = new List<string>();
             }
 
             Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -582,7 +596,7 @@ namespace DungeonPlayer
             UnityEngine.Object.DontDestroyOnLoad(sound);
             UnityEngine.Object.DontDestroyOnLoad(soundSource);
             UnityEngine.Object.DontDestroyOnLoad(bgm);
-            UnityEngine.Object.DontDestroyOnLoad(bgmSource);
+            UnityEngine.Object.DontDestroyOnLoad(bgmSource[0]);
             UnityEngine.Object.DontDestroyOnLoad(SQL);
             return true;
         }
@@ -619,34 +633,63 @@ namespace DungeonPlayer
         }
         public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, int loopBegin)
         {
-            //if (GroundOne.EnableBGM > 0.0f)
+            StopDungeonMusic();
+
+            bool detect = false;
+            for (int ii = 0; ii < BgmName.Count; ii++)
             {
-                bgmSource.Stop();
-                bgmSource.clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
-                bgmSource.loop = true;
-                bgmSource.volume = (float)((float)GroundOne.EnableBGM / 100.0f);
-                bgmSource.Play();
+                if (targetMusicName == BgmName[ii])
+                {
+                    BgmNumber = ii;
+                    detect = true;
+                    break;
+                }
             }
+
+            if (detect == false)
+            {
+                BgmName.Add(targetMusicName);
+                bgmSource.Add(bgm.AddComponent<AudioSource>());
+                BgmNumber = BgmName.Count - 1;
+            }
+
+            bgmSource[BgmNumber].Stop();
+            bgmSource[BgmNumber].clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
+            bgmSource[BgmNumber].loop = true;
+            bgmSource[BgmNumber].volume = (float)((float)GroundOne.EnableBGM / 100.0f);
+            bgmSource[BgmNumber].Play();
         }
 
         public static void StopDungeonMusic()
         {
-            bgmSource.Stop();
+            if (bgmSource.Count > BgmNumber)
+            {
+                bgmSource[BgmNumber].Stop();
+            }
         }
 
         public static void ChangeDungeonMusicVolume(float vol)
         {
-            bgmSource.volume = vol;
+            if (bgmSource.Count > BgmNumber)
+            {
+                bgmSource[BgmNumber].volume = vol;
+            }
         }
 
         public static void TempStopDungeonMusic()
         {
-            bgmSource.mute = true;
+            if (bgmSource.Count > BgmNumber)
+            {
+                bgmSource[BgmNumber].mute = true;
+            }
         }
 
         public static void ResumeDungeonMusic()
         {
-            bgmSource.mute = false;
+            if (bgmSource.Count > BgmNumber)
+            {
+                bgmSource[BgmNumber].mute = false;
+            }
         }
         #endregion
 
