@@ -342,6 +342,15 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
+            #region "チュートリアル"
+            if (GroundOne.TutorialMode)
+            {
+                buttonDuel.gameObject.SetActive(true);
+                panelSubMenu.SetActive(false);
+                return;
+            }
+            #endregion
+
             #region "DUEL対戦結果"
             if (GroundOne.DuelMode)
             {
@@ -631,6 +640,12 @@ namespace DungeonPlayer
         }
             	
 	    public void tapDungeon() {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：ここからダンジョンスタートだ。ここから先は本編でプレイしてみてくれ。";
+                return;
+            }
+
             if (!GroundOne.WE2.RealWorld && GroundOne.WE.GameDay <= 1 && (!GroundOne.WE.AlreadyCommunicate || !GroundOne.WE.Truth_CommunicationGanz1 || !GroundOne.WE.Truth_CommunicationHanna1 || !GroundOne.WE.Truth_CommunicationLana1))
             {
                 MessagePack.Message30000(ref nowMessage, ref nowEvent);
@@ -844,6 +859,12 @@ namespace DungeonPlayer
 
         public void tapCommunicationLana()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ラナ：本編では気が向いたら、私に声をかけてね♪";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_TALK_LANA, String.Empty, String.Empty);
             if (GroundOne.WE.AlreadyCommunicate)
             {
@@ -1058,6 +1079,12 @@ namespace DungeonPlayer
         }
 
 	    public void tapDuel() {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ランディス：気安くDUELボタンを押してんじゃねぇ、本編で遭遇したらブッ飛ばすからな。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_DUEL_ENTRANCE, String.Empty, String.Empty);
             GroundOne.OpponentDuelist = WhoisDuelPlayer();
             #region "Duel申請中"
@@ -1191,6 +1218,12 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ラナ：バトルコマンドを設定する事が出来るわ。詳しくは別のチュートリアルで確認してね。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromHomeTown", String.Empty);
             SceneDimension.CallTruthBattleSetting(this);
         }
@@ -1717,6 +1750,12 @@ namespace DungeonPlayer
         }
 
 	    public void tapShop() {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ガンツ：準備中の札がお前さんには見えんのか。本編になってからまた来なさい。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIP_SHOP, String.Empty, String.Empty);
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableEquipShop2 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableEquipShop3 = true; // 前編で既に周知のため、解説は不要。
@@ -2264,6 +2303,12 @@ namespace DungeonPlayer
         }
 
 	    public void tapInn() {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ハンナ：あら、予定外の客が来たわね。すまないけど、本編になってから来てちょうだい。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_INN, String.Empty, String.Empty);
             #region "一日目"
             if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1)
@@ -2423,6 +2468,12 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ラナ：ゲームをセーブする画面を呼び出すわ。このチュートリアルではセーブ不要よ。";
+                return;
+            }
+ 
             GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
@@ -2436,6 +2487,12 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ラナ：ゲームをセーブする画面を呼び出すわ。このチュートリアルではロード不要よ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
@@ -3090,6 +3147,12 @@ namespace DungeonPlayer
 
         public void CallStatusPlayer()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "ラナ：キャラクターのステータス画面が確認できるわよ。詳しくは別のチュートリアルで確認することが出来るわ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromHomeTown", String.Empty);
             SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
         }

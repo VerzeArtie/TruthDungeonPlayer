@@ -147,6 +147,7 @@ namespace DungeonPlayer
 
             if (this.selectNumber == 0)
             {
+                GroundOne.WE.AlreadyRest = true;
                 SceneDimension.JumpToTruthHomeTown();
             }
             else if (this.selectNumber == 1)
