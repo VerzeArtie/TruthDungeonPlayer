@@ -3103,6 +3103,12 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            if (GroundOne.TutorialMode)
+            {
+                SceneDimension.JumpToTitle();
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {

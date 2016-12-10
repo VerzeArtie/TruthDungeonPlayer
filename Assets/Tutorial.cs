@@ -13,6 +13,7 @@ namespace DungeonPlayer
         public bool toggleB3 = false;
         public bool toggleDuel = false;
         public Text description = null;
+        public Button buttonHomeTown = null;
 
         private int selectNumber = 0;
 

@@ -1940,6 +1940,7 @@ MonoBehaviour:
   toggleB3: 0
   toggleDuel: 0
   description: {fileID: 1717623933}
+  buttonHomeTown: {fileID: 1964051009}
 --- !u!114 &1326968305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2544,7 +2545,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Finish'
+  m_Text: Back to Title
 --- !u!222 &1706285286
 CanvasRenderer:
   m_ObjectHideFlags: 0
