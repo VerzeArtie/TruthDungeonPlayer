@@ -29,6 +29,7 @@ namespace DungeonPlayer
             BlueOpenLeft,
             BlueOpenRight,
             BlueOpenBottom,
+            TutorialOpen1,
             BigEntranceOpen,
             CenterBlueOpen,
             SmallEntranceOpen1,
@@ -185,6 +186,7 @@ namespace DungeonPlayer
             PlaySound,
             YesNoGotoDungeon,
             YesNoBacktoDungeon,
+            GoBackTutorial,
             GotoHomeTown,
             GotoHomeTownForce,
             DecisionOpenDoor1,
@@ -478,6 +480,67 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：ん？特に何もなかったと思うが。"); eventList.Add(ActionEvent.None);
         }
+        #region "Tutorial"
+        public static void MessageBackToTutorial(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：この階段を上がればチュートリアルは終了だ。どうする？"); eventList.Add(ActionEvent.GoBackTutorial);
+        }
+        public static void Message00001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent01 == false)
+            {
+                GroundOne.WE.dungeonEvent01 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.TutorialOpen1);
+
+                messageList.Add("アイン：よし、広い部屋に出たな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：看板があるみたいだな、少し調べてみるか。"); eventList.Add(ActionEvent.None);
+            }
+        }
+
+        public static void Message00002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent02 == false)
+            {
+                GroundOne.WE.dungeonEvent02 = true;
+
+                messageList.Add("アイン：看板だ・・・どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『移動ボタンは押しっぱなしでも良いし、小刻みにタップしても良い。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：これは・・・おそらく操作系の話だな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：よし、ここは終わりみたいだ。他を探索してみるか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　『移動ボタンは押しっぱなしでも良いし、小刻みにタップしても良い。』"); eventList.Add(ActionEvent.None);
+            }
+        }
+
+        public static void Message00003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent03 == false)
+            {
+                GroundOne.WE.dungeonEvent03 = true;
+
+                messageList.Add("アイン：看板だな。どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『ダンジョン探索中の間は、ライフ/マナ/スキルは自然回復しない。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ・・・そりゃそうだろうな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：きっちり回復したければ、街に戻るしかないって所だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：よし、ここは終わりみたいだ。他を探索してみるか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　『ダンジョン探索中の間は、ライフ/マナ/スキルは自然回復しない。』"); eventList.Add(ActionEvent.None);
+            }
+        }
+        #endregion
         #region "１階"
         public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
         {

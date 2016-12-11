@@ -74,6 +74,11 @@ namespace DungeonPlayer
                 GroundOne.TruthHomeTown_NowExit = false;
                 SceneDimension.JumpToTruthHomeTown();
             }
+            else if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                GroundOne.TruthHomeTown_NowExit = false;
+                SceneDimension.JumpToTitle();
+            }
         }
 
         public virtual void ExitNo()
@@ -90,7 +95,8 @@ namespace DungeonPlayer
                 this.Filter.SetActive(false);
                 GroundOne.TruthHomeTown_NowExit = false;
             }
-            else if (this.yesnoSystemMessage.text == Database.exitMessage3)
+            else if (this.yesnoSystemMessage.text == Database.exitMessage3 ||
+                     this.yesnoSystemMessage.text == Database.exitMessage4)
             {
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);

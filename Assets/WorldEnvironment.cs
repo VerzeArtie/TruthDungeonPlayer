@@ -1207,7 +1207,14 @@ namespace DungeonPlayer
         public bool dungeonEvent11KeyOpen { get; set; }
         public bool dungeonEvent11NotOpen { get; set; }
         #endregion
+        #region "チュートリアル"
+        public bool dungeonEvent01 { get; set; }
+        public bool dungeonEvent02 { get; set; }
+        public bool dungeonEvent03 { get; set; }
+        #endregion
 
+        public bool TruthTreasure01 { get; set; } // チュートリアル
+        public bool TruthTreasure02 { get; set; } // チュートリアル
         public bool TruthTreasure11 { get; set; } // エリア１
         public bool TruthTreasure12 { get; set; } // エリア１
         public bool TruthTreasure13 { get; set; } // エリア１

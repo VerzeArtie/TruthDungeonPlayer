@@ -153,6 +153,30 @@ namespace DungeonPlayer
             }
             else if (this.selectNumber == 1)
             {
+                GroundOne.MC.FirstName = Database.EIN_WOLENCE;
+                GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
+                GroundOne.MC.Level = 1;
+                GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
+                GroundOne.MC.Agility = Database.MAINPLAYER_FIRST_AGILITY;
+                GroundOne.MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
+                GroundOne.MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
+                GroundOne.MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.Level = 0;
+                GroundOne.MC.BaseLife = 0;
+                GroundOne.MC.BaseMana = 0;
+                for (int ii = 0; ii < GroundOne.MC.Level; ii++)
+                {
+                    GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                    GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
+                    GroundOne.MC.Level++;
+                }
+
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
                 SceneDimension.JumpToTruthDungeon(false);
             }
             else if (this.selectNumber == 2)
@@ -183,8 +207,6 @@ namespace DungeonPlayer
 
         public void enemy_click()
         {
-            GroundOne.WE.AvailableMixSpellSkill = true;
-            GroundOne.WE2.AvailableMixSpellSkill = true;
             GroundOne.WE.AvailableInstantCommand = true;
 
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;

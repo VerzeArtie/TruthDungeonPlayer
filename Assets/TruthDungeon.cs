@@ -95,6 +95,7 @@ namespace DungeonPlayer
         public Text SecondMessage;
 
         // 到達・未到達領域を示すためのタイル情報
+        string[] tileInfo0 = null; // tutorial
         string[] tileInfo = null;
         string[] tileInfo2 = null;
         string[] tileInfo3 = null;
@@ -226,9 +227,14 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyRest = false;
             this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
             this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
+            if (GroundOne.TutorialMode)
+            {
+                this.dungeonAreaLabel.text = "０階";
+            }
 
             btnBattleSetting.SetActive(GroundOne.WE.AvailableBattleSettingMenu);
 
+            tileInfo0 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // tutorial
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo2 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo3 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -242,7 +248,11 @@ namespace DungeonPlayer
             this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.PLAYER_MARK);
             this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
-            if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
+            if (GroundOne.TutorialMode)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_0");
+            }
+            else if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
             {
                 ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1");
             }
@@ -264,7 +274,11 @@ namespace DungeonPlayer
             }
 
             // 始めて開始する場合、あらかじめスタート地点を設定。
-            if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
+            if (GroundOne.TutorialMode)
+            {
+                JumpToLocation(30, -20, true);
+            }
+            else if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
             {
                 switch (GroundOne.WE.DungeonArea)
                 {
@@ -3870,8 +3884,22 @@ namespace DungeonPlayer
                 //ok.StartPosition = FormStartPosition.Manual;
                 //ok.Location = new Point(this.transform.position.x + 904, this.transform.position.y + 708);
 
+                #region "Tutorial"
+                if (GroundOne.TutorialMode)
+                {
+                    for (int ii = 0; ii < 10; ii++)
+                    {
+                        if (CheckTriggeredEvent(ii))
+                        {
+                            detectEvent = true;
+                            ExecSomeEvents(0, ii);
+                            return;
+                        }
+                    }
+                }
+                #endregion
                 #region "１階"
-                if (GroundOne.WE.DungeonArea == 1 && GroundOne.WE2.StartSeeker == false)
+                else if (GroundOne.WE.DungeonArea == 1 && GroundOne.WE2.StartSeeker == false)
                 {
                     for (int ii = 0; ii < 60; ii++)
                     {
@@ -4117,6 +4145,11 @@ namespace DungeonPlayer
         private void EncountEnemy()
         {
             //return; // debug 敵を出さない状態
+
+            if (GroundOne.TutorialMode)
+            {
+                return;
+            }
 
             if (GroundOne.WE2.SeekerEvent507)
             {
@@ -4882,6 +4915,46 @@ namespace DungeonPlayer
             int tilenum = Method.GetTileNumber(Player.transform.position);
             int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
             int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
+
+            #region "Tutorial"
+            if (GroundOne.TutorialMode)
+            {
+                // チュートリアル終了
+                if (row == 20 && column == 30 && eventNum == 0)
+                {
+                    return true;
+                }
+                // 宝箱「上」
+                if (row == 13 && column == 30 && !GroundOne.WE.TruthTreasure01 && eventNum == 1)
+                {
+                    return true;
+                }
+                // 看板「左」
+                if (row == 19 && column == 18 && eventNum == 2)
+                {
+                    return true;
+                }
+                // 看板「右」前の広場
+                if ((row == 19 && column == 37 && eventNum == 3) ||
+                    (row == 20 && column == 37 && eventNum == 3) ||
+                    (row == 21 && column == 37 && eventNum == 3))
+                {
+                    return true;
+                }
+                // 看板「右」
+                if (row == 20 && column == 41 && eventNum == 4)
+                {
+                    return true;
+                }
+                // 宝箱「下」
+                if (row == 32 && column == 34 && !GroundOne.WE.TruthTreasure02 && eventNum == 5)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            #endregion
 
             switch (GroundOne.WE.DungeonArea)
             {
@@ -8266,6 +8339,44 @@ namespace DungeonPlayer
 
         private bool ExecSomeEvents(int area, int ii)
         {
+            #region "Tutorial"
+            if (area == 0)
+            {
+                switch (ii)
+                {
+                    // チュートリアル終了
+                    case 0:
+                        MessagePack.MessageBackToTutorial(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        break;
+                    // 宝箱「上」
+                    case 1:
+                        GroundOne.WE.TruthTreasure01 = GetTreasure(Database.POOR_SMALL_RED_POTION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        break;
+                    // 看板「左」
+                    case 2:
+                        MessagePack.Message00003(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        break;
+                    // 看板「右」前の広場
+                    case 3:
+                        MessagePack.Message00001(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        break;
+                    // 看板「右」
+                    case 4:
+                        MessagePack.Message00002(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        break;
+                    // 宝箱「下」
+                    case 5:
+                        GroundOne.WE.TruthTreasure02 = GetTreasure(Database.COMMON_FINE_SWORD);
+                        UpdateFieldElement(this.Player.transform.position);
+                        break;
+                }
+            }
+            #endregion
             #region "１階"
             if (area == 1)
             {
@@ -11079,7 +11190,9 @@ namespace DungeonPlayer
 
         private bool DetectOpenTreasure(Vector3 pos)
         {
-            if ((((GroundOne.WE.TruthTreasure11 && pos.y == -13 && pos.x == 34) ||
+            if ((((GroundOne.WE.TruthTreasure01 && pos.y == -13 && pos.x == 30) ||
+                   (GroundOne.WE.TruthTreasure02 && pos.y == -32 && pos.x == 34)) && GroundOne.TutorialMode) ||
+                (((GroundOne.WE.TruthTreasure11 && pos.y == -13 && pos.x == 34) ||
                     (GroundOne.WE.TruthTreasure12 && pos.y == -21 && pos.x == 53) ||
                     (GroundOne.WE.TruthTreasure13 && (pos.y == -29 && pos.x == 29)) ||
                     (GroundOne.WE.TruthTreasure14 && (pos.y == -8 && pos.x == 33)) ||
@@ -11307,6 +11420,18 @@ namespace DungeonPlayer
                 Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 this.groupArrow.SetActive(false);
+            }
+        }
+
+        private void UpdateUnknownTileArea01()
+        {
+            for (int ii = 37; ii <= 44; ii++)
+            {
+                for (int jj = 16; jj <= 24; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
             }
         }
 
@@ -15539,6 +15664,10 @@ namespace DungeonPlayer
                     OpenTheDoor(1, this.Player.transform.position);
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.TutorialOpen1)
+                {
+                    UpdateUnknownTileArea01();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.BigEntranceOpen)
                 {
                     OpenTheDoor(3, new Vector3(14, -26, 0));
@@ -15856,6 +15985,13 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
                     yesnoSystemMessage.text = Database.exitMessage3;
+                    groupYesnoSystemMessage.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
+                }
+                else if (currentEvent == MessagePack.ActionEvent.GoBackTutorial)
+                {
+                    this.mainMessage.text = this.nowMessage[this.nowReading];
+                    yesnoSystemMessage.text = Database.exitMessage4;
                     groupYesnoSystemMessage.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                 }
