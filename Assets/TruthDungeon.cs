@@ -15215,18 +15215,35 @@ namespace DungeonPlayer
 
         public void tapStatus()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：キャラクターのステータス画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
             SceneDimension.CallTruthStatusPlayer(this, false, "");
         }
         public void tapBattleSetting()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：キャラクターのバトル設定画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
+                return;
+            }
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：ここからゲームセーブする画面を呼び出せる。このチュートリアルではセーブは不要だ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
@@ -15244,6 +15261,12 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：ここからゲームロードする画面を呼び出せる。このチュートリアルではロードは不要だ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
@@ -15259,6 +15282,13 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            if (GroundOne.TutorialMode)
+            {
+                MessagePack.MessageBackToTutorial_Exit(ref nowMessage, ref nowEvent);
+                tapOK();
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)

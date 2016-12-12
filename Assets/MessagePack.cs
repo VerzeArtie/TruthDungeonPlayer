@@ -485,6 +485,10 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：この階段を上がればチュートリアルは終了だ。どうする？"); eventList.Add(ActionEvent.GoBackTutorial);
         }
+        public static void MessageBackToTutorial_Exit(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ゲーム終了だな。このチュートリアルを終わっておくか？"); eventList.Add(ActionEvent.GoBackTutorial);
+        }
         public static void Message00001(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (GroundOne.WE.dungeonEvent01 == false)
