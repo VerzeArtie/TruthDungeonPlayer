@@ -50,6 +50,14 @@ namespace DungeonPlayer
             {
                 AttributeButton[4].gameObject.SetActive(false);
             }
+
+            if (GroundOne.TutorialMode)
+            {
+                AttributeButton[2].gameObject.SetActive(false);
+                AttributeButton[3].gameObject.SetActive(false);
+                AttributeButton[4].gameObject.SetActive(false);                    
+            }
+
             tapAttribute(AttributeButtonText[0]);
         }
 
@@ -77,6 +85,7 @@ namespace DungeonPlayer
 
         private void button1_Click(Text sender)
         {
+            bool tutorialSkill = false;
             Color targetColor = Color.white;
             if (sender.text == "聖")
             {
@@ -146,6 +155,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "動")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.STRAIGHT_SMASH);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.DOUBLE_SLASH);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.CRUSHING_BLOW);
@@ -157,6 +167,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "静")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.COUNTER_ATTACK);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.PURE_PURIFICATION);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.ANTI_STUN);
@@ -168,6 +179,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "柔")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.STANCE_OF_FLOW);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.ENIGMA_SENSE);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.SILENT_RUSH);
@@ -179,6 +191,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "剛")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.STANCE_OF_STANDING);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.INNER_INSPIRATION);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.KINETIC_SMASH);
@@ -190,6 +203,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "心眼")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.TRUTH_VISION);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.HIGH_EMOTIONALITY);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.STANCE_OF_EYES);
@@ -201,6 +215,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "無心")
             {
+                tutorialSkill = true;
                 SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.NEGATE);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.VOID_EXTRACTION);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], Database.CARNAGE_RUSH);
@@ -519,6 +534,24 @@ namespace DungeonPlayer
                 SetupCommandButton(CommandButton[4], CommandButtonText[4], "");
                 SetupCommandButton(CommandButton[5], CommandButtonText[5], "");
                 SetupCommandButton(CommandButton[6], CommandButtonText[6], "");
+            }
+
+            if (GroundOne.TutorialMode)
+            {
+                if (tutorialSkill == false)
+                {
+                    SetupCommandButton(CommandButton[2], CommandButtonText[2], "？？？");
+                    SetupCommandButton(CommandButton[3], CommandButtonText[3], "？？？");
+                    SetupCommandButton(CommandButton[4], CommandButtonText[4], "？？？");
+                    SetupCommandButton(CommandButton[5], CommandButtonText[5], "？？？");
+                    SetupCommandButton(CommandButton[6], CommandButtonText[6], "？？？");
+                }
+                else
+                {
+                    SetupCommandButton(CommandButton[1], CommandButtonText[1], "？？？");
+                    SetupCommandButton(CommandButton[2], CommandButtonText[2], "？？？");
+                    SetupCommandButton(CommandButton[3], CommandButtonText[3], "？？？");
+                }
             }
 
             this.backPanel.GetComponent<Image>().color = targetColor;
