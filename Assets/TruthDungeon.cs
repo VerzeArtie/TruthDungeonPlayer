@@ -2420,6 +2420,12 @@ namespace DungeonPlayer
         private void ShownEvent()
         {
             Debug.Log("ShownEvent (S): ");
+
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：ダンジョン探索を少しやってみるか。上下左右キーを押してみてくれ。移動する事が出来るはずだ。";
+            }
+
             int tilenum = Method.GetTileNumber(Player.transform.position);
             int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
             int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
