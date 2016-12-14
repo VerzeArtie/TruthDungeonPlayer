@@ -15306,6 +15306,11 @@ namespace DungeonPlayer
 
         public override void BookManual_Click()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：戦闘コマンドの内容を確認してみよう。";
+            } 
+
             GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
             if (BlockAction()) { return; }
             this.back_playback.SetActive(false);
@@ -15314,6 +15319,11 @@ namespace DungeonPlayer
 
         public void DungeonView_Click()
         {
+            if (GroundOne.TutorialMode && this.DungeonViewMode == false)
+            {
+                mainMessage.text = "アイン：ダンジョン表示モードに切り替える事でマップ全体を見渡せる。移動する時と同じように上下左右キーを押してみてくれ。\r\n移動モードに戻る時は再びこのマップボタンを押してくれ。";
+            } 
+            
             GroundOne.SQL.UpdateOwner(Database.LOG_VIEW_DUNGEON, String.Empty, String.Empty);
             if (BlockAction()) { return; }
             this.back_playback.SetActive(false);
@@ -15350,6 +15360,12 @@ namespace DungeonPlayer
 
         public void PlayBack_Click()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：ダンジョン内で発生した会話履歴を確認する事ができる。すまねえがこのチュートリアルでは確認できないんだ。";
+                return;
+            } 
+
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             if (BlockAction()) { return; }
             SceneDimension.CallTruthPlayBack(this);
@@ -15377,6 +15393,12 @@ namespace DungeonPlayer
 
         public void BlueOrb_Click()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：街へ帰還する事が出来る。このチュートリアルではすまねえが使えないんだ。";
+                return;
+            }
+
             GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
@@ -15396,6 +15418,11 @@ namespace DungeonPlayer
 
         public void PathfindingMode_Click()
         {
+            if (GroundOne.TutorialMode)
+            {
+                mainMessage.text = "アイン：赤に切り替えるとモンスターが発生しやすくなる。青に戻せばモンスターは出にくくなる。このダンジョンでは残念だがモンスターは出ないんだ。";
+            }
+
             if (BlockAction()) { return; }
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
             {
