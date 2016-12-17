@@ -3291,9 +3291,9 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は狂気じみた旋律を奏でつつ、乱雑に刀を振り回してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
-                                    for (int i = 0; i < 10; i++)
+                                    for (int i = 0; i < 3; i++)
                                     {
-                                        PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count - 1)], 3.0f, 0, false, false, 0, 2, "", -1, false, CriticalType.Random);
+                                        PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count - 1)], 2.0f, 0, false, false, 0, 10, "", -1, false, CriticalType.Random);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "ブルー・エクスプロード")
@@ -4347,7 +4347,7 @@ namespace DungeonPlayer
 
                                     //BuffDownBattleSpeed(target, 2.0F);
 
-                                    //BuffDownBattleReaction(target, 1000);
+                                    //BuffDownBattleReaction(target, 2.0F);
 
                                     //BuffDownPotential(target, 1000);
 
@@ -4381,11 +4381,11 @@ namespace DungeonPlayer
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「戦闘反応」")
             //                    {
-            //                        BuffDownBattleReaction(target, 500, 2);
+            //                        BuffDownBattleReaction(target, 2.0F, 2);
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「戦闘速度」")
             //                    {
-            //                        BuffDownBattleSpeed(target, 2.0F, 2);
+            //                        BuffDownBattleSpeed(target, 1.0F, 2);
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「魔法防御」")
             //                    {

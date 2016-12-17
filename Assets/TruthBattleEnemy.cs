@@ -4120,11 +4120,11 @@ namespace DungeonPlayer
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 // 装備品特殊効果
-                ItemEffect(ActiveList[ii], ActiveList[ii].MainWeapon);
-                ItemEffect(ActiveList[ii], ActiveList[ii].SubWeapon);
-                ItemEffect(ActiveList[ii], ActiveList[ii].MainArmor);
-                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory);
-                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory2);
+                ItemEffect(ActiveList[ii], ActiveList[ii].MainWeapon, MethodType.UpKeepStep);
+                ItemEffect(ActiveList[ii], ActiveList[ii].SubWeapon, MethodType.UpKeepStep);
+                ItemEffect(ActiveList[ii], ActiveList[ii].MainArmor, MethodType.UpKeepStep);
+                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory, MethodType.UpKeepStep);
+                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory2, MethodType.UpKeepStep);
 
                 // OneAuthorityの効果
                 if (ActiveList[ii].CurrentAbsoluteZero > 0)
@@ -4588,11 +4588,11 @@ namespace DungeonPlayer
                     PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.LIFE_COUNT);
                 }
                 // 装備品特殊効果
-                ItemEffect(ActiveList[ii], ActiveList[ii].MainWeapon);
-                ItemEffect(ActiveList[ii], ActiveList[ii].MainArmor);
-                ItemEffect(ActiveList[ii], ActiveList[ii].SubWeapon);
-                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory);
-                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory2);
+                ItemEffect(ActiveList[ii], ActiveList[ii].MainWeapon, MethodType.Beginning);
+                ItemEffect(ActiveList[ii], ActiveList[ii].MainArmor, MethodType.Beginning);
+                ItemEffect(ActiveList[ii], ActiveList[ii].SubWeapon, MethodType.Beginning);
+                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory, MethodType.Beginning);
+                ItemEffect(ActiveList[ii], ActiveList[ii].Accessory2, MethodType.Beginning);
                 if (ActiveList[ii].MainWeapon != null)
                 {
                     if (ActiveList[ii].MainWeapon.Name == Database.RARE_DOOMBRINGER)
@@ -4694,8 +4694,11 @@ namespace DungeonPlayer
             }
         }
 
-        private void ItemEffect(MainCharacter player, ItemBackPack item)
+        private void ItemEffect(MainCharacter player, ItemBackPack item, MethodType methodType)
         {
+            // アイテム効果はAfterBattleEffectやUpkeepではターン終了時なので、全ての効果を発動してもよいが
+            // Beginningフェーズでは、敵を対象とする効果が戦闘開始時に発動してはならない。
+            // Beginningフェーズでは装備者本人に発動されるものだけが発動対象となる。
             if (item != null)
             {
                 if (item.Name == Database.EPIC_ORB_GROW_GREEN)
@@ -4775,16 +4778,16 @@ namespace DungeonPlayer
                     }
                 }
 
-                if (item.Name == Database.COMMON_ELDER_PERSPECTIVE_GRASS)
+                if (item.Name == Database.COMMON_ELDER_PERSPECTIVE_GRASS && methodType != MethodType.Beginning)
                 {
                     if (player.Target != null)
                     {
-                        BuffDownBattleSpeed(player.Target, 1000.0F);
-                        BuffDownBattleReaction(player.Target, 1000.0F);
+                        BuffDownBattleSpeed(player.Target, 1.0F);
+                        BuffDownBattleReaction(player.Target, 1.0F);
                     }
                 }
 
-                if (item.Name == Database.RARE_DEVIL_SUMMONER_TOME)
+                if (item.Name == Database.RARE_DEVIL_SUMMONER_TOME && methodType != MethodType.Beginning)
                 {
                     if (player.Target != null)
                     {
