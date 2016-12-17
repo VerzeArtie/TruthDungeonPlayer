@@ -1812,21 +1812,22 @@ namespace DungeonPlayer
         public static double IchinaruHomuraValue(MainCharacter player)
         {
             double pInt = 1.0F;
-            //        if (player.CurrentAbyssWill > 0)
-            //        {
-            //            pInt += player.CurrentAbyssWillValue * 0.5F;
-            //        }
+            if (player.CurrentAbyssWill > 0)
+            {
+                pInt += player.CurrentAbyssWillValue * 0.5F;
+            }
             return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, SpellSkillType.Standard, false, false);
         }
         public static double AbyssFireValue(MainCharacter player)
         {
             double pInt = 1.0F;
-            //        if (player.CurrentAbyssWill > 0)
-            //        {
-            //            pInt += player.CurrentAbyssWillValue * 0.5F;
-            //        }
+            if (player.CurrentAbyssWill > 0)
+            {
+                pInt += player.CurrentAbyssWillValue * 0.5F;
+            }
             return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, SpellSkillType.Standard, false, false);
         }
+
         public static double EternalDropletValue_A(MainCharacter player)
         {
             // ライフゲイン

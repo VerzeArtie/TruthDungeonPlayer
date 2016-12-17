@@ -698,6 +698,13 @@ namespace DungeonPlayer
             RemoveBuffSpell(target);
             RemoveBuffSkill(target);
             RemoveEffect(target);
+            target.RemoveAusterityMatrixOmega();
+            target.RemoveAbyssWill();
+            target.RemoveAbyssFire();
+            target.RemoveIchinaruHomura();
+            target.RemoveEternalDroplet();
+            target.RemoveLightAndShadow();
+            target.RemoveVoiceOfAbyss();
         }
 
         private void RemoveEffect(MainCharacter target)

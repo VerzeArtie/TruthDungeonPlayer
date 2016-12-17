@@ -5963,6 +5963,7 @@ namespace DungeonPlayer
                     if (player.CurrentAbyssFire > 0)
                     {
                         double effectValue = PrimaryLogic.AbyssFireValue(target); // ダメージ発生源はレギィンアーゼ
+                        effectValue = DamageIsZero(effectValue, player, false);
                         LifeDamage(effectValue, player, interval, detectCritical);
                         UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()), interval);
                     }

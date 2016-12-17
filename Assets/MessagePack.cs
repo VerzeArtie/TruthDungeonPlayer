@@ -17874,7 +17874,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                messageList.Add("アイン：ッケ・・・ラナ、どうやら倒さなくちゃ駄目みたいだぜ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：っくそ・・・ラナ、どうやら倒さなくちゃ駄目みたいだ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("ラナ：そうね、ここは引き下がれない所よね。"); eventList.Add(ActionEvent.None);
 

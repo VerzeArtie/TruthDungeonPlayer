@@ -2252,7 +2252,114 @@ namespace DungeonPlayer
                 // ４階、ボス
                 case Database.ENEMY_BOSS_LEGIN_ARZE:
                 case Database.ENEMY_BOSS_LEGIN_ARZE_1:
+                    if (this.AI_TacticsNumber == 0)
+                    {
+                        if (target.CurrentAusterityMatrixOmega <= 0)
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アウステリティ・マトリクス・Ω");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 1)
+                    {
+                        if ((mc != null) && (!mc.Dead) && (mc.CurrentIchinaruHomura <= 0))
+                        {
+                            this.Target = mc;
+                            SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "壱なる焔");
+                        }
+                        else if ((sc != null) && (!sc.Dead) && (sc.CurrentIchinaruHomura <= 0))
+                        {
+                            this.Target = sc;
+                            SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "壱なる焔");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 2)
+                    {
+                        if ((sc != null) && (!sc.Dead) && (sc.CurrentBlackFire <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
+                        {
+                            SetupActionCommand(this, sc, PlayerAction.UseSpell, Database.BLACK_FIRE);
+                        }
+                        else if ((mc != null) && (!mc.Dead) && (mc.CurrentBlackFire <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
+                        {
+                            SetupActionCommand(this, mc, PlayerAction.UseSpell, Database.BLACK_FIRE);
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+
+                    this.AI_TacticsNumber++;
+                    if (this.AI_TacticsNumber > 2) { this.AI_TacticsNumber = 0; }
+                    break;
+
                 case Database.ENEMY_BOSS_LEGIN_ARZE_2:
+                    if (this.AI_TacticsNumber == 0)
+                    {
+                        if (target.CurrentAusterityMatrixOmega <= 0)
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アウステリティ・マトリクス・Ω");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 1)
+                    {
+                        if ((mc != null) && (!mc.Dead) && (mc.CurrentIchinaruHomura <= 0))
+                        {
+                            this.Target = mc;
+                            SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "壱なる焔");
+                        }
+                        else if ((sc != null) && (!sc.Dead) && (sc.CurrentIchinaruHomura <= 0))
+                        {
+                            this.Target = sc;
+                            SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "壱なる焔");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 2)
+                    {
+                        if ((sc != null) && (!sc.Dead) && (sc.CurrentBlackFire <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
+                        {
+                            SetupActionCommand(this, sc, PlayerAction.UseSpell, Database.BLACK_FIRE);
+                        }
+                        else if ((mc != null) && (!mc.Dead) && (mc.CurrentBlackFire <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
+                        {
+                            SetupActionCommand(this, mc, PlayerAction.UseSpell, Database.BLACK_FIRE);
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 3)
+                    {
+                        if (this.CurrentVoiceOfAbyss <= 0)
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ヴォイス・オブ・アビス");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+
+                    this.AI_TacticsNumber++;
+                    if (this.AI_TacticsNumber > 3) { this.AI_TacticsNumber = 0; }
+                    break;
+
                 case Database.ENEMY_BOSS_LEGIN_ARZE_3:
                     if (this.AI_TacticsNumber == 0)
                     {
@@ -2317,6 +2424,17 @@ namespace DungeonPlayer
                     }
                     else if (this.AI_TacticsNumber == 3)
                     {
+                        if ((this.CurrentVoiceOfAbyss <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ヴォイス・オブ・アビス");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
+                        }
+                    }
+                    else if (this.AI_TacticsNumber == 4)
+                    {
                         //if ((this.CurrentLightAndShadow <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
                         //{
                         //    this.PA = PlayerAction.SpecialSkill;
@@ -2326,17 +2444,6 @@ namespace DungeonPlayer
                         if (this.CurrentEternalDroplet <= 0)
                         {
                             SetupActionCommand(this, this, PlayerAction.SpecialSkill, "エターナル・ドロップレット");
-                        }
-                        else
-                        {
-                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アビスの意志");
-                        }
-                    }
-                    else if (this.AI_TacticsNumber == 4)
-                    {
-                        if ((this.CurrentVoiceOfAbyss <= 0) && (this.name != Database.ENEMY_BOSS_LEGIN_ARZE_1))
-                        {
-                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ヴォイス・オブ・アビス");
                         }
                         else
                         {
@@ -5216,11 +5323,11 @@ namespace DungeonPlayer
                 case Database.ENEMY_BOSS_LEGIN_ARZE_2:
                 case Database.ENEMY_BOSS_LEGIN_ARZE_3:
                     //this.name = Database.ENEMY_BOSS_LEGIN_ARZE;
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_1) { SetupParameterMonster(150, 1, 2500, 4500, 294702, 650, (int)(listExp[102]), (int)(listGold[102])); }
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) { SetupParameterMonster(150, 1, 2500, 4500, 336702, 650, (int)(listExp[103]), (int)(listGold[103])); }
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) { SetupParameterMonster(150, 1, 2500, 4500, 381702, 650, (int)(listExp[104]), (int)(listGold[104])); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_1) { SetupParameterMonster(150, 1, 2500, 3000, 294702, 450, (int)(listExp[102]), (int)(listGold[102])); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) { SetupParameterMonster(150, 1, 2500, 3000, 336702, 450, (int)(listExp[103]), (int)(listGold[103])); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) { SetupParameterMonster(150, 1, 2500, 3000, 381702, 450, (int)(listExp[104]), (int)(listGold[104])); }
                     this.baseMana = 2720000;
-                    this.baseInstantPoint = 25000;
+                    this.baseInstantPoint = 20000;
                     this.ResistStun = true;
                     this.ResistParalyze = true;
                     this.ResistFrozen = true;
