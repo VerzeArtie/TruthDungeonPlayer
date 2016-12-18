@@ -194,7 +194,7 @@ namespace DungeonPlayer
             else
             {
                 double lifeGain = PrimaryLogic.CelestialNovaValue_B(player, GroundOne.DuelMode);
-                PlayerAbstractLifeGain(player, player, 0, lifeGain, 0, Database.SOUND_CELESTIAL_NOVA, 25);
+                PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_CELESTIAL_NOVA, 25);
             }
         }
 
