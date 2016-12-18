@@ -1998,6 +1998,12 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(this.currentTargetedPlayer, ec1, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
+                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy)
+                        {
+                            this.instantActionCommandString = BattleActionCommand;
+                            this.NowSelectingTarget = true;
+                            //this.Invalidate();
+                        }
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
                         {
                             ExecActionMethod(this.currentTargetedPlayer, this.stackActivePlayer[this.stackActivePlayer.Count - 1], TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
@@ -2026,7 +2032,8 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(this.currentTargetedPlayer, this.currentTargetedPlayer, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
-                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Enemy)
+                        else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Enemy) ||
+                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
                             this.NowSelectingTarget = true;
@@ -2054,7 +2061,8 @@ namespace DungeonPlayer
                     // 敵が１人の場合
                     if ((ec2 == null) && (ec3 == null))
                     {
-                        if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Ally)
+                        if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Ally) ||
+                            (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
                             this.NowSelectingTarget = true;
@@ -2082,13 +2090,9 @@ namespace DungeonPlayer
                     // 敵が２人以上（複数）の場合
                     else
                     {
-                        if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Ally)
-                        {
-                            this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
-                        }
-                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Enemy)
+                        if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Ally) ||
+                            (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Enemy) ||
+                            (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
                             this.NowSelectingTarget = true;
@@ -4696,6 +4700,8 @@ namespace DungeonPlayer
 
         private void ItemEffect(MainCharacter player, ItemBackPack item, MethodType methodType)
         {
+            if (player != null && player.Dead) { return; }
+
             // アイテム効果はAfterBattleEffectやUpkeepではターン終了時なので、全ての効果を発動してもよいが
             // Beginningフェーズでは、敵を対象とする効果が戦闘開始時に発動してはならない。
             // Beginningフェーズでは装備者本人に発動されるものだけが発動対象となる。
@@ -7787,6 +7793,7 @@ namespace DungeonPlayer
 
         private bool CheckDodge(MainCharacter player, MainCharacter target, bool ignoreDodge)
         {
+            if (target == null) { return false; }
             if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_ONEHUNDRED_BUTOUGI) &&
                 (target.CurrentStunning <= 0) &&
                 (target.CurrentFrozen <= 0) &&

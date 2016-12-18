@@ -697,7 +697,6 @@ namespace DungeonPlayer
             }
             else
             {
-                Debug.Log("empty then sprite null");
                 actionButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.STAY_EN);
                 actionButton.name = Database.STAY_EN;
                 sorceryMark.sprite = Resources.Load<Sprite>(Database.NormalIcon);
