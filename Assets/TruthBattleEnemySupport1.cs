@@ -3142,7 +3142,10 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "死への背徳")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
-                                    SetupEnemyGroup(ref group);
+                                    //SetupEnemyGroup(ref group);
+                                    if (ec1 != null && ec1.Dead) { group.Add(ec1); }
+                                    if (ec2 != null && ec2.Dead) { group.Add(ec2); }
+                                    if (ec3 != null && ec3.Dead) { group.Add(ec3); }
                                     foreach (TruthEnemyCharacter current in group)
                                     {
                                         UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
