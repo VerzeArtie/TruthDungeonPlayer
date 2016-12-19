@@ -2067,6 +2067,9 @@ namespace DungeonPlayer
 
         public void CallBacktoHometown()
         {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
+            this.groupSelectCastleMenu.SetActive(false);
             MessagePack.Message70022(ref nowMessage, ref nowEvent);
             NormalTapOK();
         }
