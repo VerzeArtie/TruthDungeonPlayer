@@ -105,12 +105,15 @@ namespace DungeonPlayer
             this.description.text += "　【スペル】　　　　　　　　　非戦闘時に使用可能な魔法を表示します。\r\n";
             this.description.text += "　【レジスト】　　　　　　　　キャラクターの各種耐性を表示します。\r\n";
             this.description.text += "\r\n";
-            this.description.text += "レベルアップ時\r\n";
-            this.description.text += "　【力】アイコンをタップ　　　【力】パラメタをUPさせます。\r\n";
-            this.description.text += "　【技】アイコンをタップ　　　【技】パラメタをUPさせます。\r\n";
-            this.description.text += "　【知】アイコンをタップ　　　【知】パラメタをUPさせます。\r\n";
-            this.description.text += "　【体】アイコンをタップ　　　【体】パラメタをUPさせます。\r\n";
-            this.description.text += "　【心】アイコンをタップ　　　【心】パラメタをUPさせます。\r\n";
+            this.description.text += "コアパラメタ\r\n";
+            this.description.text += "　【力】/【技】/【知】/【体】/【心】\r\n";
+            this.description.text += "　　各種コアパラメタの値を表示しています。\r\n";
+            this.description.text += "　　レベルアップ時、各種パラメタをタップする事でパラメタをUPさせる事ができます。\r\n";
+            this.description.text += "\r\n";
+            this.description.text += "装備品\r\n";
+            this.description.text += "　【メイン】/【サブ】/【防具】/【アクセサリ１】/【アクセサリ２】\r\n";
+            this.description.text += "　　現在装備しているアイテムを表示しています。\r\n";
+            this.description.text += "　　各種ボタンをタップする事で装備を変更する事ができます。\r\n";
         }
 
         public void Duel_Click()
@@ -162,16 +165,6 @@ namespace DungeonPlayer
                 GroundOne.MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
                 GroundOne.MC.Mind = Database.MAINPLAYER_FIRST_MIND;
                 GroundOne.MC.Dead = false;
-                GroundOne.MC.Level = 0;
-                GroundOne.MC.BaseLife = 0;
-                GroundOne.MC.BaseMana = 0;
-                for (int ii = 0; ii < GroundOne.MC.Level; ii++)
-                {
-                    GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
-                    GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
-                    GroundOne.MC.Level++;
-                }
-
                 GroundOne.MC.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
                 GroundOne.MC.MaxGain();
                 GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
@@ -188,6 +181,32 @@ namespace DungeonPlayer
                 bool dummy1 = false;
                 int dummy2 = 0;
                 int dummy3 = 0;
+
+                GroundOne.MC.FirstName = Database.EIN_WOLENCE;
+                GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
+                GroundOne.MC.Level = 1;
+                GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
+                GroundOne.MC.Agility = Database.MAINPLAYER_FIRST_AGILITY;
+                GroundOne.MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
+                GroundOne.MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
+                GroundOne.MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.RARE_LIFE_SWORD);
+                GroundOne.MC.SubWeapon = new ItemBackPack(Database.RARE_ESMERALDA_SHIELD);
+                GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_GOTHIC_PLATE);
+                GroundOne.MC.Accessory = new ItemBackPack(Database.COMMON_COPPER_RING_TORA);
+                GroundOne.MC.Accessory2 = new ItemBackPack(Database.RARE_SOUJUTENSHI_NO_GOFU);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_BLUE_POTION));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_CHARM));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_BLUE_LIGHTNING));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_WILL_HOLY_HAT));
+                GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_SUN_BRAVE_ARMOR));
+                GroundOne.MC.FreshHeal = true;
                 SceneDimension.CallTruthStatusPlayer(this, ref dummy1, ref dummy2, ref dummy3, GroundOne.MC.PlayerStatusColor);
             }
             else if (this.selectNumber == 4)
