@@ -38080,6 +38080,8 @@ namespace DungeonPlayer
             messageList.Add("サンディ：【今しばらく待たれよ！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：そっか・・・じゃあ、しょうがねえ、戻るとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
             GroundOne.WE.AlreadyGetMonsterHunt = true;
         }
 
