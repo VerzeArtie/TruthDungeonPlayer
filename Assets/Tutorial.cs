@@ -14,8 +14,10 @@ namespace DungeonPlayer
         public bool toggleDuel = false;
         public Text description = null;
         public Button buttonHomeTown = null;
+        public GameObject groupLevel = null;
 
         private int selectNumber = 0;
+        private int selectLevel = 1;
 
         public override void Start()
         {
@@ -30,6 +32,7 @@ namespace DungeonPlayer
         {
             Debug.Log("Home_Click");
             this.selectNumber = 0;
+            this.groupLevel.SetActive(false);
 
             this.description.text = "ホームタウンでの基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -51,6 +54,7 @@ namespace DungeonPlayer
         {
             Debug.Log("Dungeon_Click");
             this.selectNumber = 1;
+            this.groupLevel.SetActive(false);
 
             this.description.text = "ダンジョンの基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -75,6 +79,7 @@ namespace DungeonPlayer
         {
             Debug.Log("Battle_Click");
             this.selectNumber = 2;
+            this.groupLevel.SetActive(true);
 
             this.description.text = "戦闘時の基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -96,6 +101,7 @@ namespace DungeonPlayer
         {
             Debug.Log("Status_Click");
             this.selectNumber = 3;
+            this.groupLevel.SetActive(false);
 
             this.description.text = "キャラクターステータス画面での基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -120,6 +126,7 @@ namespace DungeonPlayer
         {
             Debug.Log("Duel_Click");
             this.selectNumber = 5;
+            this.groupLevel.SetActive(false);
 
             this.description.text = "DUEL戦闘時における基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -143,6 +150,7 @@ namespace DungeonPlayer
         public void Level_Click(int level)
         {
             Debug.Log("Level_Click");
+            this.selectLevel = level;
         }
 
         public void GoTutorial_Click()
@@ -238,18 +246,7 @@ namespace DungeonPlayer
             GroundOne.MC.Mind = 2;
             GroundOne.MC.Dead = false;
             //GroundOne.MC.Accessory = new ItemBackPack(Database.EPIC_ADILRING_OF_BLUE_BURN);
-            GroundOne.MC.Level = 0;
-            GroundOne.MC.BaseLife = 0;
-            GroundOne.MC.BaseMana = 0;
-            for (int ii = 0; ii < GroundOne.MC.Level; ii++)
-            {
-                GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
-                GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
-                GroundOne.MC.Level++;
-            }
-
             GroundOne.MC.FreshHeal = true;
-
             GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
             GroundOne.MC.SubWeapon = null;
             GroundOne.MC.MainArmor = null;
@@ -594,7 +591,7 @@ namespace DungeonPlayer
                 GroundOne.TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             }
 
-            GroundOne.enemyName1 = Database.ENEMY_TINY_MANTIS;
+            GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
             GroundOne.enemyName2 = String.Empty;
             GroundOne.enemyName3 = String.Empty;
 
