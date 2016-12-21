@@ -238,21 +238,49 @@ namespace DungeonPlayer
 
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
-            GroundOne.MC.Level = 1;
-            GroundOne.MC.Strength = 2;
-            GroundOne.MC.Agility = 5;
-            GroundOne.MC.Intelligence = 1;
-            GroundOne.MC.Stamina = 2;
-            GroundOne.MC.Mind = 2;
-            GroundOne.MC.Dead = false;
-            //GroundOne.MC.Accessory = new ItemBackPack(Database.EPIC_ADILRING_OF_BLUE_BURN);
-            GroundOne.MC.FreshHeal = true;
-            GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
-            GroundOne.MC.SubWeapon = null;
-            GroundOne.MC.MainArmor = null;
-            GroundOne.MC.MaxGain();
-            GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
-            GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
+            if (this.selectLevel == 1)
+            {
+                GroundOne.MC.Level = 1;
+                GroundOne.MC.Strength = 2;
+                GroundOne.MC.Agility = 5;
+                GroundOne.MC.Intelligence = 1;
+                GroundOne.MC.Stamina = 2;
+                GroundOne.MC.Mind = 2;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.FreshHeal = true;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
+                GroundOne.MC.SubWeapon = null;
+                GroundOne.MC.MainArmor = null;
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
+                GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
+                GroundOne.enemyName2 = String.Empty;
+                GroundOne.enemyName3 = String.Empty;
+            }
+            else if (this.selectLevel == 2)
+            {
+                GroundOne.MC.Level = 3;
+                GroundOne.MC.Strength = 3;
+                GroundOne.MC.Agility = 5;
+                GroundOne.MC.Intelligence = 1;
+                GroundOne.MC.Stamina = 6;
+                GroundOne.MC.Mind = 4;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.FreshHeal = true;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_EXCELLENT_BUSTER);
+                GroundOne.MC.SubWeapon = null;
+                GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_GOTHIC_PLATE);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
+                GroundOne.enemyName1 = Database.ENEMY_RED_HOPPER;
+                GroundOne.enemyName2 = String.Empty;
+                GroundOne.enemyName3 = String.Empty;
+            }
 
             if (toggleB2)
             {
@@ -591,9 +619,6 @@ namespace DungeonPlayer
                 GroundOne.TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             }
 
-            GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
-            GroundOne.enemyName2 = String.Empty;
-            GroundOne.enemyName3 = String.Empty;
 
             if (toggle2)
             {
