@@ -335,8 +335,8 @@ namespace DungeonPlayer
             // 鎧1.0
             if (player.MainArmor != null)
             {
-                min += player.MainArmor.MinValue * 1.00;
-                max += player.MainArmor.MaxValue * 1.00;
+                min += player.MainArmor.PhysicalDefenseMinValue * 1.00;
+                max += player.MainArmor.PhysicalDefenseMaxValue * 1.00;
             }
 
 
