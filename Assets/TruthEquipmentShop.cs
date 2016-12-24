@@ -337,11 +337,11 @@ namespace DungeonPlayer
                 GroundOne.WE2.EquipAvailable_49 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.EPIC_MEIKOU_DOOMBRINGER);
             }
-            else if (!GroundOne.WE2.EquipAvailable_410 && (GroundOne.WE2.EquipMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_410))
-            {
-                GroundOne.WE2.EquipAvailable_410 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.EPIC_ETERNAL_HOMURA_RING);
-            }
+            //else if (!GroundOne.WE2.EquipAvailable_410 && (GroundOne.WE2.EquipMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_410))
+            //{
+            //    GroundOne.WE2.EquipAvailable_410 = true;
+            //    SceneDimension.CallTruthItemDesc(this, Database.EPIC_ETERNAL_HOMURA_RING);
+            //}
             #endregion
         }
 
@@ -1163,14 +1163,14 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.EquipMixtureDay_48 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_417 >= 1 && GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
+            if (GroundOne.WE2.EquipMaterial_417 >= 1 && GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMaterial_419>= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_49 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
-            {
-                GroundOne.WE2.EquipMixtureDay_410 = GroundOne.WE.GameDay;
-            }
+            //if (GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
+            //{
+            //    GroundOne.WE2.EquipMixtureDay_410 = GroundOne.WE.GameDay;
+            //}
             #endregion
             #endregion
 
@@ -1744,7 +1744,6 @@ namespace DungeonPlayer
                         equipList[13].text = item.Name;
                         Method.UpdateRareColor(item, equipList[13], backEquip[13]);
                     }
-                    
                     break;
 
                 case 5:

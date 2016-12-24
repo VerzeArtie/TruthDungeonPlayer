@@ -506,7 +506,7 @@ namespace DungeonPlayer
         public bool EquipAvailable_47 { get; set; }
         public bool EquipAvailable_48 { get; set; }
         public bool EquipAvailable_49 { get; set; }
-        public bool EquipAvailable_410 { get; set; }
+        public bool EquipAvailable_410 { get; set; } // EPICは販売しない事に変更したが、フラグは残しておいてほしい。
         public bool EquipAvailable_51 { get; set; }
         public bool EquipAvailable_52 { get; set; }
         public bool EquipAvailable_53 { get; set; }
