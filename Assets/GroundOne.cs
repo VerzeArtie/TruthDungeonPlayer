@@ -64,6 +64,7 @@ namespace DungeonPlayer
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
         public static bool TutorialMode = false; // チュートリアルモードを示すフラグ
+        public static int TutorialLevel = 1; // チュートリアルのレベル
 
         // MotherForm
         public static List<MotherForm> Parent;
@@ -217,6 +218,7 @@ namespace DungeonPlayer
             Truth_KnownTileInfo = null;
             AlreadyInitialize = false;
             TutorialMode = false;
+            TutorialLevel = 1;
             InitializeGroundOne(FromGameLoad);
         }
 

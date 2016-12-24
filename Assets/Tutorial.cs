@@ -15,6 +15,8 @@ namespace DungeonPlayer
         public Text description = null;
         public Button buttonHomeTown = null;
         public GameObject groupLevel = null;
+        public GameObject panelDescription2 = null;
+        public Text description2 = null;
 
         private int selectNumber = 0;
         private int selectLevel = 1;
@@ -22,6 +24,7 @@ namespace DungeonPlayer
         public override void Start()
         {
             Home_Click();
+            Level_Click(1);
         }
 
         public override void Update()
@@ -33,6 +36,7 @@ namespace DungeonPlayer
             Debug.Log("Home_Click");
             this.selectNumber = 0;
             this.groupLevel.SetActive(false);
+            this.panelDescription2.SetActive(false);
 
             this.description.text = "ホームタウンでの基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -55,6 +59,7 @@ namespace DungeonPlayer
             Debug.Log("Dungeon_Click");
             this.selectNumber = 1;
             this.groupLevel.SetActive(false);
+            this.panelDescription2.SetActive(false);
 
             this.description.text = "ダンジョンの基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -80,6 +85,7 @@ namespace DungeonPlayer
             Debug.Log("Battle_Click");
             this.selectNumber = 2;
             this.groupLevel.SetActive(true);
+            this.panelDescription2.SetActive(true);
 
             this.description.text = "戦闘時の基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -102,6 +108,7 @@ namespace DungeonPlayer
             Debug.Log("Status_Click");
             this.selectNumber = 3;
             this.groupLevel.SetActive(false);
+            this.panelDescription2.SetActive(false);
 
             this.description.text = "キャラクターステータス画面での基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -127,6 +134,7 @@ namespace DungeonPlayer
             Debug.Log("Duel_Click");
             this.selectNumber = 5;
             this.groupLevel.SetActive(false);
+            this.panelDescription2.SetActive(false);
 
             this.description.text = "DUEL戦闘時における基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
@@ -151,6 +159,27 @@ namespace DungeonPlayer
         {
             Debug.Log("Level_Click");
             this.selectLevel = level;
+            GroundOne.TutorialLevel = level;
+            if (level == 1)
+            {
+                this.description2.text = "戦闘に関する基本的な事項を確認します。";
+            }
+            else if (level == 2)
+            {
+                this.description2.text = "「攻撃」と「防御」をタイミング良く使って、敵を倒します。";
+            }
+            else if (level == 3)
+            {
+                this.description2.text = "「フレッシュヒール」や「アイスニードル」などの戦闘コマンドを使用します。";
+            }
+            else if (level == 4)
+            {
+                this.description2.text = "「プロテクション」や「クリージング」をインスタントコマンドとして使用します。";
+            }
+            else if (level == 5)
+            {
+                this.description2.text = "【DUEL】戦闘における基本ルールの違いと＜行動スタック＞を確認します。";
+            }
         }
 
         public void GoTutorial_Click()
@@ -219,9 +248,7 @@ namespace DungeonPlayer
             }
             else if (this.selectNumber == 4)
             {
-            }
-            else if (this.selectNumber == 5)
-            {
+                // DuelはBattleのLevel5へ移行
             }
         }
     
@@ -234,10 +261,10 @@ namespace DungeonPlayer
 
         public void enemy_click()
         {
-            GroundOne.WE.AvailableInstantCommand = true;
-
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
+            GroundOne.SC.FirstName = Database.RANA_AMILIA;
+            GroundOne.SC.FullName = Database.RANA_AMILIA_FULL;
 
             if (this.selectLevel == 1)
             {
@@ -248,13 +275,12 @@ namespace DungeonPlayer
                 GroundOne.MC.Stamina = 2;
                 GroundOne.MC.Mind = 2;
                 GroundOne.MC.Dead = false;
-                GroundOne.MC.FreshHeal = true;
                 GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
                 GroundOne.MC.SubWeapon = null;
                 GroundOne.MC.MainArmor = null;
+                GroundOne.MC.Accessory = new ItemBackPack(Database.POOR_HINJAKU_ARMRING);
                 GroundOne.MC.MaxGain();
                 GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
-                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
 
                 GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
                 GroundOne.enemyName2 = String.Empty;
@@ -269,7 +295,6 @@ namespace DungeonPlayer
                 GroundOne.MC.Stamina = 6;
                 GroundOne.MC.Mind = 4;
                 GroundOne.MC.Dead = false;
-                GroundOne.MC.FreshHeal = true;
                 GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_EXCELLENT_BUSTER);
                 GroundOne.MC.SubWeapon = null;
                 GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_GOTHIC_PLATE);
@@ -281,354 +306,120 @@ namespace DungeonPlayer
                 GroundOne.enemyName2 = String.Empty;
                 GroundOne.enemyName3 = String.Empty;
             }
-
-            if (toggleB2)
+            else if (this.selectLevel == 3)
             {
                 GroundOne.WE.AvailableSecondCharacter = true;
-                GroundOne.SC.FirstName = Database.RANA_AMILIA;
-                GroundOne.SC.FullName = Database.RANA_AMILIA_FULL;
-                GroundOne.SC.Level = 6;
-                GroundOne.SC.Strength = 8;
+                GroundOne.MC.Level = 5;
+                GroundOne.MC.Strength = 6;
+                GroundOne.MC.Agility = 11;
+                GroundOne.MC.Intelligence = 5;
+                GroundOne.MC.Stamina = 9;
+                GroundOne.MC.Mind = 5;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.FreshHeal = true;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_EXCELLENT_BUSTER);
+                GroundOne.MC.SubWeapon = null;
+                GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_GOTHIC_PLATE);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.MC.BattleActionCommandList[2] = Database.FRESH_HEAL;
+                GroundOne.MC.BattleActionCommandList[3] = Database.STRAIGHT_SMASH;
+
+                GroundOne.SC.Level = 5;
+                GroundOne.SC.Strength = 1;
                 GroundOne.SC.Agility = 7;
-                GroundOne.SC.Intelligence = 15;
-                GroundOne.SC.Stamina = 6;
+                GroundOne.SC.Intelligence = 30;
+                GroundOne.SC.Stamina = 9;
                 GroundOne.SC.Mind = 5;
                 GroundOne.SC.Dead = false;
-                for (int ii = 0; ii < GroundOne.SC.Level; ii++)
-                {
-                    GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
-                    GroundOne.SC.BaseMana += GroundOne.SC.LevelUpManaTruth;
-                    GroundOne.SC.Level++;
-                }
-                GroundOne.WE.AvailableMixSpellSkill = true;
-                GroundOne.SC.FreshHeal = true;
-                GroundOne.SC.Protection = true;
-                GroundOne.SC.HolyShock = true;
-                GroundOne.SC.SaintPower = true;
-                GroundOne.SC.Glory = true;
-                GroundOne.SC.Resurrection = true;
-                GroundOne.SC.CelestialNova = true;
-                GroundOne.SC.DarkBlast = true;
-                GroundOne.SC.ShadowPact = true;
-                GroundOne.SC.LifeTap = true;
-                GroundOne.SC.DevouringPlague = true;
-                GroundOne.SC.BlackContract = true;
-                GroundOne.SC.BloodyVengeance = true;
-                GroundOne.SC.Damnation = true;
-                GroundOne.SC.FireBall = true;
-                GroundOne.SC.FlameAura = true;
-                GroundOne.SC.HeatBoost = true;
-                GroundOne.SC.VolcanicWave = true;
-                GroundOne.SC.FlameStrike = true;
-                GroundOne.SC.ImmortalRave = true;
-                GroundOne.SC.LavaAnnihilation = true;
-                GroundOne.SC.IceNeedle = true;
-                GroundOne.SC.AbsorbWater = true;
-                GroundOne.SC.Cleansing = true;
-                GroundOne.SC.MirrorImage = true;
-                GroundOne.SC.FrozenLance = true;
-                GroundOne.SC.PromisedKnowledge = true;
-                GroundOne.SC.AbsoluteZero = true;
-                GroundOne.SC.WordOfPower = true;
-                GroundOne.SC.GaleWind = true;
-                GroundOne.SC.WordOfLife = true;
-                GroundOne.SC.WordOfFortune = true;
-                GroundOne.SC.AetherDrive = true;
-                GroundOne.SC.Genesis = true;
-                GroundOne.SC.EternalPresence = true;
-                GroundOne.SC.DispelMagic = true;
-                GroundOne.SC.RiseOfImage = true;
-                GroundOne.SC.Tranquility = true;
-                GroundOne.SC.Deflection = true;
-                GroundOne.SC.OneImmunity = true;
-                GroundOne.SC.WhiteOut = true;
-                GroundOne.SC.TimeStop = true;
-                GroundOne.SC.StraightSmash = true;
-                GroundOne.SC.DoubleSlash = true;
-                GroundOne.SC.CrushingBlow = true;
-                GroundOne.SC.SoulInfinity = true;
-                GroundOne.SC.CounterAttack = true;
-                GroundOne.SC.PurePurification = true;
-                GroundOne.SC.AntiStun = true;
-                GroundOne.SC.StanceOfDeath = true;
-                GroundOne.SC.StanceOfFlow = true;
-                GroundOne.SC.EnigmaSence = true;
-                GroundOne.SC.SilentRush = true;
-                GroundOne.SC.OboroImpact = true;
-                GroundOne.SC.StanceOfStanding = true;
-                GroundOne.SC.InnerInspiration = true;
-                GroundOne.SC.KineticSmash = true;
-                GroundOne.SC.Catastrophe = true;
-                GroundOne.SC.TruthVision = true;
-                GroundOne.SC.HighEmotionality = true;
-                GroundOne.SC.StanceOfEyes = true;
-                GroundOne.SC.PainfulInsanity = true;
-                GroundOne.SC.Negate = true;
-                GroundOne.SC.VoidExtraction = true;
-                GroundOne.SC.CarnageRush = true;
-                GroundOne.SC.NothingOfNothingness = true;
-                GroundOne.SC.PsychicTrance = true;
-                GroundOne.SC.BlindJustice = true;
-                GroundOne.SC.TranscendentWish = true;
-                GroundOne.SC.FlashBlaze = true;
-                GroundOne.SC.LightDetonator = true;
-                GroundOne.SC.AscendantMeteor = true;
-                GroundOne.SC.SkyShield = true;
-                GroundOne.SC.SacredHeal = true;
-                GroundOne.SC.EverDroplet = true;
-                GroundOne.SC.HolyBreaker = true;
-                GroundOne.SC.ExaltedField = true;
-                GroundOne.SC.HymnContract = true;
-                GroundOne.SC.StarLightning = true;
-                GroundOne.SC.AngelBreath = true;
-                GroundOne.SC.EndlessAnthem = true;
-                GroundOne.SC.BlackFire = true;
-                GroundOne.SC.BlazingField = true;
-                GroundOne.SC.DemonicIgnite = true;
-                GroundOne.SC.BlueBullet = true;
-                GroundOne.SC.DeepMirror = true;
-                GroundOne.SC.DeathDeny = true;
-                GroundOne.SC.WordOfMalice = true;
-                GroundOne.SC.AbyssEye = true;
-                GroundOne.SC.SinFortune = true;
-                GroundOne.SC.DarkenField = true;
-                GroundOne.SC.DoomBlade = true;
-                GroundOne.SC.EclipseEnd = true;
-                GroundOne.SC.FrozenAura = true;
-                GroundOne.SC.ChillBurn = true;
-                GroundOne.SC.ZetaExplosion = true;
-                GroundOne.SC.EnrageBlast = true;
-                GroundOne.SC.PiercingFlame = true;
-                GroundOne.SC.SigilOfHomura = true;
-                GroundOne.SC.Immolate = true;
-                GroundOne.SC.PhantasmalWind = true;
-                GroundOne.SC.RedDragonWill = true;
-                GroundOne.SC.WordOfAttitude = true;
-                GroundOne.SC.StaticBarrier = true;
-                GroundOne.SC.AusterityMatrix = true;
-                GroundOne.SC.VanishWave = true;
-                GroundOne.SC.VortexField = true;
-                GroundOne.SC.BlueDragonWill = true;
-                GroundOne.SC.SeventhMagic = true;
-                GroundOne.SC.ParadoxImage = true;
-                GroundOne.SC.WarpGate = true;
-                GroundOne.SC.NeutralSmash = true;
-                GroundOne.SC.StanceOfDouble = true;
-                GroundOne.SC.SwiftStep = true;
-                GroundOne.SC.VigorSense = true;
-                GroundOne.SC.CircleSlash = true;
-                GroundOne.SC.RisingAura = true;
-                GroundOne.SC.RumbleShout = true;
-                GroundOne.SC.OnslaughtHit = true;
-                GroundOne.SC.ColorlessMove = true;
-                GroundOne.SC.AscensionAura = true;
-                GroundOne.SC.FutureVision = true;
-                GroundOne.SC.UnknownShock = true;
-                GroundOne.SC.ReflexSpirit = true;
-                GroundOne.SC.FatalBlow = true;
-                GroundOne.SC.SharpGlare = true;
-                GroundOne.SC.ConcussiveHit = true;
-                GroundOne.SC.TrustSilence = true;
-                GroundOne.SC.MindKilling = true;
-                GroundOne.SC.SurpriseAttack = true;
-                GroundOne.SC.StanceOfMystic = true;
-                GroundOne.SC.PsychicWave = true;
-                GroundOne.SC.NourishSense = true;
-                GroundOne.SC.Recover = true;
-                GroundOne.SC.ImpulseHit = true;
-                GroundOne.SC.ViolentSlash = true;
-                GroundOne.SC.ONEAuthority = true;
-                GroundOne.SC.OuterInspiration = true;
-                GroundOne.SC.HardestParry = true;
-                GroundOne.SC.StanceOfSuddenness = true;
-                GroundOne.SC.SoulExecution = true;
-                GroundOne.SC.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
-                GroundOne.SC.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
-                GroundOne.SC.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
+                GroundOne.SC.MainWeapon = new ItemBackPack(Database.COMMON_WOOD_ROD);
+                GroundOne.SC.SubWeapon = null;
+                GroundOne.SC.MainArmor = new ItemBackPack(Database.COMMON_COTTON_ROBE);
                 GroundOne.SC.MaxGain();
                 GroundOne.SC.BattleActionCommandList[0] = Database.ATTACK_EN;
                 GroundOne.SC.BattleActionCommandList[1] = Database.DEFENSE_EN;
-            }
+                GroundOne.SC.BattleActionCommandList[2] = Database.ICE_NEEDLE;
 
-            if (toggleB3)
+                GroundOne.enemyName1 = Database.ENEMY_GIANT_SNAKE;
+                GroundOne.enemyName2 = String.Empty;
+                GroundOne.enemyName3 = String.Empty;
+            }
+            else if (this.selectLevel == 4)
             {
-                GroundOne.WE.AvailableThirdCharacter = true;
-                GroundOne.TC.FirstName = Database.OL_LANDIS;
-                GroundOne.TC.FullName = Database.OL_LANDIS_FULL;
-                GroundOne.TC.Level = 7;
-                GroundOne.TC.Strength = 16;
-                GroundOne.TC.Agility = 12;
-                GroundOne.TC.Intelligence = 6;
-                GroundOne.TC.Stamina = 11;
-                GroundOne.TC.Mind = 5;
-                GroundOne.TC.Dead = false;
-                for (int ii = 0; ii < GroundOne.TC.Level; ii++)
-                {
-                    GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;
-                    GroundOne.TC.BaseMana += GroundOne.TC.LevelUpManaTruth;
-                    GroundOne.TC.Level++;
-                }
+                GroundOne.WE.AvailableInstantCommand = true;
 
-                GroundOne.WE.AvailableMixSpellSkill = true;
-                GroundOne.TC.FreshHeal = true;
-                GroundOne.TC.Protection = true;
-                GroundOne.TC.HolyShock = true;
-                GroundOne.TC.SaintPower = true;
-                GroundOne.TC.Glory = true;
-                GroundOne.TC.Resurrection = true;
-                GroundOne.TC.CelestialNova = true;
-                GroundOne.TC.DarkBlast = true;
-                GroundOne.TC.ShadowPact = true;
-                GroundOne.TC.LifeTap = true;
-                GroundOne.TC.DevouringPlague = true;
-                GroundOne.TC.BlackContract = true;
-                GroundOne.TC.BloodyVengeance = true;
-                GroundOne.TC.Damnation = true;
-                GroundOne.TC.FireBall = true;
-                GroundOne.TC.FlameAura = true;
-                GroundOne.TC.HeatBoost = true;
-                GroundOne.TC.VolcanicWave = true;
-                GroundOne.TC.FlameStrike = true;
-                GroundOne.TC.ImmortalRave = true;
-                GroundOne.TC.LavaAnnihilation = true;
-                GroundOne.TC.IceNeedle = true;
-                GroundOne.TC.AbsorbWater = true;
-                GroundOne.TC.Cleansing = true;
-                GroundOne.TC.MirrorImage = true;
-                GroundOne.TC.FrozenLance = true;
-                GroundOne.TC.PromisedKnowledge = true;
-                GroundOne.TC.AbsoluteZero = true;
-                GroundOne.TC.WordOfPower = true;
-                GroundOne.TC.GaleWind = true;
-                GroundOne.TC.WordOfLife = true;
-                GroundOne.TC.WordOfFortune = true;
-                GroundOne.TC.AetherDrive = true;
-                GroundOne.TC.Genesis = true;
-                GroundOne.TC.EternalPresence = true;
-                GroundOne.TC.DispelMagic = true;
-                GroundOne.TC.RiseOfImage = true;
-                GroundOne.TC.Tranquility = true;
-                GroundOne.TC.Deflection = true;
-                GroundOne.TC.OneImmunity = true;
-                GroundOne.TC.WhiteOut = true;
-                GroundOne.TC.TimeStop = true;
-                GroundOne.TC.StraightSmash = true;
-                GroundOne.TC.DoubleSlash = true;
-                GroundOne.TC.CrushingBlow = true;
-                GroundOne.TC.SoulInfinity = true;
-                GroundOne.TC.CounterAttack = true;
-                GroundOne.TC.PurePurification = true;
-                GroundOne.TC.AntiStun = true;
-                GroundOne.TC.StanceOfDeath = true;
-                GroundOne.TC.StanceOfFlow = true;
-                GroundOne.TC.EnigmaSence = true;
-                GroundOne.TC.SilentRush = true;
-                GroundOne.TC.OboroImpact = true;
-                GroundOne.TC.StanceOfStanding = true;
-                GroundOne.TC.InnerInspiration = true;
-                GroundOne.TC.KineticSmash = true;
-                GroundOne.TC.Catastrophe = true;
-                GroundOne.TC.TruthVision = true;
-                GroundOne.TC.HighEmotionality = true;
-                GroundOne.TC.StanceOfEyes = true;
-                GroundOne.TC.PainfulInsanity = true;
-                GroundOne.TC.Negate = true;
-                GroundOne.TC.VoidExtraction = true;
-                GroundOne.TC.CarnageRush = true;
-                GroundOne.TC.NothingOfNothingness = true;
-                GroundOne.TC.PsychicTrance = true;
-                GroundOne.TC.BlindJustice = true;
-                GroundOne.TC.TranscendentWish = true;
-                GroundOne.TC.FlashBlaze = true;
-                GroundOne.TC.LightDetonator = true;
-                GroundOne.TC.AscendantMeteor = true;
-                GroundOne.TC.SkyShield = true;
-                GroundOne.TC.SacredHeal = true;
-                GroundOne.TC.EverDroplet = true;
-                GroundOne.TC.HolyBreaker = true;
-                GroundOne.TC.ExaltedField = true;
-                GroundOne.TC.HymnContract = true;
-                GroundOne.TC.StarLightning = true;
-                GroundOne.TC.AngelBreath = true;
-                GroundOne.TC.EndlessAnthem = true;
-                GroundOne.TC.BlackFire = true;
-                GroundOne.TC.BlazingField = true;
-                GroundOne.TC.DemonicIgnite = true;
-                GroundOne.TC.BlueBullet = true;
-                GroundOne.TC.DeepMirror = true;
-                GroundOne.TC.DeathDeny = true;
-                GroundOne.TC.WordOfMalice = true;
-                GroundOne.TC.AbyssEye = true;
-                GroundOne.TC.SinFortune = true;
-                GroundOne.TC.DarkenField = true;
-                GroundOne.TC.DoomBlade = true;
-                GroundOne.TC.EclipseEnd = true;
-                GroundOne.TC.FrozenAura = true;
-                GroundOne.TC.ChillBurn = true;
-                GroundOne.TC.ZetaExplosion = true;
-                GroundOne.TC.EnrageBlast = true;
-                GroundOne.TC.PiercingFlame = true;
-                GroundOne.TC.SigilOfHomura = true;
-                GroundOne.TC.Immolate = true;
-                GroundOne.TC.PhantasmalWind = true;
-                GroundOne.TC.RedDragonWill = true;
-                GroundOne.TC.WordOfAttitude = true;
-                GroundOne.TC.StaticBarrier = true;
-                GroundOne.TC.AusterityMatrix = true;
-                GroundOne.TC.VanishWave = true;
-                GroundOne.TC.VortexField = true;
-                GroundOne.TC.BlueDragonWill = true;
-                GroundOne.TC.SeventhMagic = true;
-                GroundOne.TC.ParadoxImage = true;
-                GroundOne.TC.WarpGate = true;
-                GroundOne.TC.NeutralSmash = true;
-                GroundOne.TC.StanceOfDouble = true;
-                GroundOne.TC.SwiftStep = true;
-                GroundOne.TC.VigorSense = true;
-                GroundOne.TC.CircleSlash = true;
-                GroundOne.TC.RisingAura = true;
-                GroundOne.TC.RumbleShout = true;
-                GroundOne.TC.OnslaughtHit = true;
-                GroundOne.TC.ColorlessMove = true;
-                GroundOne.TC.AscensionAura = true;
-                GroundOne.TC.FutureVision = true;
-                GroundOne.TC.UnknownShock = true;
-                GroundOne.TC.ReflexSpirit = true;
-                GroundOne.TC.FatalBlow = true;
-                GroundOne.TC.SharpGlare = true;
-                GroundOne.TC.ConcussiveHit = true;
-                GroundOne.TC.TrustSilence = true;
-                GroundOne.TC.MindKilling = true;
-                GroundOne.TC.SurpriseAttack = true;
-                GroundOne.TC.StanceOfMystic = true;
-                GroundOne.TC.PsychicWave = true;
-                GroundOne.TC.NourishSense = true;
-                GroundOne.TC.Recover = true;
-                GroundOne.TC.ImpulseHit = true;
-                GroundOne.TC.ViolentSlash = true;
-                GroundOne.TC.ONEAuthority = true;
-                GroundOne.TC.OuterInspiration = true;
-                GroundOne.TC.HardestParry = true;
-                GroundOne.TC.StanceOfSuddenness = true;
-                GroundOne.TC.SoulExecution = true;
-                GroundOne.TC.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
-                GroundOne.TC.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
-                GroundOne.TC.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
-                GroundOne.TC.MaxGain();
-                GroundOne.TC.BattleActionCommandList[0] = Database.ATTACK_EN;
-                GroundOne.TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.WE.AvailableSecondCharacter = true;
+                GroundOne.MC.Level = 10;
+                GroundOne.MC.Strength = 50;
+                GroundOne.MC.Agility = 30;
+                GroundOne.MC.Intelligence = 12;
+                GroundOne.MC.Stamina = 45;
+                GroundOne.MC.Mind = 7;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.FreshHeal = true;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_EXCELLENT_BUSTER);
+                GroundOne.MC.SubWeapon = null;
+                GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_HEAVY_ARMOR);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.MC.BattleActionCommandList[2] = Database.STRAIGHT_SMASH;
+                GroundOne.MC.BattleActionCommandList[3] = Database.FRESH_HEAL;
+                GroundOne.MC.BattleActionCommandList[4] = Database.PROTECTION;
+
+                GroundOne.SC.Level = 9;
+                GroundOne.SC.Strength = 5;
+                GroundOne.SC.Agility = 25;
+                GroundOne.SC.Intelligence = 45;
+                GroundOne.SC.Stamina = 30;
+                GroundOne.SC.Mind = 7;
+                GroundOne.SC.Dead = false;
+                GroundOne.SC.MainWeapon = new ItemBackPack(Database.RARE_AUTUMN_ROD);
+                GroundOne.SC.SubWeapon = null;
+                GroundOne.SC.MainArmor = new ItemBackPack(Database.COMMON_COTTON_ROBE);
+                GroundOne.SC.MaxGain();
+                GroundOne.SC.Accessory = new ItemBackPack(Database.RARE_SINTYUU_RING_HAKUTYOU);
+                GroundOne.SC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.SC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.SC.BattleActionCommandList[2] = Database.ICE_NEEDLE;
+                GroundOne.SC.BattleActionCommandList[3] = Database.CLEANSING;
+
+                GroundOne.enemyName1 = Database.ENEMY_BLOOD_MOSS;
+                GroundOne.enemyName2 = Database.ENEMY_BRILLIANT_BUTTERFLY;
+                GroundOne.enemyName3 = String.Empty;
             }
-
-
-            if (toggle2)
+            else if (this.selectLevel == 5)
             {
-                GroundOne.enemyName2 = Database.ENEMY_GREEN_CHILD;
+                GroundOne.WE.AvailableInstantCommand = true;
+                GroundOne.DuelMode = true;
+
+                GroundOne.MC.Level = 10;
+                GroundOne.MC.Strength = 25;
+                GroundOne.MC.Agility = 16;
+                GroundOne.MC.Intelligence = 7;
+                GroundOne.MC.Stamina = 30;
+                GroundOne.MC.Mind = 5;
+                GroundOne.MC.Dead = false;
+                GroundOne.MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
+                GroundOne.MC.SubWeapon = null;
+                GroundOne.MC.MainArmor = new ItemBackPack(Database.COMMON_GOTHIC_PLATE);
+                GroundOne.MC.MaxGain();
+                GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+                GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+                GroundOne.MC.BattleActionCommandList[2] = Database.STRAIGHT_SMASH;
+                GroundOne.MC.BattleActionCommandList[3] = Database.FRESH_HEAL;
+                GroundOne.MC.BattleActionCommandList[4] = Database.PROTECTION;
+                GroundOne.MC.BattleActionCommandList[5] = Database.FIRE_BALL;
+                GroundOne.MC.BattleActionCommandList[6] = Database.HEAT_BOOST;
+
+                GroundOne.enemyName1 = Database.DUEL_MAGI_ZELKIS;
+                GroundOne.enemyName2 = String.Empty;
+                GroundOne.enemyName3 = String.Empty;
             }
-            if (toggle3)
-            {
-                GroundOne.enemyName3 = Database.ENEMY_TINY_MANTIS;
-            }
-            SceneDimension.CallTruthBattleEnemy(Database.Title, toggleDuel, false, false, false);
+
+
+            SceneDimension.CallTruthBattleEnemy(Database.Title, GroundOne.DuelMode, false, false, false);
         }
 
     }

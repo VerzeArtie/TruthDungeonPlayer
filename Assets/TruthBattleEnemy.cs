@@ -21,9 +21,6 @@ namespace DungeonPlayer
 
         bool ActionInstantMode = false;
         string instantActionCommandString = String.Empty;
-        MainCharacter tempTargetForInstant = null;
-        MainCharacter tempTargetForTarget2 = null;
-        MainCharacter tempTargetForTarget = null;
 
         bool nowStackAnimation = false;
         int nowStackAnimationCounter = 0;
@@ -114,6 +111,8 @@ namespace DungeonPlayer
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
+        public Image back_TutorialMessage;
+        public Text TutorialMessageText;
         public Image back_Sandglass;
         public Text SandGlassText;
         public Image SandGlassImage;
@@ -350,6 +349,51 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.TutorialMode)
+            {
+                if (GroundOne.TutorialLevel == 1)
+                {
+                    TutorialMessageText.text  = "　　　右下の【戦闘開始】ボタンを押してください。戦闘中は各プレイヤーのゲージが右へ進みます。\r\n";
+                    TutorialMessageText.text += "　　　プレイヤーの位置が右端に来た時、メイン行動が行われます。\r\n";
+                    TutorialMessageText.text += "　　　戦闘を一旦停止させたい場合は、右下の【戦闘停止】ボタンを押してください。\r\n";
+                    TutorialMessageText.text += "　　　また、戦闘速度は右下のスライドバーで調整できます。";
+                }
+                else if (GroundOne.TutorialLevel == 2)
+                {
+                    TutorialMessageText.text  = "　　　戦闘コマンドに「攻撃」と「防御」の２つがあります。\r\n";
+                    TutorialMessageText.text += "　　　「防御」を選択することでダメージを軽減できます。\r\n";
+                    TutorialMessageText.text += "　　　「攻撃」を選択した後、敵本体をタップする事で、メイン行動時に攻撃が繰り出されます。\r\n";
+                    TutorialMessageText.text += "　　　ただし「防御」選択状態では、メイン行動に攻撃が繰り出されなくなります。\r\n";
+                    TutorialMessageText.text += "　　　タイミングよく「攻撃」を選択するようにしましょう。";
+                }
+                else if (GroundOne.TutorialLevel == 3)
+                {
+                    TutorialMessageText.text  = "　　　パーティ戦では戦闘コマンドを上手く組み立てる必要があります。\r\n";
+                    TutorialMessageText.text += "　　　１番目のアインは「防御」か「フレッシュ・ヒール」を選択、\r\n";
+                    TutorialMessageText.text += "　　　２番目のラナは「アイス・ニードル」を選択しておくと効率よく戦えます。\r\n";
+                    TutorialMessageText.text += "　　　「フレッシュ・ヒール」の選択対象はアインかラナを選択してください。\r\n";
+                    TutorialMessageText.text += "　　　「アイス・ニードル」は敵を選択してください。";
+                }
+                else if (GroundOne.TutorialLevel == 4)
+                {
+                    TutorialMessageText.text  = "　　　戦闘コマンドは、インスタントタイミングで使えるものがあります。\r\n";
+                    TutorialMessageText.text += "　　　戦闘コマンドの下にインスタントゲージを確認し、ゲージが溜まるのを待ちます。\r\n";
+                    TutorialMessageText.text += "　　　ゲージが溜まったら、左下のキャラクターエリアをプッシュした状態にしてください。\r\n";
+                    TutorialMessageText.text += "　　　その状態で「プロテクション」などをタップし、アインを選択します。\r\n";
+                    TutorialMessageText.text += "　　　メイン行動ではないタイミングで即座にアクションを行うことが出来るようになります。\r\n";
+                }
+                else if (GroundOne.TutorialLevel == 5)
+                {
+                    TutorialMessageText.text = "　　　[ DUEL ]戦は、通常戦闘と比べいくつか違いがあります。ここではその違いを把握しておきましょう。\r\n";
+                    TutorialMessageText.text += "　　　・各プレイヤーのゲージバーは、必ず一番初め（左部）から開始となります。\r\n";
+                    TutorialMessageText.text += "　　　・DUEL開始後は【一時停止】が選べなくなり、コマンド変更中においても戦闘が進行し続けます。\r\n";
+                    TutorialMessageText.text += "　　　・インスタント行動は、＜行動スタック＞として画面中央に入ります。\r\n";
+                    TutorialMessageText.text += "　　　・＜行動スタック＞が積まれている間、更に＜行動スタック＞を乗せる事ができます。\r\n";
+                    TutorialMessageText.text += "　　　・＜行動スタック＞ゲージが完了すると、実際の行動が行われるようになります。\r\n";
+                }
+                back_TutorialMessage.gameObject.SetActive(true);
+            }
 
             pbBuffPlayer1 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer2 = new TruthImage[Database.BUFF_NUM];
@@ -2001,8 +2045,7 @@ namespace DungeonPlayer
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy)
                         {
                             this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
+                            NowSelectingTargetON();
                         }
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
                         {
@@ -2017,8 +2060,7 @@ namespace DungeonPlayer
                         else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
+                            NowSelectingTargetON();
                         }
                         else // 何も書いてないが、アイテム使用を前提として設計されている
                         {
@@ -2036,8 +2078,7 @@ namespace DungeonPlayer
                                  (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
+                            NowSelectingTargetON();
                         }
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
                         {
@@ -2065,8 +2106,7 @@ namespace DungeonPlayer
                             (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
+                            NowSelectingTargetON();
                         }
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.Enemy)
                         {
@@ -2095,8 +2135,7 @@ namespace DungeonPlayer
                             (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyOrEnemy))
                         {
                             this.instantActionCommandString = BattleActionCommand;
-                            this.NowSelectingTarget = true;
-                            //this.Invalidate();
+                            NowSelectingTargetON();
                         }
                         else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
                         {
@@ -2178,11 +2217,7 @@ namespace DungeonPlayer
         {
             //this.currentTargetedPlayer.CurrentInstantPoint = 0; // 元々コメントアウトされていた
             this.instantActionCommandString = String.Empty;
-            this.tempTargetForInstant = null;
-            this.tempTargetForTarget = null;
-            this.tempTargetForTarget2 = null;
-            this.NowSelectingTarget = false;
-            //this.Invalidate();
+            NowSelectingTargetOFF();
         }
 
         private bool UseInstantPoint(MainCharacter player)
@@ -4468,28 +4503,6 @@ namespace DungeonPlayer
 
         private void AfterBattleEffect()
         {
-            for (int ii = 0; ii < this.ActiveList.Count; ii++)
-            {
-                if (this.ActiveList[ii].CurrentWordOfLife > 0)
-                {
-                    this.ActiveList[ii].CurrentWordOfLife--;
-                    double value = 32;
-                    this.ActiveList[ii].CurrentLife += (int)value;
-                    if (this.ActiveList[ii].CurrentLife > this.ActiveList[ii].MaxLife) { this.ActiveList[ii].CurrentLife = this.ActiveList[ii].MaxLife; }
-                    UpdateLife(this.ActiveList[ii]);
-                    UpdateBattleText(this.ActiveList[ii].labelName.text + " 回復 " + ((int)value).ToString() + "\r\n");
-                }
-                if (this.ActiveList[ii].CurrentPoison > 0)
-                {
-                    this.ActiveList[ii].CurrentPoison--;
-                    double value = 20;
-                    this.ActiveList[ii].CurrentLife -= (int)value;
-                    if (this.ActiveList[ii].CurrentLife < 0) { this.ActiveList[ii].CurrentLife = 0; }
-                    UpdateLife(this.ActiveList[ii]);
-                    UpdateBattleText(this.ActiveList[ii].labelName.text + " 毒 " + ((int)value).ToString() + "\r\n");
-                }
-            }
-
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 if (!ActiveList[ii].Dead)
@@ -5312,12 +5325,21 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    this.NowSelectingTarget = true;
-                    //this.Invalidate();
+                    NowSelectingTargetON();
                 }
             }
         }
 
+        private void NowSelectingTargetON()
+        {
+            this.NowSelectingTarget = true;
+            this.Background.GetComponent<Image>().color = UnityColor.Silver;
+        }
+        private void NowSelectingTargetOFF()
+        {
+            this.NowSelectingTarget = false;
+            this.Background.GetComponent<Image>().color = Color.white;
+        }
 
         public void buttonTargetPlayer_Click(Button sender)
         {
@@ -5383,7 +5405,7 @@ namespace DungeonPlayer
                     }
                 }
                 this.currentTargetedPlayer.ReserveBattleCommand = String.Empty;
-                this.NowSelectingTarget = false;
+                NowSelectingTargetOFF();
             }
         }
 
@@ -5445,7 +5467,7 @@ namespace DungeonPlayer
                     }
                 }
                 this.currentTargetedPlayer.ReserveBattleCommand = String.Empty;
-                this.NowSelectingTarget = false;
+                NowSelectingTargetOFF();
             }
         }
 
@@ -5472,6 +5494,11 @@ namespace DungeonPlayer
             }
             else
             {
+                if (GroundOne.TutorialMode)
+                {
+                    back_TutorialMessage.gameObject.SetActive(false);
+                }
+
                 BattleStart.text = NOW_BATTLE;
                 tempStopFlag = false;
                 gameStart = true;
@@ -8053,8 +8080,13 @@ namespace DungeonPlayer
                 }
             }
 
+            // チュートリアルでは何もせず終了する。
+            if (GroundOne.TutorialMode)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
+            }
             // 支配竜会話終了時、通常終了とみなす。
-            if (this.endBattleForMatrixDragonEnd)
+            else if (this.endBattleForMatrixDragonEnd)
             {
                 Debug.Log("endBattleForMatrixDragonEnd true then exit ok");
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
@@ -8315,7 +8347,7 @@ namespace DungeonPlayer
                     TimeSpeedLabel.text = "時間速度 x3.00";
                     break;
                 case 9:
-                    Database.BATTLE_CORE_SLEEP = 2;
+                    Database.BATTLE_CORE_SLEEP = 1;
                     TimeSpeedLabel.text = "時間速度 x4.00";
                     break;
                 default:

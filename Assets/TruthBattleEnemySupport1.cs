@@ -1209,16 +1209,17 @@ namespace DungeonPlayer
 
                             case Database.ENEMY_BLOOD_MOSS:
                                 UpdateBattleText(player.FirstName + "は赤い胞子をばら撒いてきた！\r\n");
-                                if (GroundOne.MC.Dead == false)
+                                if (GroundOne.SC != null && GroundOne.SC.Dead == false && GroundOne.SC.CurrentTemptation <= 0)
+                                {
+                                    NowTemptation(player, GroundOne.SC, 2);
+                                }
+                                else if (GroundOne.MC != null && GroundOne.MC.Dead == false && GroundOne.MC.CurrentTemptation <= 0)
                                 {
                                     NowTemptation(player, GroundOne.MC, 2);
                                 }
-                                if (GroundOne.SC != null)
+                                else
                                 {
-                                    if (GroundOne.SC.Dead == false)
-                                    {
-                                        NowTemptation(player, GroundOne.SC, 2);
-                                    }
+                                    NowTemptation(player, GroundOne.MC, 2);
                                 }
                                 break;
 
