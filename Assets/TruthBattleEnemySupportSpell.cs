@@ -61,6 +61,15 @@ namespace DungeonPlayer
                 }
             }
 
+            if (TruthActionCommand.GetTargetType(spellName) == TruthActionCommand.TargetType.Own)
+            {
+                AnimationDamage(0, player, 0, Color.black, false, false, "BUFF効果");
+            }
+            else
+            {
+                AnimationDamage(0, target, 0, Color.black, false, false, "BUFF効果");
+            }
+
             switch (spellName)
             {
                 case Database.DAMNATION:
