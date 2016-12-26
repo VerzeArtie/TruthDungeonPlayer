@@ -19051,7 +19051,7 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：・・・アインの記憶だけが頼りよ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：パーティ編成をして、はじまりの部屋、神々の試練、神々の詩、そして回想録の終わり。"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：パーティ編成をして、はじまりの部屋、神々の詩、神々の試練、そして回想録の終わり。"); eventList.Add(ActionEvent.None);
 
                         messageList.Add("アイン：この辺りは自信があるんだが・・・"); eventList.Add(ActionEvent.None);
 
@@ -19095,9 +19095,9 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：始まりの部屋を発見してから"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：神々の試練をクリア"); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：「神々の詩」の詠唱を成功"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：その直後に神々の詩まで詠唱成功させて"); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：その後、「神々の試練」をクリアして"); eventList.Add(ActionEvent.None);
 
                         messageList.Add("ラナ：後は秤の三面鏡をクリアして"); eventList.Add(ActionEvent.None);
 
@@ -19125,7 +19125,7 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：ファージルの生誕祭、それから依頼状を受けて、緑の小屋へ、そしてフェルトゥーシュを失う。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：それから私とパーティを組んで、まず始まりの部屋、それから神々の試練を経て、神々の詩を詠唱成功。"); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：それから私とパーティを組んで、まず始まりの部屋、それから「神々の詩」の詠唱を経て、「神々の試練」をクリア。"); eventList.Add(ActionEvent.None);
 
                         messageList.Add("ラナ：後は秤の三面鏡をやって、回想録の終了よ。"); eventList.Add(ActionEvent.None);
 
@@ -19444,14 +19444,14 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent453)
             {
                 UniteMessage_40(ref messageList, ref eventList);
-                messageList.Add("　　　　『　定められし【神々の試練】を制覇　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　導かれし【神々の詩】を詠唱　』"); eventList.Add(ActionEvent.None);
                 UniteMessage_41(ref messageList, ref eventList);
 
                 messageList.Add("7"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
             }
             else
             {
-                messageList.Add("　　　　『　定められし【神々の試練】を制覇　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　導かれし【神々の詩】を詠唱　』"); eventList.Add(ActionEvent.None);
             }
         }
         #endregion
@@ -19461,14 +19461,14 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent454)
             {
                 UniteMessage_40(ref messageList, ref eventList);
-                messageList.Add("　　　　『　導かれし【神々の詩】　完全一致　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　定められし【神々の試練】を通過　』"); eventList.Add(ActionEvent.None);
                 UniteMessage_41(ref messageList, ref eventList);
 
                 messageList.Add("8"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
             }
             else
             {
-                messageList.Add("　　　　『　導かれし【神々の詩】　完全一致　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　定められし【神々の試練】を通過　』"); eventList.Add(ActionEvent.None);
             }
         }
         #endregion
@@ -19721,14 +19721,14 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent464)
             {
                 UniteMessage_40(ref messageList, ref eventList);
-                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
                 UniteMessage_41(ref messageList, ref eventList);
 
                 messageList.Add("3"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
             }
             else
             {
-                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
             }
         }
         #endregion
@@ -19738,14 +19738,14 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent465)
             {
                 UniteMessage_40(ref messageList, ref eventList);
-                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
                 UniteMessage_41(ref messageList, ref eventList);
 
                 messageList.Add("4"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
             }
             else
             {
-                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
             }
         }
         #endregion
@@ -23524,7 +23524,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　ラナとここに来た時、俺は決定的な過ちを犯していた　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（　この部屋は、神々の試練を受けるための登録の場なんだ　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（　この部屋は、「神々の試練」を受けるための登録の場なんだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　ここに訪れなければラナが試練を受けるハメには、ならなかった　）"); eventList.Add(ActionEvent.None);
 
@@ -23540,7 +23540,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　俺が　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（　俺だけが、神々の試練への登録を行う　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（　俺だけが、「神々の試練」への登録を行う　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 
