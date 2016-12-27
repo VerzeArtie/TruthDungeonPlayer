@@ -1757,6 +1757,15 @@ namespace DungeonPlayer
                         player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
                         player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
                         player.labelCurrentInstantPoint.color = UnityColor.Gold;
+
+                        if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1 || 
+                            player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2 ||
+                            player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                        {
+                            player.meterCurrentManaPoint.gameObject.SetActive(true);
+                            player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 38);
+                            player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 70, 0);
+                        }
                     }
             //        // 1024 x 768
             //        player.MainObjectButton.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MAIN_OBJ_LOC_Y);
