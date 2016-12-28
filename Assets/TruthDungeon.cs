@@ -309,7 +309,21 @@ namespace DungeonPlayer
             SetupPlayerStatus(true);
             UpdateMainMessage("", true);
 
-            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+            if ((GroundOne.WE2.RealWorld && GroundOne.WE2.RealDungeonArea == 5 && GroundOne.WE2.SeekerEvent1014) ||
+                (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent508))
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
+            }
+            else if (GroundOne.WE.CompleteSlayBoss5 || GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                //firstLoadIgnoreMusic = true;
+            }
+            else
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+            }
+//            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
 
             #region "戦闘終了判定"
             #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
