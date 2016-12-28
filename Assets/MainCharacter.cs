@@ -2739,10 +2739,10 @@ namespace DungeonPlayer
         //	public int CurrentMindUpValue { get; set; }
 
         // gui
-        public GameObject mainPanel = null;
         public GameObject MainObjectBack = null;
         public Button MainObjectButton = null;
         public GameObject ManaSkillPanel = null;
+        public GameObject ActionButtonPanel = null;
         public Color MainColor = new Color();
 
         public Text labelName = null;
