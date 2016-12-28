@@ -148,7 +148,7 @@ namespace DungeonPlayer
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 
-            this.Background.GetComponent<Image>().color = GroundOne.CurrentStatusColor;
+            this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
@@ -2576,7 +2576,6 @@ namespace DungeonPlayer
             else
             {
                 this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
-                GroundOne.CurrentStatusColor = GroundOne.MC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.MC);
                 RefreshPartyMembersBattleStatus(GroundOne.MC);
             }
@@ -2601,7 +2600,6 @@ namespace DungeonPlayer
             else
             {
                 this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
-                GroundOne.CurrentStatusColor = GroundOne.SC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.SC);
                 RefreshPartyMembersBattleStatus(GroundOne.SC);
             }
@@ -2626,7 +2624,6 @@ namespace DungeonPlayer
             else
             {
                 this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
-                GroundOne.CurrentStatusColor = GroundOne.TC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.TC);
                 RefreshPartyMembersBattleStatus(GroundOne.TC);
             }

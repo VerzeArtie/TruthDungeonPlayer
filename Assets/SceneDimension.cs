@@ -218,7 +218,6 @@ namespace DungeonPlayer
             GroundOne.LevelUp = leveUp;
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
-            GroundOne.CurrentStatusColor = color;
             GroundOne.Parent.Add(scene);
             leveUp = false;
             upPoint = 0;

@@ -124,7 +124,7 @@ public class TruthSelectCharacter : MotherForm
         //GroundOne.SC.FullName = Database.RANA_AMILIA_FULL;
         //GroundOne.SC.FirstName = Database.RANA_AMILIA;
 
-        this.Background.GetComponent<Image>().color = GroundOne.CurrentStatusColor;
+        this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
         SettingCharacterData(player);
