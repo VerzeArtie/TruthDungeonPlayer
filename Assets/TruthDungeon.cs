@@ -3412,6 +3412,7 @@ namespace DungeonPlayer
             // 壁情報とプレイヤー動作方向に対して壁情報が一致する場合
             string WallHitMessage = "アイン：いてぇ！";
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd) { WallHitMessage = "アイン：・・・"; }
+            if (!GroundOne.WE2.RealWorld && GroundOne.WE.dungeonEvent490) { WallHitMessage = "アイン：・・・"; }
             #region "Wall判定"
             switch (targetTileInfo[Method.GetTileNumber(Player.transform.position)])
             {

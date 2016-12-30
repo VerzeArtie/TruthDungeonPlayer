@@ -158,6 +158,7 @@ public class TruthChoiceStatue : MotherForm {
                 GroundOne.WE2.RealWorld = true;
                 Method.AutoSaveTruthWorldEnvironment();
                 Method.AutoSaveRealWorld();
+                Method.ExecSave(null, Database.WorldSaveNum, true);
                 SceneDimension.CallSaveLoad(this, true, true);
             }
 
@@ -274,10 +275,10 @@ public class TruthChoiceStatue : MotherForm {
         MessagePack.Message14138(ref this.nowMessage, ref this.nowEvent, ref this.flag0);
         tapOK();
     }
-
-
-
-
+    
+    // ラナ・アミリアの像(CheckFactOrder)はMessagePackにある
+    // 人間の像(CheckTruthOrder)はMessagePackにある
+    // 神剣フェルトゥーシュ
     private bool CheckElementalOrder()
     {
         if (this.elementalOrder[0] != 1) { return false; }
@@ -292,6 +293,7 @@ public class TruthChoiceStatue : MotherForm {
         return true;
     }
 
+    // 神々の詩
     private bool CheckSongOrder()
     {
         if (this.songOrder[0] != 1) { return false; }
@@ -306,7 +308,7 @@ public class TruthChoiceStatue : MotherForm {
     public void buttonFact_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.gameObject.SetActive(false);
+        btn.interactable = false;
         if (btn.Equals(buttonFact1)) { this.factOrder.Add(1); }
         if (btn.Equals(buttonFact2)) { this.factOrder.Add(2); }
         if (btn.Equals(buttonFact3)) { this.factOrder.Add(3); }
@@ -330,7 +332,7 @@ public class TruthChoiceStatue : MotherForm {
     public void buttonTruth_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.gameObject.SetActive(false);
+        btn.interactable = false;
         if (btn.Equals(buttonTruth1)) { this.truthOrder.Add(1); }
         if (btn.Equals(buttonTruth2)) { this.truthOrder.Add(2); }
         if (btn.Equals(buttonTruth3)) { this.truthOrder.Add(3); }
@@ -354,7 +356,7 @@ public class TruthChoiceStatue : MotherForm {
     public void buttonElemental_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.gameObject.SetActive(false);
+        btn.interactable = false;
         if (btn.Equals(buttonElemental1)) { this.elementalOrder.Add(1); }
         if (btn.Equals(buttonElemental2)) { this.elementalOrder.Add(2); }
         if (btn.Equals(buttonElemental3)) { this.elementalOrder.Add(3); }
@@ -383,7 +385,7 @@ public class TruthChoiceStatue : MotherForm {
     public void buttonSong_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.gameObject.SetActive(false);
+        btn.interactable = false;
         if (btn.Equals(buttonSong1)) { this.songOrder.Add(1); }
         if (btn.Equals(buttonSong2)) { this.songOrder.Add(2); }
         if (btn.Equals(buttonSong3)) { this.songOrder.Add(3); }

@@ -20625,8 +20625,10 @@ namespace DungeonPlayer
         #region "そして、現実世界へ"
         public static void Message14122(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            if (!GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            if (!GroundOne.WE.dungeonEvent490)
             {
+                GroundOne.WE.dungeonEvent490 = true;
+
                 messageList.Add("　＜＜＜　その時だった　＞＞＞"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　『ッガシャン！！！』"); eventList.Add(ActionEvent.None);
@@ -20634,9 +20636,6 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4BlockWallD1);
 
                 messageList.Add("　＜＜＜　アイン・ウォーレンスの背後は突如、分厚い壁に覆われた　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                GroundOne.WE2.RealWorld = true;
-                Method.AutoSaveTruthWorldEnvironment();
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4InvalidateBlack);
 
@@ -21065,10 +21064,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（絶対に・・・忘れない・・・）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(" ～　THE　END　～　（【夢幻】　永遠の停止）"); eventList.Add(ActionEvent.None);
-
-            // 現在世界のスタート地点に戻るようセーブする。
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGoSeeker);
         }
 
         public static void Message14134(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -21209,6 +21205,7 @@ namespace DungeonPlayer
 
             return true;
         }
+        // 人間の像
         private static bool CheckTruthOrder(List<int> truthOrder)
         {
             if (truthOrder[0] != 1) { return false; }
