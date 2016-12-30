@@ -140,7 +140,7 @@ namespace DungeonPlayer
                             targetButton.text += targetString.Substring(21, 1) + this.archiveAreaString2;
                         }
 
-                        if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+                        if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
                         {
                             targetButton.text = "";
                         }

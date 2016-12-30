@@ -56,7 +56,7 @@ namespace DungeonPlayer
             Method.ReloadTruthWorldEnvironment();
 
             // 現実世界突入でSeekerモードを表示
-            if (GroundOne.WE2.RealWorld)
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
             {
                 buttonSeeker.SetActive(true);
                 this.cam.backgroundColor = Color.black;
@@ -630,6 +630,13 @@ namespace DungeonPlayer
 
         public void Tutorial_Click()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
+            {
+                SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、チュートリアルを始める事はできません。";
+                GroupSystemMessage.SetActive(true);
+                return;
+            }
+
             SceneDimension.CallTutorial(this);
         }
 
@@ -637,7 +644,7 @@ namespace DungeonPlayer
         {
             GroundOne.TutorialMode = false;
 
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、新しく始める事はできません。";
                 GroupSystemMessage.SetActive(true);
@@ -684,7 +691,7 @@ namespace DungeonPlayer
         public void Load_Click()
         {
             GroundOne.TutorialMode = false;
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、ロードを行う事はできません。";
                 GroupSystemMessage.SetActive(true);

@@ -826,6 +826,7 @@ namespace DungeonPlayer
         public bool TruthCommunicationCompArea5 { get; set; }  // ƒ_ƒ“ƒWƒ‡ƒ“‚TŠK§”e‚É‚æ‚é‹­§‰ï˜bƒCƒxƒ“ƒg
 
         #region "‚SŠK"
+        public bool dungeonEvent490 { get; set; }
         public bool dungeonEvent489 { get; set; }
         public bool dungeonEvent488 { get; set; }
         public bool dungeonEvent487 { get; set; }

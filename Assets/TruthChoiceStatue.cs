@@ -154,6 +154,9 @@ public class TruthChoiceStatue : MotherForm {
             }
             else if (currentEvent == MessagePack.ActionEvent.DungeonGoSeeker)
             {
+                GroundOne.WE2.SelectFalseStatue = true;
+                GroundOne.WE2.RealWorld = true;
+                Method.AutoSaveTruthWorldEnvironment();
                 Method.AutoSaveRealWorld();
                 SceneDimension.CallSaveLoad(this, true, true);
             }

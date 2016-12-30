@@ -15225,7 +15225,8 @@ namespace DungeonPlayer
 
         private bool BlockAction()
         {
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1)
+            if ((GroundOne.WE.dungeonEvent490 && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1) ||
+                (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1))
             {
                 mainMessage.text = "アイン：・・・　・・・";
                 return true;
