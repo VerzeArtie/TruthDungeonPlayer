@@ -1400,7 +1400,7 @@ namespace DungeonPlayer
             string gamedayData = String.Empty;
             string completeareaData = String.Empty;
 
-            Debug.Log("ExecLoad 1 " + DateTime.Now);
+            Debug.Log("ExecLoad 1 " + DateTime.Now + "." + DateTime.Now.Minute);
             //if (((Text)sender) != null)
             //{
             //    yearData = ((Text)sender).text.Substring(0, 4);
@@ -1435,7 +1435,7 @@ namespace DungeonPlayer
 
             xml.Load(Method.pathForDocumentsFile(targetFileName));
             GroundOne.CurrentLoadFileName = targetFileName;
-            Debug.Log("ExecLoad 2 " + DateTime.Now);
+            Debug.Log("ExecLoad 2 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             try
             {
@@ -1541,7 +1541,7 @@ namespace DungeonPlayer
             }
             catch { }
             // e 後編追加
-            Debug.Log("ExecLoad 3 " + DateTime.Now);
+            Debug.Log("ExecLoad 3 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             //for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             //{
@@ -1645,7 +1645,7 @@ namespace DungeonPlayer
                 }
             }
             // e 後編編集
-            Debug.Log("ExecLoad 4 " + DateTime.Now);
+            Debug.Log("ExecLoad 4 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             Type type = GroundOne.MC.GetType();
             foreach (PropertyInfo pi in type.GetProperties())
@@ -1727,10 +1727,10 @@ namespace DungeonPlayer
                 }
                 // e 後編追加
             }
-            Debug.Log("ExecLoad 5 " + DateTime.Now);
+            Debug.Log("ExecLoad 5 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             Type typeWE = GroundOne.WE.GetType();
-            Debug.Log("ExecLoad 6 " + DateTime.Now);
+            Debug.Log("ExecLoad 6 " + DateTime.Now + "." + DateTime.Now.Minute);
 
 
             PropertyInfo[] tempWE = typeWE.GetProperties();
@@ -1764,7 +1764,7 @@ namespace DungeonPlayer
                     catch { }
                 }
             }
-            Debug.Log("ExecLoad 7 " + DateTime.Now);
+            Debug.Log("ExecLoad 7 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             // after revive
             //try // 後編追加 // [警告]：前編での読み込みバグが無く、かつ、後編では絶対に使わないことを前提とした記述。
@@ -1780,44 +1780,11 @@ namespace DungeonPlayer
             //}
             //catch { }
 
-            // [必須] 最終的には全階層分のデータを一括取得するようになるので、このFor分割は不要となる。
-            //string temp1 = DateTime.Now.ToString() + "  " + DateTime.Now.Millisecond.ToString();
-
             Method.ReloadTruthWorldEnvironment();
-            Debug.Log("ExecLoad 75 " + DateTime.Now);
+            Debug.Log("ExecLoad 75 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             Method.LoadKnownTileInfo();
-            //XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
-            //XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
-            //XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
-            //XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
-            //XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
-            //Debug.Log("ExecLoad 76: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
-            //Debug.Log(DateTime.Now.ToString());
-
-            //// after (もう少し早くならないか？
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
-            //}
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
-            //}
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
-            //}
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
-            //}
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
-            //}
-            Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-1 " + DateTime.Now);
+            Debug.Log("ExecLoad 8-1 " + DateTime.Now + "." + DateTime.Now.Minute);
 
             //if (forceLoad == false)
             //{
