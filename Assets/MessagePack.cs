@@ -441,10 +441,22 @@ namespace DungeonPlayer
             DungeonFloor5UnknownTileArea2,
             DungeonFloor5UnknownTileArea3,
             DungeonFloor5UnknownTileArea4,
-            DungeonFloor5TruthSelectCharacter,
             DungeonFloor5UnknownTileArea5,
             DungeonRefreshWater,
             DungeonFloor5UnknownTileArea6,
+            DungeonFloor5Open1,
+            DungeonFloor5Open2,
+            DungeonFloor5Open3,
+            DungeonFloor5Open4,
+            DungeonFloor5Open5,
+            DungeonFloor5MatrixDragonTalk,
+            DungeonFloor5TruthCharacterSelect,
+            DungeonFloor5TruthCharacterSelected,
+            DungeonFloor5MatrixDragonDefeat,
+            DungeonFloor5GetLanaEarring,
+            DungeonFloor5ReadyToBlueOrb,
+            DungeonFloor5EnterTheReadWorld,
+            AutoSaveTruthWorldRealWorld,
             AutoMove,
             DungeonGotoDownstair,
             MirrorWay,
@@ -21852,11 +21864,8 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE2.SeekerEvent501)
             {
-                GroundOne.WE2.SeekerEvent501 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5Open1);
             }
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
-
         }
         public static void Message15002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -21867,11 +21876,8 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent502 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5Open2);
             }
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
-
         }
         public static void Message15003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -21888,11 +21894,8 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent503 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5Open3);
             }
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
-
         }
         public static void Message15004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -21907,10 +21910,8 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent504 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5Open4);
             }
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
         }
         public static void Message15005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -21931,20 +21932,14 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent505 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5Open5);
             }
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
-
         }
         public static void Message15006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea5);
             if (!GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
             {
-                GroundOne.WE2.TruthRecollection5 = true;
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION5);
-
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（・・・　玉座に　・・・　ついたな　・・・）"); eventList.Add(ActionEvent.None);
@@ -23123,7 +23118,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：（　像を調べてみるか　）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent506 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5MatrixDragonTalk);
             }
             else if (GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
             {
@@ -23147,9 +23142,6 @@ namespace DungeonPlayer
 
                 messageList.Add(Database.ENEMY_BOSS_BYSTANDER_EMPTINESS); eventList.Add(ActionEvent.EncountBoss);
             }
-
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
         }
 
         public static void Message15006_2(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -23204,10 +23196,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　アイン：・・・ラナ・・・"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent508 = true;
-
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5MatrixDragonDefeat);
         }
 
         public static void Message15007(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -23238,7 +23227,7 @@ namespace DungeonPlayer
 
                     messageList.Add("　　アイン：（　どうする・・・　）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5TruthSelectCharacter);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5TruthCharacterSelect);
                 }
                 else if (GroundOne.WE2.SeekerEvent506 && GroundOne.WE2.SeekerEvent507)
                 {
@@ -23275,10 +23264,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　アイン：パーティの魔法／スキルを見直してから、戦闘開始だ。"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent507 = true;
-
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5TruthCharacterSelected);
         }
 
         public static void Message15008(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -23325,10 +23311,8 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：・・・掴み取るんだ。今度こそ。"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent509 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5GetLanaEarring);
             }
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
         }
 
         public static void Message15009(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -23385,18 +23369,14 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：青水晶に手をかざそう。"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent510 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5ReadyToBlueOrb);
             }
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
         }
 
         public static void Message15010(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE2.SeekerEvent511)
             {
-                GroundOne.WE2.SeekerEvent511 = true;
-
                 messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
 
                 messageList.Add("　　支配竜：少年の記憶これまでの出来事を消滅受諾せよ"); eventList.Add(ActionEvent.None);
@@ -23453,36 +23433,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartySC);
 
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_REBOOT);
-                // 遠見の青水晶を手放す
-                ItemBackPack[] backpackInfo = GroundOne.MC.GetBackPackInfo();
-                for (int jj = 0; jj < backpackInfo.Length; jj++)
-                {
-                    if (backpackInfo[jj] != null)
-                    {
-                        if ((backpackInfo[jj].Name == Database.RARE_TOOMI_BLUE_SUISYOU) ||
-                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_ZERO) ||
-                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD) ||
-                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_1) ||
-                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_2) ||
-                            (backpackInfo[jj].Name == Database.COMMON_PRACTICE_SWORD_3) ||
-                            (backpackInfo[jj].Name == Database.COMMON_PRACTICE_SWORD_4) ||
-                            (backpackInfo[jj].Name == Database.RARE_PRACTICE_SWORD_5) ||
-                            (backpackInfo[jj].Name == Database.RARE_PRACTICE_SWORD_6) ||
-                            (backpackInfo[jj].Name == Database.EPIC_PRACTICE_SWORD_7) ||
-                            (backpackInfo[jj].Name == Database.LEGENDARY_FELTUS))
-                        {
-                            GroundOne.MC.DeleteBackPack(backpackInfo[jj]);
-                        }
-                    }
-                }
-                GroundOne.WE.GameDay = 1;
-                GroundOne.WE.AlreadyRest = true;
-                GroundOne.WE.AlreadyCommunicate = false;
-                Method.AutoSaveTruthWorldEnvironment();
-                Method.AutoSaveRealWorld();
-
-                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5EnterTheReadWorld);
             }
         }
         #endregion
