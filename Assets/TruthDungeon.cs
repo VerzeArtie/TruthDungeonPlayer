@@ -13611,6 +13611,10 @@ namespace DungeonPlayer
                 currentManaPoint1.gameObject.SetActive(GroundOne.MC.AvailableMana);
                 currentManaValue1.gameObject.SetActive(GroundOne.MC.AvailableMana);
 
+                currentLife1.color = Color.red;
+                currentManaPoint1.color = UnityColor.ManaColor;
+                currentSkillPoint1.color = UnityColor.SkillColor;
+
                 if (!GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
                 {
                     Method.AddEmptyObj(ref FirstPlayerPanel, 2);
@@ -13648,6 +13652,10 @@ namespace DungeonPlayer
                 currentManaPoint2.gameObject.SetActive(GroundOne.SC.AvailableMana);
                 currentManaValue2.gameObject.SetActive(GroundOne.SC.AvailableMana);
 
+                currentLife2.color = Color.red;
+                currentManaPoint2.color = UnityColor.ManaColor;
+                currentSkillPoint2.color = UnityColor.SkillColor;
+
                 if (!GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
                 {
                     Method.AddEmptyObj(ref SecondPlayerPanel, 4);
@@ -13684,6 +13692,10 @@ namespace DungeonPlayer
                 currentSkillValue3.gameObject.SetActive(GroundOne.TC.AvailableSkill);
                 currentManaPoint3.gameObject.SetActive(GroundOne.TC.AvailableMana);
                 currentManaValue3.gameObject.SetActive(GroundOne.TC.AvailableMana);
+
+                currentLife3.color = Color.red;
+                currentManaPoint3.color = UnityColor.ManaColor;
+                currentSkillPoint3.color = UnityColor.SkillColor;
 
                 if (!GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
                 {

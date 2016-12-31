@@ -154,5 +154,7 @@ namespace DungeonPlayer
         public static Color MediumVioletRed = new Color(199.0f / 255.0f, 21.0f / 255.0f, 133.0f / 255.0f);
         public static Color Midnightblack = new Color(50, 50, 50);
         public static Color Midnightgray = new Color(75, 75, 75);
+        public static Color ManaColor = new Color(191.0f / 255.0f, 0, 178.0f / 255.0f);
+        public static Color SkillColor = new Color(9.0f / 255.0f, 255.0f / 255.0f, 0);
     }
 }
