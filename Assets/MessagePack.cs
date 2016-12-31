@@ -21501,9 +21501,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewSong);
 
-                messageList.Add("アイン：（いよいよ・・・最終局面の様相だな）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：（これはさすがに本当の最後だと直感できる）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（いよいよ・・・か）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（ラナ・・・もうすぐだ、待ってろ）"); eventList.Add(ActionEvent.None);
             }
@@ -21683,7 +21681,7 @@ namespace DungeonPlayer
 
                 messageList.Add("レギィン：貴公はいずれかに神剣フェルトゥーシュを差し込むのが務め。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("レギィン：正しき方へ剣を突き刺すがよい。アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：正しき方へその神剣を突き刺すがよい。アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("レギィン：正しき方を選択すれば、道は拓かれる。"); eventList.Add(ActionEvent.None);
 
