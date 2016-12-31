@@ -16037,6 +16037,58 @@ namespace DungeonPlayer
                 {
                     GroundOne.StopDungeonMusic();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic01)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic02)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM02, Database.BGM02LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic03)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM03, Database.BGM03LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic04)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM04, Database.BGM04LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic05)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM05, Database.BGM05LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic06)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM06, Database.BGM06LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic07)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic08)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM08, Database.BGM08LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic09)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic10)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM10, Database.BGM10LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic11)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic12)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic13)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
+                }
                 else if (currentEvent == MessagePack.ActionEvent.PlayMusic14)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
@@ -16048,6 +16100,18 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.PlayMusic16)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic17)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic18)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM18, Database.BGM18LoopBegin);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic19)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon)
                 {
