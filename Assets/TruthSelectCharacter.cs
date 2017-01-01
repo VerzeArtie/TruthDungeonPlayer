@@ -642,7 +642,9 @@ public class TruthSelectCharacter : MotherForm
         GroundOne.WE.AvailableSecondCharacter = true;
         GroundOne.WE.AvailableThirdCharacter = true;
         GroundOne.SC = playerList[0];
+        DontDestroyOnLoad(GroundOne.SC);
         GroundOne.TC = playerList[1];
+        DontDestroyOnLoad(GroundOne.TC);
         SceneDimension.Back(this);
     }
 
