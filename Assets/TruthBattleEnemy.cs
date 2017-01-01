@@ -7537,11 +7537,12 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (GroundOne.MC.CurrentStunning > 0 || GroundOne.MC.CurrentFrozen > 0 || GroundOne.MC.CurrentParalyze > 0)
-            {
-                UpdateBattleText("アインは今逃げられない状態に居る。\r\n");
-                return;
-            }
+            // 主人公が逃げられない状態を演出したいが、プレイヤーとしてはすぐ逃げられるようにしておいてほしい。
+            //if (GroundOne.MC.CurrentStunning > 0 || GroundOne.MC.CurrentFrozen > 0 || GroundOne.MC.CurrentParalyze > 0)
+            //{
+            //    UpdateBattleText("アインは今逃げられない状態に居る。\r\n");
+            //    return;
+            //}
 
             // debug
             //if (((GroundOne.MC.Level - this.ec1.Level <= -5) && AP.Math.RandomInteger(100) < 95) ||
@@ -7786,7 +7787,15 @@ namespace DungeonPlayer
 
             if (this.nowAnimationSandGlassCounter > startTime)
             {
-                System.Threading.Thread.Sleep(0);
+                if (Application.platform == RuntimePlatform.Android ||
+                    Application.platform == RuntimePlatform.IPhonePlayer)
+                {
+                    // 何もしない
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(0);
+                }
                 SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass" + (this.nowAnimationSandGlassCounter-(startTime+1)).ToString());
                 SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x + moveLen, SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
 
