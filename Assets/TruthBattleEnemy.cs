@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEditor;
 
 namespace DungeonPlayer
 {
@@ -1669,7 +1670,7 @@ namespace DungeonPlayer
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                     {
-                        player.labelName.text = "【五階の守護者】\r\n\r\n支　配　竜";
+                        player.labelName.text = "支　配　竜";
                         //player.labelCurrentSkillPoint.Visible = false;
                         //player.labelCurrentManaPoint.Visible = false;
                     }
@@ -1770,6 +1771,29 @@ namespace DungeonPlayer
                             player.meterCurrentManaPoint.gameObject.SetActive(true);
                             player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 38);
                             player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 70, 0);
+                        }
+                        else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                        {
+                            player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(260, 180, 0);
+                            player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(145, 110, 0);
+
+                            string[] fonts = UnityEditor.AssetDatabase.FindAssets("t:Font", new string[] { "Assets/Fonts" });
+                            for (int ii = 0; ii < fonts.Length; ii++)
+                            {
+                                string fontName = AssetDatabase.GUIDToAssetPath(fonts[ii]);
+                                Debug.Log("fontName: " + fontName);
+                                if (fontName.Contains("衡山毛筆フォント"))
+                                {
+                                    Font font = AssetDatabase.LoadAssetAtPath<Font>(fontName);
+                                    Debug.Log("font: " + font);
+                                    player.labelName.font = font;
+                                    break;
+                                }
+                            }
+
+                            player.labelName.fontSize = 70;
+                            player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 163, 0);
+                            player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 143);
                         }
                     }
             //        // 1024 x 768

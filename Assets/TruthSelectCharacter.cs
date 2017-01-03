@@ -320,10 +320,22 @@ public class TruthSelectCharacter : MotherForm
         GroundOne.TC.DoubleSlash = true;
         GroundOne.TC.CrushingBlow = true;
         GroundOne.TC.SoulInfinity = true;
+        GroundOne.TC.CounterAttack = true;
+        GroundOne.TC.PurePurification = true;
+        GroundOne.TC.AntiStun = true;
+        GroundOne.TC.StanceOfDeath = true;
+        GroundOne.TC.StanceOfFlow = true;
+        GroundOne.TC.EnigmaSence = true;
+        GroundOne.TC.SilentRush = true;
+        GroundOne.TC.OboroImpact = true;
         GroundOne.TC.StanceOfStanding = true;
         GroundOne.TC.InnerInspiration = true;
         GroundOne.TC.KineticSmash = true;
         GroundOne.TC.Catastrophe = true;
+        GroundOne.TC.TruthVision = true;
+        GroundOne.TC.HighEmotionality = true;
+        GroundOne.TC.StanceOfEyes = true;
+        GroundOne.TC.PainfulInsanity = true;
         GroundOne.TC.Negate = true;
         GroundOne.TC.VoidExtraction = true;
         GroundOne.TC.CarnageRush = true;
@@ -348,18 +360,36 @@ public class TruthSelectCharacter : MotherForm
         GroundOne.TC.ParadoxImage = true;
         GroundOne.TC.WarpGate = true;
 
+        GroundOne.TC.NeutralSmash = true;
+        GroundOne.TC.StanceOfDouble = true;
         GroundOne.TC.SwiftStep = true;
         GroundOne.TC.VigorSense = true;
-        GroundOne.TC.Recover = true;
-        GroundOne.TC.ImpulseHit = true;
-        GroundOne.TC.SurpriseAttack = true;
-        GroundOne.TC.StanceOfMystic = true;
         GroundOne.TC.CircleSlash = true;
         GroundOne.TC.RisingAura = true;
-        GroundOne.TC.OuterInspiration = true;
-        GroundOne.TC.HardestParry = true;
+        GroundOne.TC.RumbleShout = true;
+        GroundOne.TC.OnslaughtHit = true;
         GroundOne.TC.ColorlessMove = true;
         GroundOne.TC.AscensionAura = true;
+        GroundOne.TC.FutureVision = true;
+        GroundOne.TC.UnknownShock = true;
+        GroundOne.TC.ReflexSpirit = true;
+        GroundOne.TC.FatalBlow = true;
+        GroundOne.TC.SharpGlare = true;
+        GroundOne.TC.ConcussiveHit = true;
+        GroundOne.TC.TrustSilence = true;
+        GroundOne.TC.MindKilling = true;
+        GroundOne.TC.SurpriseAttack = true;
+        GroundOne.TC.StanceOfMystic = true;
+        GroundOne.TC.PsychicWave = true;
+        GroundOne.TC.NourishSense = true;
+        GroundOne.TC.Recover = true;
+        GroundOne.TC.ImpulseHit = true;
+        GroundOne.TC.ViolentSlash = true;
+        GroundOne.TC.ONEAuthority = true;
+        GroundOne.TC.OuterInspiration = true;
+        GroundOne.TC.HardestParry = true;
+        GroundOne.TC.StanceOfSuddenness = true;
+        GroundOne.TC.SoulExecution = true;
         //if (GroundOne.TC.MainWeapon != null) { if (GroundOne.TC.MainWeapon.Name == Database.POOR_GOD_FIRE_GLOVE_REPLICA) { GroundOne.TC.MainWeapon = new ItemBackPack(Database.LEGENDARY_GOD_FIRE_GLOVE); } }
 
         // 3人目

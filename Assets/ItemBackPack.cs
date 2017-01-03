@@ -5926,10 +5926,11 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.LEGENDARY_ZVELDOSE_DEVIL_FIRE_RING_2:
-                    description = "古代賢者ツヴェルドーゼが青年時代に付けていた装飾品。知＋８００、体＋５００【常備能力：有】";
+                    description = "古代賢者ツヴェルドーゼが青年時代に付けていた装飾品。知＋８００、体＋５００、心＋１００【常備能力：有】";
                     description += "\r\n【常備能力】　火属性の魔法攻撃がヒットする毎に、追加効果【火】ダメージを与える。";
                     BuffUpIntelligence = 800;
                     BuffUpStamina = 500;
+                    BuffUpMind = 100;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Epic;
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
@@ -5944,10 +5945,11 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2:
-                    description = "古代賢者ツヴェルドーゼの妻アナステリサが付けていた装飾品。知＋４５０、体＋８５０【常備能力：有】";
+                    description = "古代賢者ツヴェルドーゼの妻アナステリサが付けていた装飾品。知＋４５０、体＋８５０、心＋２００【常備能力：有】";
                     description += "\r\n【常備能力】　火属性の魔法攻撃がヒットする毎に、ライフが回復する。";
                     BuffUpIntelligence = 450;
                     BuffUpStamina = 850;
+                    BuffUpMind = 200;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Epic;
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
