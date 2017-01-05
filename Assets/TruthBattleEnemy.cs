@@ -7,7 +7,6 @@ using System.Net.Sockets;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using UnityEditor;
 
 namespace DungeonPlayer
 {
@@ -408,14 +407,14 @@ namespace DungeonPlayer
             pbBuffEnemy3 = new TruthImage[Database.BUFF_NUM];
             for (int ii = 0; ii < Database.BUFF_NUM; ii++)
             {
-                SetupBuff(pbBuffPlayer1, BuffPanel1, ii);
-                SetupBuff(pbBuffPlayer2, BuffPanel2, ii);
-                SetupBuff(pbBuffPlayer3, BuffPanel3, ii);
-                SetupBuff(pbBuffEnemy1, PanelBuffEnemy1, ii);
-                SetupBuff(pbBuffEnemy2, PanelBuffEnemy2, ii);
-                SetupBuff(pbBuffEnemy3, PanelBuffEnemy3, ii);
+                SetupBuff(ref pbBuffPlayer1, BuffPanel1, ii);
+                SetupBuff(ref pbBuffPlayer2, BuffPanel2, ii);
+                SetupBuff(ref pbBuffPlayer3, BuffPanel3, ii);
+                SetupBuff(ref pbBuffEnemy1, PanelBuffEnemy1, ii);
+                SetupBuff(ref pbBuffEnemy2, PanelBuffEnemy2, ii);
+                SetupBuff(ref pbBuffEnemy3, PanelBuffEnemy3, ii);
             }
-            GameObject baseObj = new GameObject("object");
+
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
@@ -473,67 +472,77 @@ namespace DungeonPlayer
             GroundOne.TC.CriticalLabel = player3Critical;
             GroundOne.TC.ActionButtonList.AddRange(this.ActionButton3);
 
-            this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec1.Initialize(GroundOne.enemyName1);
-            this.ec1.CurrentCommand = Database.ATTACK_EN;
-            this.ec1.CurrentInstantPoint = 0;
-            this.ec1.MainFaceArrow = this.enemy1Arrow;
-            this.ec1.MainObjectButton = this.enemy1MainObject;
-            this.ec1.ActionLabel = this.enemyActionLabel1;
-            this.ec1.labelName = this.enemy1Name;
-            this.ec1.labelCurrentLifePoint = this.enemy1Life;
-            this.ec1.meterCurrentLifePoint = this.enemy1LifeMeter;
-            this.ec1.labelCurrentManaPoint = null;
-            this.ec1.meterCurrentManaPoint = null;
-            this.ec1.labelCurrentSkillPoint = null;
-            this.ec1.meterCurrentSkillPoint = null;
-            this.ec1.labelCurrentInstantPoint = this.enemy1Instant;
-            this.ec1.meterCurrentInstantPoint = this.enemy1InstantMeter;
-            this.ec1.labelCurrentSpecialInstant = this.enemy1SpecialInstant;
-            this.ec1.meterCurrentSpecialInstant = this.enemy1SpecialInstantMeter;
-            this.ec1.DamagePanel = this.enemy1DamagePanel;
-            this.ec1.DamageLabel = this.enemy1Damage;
-            this.ec1.CriticalLabel = this.enemy1Critical;
+            GameObject baseObj1 = new GameObject("enemyObj1");
+            ec1 = baseObj1.AddComponent<TruthEnemyCharacter>();
+            ec1.Initialize(GroundOne.enemyName1);
+            ec1.CurrentCommand = Database.ATTACK_EN;
+            ec1.CurrentInstantPoint = 0;
+            ec1.MainFaceArrow = enemy1Arrow;
+            ec1.MainObjectButton = enemy1MainObject;
+            ec1.ActionLabel = enemyActionLabel1;
+            ec1.labelName = enemy1Name;
+            ec1.labelCurrentLifePoint = enemy1Life;
+            ec1.meterCurrentLifePoint = enemy1LifeMeter;
+            ec1.labelCurrentManaPoint = null;
+            ec1.meterCurrentManaPoint = null;
+            ec1.labelCurrentSkillPoint = null;
+            ec1.meterCurrentSkillPoint = null;
+            ec1.labelCurrentInstantPoint = enemy1Instant;
+            ec1.meterCurrentInstantPoint = enemy1InstantMeter;
+            ec1.labelCurrentSpecialInstant = enemy1SpecialInstant;
+            ec1.meterCurrentSpecialInstant = enemy1SpecialInstantMeter;
+            ec1.DamagePanel = enemy1DamagePanel;
+            ec1.DamageLabel = enemy1Damage;
+            ec1.CriticalLabel = enemy1Critical;
 
-            this.ec2 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec2.Initialize(GroundOne.enemyName2);
-            this.ec2.CurrentCommand = Database.ATTACK_EN;
-            this.ec2.CurrentInstantPoint = 0;
-            this.ec2.MainFaceArrow = this.enemy2Arrow;
-            this.ec2.MainObjectButton = this.enemy2MainObject;
-            this.ec2.ActionLabel = this.enemyActionLabel2;
-            this.ec2.labelName = this.enemy2Name;
-            this.ec2.labelCurrentLifePoint = this.enemy2Life;
-            this.ec2.meterCurrentLifePoint = this.enemy2LifeMeter;
-            this.ec2.labelCurrentManaPoint = null;
-            this.ec2.meterCurrentManaPoint = null;
-            this.ec2.labelCurrentSkillPoint = null;
-            this.ec2.meterCurrentSkillPoint = null;
-            this.ec2.labelCurrentInstantPoint = this.enemy2Instant;
-            this.ec2.meterCurrentInstantPoint = this.enemy2InstantMeter;
-            this.ec2.DamagePanel = this.enemy2DamagePanel;
-            this.ec2.DamageLabel = this.enemy2Damage;
-            this.ec2.CriticalLabel = this.enemy2Critical;
+            GameObject baseObj2 = new GameObject("enemyObj2");
+            ec2 = baseObj2.AddComponent<TruthEnemyCharacter>();
+            ec2.Initialize(GroundOne.enemyName2);
+            ec2.CurrentCommand = Database.ATTACK_EN;
+            ec2.CurrentInstantPoint = 0;
+            ec2.MainFaceArrow = enemy2Arrow;
+            ec2.MainObjectButton = enemy2MainObject;
+            ec2.ActionLabel = enemyActionLabel2;
+            ec2.labelName = enemy2Name;
+            ec2.labelCurrentLifePoint = enemy2Life;
+            ec2.meterCurrentLifePoint = enemy2LifeMeter;
+            ec2.labelCurrentManaPoint = null;
+            ec2.meterCurrentManaPoint = null;
+            ec2.labelCurrentSkillPoint = null;
+            ec2.meterCurrentSkillPoint = null;
+            ec2.labelCurrentInstantPoint = enemy2Instant;
+            ec2.meterCurrentInstantPoint = enemy2InstantMeter;
+            ec2.DamagePanel = enemy2DamagePanel;
+            ec2.DamageLabel = enemy2Damage;
+            ec2.CriticalLabel = enemy2Critical;
 
-            this.ec3 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec3.Initialize(GroundOne.enemyName3);
-            this.ec3.CurrentCommand = Database.PROTECTION;
-            this.ec3.CurrentInstantPoint = 0;
-            this.ec3.MainFaceArrow = this.enemy3Arrow;
-            this.ec3.MainObjectButton = this.enemy3MainObject;
-            this.ec3.ActionLabel = this.enemyActionLabel3;
-            this.ec3.labelName = this.enemy3Name;
-            this.ec3.labelCurrentLifePoint = this.enemy3Life;
-            this.ec3.meterCurrentLifePoint = this.enemy3LifeMeter;
-            this.ec3.labelCurrentManaPoint = null;
-            this.ec3.meterCurrentManaPoint = null;
-            this.ec3.labelCurrentSkillPoint = null;
-            this.ec3.meterCurrentSkillPoint = null;
-            this.ec3.labelCurrentInstantPoint = this.enemy3Instant;
-            this.ec3.meterCurrentInstantPoint = this.enemy3InstantMeter;
-            this.ec3.DamagePanel = this.enemy3DamagePanel;
-            this.ec3.DamageLabel = this.enemy3Damage;
-            this.ec3.CriticalLabel = this.enemy3Critical;
+            GameObject baseObj3 = new GameObject("enemyObj3");
+            ec3 = baseObj3.AddComponent<TruthEnemyCharacter>();
+            ec3.Initialize(GroundOne.enemyName3);
+            ec3.CurrentCommand = Database.PROTECTION;
+            ec3.CurrentInstantPoint = 0;
+            ec3.MainFaceArrow = enemy3Arrow;
+            ec3.MainObjectButton = enemy3MainObject;
+            ec3.ActionLabel = enemyActionLabel3;
+            ec3.labelName = enemy3Name;
+            ec3.labelCurrentLifePoint = enemy3Life;
+            ec3.meterCurrentLifePoint = enemy3LifeMeter;
+            ec3.labelCurrentManaPoint = null;
+            ec3.meterCurrentManaPoint = null;
+            ec3.labelCurrentSkillPoint = null;
+            ec3.meterCurrentSkillPoint = null;
+            ec3.labelCurrentInstantPoint = enemy3Instant;
+            ec3.meterCurrentInstantPoint = enemy3InstantMeter;
+            ec3.DamagePanel = enemy3DamagePanel;
+            ec3.DamageLabel = enemy3Damage;
+            ec3.CriticalLabel = enemy3Critical;
+
+            SetupBuffElement(GroundOne.MC, ref pbBuffPlayer1);
+            SetupBuffElement(GroundOne.SC, ref pbBuffPlayer2);
+            SetupBuffElement(GroundOne.TC, ref pbBuffPlayer3);
+            SetupBuffElement(ec1, ref pbBuffEnemy1);
+            SetupBuffElement(ec2, ref pbBuffEnemy2);
+            SetupBuffElement(ec3, ref pbBuffEnemy3);
 
             if (GroundOne.WE.AvailableFirstCharacter == false)
             {
@@ -542,7 +551,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer1.SetActive(true);
-                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1Panel, player1ActionPanel, player1MainObjectBack, player1MainObject, GroundOne.MC.PlayerBattleTargetColor1, player1Arrow, null, null, player1Damage, player1Critical, pbBuffPlayer1, KeyNum1, IsSorcery1);
+                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1Panel, player1ActionPanel, player1MainObjectBack, player1MainObject, GroundOne.MC.PlayerBattleTargetColor1, player1Arrow, null, null, player1Damage, player1Critical, ref pbBuffPlayer1, KeyNum1, IsSorcery1);
             }
             if (GroundOne.WE.AvailableSecondCharacter == false || GroundOne.DuelMode)
             {
@@ -551,7 +560,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer2.SetActive(true);
-                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2Panel, player2ActionPanel, player2MainObjectBack, player2MainObject, GroundOne.SC.PlayerBattleTargetColor1, player2Arrow, null, null, player2Damage, player2Critical, pbBuffPlayer2, KeyNum2, IsSorcery2);
+                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2Panel, player2ActionPanel, player2MainObjectBack, player2MainObject, GroundOne.SC.PlayerBattleTargetColor1, player2Arrow, null, null, player2Damage, player2Critical, ref pbBuffPlayer2, KeyNum2, IsSorcery2);
             }
 
             if (GroundOne.WE.AvailableThirdCharacter == false || GroundOne.DuelMode)
@@ -561,7 +570,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer3.SetActive(true);
-                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, player3LifeMeter, player3Mana, player3ManaMeter, player3Skill, player3SkillMeter, player3Instant, player3InstantMeter, player3SpecialInstant, player3SpecialInstantMeter, ActionButton3, playerActionLabel3, BuffPanel3, player3Panel, player3ActionPanel, player3MainObjectBack, player3MainObject, GroundOne.TC.PlayerBattleTargetColor1, player3Arrow, null, null, player3Damage, player3Critical, pbBuffPlayer3, KeyNum3, IsSorcery3);
+                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, player3LifeMeter, player3Mana, player3ManaMeter, player3Skill, player3SkillMeter, player3Instant, player3InstantMeter, player3SpecialInstant, player3SpecialInstantMeter, ActionButton3, playerActionLabel3, BuffPanel3, player3Panel, player3ActionPanel, player3MainObjectBack, player3MainObject, GroundOne.TC.PlayerBattleTargetColor1, player3Arrow, null, null, player3Damage, player3Critical, ref pbBuffPlayer3, KeyNum3, IsSorcery3);
             }
 
             if (GroundOne.enemyName1 == String.Empty)
@@ -572,7 +581,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy1.SetActive(true);
-                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, null, null, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, null, null, enemy1Damage, enemy1Critical, pbBuffEnemy1, KeyNumE1, IsSorceryE1);
+                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, null, null, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, null, null, enemy1Damage, enemy1Critical, ref pbBuffEnemy1, KeyNumE1, IsSorceryE1);
             }
 
             if (GroundOne.enemyName2 == String.Empty || GroundOne.DuelMode)
@@ -583,7 +592,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy2.SetActive(true);
-                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, ActionButtonE2, enemyActionLabel2, PanelBuffEnemy2, null, null, enemy2MainObjectBack, enemy2MainObject, new Color(108.0f / 255.0f, 118.0f / 255.0f, 0.0f), enemy2Arrow, null, null, enemy2Damage, enemy2Critical, pbBuffEnemy2, KeyNumE2, IsSorceryE2);
+                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, ActionButtonE2, enemyActionLabel2, PanelBuffEnemy2, null, null, enemy2MainObjectBack, enemy2MainObject, new Color(108.0f / 255.0f, 118.0f / 255.0f, 0.0f), enemy2Arrow, null, null, enemy2Damage, enemy2Critical, ref pbBuffEnemy2, KeyNumE2, IsSorceryE2);
             }
 
             if (GroundOne.enemyName3 == String.Empty || GroundOne.DuelMode)
@@ -594,7 +603,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy3.SetActive(true);
-                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3FullName, enemy3Life, enemy3LifeMeter, enemy3Mana, enemy3ManaMeter, enemy3Skill, enemy3SkillMeter, enemy3Instant, enemy3InstantMeter, enemy2SpecialInstant, enemy3SpecialInstantMeter, ActionButtonE3, enemyActionLabel3, PanelBuffEnemy3, null, null, enemy3MainObjectBack, enemy3MainObject, new Color(69.0f / 255.0f, 99.0f / 255.0f, 129.0f / 255.0f), enemy3Arrow, null, null, enemy3Damage, enemy3Critical, pbBuffEnemy3, KeyNumE3, IsSorceryE3);
+                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3FullName, enemy3Life, enemy3LifeMeter, enemy3Mana, enemy3ManaMeter, enemy3Skill, enemy3SkillMeter, enemy3Instant, enemy3InstantMeter, enemy2SpecialInstant, enemy3SpecialInstantMeter, ActionButtonE3, enemyActionLabel3, PanelBuffEnemy3, null, null, enemy3MainObjectBack, enemy3MainObject, new Color(69.0f / 255.0f, 99.0f / 255.0f, 129.0f / 255.0f), enemy3Arrow, null, null, enemy3Damage, enemy3Critical, ref pbBuffEnemy3, KeyNumE3, IsSorceryE3);
             }
 
             for (int ii = 0; ii < this.ActiveList.Count; ii++)
@@ -613,7 +622,7 @@ namespace DungeonPlayer
             UpdateUseItemGauge();
             //tapFirstChara ();
 
-            if (this.ec1 != null && this.ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+            if (ec1 != null && ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
             {
                 groupFieldBuff.SetActive(true);
             }
@@ -622,55 +631,55 @@ namespace DungeonPlayer
                 groupFieldBuff.SetActive(false);
             }
 
-            if (this.ec1 != null)
+            if (ec1 != null)
             {
                 // ヴェルゼ最終戦闘２
-                if (this.ec1.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                if (ec1.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
                 }
                 // ヴェルゼ最終戦闘
-                else if (this.ec1.FirstName == Database.ENEMY_LAST_VERZE_ARTIE)
+                else if (ec1.FirstName == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
                 }
                 // DUEL最終戦
-                else if (this.ec1.FirstName == Database.ENEMY_LAST_RANA_AMILIA ||
-                         this.ec1.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
-                         this.ec1.FirstName == Database.ENEMY_LAST_OL_LANDIS)
+                else if (ec1.FirstName == Database.ENEMY_LAST_RANA_AMILIA ||
+                         ec1.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
+                         ec1.FirstName == Database.ENEMY_LAST_OL_LANDIS)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
                 }
                 // ボス
-                else if ((this.ec1.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
-                    (this.ec1.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE) ||
-                    (this.ec1.FirstName == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN) ||
-                    (this.ec1.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED) ||
-                    (this.ec1.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE) ||
-                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
-                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA) ||
-                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING) ||
-                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEVIATHAN) ||
-                    (this.ec1.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
-                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1) ||
-                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2) ||
-                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                else if ((ec1.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
+                    (ec1.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE) ||
+                    (ec1.FirstName == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN) ||
+                    (ec1.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED) ||
+                    (ec1.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE) ||
+                    (ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
+                    (ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA) ||
+                    (ec1.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING) ||
+                    (ec1.FirstName == Database.ENEMY_BOSS_LEVIATHAN) ||
+                    (ec1.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
+                    (ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1) ||
+                    (ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2) ||
+                    (ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
                     )
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM04, Database.BGM04LoopBegin);
                 }
                 // 初期DUELオル・ランディス
-                else if (this.ec1.FirstName == Database.DUEL_OL_LANDIS)
+                else if (ec1.FirstName == Database.DUEL_OL_LANDIS)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
                 }
                 // 支配竜達の呼び声
-                else if (this.ec1.Rare == TruthEnemyCharacter.RareString.Purple)
+                else if (ec1.Rare == TruthEnemyCharacter.RareString.Purple)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM18, Database.BGM18LoopBegin);
                 }
                 // 最終ボス：支配竜
-                else if (this.ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                else if (ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM05, Database.BGM05LoopBegin);
                 }
@@ -1130,7 +1139,7 @@ namespace DungeonPlayer
             GameObject buffPanel, GameObject ManaSkillPanel, GameObject ActionPanel,
             GameObject mainObjectBack, Button mainObject, Color mainColor, Image mainFaceArrow, Image shadowFaceArrow2, Image shadowFaceArrow3,
             Text damageLabel, Text criticalLabel,
-            TruthImage[] buffList,
+            ref TruthImage[] buffList,
             Text[] keyNum,
             Image[] sorceryMark
             )
@@ -1238,196 +1247,7 @@ namespace DungeonPlayer
             player.DamageLabel = damageLabel;
             player.CriticalLabel = criticalLabel;
 
-            #region "BUFFリストを登録"
-            int num = 0;
-            player.pbProtection = buffList[num]; buffList[num].ImageName = Database.PROTECTION; num++;
-            player.pbAbsorbWater = buffList[num]; buffList[num].ImageName = Database.ABSORB_WATER; num++;
-            player.pbShadowPact = buffList[num]; buffList[num].ImageName = Database.SHADOW_PACT; num++;
-            player.pbFlameAura = buffList[num]; buffList[num].ImageName = Database.FLAME_AURA; num++;
-            player.pbHeatBoost = buffList[num]; buffList[num].ImageName = Database.HEAT_BOOST; num++;
-            player.pbSaintPower = buffList[num]; buffList[num].ImageName = Database.SAINT_POWER; num++;
-            player.pbWordOfLife = buffList[num]; buffList[num].ImageName = Database.WORD_OF_LIFE; num++;
-            player.pbGlory = buffList[num]; buffList[num].ImageName = Database.GLORY; num++;
-            player.pbVoidExtraction = buffList[num]; buffList[num].ImageName = Database.VOID_EXTRACTION; num++;
-            player.pbOneImmunity = buffList[num]; buffList[num].ImageName = Database.ONE_IMMUNITY; num++;
-            player.pbGaleWind = buffList[num]; buffList[num].ImageName = Database.GALE_WIND; num++;
-            player.pbWordOfFortune = buffList[num]; buffList[num].ImageName = Database.WORD_OF_FORTUNE; num++;
-            player.pbBloodyVengeance = buffList[num]; buffList[num].ImageName = Database.BLOODY_VENGEANCE; num++;
-            player.pbRiseOfImage = buffList[num]; buffList[num].ImageName = Database.RISE_OF_IMAGE; num++;
-            player.pbImmortalRave = buffList[num]; buffList[num].ImageName = Database.IMMORTAL_RAVE; num++;
-            player.pbHighEmotionality = buffList[num]; buffList[num].ImageName = Database.HIGH_EMOTIONALITY; num++;
-            player.pbBlackContract = buffList[num]; buffList[num].ImageName = Database.BLACK_CONTRACT; num++;
-            player.pbAetherDrive = buffList[num]; buffList[num].ImageName = Database.AETHER_DRIVE; num++;
-            player.pbEternalPresence = buffList[num]; buffList[num].ImageName = Database.ETERNAL_PRESENCE; num++;
-            player.pbMirrorImage = buffList[num]; buffList[num].ImageName = Database.MIRROR_IMAGE; num++;
-            player.pbDeflection = buffList[num]; buffList[num].ImageName = Database.DEFLECTION; num++;
-            player.pbTruthVision = buffList[num]; buffList[num].ImageName = Database.TRUTH_VISION; num++;
-            player.pbStanceOfFlow = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_FLOW; num++;
-            player.pbPromisedKnowledge = buffList[num]; buffList[num].ImageName = Database.PROMISED_KNOWLEDGE; num++;
-            player.pbStanceOfDeath = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DEATH; num++;
-            player.pbAntiStun = buffList[num]; buffList[num].ImageName = Database.ANTI_STUN; num++;
-
-            player.pbStanceOfEyes = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_EYES; num++;
-            player.pbNegate = buffList[num]; buffList[num].ImageName = Database.NEGATE; num++;
-            player.pbCounterAttack = buffList[num]; buffList[num].ImageName = Database.COUNTER_ATTACK; num++;
-            player.pbStanceOfStanding = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_STANDING; num++;
-
-            player.pbPainfulInsanity = buffList[num]; buffList[num].ImageName = Database.PAINFUL_INSANITY; num++;
-            player.pbDamnation = buffList[num]; buffList[num].ImageName = Database.DAMNATION; num++;
-            player.pbAbsoluteZero = buffList[num]; buffList[num].ImageName = Database.ABSOLUTE_ZERO; num++;
-            player.pbNothingOfNothingness = buffList[num]; buffList[num].ImageName = Database.NOTHING_OF_NOTHINGNESS; num++;
-
-            player.pbPoison = buffList[num]; buffList[num].ImageName = Database.EFFECT_POISON; num++;
-            player.pbStun = buffList[num]; buffList[num].ImageName = Database.EFFECT_STUN; num++;
-            player.pbSilence = buffList[num]; buffList[num].ImageName = Database.EFFECT_SILENCE; num++;
-            player.pbParalyze = buffList[num]; buffList[num].ImageName = Database.EFFECT_PARALYZE; num++;
-            player.pbFrozen = buffList[num]; buffList[num].ImageName = Database.EFFECT_FROZEN; num++;
-            player.pbTemptation = buffList[num]; buffList[num].ImageName = Database.EFFECT_TEMPTATION; num++;
-            player.pbNoResurrection = buffList[num]; buffList[num].ImageName = Database.EFFECT_NORESURRECTION; num++;
-            player.pbSlow = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLOW; num++;
-            player.pbBlind = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLIND; num++;
-            player.pbSlip = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLIP; num++;
-            player.pbNoGainLife = buffList[num]; buffList[num].ImageName = Database.EFFECT_NOGAIN_LIFE; num++;
-
-            player.pbPhysicalAttackUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_UP; num++;
-            player.pbPhysicalAttackDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_DOWN; num++;
-            player.pbPhysicalDefenseUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_UP; num++;
-            player.pbPhysicalDefenseDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_DOWN; num++;
-            player.pbMagicAttackUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_UP; num++;
-            player.pbMagicAttackDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_DOWN; num++;
-            player.pbMagicDefenseUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_UP; num++;
-            player.pbMagicDefenseDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_DOWN; num++;
-            player.pbSpeedUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_UP; num++;
-            player.pbSpeedDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_DOWN; num++;
-            player.pbReactionUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_UP; num++;
-            player.pbReactionDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_DOWN; num++;
-            player.pbPotentialUp = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_UP; num++;
-            player.pbPotentialDown = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_DOWN; num++;
-
-            player.pbStrengthUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STRENGTH_UP; num++;
-            player.pbAgilityUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_AGILITY_UP; num++;
-            player.pbIntelligenceUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_INTELLIGENCE_UP; num++;
-            player.pbStaminaUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STAMINA_UP; num++;
-            player.pbMindUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_MIND_UP; num++;
-
-            player.pbResistLightUp = buffList[num]; buffList[num].ImageName = Database.RESIST_LIGHT_UP; num++;
-            player.pbResistShadowUp = buffList[num]; buffList[num].ImageName = Database.RESIST_SHADOW_UP; num++;
-            player.pbResistFireUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FIRE_UP; num++;
-            player.pbResistIceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_ICE_UP; num++;
-            player.pbResistForceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FORCE_UP; num++;
-            player.pbResistWillUp = buffList[num]; buffList[num].ImageName = Database.RESIST_WILL_UP; num++;
-
-            player.pbResistStun = buffList[num]; buffList[num].ImageName = Database.RESIST_STUN; num++;
-            player.pbResistSilence = buffList[num]; buffList[num].ImageName = Database.RESIST_SILENCE; num++;
-            player.pbResistPoison = buffList[num]; buffList[num].ImageName = Database.RESIST_POISON; num++;
-            player.pbResistTemptation = buffList[num]; buffList[num].ImageName = Database.RESIST_TEMPTATION; num++;
-            player.pbResistFrozen = buffList[num]; buffList[num].ImageName = Database.RESIST_FROZEN; num++;
-            player.pbResistParalyze = buffList[num]; buffList[num].ImageName = Database.RESIST_PARALYZE; num++;
-            player.pbResistNoResurrection = buffList[num]; buffList[num].ImageName = Database.RESIST_NORESURRECTION; num++;
-            player.pbResistSlow = buffList[num]; buffList[num].ImageName = Database.RESIST_SLOW; num++;
-            player.pbResistBlind = buffList[num]; buffList[num].ImageName = Database.RESIST_BLIND; num++;
-            player.pbResistSlip = buffList[num]; buffList[num].ImageName = Database.RESIST_SLIP; num++;
-
-            player.pbPsychicTrance = buffList[num]; buffList[num].ImageName = Database.PSYCHIC_TRANCE; num++;
-            player.pbBlindJustice = buffList[num]; buffList[num].ImageName = Database.BLIND_JUSTICE; num++;
-            player.pbTranscendentWish = buffList[num]; buffList[num].ImageName = Database.TRANSCENDENT_WISH; num++;
-            player.pbFlashBlaze = buffList[num]; buffList[num].ImageName = Database.FLASH_BLAZE; num++;
-            player.pbSkyShield = buffList[num]; buffList[num].ImageName = Database.SKY_SHIELD; num++;
-            player.pbEverDroplet = buffList[num]; buffList[num].ImageName = Database.EVER_DROPLET; num++;
-            player.pbHolyBreaker = buffList[num]; buffList[num].ImageName = Database.HOLY_BREAKER; num++;
-            player.pbStarLightning = buffList[num]; buffList[num].ImageName = Database.STAR_LIGHTNING; num++;
-            player.pbBlackFire = buffList[num]; buffList[num].ImageName = Database.BLACK_FIRE; num++;
-            player.pbWordOfMalice = buffList[num]; buffList[num].ImageName = Database.WORD_OF_MALICE; num++;
-            player.pbDarkenField = buffList[num]; buffList[num].ImageName = Database.DARKEN_FIELD; num++;
-            player.pbFrozenAura = buffList[num]; buffList[num].ImageName = Database.FROZEN_AURA; num++;
-            player.pbEnrageBlast = buffList[num]; buffList[num].ImageName = Database.ENRAGE_BLAST; num++;
-            player.pbImmolate = buffList[num]; buffList[num].ImageName = Database.IMMOLATE; num++;
-            player.pbVanishWave = buffList[num]; buffList[num].ImageName = Database.VANISH_WAVE; num++;
-            player.pbSeventhMagic = buffList[num]; buffList[num].ImageName = Database.SEVENTH_MAGIC; num++;
-            player.pbStanceOfDouble = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DOUBLE; num++;
-            player.pbSwiftStep = buffList[num]; buffList[num].ImageName = Database.SWIFT_STEP; num++;
-            player.pbColorlessMove = buffList[num]; buffList[num].ImageName = Database.COLORLESS_MOVE; num++;
-            player.pbFutureVision = buffList[num]; buffList[num].ImageName = Database.FUTURE_VISION; num++;
-            player.pbReflexSpirit = buffList[num]; buffList[num].ImageName = Database.REFLEX_SPIRIT; num++;
-            player.pbTrustSilence = buffList[num]; buffList[num].ImageName = Database.TRUST_SILENCE; num++;
-            player.pbStanceOfMystic = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_MYSTIC; num++;
-            player.pbPreStunning = buffList[num]; buffList[num].ImageName = Database.EFFECT_PRESTUNNING; num++;
-            player.pbBlinded = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLINDED; num++;
-            player.pbConcussiveHit = buffList[num]; buffList[num].ImageName = Database.CONCUSSIVE_HIT; num++;
-            player.pbOnslaughtHit = buffList[num]; buffList[num].ImageName = Database.ONSLAUGHT_HIT; num++;
-            player.pbImpulseHit = buffList[num]; buffList[num].ImageName = Database.IMPULSE_HIT; num++;
-            player.pbExaltedField = buffList[num]; buffList[num].ImageName = Database.EXALTED_FIELD; num++;
-            player.pbRisingAura = buffList[num]; buffList[num].ImageName = Database.RISING_AURA; num++;
-            player.pbBlazingField = buffList[num]; buffList[num].ImageName = Database.BLAZING_FIELD; num++;
-            player.pbPhantasmalWind = buffList[num]; buffList[num].ImageName = Database.PHANTASMAL_WIND; num++;
-            player.pbParadoxImage = buffList[num]; buffList[num].ImageName = Database.PARADOX_IMAGE; num++;
-            player.pbStaticBarrier = buffList[num]; buffList[num].ImageName = Database.STATIC_BARRIER; num++;
-            player.pbAscensionAura = buffList[num]; buffList[num].ImageName = Database.ASCENSION_AURA; num++;
-            player.pbNourishSense = buffList[num]; buffList[num].ImageName = Database.NOURISH_SENSE; num++;
-            player.pbVigorSense = buffList[num]; buffList[num].ImageName = Database.VIGOR_SENSE; num++;
-            player.pbOneAuthority = buffList[num]; buffList[num].ImageName = Database.ONE_AUTHORITY; num++;
-
-            player.pbSyutyuDanzetsu = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_EIN; num++;
-            player.pbJunkanSeiyaku = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_RANA; num++;
-
-            player.pbHymnContract = buffList[num]; buffList[num].ImageName = Database.HYMN_CONTRACT; num++;
-            player.pbSigilOfHomura = buffList[num]; buffList[num].ImageName = Database.SIGIL_OF_HOMURA; num++;
-            player.pbAusterityMatrix = buffList[num]; buffList[num].ImageName = Database.AUSTERITY_MATRIX; num++;
-            player.pbRedDragonWill = buffList[num]; buffList[num].ImageName = Database.RED_DRAGON_WILL; num++;
-            player.pbBlueDragonWill = buffList[num]; buffList[num].ImageName = Database.BLUE_DRAGON_WILL; num++;
-            player.pbEclipseEnd = buffList[num]; buffList[num].ImageName = Database.ECLIPSE_END; num++;
-            player.pbTimeStop = buffList[num]; buffList[num].ImageName = Database.TIME_STOP; num++;
-            player.pbSinFortune = buffList[num]; buffList[num].ImageName = Database.SIN_FORTUNE; num++;
-
-            player.pbLightUp = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_UP; num++;
-            player.pbLightDown = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_DOWN; num++;
-            player.pbShadowUp = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_UP; num++;
-            player.pbShadowDown = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_DOWN; num++;
-            player.pbFireUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_UP; num++;
-            player.pbFireDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_DOWN; num++;
-            player.pbIceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_UP; num++;
-            player.pbIceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_DOWN; num++;
-            player.pbForceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_UP; num++;
-            player.pbForceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_DOWN; num++;
-            player.pbWillUp = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_UP; num++;
-            player.pbWillDown = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_DOWN; num++;
-
-            player.pbAfterReviveHalf = buffList[num]; buffList[num].ImageName = Database.BUFF_DANZAI_KAGO; num++;
-            player.pbFireDamage2 = buffList[num]; buffList[num].ImageName = Database.BUFF_FIREDAMAGE2; num++;
-            player.pbBlackMagic = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_MAGIC; num++;
-            player.pbChaosDesperate = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOS_DESPERATE; num++;
-
-            player.pbFeltus = buffList[num]; buffList[num].ImageName = Database.BUFF_FELTUS; num++;
-            player.pbJuzaPhantasmal = buffList[num]; buffList[num].ImageName = Database.BUFF_JUZA_PHANTASMAL; num++;
-            player.pbEternalFateRing = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_FATE_RING; num++;
-            player.pbLightServant = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_SERVANT; num++;
-            player.pbShadowServant = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_SERVANT; num++;
-            player.pbAdilBlueBurn = buffList[num]; buffList[num].ImageName = Database.BUFF_ADIL_BLUE_BURN; num++;
-            player.pbMazeCube = buffList[num]; buffList[num].ImageName = Database.BUFF_MAZE_CUBE; num++;
-            player.pbShadowBible = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_BIBLE; num++;
-            player.pbDetachmentOrb = buffList[num]; buffList[num].ImageName = Database.BUFF_DETACHMENT_ORB; num++;
-            player.pbDevilSummonerTome = buffList[num]; buffList[num].ImageName = Database.BUFF_DEVIL_SUMMONER_TOME; num++;
-            player.pbVoidHymnsonia = buffList[num]; buffList[num].ImageName = Database.BUFF_VOID_HYMNSONIA; num++;
-
-            player.pbIchinaruHomura = buffList[num]; buffList[num].ImageName = Database.BUFF_ICHINARU_HOMURA; num++;
-            player.pbAbyssFire = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_FIRE; num++;
-            player.pbLightAndShadow = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_AND_SHADOW; num++;
-            player.pbEternalDroplet = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_DROPLET; num++;
-            player.pbAusterityMatrixOmega = buffList[num]; buffList[num].ImageName = Database.BUFF_AUSTERITY_MATRIX_OMEGA; num++;
-            player.pbVoiceOfAbyss = buffList[num]; buffList[num].ImageName = Database.BUFF_VOICE_OF_ABYSS; num++;
-            player.pbAbyssWill = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_WILL; num++;
-            player.pbTheAbyssWall = buffList[num]; buffList[num].ImageName = Database.BUFF_THE_ABYSS_WALL; num++;
-
-            player.pbSagePotionMini = buffList[num]; buffList[num].ImageName = Database.BUFF_SAGE_POTION_MINI; num++;
-            player.pbGenseiTaima = buffList[num]; buffList[num].ImageName = Database.BUFF_GENSEI_TAIMA; num++;
-            player.pbShiningAether = buffList[num]; buffList[num].ImageName = Database.BUFF_SHINING_AETHER; num++;
-            player.pbBlackElixir = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_ELIXIR; num++;
-            player.pbElementalSeal = buffList[num]; buffList[num].ImageName = Database.BUFF_ELEMENTAL_SEAL; num++;
-            player.pbColorlessAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORLESS_ANTIDOTE; num++;
-
-            player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
-            player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
-            #endregion
+            txtBattleMessage.text = "bufflist: " + buffList.Length.ToString();
 
             // 登録を反映
             player.BuffElement = buffList;
@@ -1776,21 +1596,6 @@ namespace DungeonPlayer
                         {
                             player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(260, 180, 0);
                             player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(145, 110, 0);
-
-                            string[] fonts = UnityEditor.AssetDatabase.FindAssets("t:Font", new string[] { "Assets/Fonts" });
-                            for (int ii = 0; ii < fonts.Length; ii++)
-                            {
-                                string fontName = AssetDatabase.GUIDToAssetPath(fonts[ii]);
-                                Debug.Log("fontName: " + fontName);
-                                if (fontName.Contains("衡山毛筆フォント"))
-                                {
-                                    Font font = AssetDatabase.LoadAssetAtPath<Font>(fontName);
-                                    Debug.Log("font: " + font);
-                                    player.labelName.font = font;
-                                    break;
-                                }
-                            }
-
                             player.labelName.fontSize = 70;
                             player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 163, 0);
                             player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 143);
@@ -1963,29 +1768,29 @@ namespace DungeonPlayer
         /// <param name="pbBuff"></param>
         /// <param name="buffPanel"></param>
         /// <param name="ii"></param>
-        void SetupBuff(TruthImage[] pbBuff, GameObject buffPanel, int ii)
+        void SetupBuff(ref TruthImage[] pbBuff, GameObject buffPanel, int ii)
         {
-            GameObject baseObj = new GameObject("object");
-            EventTrigger trigger = baseObj.AddComponent<EventTrigger>();
+            GameObject baseObj = new GameObject("panelObj" + ii.ToString());
+            //EventTrigger trigger = baseObj.AddComponent<EventTrigger>();
             
-            EventTrigger.Entry entry2 = new EventTrigger.Entry();
-            entry2.eventID = EventTriggerType.PointerExit;
-            entry2.callback.AddListener((x) => PointerExit());
-            trigger.triggers.Add(entry2);
+            //EventTrigger.Entry entry2 = new EventTrigger.Entry();
+            //entry2.eventID = EventTriggerType.PointerExit;
+            //entry2.callback.AddListener((x) => PointerExit());
+            //trigger.triggers.Add(entry2);
 
-            EventTrigger.Entry entry3 = new EventTrigger.Entry();
-            entry3.eventID = EventTriggerType.Move;
-            entry3.callback.AddListener((x) => PointerMove());
-            trigger.triggers.Add(entry3);
+            //EventTrigger.Entry entry3 = new EventTrigger.Entry();
+            //entry3.eventID = EventTriggerType.Move;
+            //entry3.callback.AddListener((x) => PointerMove());
+            //trigger.triggers.Add(entry3);
 
             pbBuff[ii] = baseObj.AddComponent<TruthImage>();
 
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerEnter;
-            entry.callback.AddListener((x) => PointerEnter(pbBuff[ii]));
-            trigger.triggers.Add(entry);
+            //EventTrigger.Entry entry = new EventTrigger.Entry();
+            //entry.eventID = EventTriggerType.PointerEnter;
+            //entry.callback.AddListener((x) => PointerEnter(pbBuff[ii]));
+            //trigger.triggers.Add(entry);
             
-            pbBuff[ii].name = "buff" + ii; // change unity
+            //pbBuff[ii].name = "buff" + ii; // change unity
             pbBuff[ii].BuffMode = TruthImage.buffType.Small;
             pbBuff[ii].rectTransform.anchorMin = new Vector2(1.0f, 0.5f);
             pbBuff[ii].rectTransform.anchorMax = new Vector2(1.0f, 0.5f);
@@ -1994,6 +1799,200 @@ namespace DungeonPlayer
             pbBuff[ii].rectTransform.anchoredPosition = new Vector2(Database.BUFFPANEL_BUFF_WIDTH, 0);
             pbBuff[ii].gameObject.SetActive(false);
             pbBuff[ii].transform.SetParent(buffPanel.transform, false);
+        }
+
+        private void SetupBuffElement(MainCharacter player, ref TruthImage[] buffList)
+        {
+            #region "BUFFリストを登録"
+            int num = 0;
+            player.pbProtection = buffList[num]; buffList[num].ImageName = Database.PROTECTION; num++;
+            player.pbAbsorbWater = buffList[num]; buffList[num].ImageName = Database.ABSORB_WATER; num++;
+            player.pbShadowPact = buffList[num]; buffList[num].ImageName = Database.SHADOW_PACT; num++;
+            player.pbFlameAura = buffList[num]; buffList[num].ImageName = Database.FLAME_AURA; num++;
+            player.pbHeatBoost = buffList[num]; buffList[num].ImageName = Database.HEAT_BOOST; num++;
+            player.pbSaintPower = buffList[num]; buffList[num].ImageName = Database.SAINT_POWER; num++;
+            player.pbWordOfLife = buffList[num]; buffList[num].ImageName = Database.WORD_OF_LIFE; num++;
+            player.pbGlory = buffList[num]; buffList[num].ImageName = Database.GLORY; num++;
+            player.pbVoidExtraction = buffList[num]; buffList[num].ImageName = Database.VOID_EXTRACTION; num++;
+            player.pbOneImmunity = buffList[num]; buffList[num].ImageName = Database.ONE_IMMUNITY; num++;
+            player.pbGaleWind = buffList[num]; buffList[num].ImageName = Database.GALE_WIND; num++;
+            player.pbWordOfFortune = buffList[num]; buffList[num].ImageName = Database.WORD_OF_FORTUNE; num++;
+            player.pbBloodyVengeance = buffList[num]; buffList[num].ImageName = Database.BLOODY_VENGEANCE; num++;
+            player.pbRiseOfImage = buffList[num]; buffList[num].ImageName = Database.RISE_OF_IMAGE; num++;
+            player.pbImmortalRave = buffList[num]; buffList[num].ImageName = Database.IMMORTAL_RAVE; num++;
+            player.pbHighEmotionality = buffList[num]; buffList[num].ImageName = Database.HIGH_EMOTIONALITY; num++;
+            player.pbBlackContract = buffList[num]; buffList[num].ImageName = Database.BLACK_CONTRACT; num++;
+            player.pbAetherDrive = buffList[num]; buffList[num].ImageName = Database.AETHER_DRIVE; num++;
+            player.pbEternalPresence = buffList[num]; buffList[num].ImageName = Database.ETERNAL_PRESENCE; num++;
+            player.pbMirrorImage = buffList[num]; buffList[num].ImageName = Database.MIRROR_IMAGE; num++;
+            player.pbDeflection = buffList[num]; buffList[num].ImageName = Database.DEFLECTION; num++;
+            player.pbTruthVision = buffList[num]; buffList[num].ImageName = Database.TRUTH_VISION; num++;
+            player.pbStanceOfFlow = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_FLOW; num++;
+            player.pbPromisedKnowledge = buffList[num]; buffList[num].ImageName = Database.PROMISED_KNOWLEDGE; num++;
+            player.pbStanceOfDeath = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DEATH; num++;
+            player.pbAntiStun = buffList[num]; buffList[num].ImageName = Database.ANTI_STUN; num++;
+
+            player.pbStanceOfEyes = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_EYES; num++;
+            player.pbNegate = buffList[num]; buffList[num].ImageName = Database.NEGATE; num++;
+            player.pbCounterAttack = buffList[num]; buffList[num].ImageName = Database.COUNTER_ATTACK; num++;
+            player.pbStanceOfStanding = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_STANDING; num++;
+
+            player.pbPainfulInsanity = buffList[num]; buffList[num].ImageName = Database.PAINFUL_INSANITY; num++;
+            player.pbDamnation = buffList[num]; buffList[num].ImageName = Database.DAMNATION; num++;
+            player.pbAbsoluteZero = buffList[num]; buffList[num].ImageName = Database.ABSOLUTE_ZERO; num++;
+            player.pbNothingOfNothingness = buffList[num]; buffList[num].ImageName = Database.NOTHING_OF_NOTHINGNESS; num++;
+
+            player.pbPoison = buffList[num]; buffList[num].ImageName = Database.EFFECT_POISON; num++;
+            player.pbStun = buffList[num]; buffList[num].ImageName = Database.EFFECT_STUN; num++;
+            player.pbSilence = buffList[num]; buffList[num].ImageName = Database.EFFECT_SILENCE; num++;
+            player.pbParalyze = buffList[num]; buffList[num].ImageName = Database.EFFECT_PARALYZE; num++;
+            player.pbFrozen = buffList[num]; buffList[num].ImageName = Database.EFFECT_FROZEN; num++;
+            player.pbTemptation = buffList[num]; buffList[num].ImageName = Database.EFFECT_TEMPTATION; num++;
+            player.pbNoResurrection = buffList[num]; buffList[num].ImageName = Database.EFFECT_NORESURRECTION; num++;
+            player.pbSlow = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLOW; num++;
+            player.pbBlind = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLIND; num++;
+            player.pbSlip = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLIP; num++;
+            player.pbNoGainLife = buffList[num]; buffList[num].ImageName = Database.EFFECT_NOGAIN_LIFE; num++;
+
+            player.pbPhysicalAttackUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_UP; num++;
+            player.pbPhysicalAttackDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_DOWN; num++;
+            player.pbPhysicalDefenseUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_UP; num++;
+            player.pbPhysicalDefenseDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_DOWN; num++;
+            player.pbMagicAttackUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_UP; num++;
+            player.pbMagicAttackDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_DOWN; num++;
+            player.pbMagicDefenseUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_UP; num++;
+            player.pbMagicDefenseDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_DOWN; num++;
+            player.pbSpeedUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_UP; num++;
+            player.pbSpeedDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_DOWN; num++;
+            player.pbReactionUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_UP; num++;
+            player.pbReactionDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_DOWN; num++;
+            player.pbPotentialUp = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_UP; num++;
+            player.pbPotentialDown = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_DOWN; num++;
+
+            player.pbStrengthUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STRENGTH_UP; num++;
+            player.pbAgilityUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_AGILITY_UP; num++;
+            player.pbIntelligenceUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_INTELLIGENCE_UP; num++;
+            player.pbStaminaUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STAMINA_UP; num++;
+            player.pbMindUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_MIND_UP; num++;
+
+            player.pbResistLightUp = buffList[num]; buffList[num].ImageName = Database.RESIST_LIGHT_UP; num++;
+            player.pbResistShadowUp = buffList[num]; buffList[num].ImageName = Database.RESIST_SHADOW_UP; num++;
+            player.pbResistFireUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FIRE_UP; num++;
+            player.pbResistIceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_ICE_UP; num++;
+            player.pbResistForceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FORCE_UP; num++;
+            player.pbResistWillUp = buffList[num]; buffList[num].ImageName = Database.RESIST_WILL_UP; num++;
+
+            player.pbResistStun = buffList[num]; buffList[num].ImageName = Database.RESIST_STUN; num++;
+            player.pbResistSilence = buffList[num]; buffList[num].ImageName = Database.RESIST_SILENCE; num++;
+            player.pbResistPoison = buffList[num]; buffList[num].ImageName = Database.RESIST_POISON; num++;
+            player.pbResistTemptation = buffList[num]; buffList[num].ImageName = Database.RESIST_TEMPTATION; num++;
+            player.pbResistFrozen = buffList[num]; buffList[num].ImageName = Database.RESIST_FROZEN; num++;
+            player.pbResistParalyze = buffList[num]; buffList[num].ImageName = Database.RESIST_PARALYZE; num++;
+            player.pbResistNoResurrection = buffList[num]; buffList[num].ImageName = Database.RESIST_NORESURRECTION; num++;
+            player.pbResistSlow = buffList[num]; buffList[num].ImageName = Database.RESIST_SLOW; num++;
+            player.pbResistBlind = buffList[num]; buffList[num].ImageName = Database.RESIST_BLIND; num++;
+            player.pbResistSlip = buffList[num]; buffList[num].ImageName = Database.RESIST_SLIP; num++;
+
+            player.pbPsychicTrance = buffList[num]; buffList[num].ImageName = Database.PSYCHIC_TRANCE; num++;
+            player.pbBlindJustice = buffList[num]; buffList[num].ImageName = Database.BLIND_JUSTICE; num++;
+            player.pbTranscendentWish = buffList[num]; buffList[num].ImageName = Database.TRANSCENDENT_WISH; num++;
+            player.pbFlashBlaze = buffList[num]; buffList[num].ImageName = Database.FLASH_BLAZE; num++;
+            player.pbSkyShield = buffList[num]; buffList[num].ImageName = Database.SKY_SHIELD; num++;
+            player.pbEverDroplet = buffList[num]; buffList[num].ImageName = Database.EVER_DROPLET; num++;
+            player.pbHolyBreaker = buffList[num]; buffList[num].ImageName = Database.HOLY_BREAKER; num++;
+            player.pbStarLightning = buffList[num]; buffList[num].ImageName = Database.STAR_LIGHTNING; num++;
+            player.pbBlackFire = buffList[num]; buffList[num].ImageName = Database.BLACK_FIRE; num++;
+            player.pbWordOfMalice = buffList[num]; buffList[num].ImageName = Database.WORD_OF_MALICE; num++;
+            player.pbDarkenField = buffList[num]; buffList[num].ImageName = Database.DARKEN_FIELD; num++;
+            player.pbFrozenAura = buffList[num]; buffList[num].ImageName = Database.FROZEN_AURA; num++;
+            player.pbEnrageBlast = buffList[num]; buffList[num].ImageName = Database.ENRAGE_BLAST; num++;
+            player.pbImmolate = buffList[num]; buffList[num].ImageName = Database.IMMOLATE; num++;
+            player.pbVanishWave = buffList[num]; buffList[num].ImageName = Database.VANISH_WAVE; num++;
+            player.pbSeventhMagic = buffList[num]; buffList[num].ImageName = Database.SEVENTH_MAGIC; num++;
+            player.pbStanceOfDouble = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DOUBLE; num++;
+            player.pbSwiftStep = buffList[num]; buffList[num].ImageName = Database.SWIFT_STEP; num++;
+            player.pbColorlessMove = buffList[num]; buffList[num].ImageName = Database.COLORLESS_MOVE; num++;
+            player.pbFutureVision = buffList[num]; buffList[num].ImageName = Database.FUTURE_VISION; num++;
+            player.pbReflexSpirit = buffList[num]; buffList[num].ImageName = Database.REFLEX_SPIRIT; num++;
+            player.pbTrustSilence = buffList[num]; buffList[num].ImageName = Database.TRUST_SILENCE; num++;
+            player.pbStanceOfMystic = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_MYSTIC; num++;
+            player.pbPreStunning = buffList[num]; buffList[num].ImageName = Database.EFFECT_PRESTUNNING; num++;
+            player.pbBlinded = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLINDED; num++;
+            player.pbConcussiveHit = buffList[num]; buffList[num].ImageName = Database.CONCUSSIVE_HIT; num++;
+            player.pbOnslaughtHit = buffList[num]; buffList[num].ImageName = Database.ONSLAUGHT_HIT; num++;
+            player.pbImpulseHit = buffList[num]; buffList[num].ImageName = Database.IMPULSE_HIT; num++;
+            player.pbExaltedField = buffList[num]; buffList[num].ImageName = Database.EXALTED_FIELD; num++;
+            player.pbRisingAura = buffList[num]; buffList[num].ImageName = Database.RISING_AURA; num++;
+            player.pbBlazingField = buffList[num]; buffList[num].ImageName = Database.BLAZING_FIELD; num++;
+            player.pbPhantasmalWind = buffList[num]; buffList[num].ImageName = Database.PHANTASMAL_WIND; num++;
+            player.pbParadoxImage = buffList[num]; buffList[num].ImageName = Database.PARADOX_IMAGE; num++;
+            player.pbStaticBarrier = buffList[num]; buffList[num].ImageName = Database.STATIC_BARRIER; num++;
+            player.pbAscensionAura = buffList[num]; buffList[num].ImageName = Database.ASCENSION_AURA; num++;
+            player.pbNourishSense = buffList[num]; buffList[num].ImageName = Database.NOURISH_SENSE; num++;
+            player.pbVigorSense = buffList[num]; buffList[num].ImageName = Database.VIGOR_SENSE; num++;
+            player.pbOneAuthority = buffList[num]; buffList[num].ImageName = Database.ONE_AUTHORITY; num++;
+
+            player.pbSyutyuDanzetsu = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_EIN; num++;
+            player.pbJunkanSeiyaku = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_RANA; num++;
+
+            player.pbHymnContract = buffList[num]; buffList[num].ImageName = Database.HYMN_CONTRACT; num++;
+            player.pbSigilOfHomura = buffList[num]; buffList[num].ImageName = Database.SIGIL_OF_HOMURA; num++;
+            player.pbAusterityMatrix = buffList[num]; buffList[num].ImageName = Database.AUSTERITY_MATRIX; num++;
+            player.pbRedDragonWill = buffList[num]; buffList[num].ImageName = Database.RED_DRAGON_WILL; num++;
+            player.pbBlueDragonWill = buffList[num]; buffList[num].ImageName = Database.BLUE_DRAGON_WILL; num++;
+            player.pbEclipseEnd = buffList[num]; buffList[num].ImageName = Database.ECLIPSE_END; num++;
+            player.pbTimeStop = buffList[num]; buffList[num].ImageName = Database.TIME_STOP; num++;
+            player.pbSinFortune = buffList[num]; buffList[num].ImageName = Database.SIN_FORTUNE; num++;
+
+            player.pbLightUp = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_UP; num++;
+            player.pbLightDown = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_DOWN; num++;
+            player.pbShadowUp = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_UP; num++;
+            player.pbShadowDown = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_DOWN; num++;
+            player.pbFireUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_UP; num++;
+            player.pbFireDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_DOWN; num++;
+            player.pbIceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_UP; num++;
+            player.pbIceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_DOWN; num++;
+            player.pbForceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_UP; num++;
+            player.pbForceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_DOWN; num++;
+            player.pbWillUp = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_UP; num++;
+            player.pbWillDown = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_DOWN; num++;
+
+            player.pbAfterReviveHalf = buffList[num]; buffList[num].ImageName = Database.BUFF_DANZAI_KAGO; num++;
+            player.pbFireDamage2 = buffList[num]; buffList[num].ImageName = Database.BUFF_FIREDAMAGE2; num++;
+            player.pbBlackMagic = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_MAGIC; num++;
+            player.pbChaosDesperate = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOS_DESPERATE; num++;
+
+            player.pbFeltus = buffList[num]; buffList[num].ImageName = Database.BUFF_FELTUS; num++;
+            player.pbJuzaPhantasmal = buffList[num]; buffList[num].ImageName = Database.BUFF_JUZA_PHANTASMAL; num++;
+            player.pbEternalFateRing = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_FATE_RING; num++;
+            player.pbLightServant = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_SERVANT; num++;
+            player.pbShadowServant = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_SERVANT; num++;
+            player.pbAdilBlueBurn = buffList[num]; buffList[num].ImageName = Database.BUFF_ADIL_BLUE_BURN; num++;
+            player.pbMazeCube = buffList[num]; buffList[num].ImageName = Database.BUFF_MAZE_CUBE; num++;
+            player.pbShadowBible = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_BIBLE; num++;
+            player.pbDetachmentOrb = buffList[num]; buffList[num].ImageName = Database.BUFF_DETACHMENT_ORB; num++;
+            player.pbDevilSummonerTome = buffList[num]; buffList[num].ImageName = Database.BUFF_DEVIL_SUMMONER_TOME; num++;
+            player.pbVoidHymnsonia = buffList[num]; buffList[num].ImageName = Database.BUFF_VOID_HYMNSONIA; num++;
+
+            player.pbIchinaruHomura = buffList[num]; buffList[num].ImageName = Database.BUFF_ICHINARU_HOMURA; num++;
+            player.pbAbyssFire = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_FIRE; num++;
+            player.pbLightAndShadow = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_AND_SHADOW; num++;
+            player.pbEternalDroplet = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_DROPLET; num++;
+            player.pbAusterityMatrixOmega = buffList[num]; buffList[num].ImageName = Database.BUFF_AUSTERITY_MATRIX_OMEGA; num++;
+            player.pbVoiceOfAbyss = buffList[num]; buffList[num].ImageName = Database.BUFF_VOICE_OF_ABYSS; num++;
+            player.pbAbyssWill = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_WILL; num++;
+            player.pbTheAbyssWall = buffList[num]; buffList[num].ImageName = Database.BUFF_THE_ABYSS_WALL; num++;
+
+            player.pbSagePotionMini = buffList[num]; buffList[num].ImageName = Database.BUFF_SAGE_POTION_MINI; num++;
+            player.pbGenseiTaima = buffList[num]; buffList[num].ImageName = Database.BUFF_GENSEI_TAIMA; num++;
+            player.pbShiningAether = buffList[num]; buffList[num].ImageName = Database.BUFF_SHINING_AETHER; num++;
+            player.pbBlackElixir = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_ELIXIR; num++;
+            player.pbElementalSeal = buffList[num]; buffList[num].ImageName = Database.BUFF_ELEMENTAL_SEAL; num++;
+            player.pbColorlessAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORLESS_ANTIDOTE; num++;
+
+            player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
+            player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
+            #endregion
         }
 
         private void InstantAttackPhase(string BattleActionCommand)

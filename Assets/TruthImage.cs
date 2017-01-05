@@ -70,11 +70,11 @@ namespace DungeonPlayer
         private Text txtCumulative;
         void Start()
         {
-            GameObject baseObj = new GameObject("object");
+            GameObject baseObj = new GameObject("object1");
 
             txtCounter = baseObj.AddComponent<Text>();
 
-            txtCounter.name = "counter";
+            txtCounter.name = "counter1";
             txtCounter.rectTransform.anchorMin = new Vector2(0.0f, 0.0f);
             txtCounter.rectTransform.anchorMax = new Vector2(1.0f, 1.0f);
             txtCounter.rectTransform.pivot = new Vector2(0.5f, 0.5f);
