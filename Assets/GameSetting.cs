@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Xml;
+using UnityEngine.Purchasing;
 
 namespace DungeonPlayer
 {
@@ -22,8 +23,9 @@ namespace DungeonPlayer
             //this.battleSpeedBar.Value = this.battleSpeed;
             this.DifficultySilder.value = GroundOne.Difficulty;
             this.ToggleSupportLog.isOn = GroundOne.SupportLog;
-        }
 
+        }
+        
         public void ChangeBGMVolume(Slider sender)
         {
             GroundOne.EnableBGM = (int)sender.value;
