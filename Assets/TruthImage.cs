@@ -78,13 +78,14 @@ namespace DungeonPlayer
             txtCounter.rectTransform.anchorMin = new Vector2(0.0f, 0.0f);
             txtCounter.rectTransform.anchorMax = new Vector2(1.0f, 1.0f);
             txtCounter.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            txtCounter.rectTransform.sizeDelta = new Vector2(0, 0);
             txtCounter.alignment = TextAnchor.UpperCenter;
             txtCounter.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
             txtCounter.color = Color.blue;
             txtCounter.text = this.count.ToString();
             txtCounter.gameObject.SetActive(true);
             txtCounter.transform.SetParent(this.transform, false);
-            txtCounter.rectTransform.anchoredPosition = new Vector2(0, -30);
+            txtCounter.rectTransform.anchoredPosition = new Vector2(0, +15);
 
             GameObject baseObj2 = new GameObject("object2");
             txtCumulative = baseObj2.AddComponent<Text>();
@@ -93,13 +94,14 @@ namespace DungeonPlayer
             txtCumulative.rectTransform.anchorMin = new Vector2(0.0f, 0.0f);
             txtCumulative.rectTransform.anchorMax = new Vector2(1.0f, 1.0f);
             txtCumulative.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            txtCumulative.rectTransform.sizeDelta = new Vector2(0, 0);
             txtCumulative.alignment = TextAnchor.LowerCenter;
             txtCumulative.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
             txtCumulative.color = Color.red;
             txtCumulative.text = this.cumulative.ToString();
             txtCumulative.gameObject.SetActive(true);
             txtCumulative.transform.SetParent(this.transform, false);
-            txtCumulative.rectTransform.anchoredPosition = new Vector2(0, 30);
+            txtCumulative.rectTransform.anchoredPosition = new Vector2(0, -15);
         }
         void Update()
         {

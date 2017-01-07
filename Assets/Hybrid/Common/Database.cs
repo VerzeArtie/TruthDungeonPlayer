@@ -1053,7 +1053,7 @@ namespace DungeonPlayer
 
         public static int BUFFPANEL_OFFSET_X = 5; // add unity
         public static int BUFFPANEL_BUFF_WIDTH = 40; // -25; change unity
-        public static int BUFF_NUM = 200; // [警告] component数が200*6=1200, 1000だと6000でスローダウン現象につながる
+        public static int BUFF_NUM = 180; // [警告] component数が200*6=1200, 1000だと6000でスローダウン現象につながる
         public static int BUFF_SIZE_X = 25;
         public static int BUFF_SIZE_Y = 40;
         public static int INFINITY = 99999;

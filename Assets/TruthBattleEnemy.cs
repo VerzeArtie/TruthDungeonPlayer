@@ -851,6 +851,12 @@ namespace DungeonPlayer
             #endregion
 
             #region "進行停止"
+            if (this.nowAnimationSandGlass)
+            {
+                ExecAnimationSandGlass();
+                //Debug.Log("nowAnimationSandGlass is true then return");
+                return; // アニメーション表示中は停止させる。
+            }
             if (this.nowAnimation)
             {
                 ExecAnimation();
@@ -867,12 +873,6 @@ namespace DungeonPlayer
             {
                 ExecAnimationMessageFadeOut();
                 Debug.Log("nowAnimationMatrixTalk is true then return");
-                return; // アニメーション表示中は停止させる。
-            }
-            if (this.nowAnimationSandGlass)
-            {
-                ExecAnimationSandGlass();
-                //Debug.Log("nowAnimationSandGlass is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationFinal)
@@ -1246,8 +1246,6 @@ namespace DungeonPlayer
 
             player.DamageLabel = damageLabel;
             player.CriticalLabel = criticalLabel;
-
-            txtBattleMessage.text = "bufflist: " + buffList.Length.ToString();
 
             // 登録を反映
             player.BuffElement = buffList;
