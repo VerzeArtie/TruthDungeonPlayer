@@ -951,7 +951,10 @@ namespace DungeonPlayer
                 this.labelBattleTurn.color = Color.white;
                 this.TimeSpeedLabel.color = Color.white;
                 this.lblTimerCount.color = Color.white;
-                this.TimeStopText.gameObject.SetActive(true);
+                if (ec1.FirstName != Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    this.TimeStopText.gameObject.SetActive(true);
+                }
                 for (int ii = 0; ii < ActiveList.Count; ii++)
                 {
                     ActiveList[ii].labelName.color = Color.white;

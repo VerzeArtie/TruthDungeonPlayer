@@ -6,7 +6,7 @@ namespace DungeonPlayer
 {
     public partial class TruthBattleEnemy : MotherForm
     {
-        private int FAIL_ACTION_WAIT = 150;
+        private int FAIL_ACTION_WAIT = 100;
         private int failActionTimer = 0;
         private void CheckStackInTheCommand()
         {

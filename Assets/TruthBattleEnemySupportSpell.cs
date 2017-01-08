@@ -61,7 +61,11 @@ namespace DungeonPlayer
                 }
             }
 
-            if (TruthActionCommand.GetTargetType(spellName) == TruthActionCommand.TargetType.Own)
+            if (spellName == Database.TIME_STOP)
+            {
+                // タイムストップはBUFF効果の文字を出す必要はない。
+            }
+            else if (TruthActionCommand.GetTargetType(spellName) == TruthActionCommand.TargetType.Own)
             {
                 AnimationDamage(0, player, 0, Color.black, false, false, "BUFF効果");
             }
