@@ -2168,6 +2168,10 @@ namespace DungeonPlayer
         public const string IMAGE_DRAGON_ETULA = @"Dragon_Etula.png";
         #endregion
 
+        #region "フォントファイル"
+        public const string FONT_KOUZAN_MOUHITSU = @"KouzanMouhituFontOTF";
+        #endregion
+
         #region "効果音データファイル名"
         public const string SOUND_FIREBALL = @"FireBall";
         public const string SOUND_ICENEEDLE = @"IceNeedle";

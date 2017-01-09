@@ -1492,6 +1492,8 @@ namespace DungeonPlayer
                     else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                     {
                         player.labelName.text = "支　配　竜";
+                        Font font = (Font)(Resources.Load<Font>(Database.FONT_KOUZAN_MOUHITSU));
+                        player.labelName.font = font;
                         //player.labelCurrentSkillPoint.Visible = false;
                         //player.labelCurrentManaPoint.Visible = false;
                     }
