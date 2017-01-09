@@ -632,7 +632,7 @@ namespace DungeonPlayer
                     if (player.CurrentTimeStop <= 0)
                     {
                         player.CurrentTimeStop = effectTime;
-                        player.CurrentTimeStopValue = 1000; // todo
+                        player.CurrentTimeStopValue = 300; // todo
                         player.ActivateBuff(player.pbTimeStop, Database.BaseResourceFolder + spellName, effectTime);
                         UpdateBattleText(player.GetCharacterSentence(47));
                     }
