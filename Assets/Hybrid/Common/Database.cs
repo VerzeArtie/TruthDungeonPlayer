@@ -892,7 +892,7 @@ namespace DungeonPlayer
         public static int BGM21LoopBegin = 0;
         public static string BGM22 = @"22_TimeEnd_FanFare";
         public static int BGM22LoopBegin = 0;
-        public static string BGM23 = @"23_Verse1_StartReason";
+        public static string BGM23 = @"23_Verze_StartReason";
         public static int BGM23LoopBegin = 0;
         #endregion
 
