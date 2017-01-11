@@ -7794,6 +7794,7 @@ namespace DungeonPlayer
             this.nowAnimationSandGlass = true;
         }
 
+        float angle = 0.0f;
         private void ExecAnimationSandGlass()
         {
             Text targetLabel = this.SandGlassText;
@@ -7808,8 +7809,8 @@ namespace DungeonPlayer
             }
 
             int waitTime = 52;
-            int startTime = 26;
-            int moveLen = (Screen.width - 150) / 26;
+            int startTime = 15;
+            int moveLen = (Screen.width - 150) / 36;
 
             if (this.nowAnimationSandGlassCounter > startTime)
             {
@@ -7822,10 +7823,11 @@ namespace DungeonPlayer
                 {
                     System.Threading.Thread.Sleep(0);
                 }
-                SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass" + (this.nowAnimationSandGlassCounter-(startTime+1)).ToString());
+                //SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass" + (this.nowAnimationSandGlassCounter-(startTime+1)).ToString());
+                SandGlassImage.transform.rotation = Quaternion.Euler(0, 0, angle);
                 SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x + moveLen, SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
 
-                if (this.nowAnimationSandGlassCounter == 42)
+                if (this.nowAnimationSandGlassCounter == 36)
                 {
                     targetLabel.text = this.BattleTurnCount.ToString();
                 }
@@ -7836,6 +7838,8 @@ namespace DungeonPlayer
             if (this.nowAnimationSandGlassCounter > waitTime)
             {
                 System.Threading.Thread.Sleep(500);
+                this.angle = 0.0f;
+                SandGlassImage.transform.rotation = new Quaternion(0, 0, 0, 0);
                 SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x - moveLen * (waitTime - startTime), SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
                 back_Sandglass.gameObject.SetActive(false);
                 targetLabel.gameObject.SetActive(false);
