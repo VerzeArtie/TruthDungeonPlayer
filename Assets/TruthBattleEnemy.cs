@@ -7824,6 +7824,7 @@ namespace DungeonPlayer
                     System.Threading.Thread.Sleep(0);
                 }
                 //SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass" + (this.nowAnimationSandGlassCounter-(startTime+1)).ToString());
+                angle += 10;
                 SandGlassImage.transform.rotation = Quaternion.Euler(0, 0, angle);
                 SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x + moveLen, SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
 
