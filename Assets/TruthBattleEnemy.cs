@@ -3973,56 +3973,64 @@ namespace DungeonPlayer
                         break;
                 }
 
+                Texture2D current = Resources.Load<Texture2D>("ItemIcon");
+                int BASE_SIZE = 49;
+                int locX = 0;
+                int locY = 0;
                 switch (item.Type)
                 {
                     case ItemBackPack.ItemType.Weapon_TwoHand:
-                        treasureIcon.sprite = Resources.Load<Sprite>("TwoHand");
+                        locX = 1; locY = 2;
                         break;
                     case ItemBackPack.ItemType.Weapon_Light:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Knuckle");
+                        locX = 2; locY = 2;
                         break;
                     case ItemBackPack.ItemType.Weapon_Heavy:
                     case ItemBackPack.ItemType.Weapon_Middle:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Weapon");
+                        locX = 0; locY = 2;
                         break;
                     case ItemBackPack.ItemType.Weapon_Rod:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Rod");
+                        locX = 3; locY = 2;
                         break;
                     case ItemBackPack.ItemType.Accessory:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Accessory");
+                        locX = 0; locY = 3;
                         break;
                     case ItemBackPack.ItemType.Armor_Heavy:
                     case ItemBackPack.ItemType.Armor_Middle:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Armor");
+                        locX = 1; locY = 1;
                         break;
                     case ItemBackPack.ItemType.Armor_Light:
-                        treasureIcon.sprite = Resources.Load<Sprite>("LightArmor");
+                        locX = 2; locY = 1;
                         break;
+                    //case ItemBackPack.ItemType.Robe:
+                    //    locX = 3; locY = 1;
+                    //    break;
                     case ItemBackPack.ItemType.Material_Equip:
                     case ItemBackPack.ItemType.Material_Food:
                     case ItemBackPack.ItemType.Material_Potion:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Material1");
+                        locX = 0; locY = 0;
                         break;
                     case ItemBackPack.ItemType.Shield:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Shield");
+                        locX = 0; locY = 1;
                         break;
                     case ItemBackPack.ItemType.Use_Item:
-                        treasureIcon.sprite = Resources.Load<Sprite>("UseItem");
+                        locX = 2; locY = 3;
                         break;
                     case ItemBackPack.ItemType.Use_Potion:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Potion");
+                        locX = 1; locY = 0;
                         break;
                     case ItemBackPack.ItemType.Useless:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        locX = 2; locY = 0;
                         break;
                     case ItemBackPack.ItemType.None:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        locX = 2; locY = 0;
                         //pictureBox1.Visible = false;
                         break;
                     default:
-                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        locX = 2; locY = 0;
                         break;
                 }
+                treasureIcon.sprite = Sprite.Create(current, new Rect(BASE_SIZE * locX, BASE_SIZE * locY, BASE_SIZE, BASE_SIZE), new Vector2(0, 0));
             }
         }
 

@@ -561,62 +561,76 @@ namespace DungeonPlayer
                     backpack[currentNumber].text = backpackData[currentNumber].Name;
                     Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber]);
                     backpackStack[currentNumber].text = "x" + backpackData[currentNumber].StackValue.ToString();
+
+                    Texture2D current = Resources.Load<Texture2D>("ItemIcon");
+                    int BASE_SIZE = 49;
+                    int locX = 0;
+                    int locY = 0;
                     if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
                         (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Middle))
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Weapon");
+                        locX = 0; locY = 2;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_TwoHand)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("TwoHand");
+                        locX = 1; locY = 2;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Light)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Knuckle");
+                        locX = 2; locY = 2;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Rod)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Rod");
+                        locX = 3; locY = 2;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Shield)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Shield");
+                        locX = 0; locY = 1;
                     }
                     else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Heavy) ||
                                 (backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Middle))
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Armor");
+                        locX = 1; locY = 1;
                     }
                     else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Light))
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("LightArmor");
+                        locX = 2; locY = 1;
                     }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Accessory)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Accessory");
-                    }
+                    //else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Robe))
+                    //{
+                    //    locX = 3; locY = 1;
+                    //}
                     else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Equip) ||
                                 (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Food) ||
                                 (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Potion))
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Material1");
+                        locX = 0; locY = 0;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Potion)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Potion");
+                        locX = 1; locY = 0;
                     }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Item)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Useless)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("UseItem");
+                        locX = 2; locY = 0;
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Accessory)
+                    {
+                        locX = 0; locY = 3;
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_BlueOrb)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("BlueOrb");
+                        locX = 1; locY = 3;
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Item)
+                    {
+                        locX = 2; locY = 3;
                     }
                     else
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
+                        locX = 2; locY = 0; // same Useless
                     }
+                    backpackIcon[currentNumber].sprite = Sprite.Create(current, new Rect(BASE_SIZE * locX, BASE_SIZE * locY, BASE_SIZE, BASE_SIZE), new Vector2(0, 0));
                 }
             }
         }
