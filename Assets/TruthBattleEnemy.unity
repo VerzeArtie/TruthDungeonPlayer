@@ -8208,14 +8208,14 @@ MonoBehaviour:
   groupYesnoSystemMessage: {fileID: 1918013037}
   Filter: {fileID: 659585812}
   imageSandglass:
-  - {fileID: 21300000, guid: 5cdbb26ebec2741c096cb29f785bf008, type: 3}
-  - {fileID: 21300000, guid: 1d9834d3867124773bccbc5da3bec1e8, type: 3}
-  - {fileID: 21300000, guid: bebf2a27bdfb147b8b48123be6603510, type: 3}
-  - {fileID: 21300000, guid: 9fd22283c293747e3bd129b5009bd99c, type: 3}
-  - {fileID: 21300000, guid: cad998cea50094184aad5e15cb0f6ee0, type: 3}
-  - {fileID: 21300000, guid: ba00cab87952944b1a028a381246fd54, type: 3}
-  - {fileID: 21300000, guid: 5a2ee8243fa544a97bab9b3cea938d22, type: 3}
-  - {fileID: 21300000, guid: 44a943a8c614c4a0c8ceabd3a521375a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   debug1: {fileID: 497224878}
   debug2: {fileID: 1136099055}
   debug3: {fileID: 624483371}

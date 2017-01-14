@@ -37,6 +37,8 @@ namespace DungeonPlayer
 
         public static int BATTLE_CORE_SLEEP = 10;
         public static int BASE_TIMER_BAR_LENGTH = 500;
+        public static int BASE_TIMER_DIV = 60;
+        public static int TIMER_ICON_NUM = 8;
 
         public static int TIMEUP_FIRST_RESPONSE = 600; // 後編追加
         public static int TIMEUP_COMPUTER_INTERRUPT = 400; // add unity

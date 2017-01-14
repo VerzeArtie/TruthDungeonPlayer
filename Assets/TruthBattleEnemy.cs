@@ -71,7 +71,7 @@ namespace DungeonPlayer
         private TruthImage[] pbBuffEnemy3;
         
         // resource
-        public Sprite[] imageSandglass;
+        private Sprite[] imageSandglass;
         
         // GUI
         public Text debug1;
@@ -353,6 +353,16 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            Texture2D textureSandGlass = Resources.Load<Texture2D>("SandGlassIcon");
+            this.imageSandglass = new Sprite[8];
+            int BASE_SIZE_X = 152;
+            int BASE_SIZE_Y = 211;
+            for (int locX = 0; locX < Database.TIMER_ICON_NUM; locX++)
+            {
+                this.imageSandglass[locX] = Sprite.Create(textureSandGlass, new Rect(BASE_SIZE_X * locX, 0, BASE_SIZE_X, BASE_SIZE_Y), new Vector2(0, 0));
+            }
+            this.pbSandglass.sprite = this.imageSandglass[0];
 
             if (GroundOne.TutorialMode)
             {
@@ -991,10 +1001,9 @@ namespace DungeonPlayer
                     double currentTime = (Database.BASE_TIMER_BAR_LENGTH - (double)currentTimerCount) / (Database.BASE_TIMER_BAR_LENGTH) * 5.0f;
                     lblTimerCount.text = currentTime.ToString("0.00");
                 }
-                const int DivNum = 32;
-                for (int ii = 0; ii < 8; ii++)
+                for (int ii = 0; ii < Database.TIMER_ICON_NUM; ii++)
                 {
-                    if (DivNum * ii <= this.BattleTimeCounter && this.BattleTimeCounter < DivNum * (ii + 1))
+                    if (Database.BASE_TIMER_DIV * ii <= this.BattleTimeCounter && this.BattleTimeCounter < Database.BASE_TIMER_DIV * (ii + 1))
                     {
                         pbSandglass.sprite = this.imageSandglass[ii];
                         break;
