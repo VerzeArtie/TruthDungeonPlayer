@@ -878,7 +878,7 @@ namespace DungeonPlayer
         // ドゥーム・ブレイド（マナダメージ）値の算出
         public static double DoomBlade_A_Value(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.5F, 0.0F, 500, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 0.5F, 0.0F, 500, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // アビス・アイ値の算出

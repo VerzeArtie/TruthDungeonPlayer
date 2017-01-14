@@ -50,7 +50,7 @@ namespace DungeonPlayer
             {
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
+                    //Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
                     var dataReader = cmd.ExecuteReader();
@@ -75,11 +75,11 @@ namespace DungeonPlayer
 
             try
             {
-                Debug.Log("UpdateOwner(S) " + DateTime.Now);
+                //Debug.Log("UpdateOwner(S) " + DateTime.Now);
                 string name = GroundOne.WE2.Account;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
+                    //Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
                     DateTime update_time = DateTime.Now;
                     string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
@@ -114,7 +114,7 @@ namespace DungeonPlayer
                     }
                     command.ExecuteNonQuery();
                 }
-                Debug.Log("UpdateOwner(E) " + DateTime.Now);
+                //Debug.Log("UpdateOwner(E) " + DateTime.Now);
             }
             catch
             {
