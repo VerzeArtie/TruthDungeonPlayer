@@ -19822,7 +19822,24 @@ namespace DungeonPlayer
                 Method.CreateShadowData();
             }
             CancelKeyDownMovement();
-            SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
+
+            if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
+                this.nowMessage[this.nowReading] == Database.ENEMY_LAST_OL_LANDIS)
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, false, false);
+            }
+            else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, false);
+            }
+            else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+            { 
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, true);
+            }
+            else
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
+            }
         }
 
         private bool agilityRoomTimer_Tick()

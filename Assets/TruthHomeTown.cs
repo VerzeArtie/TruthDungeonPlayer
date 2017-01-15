@@ -1724,7 +1724,14 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;
-            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);
+            if (playerName == Database.ENEMY_LAST_RANA_AMILIA)
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, true, false, false);
+            }
+            else
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);
+            }
         }
 
         private void BlackOut()
