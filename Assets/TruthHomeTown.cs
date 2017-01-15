@@ -1482,15 +1482,6 @@ namespace DungeonPlayer
                     this.forceSaveCall = true;
                     SceneDimension.CallSaveLoad(this, true, false);
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownGotoRealDungeon)
-                {
-                    GroundOne.WE.DungeonArea = 1;
-                    GroundOne.WE2.RealDungeonArea = 1;
-                    GroundOne.WE2.SeekerEvent605 = true;
-                    Method.AutoSaveTruthWorldEnvironment();
-                    Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
-                    SceneDimension.JumpToTruthDungeon(false);
-                }
                 else if (current == MessagePack.ActionEvent.HomeTownAddNewCharacter)
                 {
                     GroundOne.WE.AvailableThirdCharacter = true;
@@ -1563,6 +1554,41 @@ namespace DungeonPlayer
                     GroundOne.TC.OneImmunity = true;
                     GroundOne.TC.AntiStun = true;
                     GroundOne.TC.FutureVision = true;
+                }
+                else if (current == MessagePack.ActionEvent.DungeonSeekerEvent601)
+                {
+                    GroundOne.WE2.SeekerEvent601 = true;
+                    GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (current == MessagePack.ActionEvent.DungeonSeekerEvent602)
+                {
+                    GroundOne.WE2.SeekerEvent602 = true;
+                    GroundOne.WE.AlreadyCommunicate = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (current == MessagePack.ActionEvent.DungeonSeekerEvent603)
+                {
+                    GroundOne.WE2.SeekerEvent603 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (current == MessagePack.ActionEvent.DungeonSeekerEvent604)
+                {
+                    GroundOne.WE2.SeekerEvent604 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (current == MessagePack.ActionEvent.DungeonSeekerEvent605)
+                {
+                    GroundOne.WE2.SeekerEvent605 = true;
+                    GroundOne.WE.DungeonArea = 1;
+                    GroundOne.WE2.RealDungeonArea = 1;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                    SceneDimension.JumpToTruthDungeon(false);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -1764,7 +1790,6 @@ namespace DungeonPlayer
 
             if (false)
             {
-
             }
             #region "１日目"
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1)
@@ -1803,7 +1828,7 @@ namespace DungeonPlayer
                     mainMessage.text = "";
                 }
             }
-            else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.AvailableMixSpellSkill && !buttonShinikia.isActiveAndEnabled)
+            else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.AvailableMixSpellSkill && !GroundOne.MC.FlashBlaze)
             {
                 if (!GroundOne.WE.AlreadyEquipShop)
                 {
@@ -1860,11 +1885,11 @@ namespace DungeonPlayer
                 MessagePack.Message50008(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
-            else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent604)
-            {
-                MessagePack.Message50009(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
+            //else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent604)
+            //{
+            //    MessagePack.Message50009(ref nowMessage, ref nowEvent);
+            //    NormalTapOK();
+            //}
             #endregion
             #region "その他"
             else
@@ -2482,8 +2507,10 @@ namespace DungeonPlayer
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
                 this.Filter.SetActive(true);
-                systemMessage.text = "ここまでの記録は自動セーブされており、新しいセーブはできません。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                systemMessage.text = "ここまでの記録をセーブしました。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
                 systemMessagePanel.SetActive(true);
+                Method.AutoSaveTruthWorldEnvironment();
+                Method.AutoSaveRealWorld();
                 return;
             } 
             SceneDimension.CallSaveLoad(this, true, false);
@@ -3129,7 +3156,7 @@ namespace DungeonPlayer
                 else
                 {
                     Method.AutoSaveTruthWorldEnvironment();
-                    Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                    Method.ExecSave(null, Database.WorldSaveNum, true);
                     SceneDimension.JumpToTitle();
                     return;
                 }

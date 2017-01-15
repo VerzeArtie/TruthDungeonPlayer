@@ -218,7 +218,6 @@ namespace DungeonPlayer
             HomeTownCallDuel,
             HomeTownCallDecision,
             HomeTownCallDecision3,
-            HomeTownGotoRealDungeon,
             HomeTownAddNewCharacter,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
@@ -456,6 +455,87 @@ namespace DungeonPlayer
             DungeonFloor5GetLanaEarring,
             DungeonFloor5ReadyToBlueOrb,
             DungeonFloor5EnterTheReadWorld,
+            DungeonSeekerEvent601,
+            DungeonSeekerEvent602,
+            DungeonSeekerEvent603,
+            DungeonSeekerEvent604,
+            DungeonSeekerEvent605,
+            DungeonSeekerEvent701,
+            DungeonSeekerEvent702,
+            DungeonSeekerEvent703,
+            DungeonSeekerEvent704,
+            DungeonSeekerEvent705,
+            DungeonSeekerEvent706,
+            DungeonSeekerEvent801,
+            DungeonSeekerEvent802,
+            DungeonSeekerEvent803,
+            DungeonSeekerEvent804,
+            DungeonSeekerEvent805,
+            DungeonSeekerEvent806,
+            DungeonSeekerEvent807,
+            DungeonSeekerEvent808,
+            DungeonSeekerEvent809,
+            DungeonSeekerEvent810,
+            DungeonSeekerEvent811,
+            DungeonSeekerEvent812,
+            DungeonSeekerEvent813,
+            DungeonSeekerEvent814,
+            DungeonSeekerEvent815,
+            DungeonSeekerEvent816,
+            DungeonSeekerEvent817,
+            DungeonSeekerEvent818,
+            DungeonSeekerEvent819,
+            DungeonSeekerEvent820,
+            DungeonSeekerEvent821,
+            DungeonSeekerEvent821_Fail,
+            DungeonSeekerEvent822,
+            DungeonSeekerEvent901,
+            DungeonSeekerEvent902,
+            DungeonSeekerEvent903,
+            DungeonSeekerEvent904,
+            DungeonSeekerEvent905,
+            DungeonSeekerEvent906,
+            DungeonSeekerEvent907,
+            DungeonSeekerEvent908,
+            DungeonSeekerEvent909,
+            DungeonSeekerEvent910,
+            DungeonSeekerEvent911,
+            DungeonSeekerEvent912,
+            DungeonSeekerEvent913,
+            DungeonSeekerEvent914,
+            DungeonSeekerEvent915,
+            DungeonSeekerEvent916,
+            DungeonSeekerEvent917,
+            DungeonSeekerEvent918,
+            DungeonSeekerEvent919,
+            DungeonSeekerEvent920,
+            DungeonSeekerEvent921,
+            DungeonSeekerEvent922,
+            DungeonSeekerEvent923,
+            DungeonSeekerEvent924,
+            DungeonSeekerEvent924_Fail,
+            DungeonSeekerEvent925,
+            DungeonSeekerEvent1001,
+            DungeonSeekerEvent1002,
+            DungeonSeekerEvent1003,
+            DungeonSeekerEvent1004,
+            DungeonSeekerEvent1005,
+            DungeonSeekerEvent1006,
+            DungeonSeekerEvent1007,
+            DungeonSeekerEvent1008,
+            DungeonSeekerEvent1009,
+            DungeonSeekerEvent1010,
+            DungeonSeekerEvent1011,
+            DungeonSeekerEvent1012,
+            DungeonSeekerEvent1013,
+            DungeonSeekerEvent1014,
+            DungeonSeekerEvent1015,
+            DungeonSeekerEvent1101,
+            DungeonSeekerEvent1101_fail,
+            DungeonSeekerEvent1102,
+            DungeonSeekerEvent1102_fail,
+            DungeonSeekerEvent1103,
+            DungeonSeekerEvent1104,
             AutoSaveTruthWorldRealWorld,
             AutoMove,
             DungeonGotoDownstair,
@@ -23427,7 +23507,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：（・・・）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+                //messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartyTC);
 
@@ -23454,12 +23534,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("1"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent701 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent701);
         }
         #endregion
         #region "終わりの部屋"
         public static void Message16001(ref List<string> messageList, ref List<ActionEvent> eventList) 
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent701);
+
             messageList.Add("アイン：（　・・・ここだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　俺はこの部屋は、何かしら始まりが起こる部屋だと錯覚していたが　）"); eventList.Add(ActionEvent.None);
@@ -23495,12 +23578,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　他に行くべき所はない、次の階層へと進めよう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("2"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent702 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent702);
         }
         #endregion
         #region "１階、警告看板"
         public static void Message16002(ref List<string> messageList, ref List<ActionEvent> eventList) 
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent702);
+
             messageList.Add("アイン：（　看板があるな・・・なになに　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『近道にこそ、危険が潜む』"); eventList.Add(ActionEvent.None);
@@ -23512,23 +23598,29 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　このまま進める　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("3"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent703 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent703);
         }
         #endregion
         #region "１階、最後の扉通過"
         public static void Message16003(ref List<string> messageList, ref List<ActionEvent> eventList) 
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent703);
+
             messageList.Add("アイン：（　この先へ進めば・・・次の階層だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("4"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent704 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent704);
         }
         #endregion
         #region "１階ボス撃破"
         public static void Message16004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent704);
+
             messageList.Add("アイン：（　ボスのお出ましのようだな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("絡みつくフランシス：【【【キィィィシャアアアァァァ！！！】】】"); eventList.Add(ActionEvent.None);
@@ -23550,22 +23642,27 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、次へ進めるぜ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("5"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent705 = true;
+
+            //messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent705);
         }
         #endregion
         #region "１階から２階へ"
         public static void Message16005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent705);
+
             messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.RealDungeonArea = 2;
-            GroundOne.WE2.SeekerEvent706 = true;
             messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstair);
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent706);
         }
         #endregion
         #region "２階スタート"
         public static void Message16006(ref List<string> messageList, ref List<ActionEvent> eventList) 
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent706);
+
             messageList.Add("アイン：（　・・・２階・・・）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　４方向に分かれているが　）"); eventList.Add(ActionEvent.None);
@@ -23573,31 +23670,43 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　まずは見てみるのが先決だな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("6"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent801 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent801);
         }
         public static void Message16006_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent801);
+
             messageList.Add("　　　　『力を示す者、戻り無き通路、真実への選択』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("7"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent802 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent802);
         }
         public static void Message16006_3(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent802);
+
             messageList.Add("　　　　『心を示す者、無間の部屋、存在しない解への選択』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("8"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent803 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent803);
         }
         public static void Message16006_4(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent803);
+
             messageList.Add("　　　　『知を示す者、隠されし通路、秘められた選択』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("9"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent804 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent804);
         }
         public static void Message16006_5(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent804);
+
             messageList.Add("　　　　『技を示す者、順序ある通路、閉ざされた選択』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　これで、４つの方向性が分かったな　）"); eventList.Add(ActionEvent.None);
@@ -23609,12 +23718,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("10"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent805 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent805);
         }
         #endregion
         #region "知の部屋【絶対試練】"
         public static void Message16007(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent805);
+
             messageList.Add("アイン：（　・・・何かある・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　地面にくぼみがほんの少し見えるな　）"); eventList.Add(ActionEvent.None);
@@ -23708,12 +23820,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（  探索を続けよう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("11"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent806 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent806);
         }
         #endregion
         #region "【知】の部屋で、【心】関連の看板"
         public static void Message16008(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent806);
+
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『  終わりなるは、心　』"); eventList.Add(ActionEvent.None);
@@ -23729,12 +23844,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（  なるほどな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("12"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent807 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent807);
         }
         #endregion
         #region "複合レバー【知】の部屋で、【心】関連"
         public static void Message16009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent807);
+
             messageList.Add("アイン：（  このレバーだな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  『歌い、木々が囁き始める』　）"); eventList.Add(ActionEvent.None);
@@ -23748,10 +23866,13 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、もう一つ。すぐそこのレバーもチェックだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("13"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent808 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent808);
         }
         public static void Message16009_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent808); 
+            
             messageList.Add("アイン：（  『青く照らし、地は新緑を謳歌する』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【湖】、【人】、【天】、【海】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23767,12 +23888,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　技の部屋だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("14"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent809 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent809);
         }
         #endregion
         #region "【技】の部屋で、【知】関連の看板"
         public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent809);
+
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『  始まりなるは、知　』"); eventList.Add(ActionEvent.None);
@@ -23784,12 +23908,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（ 同じパターンだな、やっておこう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("15"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent810 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent810);
         }
         #endregion
         #region "複合レバー【技】の部屋で、【知】関連"
         public static void Message16011(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent810);
+
             messageList.Add("アイン：（  このレバーだな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  『流れ落ち、偉大なる海、天へと還り、無限循環』　）"); eventList.Add(ActionEvent.None);
@@ -23801,10 +23928,13 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　もう一つ隣にレバーがある、やっていこう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("16"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent811 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent811);
         }
         public static void Message16011_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent811);
+
             messageList.Add("アイン：（  『あらゆる場所、可能な場を生めつくし、創元浄化』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【天】、【災】、【灰】、【火】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23816,12 +23946,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　次は、心の部屋だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("17"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent812 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent812);
         }
         #endregion
         #region "【心】の部屋で、【力】関連の看板"
         public static void Message16012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent812);
+
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『  終わりの前、すなわち、力　』"); eventList.Add(ActionEvent.None);
@@ -23831,12 +23964,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（  よし、サイドのレバー二つを動かそう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("18"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent813 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent813);
         }
         #endregion
         #region "複合レバー【心】の部屋で、【力】関連"
         public static void Message16013(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent813);
+
             messageList.Add("アイン：（  『誤り、恐れ、喚き、屈し、失い、揺らぎ続ける存在』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【敵】、【僧】、【人】、【神】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23846,10 +23982,13 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、もう一つのレバーを　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("19"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent814 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent814);
         }
         public static void Message16013_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent814);
+
             messageList.Add("アイン：（  『神と人、鳥、木々、全生物における連続の理そこに見つけたり』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【虚】、【真】、【心】、【理】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23861,12 +24000,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　力の部屋に行ってみよう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("20"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent815 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent815);
         }
         #endregion
         #region "ボス"
         public static void Message16014(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent815);
+
             messageList.Add("アイン：（  ボスのお出ましか　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  大海蛇のリヴィアサン、昔コイツと戦ったことがあるな　）"); eventList.Add(ActionEvent.None);
@@ -23916,12 +24058,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　・・・　行くぜ　・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("21"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent816 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent816);
         }
         #endregion
         #region "【力】の部屋で、【技】関連の看板"
         public static void Message16015(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent816);
+
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『  次に求められるは、技　』"); eventList.Add(ActionEvent.None);
@@ -23931,12 +24076,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（  サイドのレバーをやってしまおう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("22"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent817 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent817);
         }
         #endregion
         #region "複合レバー【力】の部屋で、【技】関連"
         public static void Message16016(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent817);
+
             messageList.Add("アイン：（  『この世における絶対的な平等の象徴』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【死】、【母】、【父】、【命】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23946,10 +24094,13 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　隣のレバーに移ろう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("23"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent818 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent818);
         }
         public static void Message16016_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent818);
+
             messageList.Add("アイン：（  『偉大なる母、厳格なる父より永久の確約』　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（  【源】、【生】、【滅】、【諭】・・・　）"); eventList.Add(ActionEvent.None);
@@ -23997,13 +24148,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　行くぜ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("24"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent819 = true;
-            GroundOne.WE2.TruthAnswer2_OK = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent819);
         }
         #endregion
         #region "２階、回想録"
         public static void Message16017(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent819);
+
             Story_TruthRecollection2_1(ref messageList, ref eventList);
 
             messageList.Add("アイン：（・・・ヴェルゼ・・・アーティ・・・）"); eventList.Add(ActionEvent.None);
@@ -24013,12 +24166,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("25"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent820 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent820);
         }
         #endregion
         #region "２階、カールハンツと会話／戦闘"
         public static void Message16018(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent820);
+
             messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：この雰囲気は・・・カール先生か？"); eventList.Add(ActionEvent.None);
@@ -24097,9 +24253,7 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
 
-            GroundOne.WE2.SeekerEvent821_fail = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent821_Fail);
 
             messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
@@ -24220,8 +24374,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：行こう、この先へ"); eventList.Add(ActionEvent.None);
 
             messageList.Add("26"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent821 = true;
-            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_KAHLHANZ);
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent821);
         }
         #endregion
         #region "２階、カールハンツ会話後、戦闘敗北後の自由行動制限"
@@ -24241,16 +24395,20 @@ namespace DungeonPlayer
         #region "２階から３階へ"
         public static void Message16020(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent821);
+
             messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.RealDungeonArea = 3;
-            GroundOne.WE2.SeekerEvent822 = true;
             messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstair);
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent822);
         }
         #endregion
         #region "３階スタート"
         public static void Message16021(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent822);
+
             messageList.Add("アイン：（　３階か・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　看板が見える、まずはそこからだ　）"); eventList.Add(ActionEvent.None);
@@ -24258,12 +24416,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　行ってみよう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("27"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent901 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent901);
         }
         #endregion
         #region "誘導看板"
         public static void Message16022(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent901);
+
             messageList.Add("アイン：（　看板内容は・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『鏡、　それは本人の迷い・思考・判断を整理する。』"); eventList.Add(ActionEvent.None);
@@ -24283,23 +24444,29 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　注意深く進めるとするか　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("28"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent902 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent902);
         }
         #endregion
         #region "鏡エリア１コンプリート"
         public static void Message16023(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent902);
+
             Story_TruthRecollection3_1(ref messageList, ref eventList);
 
             messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
             
             messageList.Add("29"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent903 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent903);
         }
         #endregion
         #region "鏡エリア２開始の分析"
         public static void Message16024(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent903);
+
             messageList.Add("アイン：（　おっと、看板だな・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『　２つ目は正解、３つ目は無限解、そして１つ目が原点解　』"); eventList.Add(ActionEvent.None);
@@ -24381,32 +24548,42 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、決まりだ。迂闊に進み過ぎないように注意深く進めよう ）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("30"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent904 = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent904);
         }
         #endregion
         #region "鏡エリア２の進行"
         public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            // SeekerEvent905～910はMirrorWayで進行するため、その都度の自動セーブは不要。
             messageList.Add(""); eventList.Add(ActionEvent.MirrorWay);
         }
         #endregion
         #region "真実の回想録3_2"
         public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent904);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent905);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent906);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent907);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent908);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent909);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent910);
+
             Story_TruthRecollection3_2(ref messageList, ref eventList);
 
             messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.MirrorLastWay);
 
-            GroundOne.WE2.SeekerEvent911 = true;
+            //messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent911);
         }
         #endregion
         #region "正解への到達時"
         public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent911);
+
             messageList.Add("アイン：（　・・・扉だ・・・ ）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　これを開ければ、おそらく・・・ ）"); eventList.Add(ActionEvent.None);
@@ -24436,12 +24613,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、戻ろう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("31"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent912 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent912);
         }
         #endregion
         #region "原点解到達までのあらすじ"
         public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent912);
+
             messageList.Add("アイン：（　原点解は・・・地道に探すしかねえな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　ここでは直観は使わない　）"); eventList.Add(ActionEvent.None);
@@ -24475,23 +24655,29 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("32"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent913 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent913);
         }
         #endregion
         #region "原点解への道と、真実の回想録3_3"
         public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent913);
+
             Story_TruthRecollection3_3(ref messageList, ref eventList);
 
             messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("33"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent914 = true;
+
+            // messageList.Add(""; eventList.Add(ActionEvent.DungeonSeekerEvent914);
         }
         #endregion
         #region "原点解到達"
         public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent914);
+
             messageList.Add("アイン：（　よし・・・来たな　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　これで『原点解』到達だ、間違いねえ　）"); eventList.Add(ActionEvent.None);
@@ -24499,12 +24685,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　奥に看板が見える、行ってみよう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("34"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent915 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent915);
         }
         #endregion
         #region "原点解の看板Phase1"
         public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent915);
+
             messageList.Add("アイン：（　あった・・・これだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　　『　原点解(1 3 4 5 4 2 3 1 4 2 5 5)  左は聖者、右は愚者、究極解を選択せよ』"); eventList.Add(ActionEvent.None);
@@ -24525,9 +24714,8 @@ namespace DungeonPlayer
 
             // この後は、プレイヤーに操作させること
             //messageList.Add("35"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent916 = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            // プレイヤー操作に移るため、オートセーブ
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent916);
         }
         #endregion       
         #region "原点解の看板Phase2"
@@ -24593,12 +24781,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　戻るんだ、元いた場所へ・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("36"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent919 = true;
+
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent919);
         }
         #endregion
         #region "ボス撃破後の無限回廊看板"
         public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent919);
+
             messageList.Add("アイン：（　扉を開けば、おそらくボスだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　原点解のキーは得ている・・・大丈夫　）"); eventList.Add(ActionEvent.None);
@@ -24664,13 +24855,15 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　目の前の階段はトラップだ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（　左側が１、右側が５として、原点解の記載通りの順序で鏡を潜ろう　）"); eventList.Add(ActionEvent.None);
-            GroundOne.WE2.SeekerEvent920 = true;
+
+            // プレイヤー操作に移るため、オートセーブ
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent920);
         }
         #endregion
         #region "３Fハウリングシーザー撃破の破、自由行動制限"
         public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：いや、もう後ろへ振り返るのはよそう。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（　いや、もう後ろへ振り返るのはよそう　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
         }
@@ -24755,8 +24948,9 @@ namespace DungeonPlayer
                 messageList.Add("アイン：（　よし、抜けたみたいだな　）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（　進めよう　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent921);
             }
-            GroundOne.WE2.SeekerEvent921 = true;
         }
         #endregion
         #region "真実の回想録3_4"
@@ -24957,7 +25151,8 @@ namespace DungeonPlayer
         public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) 
         {
             Story_TruthRecollection3_4(ref messageList, ref eventList);
-            GroundOne.WE2.SeekerEvent922 = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent922);
         }
         #endregion
         #region "真実の回想録から右上最後の看板へ"
@@ -24980,8 +25175,9 @@ namespace DungeonPlayer
                 messageList.Add("アイン：（　絶対に助け出して見せる　）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（　行こう、４階へ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent923);
             }
-            GroundOne.WE2.SeekerEvent923 = true;
         }
         #endregion
         #region "最後の看板"
@@ -25070,9 +25266,9 @@ namespace DungeonPlayer
 
             messageList.Add(" ～　THE　END　～　（オル・ランディスとの死闘）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent924_fail = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent924_Fail);
 
             messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
@@ -25142,7 +25338,7 @@ namespace DungeonPlayer
 
             messageList.Add("ランディス：神の遺産は・・・膨大に心を・・・消費・・・する・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ランディス：アイツの精神は・・・もうとっくに限界だ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ランディス：アイツの精神は・・・もうとっくに限界を超えている・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ランディス：頼む、アーティを・・・"); eventList.Add(ActionEvent.None);
 
@@ -25168,8 +25364,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：行こう。"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent924 = true;
-            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_OL);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent924);
         }
         #endregion
         #region "３階から４階へ"
@@ -25177,8 +25372,8 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.RealDungeonArea = 4;
-            GroundOne.WE2.SeekerEvent925 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent925);
+
             messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstairFourTwo);
         }
         #endregion
@@ -25209,7 +25404,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（　行くぜ　）"); eventList.Add(ActionEvent.None);
 
-                GroundOne.WE2.SeekerEvent1001 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1001);
             }
             else
             {
@@ -25478,9 +25673,6 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.SeekerEvent1015)
             {
-                GroundOne.WE2.TruthRecollection4 = true;
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION4);
-
                 Story_TruthRecollection4(ref messageList, ref eventList);
 
                 messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
@@ -25526,8 +25718,9 @@ namespace DungeonPlayer
                 messageList.Add("アイン：（　右へ行けば、おそらくそこに・・・　）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1015);
             }
-            GroundOne.WE2.SeekerEvent1015 = true;
         }
         #endregion
         #region "失敗Ｘ"
@@ -25542,6 +25735,8 @@ namespace DungeonPlayer
                 messageList.Add("アイン：（　最初の看板に戻っちまったみたいだな　）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（　っくそ、今度こそ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1010);
             }
             else
             {
@@ -25549,7 +25744,6 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：（　っくそ、今度こそ・・・　）"); eventList.Add(ActionEvent.None);
             }
-            GroundOne.WE2.SeekerEvent1010 = true;
         }
         public static void Message16064_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -25687,7 +25881,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　銅像は目の前だ　）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent1011 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1011);
         }
         public static void Message16066_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -25715,8 +25909,6 @@ namespace DungeonPlayer
             messageList.Add("＜＜＜　強烈な光が幾重にもかさなり、その輝きは更に増していく！ ＞＞＞"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：目・・・目を瞑っていても・・・光が・・・ッグ！！"); eventList.Add(ActionEvent.None);
-
-            GroundOne.WE2.SeekerEvent1013 = true;
 
             messageList.Add(""); eventList.Add(ActionEvent.TurnToWhite);
 
@@ -25814,9 +26006,12 @@ namespace DungeonPlayer
 
             messageList.Add("　　　『　・・・　』"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.RealDungeonArea = 5;
-            GroundOne.WE2.SeekerEvent1012 = true;
-            GroundOne.WE2.SeekerEvent1014 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1012);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1013);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1014);
+
             messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownStairFiveTwo);
             
             messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
@@ -26108,11 +26303,7 @@ namespace DungeonPlayer
 
             messageList.Add(" ～　THE　END　～　（ヴェルゼ・アーティとの死闘）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent1101_fail = true;
-
-            GroundOne.WE2.SeekerEvent924_fail = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1101_fail);
 
             messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
@@ -26120,8 +26311,7 @@ namespace DungeonPlayer
         #region "ヴェルゼ最終戦２【原罪】"
         public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.WE2.SeekerEvent1101 = true;
-            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_1);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1101);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -26210,17 +26400,15 @@ namespace DungeonPlayer
 
             messageList.Add(" ～　THE　END　～　（超越者ヴェルゼとの死闘）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent1102_fail = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1102_fail);
+
             messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
         #endregion
         #region "ヴェルゼ戦闘終了後"
         public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.WE2.SeekerEvent1102 = true;
-            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1102);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -26352,10 +26540,12 @@ namespace DungeonPlayer
 
             messageList.Add("37"); eventList.Add(ActionEvent.AutoMove);
 
-            GroundOne.WE2.SeekerEvent1103 = true;
+            //messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1103);
         }
         public static void Message16073(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1103);
+
             messageList.Add(""); eventList.Add(ActionEvent.TurnToWhite);
 
             messageList.Add("　　　（　光の中に俺とラナは入り込んでいった　）　"); eventList.Add(ActionEvent.None);
@@ -26394,10 +26584,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　　（　・・・　）　"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent1104 = true;
-            GroundOne.WE.AlreadyShownEvent = false;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent1104);
 
             messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
@@ -29099,13 +29286,9 @@ namespace DungeonPlayer
             
             messageList.Add("アイン：さて、何すっかな。"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
-
             messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
-            GroundOne.WE2.SeekerEvent601 = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent601);
         }
 
         // エンディング
@@ -29129,7 +29312,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　　【１６分４２秒】　"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　　【決め手は、ゼータ・エクスプロージョン】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　【決め手は、ゼータ・エクスプロージョンをジェネシスから発動】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　　【オル・ランディス、必死にワープゲートを駆使して反撃を繰り広げていたが】"); eventList.Add(ActionEvent.None);
 
@@ -29905,11 +30088,13 @@ namespace DungeonPlayer
 
             messageList.Add("アイテム制作　　【　石高　裕介　】\r\n　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("グラフィック　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("グラフィック　　　【　辻谷　友紀　】\r\n　　　　　　　　【　naonao　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("プログラマー　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("スペシャルサンクス　　【　KANAKO　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("スペシャルサンクス　　【　naonao　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("プロデューサー　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
         }
@@ -30678,7 +30863,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（行こう、ダンジョンへ）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGotoRealDungeon);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent605);
         }
         #endregion
 
@@ -32382,29 +32567,27 @@ namespace DungeonPlayer
             //        }
             //        else
             //        {
-                        messageList.Add("アイン：（・・・このイヤリング・・・）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（・・・このイヤリング・・・）"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：（これをもってると、何か思い出せそうだ・・・）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（これをもってると、何か思い出せそうだ・・・）"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：（ラナには悪いが、もう少し持っておこう・・・）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（ラナには悪いが、もう少し持っておこう・・・）"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：いや、何でもねえんだ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：いや、何でもねえんだ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：今、ポケットをゴソゴソしてたじゃないの？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：今、ポケットをゴソゴソしてたじゃないの？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
                 //        break;
                 //    }
                 //}
-                GroundOne.WE.AlreadyCommunicate = true;
             //}
-            GroundOne.WE2.SeekerEvent602 = true;
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent602);
         }
         // ラナ・複合魔法・スキルの基礎習得
         // ラナ習得済み
@@ -34673,9 +34856,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ッハイ！！！"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent604 = true;
-            Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent604);
         }
 
         public static void Message50009(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -35141,9 +35322,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE2.SeekerEvent603 = true;
-            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent603);
         }
 
         public static void Message69993(ref List<string> messageList, ref List<ActionEvent> eventList)

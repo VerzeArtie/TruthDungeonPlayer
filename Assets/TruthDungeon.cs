@@ -15238,6 +15238,12 @@ namespace DungeonPlayer
 
         private bool BlockAction()
         {
+            // AutoMoveの間、何もさせない。
+            if (this.nowAutoMoveNumber.Count > 0)
+            {
+                return true;
+            }
+
             if ((GroundOne.WE.dungeonEvent490 && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1) ||
                 (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1))
             {
@@ -15255,8 +15261,8 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
             SceneDimension.CallTruthStatusPlayer(this, false, "");
         }
         public void tapBattleSetting()
@@ -15266,8 +15272,8 @@ namespace DungeonPlayer
                 mainMessage.text = "アイン：キャラクターのバトル設定画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
                 return;
             }
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
@@ -15278,8 +15284,8 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15301,8 +15307,8 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15323,13 +15329,13 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                Method.ExecSave(null, Database.WorldSaveNum, true); // add unity
                 Method.AutoSaveTruthWorldEnvironment();
                 Method.AutoSaveRealWorld();
+                Method.ExecSave(null, Database.WorldSaveNum, true); // add unity
                 SceneDimension.JumpToTitle();
                 return;
             }
@@ -15343,10 +15349,10 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：戦闘コマンドの内容を確認してみよう。";
-            } 
+            }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
             this.back_playback.SetActive(false);
             base.BookManual_Click();
         }
@@ -15356,10 +15362,10 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode && this.DungeonViewMode == false)
             {
                 mainMessage.text = "アイン：ダンジョン表示モードに切り替える事でマップ全体を見渡せる。移動する時と同じように上下左右キーを押してみてくれ。\r\n移動モードに戻る時は再びこのマップボタンを押してくれ。";
-            } 
-            
-            GroundOne.SQL.UpdateOwner(Database.LOG_VIEW_DUNGEON, String.Empty, String.Empty);
+            }
+
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_VIEW_DUNGEON, String.Empty, String.Empty);
             this.back_playback.SetActive(false);
             this.DungeonViewMode = !this.DungeonViewMode;
             if (this.DungeonViewMode)
@@ -15398,10 +15404,10 @@ namespace DungeonPlayer
             {
                 mainMessage.text = "アイン：ダンジョン内で発生した会話履歴を確認する事ができる。すまねえがこのチュートリアルでは確認できないんだ。";
                 return;
-            } 
+            }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             SceneDimension.CallTruthPlayBack(this);
             //if (!this.back_playback.activeInHierarchy)
             //{
@@ -15433,8 +15439,8 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (BlockAction()) { return; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 mainMessage.text = "アイン：・・・　・・・";
@@ -15543,29 +15549,57 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.DungeonArea == 1)
             {
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR1);
                 GroundOne.WE.TruthCompleteArea1 = true;
+                if (GroundOne.WE2.StartSeeker == false)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR1);
+                }
+                else
+                {
+                    GroundOne.WE2.RealDungeonArea = 2;
+                }
                 JumpToLocation(29, -19, true);
                 SetupDungeonMapping(2);
             }
             else if (GroundOne.WE.DungeonArea == 2)
             {
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR2);
                 GroundOne.WE.TruthCompleteArea2 = true;
+                if (GroundOne.WE2.StartSeeker == false)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR2);
+                }
+                else
+                {
+                    GroundOne.WE2.RealDungeonArea = 3;
+                }
                 JumpToLocation(0, -19, true);
                 SetupDungeonMapping(3);
             }
             else if (GroundOne.WE.DungeonArea == 3)
             {
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR3);
                 GroundOne.WE.TruthCompleteArea3 = true;
+                if (GroundOne.WE2.StartSeeker == false)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR3);
+                }
+                else
+                {
+                    GroundOne.WE2.RealDungeonArea = 4;
+                }
                 JumpToLocation(52, -18, true);
                 SetupDungeonMapping(4);
             }
             else if (GroundOne.WE.DungeonArea == 4)
             {
-                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR4);
                 GroundOne.WE.TruthCompleteArea4 = true;
+                if (GroundOne.WE2.StartSeeker == false)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR4);
+                }
+                else
+                {
+                    GroundOne.WE2.RealDungeonArea = 5;
+                }
                 JumpToLocation(57, -2, true);
                 SetupDungeonMapping(5);
             }
@@ -15574,6 +15608,10 @@ namespace DungeonPlayer
         private void GotoDownStairFourTwo()
         {
             GroundOne.WE.TruthCompleteArea4 = true;
+            if (GroundOne.WE2.StartSeeker)
+            {
+                GroundOne.WE2.RealDungeonArea = 4;
+            }
             JumpToLocation(31, -28, true);
             SetupDungeonMapping(4);
         }
@@ -15581,6 +15619,10 @@ namespace DungeonPlayer
         private void GotoDownStairFiveTwo()
         {
             GroundOne.WE.TruthCompleteArea5 = true;
+            if (GroundOne.WE2.StartSeeker)
+            {
+                GroundOne.WE2.RealDungeonArea = 5;
+            }
             JumpToLocation(30, -15, true);
             SetupDungeonMapping(5);
         }
@@ -17486,6 +17528,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDungeonFive)
                 {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_FLOOR4);
                     GroundOne.WE.TruthCompleteArea4 = true;
                     JumpToLocation(57, -2, true);
                     SetupDungeonMapping(5);
@@ -17612,9 +17655,478 @@ namespace DungeonPlayer
                     GroundOne.WE.GameDay = 1;
                     GroundOne.WE.AlreadyRest = true;
                     GroundOne.WE.AlreadyCommunicate = false;
+                    if (GroundOne.MC != null) { GroundOne.MC.ResurrectPlayer(GroundOne.MC.MaxLife); GroundOne.MC.MaxGain(); }
+                    if (GroundOne.SC != null) { GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife); GroundOne.SC.MaxGain(); }
+                    if (GroundOne.TC != null) { GroundOne.TC.ResurrectPlayer(GroundOne.TC.MaxLife); GroundOne.TC.MaxGain(); }
                     Method.AutoSaveTruthWorldEnvironment();
                     Method.AutoSaveRealWorld();
                     CallHomeTown();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent701)
+                {
+                    GroundOne.WE2.SeekerEvent701 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent702)
+                {
+                    GroundOne.WE2.SeekerEvent702 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent703)
+                {
+                    GroundOne.WE2.SeekerEvent703 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent704)
+                {
+                    GroundOne.WE2.SeekerEvent704 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent705)
+                {
+                    GroundOne.WE2.SeekerEvent705 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent706)
+                {
+                    GroundOne.WE2.SeekerEvent706 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent801)
+                {
+                    GroundOne.WE2.SeekerEvent801 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent802)
+                {
+                    GroundOne.WE2.SeekerEvent802 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent803)
+                {
+                    GroundOne.WE2.SeekerEvent803 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent804)
+                {
+                    GroundOne.WE2.SeekerEvent804 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent805)
+                {
+                    GroundOne.WE2.SeekerEvent805 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent806)
+                {
+                    GroundOne.WE2.SeekerEvent806 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent807)
+                {
+                    GroundOne.WE2.SeekerEvent807 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent808)
+                {
+                    GroundOne.WE2.SeekerEvent808 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent809)
+                {
+                    GroundOne.WE2.SeekerEvent809 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent810)
+                {
+                    GroundOne.WE2.SeekerEvent810 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent811)
+                {
+                    GroundOne.WE2.SeekerEvent811 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent812)
+                {
+                    GroundOne.WE2.SeekerEvent812 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent813)
+                {
+                    GroundOne.WE2.SeekerEvent813 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent814)
+                {
+                    GroundOne.WE2.SeekerEvent814 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent815)
+                {
+                    GroundOne.WE2.SeekerEvent815 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent816)
+                {
+                    GroundOne.WE2.SeekerEvent816 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent817)
+                {
+                    GroundOne.WE2.SeekerEvent817 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent818)
+                {
+                    GroundOne.WE2.SeekerEvent818 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent819)
+                {
+                    GroundOne.WE2.SeekerEvent819 = true;
+                    GroundOne.WE2.TruthAnswer2_OK = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent820)
+                {
+                    GroundOne.WE2.SeekerEvent820 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent821)
+                {
+                    GroundOne.WE2.SeekerEvent821 = true;
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_KAHLHANZ);
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent821_Fail)
+                {
+                    GroundOne.WE2.SeekerEvent821_fail = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent822)
+                {
+                    GroundOne.WE2.SeekerEvent822 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent901)
+                {
+                    GroundOne.WE2.SeekerEvent901 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent902)
+                {
+                    GroundOne.WE2.SeekerEvent902 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent903)
+                {
+                    GroundOne.WE2.SeekerEvent903 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent904)
+                {
+                    GroundOne.WE2.SeekerEvent904 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent905)
+                {
+                    GroundOne.WE2.SeekerEvent905 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent906)
+                {
+                    GroundOne.WE2.SeekerEvent906 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent907)
+                {
+                    GroundOne.WE2.SeekerEvent907 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent908)
+                {
+                    GroundOne.WE2.SeekerEvent908 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent909)
+                {
+                    GroundOne.WE2.SeekerEvent909 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent910)
+                {
+                    GroundOne.WE2.SeekerEvent910 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent911)
+                {
+                    GroundOne.WE2.SeekerEvent911 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent912)
+                {
+                    GroundOne.WE2.SeekerEvent912 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent913)
+                {
+                    GroundOne.WE2.SeekerEvent913 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent914)
+                {
+                    GroundOne.WE2.SeekerEvent914 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent915)
+                {
+                    GroundOne.WE2.SeekerEvent915 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent916)
+                {
+                    GroundOne.WE2.SeekerEvent916 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent917)
+                {
+                    GroundOne.WE2.SeekerEvent917 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent918)
+                {
+                    GroundOne.WE2.SeekerEvent918 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent919)
+                {
+                    GroundOne.WE2.SeekerEvent919 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent920)
+                {
+                    GroundOne.WE2.SeekerEvent920 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent921)
+                {
+                    GroundOne.WE2.SeekerEvent921 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent922)
+                {
+                    GroundOne.WE2.SeekerEvent922 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent923)
+                {
+                    GroundOne.WE2.SeekerEvent923 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent924)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_OL);
+                    GroundOne.WE2.SeekerEvent924 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent924_Fail)
+                {
+                    GroundOne.WE2.SeekerEvent924_fail = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent925)
+                {
+                    GroundOne.WE2.SeekerEvent925 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1001)
+                {
+                    GroundOne.WE2.SeekerEvent1001 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1002)
+                {
+                    GroundOne.WE2.SeekerEvent1002 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1003)
+                {
+                    GroundOne.WE2.SeekerEvent1003 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1004)
+                {
+                    GroundOne.WE2.SeekerEvent1004 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1005)
+                {
+                    GroundOne.WE2.SeekerEvent1005 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1006)
+                {
+                    GroundOne.WE2.SeekerEvent1006 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1007)
+                {
+                    GroundOne.WE2.SeekerEvent1007 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1008)
+                {
+                    GroundOne.WE2.SeekerEvent1008 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1009)
+                {
+                    GroundOne.WE2.SeekerEvent1009 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1010)
+                {
+                    GroundOne.WE2.SeekerEvent1010 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1011)
+                {
+                    GroundOne.WE2.SeekerEvent1011 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1012)
+                {
+                    GroundOne.WE2.SeekerEvent1012 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1013)
+                {
+                    GroundOne.WE2.SeekerEvent1013 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1014)
+                {
+                    GroundOne.WE2.SeekerEvent1014 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1015)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION4);
+                    GroundOne.WE2.TruthRecollection4 = true;
+                    GroundOne.WE2.SeekerEvent1015 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1101)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_1);
+                    GroundOne.WE2.SeekerEvent1101 = true;
+                    // 最終戦闘１→２の途中なので、セーブしない。
+                    //Method.AutoSaveTruthWorldEnvironment();
+                    //Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1101_fail)
+                {
+                    GroundOne.WE2.SeekerEvent1101_fail = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1102)
+                {
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2);
+                    GroundOne.WE2.SeekerEvent1102 = true;
+                    // 最終戦闘完了直前なので、セーブしない。
+                    //Method.AutoSaveTruthWorldEnvironment();
+                    //Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1102_fail)
+                {
+                    GroundOne.WE2.SeekerEvent1102_fail = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1103)
+                {
+                    GroundOne.WE2.SeekerEvent1103 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSeekerEvent1104)
+                {
+                    GroundOne.WE2.SeekerEvent1104 = true;
+                    GroundOne.WE.AlreadyShownEvent = false;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.AutoSaveTruthWorldRealWorld)
                 {
