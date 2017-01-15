@@ -5424,7 +5424,7 @@ namespace DungeonPlayer
                     this.Armor = ArmorType.Normal;
                     this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD_1);
                     this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2);
-                    this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
+                    this.Accessory = new ItemBackPack(Database.COMMON_PLATINUM_RING_7);
                     this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2);
                     this.Area = MonsterArea.Duel;
                     break;

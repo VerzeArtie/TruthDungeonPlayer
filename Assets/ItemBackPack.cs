@@ -5901,13 +5901,18 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2:
-                    description = "闇から生まれた露草の葉は魔力の根源を宿していると言われている。魔法防御１６２５～１９７０、沈黙耐性、誘惑耐性、鈍化耐性、毒耐性、魔攻率＋２０％、闇耐性＋50000、火耐性＋50000";
+                    description = "闇から生まれた露草の葉は魔力の根源を宿していると言われている。魔法防御１６２５～１９７０、\r\n魔攻率＋２０％、闇耐性＋50000、火耐性＋50000、毒耐性、沈黙耐性、スタン耐性、麻痺耐性、凍結耐性、誘惑耐性、鈍化耐性、暗闇耐性、スリップ耐性";
                     MagicDefenseMinValue = 1625;
                     MagicDefenseMaxValue = 1970;
+                    ResistPoison = true;
                     ResistSilence = true;
+                    ResistStun = true;
+                    ResistParalyze = true;
+                    ResistFrozen = true;
                     ResistTemptation = true;
                     ResistSlow = true;
-                    ResistPoison = true;
+                    ResistBlind = true;
+                    ResistSlip = true;
                     AmplifyMagicAttack = 1.20F;
                     ResistShadow = 50000;
                     ResistFire = 50000;

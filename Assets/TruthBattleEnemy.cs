@@ -3604,16 +3604,16 @@ namespace DungeonPlayer
                         //}   
                         else if (player.MaxLife * 0.0f <= player.CurrentLife && player.CurrentLife < player.MaxLife * 0.8f && player.CurrentMana >= Database.LIFE_TAP_COST)
                         {
-                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.LIFE_TAP);
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.CELESTIAL_NOVA);
                         }
                         else if ((GroundOne.MC.CurrentSigilOfHomura <= 0) && (player.CurrentMana >= Database.SIGIL_OF_HOMURA_COST))
                         {
                             ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.SIGIL_OF_HOMURA);
                         }
-                        //else if ((player.CurrentRedDragonWill <= 0) && (player.CurrentMana >= Database.RED_DRAGON_WILL_COST))
-                        //{
-                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.RED_DRAGON_WILL);
-                        //}
+                        else if ((player.CurrentRedDragonWill <= 0) && (player.CurrentMana >= Database.RED_DRAGON_WILL_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.RED_DRAGON_WILL);
+                        }
                         //else if ((GroundOne.MC.CurrentEnrageBlast <= 0) && (player.CurrentMana >= Database.ENRAGE_BLAST_COST))
                         //{
                         //    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.ENRAGE_BLAST);
