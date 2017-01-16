@@ -23,7 +23,6 @@ namespace DungeonPlayer
             Abort, // 逃げる
         }
 
-		public static ClientSocket CS = null; // サーバー接続ソケット
 		public static bool IsConnect = false; // サーバー接続OKサイン
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
 
@@ -602,16 +601,6 @@ namespace DungeonPlayer
             UnityEngine.Object.DontDestroyOnLoad(SQL);
             return true;
         }
-		public static void InitializeNetworkConnection()
-		{
-			if (GroundOne.CS == null) {
-				GroundOne.CS = new ClientSocket();
-			}
-//			GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage (ReceiveFromClientSocket);
-			IPAddress ipAddress = IPAddress.Parse ("133.242.151.26");
-			IPEndPoint serverEP = new IPEndPoint (ipAddress, 8001);
-			GroundOne.IsConnect = CS.Connect (SaveData.GetName(), serverEP, 3000);
-		}
 
         #region "BGM再生と効果音関連"
         public static void PlaySoundEffect(string soundName)

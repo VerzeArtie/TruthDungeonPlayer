@@ -333,7 +333,6 @@ namespace DungeonPlayer
 
         MainCharacter currentPlayer;
 
-        ClientSocket CS;
         public bool firstAction = false;
 
         int activatePlayerNumber = 0;

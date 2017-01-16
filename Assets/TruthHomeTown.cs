@@ -152,20 +152,7 @@ namespace DungeonPlayer
         {
             return msg.Substring(protocolStr.Length, msg.Length - protocolStr.Length);
         }
-
-	    private void ReceiveFromClientSocket(string msg)
-	    {
-		    if (msg.Contains(Protocol.ExistCharacter)) {
-			    if (GetString(msg, Protocol.ExistCharacter) == "false")
-			    {
-				    SaveData.SetName (this.nameField.text);
-				    byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.CreateCharacter + this.nameField.text);
-				    GroundOne.CS.SendMessage(bb);
-				    Application.LoadLevel(targetViewName);
-			    }
-		    }
-	    }
-
+        
         List<Text> endingMessage = new List<Text>();
         List<Text> endingMessage2 = new List<Text>();
         List<Text> endingMessage3 = new List<Text>();
@@ -329,15 +316,6 @@ namespace DungeonPlayer
                     tapOK();
                 }
             }
-	    }
-
-	    private void CallNext() {
-		    if (GroundOne.IsConnect && SaveData.GetName () == "") {
-			    byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.ExistCharacter + this.nameField.text);
-			    GroundOne.CS.SendMessage (bb);
-		    } else {
-			    Application.LoadLevel (targetViewName);
-		    }
 	    }
 
         private void ShownEvent()

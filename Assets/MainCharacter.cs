@@ -329,7 +329,6 @@ namespace DungeonPlayer
                 return baseSpecialInstant;
             }
         }        
-        public JobClass.Job Job { get; set; } // add unity
 
         public int TotalResistLight
         {
