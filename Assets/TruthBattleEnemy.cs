@@ -645,12 +645,12 @@ namespace DungeonPlayer
                 // ヴェルゼ最終戦闘２
                 if (ec1.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
-                    GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM23, Database.BGM23LoopBegin);
                 }
                 // ヴェルゼ最終戦闘
                 else if (ec1.FirstName == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
-                    GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
                 }
                 // DUEL最終戦
                 else if (ec1.FirstName == Database.ENEMY_LAST_RANA_AMILIA ||

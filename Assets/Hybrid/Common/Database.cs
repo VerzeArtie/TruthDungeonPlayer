@@ -852,15 +852,15 @@ namespace DungeonPlayer
         public static string BaseMusicFolder = @"BGM\"; //Environment.CurrentDirectory + @"BGM\";
         public static string BGM01 = @"01_town_silently";
         public static int BGM01LoopBegin = 0;
-        public static string BGM02 = @"02_dungeon_seeking";
-        public static int BGM02LoopBegin = 106500;
+        public static string BGM02 = @"14_I_Will_Go_Dungeon"; // @"02_dungeon_seeking";
+        public static int BGM02LoopBegin = 0; // 106500;
         public static string BGM03 = @"03_battle_warning";
         public static int BGM03LoopBegin = 0;
         public static string BGM04 = @"04_The_Flame";
         public static int BGM04LoopBegin = 0;
         public static string BGM05 = @"05_Finally_Bystander";
         public static int BGM05LoopBegin = 0;
-        public static string BGM06 = @"06_Refuse";
+        public static string BGM06 = @"19_Silent_Moving"; // @"06_Refuse";
         public static int BGM06LoopBegin = 0;
         public static string BGM07 = @"07_Systematic_Dominance";
         public static int BGM07LoopBegin = 0;
@@ -888,12 +888,12 @@ namespace DungeonPlayer
         public static int BGM18LoopBegin = 0;
         public static string BGM19 = @"19_Silent_Moving";
         public static int BGM19LoopBegin = 0;
-        public static string BGM20 = @"20_TimeEnd_StartReason";
-        public static int BGM20LoopBegin = 0;
+        //public static string BGM20 = @"20_TimeEnd_StartReason";
+        //public static int BGM20LoopBegin = 0;
         public static string BGM21 = @"21_The_Best_Battle";
         public static int BGM21LoopBegin = 0;
-        public static string BGM22 = @"22_TimeEnd_FanFare";
-        public static int BGM22LoopBegin = 0;
+        //public static string BGM22 = @"22_TimeEnd_FanFare";
+        //public static int BGM22LoopBegin = 0;
         public static string BGM23 = @"23_Verze_StartReason";
         public static int BGM23LoopBegin = 0;
         #endregion
