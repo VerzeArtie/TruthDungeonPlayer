@@ -16157,7 +16157,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.PlayMusic17)
                 {
-                    GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.PlayMusic18)
                 {

@@ -882,8 +882,8 @@ namespace DungeonPlayer
         public static int BGM15LoopBegin = 0;
         public static string BGM16 = @"16_Wanna_Understand";
         public static int BGM16LoopBegin = 0;
-        public static string BGM17 = @"17_wake_up_and_fight";
-        public static int BGM17LoopBegin = 0;
+        //public static string BGM17 = @"17_wake_up_and_fight";
+        //public static int BGM17LoopBegin = 0;
         public static string BGM18 = @"18_MatrixDragon";
         public static int BGM18LoopBegin = 0;
         public static string BGM19 = @"19_Silent_Moving";

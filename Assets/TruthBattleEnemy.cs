@@ -677,10 +677,15 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM04, Database.BGM04LoopBegin);
                 }
+                // シニキア・カールハンツ
+                else if (ec1.FirstName == Database.DUEL_SINIKIA_KAHLHANZ)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
+                }
                 // 初期DUELオル・ランディス
                 else if (ec1.FirstName == Database.DUEL_OL_LANDIS)
                 {
-                    GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
                 }
                 // 支配竜達の呼び声
                 else if (ec1.Rare == TruthEnemyCharacter.RareString.Purple)
