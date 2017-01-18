@@ -19824,7 +19824,7 @@ namespace DungeonPlayer
             CancelKeyDownMovement();
 
             if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
-                this.nowMessage[this.nowReading] == Database.ENEMY_LAST_OL_LANDIS)
+                GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
             {
                 SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, false, false);
             }
