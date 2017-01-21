@@ -21,6 +21,13 @@ namespace DungeonPlayer
             }
         }
 
+        protected double GainSkillIsZero(double damage, MainCharacter player)
+        {
+            if (player.CurrentAbsoluteZero > 0) { damage = 0; }
+            if (player.CurrentVoiceOfAbyss > 0) { damage = 0; }
+            return damage;
+        }
+
         protected double GainIsZero(double damage, MainCharacter player)
         {
             if (player.CurrentAbsoluteZero > 0) { damage = 0; }

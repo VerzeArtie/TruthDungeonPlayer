@@ -441,6 +441,7 @@ namespace DungeonPlayer
                             else
                             {
                                 UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + effect.ToString() + " スキルポイント回復\r\n");
+                                effect = (int)(GainSkillIsZero((double)effect, player));
                                 player.CurrentSkillPoint += effect;
                                 UpdateSkillPoint(player);
                             }

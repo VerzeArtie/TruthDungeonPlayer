@@ -1596,7 +1596,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("InnerInspiration");
             double effectValue = PrimaryLogic.InnerInspirationValue(player);
-            effectValue = GainIsZero(effectValue, player);
+            effectValue = GainSkillIsZero(effectValue, player);
             UpdateBattleText(String.Format(player.GetCharacterSentence(51), Convert.ToString((int)effectValue)));
             player.CurrentSkillPoint += (int)effectValue;
             UpdateSkillPoint(player, effectValue, true, true, 0);

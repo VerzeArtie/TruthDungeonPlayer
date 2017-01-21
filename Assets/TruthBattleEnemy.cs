@@ -4642,7 +4642,7 @@ namespace DungeonPlayer
                             double effectValue3 = (double)(ActiveList[ii].PoolSkillConsumption) / 2.0F;
                             effectValue = GainIsZero(effectValue, ActiveList[ii]);
                             effectValue2 = GainIsZero(effectValue2, ActiveList[ii]);
-                            effectValue3 = GainIsZero(effectValue3, ActiveList[ii]);
+                            effectValue3 = GainSkillIsZero(effectValue3, ActiveList[ii]);
                             UpdateBattleText(Database.COMMON_MUKEI_SAKAZUKI + "から" + ActiveList[ii].FirstName + "へ生命の水が湧き出てくる。\r\n");
                             UpdateBattleText(ActiveList[ii].FirstName + "のライフが" + ((int)effectValue).ToString() + "回復、マナが" + ((int)effectValue2).ToString() + "回復、スキルポイントが" + ((int)effectValue3).ToString() + "回復\r\n");
                             ActiveList[ii].CurrentLife += (int)effectValue;
@@ -6148,7 +6148,7 @@ namespace DungeonPlayer
                         (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_MENTALIZED_FORCE_CLAW))
                     {
                         double effectValue = PrimaryLogic.MentalizedForceClawValue(player);
-                        effectValue = GainIsZero(effectValue, player);
+                        effectValue = GainSkillIsZero(effectValue, player);
                         player.CurrentSkillPoint += (int)effectValue;
                         UpdateSkillPoint(player, (int)effectValue, true, true, 0);
                     }
@@ -6214,14 +6214,14 @@ namespace DungeonPlayer
                     if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_FATE_RING_OMEGA))
                     {
                         double effectValue = PrimaryLogic.EternalLoyalRingValue(player);
-                        effectValue = GainIsZero(effectValue, player);
+                        effectValue = GainSkillIsZero(effectValue, player);
                         player.CurrentSkillPoint += (int)effectValue;
                         UpdateSkillPoint(player, (int)effectValue, true, true, 0);
                     }
                     if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_FATE_RING_OMEGA))
                     {
                         double effectValue = PrimaryLogic.EternalLoyalRingValue(player);
-                        effectValue = GainIsZero(effectValue, player);
+                        effectValue = GainSkillIsZero(effectValue, player);
                         player.CurrentSkillPoint += (int)effectValue;
                         UpdateSkillPoint(player, (int)effectValue, true, true, 0);
                     }
@@ -7318,6 +7318,7 @@ namespace DungeonPlayer
                         {
                             GroundOne.PlaySoundEffect(soundName);
                         }
+                        effectValue = GainSkillIsZero(effectValue, target);
                         target.CurrentSkillPoint += (int)effectValue;
                         UpdateSkillPoint(target, effectValue, true, true, 0);
                         UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)effectValue).ToString()));
@@ -7340,6 +7341,7 @@ namespace DungeonPlayer
                     {
                         GroundOne.PlaySoundEffect(soundName);
                     }
+                    effectValue = GainSkillIsZero(effectValue, player);
                     player.CurrentSkillPoint += (int)effectValue;
                     UpdateSkillPoint(player, effectValue, true, true, 0);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), effectValue.ToString()));
