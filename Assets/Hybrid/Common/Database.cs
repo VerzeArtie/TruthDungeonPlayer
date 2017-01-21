@@ -859,7 +859,7 @@ namespace DungeonPlayer
         public static string BGM04 = @"04_The_Flame";
         public static int BGM04LoopBegin = 0;
         public static string BGM05 = @"05_Finally_Bystander";
-        public static int BGM05LoopBegin = 0;
+        public static float BGM05LoopBegin = 33.7F;
         public static string BGM06 = @"19_Silent_Moving"; // @"06_Refuse";
         public static int BGM06LoopBegin = 0;
         public static string BGM07 = @"07_Systematic_Dominance";

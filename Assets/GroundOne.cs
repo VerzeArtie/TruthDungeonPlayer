@@ -52,7 +52,8 @@ namespace DungeonPlayer
         public static GameObject bgm = null; // BGM音源
         public static List<AudioSource> bgmSource = new List<AudioSource>(); // BGMソース
         private static List<String> BgmName = new List<string>();
-        private static int BgmNumber = 0;
+        public static List<float> BgmLoopPoint = new List<float>();
+        public static int BgmNumber = 0;
 
         public static int EnableBGM = 100; // ミュージック、デフォルトは100
         public static int EnableSoundEffect = 100; // 効果音、デフォルトは100
@@ -212,6 +213,8 @@ namespace DungeonPlayer
                 bgmSource = null;
                 BgmName.Clear();
                 BgmName = null;
+                BgmLoopPoint.Clear();
+                BgmLoopPoint = null;
                 BgmNumber = 0;
             }
             Truth_KnownTileInfo = null;
@@ -244,6 +247,7 @@ namespace DungeonPlayer
                 bgmSource = new List<AudioSource>();
                 bgmSource.Add(bgm.AddComponent<AudioSource>());
                 BgmName = new List<string>();
+                BgmLoopPoint = new List<float>();
             }
 
             Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -618,11 +622,11 @@ namespace DungeonPlayer
             soundSource.volume = vol;
         }
 
-        public static void PlayDungeonMusic(string targetMusicName, int loopBegin)
+        public static void PlayDungeonMusic(string targetMusicName, float loopBegin)
         {
             PlayDungeonMusic(targetMusicName, string.Empty, loopBegin);
         }
-        public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, int loopBegin)
+        public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, float loopBegin)
         {
             StopDungeonMusic();
 
@@ -640,14 +644,16 @@ namespace DungeonPlayer
             if (detect == false)
             {
                 BgmName.Add(targetMusicName);
+                BgmLoopPoint.Add(loopBegin);
                 bgmSource.Add(bgm.AddComponent<AudioSource>());
                 BgmNumber = BgmName.Count - 1;
             }
 
             bgmSource[BgmNumber].Stop();
             bgmSource[BgmNumber].clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
-            bgmSource[BgmNumber].loop = true;
+            bgmSource[BgmNumber].loop = false;
             bgmSource[BgmNumber].volume = (float)((float)GroundOne.EnableBGM / 100.0f);
+            bgmSource[BgmNumber].time = 0;
             bgmSource[BgmNumber].Play();
         }
 

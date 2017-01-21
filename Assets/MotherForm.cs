@@ -27,6 +27,14 @@ namespace DungeonPlayer
 
         public virtual void Update()
         {
+            if (GroundOne.bgmSource[GroundOne.BgmNumber] != null && GroundOne.bgmSource[GroundOne.BgmNumber].isPlaying)
+            {
+                if (GroundOne.bgmSource[GroundOne.BgmNumber].time >= GroundOne.bgmSource[GroundOne.BgmNumber].clip.length - 1)
+                {
+                    GroundOne.bgmSource[GroundOne.BgmNumber].time = GroundOne.BgmLoopPoint[GroundOne.BgmNumber];
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 BookManual_Click();
