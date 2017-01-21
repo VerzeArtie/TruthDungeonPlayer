@@ -177,8 +177,8 @@ namespace DungeonPlayer
             }
 
             // 心係数はここで増幅させる。
-            min = minFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.50;
-            max = maxFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.50;
+            min = 3.00 + minFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 2.00;
+            max = 3.00 + maxFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 2.00;
 
             if (attr == DmgAttr.Physical)
             {

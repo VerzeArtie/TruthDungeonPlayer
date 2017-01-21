@@ -4447,35 +4447,35 @@ namespace DungeonPlayer
                 #region "ダンジョン１階"
                 #region "エリア１"
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    SetupParameterMonster(1, 8, 1, 1, 1, 2, (int)(listExp[0]), (int)(listGold[0]), 5);
+                    SetupParameterMonster(1, 9, 1, 1, 1, 4, (int)(listExp[0]), (int)(listGold[0]), 5);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
                 case Database.ENEMY_HENSYOKU_PLANT:
-                    SetupParameterMonster(1, 7, 1, 1, 1, 2, (int)(listExp[1]), (int)(listGold[1]), 8);
+                    SetupParameterMonster(1, 8, 1, 1, 1, 4, (int)(listExp[1]), (int)(listGold[1]), 8);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_HENSYOKU_KUKI;
                     break;
                 case Database.ENEMY_GREEN_CHILD:
-                    SetupParameterMonster(2, 7, 4, 12, 3, 3, (int)(listExp[2]), (int)(listGold[2]));
+                    SetupParameterMonster(2, 7, 4, 12, 3, 4, (int)(listExp[2]), (int)(listGold[2]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_GREEN_SIKISO;
                     break;
                 case Database.ENEMY_TINY_MANTIS:
-                    SetupParameterMonster(3, 14, 6, 5, 4, 3, (int)(listExp[3]), (int)(listGold[3]));
+                    SetupParameterMonster(3, 14, 6, 5, 4, 4, (int)(listExp[3]), (int)(listGold[3]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_MANTIS_TAIEKI;
                     break;
                 case Database.ENEMY_KOUKAKU_WURM:
-                    SetupParameterMonster(4, 18, 7, 6, 5, 3, (int)(listExp[4]), (int)(listGold[4]));
+                    SetupParameterMonster(4, 18, 7, 6, 5, 4, (int)(listExp[4]), (int)(listGold[4]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
