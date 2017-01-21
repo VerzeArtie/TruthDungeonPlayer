@@ -722,9 +722,9 @@ namespace DungeonPlayer
                     break;
 
                 case Database.POOR_COTE_OF_PLATE: // アイン初期装備
-                    description = "初心者がまず初めに装備するチュニック。物理防御２～４";
-                    PhysicalDefenseMinValue = 2;
-                    PhysicalDefenseMaxValue = 4;
+                    description = "初心者がまず初めに装備するチュニック。物理防御１～２";
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 2;
                     cost = 100;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Poor;
