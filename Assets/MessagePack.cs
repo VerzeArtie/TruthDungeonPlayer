@@ -24213,6 +24213,10 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：やらなきゃ・・・いけないみたいだな。"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonRefreshWater);
+
+            messageList.Add("『　ライフ／スキル／マナが全回復しました。　』"); eventList.Add(ActionEvent.None);
+
             messageList.Add("アイン：・・・構えるぜ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来るがよい。"); eventList.Add(ActionEvent.None);
@@ -24259,6 +24263,8 @@ namespace DungeonPlayer
         }
         public static void Message16018_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent821);
+
             messageList.Add("カール：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（確かに討ち取ったはずだが・・・）"); eventList.Add(ActionEvent.None);
@@ -24375,6 +24381,8 @@ namespace DungeonPlayer
 
             messageList.Add("26"); eventList.Add(ActionEvent.AutoMove);
 
+            // ここをセーブしないと、前回の戦闘前のポジションと変わらないため、前回のメッセージが出てしまう。
+            // 一番初めでセーブするようにする。
             // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent821);
         }
         #endregion
@@ -24547,9 +24555,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　よし、決まりだ。迂闊に進み過ぎないように注意深く進めよう ）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("30"); eventList.Add(ActionEvent.AutoMove);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent904);
 
-            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent904);
+            messageList.Add(""); eventList.Add(ActionEvent.MirrorWay);
         }
         #endregion
         #region "鏡エリア２の進行"
@@ -25227,6 +25235,10 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonRefreshWater);
+
+            messageList.Add("『　ライフ／スキル／マナが全回復しました。　』"); eventList.Add(ActionEvent.None);
+
             messageList.Add("アイン：行くぜ、師匠。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ランディス：ああ、来い。"); eventList.Add(ActionEvent.None);
@@ -25274,6 +25286,8 @@ namespace DungeonPlayer
         }
         public static void Message16045_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent924);
+
             messageList.Add("ランディス：ッチ・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：し、師匠！　今の大丈夫だったか！？"); eventList.Add(ActionEvent.None);
@@ -25364,7 +25378,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：行こう。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent924);
+            // ここをセーブしないと、前回の戦闘前のポジションと変わらないため、前回のメッセージが出てしまう。
+            // 一番初めでセーブするようにする。
+            // messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent924);
         }
         #endregion
         #region "３階から４階へ"
