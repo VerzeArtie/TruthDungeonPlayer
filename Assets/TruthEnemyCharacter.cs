@@ -5987,17 +5987,18 @@ namespace DungeonPlayer
             }
 
             // after
-            //float powerValue = 1.0f;
-            //if (GroundOne.Difficulty == 1) { powerValue = 0.75f; }
-            //else if (GroundOne.Difficulty == 2) { powerValue = 1.00f; }
-            //else { powerValue = 1.25f; }
-            //this.baseStrength = ((int)((float)this.baseStrength * powerValue)); if (this.baseStrength <= 1) this.baseStrength = 1;
-            //this.baseAgility = ((int)((float)this.baseAgility * powerValue)); if (this.baseAgility <= 1) this.baseAgility = 1;
-            //this.baseIntelligence = ((int)((float)this.baseIntelligence * powerValue)); if (this.baseIntelligence <= 1) this.baseIntelligence = 1;
-            //this.baseStamina = ((int)((float)this.baseStamina * powerValue)); if (this.baseStamina <= 1) this.baseStamina = 1;
-            //this.baseMind = ((int)((float)this.baseMind * powerValue)); if (this.baseMind <= 1) this.baseMind = 1;
-            //this.baseLife = ((int)((float)this.baseLife * powerValue)); if (this.baseLife <= 1) this.baseLife = 1;
-            //this.baseMana = ((int)((float)this.baseMana * powerValue)); if (this.baseMana <= 1) this.baseMana = 1;
+            float powerValue = 1.0f;
+            if (GroundOne.Difficulty == 1) { powerValue = 0.75f; }
+            else if (GroundOne.Difficulty == 2) { powerValue = 1.00f; }
+            else { powerValue = 1.25f; }
+
+            this.baseStrength = ((int)((float)this.baseStrength * powerValue)); if (this.baseStrength <= 1) this.baseStrength = 1;
+            this.baseAgility = ((int)((float)this.baseAgility * powerValue)); if (this.baseAgility <= 1) this.baseAgility = 1;
+            this.baseIntelligence = ((int)((float)this.baseIntelligence * powerValue)); if (this.baseIntelligence <= 1) this.baseIntelligence = 1;
+            this.baseStamina = ((int)((float)this.baseStamina * powerValue)); if (this.baseStamina <= 1) this.baseStamina = 1;
+            this.baseMind = ((int)((float)this.baseMind * powerValue)); if (this.baseMind <= 1) this.baseMind = 1;
+            this.baseLife = ((int)((float)this.baseLife * powerValue)); if (this.baseLife <= 1) this.baseLife = 1;
+            this.baseMana = ((int)((float)this.baseMana * powerValue)); if (this.baseMana <= 1) this.baseMana = 1;
 
             // c 後編編集
             // 後編からは敵もDUELで装備を持つようになります。
