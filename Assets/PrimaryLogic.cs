@@ -477,9 +477,9 @@ namespace DungeonPlayer
         public static double BattleSpeedValue(MainCharacter player, bool duelMode)
         {
             // 最大速度が速すぎるため以下のように調整。
-            // 最小1.000 ~ 最大7.525となるようにする。
-            // result = 1.00 + LN(agl) * LN(mind) / 13.0
-            double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 13.0f;
+            // 最小1.500 ~ 最大5.741となるようにする。
+            // result = 1.50 + LN(agl) * LN(mind) / 20.0
+            double result = 1.50 + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 20.0f;
 
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyBattleSpeed != 0.0f)) result = result * player.MainWeapon.AmplifyBattleSpeed;
