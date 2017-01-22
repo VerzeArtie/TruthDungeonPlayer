@@ -61,9 +61,24 @@ namespace DungeonPlayer
                 }
             }
 
-            if (spellName == Database.TIME_STOP)
+            if (spellName == Database.TIME_STOP ||
+                spellName == Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN ||
+                spellName == Database.ITEMCOMMAND_BLACK_ELIXIR ||
+                spellName == Database.ITEMCOMMAND_COLORLESS_ANTIDOTE ||
+                spellName == Database.ITEMCOMMAND_DETACHMENT_ORB ||
+                spellName == Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME ||
+                spellName == Database.ITEMCOMMAND_ELEMENTAL_SEAL ||
+                spellName == Database.ITEMCOMMAND_ETERNAL_FATE ||
+                spellName == Database.ITEMCOMMAND_FELTUS ||
+                spellName == Database.ITEMCOMMAND_GENSEI_TAIMA ||
+                spellName == Database.ITEMCOMMAND_JUZA_PHANTASMAL ||
+                spellName == Database.ITEMCOMMAND_LIGHT_SERVANT ||
+                spellName == Database.ITEMCOMMAND_MAZE_CUBE ||
+                spellName == Database.ITEMCOMMAND_SHADOW_SERVANT ||
+                spellName == Database.ITEMCOMMAND_SHINING_AETHER ||
+                spellName == Database.ITEMCOMMAND_VOID_HYMNSONIA)
             {
-                // タイムストップはBUFF効果の文字を出す必要はない。
+                // タイムストップやアイテムコマンドのBUFF効果文字を出す必要はない。
             }
             else if (TruthActionCommand.GetTargetType(spellName) == TruthActionCommand.TargetType.Own)
             {
