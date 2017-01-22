@@ -70,13 +70,20 @@ namespace DungeonPlayer
 
         public void UpdateOwner(string main_event, string sub_event, string current_field)
         {
-            if (GroundOne.SupportLog == false) return;
+            if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
             {
                 //Debug.Log("UpdateOwner(S) " + DateTime.Now);
                 string name = GroundOne.WE2.Account;
+                string main_level = String.Empty;
+
+                if (GroundOne.MC != null)
+                {
+                    main_level = GroundOne.MC.Level.ToString();
+                }
+
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     //Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
@@ -95,6 +102,10 @@ namespace DungeonPlayer
                     {
                         updateCommand += ", current_field = :current_field";
                     }
+                    if (main_level != string.Empty)
+                    {
+                        updateCommand += ", main_level = :main_level";
+                    }
                     updateCommand += " where name = :name";
 
                     NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
@@ -112,6 +123,10 @@ namespace DungeonPlayer
                     {
                         command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
                     }
+                    if (main_level != string.Empty)
+                    {
+                        command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
+                    }
                     command.ExecuteNonQuery();
                 }
                 //Debug.Log("UpdateOwner(E) " + DateTime.Now);
@@ -124,7 +139,7 @@ namespace DungeonPlayer
 
         private void UpdateArchiveData(string table, string archive_name)
         {
-            if (GroundOne.SupportLog == false) return;
+            if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
@@ -219,7 +234,7 @@ namespace DungeonPlayer
 
         public void CreateOwner(string name)
         {
-            if (GroundOne.SupportLog == false) return;
+            if (GroundOne.SupportLog == false) { return; }
 
             try
             {
