@@ -536,6 +536,7 @@ namespace DungeonPlayer
             DungeonSeekerEvent1102_fail,
             DungeonSeekerEvent1103,
             DungeonSeekerEvent1104,
+            RealWorldCallItemBank,
             AutoSaveTruthWorldRealWorld,
             AutoMove,
             DungeonGotoDownstair,
@@ -26609,6 +26610,28 @@ namespace DungeonPlayer
         public static void Message16074(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+        }
+        #endregion
+        #region "現実世界、倉庫の呼び出し"
+        public static void Message16075(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（んっ・・・水晶の奥底に何か見えるな。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（これは・・・ハンナおばさんの倉庫部屋か。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・　そういや、荷物整理、すっかり忘れてたな。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（倉庫部屋へ手をかざせば直接入れそうだ。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（いっぺん、倉庫に入ってみるとするか）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.RealWorldCallItemBank);
+        }
+        public static void Message16076(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（倉庫を確認しておこう）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.RealWorldCallItemBank);
         }
         #endregion
         #endregion

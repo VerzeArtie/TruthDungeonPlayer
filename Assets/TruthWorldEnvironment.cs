@@ -135,6 +135,8 @@ namespace DungeonPlayer
         public bool DungeonEvent1 { get; set; } // 究極の二択
         public bool RealWorld { get; set; } // ４階、現実世界の始まり
 
+        public bool RealWorldCallItemBank { get; set; } // 現実世界、直接倉庫呼び出し
+
         public bool AvailableArcheTypeCommand { get; set; } // 元核情報を見せるかどうか
 
         public bool AvailableMixSpellSkill { get; set; } // 複合魔法・スキル情報を見せるかどうか

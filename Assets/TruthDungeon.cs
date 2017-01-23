@@ -15443,7 +15443,24 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                mainMessage.text = "アイン：・・・　・・・";
+                if (GroundOne.WE2.SeekerEvent1001)
+                {
+                    if (!GroundOne.WE2.RealWorldCallItemBank)
+                    {
+                        MessagePack.Message16075(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message16076(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                    }
+                }
+                else
+                {
+                    Debug.Log("Block 2");
+                    mainMessage.text = "アイン：・・・　・・・";
+                }
                 return;
             }
             else if (GroundOne.WE.dungeonEvent4_SlayBoss3)
@@ -18127,6 +18144,11 @@ namespace DungeonPlayer
                     GroundOne.WE.AlreadyShownEvent = false;
                     Method.AutoSaveTruthWorldEnvironment();
                     Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.RealWorldCallItemBank)
+                {
+                    GroundOne.WE2.RealWorldCallItemBank = true;
+                    SceneDimension.CallItemBank(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.AutoSaveTruthWorldRealWorld)
                 {
