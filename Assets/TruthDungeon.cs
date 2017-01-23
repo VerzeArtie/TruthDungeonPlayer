@@ -4179,9 +4179,9 @@ namespace DungeonPlayer
                 // 最下層、支配竜を倒した後は雑魚敵を出さない。
                 if (GroundOne.WE2.SeekerEvent508)
                 {
-                    if (GroundOne.WE2.SeekerEvent1014)
+                    if (GroundOne.WE2.SeekerEvent1001)
                     {
-                        // 最下層、真実世界の最後は雑魚的で稼ぐので、スルー
+                        // 現実世界、および最下層真実世界の最後は雑魚的で稼ぐので、スルー
                     }
                     else
                     {
@@ -15443,7 +15443,7 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                if (GroundOne.WE2.SeekerEvent1001)
+                if (GroundOne.WE2.SeekerEvent821)
                 {
                     if (!GroundOne.WE2.RealWorldCallItemBank)
                     {
