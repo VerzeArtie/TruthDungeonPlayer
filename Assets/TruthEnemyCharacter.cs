@@ -5280,7 +5280,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(124, 1120, 1500, 2300, 50754, 260, (int)(listExp[97]), (int)(listGold[97]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area44;
+                    this.Area = MonsterArea.Area46;
                     this.DropItem[0] = Database.COMMON_ONRYOU_HAKO;
                     break;
 
@@ -5288,7 +5288,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(125, 2350, 1530, 1150, 52752, 260, (int)(listExp[98]), (int)(listGold[98]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area44;
+                    this.Area = MonsterArea.Area46;
                     this.DropItem[0] = Database.RARE_ANGEL_SILK;
                     break;
 
@@ -5296,7 +5296,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(127, 1200, 1580, 2500, 56748, 280, (int)(listExp[99]), (int)(listGold[99]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area44;
+                    this.Area = MonsterArea.Area46;
                     this.DropItem[0] = Database.RARE_CHAOS_SIZUKU;
                     break;
 
@@ -5304,7 +5304,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(128, 2550, 1610, 1250, 58746, 280, (int)(listExp[100]), (int)(listGold[100]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area44;
+                    this.Area = MonsterArea.Area46;
                     this.DropItem[0] = Database.RARE_DREAD_EXTRACT;
                     break;
 
@@ -5312,7 +5312,7 @@ namespace DungeonPlayer
                     SetupParameterMonster(130, 3200, 1800, 2000, 71742, 380, (int)(listExp[101]), (int)(listGold[101]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area44;
+                    this.Area = MonsterArea.Area46;
                     this.DropItem[0] = Database.RARE_DOOMBRINGER_KAKERA;
                     this.DropItem[1] = Database.RARE_DOOMBRINGER_TUKA;
                     break;
