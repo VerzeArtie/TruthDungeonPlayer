@@ -2131,6 +2131,18 @@ namespace DungeonPlayer
                         case TruthEnemyCharacter.RareString.Purple: // 支配竜は固定ドロップアイテム
                             break;
                     }
+
+                    if ((category == NewItemCategory.Battle && ec1 != null && ec1.Area == TruthEnemyCharacter.MonsterArea.Area46) ||
+                        (category == NewItemCategory.Battle && ec1 != null && ec1.Area == TruthEnemyCharacter.MonsterArea.Area51))
+                    {
+                        param1 = 0;
+                        param2 = 0;
+                        param3 = 500;
+                        param4 = 400;
+                        param5 = 300;
+                        param6 = 15 + GroundOne.WE2.KillingEnemy * 5; // EPICを少し出しやすくする味付け
+                        param7 = 0;
+                    }                    
                 }
                 else if (category == NewItemCategory.Lottery)
                 {
