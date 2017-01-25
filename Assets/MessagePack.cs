@@ -25773,10 +25773,18 @@ namespace DungeonPlayer
             messageList.Add(""); eventList.Add(ActionEvent.JumpToLocationHellMirror16);
         }
         #endregion
+        #region "鏡１６戻り"
+        public static void Message16065_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.JumpToLocationHellMirror16Back);
+        }
+        #endregion
         #region "ボス前の扉"
         public static void Message16066(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileAreaHellLast);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 

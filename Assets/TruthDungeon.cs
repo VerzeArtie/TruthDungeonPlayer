@@ -309,21 +309,7 @@ namespace DungeonPlayer
             SetupPlayerStatus(true);
             UpdateMainMessage("", true);
 
-
-            if ((GroundOne.WE2.RealWorld && GroundOne.WE2.RealDungeonArea == 5 && GroundOne.WE2.SeekerEvent1014) ||
-                (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent508))
-            {
-                GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
-            }
-            else if (GroundOne.WE.CompleteSlayBoss5 || GroundOne.WE.dungeonEvent4_SlayBoss3)
-            {
-                //firstLoadIgnoreMusic = true;
-            }
-            else
-            {
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-            }
-//            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+            PlayMusic_14();
 
             #region "戦闘終了判定"
             #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
@@ -429,7 +415,8 @@ namespace DungeonPlayer
             else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+                PlayMusic_14();
 
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
@@ -503,7 +490,8 @@ namespace DungeonPlayer
                     MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+                PlayMusic_14();
             }
             #endregion
             #region "戦闘に勝利した場合（通常ルート）"
@@ -511,7 +499,7 @@ namespace DungeonPlayer
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
 
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                PlayMusic_14();
 
                 // todo レベルアップできなくなるのでは？要確認
                 // ボスに勝利した時、フラグ更新を行う。
@@ -978,6 +966,23 @@ namespace DungeonPlayer
             }
             #endregion
             #endregion
+        }
+
+        private void PlayMusic_14()
+        {
+            if ((GroundOne.WE2.RealWorld && GroundOne.WE2.RealDungeonArea == 5 && GroundOne.WE2.SeekerEvent1014) ||
+                (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent508))
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
+            }
+            else if (GroundOne.WE.CompleteSlayBoss5 || GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                //firstLoadIgnoreMusic = true;
+            }
+            else
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+            }
         }
         
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
@@ -3217,6 +3222,13 @@ namespace DungeonPlayer
                     tapOK();
                 }
                 #endregion
+                #region "鏡１６戻り"
+                else if (row == 19 && column == 49 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    MessagePack.Message16065_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                #endregion
                 #region "ボス前の扉"
                 else if (!GroundOne.WE2.SeekerEvent1011 && row == 19 && column == 52 && GroundOne.WE2.RealDungeonArea == 4)
                 {
@@ -3234,6 +3246,10 @@ namespace DungeonPlayer
                 {
                     MessagePack.Message16067(ref nowMessage, ref nowEvent);
                     tapOK();
+                }
+                else if (GroundOne.WE2.SeekerEvent1012 && row == 19 && column == 59 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GotoDownStairFiveTwo();
                 }
                 #endregion
                 #region "最終戦の前で引き返す事をさせないための制御"
@@ -3285,7 +3301,7 @@ namespace DungeonPlayer
                         tapOK();
                     }
                 }
-                #endregion
+                    #endregion
                 #endregion
                 #region "エンディングへ"
                 else if (row == 0 && column == 30 && GroundOne.WE2.RealDungeonArea == 5)
@@ -15628,6 +15644,8 @@ namespace DungeonPlayer
             if (GroundOne.WE2.StartSeeker)
             {
                 GroundOne.WE2.RealDungeonArea = 4;
+                Method.AutoSaveRealWorld();
+                Method.AutoSaveTruthWorldEnvironment();
             }
             JumpToLocation(31, -28, true);
             SetupDungeonMapping(4);
@@ -15639,6 +15657,8 @@ namespace DungeonPlayer
             if (GroundOne.WE2.StartSeeker)
             {
                 GroundOne.WE2.RealDungeonArea = 5;
+                Method.AutoSaveRealWorld();
+                Method.AutoSaveTruthWorldEnvironment();
             }
             JumpToLocation(30, -15, true);
             SetupDungeonMapping(5);
