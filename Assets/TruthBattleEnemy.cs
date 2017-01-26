@@ -59,9 +59,6 @@ namespace DungeonPlayer
         List<MainCharacter> stackActivePlayer = new List<MainCharacter>();
         List<int> cumulativeCounter = new List<int>(); // スタックインザコマンドゲージ進行値
         bool NowTimeStop = false; // タイムストップ「全体」のフラグ
-        public bool HiSpeedAnimation { get; set; } // 通常ダメージアニメーションを早めるために使用
-        public bool FinalBattle { get; set; } // 最終戦闘、スタックコマンドの動作を早めるために使用
-        public bool LifeCountBattle { get; set; } // 最終戦闘でライフカウントを表現するために使用
 
         private TruthImage[] pbBuffPlayer1;
         private TruthImage[] pbBuffPlayer2;
@@ -4661,7 +4658,7 @@ namespace DungeonPlayer
         {
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
-                if (this.LifeCountBattle)
+                if (GroundOne.LifeCountBattle)
                 {
                     PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.LIFE_COUNT);
                 }
@@ -7692,7 +7689,7 @@ namespace DungeonPlayer
             else if (Database.BATTLE_CORE_SLEEP == 5) wait = waitTime[3];
             else if (Database.BATTLE_CORE_SLEEP == 2) wait = waitTime[4];
 
-            if (this.HiSpeedAnimation) { wait = wait / 2; }
+            if (GroundOne.HiSpeedAnimation) { wait = wait / 2; }
             if (this.nowAnimationInterval[0] > 0) wait = this.nowAnimationInterval[0];
 
             if (this.nowAnimationCounter <= 0)

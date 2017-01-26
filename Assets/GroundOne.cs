@@ -71,9 +71,9 @@ namespace DungeonPlayer
         public static string SceneName;
 
         // TruthBattleEnemy
-        public static bool HiSpeedAnimation = false; // スタック合戦をハイスピードにするかどうか
-        public static bool FinalBattle = false; // 最終戦かどうか
-        public static bool LifeCountBattle = false; // 最終戦（ライフカウント方式）かどうか
+        public static bool HiSpeedAnimation = false; // 通常ダメージアニメーションを早めるために使用
+        public static bool FinalBattle = false; // 最終戦闘、スタックコマンドの動作を早めるために使用
+        public static bool LifeCountBattle = false; // 最終戦闘でライフカウントを表現するために使用
         public static battleResult BattleResult = battleResult.None;
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;

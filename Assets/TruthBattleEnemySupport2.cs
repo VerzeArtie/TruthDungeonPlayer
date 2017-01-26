@@ -1201,11 +1201,11 @@ namespace DungeonPlayer
                     {
                         cumulativeCounter = 5;
                     }
-                    else if (this.FinalBattle)
+                    else if (GroundOne.FinalBattle)
                     {
                         cumulativeCounter = 7;
                     }
-                    else if (this.HiSpeedAnimation)
+                    else if (GroundOne.HiSpeedAnimation)
                     {
                         cumulativeCounter = 5;
                     }
