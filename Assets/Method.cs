@@ -3973,7 +3973,7 @@ namespace DungeonPlayer
                                 targetItemName = Database.EPIC_SHEZL_THE_MIRAGE_LANCER;
                                 break;
                             case 4:
-                                targetItemName = Database.EPIC_JUZA_THE_PHANTASMAL_CLAW;
+                                targetItemName = Database.LEGENDARY_ZVELDOSE_DEVIL_FIRE_RING_2;
                                 break;
                             case 5:
                                 targetItemName = Database.EPIC_ADILRING_OF_BLUE_BURN;
