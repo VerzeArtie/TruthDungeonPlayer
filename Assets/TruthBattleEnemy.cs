@@ -49,6 +49,7 @@ namespace DungeonPlayer
         List<int> nowAnimationInterval = new List<int>();
         List<bool> nowAnimationCritical = new List<bool>();
         List<Text> nowAnimationText = new List<Text>();
+        List<double> nowAnimationCurrentLife = new List<double>();
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
         bool RunAwayFlag = false; // 戦闘逃げるで終了するためのフラグ
@@ -7650,6 +7651,7 @@ namespace DungeonPlayer
             this.nowAnimationInterval.Add(interval);
             this.nowAnimationCritical.Add(critical);
             this.nowAnimationText.Add(target.DamageLabel);
+            this.nowAnimationCurrentLife.Add(target.CurrentLife);
             this.nowAnimation = true;
         }
 
@@ -7711,6 +7713,38 @@ namespace DungeonPlayer
 
                 ExecAnimation_basePoint = targetLabel.transform.position;
                 ExecAnimation_basePointCritical = targetCriticalLabel.transform.position;
+                
+                // 現在ライフの表示をここで更新
+                float dx = (float)nowAnimationCurrentLife[0] / (float)nowAnimationTarget[0].MaxLife;
+                if (nowAnimationTarget[0].labelCurrentLifePoint != null)
+                {
+                    nowAnimationTarget[0].labelCurrentLifePoint.text = ((int)(nowAnimationCurrentLife[0])).ToString();
+                }
+                if (nowAnimationTarget[0].meterCurrentLifePoint != null)
+                {
+                    nowAnimationTarget[0].meterCurrentLifePoint.rectTransform.localScale = new Vector2(dx, 1.0f);
+                }
+
+                // 色付け
+                if (nowAnimationTarget[0].labelCurrentLifePoint != null)
+                {
+                    if (nowAnimationCurrentLife[0] >= nowAnimationTarget[0].MaxLife)
+                    {
+                        nowAnimationTarget[0].labelCurrentLifePoint.color = UnityColor.ForestGreen;
+                        if (this.NowTimeStop)
+                        {
+                            nowAnimationTarget[0].labelCurrentLifePoint.color = UnityColor.Lightgreen;
+                        }
+                    }
+                    else
+                    {
+                        nowAnimationTarget[0].labelCurrentLifePoint.color = Color.black;
+                        if (this.NowTimeStop)
+                        {
+                            nowAnimationTarget[0].labelCurrentLifePoint.color = Color.white;
+                        }
+                    }
+                }
             }
 
             int movement = 1;
@@ -7743,6 +7777,7 @@ namespace DungeonPlayer
                     this.nowAnimationInterval.RemoveAt(0);
                     this.nowAnimationCritical.RemoveAt(0);
                     this.nowAnimationText.RemoveAt(0);
+                    this.nowAnimationCurrentLife.RemoveAt(0);
                     this.nowAnimationCounter = 0;
                 }
 
@@ -7756,6 +7791,7 @@ namespace DungeonPlayer
                     this.nowAnimationInterval.Clear();
                     this.nowAnimationCritical.Clear();
                     this.nowAnimationText.Clear();
+                    this.nowAnimationCurrentLife.Clear();
                     this.nowAnimationCounter = 0;
                     this.nowAnimation = false;
                 }
