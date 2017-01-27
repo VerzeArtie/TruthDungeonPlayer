@@ -15279,7 +15279,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
-            SceneDimension.CallTruthStatusPlayer(this, false, "");
+            SceneDimension.CallTruthStatusPlayer(this, false, string.Empty, string.Empty);
         }
         public void tapBattleSetting()
         {

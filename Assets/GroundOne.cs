@@ -107,6 +107,7 @@ namespace DungeonPlayer
         public static int UpPoint = 0; // パラメタアップポイント
         public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値
         public static bool OnlySelectTrash = false; // 捨てる限定画面
+        public static string OnlySelectTrashNewItem = string.Empty; // 捨てる限定画面で入手予定の新しいアイテム名
         public static string CannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
         public static bool DuelMode = false; // Duelモード
         public static string OpponentDuelist = string.Empty; // Duel対戦相手名

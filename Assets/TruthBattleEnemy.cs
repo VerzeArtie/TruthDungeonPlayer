@@ -7769,6 +7769,11 @@ namespace DungeonPlayer
 
                 if (this.nowAnimationTarget.Count > 0)
                 {
+                    if (this.nowAnimationTarget.Count == 1)
+                    {
+                        UpdateLife(this.nowAnimationTarget[0]);
+                    }
+
                     this.nowAnimationTarget.RemoveAt(0);
                     this.nowAnimationDamage.RemoveAt(0);
                     this.nowAnimationColor.RemoveAt(0);
@@ -8340,7 +8345,7 @@ namespace DungeonPlayer
                         else
                         {
                             // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
-                            SceneDimension.CallTruthStatusPlayer(this, true, string.Empty);
+                            SceneDimension.CallTruthStatusPlayer(this, true, targetItemName, string.Empty);
                             return; // scenebackさせない
 
                         }

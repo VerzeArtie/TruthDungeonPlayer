@@ -534,12 +534,11 @@ namespace DungeonPlayer
             if (result) return;
 
             string cannotTrash = string.Empty;
-            if (itemName == Database.RARE_EARRING_OF_LANA ||
-                itemName == Database.RARE_TOOMI_BLUE_SUISYOU)
+            if (TruthItemAttribute.CheckImportantItem(itemName) == TruthItemAttribute.Transfer.Cannot_Trash)
             {
                 cannotTrash = itemName;
             }
-            SceneDimension.CallTruthStatusPlayer(scene, true, cannotTrash);
+            SceneDimension.CallTruthStatusPlayer(scene, true, itemName, cannotTrash);
         }
 
         public static void UpdateBackPackLabel(MainCharacter target, GameObject[] back_Backpack, Text[] backpack, Text[] backpackStack, Image[] backpackIcon)

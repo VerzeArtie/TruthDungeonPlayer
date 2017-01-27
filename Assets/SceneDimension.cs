@@ -202,9 +202,10 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthSelectEquipment);
         }
 
-        public static void CallTruthStatusPlayer(MotherForm scene, bool onlySelectTrash, string itemName)
+        public static void CallTruthStatusPlayer(MotherForm scene, bool onlySelectTrash, string newItem, string itemName)
         {
             GroundOne.OnlySelectTrash = onlySelectTrash;
+            GroundOne.OnlySelectTrashNewItem = newItem;
             GroundOne.CannotSelectTrash = itemName;
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
@@ -215,6 +216,8 @@ namespace DungeonPlayer
         public static void CallTruthStatusPlayer(MotherForm scene, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
         {
             GroundOne.OnlySelectTrash = false;
+            GroundOne.OnlySelectTrashNewItem = string.Empty;
+            GroundOne.CannotSelectTrash = string.Empty;
             GroundOne.LevelUp = leveUp;
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
