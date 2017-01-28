@@ -498,6 +498,10 @@ namespace DungeonPlayer
             else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
+                GroundOne.DuelMode = false;
+                GroundOne.HiSpeedAnimation = false;
+                GroundOne.FinalBattle = false;
+                GroundOne.LifeCountBattle = false;
 
                 PlayMusic_14();
 
@@ -587,13 +591,13 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
-                    MessagePack.Message16071(ref nowMessage, ref nowEvent);
-                    tapOK();
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_1);
+                    GroundOne.WE2.SeekerEvent1101 = true;
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
-                    MessagePack.Message16072(ref nowMessage, ref nowEvent);
-                    tapOK();
+                    GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2);
+                    GroundOne.WE2.SeekerEvent1102 = true;
                 }
 
                 if (UpdateCheckLevelUp()) { return; }
@@ -20157,8 +20161,6 @@ namespace DungeonPlayer
         {
             CancelKeyDownMovement();
 
-            GroundOne.BattleSpeed = this.battleSpeed;
-            GroundOne.Difficulty = this.difficulty;
             SceneDimension.JumpToTruthHomeTown();
         }
 

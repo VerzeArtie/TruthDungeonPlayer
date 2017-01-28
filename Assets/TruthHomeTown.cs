@@ -329,6 +329,15 @@ namespace DungeonPlayer
             }
             #endregion
 
+            #region "エンディング"
+            else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1103)
+            {
+                MessagePack.Message20601(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
+
             #region "DUEL対戦結果"
             if (GroundOne.DuelMode)
             {
@@ -384,7 +393,7 @@ namespace DungeonPlayer
             }
             #endregion
 
-            // 死亡しているものは自動的に復活させます。
+            #region "死亡しているものは自動的に復活させます。"
             if (GroundOne.MC != null)
             {
                 if (GroundOne.MC.Dead)
@@ -413,6 +422,7 @@ namespace DungeonPlayer
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.TC);
                 }
             }
+            #endregion
 
             if (GroundOne.WE.AlreadyShownEvent == false)
         	{
@@ -424,7 +434,7 @@ namespace DungeonPlayer
 
                 GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 return; // イベント発生は連続して発生させない
-        	}
+            }
 
             #region "後編初日"
             if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationFirstHomeTown)
@@ -576,13 +586,6 @@ namespace DungeonPlayer
             else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent511 && !GroundOne.WE2.SeekerEvent601)
             {
                 MessagePack.Message20600(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
-            #endregion
-            #region "エンディング"
-            else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1103)
-            {
-                MessagePack.Message20601(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
