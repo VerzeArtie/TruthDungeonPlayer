@@ -30,7 +30,7 @@ namespace DungeonPlayer
             base.Start();
 
             // debug
-            GroundOne.SpellSkillName = Database.ONE_AUTHORITY;
+            //GroundOne.SpellSkillName = Database.ONE_AUTHORITY;
             
             this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
 
