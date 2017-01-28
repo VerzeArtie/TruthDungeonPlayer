@@ -30,8 +30,8 @@ namespace DungeonPlayer
             base.Start();
 
             // debug
-            //GroundOne.SpellSkillName = Database.CATASTROPHE;
-
+            GroundOne.SpellSkillName = Database.ONE_AUTHORITY;
+            
             this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
 
             this.commandName.text = TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName);
@@ -307,6 +307,20 @@ namespace DungeonPlayer
                     {
                         SetupEffectFactor(false, false, false, true, false, false);
                     }
+                    else if (GroundOne.SpellSkillName == Database.KINETIC_SMASH)
+                    {
+                        SetupEffectFactor(true, true, false, false, false, true);
+                    }
+                    else if (GroundOne.SpellSkillName == Database.OBORO_IMPACT ||
+                             GroundOne.SpellSkillName == Database.CATASTROPHE ||
+                             GroundOne.SpellSkillName == Database.SOUL_INFINITY)
+                    {
+                        SetupEffectFactor(false, true, true, true, false, true);
+                    }
+                    else if (GroundOne.SpellSkillName == Database.ARCHETYPE_EIN)
+                    {
+                        SetupEffectFactor(false, true, false, false, false, true);
+                    }
                     else
                     {
                         SetupEffectFactor(false, true, false, false, false, false);
@@ -323,7 +337,7 @@ namespace DungeonPlayer
                     SetupEffectFactor(false, false, false, false, false, true);
                     break;
                 case Database.WORD_OF_LIFE:
-                    SetupEffectFactor(false, false, false, false, false, true);
+                    SetupEffectFactor(false, false, false, true, false, true);
                     break;
                 case Database.ENIGMA_SENSE:
                     SetupEffectFactor(false, true, true, true, false, false);

@@ -3983,7 +3983,7 @@ namespace DungeonPlayer
 
             if (command == Database.SEVENTH_MAGIC) { return "対象の物理攻撃の基を【力】から【知】へ転換する。\r\n\r\n魔法攻撃の基を【知】から【力】へ転換する。"; }
             if (command == Database.PARADOX_IMAGE) { return "対象の潜在能力を" + PowerResult(1.2) + "上昇させる。"; }
-            if (command == Database.WARP_GATE) { return "対象の行動ゲージバーを半分進める。\r\n\r\nもし、行動フェーズを超える場合、現在選択している魔法／スキルをコスト消費する事なく行動する。その後行動ゲージを超えた分だけ、行動ゲージバーを進める。"; }
+            if (command == Database.WARP_GATE) { return "対象の行動ゲージバーを半分進める。\r\n\r\nもし、行動フェーズを超える場合、現在選択している魔法／スキルをコスト消費する事なく行動する。\r\nその後行動ゲージを超えた分だけ、行動ゲージバーを進める。"; }
             // スキル
             if (command == Database.STRAIGHT_SMASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("技", 2.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 0, 0) + "の物理ダメージを与える。"; }
             if (command == Database.DOUBLE_SLASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを２回連続で与える。"; }
@@ -3992,20 +3992,20 @@ namespace DungeonPlayer
 
             if (command == Database.COUNTER_ATTACK) { return "対象のインスタントがダメージ源を有する物理攻撃である場合、それをカウンターする。"; }
             if (command == Database.PURE_PURIFICATION) { return "対象の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
-            if (command == Database.ANTI_STUN) { return "対象に【恐怖】/【スタン】/【沈黙】/【猛毒】/【誘惑】/【凍結】/【麻痺】/【スロウ】/【暗闇】/【スリップ】耐性を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.ANTI_STUN) { return "対象に【恐怖】/【スタン】/【沈黙】/【猛毒】/【誘惑】/【凍結】/【麻痺】/ 【スロウ】/【暗闇】/【スリップ】耐性を付与する。\r\nこの効果は一度発動すると解除される。"; }
             if (command == Database.STANCE_OF_DEATH) { return "対象が致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }
 
-            if (command == Database.STANCE_OF_FLOW) { return "対象にStanceOfFlowのＢＵＦＦを付与する。本効果が持続している間、必ず後攻をとる。（いずれかの敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
+            if (command == Database.STANCE_OF_FLOW) { return "対象にStanceOfFlowのＢＵＦＦを付与する。本効果が持続している間、必ず後攻をとる。\r\n（いずれかの敵がメイン行動を取るまでの間、\r\n自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
             if (command == Database.ENIGMA_SENSE) { return "対象の【力】【技】【知】のうち最も高い値を《最大》として、対象に" + PowerResult("最大", 2.0, 0, 0) + "の物理ダメージを与える。"; }
             if (command == Database.SILENT_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを３回連続で与える。"; }
-            if (command == Database.OBORO_IMPACT) { return "対象の【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、最も低い値を《最小》として、対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
+            if (command == Database.OBORO_IMPACT) { return "対象の【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、\r\n最も低い値を《最小》とする。\r\n対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
             if (command == Database.STANCE_OF_STANDING) { return "本効果が持続している間、防御を選択していない状態でも、常に防御姿勢を取った状態として扱われる。\r\n\r\n本効果は２ターン持続される。"; }
             if (command == Database.INNER_INSPIRATION) { return "対象のスキルポイントを《【心】+10》の分だけ回復する。\r\n心が1以上：0 + 心/10\r\n心が100以上：10 + (心-100)/90\r\n心が1000以上：20 + (心-1000)/900"; }
             if (command == Database.KINETIC_SMASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("心", 1.0, 0, 0) + " ＋ " + PowerResult("武器", 3.0, 2000, 3000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
             if (command == Database.CATASTROPHE) { return "対象の【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.TRUTH_VISION) { return "自分にTruthVisionのＢＵＦＦを付与する。この状態で、自分から敵へダメージを与える場合、対象の敵がダメージを減少させるＢＵＦＦがかかっている場合、その効果を無視する。"; }
+            if (command == Database.TRUTH_VISION) { return "自分にTruthVisionのＢＵＦＦを付与する。この状態で、自分から敵へダメージを与える場合、\r\n対象の敵がダメージを減少させるＢＵＦＦがかかっている場合、その効果を無視する。"; }
             if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、【体】パラメタを" + PowerResult(1.2) + "上昇させる。本効果は３ターン持続される。"; }
             if (command == Database.STANCE_OF_EYES) { return "対象のインスタントをカウンターする。"; }
             if (command == Database.PAINFUL_INSANITY) { return "ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
@@ -4030,20 +4030,20 @@ namespace DungeonPlayer
             if (command == Database.COLORLESS_MOVE) { return "自分自身の戦闘速度を０にする。\r\n\r\n自分自身の戦闘反応を" + PowerResult(2.0) + "上昇させる。\r\n\r\n本効果は２ターン持続される。"; }
             if (command == Database.ASCENSION_AURA) { return "すべての味方の魔法攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
 
-            if (command == Database.FUTURE_VISION) { return "本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。本効果は２ターン持続される。"; }
+            if (command == Database.FUTURE_VISION) { return "本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。\r\n本効果は２ターン持続される。"; }
             if (command == Database.UNKNOWN_SHOCK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【暗闇】効果を与える。本効果は３ターン持続される。"; }
 
             if (command == Database.REFLEX_SPIRIT) { return "対象の【恐怖】/【猛毒】/【スロウ】 / 【スリップ】を解除する。\r\nこのスキルは【恐怖】 / 【猛毒】 / 【スロウ】 / 【スリップ】状態においても発動できる。"; }
             if (command == Database.FATAL_BLOW) { return "対象を３３％の確率で死亡させる。\r\nそうでない場合、対象にクリティカルダメージを与える。"; }
 
-            if (command == Database.SHARP_GLARE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【沈黙】効果を与える。本効果は３ターン持続される。"; }
+            if (command == Database.SHARP_GLARE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて【沈黙】効果を与える。本効果は３ターン持続される。"; }
             if (command == Database.CONCUSSIVE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理防御力と魔法防御力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
             if (command == Database.TRUST_SILENCE) { return "対象の【沈黙】/【暗闇】/【誘惑】を解除する。\r\nこのスキルは【沈黙】 / 【暗闇】 / 【誘惑】状態においても発動できる。"; }
             if (command == Database.MIND_KILLING) { return "対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
 
             if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
-            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、回避する（ダメージを無効化し、それに付随する効果を無効にする）\r\n\r\nこのスキルはカウンターされない。\r\n\r\nこのスキルは一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
+            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、回避する。\r\n（ダメージを無効化し、それに付随する効果を無効にする）\r\n\r\nこのスキルはカウンターされない。\r\n\r\nこのスキルは一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
 
             if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこのはスキルはDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
             if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.5) + "になる。"; }
@@ -4052,15 +4052,15 @@ namespace DungeonPlayer
             if (command == Database.IMPULSE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
             if (command == Database.VIOLENT_SLASH) { return "対象に" + PowerResult("力", 2.5, 0, 0) + "の物理ダメージを与える。\r\nこのスキルはカウンターされない。"; }
-            if (command == Database.ONE_AUTHORITY) { return "対象にOneAuthorityのＢＵＦＦを付与する。本効果が持続している間、スキル消費コストが半分になる。また、ターンが進む度にスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\nスキルの回復量\r\n【心】が１以上：10 + 【心】/10\r\n【心】が100以上：20 + 【心】/100\r\n【心】が1000以上：30 + 【心】/1000"; }
+            if (command == Database.ONE_AUTHORITY) { return "対象にOneAuthorityのＢＵＦＦを付与する。\r\n本効果が持続している間、スキル消費コストが半分になる。\r\nまた、ターンが進む度にスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\nスキルの回復量\r\n【心】が１以上：10 + 【心】/10\r\n【心】が100以上：20 + 【心】/100\r\n【心】が1000以上：30 + 【心】/1000"; }
 
             if (command == Database.OUTER_INSPIRATION) { return "対象の物理攻撃/物理防御/魔法攻撃/魔法防御/戦闘速度/戦闘反応/潜在能力に対する負のＢＵＦＦ効果を解除する。"; }
             if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、回避する（ダメージを無効化し、それに付随する効果を無効にする）。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
 
             if (command == Database.STANCE_OF_SUDDENNESS) { return "対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
-            if (command == Database.SOUL_EXECUTION) { return "自分自身にTruthVisionのBuffを付与する。その上で、対象に《力 ｘ 攻撃倍率》の物理ダメージを１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
+            if (command == Database.SOUL_EXECUTION) { return "自分自身にTruthVisionのBuffを付与する。その上で、対象に《力 ｘ 攻撃倍率》の物理ダメージを１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍\r\n６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
 
-            if (command == Database.ARCHETYPE_EIN) { return "自分が次に当てる「物理/魔法」ダメージをＸ倍にした上で、クリティカルとしてダメージを与える。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
+            if (command == Database.ARCHETYPE_EIN) { return "自分が次に当てる「物理/魔法」ダメージをＸ倍にした上で、クリティカルとしてダメージを与える。\r\nＸは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_RANA) { return "味方全体：ターン制依存のBUFF効果をＸターン追加で継続する。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_OL) { return "敵全体：Ｘ回の物理ダメージ。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_VERZE) { return "インスタント対象：自分のインスタント行動をＸ回行う。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }

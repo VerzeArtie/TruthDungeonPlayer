@@ -3127,6 +3127,7 @@ namespace DungeonPlayer
                         commands.Remove(Database.STANCE_OF_SUDDENNESS);
                         commands.Remove(Database.ENDLESS_ANTHEM);
                         commands.Remove(Database.GENESIS);
+                        commands.Remove(Database.COLORLESS_MOVE); // ヴェルゼは基本が早すぎるため、反応値２倍は強すぎるため、除外。
                         // BUFFが既に付与されている場合は除外
                         if (this.CurrentBloodyVengeance > 0) { commands.Remove(Database.BLOODY_VENGEANCE); }
                         if (this.CurrentHeatBoost > 0) { commands.Remove(Database.HEAT_BOOST); }
@@ -3181,7 +3182,7 @@ namespace DungeonPlayer
                         if (this.CurrentSwiftStep > 0) { commands.Remove(Database.SWIFT_STEP); }
                         if (this.CurrentVigorSense > 0) { commands.Remove(Database.VIGOR_SENSE); }
                         if (this.CurrentRisingAura > 0) { commands.Remove(Database.RISING_AURA); }
-                        if (this.CurrentColorlessMove > 0) { commands.Remove(Database.COLORLESS_MOVE); }
+                        // if (this.CurrentColorlessMove > 0) { commands.Remove(Database.COLORLESS_MOVE); } // 既に除外されている
                         if (this.CurrentAscensionAura > 0) { commands.Remove(Database.ASCENSION_AURA); }
                         if (this.CurrentFutureVision > 0) { commands.Remove(Database.FUTURE_VISION); }
                         //if (this.CurrentReflexSpirit > 0) { commands.Remove(Database.REFLEX_SPIRIT); } // 既に除外されている。
