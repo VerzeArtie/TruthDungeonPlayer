@@ -4825,7 +4825,8 @@ namespace DungeonPlayer
                         player.CurrentPoison > 0 || player.CurrentTemptation > 0 || player.CurrentFrozen > 0 ||
                         player.CurrentParalyze > 0 || player.CurrentSlow > 0 || player.CurrentBlind > 0)
                     {
-                        UpdateBattleText(player.FirstName + "が装備している天使の契約書が光り輝いた！\r\n", 1000);
+                        UpdateBattleText(player.FirstName + "が装備している天使の契約書が光り輝いた！\r\n");
+                        AnimationDamage(0, player, 0, Color.black, false, false, Database.ITEM_EFFECT);
                         player.RemovePreStunning();
                         player.RemoveStun();
                         player.RemoveSilence();
@@ -4844,7 +4845,8 @@ namespace DungeonPlayer
                         player.CurrentMagicAttackDown > 0 || player.CurrentMagicDefenseDown > 0 ||
                         player.CurrentSpeedDown > 0 || player.CurrentReactionDown > 0 || player.CurrentPotentialDown > 0)
                     {
-                        UpdateBattleText(player.FirstName + "が装備している大天使の契約書が光り輝いた！\r\n", 1000);
+                        UpdateBattleText(player.FirstName + "が装備している大天使の契約書が光り輝いた！\r\n");
+                        AnimationDamage(0, player, 0, Color.black, false, false, Database.ITEM_EFFECT);
                         player.RemovePhysicalAttackDown();
                         player.RemovePhysicalDefenseDown();
                         player.RemoveMagicAttackDown();
@@ -5170,7 +5172,7 @@ namespace DungeonPlayer
                     }
                     else if (CheckResurrectWithItem(ActiveList[ii], Database.RARE_TAMATEBAKO_AKIDAMA))
                     {
-                        UpdateBattleText(Database.RARE_TAMATEBAKO_AKIDAMA + "が淡く光り始めた！\r\n", 500);
+                        UpdateBattleText(Database.RARE_TAMATEBAKO_AKIDAMA + "が淡く光り始めた！\r\n");
                         AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
 
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
@@ -5569,18 +5571,6 @@ namespace DungeonPlayer
             if (txtBattleMessage != null)
             {
                 txtBattleMessage.text = txtBattleMessage.text.Insert(0, text);
-            }
-        }
-        private void UpdateBattleText(string text, int sleepTime)
-        {
-            if (txtBattleMessage != null)
-            {
-                txtBattleMessage.text = txtBattleMessage.text.Insert(0, text);
-            }
-
-            if (sleepTime > 0)
-            {
-                System.Threading.Thread.Sleep(sleepTime);
             }
         }
 
@@ -6077,15 +6067,15 @@ namespace DungeonPlayer
                     }
                     if (soundName == Database.SOUND_STRAIGHT_SMASH)
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(124), target.FirstName, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(124), target.FirstName, (int)damage));
                     }
                     else if (textNumber != -1)
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(textNumber), target.FirstName, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(textNumber), target.FirstName, (int)damage));
                     }
                     else
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(115), target.FirstName, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(115), target.FirstName, (int)damage));
                     }
 
                     // ライフを更新
@@ -6098,7 +6088,7 @@ namespace DungeonPlayer
                         double effectValue = PrimaryLogic.AbyssFireValue(target); // ダメージ発生源はレギィンアーゼ
                         effectValue = DamageIsZero(effectValue, player, false);
                         LifeDamage(effectValue, player, interval, detectCritical);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()));
                     }
 
                     // シェズル・ミラージュ・ランサーの場合、ダブルヒット扱いとする。
@@ -6301,7 +6291,7 @@ namespace DungeonPlayer
                                 System.Random rd3 = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
                                 if (rd3.Next(1, 101) <= target.Accessory.MinValue)
                                 {
-                                    UpdateBattleText(target.FirstName + "が装備している鋼鉄の石像が光り輝いた！\r\n", 1000);
+                                    UpdateBattleText(target.FirstName + "が装備している鋼鉄の石像が光り輝いた！\r\n");
                                     UpdateBattleText(target.FirstName + "はスタン状態に陥らなかった。\r\n");
                                 }
                                 else
@@ -6961,7 +6951,7 @@ namespace DungeonPlayer
 
                     damage = DamageIsZero(damage, player, ignoreTargetDefense);
                     LifeDamage(damage, player);
-                    UpdateBattleText(String.Format(target.GetCharacterSentence(58), ((int)damage).ToString(), player.FirstName), 1000);
+                    UpdateBattleText(String.Format(target.GetCharacterSentence(58), ((int)damage).ToString(), player.FirstName));
 
                     target.CurrentMirrorImage = 0;
                     target.DeBuff(target.pbMirrorImage);
@@ -6976,7 +6966,7 @@ namespace DungeonPlayer
                 double immortalRaveValue = PrimaryLogic.ImmmortalRaveValue(player, GroundOne.DuelMode);
                 immortalRaveValue = DamageIsZero(immortalRaveValue, player, ignoreTargetDefense);
                 LifeDamage(immortalRaveValue, target, interval, detectCritical);
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()));
             }
 
             // SkyShieldによる効果
@@ -7025,11 +7015,11 @@ namespace DungeonPlayer
             LifeDamage(damage, target, interval, detectCritical);
             if (soundName == Database.SOUND_DEVOURING_PLAGUE)
             {
-                UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)damage).ToString()));
             }
             else
             {
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()));
             }
 
             // アビス・ファイアによる効果
@@ -7037,7 +7027,7 @@ namespace DungeonPlayer
             {
                 double effectValue = PrimaryLogic.AbyssFireValue(ec1); // ダメージ発生源はレギィンアーゼ
                 LifeDamage(effectValue, player, interval);
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()));
             }
 
             // 対象者のシール・オブ・バランスによる効果
@@ -7062,7 +7052,7 @@ namespace DungeonPlayer
             {
                 UpdateBattleText("焔の印が赤く輝く！\r\n");
                 LifeDamage(damage, target, interval, detectCritical);
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()));
             }
 
             // アダーカー・フォルス・ロッドによる効果

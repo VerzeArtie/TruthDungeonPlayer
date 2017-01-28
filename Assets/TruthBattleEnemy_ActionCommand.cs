@@ -679,7 +679,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellDispelMagic(MainCharacter player, MainCharacter target)
         {
-            UpdateBattleText(player.GetCharacterSentence(48), 1000);
+            UpdateBattleText(player.GetCharacterSentence(48));
 
             if (target.CurrentNothingOfNothingness > 0)
             {
@@ -1382,7 +1382,7 @@ namespace DungeonPlayer
         private void PlayerSpellResurrection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Resurrection");
-            UpdateBattleText(player.GetCharacterSentence(52), 3000);
+            UpdateBattleText(player.GetCharacterSentence(52));
 
             ResurrectionLogic(player, target, Database.RESURRECTION);
 
@@ -1394,7 +1394,7 @@ namespace DungeonPlayer
         private void PlayerSpellDeathDeny(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_DEATH_DENY);
-            UpdateBattleText(player.GetCharacterSentence(214), 3000);
+            UpdateBattleText(player.GetCharacterSentence(214));
 
             ResurrectionLogic(player, target, Database.DEATH_DENY);
             NowNoResurrection(player, target, 999);
@@ -1502,7 +1502,7 @@ namespace DungeonPlayer
         /// <param name="target"></param>
         private void PlayerSkillSoulExecution(MainCharacter player, MainCharacter target)
         {
-            UpdateBattleText(player.GetCharacterSentence(188), 1000);
+            UpdateBattleText(player.GetCharacterSentence(188));
             //bool alreadyTruthVision = false;
             if (player.CurrentTruthVision <= 0)
             {
@@ -1573,7 +1573,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSkillCatastrophe(MainCharacter player, MainCharacter target)
         {
-            UpdateBattleText(player.GetCharacterSentence(98), 1000);
+            UpdateBattleText(player.GetCharacterSentence(98));
             double damage = PrimaryLogic.CatastropheValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_CATASTROPHE, 99, true, CriticalType.Random);
         }
@@ -1583,7 +1583,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSkillOboroImpact(MainCharacter player, MainCharacter target)
         {
-            UpdateBattleText(player.GetCharacterSentence(96), 1000);
+            UpdateBattleText(player.GetCharacterSentence(96));
             double damage = PrimaryLogic.OboroImpactValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_OBORO_IMPACT, 97, true, CriticalType.Random);
         }
@@ -2030,8 +2030,8 @@ namespace DungeonPlayer
                     // 自分：NothingOfNothingnessによる無効化が張ってある場合
                     if (player.CurrentNothingOfNothingness > 0)
                     {
-                        UpdateBattleText(player.FirstName + "が" + target.FirstName + "へ" + Database.ATTACK_JP + "を仕掛ける所で・・・\r\n", 500);
-                        UpdateBattleText(target.GetCharacterSentence(114), 1000);
+                        UpdateBattleText(player.FirstName + "が" + target.FirstName + "へ" + Database.ATTACK_JP + "を仕掛ける所で・・・\r\n");
+                        UpdateBattleText(target.GetCharacterSentence(114));
                         UpdateBattleText(player.FirstName + "は無効化オーラによって護られている！\r\n");
                         target.RemoveStanceOfEyes();
                         target.RemoveNegate();
@@ -2039,7 +2039,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        UpdateBattleText(player.FirstName + "が" + target.FirstName + "へ" + Database.ATTACK_JP + "を仕掛ける所で・・・\r\n", 500);
+                        UpdateBattleText(player.FirstName + "が" + target.FirstName + "へ" + Database.ATTACK_JP + "を仕掛ける所で・・・\r\n");
                         UpdateBattleText(target.GetCharacterSentence(113));
                         PlayerNormalAttack(target, player, 0, false, false);
                         return;
@@ -2049,7 +2049,7 @@ namespace DungeonPlayer
 
             UpdateBattleText(player.GetCharacterSentence(2));
             PlayerNormalAttack(player, target, 0, false, false);
-            UpdateBattleText(player.GetCharacterSentence(3), 100);
+            UpdateBattleText(player.GetCharacterSentence(3));
             PlayerNormalAttack(player, target, 0, false, false);
         }
 

@@ -1216,6 +1216,9 @@ namespace DungeonPlayer
         public const string IMMUNE_DAMAGE = @"ダメージ無効！";
 
         public const string BROKEN_ITEM = @"アイテム破損";
+
+        public const string BUFF_EFFECT = @"BUFF効果";
+        public const string ITEM_EFFECT = @"ITEM効果";
         #endregion
 
         #region "ダンジョンタイルデータ名"

@@ -82,11 +82,11 @@ namespace DungeonPlayer
             }
             else if (TruthActionCommand.GetTargetType(spellName) == TruthActionCommand.TargetType.Own)
             {
-                AnimationDamage(0, player, 0, Color.black, false, false, "BUFF効果");
+                AnimationDamage(0, player, 0, Color.black, false, false, Database.BUFF_EFFECT);
             }
             else
             {
-                AnimationDamage(0, target, 0, Color.black, false, false, "BUFF効果");
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.BUFF_EFFECT);
             }
 
             switch (spellName)
@@ -254,7 +254,7 @@ namespace DungeonPlayer
                 case Database.ETERNAL_PRESENCE:
                     target.CurrentEternalPresence = effectTime;
                     target.ActivateBuff(target.pbEternalPresence, Database.BaseResourceFolder + spellName, effectTime);
-                    UpdateBattleText(player.GetCharacterSentence(44), 1000);
+                    UpdateBattleText(player.GetCharacterSentence(44));
                     UpdateBattleText(player.GetCharacterSentence(45));
                     break;
 
@@ -561,7 +561,7 @@ namespace DungeonPlayer
 
                         player.CurrentHighEmotionality = effectTime;
                         target.ActivateBuff(target.pbHighEmotionality, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(player.GetCharacterSentence(85), 1000);
+                        UpdateBattleText(player.GetCharacterSentence(85));
                         UpdateBattleText(player.GetCharacterSentence(86));
                     }
                     else
@@ -621,7 +621,7 @@ namespace DungeonPlayer
                     {
                         player.CurrentNothingOfNothingness = effectTime;
                         player.ActivateBuff(player.pbNothingOfNothingness, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(player.GetCharacterSentence(106), 1000);
+                        UpdateBattleText(player.GetCharacterSentence(106));
                         UpdateBattleText(player.GetCharacterSentence(107));
                     }
                     else
