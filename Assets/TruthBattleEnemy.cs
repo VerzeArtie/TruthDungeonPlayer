@@ -869,6 +869,18 @@ namespace DungeonPlayer
                 //Debug.Log("nowAnimationSandGlass is true then return");
                 return; // アニメーション表示中は停止させる。
             }
+            if (this.nowAnimationFinal)
+            {
+                ExecAnimationFinalBattle();
+                Debug.Log("nowAnimationFinal is true then return");
+                return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowAnimationMatrixTalk)
+            {
+                ExecAnimationMessageFadeOut();
+                Debug.Log("nowAnimationMatrixTalk is true then return");
+                return; // アニメーション表示中は停止させる。
+            }
             if (this.nowAnimation)
             {
                 ExecAnimation();
@@ -881,19 +893,6 @@ namespace DungeonPlayer
                 Debug.Log("nowStackAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
             }
-            if (this.nowAnimationMatrixTalk)
-            {
-                ExecAnimationMessageFadeOut();
-                Debug.Log("nowAnimationMatrixTalk is true then return");
-                return; // アニメーション表示中は停止させる。
-            }
-            if (this.nowAnimationFinal)
-            {
-                ExecAnimationFinalBattle();
-                Debug.Log("nowAnimationFinal is true then return");
-                return; // アニメーション表示中は停止させる。
-            }
-
             if (this.nowExecutionWarpGate)
             {
                 ExecPlayWarpGate();
