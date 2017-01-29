@@ -26,6 +26,7 @@ namespace DungeonPlayer
         public GameObject buttonExit;
         public GameObject groupAccount;
         public Text account;
+        public GameObject buttonTicket;
 
         // debug
         public Text DebugLevel;
@@ -733,5 +734,10 @@ namespace DungeonPlayer
                 SceneDimension.JumpToTruthHomeTown();
             }
         }
+
+		public void Ticket_Click()
+		{
+			SceneDimension.CallDungeonTicket(this);
+		}
     }
 }

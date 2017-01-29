@@ -46,6 +46,12 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.GameSetting);
         }
 
+		public static void CallDungeonTicket(MotherForm scene)
+		{
+			GroundOne.Parent.Add (scene);
+			Application.LoadLevelAdditive(Database.DungeonTicket);
+		}
+
         public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
         {
             GroundOne.DuelMode = duel;

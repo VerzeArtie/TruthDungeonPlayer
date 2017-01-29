@@ -2683,6 +2683,7 @@ namespace DungeonPlayer
         public const string Title = @"Title";
         public const string Tutorial = @"Tutorial";
         public const string GameSetting = @"GameSetting";
+		public const string DungeonTicket = @"DungeonTicket";
         public const string TruthAnswer = @"TruthAnswer";
         public const string TruthBattleEnemy = @"TruthBattleEnemy";
         public const string TruthBattleSetting = @"TruthBattleSetting";
