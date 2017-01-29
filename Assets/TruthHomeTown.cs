@@ -244,6 +244,10 @@ namespace DungeonPlayer
                 {
                     move = 0;
                 }
+                if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
+                {
+                    move = move * 2;
+                }
 
                 for (int ii = 0; ii < this.endingMessage.Count; ii++)
                 {
