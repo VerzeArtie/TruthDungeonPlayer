@@ -27,6 +27,7 @@ namespace DungeonPlayer
         public GameObject groupAccount;
         public Text account;
         public GameObject buttonTicket;
+        public Text supportMessage;
 
         // debug
         public Text DebugLevel;
@@ -68,11 +69,13 @@ namespace DungeonPlayer
             if (GroundOne.WE2.Account != null && GroundOne.WE2.Account != String.Empty)
             {
                 groupAccount.SetActive(false);
+                supportMessage.gameObject.SetActive(false);
                 GroupMenu.SetActive(true);
             }
             else
             {
                 groupAccount.SetActive(true);
+                supportMessage.gameObject.SetActive(true);
                 GroupMenu.SetActive(false);
             }
         }
@@ -622,11 +625,26 @@ namespace DungeonPlayer
 
         public void tapAccountOK(Text account)
         {
+            if (account.text.Length < 2)
+            {
+                supportMessage.text = "Please enter 2 or more characters.";
+                supportMessage.gameObject.SetActive(true);
+                return;
+            }
+
+            if (GroundOne.SQL.ExistOwnerName(account.text))
+            {
+                supportMessage.text = "A character with that name already exists.";
+                supportMessage.gameObject.SetActive(true);
+                return;
+            }
+
             GroundOne.SQL.CreateOwner(account.text);
             GroundOne.WE2.Account = account.text;
             Method.AutoSaveTruthWorldEnvironment();
             groupAccount.SetActive(false);
             GroupMenu.SetActive(true);
+            supportMessage.gameObject.SetActive(false);
         }
 
         public void Tutorial_Click()

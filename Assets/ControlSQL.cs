@@ -258,5 +258,40 @@ namespace DungeonPlayer
                 Debug.Log("CreateOwner error");
             } // ログ失敗時は、そのまま進む
         }
+
+        public bool ExistOwnerName(string name)
+        {
+            // if (GroundOne.SupportLog == false) { return false; }
+
+            try
+            {
+                string existName = String.Empty;
+
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select name from " + TABLE_OWNER_DATA + " where name = '" + name + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        existName += dataReader[0].ToString();
+                    }
+                }
+
+                if (existName == name)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch
+            {
+                return false;
+            } // 取得失敗時は名前がぶつかっている可能性があるが、ひとまず通しとする。
+        }
     }
 }

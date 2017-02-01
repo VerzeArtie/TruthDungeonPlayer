@@ -13,6 +13,7 @@ namespace DungeonPlayer
         public Slider SoundSlider = null;
         public Slider DifficultySilder = null;
         public Toggle ToggleSupportLog = null;
+        public Text TextAccount = null;
 
         public override void Start()
         {
@@ -23,6 +24,7 @@ namespace DungeonPlayer
             //this.battleSpeedBar.Value = this.battleSpeed;
             this.DifficultySilder.value = GroundOne.Difficulty;
             this.ToggleSupportLog.isOn = GroundOne.SupportLog;
+            this.TextAccount.text = "AccountID: " + GroundOne.WE2.Account;
 
         }
         
