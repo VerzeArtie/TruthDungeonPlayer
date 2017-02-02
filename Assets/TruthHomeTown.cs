@@ -204,7 +204,7 @@ namespace DungeonPlayer
                 if (!this.nowAnimationEnding_First)
                 {
                     this.nowAnimationEnding_First = true;
-                    GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin);
 
                     for (int ii = this.endingMessage.Count - 1; ii >= 0; ii--)
                     {
@@ -1620,10 +1620,10 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM08, Database.BGM08LoopBegin);
                 }
-                else if (current == MessagePack.ActionEvent.PlayMusic09)
-                {
-                    GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
-                }
+                //else if (current == MessagePack.ActionEvent.PlayMusic09)
+                //{
+                //    GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin);
+                //}
                 else if (current == MessagePack.ActionEvent.PlayMusic10)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM10, Database.BGM10LoopBegin);

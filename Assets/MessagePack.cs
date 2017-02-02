@@ -172,7 +172,7 @@ namespace DungeonPlayer
             PlayMusic06,
             PlayMusic07,
             PlayMusic08,
-            PlayMusic09,
+            //PlayMusic09,
             PlayMusic10,
             PlayMusic11,
             PlayMusic12,
@@ -3509,7 +3509,7 @@ namespace DungeonPlayer
 
 					messageList.Add("ラナ：アイン・・・頑張って・・・"); eventList.Add(ActionEvent.None);
 
-					messageList.Add(""); eventList.Add(ActionEvent.PlayMusic09);
+					messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
                     messageList.Add(""); eventList.Add(ActionEvent.IntelligenceRoomGodSequence);
                 }
@@ -12756,7 +12756,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：っな！！　っおいラナ！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic09);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonMirrorRoomGodSequence);
             }

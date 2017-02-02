@@ -866,8 +866,8 @@ namespace DungeonPlayer
         public static int BGM07LoopBegin = 0;
         public static string BGM08 = @"02_dungeon_seeking";
         public static int BGM08LoopBegin = 0;
-        public static string BGM09 = @"09_Sea_Ground_Sky";
-        public static int BGM09LoopBegin = 0;
+        //public static string BGM09 = @"09_Sea_Ground_Sky";
+        //public static int BGM09LoopBegin = 0;
         public static string BGM10 = @"10_WindOfVerze";
         public static int BGM10LoopBegin = 0;
         public static string BGM11 = @"11_DUEL_FACE_AND_FACE";
