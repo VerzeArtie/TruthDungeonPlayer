@@ -256,6 +256,7 @@ namespace DungeonPlayer
         {
             GroundOne.TutorialMode = false;
             GroundOne.ReInitializeGroundOne(false);
+            Method.ReloadTruthWorldEnvironment();
             SceneDimension.Back(this);
         }
 

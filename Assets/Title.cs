@@ -28,6 +28,7 @@ namespace DungeonPlayer
         public Text account;
         public GameObject buttonTicket;
         public Text supportMessage;
+        public Text GameEndMessage;
 
         // debug
         public Text DebugLevel;
@@ -77,6 +78,11 @@ namespace DungeonPlayer
                 groupAccount.SetActive(true);
                 supportMessage.gameObject.SetActive(true);
                 GroupMenu.SetActive(false);
+            }
+
+            if (GroundOne.WE2.SeekerEnd)
+            {
+                this.GameEndMessage.gameObject.SetActive(true);
             }
         }
 
@@ -663,6 +669,13 @@ namespace DungeonPlayer
         {
             GroundOne.TutorialMode = false;
 
+            if (GroundOne.WE2.SeekerEnd)
+            {
+                SystemMessageText.text = "アイン・ウォーレンスは次の世界へと向かう準備をしています。しばらくお待ちください。";
+                GroupSystemMessage.SetActive(true);
+                return;
+            }
+
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、新しく始める事はできません。";
@@ -710,6 +723,13 @@ namespace DungeonPlayer
         public void Load_Click()
         {
             GroundOne.TutorialMode = false;
+            
+            if (GroundOne.WE2.SeekerEnd)
+            {
+                SystemMessageText.text = "アイン・ウォーレンスは次の世界へと向かう準備をしています。しばらくお待ちください。";
+                GroupSystemMessage.SetActive(true);
+                return;
+            } 
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
             {
                 SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、ロードを行う事はできません。";
