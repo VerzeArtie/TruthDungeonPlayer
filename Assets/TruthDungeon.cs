@@ -974,7 +974,11 @@ namespace DungeonPlayer
 
         private void PlayMusic_14()
         {
-            if ((GroundOne.WE2.RealWorld && GroundOne.WE2.RealDungeonArea == 5 && GroundOne.WE2.SeekerEvent1014) ||
+            if (GroundOne.TutorialMode)
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+            }
+            else if ((GroundOne.WE2.RealWorld && GroundOne.WE2.RealDungeonArea == 5 && GroundOne.WE2.SeekerEvent1014) ||
                 (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent508))
             {
                 GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
@@ -3937,6 +3941,7 @@ namespace DungeonPlayer
                             return;
                         }
                     }
+                    return;
                 }
                 #endregion
                 #region "１階"
