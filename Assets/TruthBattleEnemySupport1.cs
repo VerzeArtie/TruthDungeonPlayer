@@ -4224,11 +4224,14 @@ namespace DungeonPlayer
                                         if (player.CurrentLifeCountValue <= 1)
                                         {
                                             player.BattleBarPos2 = 167;
+                                            player.ShadowFaceArrow2.gameObject.SetActive(true);
                                             player.BattleBarPos3 = 334;
+                                            player.ShadowFaceArrow3.gameObject.SetActive(true);
                                         }
                                         else
                                         {
                                             player.BattleBarPos2 = 250;
+                                            player.ShadowFaceArrow2.gameObject.SetActive(true);
                                         }
                                     }
                                 }

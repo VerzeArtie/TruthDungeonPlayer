@@ -33,6 +33,7 @@ namespace DungeonPlayer
 
         bool nowAnimationFinal = false;
         int nowAnimationFinalCounter = 0;
+        int nowAnimationFinalCounterShadow = 0;
 
         bool nowExecutionWarpGate = false;
         int nowExecutionWarpGateCounter = 0;
@@ -240,6 +241,8 @@ namespace DungeonPlayer
         public GameObject player3ActionPanel;
 
         public Image enemy1Arrow;
+        public Image enemy1Shadow2;
+        public Image enemy1Shadow3;
         public Text enemyActionLabel1;
         public GameObject enemy1MainObjectBack;
         public Button enemy1MainObject;
@@ -588,7 +591,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy1.SetActive(true);
-                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, null, null, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, null, null, enemy1Damage, enemy1Critical, ref pbBuffEnemy1, KeyNumE1, IsSorceryE1);
+                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, null, null, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, enemy1Shadow2, enemy1Shadow3, enemy1Damage, enemy1Critical, ref pbBuffEnemy1, KeyNumE1, IsSorceryE1);
             }
 
             if (GroundOne.enemyName2 == String.Empty || GroundOne.DuelMode)
@@ -872,13 +875,13 @@ namespace DungeonPlayer
             if (this.nowAnimationFinal)
             {
                 ExecAnimationFinalBattle();
-                Debug.Log("nowAnimationFinal is true then return");
+                //Debug.Log("nowAnimationFinal is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationMatrixTalk)
             {
                 ExecAnimationMessageFadeOut();
-                Debug.Log("nowAnimationMatrixTalk is true then return");
+                //Debug.Log("nowAnimationMatrixTalk is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimation)
@@ -890,20 +893,20 @@ namespace DungeonPlayer
             if (this.nowStackAnimation)
             {
                 ExecStackAnimation();
-                Debug.Log("nowStackAnimation is true then return");
+                //Debug.Log("nowStackAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowExecutionWarpGate)
             {
                 ExecPlayWarpGate();
-                Debug.Log("nowExecutionWarpGate is true then return");
+                //Debug.Log("nowExecutionWarpGate is true then return");
                 return; // ワープゲート実行中は停止させる。
             }
 
             // バトル終了条件が満たされている場合、バトル終了とする。
             if (this.BattleEndFlag) 
             {
-                Debug.Log("BattleEndFlag is true then return"); 
+                //Debug.Log("BattleEndFlag is true then return"); 
                 BattleEndPhase(); 
             }
 
@@ -1108,6 +1111,32 @@ namespace DungeonPlayer
             float widthScale = (float)(Screen.width) / (float)(Database.BASE_TIMER_BAR_LENGTH);
             Vector3 current = player.MainFaceArrow.transform.position;
             player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos * widthScale - player.MainFaceArrow.rectTransform.sizeDelta.x/2.0f, current.y, current.z);
+
+            // カオティックスキーマ限定
+            if (player.ShadowFaceArrow2 != null)
+            {
+                if (player.CurrentChaoticSchema > 0)
+                {
+                    Vector3 current2 = player.ShadowFaceArrow2.transform.position;
+                    player.ShadowFaceArrow2.transform.position = new Vector3((float)player.BattleBarPos2 * widthScale - player.ShadowFaceArrow2.rectTransform.sizeDelta.x / 2.0f, current2.y, current2.z);
+                }
+                else
+                {
+                    player.ShadowFaceArrow2.gameObject.SetActive(false);
+                }
+            }
+            if (player.ShadowFaceArrow3 != null)
+            {
+                if (player.CurrentChaoticSchema > 0 && player.CurrentLifeCountValue <= 1)
+                {
+                    Vector3 current3 = player.ShadowFaceArrow3.transform.position;
+                    player.ShadowFaceArrow3.transform.position = new Vector3((float)player.BattleBarPos3 * widthScale - player.ShadowFaceArrow3.rectTransform.sizeDelta.x / 2.0f, current3.y, current3.z);
+                }
+                else
+                {
+                    player.ShadowFaceArrow3.gameObject.SetActive(false);
+                }
+            }
         }
 
 
@@ -1249,7 +1278,19 @@ namespace DungeonPlayer
                 player.MainFaceArrow = mainFaceArrow;
             }
             player.MainFaceArrow = mainFaceArrow;
-            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { player.ShadowFaceArrow2 = shadowFaceArrow2; player.ShadowFaceArrow3 = shadowFaceArrow3; } // 最終戦ヴェルゼのみ、分身の技を使う。
+            // 最終戦ヴェルゼのみ、分身の技を使う。
+            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+            {
+                player.ShadowFaceArrow2 = shadowFaceArrow2;
+                player.ShadowFaceArrow2.gameObject.SetActive(false);
+                player.ShadowFaceArrow3 = shadowFaceArrow3;
+                player.ShadowFaceArrow3.gameObject.SetActive(false);
+            }
+            else 
+            {
+                player.ShadowFaceArrow2 = null;
+                player.ShadowFaceArrow3 = null; 
+            }
 
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
             {
@@ -7904,15 +7945,13 @@ namespace DungeonPlayer
         {
             this.FinalBattleText.text = message;
             this.nowAnimationFinalCounter = 0;
+            this.nowAnimationFinalCounterShadow = 0;
             this.nowAnimationFinal = true;
         }
 
-        public int debugcounter = 0;
         private void ExecAnimationFinalBattle()
         {
-            Debug.Log("this.counter: " + this.nowAnimationFinalCounter.ToString());
             Text targetLabel = this.FinalBattleText;
-
             if (this.nowAnimationFinalCounter <= 0)
             {
                 Debug.Log("screen width: " + Screen.width.ToString());
@@ -7922,36 +7961,43 @@ namespace DungeonPlayer
                 back_FinalBattle.gameObject.SetActive(true);
             }
 
-            int waitTime = 181;
+            bool endDetect = false;
 
-            if (this.nowAnimationFinalCounter < 33)
+            if (targetLabel.transform.localPosition.x > 0)
             {
-                this.debugcounter += 50;
+                this.nowAnimationFinalCounterShadow++;
                 targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 50, targetLabel.transform.position.y, targetLabel.transform.position.z);
             }
-            else if (this.nowAnimationFinalCounter < 150)
+            else if (targetLabel.transform.localPosition.x > -60)
             {
-                this.debugcounter += 1;
+                this.nowAnimationFinalCounterShadow++;
                 targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 1, targetLabel.transform.position.y, targetLabel.transform.position.z);
+            }
+            else if (targetLabel.transform.localPosition.x > -Screen.width)
+            {
+                //this.nowAnimationFinalCounterShadow++;
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 40, targetLabel.transform.position.y, targetLabel.transform.position.z);
+                float mag = (float)((float)this.nowAnimationFinalCounter - (float)this.nowAnimationFinalCounterShadow) / 30.0f;
+                if (mag > 1.00f) { mag = 1.00f; }
+                this.back_FinalBattle.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f - mag, 1.0f);
             }
             else
             {
-                this.debugcounter += 40;
-                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 40, targetLabel.transform.position.y, targetLabel.transform.position.z);
-                this.back_FinalBattle.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f - (((float)this.nowAnimationFinalCounter - 150) / 30.0f), 1.0f);
+                endDetect = true;
             }
 
             this.nowAnimationFinalCounter++;
 
-            if (this.nowAnimationFinalCounter > waitTime)
+            if (endDetect)
             {
-                Debug.Log("debugcounter: " + this.debugcounter.ToString());
                 System.Threading.Thread.Sleep(500);
                 targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + 3047 - Screen.width, targetLabel.transform.position.y, targetLabel.transform.position.z);
+                targetLabel.transform.localPosition = new Vector3(0, 0, 0);
                 targetLabel.gameObject.SetActive(false);
                 back_FinalBattle.gameObject.SetActive(false);
                 this.nowAnimationFinal = false;
                 this.nowAnimationFinalCounter = 0;
+                this.nowAnimationFinalCounterShadow = 0;
             }
         }
         
