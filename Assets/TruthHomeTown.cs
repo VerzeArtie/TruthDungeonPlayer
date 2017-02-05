@@ -170,8 +170,10 @@ namespace DungeonPlayer
             element.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
             element.rectTransform.sizeDelta = sizeDelta;
             element.color = Color.black;
+            element.gameObject.SetActive(false);
             element.text = text;
             element.alignment = txtAnchor;
+            element.transform.SetParent(panelEnding.transform);
             messageList.Add(element);
         }
 
@@ -209,15 +211,18 @@ namespace DungeonPlayer
                     for (int ii = this.endingMessage.Count - 1; ii >= 0; ii--)
                     {
                         this.endingMessage[ii].transform.localPosition = new Vector3(-Screen.width / 4, -ii * 40 - Screen.height / 2 - 50, 0);
+                        this.endingMessage[ii].gameObject.SetActive(true);
                     }
                     for (int ii = this.endingMessage2.Count - 1; ii >= 0; ii--)
                     {
                         this.endingMessage2[ii].transform.localPosition = new Vector3(Screen.width / 4, -ii * 140 - Screen.height / 2 - 50, 0);
+                        this.endingMessage2[ii].gameObject.SetActive(true);
                     }
                     for (int ii = this.endingMessage3.Count - 1; ii >= 0; ii--)
                     {
                         this.endingMessage3[ii].color = new Color(0, 0, 0, 0);
                         this.endingMessage3[ii].transform.localPosition = new Vector3(-Screen.width / 4, 0, 0);
+                        this.endingMessage3[ii].gameObject.SetActive(true);
                     }
                     return;
                 }
@@ -226,7 +231,7 @@ namespace DungeonPlayer
                 float lastPosition = this.endingMessage[this.endingMessage.Count - 1].transform.position.y;
                 if (lastPosition < -Screen.height / 4)
                 {
-                    move = 0.1f;
+                    move = 0.15f;
                 }
                 else if (-Screen.height / 4 <= lastPosition && lastPosition < 0)
                 {
@@ -236,7 +241,7 @@ namespace DungeonPlayer
                 {
                     move = 0.5f;
                 }
-                else if (Screen.height / 4 <= lastPosition && lastPosition < Screen.height)
+                else if (Screen.height / 4 <= lastPosition && lastPosition < Screen.height+100)
                 {
                     move = 1.0f;
                 }
