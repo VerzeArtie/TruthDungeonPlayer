@@ -29719,6 +29719,8 @@ namespace DungeonPlayer
 
             messageList.Add("ファラ：・・・（＾＾＃"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
             messageList.Add("エルミ：ッゴホン、では。えー・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ファラ：ラナさん、国外遠征許可証は既に用意してあります（＾＾"); eventList.Add(ActionEvent.None);
@@ -29731,9 +29733,9 @@ namespace DungeonPlayer
 
             messageList.Add("ファラ：はい、エルミ解説（＾＾"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("エルミ：ッ・・・ック・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("エルミ：クッ・・・ッゴホン・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+            messageList.Add("エルミ：それでは、君達２人向けの伝令なんだけど。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("エルミ：実はね、以前から考えてたんだよ、" + Database.VINSGALDE + "の件は。"); eventList.Add(ActionEvent.None);
 
@@ -29781,7 +29783,7 @@ namespace DungeonPlayer
 
             messageList.Add("エルミ：アインくん・・・実はね・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic13);
 
             messageList.Add("---- ファージル宮殿、園芸の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
