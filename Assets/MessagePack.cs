@@ -30131,11 +30131,11 @@ namespace DungeonPlayer
 
             messageList.Add("モンスター制作　　【　辻谷　友紀　】\r\n　　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("魔法／スキル　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("イラストレーター　　【　Kouki.T　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("サウンドエフェクト　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイテム制作　　【　石高　裕介　】\r\n　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイテム制作　　【　湯淺　與範　】\r\n　　　　　　　　【　石高　裕介　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("グラフィック　　　【　辻谷　友紀　】\r\n　　　　　　　　【　naonao　】"); eventList.Add(ActionEvent.None);
 
