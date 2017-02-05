@@ -1958,7 +1958,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_SIHAIRYU_SIKOTU:
-                    description = "ウェクスラー各地に潜む「支配竜」の指の骨。物攻率＋３％";
+                    description = "ラグンタット各地に潜む「支配竜」の指の骨。物攻率＋３％";
                     amplifyPhysicalAttack = 1.03f;
                     cost = 8000;
                     AdditionalDescription(ItemType.Accessory);
@@ -1966,7 +1966,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_OLD_TREE_KAREHA:
-                    description = "ウェクスラー大地に眠る「古代栄樹」の枯れ葉。魔攻率＋３％";
+                    description = "ラグンタット大地に眠る「古代栄樹」の枯れ葉。魔攻率＋３％";
                     amplifyMagicAttack = 1.03f;
                     cost = 8000;
                     AdditionalDescription(ItemType.Accessory);
@@ -1974,7 +1974,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_GALEWIND_KONSEKI:
-                    description = "ウェクスラー山脈の神「ゲイル・ウィンド」の痕跡。戦速率＋３％";
+                    description = "ラグンタット山脈の神「ゲイル・ウィンド」の痕跡。戦速率＋３％";
                     amplifyBattleSpeed = 1.03f;
                     cost = 8000;
                     AdditionalDescription(ItemType.Accessory);
@@ -1982,7 +1982,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_SIN_CRYSTAL_KAKERA:
-                    description = "ウェクスラー古代技術「シン・クリスタル」の欠片。戦応率＋３％";
+                    description = "ラグンタット古代技術「シン・クリスタル」の欠片。戦応率＋３％";
                     amplifyBattleResponse = 1.03f;
                     ResistWill = 1200;
                     cost = 8000;
@@ -1991,7 +1991,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_EVERMIND_ZANSHI:
-                    description = "ウェクスラー天空の主「エバー・マインド」の残留思念。潜力率＋３％";
+                    description = "ラグンタット天空の主「エバー・マインド」の残留思念。潜力率＋３％";
                     amplifyPotential = 1.03f;
                     cost = 8000;
                     AdditionalDescription(ItemType.Accessory);
@@ -3237,7 +3237,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SIHAIRYU_KIBA:
-                    description = "ウェクスラー各地に潜む「支配竜」の牙。力＋５０、心＋５０、物攻率＋７％";
+                    description = "ラグンタット各地に潜む「支配竜」の牙。力＋５０、心＋５０、物攻率＋７％";
                     buffUpStrength = 50;
                     buffUpMind = 50;
                     amplifyPhysicalAttack = 1.07f;
@@ -3248,7 +3248,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_OLD_TREE_JUSHI:
-                    description = "ウェクスラー大地に眠る「古代栄樹」の樹脂。知＋５０、心＋５０、魔攻率＋７％";
+                    description = "ラグンタット大地に眠る「古代栄樹」の樹脂。知＋５０、心＋５０、魔攻率＋７％";
                     buffUpIntelligence = 50;
                     buffUpMind = 50;
                     amplifyMagicAttack = 1.07f;
@@ -3259,7 +3259,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_GALEWIND_KIZUATO:
-                    description = "ウェクスラー山脈の神「ゲイル・ウィンド」の傷跡。技＋５０、心＋５０、戦速率＋７％";
+                    description = "ラグンタット山脈の神「ゲイル・ウィンド」の傷跡。技＋５０、心＋５０、戦速率＋７％";
                     buffUpAgility = 50;
                     buffUpMind = 50;
                     amplifyBattleSpeed = 1.07f;
@@ -3270,7 +3270,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SIN_CRYSTAL_QUATZ:
-                    description = "ウェクスラー近代技術「シン・クリスタル」のクォーツ。体＋１００、戦応率＋７％";
+                    description = "ラグンタット近代技術「シン・クリスタル」のクォーツ。体＋１００、戦応率＋７％";
                     buffUpStamina = 100;
                     amplifyBattleResponse = 1.07f;
                     cost = 250000;
@@ -3280,7 +3280,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EVERMIND_OMEN:
-                    description = "ウェクスラー天空の主「エバー・マインド」のオーメン。心＋１００、潜力率＋７％";
+                    description = "ラグンタット天空の主「エバー・マインド」のオーメン。心＋１００、潜力率＋７％";
                     buffUpMind = 100;
                     amplifyPotential = 1.07f;
                     cost = 250000;
@@ -4696,7 +4696,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_SOUSUI_HIDENSYO:
-                    description = "ウェクスラー悠古紀から存在するスキル伝承の総帥が記した秘伝書。体＋７００";
+                    description = "ラグンタット悠古紀から存在するスキル伝承の総帥が記した秘伝書。体＋７００";
                     description += "\r\n【常備能力】　最大スキルポイント＋２０";
                     description += "\r\n【特殊能力】　スキル「バイオレント・スラッシュ」を発動する。";
                     effectValue1 = 20;
@@ -4707,7 +4707,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_MEEK_HIDENSYO:
-                    description = "ウェクスラー悠古紀から存在するスキル伝承の若輩者が記した秘伝書。体＋７００";
+                    description = "ラグンタット悠古紀から存在するスキル伝承の若輩者が記した秘伝書。体＋７００";
                     description += "\r\n【常備能力】　最大スキルポイント＋２０";
                     description += "\r\n【特殊能力】　スキル「リカバー」を発動する。";
                     effectValue1 = 20;
@@ -4718,7 +4718,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_JUKUTATUSYA_HIDENSYO:
-                    description = "ウェクスラー悠古紀から存在するスキル伝承の熟達者が記した秘伝書。体＋７００";
+                    description = "ラグンタット悠古紀から存在するスキル伝承の熟達者が記した秘伝書。体＋７００";
                     description += "\r\n【常備能力】　最大スキルポイント＋２０";
                     description += "\r\n【特殊能力】　スキル「スウィフト・ステップ」を発動する。";
                     effectValue1 = 20;
@@ -4729,7 +4729,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_KYUUDOUSYA_HIDENSYO:
-                    description = "ウェクスラー悠古紀から存在するスキル伝承の求道者が記した秘伝書。体＋７００";
+                    description = "ラグンタット悠古紀から存在するスキル伝承の求道者が記した秘伝書。体＋７００";
                     description += "\r\n【常備能力】　最大スキルポイント＋２０";
                     description += "\r\n【特殊能力】　スキル「フューチャー・ヴィジョン」を発動する。";
                     effectValue1 = 20;
@@ -6860,7 +6860,7 @@ namespace DungeonPlayer
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RENEW_AKAMI: // ドロップアイテム（ローリング・マグロ）
-                    description = "活きの良いマグロの赤身。ユング町では売れ筋No.1　";
+                    description = "活きの良いマグロの赤身。アンシェットの町では売れ筋No.1　";
                     cost = 334;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;

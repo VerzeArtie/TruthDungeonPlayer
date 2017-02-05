@@ -641,7 +641,7 @@ namespace DungeonPlayer
         #region "１階"
         public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
+            messageList.Add("アイン：アンシェットの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
         }
         public static void Message10000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -2557,7 +2557,7 @@ namespace DungeonPlayer
 
         public static void Message10051_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：おし、１階制覇した事だし、一度アンシェットの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
@@ -5395,7 +5395,7 @@ namespace DungeonPlayer
 
                     messageList.Add("ラナ：って、知らないアンタの方がどーかしてるわよ・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：ウェクスラー大陸では、このシリーズ物は有名でしょ？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ラグンタット大陸では、このシリーズ物は有名でしょ？"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("アイン：いや、俺そういうの全然知らないんだって、教えてくれよ？"); eventList.Add(ActionEvent.None);
 
@@ -9501,7 +9501,7 @@ namespace DungeonPlayer
         }
         public static void Message12067_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：おし、２階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：おし、２階制覇した事だし、一度アンシェットの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
@@ -13352,7 +13352,7 @@ namespace DungeonPlayer
 
         public static void Message13122_3(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：おし、３階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：おし、３階制覇した事だし、一度アンシェットの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
@@ -13946,7 +13946,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　アイン：ファラ様や他のメンバーは引き止めはしなかったんでしょうか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　ファラ：当時、未開拓エリアと呼ばれていたウェクスラー州のユング区域の裏"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　ファラ：当時、未開拓エリアと呼ばれていたラグンタット州の名もなき区域の裏"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　ファラ：とあるダンジョン"); eventList.Add(ActionEvent.None);
 
@@ -13966,7 +13966,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　アイン：でも、何で俺なんかにこの話を？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　ファラ：アインさんは、ユング街のダンジョンへ向かうおつもりでしたよね？"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　ファラ：アインさんは、アンシェット街のダンジョンへ向かうおつもりでしたよね？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　アイン：ッゲ！！！　何でそれを！！"); eventList.Add(ActionEvent.None);
 
@@ -13990,7 +13990,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　ファラ：これは国王エルミのお願いでもあるのですが"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　ファラ：ユング街のダンジョンへ向かわれるのであれば・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　ファラ：アンシェット街のダンジョンへ向かわれるのであれば・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -25031,7 +25031,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　アイン：それでファージル区域には、ある程度の治安が保たれていたわけだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　アイン：ユング区域のダンジョンへ全員で赴けば、どうしてもファージル区域の治安はまた悪くなる。"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　アイン：アンシェット区域のダンジョンへ全員で赴けば、どうしてもファージル区域の治安はまた悪くなる。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　アイン：ファージル区域の継続的な自衛活動として、最低限一人は残る必要があった。"); eventList.Add(ActionEvent.None);
 
@@ -27726,7 +27726,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：何より、自分自身がようやく強いと感じられるようになっていた。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ユング街のダンジョン。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：アンシェット街のダンジョン。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("アイン：いわゆる「神の試練」ってのが待ち構えているらしい。"); eventList.Add(ActionEvent.None);
 
@@ -34519,7 +34519,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：おじさん、これは一体？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：この大陸の遥か北にある山脈ウェクスラーには、かつて古代栄樹が生えておったのだ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：この大陸の遥か北にある山脈ラグンタットには、かつて古代栄樹が生えておったのだ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：古代栄樹？？　伝説上のおとぎ話じゃないんですか？"); eventList.Add(ActionEvent.None);
 
