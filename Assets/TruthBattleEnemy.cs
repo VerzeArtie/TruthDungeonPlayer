@@ -354,6 +354,10 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            // 最終戦ヴェルゼのシャドウマークをデフォルトでは非表示にする。
+            enemy1Shadow2.gameObject.SetActive(false);
+            enemy1Shadow3.gameObject.SetActive(false);
+
             Texture2D textureSandGlass = Resources.Load<Texture2D>("SandGlassIcon");
             this.imageSandglass = new Sprite[8];
             int BASE_SIZE_X = 152;
