@@ -354,6 +354,9 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
+            else { Database.BATTLE_CORE_SLEEP = 10; }
+
             // 最終戦ヴェルゼのシャドウマークをデフォルトでは非表示にする。
             enemy1Shadow2.gameObject.SetActive(false);
             enemy1Shadow3.gameObject.SetActive(false);
@@ -8512,44 +8515,54 @@ namespace DungeonPlayer
             switch ((int)(sender.value))
             {
                 case 1:
-                    Database.BATTLE_CORE_SLEEP = 40;
-                    TimeSpeedLabel.text = "時間速度 x0.25";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 20; }
+                    else { Database.BATTLE_CORE_SLEEP = 40; }
+                    TimeSpeedLabel.text = "時間速度　１";
                     break;
                 case 2:
-                    Database.BATTLE_CORE_SLEEP = 30;
-                    TimeSpeedLabel.text = "時間速度 x0.37";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 15; }
+                    else { Database.BATTLE_CORE_SLEEP = 30; }
+                    TimeSpeedLabel.text = "時間速度　２";
                     break;
                 case 3:
-                    Database.BATTLE_CORE_SLEEP = 20;
-                    TimeSpeedLabel.text = "時間速度 x0.50";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 10; }
+                    else { Database.BATTLE_CORE_SLEEP = 20; }
+                    TimeSpeedLabel.text = "時間速度　３";
                     break;
                 case 4:
-                    Database.BATTLE_CORE_SLEEP = 15;
-                    TimeSpeedLabel.text = "時間速度 x0.75";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 8; }
+                    else { Database.BATTLE_CORE_SLEEP = 15; }
+                    TimeSpeedLabel.text = "時間速度　４";
                     break;
                 case 5:
-                    Database.BATTLE_CORE_SLEEP = 10;
-                    TimeSpeedLabel.text = "時間速度 x1.00";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
+                    else { Database.BATTLE_CORE_SLEEP = 10; }
+                    TimeSpeedLabel.text = "時間速度　５";
                     break;
                 case 6:
-                    Database.BATTLE_CORE_SLEEP = 8;
-                    TimeSpeedLabel.text = "時間速度 x1.50";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 3; }
+                    else { Database.BATTLE_CORE_SLEEP = 8; }
+                    TimeSpeedLabel.text = "時間速度　６";
                     break;
                 case 7:
-                    Database.BATTLE_CORE_SLEEP = 5;
-                    TimeSpeedLabel.text = "時間速度 x2.00";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 1; }
+                    else { Database.BATTLE_CORE_SLEEP = 5; }
+                    TimeSpeedLabel.text = "時間速度　７";
                     break;
                 case 8:
-                    Database.BATTLE_CORE_SLEEP = 3;
-                    TimeSpeedLabel.text = "時間速度 x3.00";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
+                    else { Database.BATTLE_CORE_SLEEP = 3; }
+                    TimeSpeedLabel.text = "時間速度　８";
                     break;
                 case 9:
-                    Database.BATTLE_CORE_SLEEP = 1;
-                    TimeSpeedLabel.text = "時間速度 x4.00";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
+                    else { Database.BATTLE_CORE_SLEEP = 1; }
+                    TimeSpeedLabel.text = "時間速度　９";
                     break;
                 default:
-                    Database.BATTLE_CORE_SLEEP = 10;
-                    TimeSpeedLabel.text = "時間速度 x1.00";
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
+                    else { Database.BATTLE_CORE_SLEEP = 10; }
+                    TimeSpeedLabel.text = "時間速度　１０";
                     break;
             }
         }
