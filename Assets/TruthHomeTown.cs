@@ -486,24 +486,34 @@ namespace DungeonPlayer
                 tapOK();
             }
             #endregion
+            #region "1日目のダンジョン帰還後、ラナをパーティに加える"
+            else if (this.firstDay >= 1 &&
+                GroundOne.WE.Truth_CommunicationJoinPartyLana == false &&
+                GroundOne.WE.Truth_CommunicationNotJoinLana == false &&
+                GroundOne.WE.AvailableSecondCharacter == false)
+            {
+                MessagePack.Message20104_2(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "１階看板最後の情報を入手したとき"
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_Communication_Dungeon11 && GroundOne.WE.dungeonEvent27)
             {
-            	MessagePack.Message20105(ref nowMessage, ref nowEvent);
+                MessagePack.Message20105(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "１階制覇"
             else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
             {
-            	MessagePack.Message20106(ref nowMessage, ref nowEvent);
+                MessagePack.Message20106(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "２階初日"
             else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.TruthCommunicationCompArea1 && !GroundOne.WE.Truth_CommunicationSecondHomeTown)
             {
-                GroundOne.WE.Truth_CommunicationSecondHomeTown = true;                
+                GroundOne.WE.Truth_CommunicationSecondHomeTown = true;
                 HometownCommunicationStart();
             }
             #endregion
@@ -554,7 +564,7 @@ namespace DungeonPlayer
             {
                 MessagePack.Message20303(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-            }        
+            }
             #endregion
             #region "３階、鏡エリア２－３をクリアした時"
             else if (GroundOne.WE.dungeonEvent316 && !GroundOne.WE.dungeonEvent316_2)
@@ -602,22 +612,22 @@ namespace DungeonPlayer
             #region "DUEL闘技場開催"
             else if (this.firstDay >= 3 && !GroundOne.WE.AvailableDuelColosseum)
             {
-            	MessagePack.Message29000(ref nowMessage, ref nowEvent);
-            	NormalTapOK();
+                MessagePack.Message29000(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
             #region "DUEL闘技場、DUEL開始"
             else if (this.firstDay >= 4 && !GroundOne.WE.AvailableDuelMatch)
             {
-            	MessagePack.Message29001(ref nowMessage, ref nowEvent);
-            	NormalTapOK();
+                MessagePack.Message29001(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
             #region "ESCメニュー：バトル設定"
             else if (!GroundOne.WE.AvailableBattleSettingMenu && GroundOne.MC.Level >= 4)
             {
-            	MessagePack.Message29002(ref nowMessage, ref nowEvent);
-            	NormalTapOK();
+                MessagePack.Message29002(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
             else
