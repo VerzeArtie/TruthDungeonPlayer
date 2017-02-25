@@ -380,6 +380,7 @@ namespace DungeonPlayer
         public void tapClose()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_CLOSE, String.Empty, String.Empty);
+            GroundOne.SQL.UpdateCharacter();
             if (GroundOne.OnlySelectTrash)
             {
                 if (GroundOne.CannotSelectTrash != String.Empty)

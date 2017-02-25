@@ -13,6 +13,7 @@ namespace DungeonPlayer
     {
         public string connection = string.Empty;
 
+        private string TABLE_CHARACTER = "character_data";
         private string TABLE_OWNER_DATA = "owner_data";
         private string TABLE_ARCHIVEMENT = "archivement";
         private string TABLE_DUEL = "duel";
@@ -134,6 +135,193 @@ namespace DungeonPlayer
             catch
             {
                 Debug.Log("UpdateOwner error... " + DateTime.Now);
+            } // ログ失敗時は、そのまま進む
+        }
+
+        public void UpdateCharacter()
+        {
+            if (GroundOne.SupportLog == false) { return; }
+            if (GroundOne.SQL == null) { return; }
+
+            try
+            {
+                string name = GroundOne.WE2.Account;
+                string main_level = String.Empty;
+                string guid = String.Empty;
+
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        guid += dataReader[0].ToString();
+                    }
+                }
+
+                if (guid == String.Empty)
+                {
+                    return;
+                }
+
+                string count = String.Empty;
+                string table = TABLE_CHARACTER;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        count += dataReader[0].ToString();
+                    }
+                }
+
+                DateTime last_update = DateTime.Now;
+                if (count.ToString() == "0")
+                {
+                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                    {
+                        con.Open();
+                        string sqlCmd = "INSERT INTO " + table + " ( guid, last_update ) VALUES ( :guid, :last_update )";
+                        var cmd = new NpgsqlCommand(sqlCmd, con);
+                        //cmd.Prepare();
+                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                        cmd.Parameters.Add(new NpgsqlParameter("last_update", NpgsqlDbType.Timestamp) { Value = last_update });
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    DateTime update_time = DateTime.Now;
+                    List<string> valueData = new List<string>();
+                    List<string> parameter = new List<string>();
+                    string updateCommand = @"update " + table + " set available_second = :available_second, available_third = :available_third";
+                    parameter.Add("available_second");
+                    parameter.Add("available_third");
+                    if (GroundOne.WE.AvailableSecondCharacter) { valueData.Add("true"); }
+                    else { valueData.Add("false"); }
+                    if (GroundOne.WE.AvailableThirdCharacter) { valueData.Add("true"); }
+                    else { valueData.Add("false"); }
+
+                    string[] list1 = { "first_name", "first_level", "first_strength", "first_agility", "first_intelligence", "first_stamina", "first_mind",
+                                       "first_mainweapon", "first_subweapon", "first_armor", "first_accessory1", "first_accessory2",
+                                     };
+                    if (GroundOne.MC != null)
+                    {
+                        for (int ii = 0; ii < list1.Length; ii++)
+                        {
+                            parameter.Add(list1[ii]);
+                        }
+                        for (int ii = 0; ii < list1.Length; ii++)
+                        {
+                            updateCommand += ",";
+                            updateCommand += " " + list1[ii] + " = :" + list1[ii];
+                        }
+
+                        valueData.Add(GroundOne.MC.FullName);
+                        valueData.Add(GroundOne.MC.Level.ToString());
+                        valueData.Add(GroundOne.MC.Strength.ToString());
+                        valueData.Add(GroundOne.MC.Agility.ToString());
+                        valueData.Add(GroundOne.MC.Intelligence.ToString());
+                        valueData.Add(GroundOne.MC.Stamina.ToString());
+                        valueData.Add(GroundOne.MC.Mind.ToString());
+                        if (GroundOne.MC.MainWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.MC.MainWeapon.Name); }
+                        if (GroundOne.MC.SubWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.MC.SubWeapon.Name); }
+                        if (GroundOne.MC.MainArmor == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.MC.MainArmor.Name); }
+                        if (GroundOne.MC.Accessory == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.MC.Accessory.Name); }
+                        if (GroundOne.MC.Accessory2 == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.MC.Accessory2.Name); }
+                    }
+
+                    string[] list2 = { "second_name", "second_level", "second_strength", "second_agility", "second_intelligence", "second_stamina", "second_mind",
+                                      "second_mainweapon", "second_subweapon", "second_armor", "second_accessory1", "second_accessory2",
+                                     };
+                    if (GroundOne.SC != null)
+                    {
+                        for (int ii = 0; ii < list2.Length; ii++)
+                        {
+                            parameter.Add(list2[ii]);
+                        }
+                        for (int ii = 0; ii < list2.Length; ii++)
+                        {
+                            updateCommand += ",";
+                            updateCommand += " " + list2[ii] + " = :" + list2[ii];
+                        }
+                        valueData.Add(GroundOne.SC.FullName);
+                        valueData.Add(GroundOne.SC.Level.ToString());
+                        valueData.Add(GroundOne.SC.Strength.ToString());
+                        valueData.Add(GroundOne.SC.Agility.ToString());
+                        valueData.Add(GroundOne.SC.Intelligence.ToString());
+                        valueData.Add(GroundOne.SC.Stamina.ToString());
+                        valueData.Add(GroundOne.SC.Mind.ToString());
+                        if (GroundOne.SC.MainWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.SC.MainWeapon.Name); }
+                        if (GroundOne.SC.SubWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.SC.SubWeapon.Name); }
+                        if (GroundOne.SC.MainArmor == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.SC.MainArmor.Name); }
+                        if (GroundOne.SC.Accessory == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.SC.Accessory.Name); }
+                        if (GroundOne.SC.Accessory2 == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.SC.Accessory2.Name); }
+                    }
+                    string[] list3 = { "third_name", "third_level", "third_strength", "third_agility", "third_intelligence", "third_stamina", "third_mind",
+                                       "third_mainweapon", "third_subweapon", "third_armor", "third_accessory1", "third_accessory2",
+                                     };
+                    if (GroundOne.TC != null)
+                    {
+                        for (int ii = 0; ii < list3.Length; ii++)
+                        {
+                            parameter.Add(list3[ii]);
+                        }
+
+                        for (int ii = 0; ii < list3.Length; ii++)
+                        {
+                            updateCommand += ",";
+                            updateCommand += " " + list3[ii] + " = :" + list3[ii];
+                        }
+                        valueData.Add(GroundOne.TC.FullName);
+                        valueData.Add(GroundOne.TC.Level.ToString());
+                        valueData.Add(GroundOne.TC.Strength.ToString());
+                        valueData.Add(GroundOne.TC.Agility.ToString());
+                        valueData.Add(GroundOne.TC.Intelligence.ToString());
+                        valueData.Add(GroundOne.TC.Stamina.ToString());
+                        valueData.Add(GroundOne.TC.Mind.ToString());
+                        if (GroundOne.TC.MainWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.TC.MainWeapon.Name); }
+                        if (GroundOne.TC.SubWeapon == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.TC.SubWeapon.Name); }
+                        if (GroundOne.TC.MainArmor == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.TC.MainArmor.Name); }
+                        if (GroundOne.TC.Accessory == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.TC.Accessory.Name); }
+                        if (GroundOne.TC.Accessory2 == null) { valueData.Add("( no item )"); }
+                        else { valueData.Add(GroundOne.TC.Accessory2.Name); }
+                    }
+                    updateCommand += ", last_update = :last_update";
+                    updateCommand += " where guid = :guid";
+
+                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                    for (int ii = 0; ii < parameter.Count; ii++)
+                    {
+                        command.Parameters.Add(new NpgsqlParameter(parameter[ii], NpgsqlDbType.Varchar) { Value = valueData[ii] });
+                    }
+                    command.Parameters.Add(new NpgsqlParameter("last_update", DbType.DateTime) { Value = last_update });
+                    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("UpdateCharacter error... " + DateTime.Now + ": " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
