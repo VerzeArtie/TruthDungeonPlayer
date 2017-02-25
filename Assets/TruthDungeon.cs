@@ -311,6 +311,15 @@ namespace DungeonPlayer
 
             PlayMusic_14();
 
+            if (GroundOne.BattleResult != GroundOne.battleResult.None &&
+                GroundOne.WE.DungeonArea == 1 &&
+                GroundOne.WE.Truth_CommunicationJoinPartyLana == false &&
+                GroundOne.WE.dungeonEvent00 == false)
+            {
+                MessagePack.Message10000_First(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+
             #region "戦闘終了判定"
             #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)

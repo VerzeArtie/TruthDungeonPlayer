@@ -643,6 +643,16 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：アンシェットの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
         }
+        public static void Message10000_First(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（・・・　どうだろうな　・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（このまま何も考えずに進めるのは少し厳しいかもな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（後で戻ったら、ラナに相談でもしてみるか）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.dungeonEvent00 = true;
+        }
         public static void Message10000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.BoardInfo10)
