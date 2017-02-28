@@ -47,10 +47,48 @@ namespace DungeonPlayer
         public GameObject back_accessory;
         public GameObject back_accessory2;
         public Text mainMessage;
+        public Text lblName;
+        public Text lblLevel;
+        public Text lblExp;
+        public Text lblCore;
+        public Text lblBasic;
+        public Text lblEquip;
+        public Text lblFood;
+        public Text lblTotal;
+        public Text lblLife;
+        public Text lblMana;
+        public Text lblSkill;
+        public Text lblMainWeapon;
+        public Text lblSubWeapon;
+        public Text lblArmor;
+        public Text lblAccessory1;
+        public Text lblAccessory2;
+        public Text lblClose;
 
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblName.text = Database.GUI_S_BASIC_NAME;
+                lblLevel.text = Database.GUI_S_BASIC_LEVEL;
+                lblExp.text = Database.GUI_S_BASIC_EXP;
+                lblCore.text = Database.GUI_S_BASIC_CORE;
+                lblBasic.text = Database.GUI_S_BASIC_BASIC;
+                lblEquip.text = Database.GUI_S_BASIC_EQUIP;
+                lblFood.text = Database.GUI_S_BASIC_FOOD;
+                lblTotal.text = Database.GUI_S_BASIC_TOTAL;
+                lblLife.text = Database.GUI_S_BASIC_LIFE;
+                lblMana.text = Database.GUI_S_BASIC_MANA;
+                lblSkill.text = Database.GUI_S_BASIC_SKILL;
+                lblMainWeapon.text = Database.GUI_S_BASIC_MAIN;
+                lblSubWeapon.text = Database.GUI_S_BASIC_SUB;
+                lblArmor.text = Database.GUI_S_BASIC_ARMOR;
+                lblAccessory1.text = Database.GUI_S_BASIC_ACCESSORY1;
+                lblAccessory2.text = Database.GUI_S_BASIC_ACCESSORY2;
+                lblClose.text = Database.GUI_S_BASIC_CLOSE;
+            }
 
             GameObject baseObj = new GameObject("DuelPlayer");
             TruthEnemyCharacter player = baseObj.AddComponent<TruthEnemyCharacter>();
