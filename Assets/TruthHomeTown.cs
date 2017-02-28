@@ -74,6 +74,11 @@ namespace DungeonPlayer
         public Image backgroundData;
         public GameObject panelEnding;
         public GameObject panelSubMenu;
+        public Text txtMenuStatus;
+        public Text txtMenuBattleSetting;
+        public Text txtMenuSave;
+        public Text txtMenuLoad;
+        public Text txtMenuExit;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
@@ -96,6 +101,15 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                txtMenuStatus.text = Database.GUI_MENU_STATUS;
+                txtMenuBattleSetting.text = Database.GUI_MENU_BATTLESETTING;
+                txtMenuSave.text = Database.GUI_MENU_SAVE;
+                txtMenuLoad.text = Database.GUI_MENU_LOAD;
+                txtMenuExit.text = Database.GUI_MENU_EXIT;
+            }
 
             GroundOne.WE.SaveByDungeon = false;
 

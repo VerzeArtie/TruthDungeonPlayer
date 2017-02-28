@@ -2882,6 +2882,54 @@ namespace DungeonPlayer
         public const string ARCHIVEMENT_ENDING = @"ending";
         public const string ARCHIVEMENT_DUEL_WIN_X = @"duel_win_";
         public const string ARCHIVEMENT_DUEL_LOSE_X = @"duel_lose_";
+
+        // GUI text
+        public const string GUI_MENU_STATUS = "ステータス";
+        public const string GUI_MENU_BATTLESETTING = "バトル設定";
+        public const string GUI_MENU_SAVE = "セーブ";
+        public const string GUI_MENU_LOAD = "ロード";
+        public const string GUI_MENU_EXIT = "ゲーム終了";
+        #region "ステータス画面"
+        public const string GUI_STATUS_STATUS = "ステータス";
+        public const string GUI_STATUS_BACKPACK = "バックパック";
+        public const string GUI_STATUS_SPELL = "スペル";
+        public const string GUI_STATUS_RESIST = "レジスト";
+
+        public const string GUI_S_BASIC_NAME = "名前";
+        public const string GUI_S_BASIC_LEVEL = "レベル";
+        public const string GUI_S_BASIC_EXP = "経験値";
+        public const string GUI_S_BASIC_GOLD = "所持金";
+
+        public const string GUI_S_BASIC_CORE = "コア";
+        public const string GUI_S_BASIC_BASIC = "基本";
+        public const string GUI_S_BASIC_EQUIP = "装備";
+        public const string GUI_S_BASIC_FOOD = "食事";
+        public const string GUI_S_BASIC_TOTAL = "総合";
+
+        public const string GUI_S_BASIC_LIFE = "ライフ";
+        public const string GUI_S_BASIC_MANA = "マナ";
+        public const string GUI_S_BASIC_SKILL = "スキル";
+
+        public const string GUI_S_BASIC_MAIN = "メイン";
+        public const string GUI_S_BASIC_SUB = "サブ";
+        public const string GUI_S_BASIC_ARMOR = "防具";
+        public const string GUI_S_BASIC_ACCESSORY1 = "アクセサリ１";
+        public const string GUI_S_BASIC_ACCESSORY2 = "アクセサリ２";
+
+        public const string GUI_S_BASIC_PATK = "物理攻撃";
+        public const string GUI_S_BASIC_PDEF = "物理防御";
+        public const string GUI_S_BASIC_MATK = "魔法攻撃";
+        public const string GUI_S_BASIC_MDEF = "魔法防御";
+        public const string GUI_S_BASIC_BSPD = "戦闘速度";
+        public const string GUI_S_BASIC_BRCT = "戦闘反応";
+        public const string GUI_S_BASIC_PTCL = "潜在能力";
+
+        public const string GUI_S_BASIC_CLOSE = "閉じる";
+        #endregion
+        #region "セーブ・ロード"
+        public const string GUI_SAVELOAD_SAVE = "セーブ";
+        public const string GUI_SAVELOAD_LOAD = "ロード";
+        #endregion
     }
 }
 

@@ -14,6 +14,8 @@ namespace DungeonPlayer
         public Slider DifficultySilder = null;
         public Toggle ToggleSupportLog = null;
         public Text TextAccount = null;
+        public Button LanguageEngligh = null;
+        public Button LanguageJapanese = null;
 
         public override void Start()
         {
@@ -24,6 +26,14 @@ namespace DungeonPlayer
             //this.battleSpeedBar.Value = this.battleSpeed;
             this.DifficultySilder.value = GroundOne.Difficulty;
             this.ToggleSupportLog.isOn = GroundOne.SupportLog;
+            if (GroundOne.Language == GroundOne.GameLanguage.English)
+            {
+                LanguageEngligh.Select();
+            }
+            else
+            {
+                LanguageJapanese.Select();
+            }
             this.TextAccount.text = "AccountID: " + GroundOne.WE2.Account;
 
         }
@@ -50,6 +60,18 @@ namespace DungeonPlayer
             GroundOne.SupportLog = toggle.isOn;
         }
 
+        public void ChangeLanguage(int number)
+        {
+            if (number == 2)
+            {
+                GroundOne.Language = GroundOne.GameLanguage.English;
+            }
+            else
+            {
+                GroundOne.Language = GroundOne.GameLanguage.Japanese;
+            }
+        }
+
         public void tapClose()
         {
             try
@@ -74,6 +96,8 @@ namespace DungeonPlayer
                 xmlWriter.WriteElementString("Difficulty", GroundOne.Difficulty.ToString());
                 xmlWriter.WriteWhitespace("\r\n");
                 xmlWriter.WriteElementString("SupportLog", GroundOne.SupportLog.ToString());
+                xmlWriter.WriteWhitespace("\r\n");
+                xmlWriter.WriteElementString("GameLanguage", GroundOne.Language.ToString());
                 xmlWriter.WriteWhitespace("\r\n");
                 xmlWriter.WriteEndElement();
 

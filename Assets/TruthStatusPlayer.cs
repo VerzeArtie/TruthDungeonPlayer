@@ -124,6 +124,35 @@ namespace DungeonPlayer
         public Text[] ResistLabelValue;
         public Text[] ResistAbnormalStatus;
         public Text[] ResistAbnormalStatusValue;
+        public Text lblStatus;
+        public Text lblBackpack;
+        public Text lblSpell;
+        public Text lblResist;
+        public Text lblName;
+        public Text lblLevel;
+        public Text lblExp;
+        public Text lblGold;
+        public Text lblCore;
+        public Text lblBasic;
+        public Text lblEquip;
+        public Text lblFood;
+        public Text lblTotal;
+        public Text lblLife;
+        public Text lblMana;
+        public Text lblSkill;
+        public Text lblMainWeapon;
+        public Text lblSubWeapon;
+        public Text lblArmor;
+        public Text lblAccessory1;
+        public Text lblAccessory2;
+        public Text lblPhysicalAttack;
+        public Text lblPhysicalDefense;
+        public Text lblMagicAttack;
+        public Text lblMagicDefense;
+        public Text lblBattleSpeed;
+        public Text lblBattleReaction;
+        public Text lblPotential;
+        public Text lblClose;
 
         ItemBackPack[] backpackData = null;
 
@@ -145,6 +174,39 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblStatus.text = Database.GUI_STATUS_STATUS;
+                lblBackpack.text = Database.GUI_STATUS_BACKPACK;
+                lblSpell.text = Database.GUI_STATUS_SPELL;
+                lblResist.text = Database.GUI_STATUS_RESIST;
+                lblName.text = Database.GUI_S_BASIC_NAME;
+                lblLevel.text = Database.GUI_S_BASIC_LEVEL;
+                lblExp.text = Database.GUI_S_BASIC_EXP;
+                lblGold.text = Database.GUI_S_BASIC_GOLD;
+                lblCore.text = Database.GUI_S_BASIC_CORE;
+                lblBasic.text = Database.GUI_S_BASIC_BASIC;
+                lblEquip.text = Database.GUI_S_BASIC_EQUIP;
+                lblFood.text = Database.GUI_S_BASIC_FOOD;
+                lblTotal.text = Database.GUI_S_BASIC_TOTAL;
+                lblLife.text = Database.GUI_S_BASIC_LIFE;
+                lblMana.text = Database.GUI_S_BASIC_MANA;
+                lblSkill.text = Database.GUI_S_BASIC_SKILL;
+                lblMainWeapon.text = Database.GUI_S_BASIC_MAIN;
+                lblSubWeapon.text = Database.GUI_S_BASIC_SUB;
+                lblArmor.text = Database.GUI_S_BASIC_ARMOR;
+                lblAccessory1.text = Database.GUI_S_BASIC_ACCESSORY1;
+                lblAccessory2.text = Database.GUI_S_BASIC_ACCESSORY2;
+                lblPhysicalAttack.text = Database.GUI_S_BASIC_PATK;
+                lblPhysicalDefense.text = Database.GUI_S_BASIC_PDEF;
+                lblMagicAttack.text = Database.GUI_S_BASIC_MATK;
+                lblMagicDefense.text = Database.GUI_S_BASIC_MDEF;
+                lblBattleSpeed.text = Database.GUI_S_BASIC_BSPD;
+                lblBattleReaction.text = Database.GUI_S_BASIC_BRCT;
+                lblPotential.text = Database.GUI_S_BASIC_PTCL;
+                lblClose.text = Database.GUI_S_BASIC_CLOSE;
+            }
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 

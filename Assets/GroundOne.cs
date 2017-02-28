@@ -23,6 +23,12 @@ namespace DungeonPlayer
             Abort, // 逃げる
         }
 
+        public enum GameLanguage
+        {
+            English = 1,
+            Japanese = 2,
+        }
+
 		public static bool IsConnect = false; // サーバー接続OKサイン
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
 
@@ -59,6 +65,7 @@ namespace DungeonPlayer
         public static int EnableSoundEffect = 100; // 効果音、デフォルトは100
         public static int BattleSpeed = 3;
         public static int Difficulty = 2; // ゲーム難易度 デフォルトは２：普通
+        public static GameLanguage Language = GameLanguage.English; // ゲームサポート言語
         public static bool SupportLog = true; // SQLサーバーに操作ログを残す　デフォルトはON
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか

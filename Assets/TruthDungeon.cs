@@ -69,6 +69,11 @@ namespace DungeonPlayer
         public Text currentManaValue1;
         public Text currentManaValue2;
         public Text currentManaValue3;
+        public Text txtMenuStatus;
+        public Text txtMenuBattleSetting;
+        public Text txtMenuSave;
+        public Text txtMenuLoad;
+        public Text txtMenuExit;
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -206,6 +211,16 @@ namespace DungeonPlayer
             base.Start();
 
             GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_DUNGEON);
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                txtMenuStatus.text = Database.GUI_MENU_STATUS;
+                txtMenuBattleSetting.text = Database.GUI_MENU_BATTLESETTING;
+                txtMenuSave.text = Database.GUI_MENU_SAVE;
+                txtMenuLoad.text = Database.GUI_MENU_LOAD;
+                txtMenuExit.text = Database.GUI_MENU_EXIT;
+            }
+
             if (Application.platform == RuntimePlatform.Android ||
                 Application.platform == RuntimePlatform.IPhonePlayer)
             {

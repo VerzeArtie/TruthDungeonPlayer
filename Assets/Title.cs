@@ -104,6 +104,9 @@ namespace DungeonPlayer
                 GroundOne.SupportLog = Convert.ToBoolean(node5[0].InnerText);
                 //XmlNodeList node6 = xml.GetElementsByTagName("StoryMode"); // 後編追加
                 //this.StoryMode = Convert.ToInt32(node6[0].InnerText); // 後編追加
+
+                XmlNodeList node6 = xml.GetElementsByTagName("GameLanguage");
+                GroundOne.Language = (GroundOne.GameLanguage)(Enum.Parse(typeof(GroundOne.GameLanguage), node6[0].InnerText));
             }
             catch { }
         }

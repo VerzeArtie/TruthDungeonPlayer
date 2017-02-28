@@ -4626,10 +4626,10 @@ MonoBehaviour:
   stanceofSuddenness: 0
   soulExecution: 0
   BattleActionCommandList: []
-  mainPanel: {fileID: 0}
   MainObjectBack: {fileID: 0}
   MainObjectButton: {fileID: 0}
   ManaSkillPanel: {fileID: 0}
+  ActionButtonPanel: {fileID: 0}
   MainColor: {r: 0, g: 0, b: 0, a: 0}
   labelName: {fileID: 0}
   labelFullName: {fileID: 0}
@@ -5864,7 +5864,7 @@ GameObject:
   - 222: {fileID: 1153511753}
   - 114: {fileID: 1153511752}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBattleSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6205,7 +6205,7 @@ GameObject:
   - 222: {fileID: 1214879852}
   - 114: {fileID: 1214879851}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7362,6 +7362,11 @@ MonoBehaviour:
   currentManaValue1: {fileID: 794660549}
   currentManaValue2: {fileID: 1724160190}
   currentManaValue3: {fileID: 2119086146}
+  txtMenuStatus: {fileID: 1704038244}
+  txtMenuBattleSetting: {fileID: 1153511752}
+  txtMenuSave: {fileID: 2140317315}
+  txtMenuLoad: {fileID: 2116587183}
+  txtMenuExit: {fileID: 1214879851}
   mainMessage: {fileID: 90746840}
   back_vigilance: {fileID: 436457713}
   labelVigilance: {fileID: 59443654}
@@ -8479,7 +8484,7 @@ GameObject:
   - 222: {fileID: 1704038245}
   - 114: {fileID: 1704038244}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10237,7 +10242,7 @@ GameObject:
   - 222: {fileID: 2116587184}
   - 114: {fileID: 2116587183}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextLoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10383,7 +10388,7 @@ GameObject:
   - 222: {fileID: 2140317316}
   - 114: {fileID: 2140317315}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextSave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

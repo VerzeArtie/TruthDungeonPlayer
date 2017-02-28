@@ -610,7 +610,7 @@ GameObject:
   - 222: {fileID: 34000514}
   - 114: {fileID: 34000513}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextArmor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,8 +630,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &34000513
 MonoBehaviour:
@@ -654,18 +654,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9632\u5177"
+  m_Text: Armor
 --- !u!222 &34000514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1600,7 +1600,7 @@ GameObject:
   - 222: {fileID: 110905388}
   - 114: {fileID: 110905387}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,7 +1655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30AD\u30EB"
+  m_Text: Skill
 --- !u!222 &110905388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2517,7 +2517,7 @@ GameObject:
   - 222: {fileID: 198533295}
   - 114: {fileID: 198533294}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2572,7 +2572,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6240\u6301\u91D1"
+  m_Text: Gold
 --- !u!222 &198533295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3105,7 +3105,7 @@ GameObject:
   - 222: {fileID: 244742515}
   - 114: {fileID: 244742514}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextAccessory2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3125,8 +3125,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &244742514
 MonoBehaviour:
@@ -3149,18 +3149,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30A2\u30AF\u30BB\u30B5\u30EA\uFF12"
+  m_Text: Accessory 2
 --- !u!222 &244742515
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3990,7 +3990,7 @@ GameObject:
   - 222: {fileID: 302619595}
   - 114: {fileID: 302619594}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBattleSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4045,7 +4045,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6226\u95D8\u901F\u5EA6"
+  m_Text: 'Battle
+
+    Speed'
 --- !u!222 &302619595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5845,7 +5847,7 @@ GameObject:
   - 222: {fileID: 460307751}
   - 114: {fileID: 460307750}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5900,7 +5902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E9\u30A4\u30D5"
+  m_Text: Life
 --- !u!222 &460307751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6938,7 +6940,7 @@ GameObject:
   - 222: {fileID: 538195477}
   - 114: {fileID: 538195476}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextMana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6993,7 +6995,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30DE\u30CA"
+  m_Text: Mana
 --- !u!222 &538195477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8382,7 +8384,7 @@ GameObject:
   - 222: {fileID: 644510432}
   - 114: {fileID: 644510431}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextSubWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8402,8 +8404,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &644510431
 MonoBehaviour:
@@ -8426,18 +8428,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B5\u30D6"
+  m_Text: Sub Weapon
 --- !u!222 &644510432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8523,7 +8525,7 @@ GameObject:
   - 222: {fileID: 646332643}
   - 114: {fileID: 646332642}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBattleResponse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8578,7 +8580,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6226\u95D8\u53CD\u5FDC"
+  m_Text: 'Battle
+
+    Reaction'
 --- !u!222 &646332643
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9912,7 +9916,7 @@ GameObject:
   - 222: {fileID: 758154664}
   - 114: {fileID: 758154663}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextPhysicalDefense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9967,7 +9971,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7269\u7406\u9632\u5FA1"
+  m_Text: 'Physical
+
+    Defense'
 --- !u!222 &758154664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15909,7 +15915,7 @@ GameObject:
   - 222: {fileID: 1164660661}
   - 114: {fileID: 1164660660}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextExp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15964,7 +15970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7D4C\u9A13\u5024"
+  m_Text: Exp
 --- !u!222 &1164660661
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16471,7 +16477,7 @@ GameObject:
   - 222: {fileID: 1192596882}
   - 114: {fileID: 1192596881}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextMainWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16491,8 +16497,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1192596881
 MonoBehaviour:
@@ -16515,18 +16521,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E1\u30A4\u30F3"
+  m_Text: Main Weapon
 --- !u!222 &1192596882
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17867,7 +17873,7 @@ GameObject:
   - 222: {fileID: 1291936270}
   - 114: {fileID: 1291936269}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextMagicDefense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17922,7 +17928,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9B54\u6CD5\u9632\u5FA1"
+  m_Text: 'Magic
+
+    Defense'
 --- !u!222 &1291936270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18772,7 +18780,7 @@ GameObject:
   - 222: {fileID: 1363068749}
   - 114: {fileID: 1363068748}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18827,7 +18835,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30EC\u30D9\u30EB"
+  m_Text: Level
 --- !u!222 &1363068749
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19693,6 +19701,35 @@ MonoBehaviour:
   - {fileID: 947002445}
   - {fileID: 1789089703}
   - {fileID: 552322983}
+  lblStatus: {fileID: 1824108435}
+  lblBackpack: {fileID: 2060725314}
+  lblSpell: {fileID: 2029767280}
+  lblResist: {fileID: 1640032533}
+  lblName: {fileID: 1542289201}
+  lblLevel: {fileID: 1363068748}
+  lblExp: {fileID: 1164660660}
+  lblGold: {fileID: 198533294}
+  lblCore: {fileID: 172082225}
+  lblBasic: {fileID: 1297153158}
+  lblEquip: {fileID: 439867970}
+  lblFood: {fileID: 1252040595}
+  lblTotal: {fileID: 157931496}
+  lblLife: {fileID: 460307750}
+  lblMana: {fileID: 538195476}
+  lblSkill: {fileID: 110905387}
+  lblMainWeapon: {fileID: 1192596881}
+  lblSubWeapon: {fileID: 644510431}
+  lblArmor: {fileID: 34000513}
+  lblAccessory1: {fileID: 1619560481}
+  lblAccessory2: {fileID: 244742514}
+  lblPhysicalAttack: {fileID: 1561280490}
+  lblPhysicalDefense: {fileID: 758154663}
+  lblMagicAttack: {fileID: 1620992697}
+  lblMagicDefense: {fileID: 1291936269}
+  lblBattleSpeed: {fileID: 302619594}
+  lblBattleReaction: {fileID: 646332642}
+  lblPotential: {fileID: 1714312258}
+  lblClose: {fileID: 1975708158}
 --- !u!1 &1421472937
 GameObject:
   m_ObjectHideFlags: 0
@@ -21236,7 +21273,7 @@ GameObject:
   - 222: {fileID: 1542289202}
   - 114: {fileID: 1542289201}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21291,7 +21328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u540D\u524D"
+  m_Text: Name
 --- !u!222 &1542289202
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21968,7 +22005,7 @@ GameObject:
   - 222: {fileID: 1561280491}
   - 114: {fileID: 1561280490}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextPhysicalAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22023,7 +22060,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7269\u7406\u653B\u6483"
+  m_Text: 'Physical
+
+    Attack'
 --- !u!222 &1561280491
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22594,7 +22633,7 @@ GameObject:
   - 222: {fileID: 1619560482}
   - 114: {fileID: 1619560481}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextAccessory1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22614,8 +22653,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 40}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 120, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1619560481
 MonoBehaviour:
@@ -22638,18 +22677,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30A2\u30AF\u30BB\u30B5\u30EA\uFF11"
+  m_Text: Accessory 1
 --- !u!222 &1619560482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22667,7 +22706,7 @@ GameObject:
   - 222: {fileID: 1620992698}
   - 114: {fileID: 1620992697}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextMagicAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22722,7 +22761,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9B54\u6CD5\u653B\u6483"
+  m_Text: 'Magic
+
+    Attack'
 --- !u!222 &1620992698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22874,7 +22915,7 @@ GameObject:
   - 222: {fileID: 1640032534}
   - 114: {fileID: 1640032533}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextResist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22918,10 +22959,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -22929,7 +22970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30EC\u30B8\u30B9\u30C8"
+  m_Text: Resist
 --- !u!222 &1640032534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23902,7 +23943,7 @@ GameObject:
   - 222: {fileID: 1714312259}
   - 114: {fileID: 1714312258}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextPotential
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23957,7 +23998,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6F5C\u5728\u80FD\u529B"
+  m_Text: Potential
 --- !u!222 &1714312259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26067,7 +26108,7 @@ GameObject:
   - 222: {fileID: 1824108436}
   - 114: {fileID: 1824108435}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBasic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26111,10 +26152,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -26122,7 +26163,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30C6\u30FC\u30BF\u30B9"
+  m_Text: Status
 --- !u!222 &1824108436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27699,7 +27740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9589\u3058\u308B"
+  m_Text: Close
 --- !u!222 &1975708159
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28249,7 +28290,7 @@ GameObject:
   - 222: {fileID: 2029767281}
   - 114: {fileID: 2029767280}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28293,10 +28334,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -28304,7 +28345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30DA\u30EB"
+  m_Text: Spell
 --- !u!222 &2029767281
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28379,7 +28420,7 @@ GameObject:
   - 222: {fileID: 2060725315}
   - 114: {fileID: 2060725314}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBackpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28423,10 +28464,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -28434,7 +28475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30D0\u30C3\u30AF\u30D1\u30C3\u30AF"
+  m_Text: Backpack
 --- !u!222 &2060725315
 CanvasRenderer:
   m_ObjectHideFlags: 0

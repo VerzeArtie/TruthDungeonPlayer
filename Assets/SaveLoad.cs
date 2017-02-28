@@ -17,6 +17,7 @@ namespace DungeonPlayer
         public Button[] back_button;
         public Text[] buttonText;
         public Button[] buttonPage;
+        public Text lblClose;
 
         private string gameDayString = "\r\n経過日数：";
         private string gameDayString2 = @"日 ";
@@ -51,10 +52,27 @@ namespace DungeonPlayer
                 return;
             }
 
+
             this.Background.GetComponent<Image>().color = UnityColor.Aqua;
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                titleLabel.text = Database.GUI_SAVELOAD_LOAD;
+                lblClose.text = Database.GUI_S_BASIC_CLOSE;
+            }
+            else
+            {
+                titleLabel.text = "LOAD";
+            }
             if (GroundOne.SaveMode)
             {
-                titleLabel.text = "SAVE";
+                if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                {
+                    titleLabel.text = Database.GUI_SAVELOAD_SAVE;
+                }
+                else
+                {
+                    titleLabel.text = "SAVE";
+                }
                 this.Background.GetComponent<Image>().color = UnityColor.Salmon;
             }
 

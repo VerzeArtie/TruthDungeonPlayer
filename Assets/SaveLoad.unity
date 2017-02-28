@@ -1768,7 +1768,7 @@ GameObject:
   - 222: {fileID: 638000110}
   - 114: {fileID: 638000109}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,6 +4835,7 @@ MonoBehaviour:
   - {fileID: 1561764152}
   - {fileID: 199181379}
   - {fileID: 192862888}
+  lblClose: {fileID: 638000109}
 --- !u!1 &1419414469
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,7 +6433,7 @@ GameObject:
   - 114: {fileID: 1673243366}
   - 114: {fileID: 1673243365}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
