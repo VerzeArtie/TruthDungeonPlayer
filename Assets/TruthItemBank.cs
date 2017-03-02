@@ -26,6 +26,10 @@ namespace DungeonPlayer
         public Button[] back_PlayerListPage;
         public Text[] playerListPage;
         public Text mainMessage;
+        public Text lblTitle;
+        public Text lblWerehouse;
+        public Text lblBackpack;
+        public Text lblClose;
 
         string[] items = new string[Database.MAX_ITEM_BANK];
         int[] stacks = new int[Database.MAX_ITEM_BANK];
@@ -45,6 +49,14 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblTitle.text = Database.GUI_HANNA_TITLE;
+                lblWerehouse.text = Database.GUI_HANNA_ITEM;
+                lblBackpack.text = Database.GUI_HANNA_BACKPACK;
+                lblClose.text = Database.GUI_HANNA_CLOSE;
+            }
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) { groupPlayerButton.SetActive(false); }
             //if (!GroundOne.WE.AvailableThirdCharacter) player3Button.gameObject.SetActive(false); // after ３人目を見せるのかどうか、ストーリーと合わせて考える

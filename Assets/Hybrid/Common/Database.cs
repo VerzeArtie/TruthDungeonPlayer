@@ -2889,7 +2889,7 @@ namespace DungeonPlayer
         public const string GUI_MENU_SAVE = "セーブ";
         public const string GUI_MENU_LOAD = "ロード";
         public const string GUI_MENU_EXIT = "ゲーム終了";
-        #region "ステータス画面"
+        #region "ステータス画面/DUEL対戦相手"
         public const string GUI_STATUS_STATUS = "ステータス";
         public const string GUI_STATUS_BACKPACK = "バックパック";
         public const string GUI_STATUS_SPELL = "スペル";
@@ -2929,6 +2929,21 @@ namespace DungeonPlayer
         #region "セーブ・ロード"
         public const string GUI_SAVELOAD_SAVE = "セーブ";
         public const string GUI_SAVELOAD_LOAD = "ロード";
+        #endregion
+        #region "ガンツの武具店/ラナの薬品店"
+        public const string GUI_EQUIPSHOP_TITLE = "天下一品　ガンツの武具店";
+        public const string GUI_EQUIPSHOP_TITLE_POTION = "ラナのランラン薬品店♪";
+        public const string GUI_EQUIPSHOP_ITEM = "販売アイテム";
+        public const string GUI_EQUIPSHOP_COST = "値段";
+        public const string GUI_EQUIPSHOP_BACKPACK = "バックパック";
+        public const string GUI_EQUIPSHOP_STACK = "個数";
+        public const string GUI_EQUIPSHOP_CLOSE = "店を出る";
+        #endregion
+        #region "ハンナの倉庫番"
+        public const string GUI_HANNA_TITLE = "ハンナの倉庫番";
+        public const string GUI_HANNA_ITEM = "倉庫アイテム";
+        public const string GUI_HANNA_BACKPACK = "バックパック";
+        public const string GUI_HANNA_CLOSE = "倉庫から出る";
         #endregion
     }
 }

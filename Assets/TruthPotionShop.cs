@@ -18,7 +18,16 @@ namespace DungeonPlayer
 
         public override void OnInitialize()
         {
-            base.labelTitle.text = "ラナのランラン薬品店♪";
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblTitle.text = Database.GUI_EQUIPSHOP_TITLE_POTION;
+                lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
+                lblCost.text = Database.GUI_EQUIPSHOP_COST;
+                lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
+                lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+                lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
+            }
+
             GameObject objLana = new GameObject("objLana");
             vendor = objLana.AddComponent<MainCharacter>();
             vendor.FullName = "ラナ・アミリア";

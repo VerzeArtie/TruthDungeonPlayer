@@ -437,7 +437,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u500B\u6570"
+  m_Text: Stock
 --- !u!222 &51012902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6465,6 +6465,12 @@ MonoBehaviour:
   txtArmor: {fileID: 696897061}
   txtAccessory1: {fileID: 469984447}
   txtAccessory2: {fileID: 406028619}
+  lblTitle: {fileID: 1312154095}
+  lblItemList: {fileID: 1261716778}
+  lblCost: {fileID: 1021491946}
+  lblBackpack: {fileID: 732603412}
+  lblBackpackStack: {fileID: 51012901}
+  lblClose: {fileID: 2035954237}
 --- !u!1 &731110056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6683,7 +6689,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u30D0\u30C3\u30AF\u30D1\u30C3\u30AF"
+  m_Text: Backpack
 --- !u!222 &732603413
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9558,7 +9564,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5024\u6BB5"
+  m_Text: Cost
 --- !u!222 &1021491947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12103,7 +12109,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u8CA9\u58F2\u30A2\u30A4\u30C6\u30E0"
+  m_Text: Vender Item List
 --- !u!222 &1261716779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12644,7 +12650,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 320, y: 40}
+  m_SizeDelta: {x: 546, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1312154095
 MonoBehaviour:
@@ -12678,7 +12684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5929\u4E0B\u4E00\u54C1\u3000\u30AC\u30F3\u30C4\u306E\u6B66\u5177\u5E97"
+  m_Text: World Champion Weapon-Shop of the "Ganz"
 --- !u!222 &1312154096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21602,7 +21608,7 @@ GameObject:
   - 222: {fileID: 2035954238}
   - 114: {fileID: 2035954237}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21657,7 +21663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5E97\u3092\u51FA\u308B"
+  m_Text: Leave Store
 --- !u!222 &2035954238
 CanvasRenderer:
   m_ObjectHideFlags: 0

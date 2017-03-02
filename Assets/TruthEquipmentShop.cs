@@ -50,6 +50,12 @@ namespace DungeonPlayer
         public Text txtArmor;
         public Text txtAccessory1;
         public Text txtAccessory2;
+        public Text lblTitle;
+        public Text lblItemList;
+        public Text lblCost;
+        public Text lblBackpack;
+        public Text lblBackpackStack;
+        public Text lblClose;
 
         private ItemBackPack currentSelectItem = null;
         private ItemBackPack currentSelectItem2 = null;
@@ -64,7 +70,15 @@ namespace DungeonPlayer
 
         public virtual void OnInitialize()
         {
-            this.labelTitle.text = "天下一品　ガンツの武具店";
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblTitle.text = Database.GUI_EQUIPSHOP_TITLE;
+                lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
+                lblCost.text = Database.GUI_EQUIPSHOP_COST;
+                lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
+                lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+                lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
+            }
             GameObject objGanz = new GameObject("objGanz");
             vendor = objGanz.AddComponent<MainCharacter>();
             vendor.FirstName = "ガンツ";

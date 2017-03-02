@@ -8175,7 +8175,7 @@ GameObject:
   - 222: {fileID: 844139683}
   - 114: {fileID: 844139682}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8230,7 +8230,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5E97\u3092\u51FA\u308B"
+  m_Text: Leave Store
 --- !u!222 &844139683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9326,7 +9326,7 @@ GameObject:
   - 222: {fileID: 942327041}
   - 114: {fileID: 942327040}
   m_Layer: 5
-  m_Name: equip
+  m_Name: textCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9381,7 +9381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5024\u6BB5"
+  m_Text: Cost
 --- !u!222 &942327041
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11298,7 +11298,7 @@ GameObject:
   - 222: {fileID: 1154082329}
   - 114: {fileID: 1154082328}
   m_Layer: 5
-  m_Name: equip
+  m_Name: backpackStack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11353,7 +11353,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u500B\u6570"
+  m_Text: Stack
 --- !u!222 &1154082329
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13246,7 +13246,7 @@ GameObject:
   - 222: {fileID: 1326715481}
   - 114: {fileID: 1326715480}
   m_Layer: 5
-  m_Name: equip
+  m_Name: textBackpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13301,7 +13301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u30D0\u30C3\u30AF\u30D1\u30C3\u30AF"
+  m_Text: Backpack
 --- !u!222 &1326715481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14745,7 +14745,7 @@ GameObject:
   - 222: {fileID: 1445655880}
   - 114: {fileID: 1445655879}
   m_Layer: 5
-  m_Name: equip
+  m_Name: textPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14800,7 +14800,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u8CA9\u58F2\u30A2\u30A4\u30C6\u30E0"
+  m_Text: Vendor Item List
 --- !u!222 &1445655880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15591,6 +15591,12 @@ MonoBehaviour:
   txtArmor: {fileID: 1954601795}
   txtAccessory1: {fileID: 1399980092}
   txtAccessory2: {fileID: 806242333}
+  lblTitle: {fileID: 1744897588}
+  lblItemList: {fileID: 1445655879}
+  lblCost: {fileID: 942327040}
+  lblBackpack: {fileID: 1326715480}
+  lblBackpackStack: {fileID: 1154082328}
+  lblClose: {fileID: 844139682}
 --- !u!1 &1489684756
 GameObject:
   m_ObjectHideFlags: 0
@@ -18486,7 +18492,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 320, y: 40}
+  m_SizeDelta: {x: 414, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1744897588
 MonoBehaviour:
@@ -18520,7 +18526,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E9\u30CA\u306E\u30E9\u30F3\u30E9\u30F3\u85AC\u54C1\u5E97\u266A"
+  m_Text: The funny Potion-Shop of the "Lana"
 --- !u!222 &1744897589
 CanvasRenderer:
   m_ObjectHideFlags: 0
