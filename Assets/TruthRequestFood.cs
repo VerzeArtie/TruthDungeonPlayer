@@ -20,6 +20,8 @@ namespace DungeonPlayer
         public Text[] FoodTextList;
         public Text TitleText;
         public Text DescriptionText;
+        public Text lblTitle;
+        public Text lblClose;
 
         public string CurrentSelect { get; set; }
 
@@ -51,6 +53,12 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblTitle.text = Database.GUI_HANNA_INN;
+                lblClose.text = Database.GUI_HANNA_ORDEROK;
+            }
 
             // debug
             //GroundOne.WE.AvailableFood2 = true;

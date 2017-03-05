@@ -814,7 +814,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 12.369812, y: -12.369751}
-  m_SizeDelta: {x: 320, y: 40}
+  m_SizeDelta: {x: 425, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &272062091
 MonoBehaviour:
@@ -848,7 +848,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5BB6\u5EAD\u6599\u7406\u3000\u30CF\u30F3\u30CA\u306E\u5B9A\u98DF\u5C4B"
+  m_Text: The home-cook INN of the "Hanna"
 --- !u!222 &272062092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2333,7 +2333,7 @@ GameObject:
   - 222: {fileID: 1315881445}
   - 114: {fileID: 1315881444}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2388,7 +2388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6CE8\u6587\u6C7A\u5B9A"
+  m_Text: Order
 --- !u!222 &1315881445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3648,3 +3648,5 @@ MonoBehaviour:
   - {fileID: 512323664}
   TitleText: {fileID: 1106901704}
   DescriptionText: {fileID: 1415213577}
+  lblTitle: {fileID: 272062091}
+  lblClose: {fileID: 1315881444}

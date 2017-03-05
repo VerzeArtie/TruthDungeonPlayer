@@ -79,6 +79,28 @@ public class TruthSelectCharacter : MotherForm
     public Button choice;
     public Button btnFix;
 
+    public Text lblName;
+    public Text lblLevel;
+    public Text lblExp;
+    public Text lblLife;
+    public Text lblMana;
+    public Text lblSkill;
+    public Text lblMainWeapon;
+    public Text lblSubWeapon;
+    public Text lblArmor;
+    public Text lblAccessory1;
+    public Text lblAccessory2;
+    public Text lblPhysicalAttack;
+    public Text lblPhysicalDefense;
+    public Text lblMagicAttack;
+    public Text lblMagicDefense;
+    public Text lblBattleSpeed;
+    public Text lblBattleReaction;
+    public Text lblPotential;
+    public Text lblReset;
+    public Text lblChoice;
+    public Text lblFix;
+
     bool usingOvershifting = false;
     bool usingOvershiftingFirstSleep = false;
     bool usingOvershiftingSecondSleep = false;
@@ -117,6 +139,31 @@ public class TruthSelectCharacter : MotherForm
     public override void Start()
     {
         base.Start();
+
+        if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+        {
+            lblName.text = Database.GUI_S_BASIC_NAME;
+            lblLevel.text = Database.GUI_S_BASIC_LEVEL;
+            lblExp.text = Database.GUI_S_BASIC_EXP;
+            lblLife.text = Database.GUI_S_BASIC_LIFE;
+            lblMana.text = Database.GUI_S_BASIC_MANA;
+            lblSkill.text = Database.GUI_S_BASIC_SKILL;
+            lblMainWeapon.text = Database.GUI_S_BASIC_MAIN;
+            lblSubWeapon.text = Database.GUI_S_BASIC_SUB;
+            lblArmor.text = Database.GUI_S_BASIC_ARMOR;
+            lblAccessory1.text = Database.GUI_S_BASIC_ACCESSORY1;
+            lblAccessory2.text = Database.GUI_S_BASIC_ACCESSORY2;
+            lblPhysicalAttack.text = Database.GUI_S_BASIC_PATK;
+            lblPhysicalDefense.text = Database.GUI_S_BASIC_PDEF;
+            lblMagicAttack.text = Database.GUI_S_BASIC_MATK;
+            lblMagicDefense.text = Database.GUI_S_BASIC_MDEF;
+            lblBattleSpeed.text = Database.GUI_S_BASIC_BSPD;
+            lblBattleReaction.text = Database.GUI_S_BASIC_BRCT;
+            lblPotential.text = Database.GUI_S_BASIC_PTCL;
+            lblReset.text = Database.GUI_SELECT_C_RESET;
+            lblChoice.text = Database.GUI_SELECT_C_CHOICE;
+            lblFix.text = Database.GUI_SELECT_C_FIX;
+        }
 
         // debug 
         //GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;

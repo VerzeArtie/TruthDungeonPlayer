@@ -2945,6 +2945,15 @@ namespace DungeonPlayer
         public const string GUI_HANNA_BACKPACK = "バックパック";
         public const string GUI_HANNA_CLOSE = "倉庫から出る";
         #endregion
+        #region "ハンナの定食屋"
+        public const string GUI_HANNA_INN = "家庭料理　ハンナの定食屋";
+        public const string GUI_HANNA_ORDEROK = "注文決定";
+        #endregion
+        #region "キャラクター選択"
+        public const string GUI_SELECT_C_RESET = "やり直し";
+        public const string GUI_SELECT_C_CHOICE = "選定";
+        public const string GUI_SELECT_C_FIX = "確定";
+        #endregion
     }
 }
 
