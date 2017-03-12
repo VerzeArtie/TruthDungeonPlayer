@@ -6092,7 +6092,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_PURE_WATER:
-                    description = "約束された回復薬。毎日１度だけライフを100%回復。";
+                    description = "約束された回復薬。毎日１度だけライフを100%回復する。このアイテムは使用しても無くならない。\r\nホームタウン帰還後、再使用可能となる。";
                     PhysicalAttackMinValue = 0;
                     PhysicalAttackMaxValue = 0;
                     cost = 25000;
