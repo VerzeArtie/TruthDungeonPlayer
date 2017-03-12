@@ -77,6 +77,12 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthPlayback);
         }
 
+        public static void CallAchievement(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthAchievement);
+        }
+
         public static void CallTruthBookManual(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);

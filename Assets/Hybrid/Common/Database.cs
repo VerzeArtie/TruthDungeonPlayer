@@ -2702,6 +2702,7 @@ namespace DungeonPlayer
         public const string TruthItemBank = @"TruthItemBank";
         public const string TruthItemDesc = @"TruthItemDesc";
         public const string TruthPlayback = @"TruthPlayback";
+        public const string TruthAchievement = @"TruthAchievement";
         public const string TruthPlayerInformation = @"TruthPlayerInformation";
         public const string TruthPotionShop = @"TruthPotionShop";
         public const string TruthRequestFood = @"TruthRequestFood";
@@ -2783,6 +2784,7 @@ namespace DungeonPlayer
         public const string LOG_DESCRIPTION = @"Description";
         public const string LOG_VIEW_DUNGEON = @"Viewdungeon";
         public const string LOG_PLAYBACK = @"Playback";
+        public const string LOG_ACHIEVEMENT = @"Achievement";
         public const string LOG_BACKTO_TOWN = @"BackToTown";
         public const string LOG_STATUS_BASIC = @"StatusBasic";
         public const string LOG_STATUS_BACKPACK = @"StatusBackpack";
@@ -2953,6 +2955,9 @@ namespace DungeonPlayer
         public const string GUI_SELECT_C_RESET = "やり直し";
         public const string GUI_SELECT_C_CHOICE = "選定";
         public const string GUI_SELECT_C_FIX = "確定";
+        #endregion
+        #region "オブジェクティブ"
+        public const string GUI_OBJECTIVE = "目標";
         #endregion
     }
 }

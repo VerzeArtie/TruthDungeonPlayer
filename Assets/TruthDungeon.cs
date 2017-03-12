@@ -74,6 +74,12 @@ namespace DungeonPlayer
         public Text txtMenuSave;
         public Text txtMenuLoad;
         public Text txtMenuExit;
+        public GameObject panelObjective;
+        public GameObject panelObjectiveTitle;
+        public Text txtObjectiveTitle;
+        public GameObject panelGroupQuest;
+        public List<GameObject> panelObjectiveTxt;
+        public List<Text> txtObjective;
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -219,6 +225,7 @@ namespace DungeonPlayer
                 txtMenuSave.text = Database.GUI_MENU_SAVE;
                 txtMenuLoad.text = Database.GUI_MENU_LOAD;
                 txtMenuExit.text = Database.GUI_MENU_EXIT;
+                txtObjectiveTitle.text = Database.GUI_OBJECTIVE;
             }
 
             if (Application.platform == RuntimePlatform.Android ||
@@ -323,6 +330,10 @@ namespace DungeonPlayer
 
             SetupPlayerStatus(true);
             UpdateMainMessage("", true);
+
+            GroundOne.ObjectiveList.Clear();
+            TruthObjective.GetObjectiveList();
+            UpdateTxtObjective();
 
             PlayMusic_14();
 
@@ -995,7 +1006,7 @@ namespace DungeonPlayer
             #endregion
             #endregion
         }
-
+        
         private void PlayMusic_14()
         {
             if (GroundOne.TutorialMode)
@@ -8516,7 +8527,7 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "鍵付き扉"
+                    #region "大広間エントランス１：鍵付き扉"
                     case 12:
                         MessagePack.Message10012(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -8528,49 +8539,49 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス２"
+                    #region "大広間エントランス２：鍵付き扉"
                     case 14:
                         MessagePack.Message10014(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス３"
+                    #region "大広間エントランス２"
                     case 15:
                         MessagePack.Message10015(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス４"
+                    #region "大広間エントランス３：鍵付き扉"
                     case 16:
                         MessagePack.Message10016(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス５"
+                    #region "大広間エントランス３"
                     case 17:
                         MessagePack.Message10017(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス６"
+                    #region "大広間エントランス４：鍵付き扉"
                     case 18:
                         MessagePack.Message10018(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス７"
+                    #region "大広間エントランス４"
                     case 19:
                         MessagePack.Message10019(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス８"
+                    #region "中通路の扉"
                     case 20:
                         MessagePack.Message10020(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "大広間エントランス９"
+                    #region "中通路の扉"
                     case 21:
                         MessagePack.Message10021(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -15393,6 +15404,35 @@ namespace DungeonPlayer
             groupYesnoSystemMessage.SetActive(true);
         }
 
+        public void tapObjective()
+        {
+            float current = panelObjective.GetComponent<Image>().color.a;
+            float current2 = 1.0f;
+            if (current == 0.0f)
+            {
+                current = 0.5f;
+                current2 = 1.0f;
+            }
+            else if (current == 0.5f)
+            {
+                current = 1.0f;
+                current2 = 1.0f;
+            }
+            else
+            {
+                current = 0.0f;
+                current2 = 0.0f;
+            }
+            panelObjective.GetComponent<Image>().color = new Color(current, current, current, current);
+            panelObjectiveTitle.GetComponent<Image>().color = new Color(current, current, current, current);
+            panelGroupQuest.GetComponent<Image>().color = new Color(current, current, current, current);
+            txtObjectiveTitle.color = new Color(0, 0, 0, current2);
+            for (int ii = 0; ii < txtObjective.Count; ii++)
+            {
+                txtObjective[ii].color = new Color(0, 0, 0, current2);
+            }
+        }
+
         public override void BookManual_Click()
         {
             if (GroundOne.TutorialMode)
@@ -19876,6 +19916,21 @@ namespace DungeonPlayer
 
             if (this.nowReading >= this.nowMessage.Count)
             {
+                TruthObjective.RefreshObjectList();
+                List<string> list = TruthObjective.GetObjectiveList();
+                // 新しく追加された文字列があれば、システムメッセージで表記する。
+                if (list.Count > 0)
+                {
+                    for (int ii = 0; ii < list.Count; ii++)
+                    {
+                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.HomeTownMessageDisplay);
+                    }
+
+                    UpdateTxtObjective();
+                    tapOK();
+                    return;
+                }
+
                 this.nowReading = 0;
                 this.nowMessage.Clear();
                 this.nowEvent.Clear();
@@ -19887,6 +19942,21 @@ namespace DungeonPlayer
                     this.Filter.GetComponent<Image>().color = Color.white;
                     this.Filter.SetActive(false);
                 }
+
+                UpdateTxtObjective();
+            }
+        }
+
+        private void UpdateTxtObjective()
+        {
+            for (int ii = 0; ii < txtObjective.Count; ii++)
+            {
+                txtObjective[ii].text = String.Empty;
+            }
+
+            for (int ii = 0; ii < GroundOne.ObjectiveList.Count; ii++)
+            {
+                txtObjective[ii].text = GroundOne.ObjectiveList[ii];
             }
         }
 

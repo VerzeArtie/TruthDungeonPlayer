@@ -321,6 +321,7 @@ namespace DungeonPlayer
         public Text ExpGoldText;
 
         // internal
+        int BattleSpeed = 3;
         int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH;
         int BattleTurnCount = 0;
 
@@ -357,6 +358,7 @@ namespace DungeonPlayer
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
             else { Database.BATTLE_CORE_SLEEP = 10; }
 
+            ChangeBattleSpeed(3);
             // 最終戦ヴェルゼのシャドウマークをデフォルトでは非表示にする。
             enemy1Shadow2.gameObject.SetActive(false);
             enemy1Shadow3.gameObject.SetActive(false);
@@ -7714,19 +7716,16 @@ namespace DungeonPlayer
                 targetLabel.text = Convert.ToString(this.nowAnimationDamage[0]);
             }
             
-            int[] waitTime = {150, 90, 60, 40, 20};
+            int[] waitTime = {50, 45, 40, 35, 30, 25, 20, 15, 10};
 
             if (Application.platform == RuntimePlatform.Android ||
                 Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                waitTime[0] = 60; waitTime[1] = 36; waitTime[2] = 24; waitTime[3] = 16; waitTime[4] = 8;
+                waitTime[0] = 17; waitTime[1] = 15; waitTime[2] = 13;
+                waitTime[3] = 11; waitTime[4] = 9; waitTime[5] = 7;
+                waitTime[6] = 5; waitTime[7] = 3; waitTime[8] = 1;
             }
-            int wait = waitTime[2];
-            if (Database.BATTLE_CORE_SLEEP == 40) wait = waitTime[0];
-            else if (Database.BATTLE_CORE_SLEEP == 20) wait = waitTime[1];
-            else if (Database.BATTLE_CORE_SLEEP == 10) wait = waitTime[2];
-            else if (Database.BATTLE_CORE_SLEEP == 5) wait = waitTime[3];
-            else if (Database.BATTLE_CORE_SLEEP == 2) wait = waitTime[4];
+            int wait = waitTime[this.BattleSpeed - 1];
 
             if (GroundOne.HiSpeedAnimation) { wait = wait / 2; }
             if (this.nowAnimationInterval[0] > 0) wait = this.nowAnimationInterval[0];
@@ -8512,7 +8511,11 @@ namespace DungeonPlayer
 
         public void battleSpeedBar_Scroll(Slider sender)
         {
-            switch ((int)(sender.value))
+            ChangeBattleSpeed((int)(sender.value));
+        }
+        private void ChangeBattleSpeed(int speed)
+        {
+            switch (speed)
             {
                 case 1:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 20; }
@@ -8566,6 +8569,7 @@ namespace DungeonPlayer
                     break;
             }
         }
+
         /// <summary>
         /// 物理攻撃上昇BUFF
         /// </summary>

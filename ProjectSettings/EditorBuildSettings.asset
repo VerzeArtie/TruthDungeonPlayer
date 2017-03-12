@@ -38,6 +38,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthPlayback.unity
   - enabled: 1
+    path: Assets/TruthAchievement.unity
+  - enabled: 1
     path: Assets/TruthRequestFood.unity
   - enabled: 1
     path: Assets/TruthDecision.unity

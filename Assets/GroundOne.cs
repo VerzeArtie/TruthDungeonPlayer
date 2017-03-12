@@ -29,6 +29,8 @@ namespace DungeonPlayer
             Japanese = 2,
         }
 
+        public static List<string> ObjectiveList = new List<string>(); // 目標
+
 		public static bool IsConnect = false; // サーバー接続OKサイン
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
 

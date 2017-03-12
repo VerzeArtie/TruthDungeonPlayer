@@ -62,6 +62,9 @@ namespace DungeonPlayer
         public Button buttonSave;
         public Button buttonLoad;
         public Button buttonExit;
+        public GameObject panelObjective;
+        public Text txtObjectiveTitle;
+        public List<Text> txtObjective;
         public Text dayLabel;
         public Image panelHide;
         public Image imgCharacter1;
@@ -109,6 +112,7 @@ namespace DungeonPlayer
                 txtMenuSave.text = Database.GUI_MENU_SAVE;
                 txtMenuLoad.text = Database.GUI_MENU_LOAD;
                 txtMenuExit.text = Database.GUI_MENU_EXIT;
+                txtObjectiveTitle.text = Database.GUI_OBJECTIVE;
             }
 
             GroundOne.WE.SaveByDungeon = false;
@@ -158,6 +162,10 @@ namespace DungeonPlayer
             {
                 this.firstDay = GroundOne.WE.GameDay; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
             }
+
+            GroundOne.ObjectiveList.Clear();
+            TruthObjective.GetObjectiveList();
+            UpdateTxtObjective();
 
             GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
@@ -1298,6 +1306,7 @@ namespace DungeonPlayer
                     }
                     else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
                     {
+                        panelObjective.SetActive(false);
                         buttonHanna.gameObject.SetActive(false);
                         buttonDungeon.gameObject.SetActive(false);
                         buttonRana.gameObject.SetActive(false);
@@ -1316,6 +1325,7 @@ namespace DungeonPlayer
                         {
                             ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
                         }
+                        panelObjective.SetActive(true);
                         buttonHanna.gameObject.SetActive(true);
                         buttonDungeon.gameObject.SetActive(true);
                         buttonRana.gameObject.SetActive(true);
@@ -1490,6 +1500,7 @@ namespace DungeonPlayer
                     buttonPotion.gameObject.SetActive(false);
                     buttonDuel.gameObject.SetActive(false);
                     dayLabel.gameObject.SetActive(false);
+                    panelObjective.SetActive(false);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownCallSaveLoad)
                 {
@@ -1713,6 +1724,21 @@ namespace DungeonPlayer
 
             if (this.nowReading >= this.nowMessage.Count)
             {
+                TruthObjective.RefreshObjectList();
+                List<string> list = TruthObjective.GetObjectiveList();
+                // 新しく追加された文字列があれば、システムメッセージで表記する。
+                if (list.Count > 0)
+                {
+                    for (int ii = 0; ii < list.Count; ii++)
+                    {
+                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.HomeTownMessageDisplay);
+                    }
+
+                    UpdateTxtObjective();
+                    tapOK();
+                    return;
+                }
+
                 this.nowReading = 0;
                 this.nowMessage.Clear();
                 this.nowEvent.Clear();
@@ -1721,9 +1747,24 @@ namespace DungeonPlayer
                 this.panelHide.gameObject.SetActive(false);
                 this.btnOK.enabled = false;
                 this.btnOK.gameObject.SetActive(false);
+
+                UpdateTxtObjective();
             }
         }
-        
+
+        private void UpdateTxtObjective()
+        {
+            for (int ii = 0; ii < txtObjective.Count; ii++)
+            {
+                txtObjective[ii].text = String.Empty;
+            }
+
+            for (int ii = 0; ii < GroundOne.ObjectiveList.Count; ii++)
+            {
+                txtObjective[ii].text = GroundOne.ObjectiveList[ii];
+            }
+        }
+
         private void CallDuel(bool fromGoDungeon)
         {
             this.fromGoDungeon = fromGoDungeon;
@@ -1762,6 +1803,7 @@ namespace DungeonPlayer
             buttonShinikia.gameObject.SetActive(false);
             buttonDuel.gameObject.SetActive(false);
             dayLabel.gameObject.SetActive(false);
+            panelObjective.SetActive(false);
             panelSubMenu.SetActive(false);
             this.imgBackground.gameObject.SetActive(false);
         }
@@ -1778,6 +1820,7 @@ namespace DungeonPlayer
             } 
             cam.backgroundColor = Color.white;
             groupMenu.gameObject.SetActive(true);
+            panelObjective.SetActive(true);
             buttonHanna.gameObject.SetActive(true);
             buttonDungeon.gameObject.SetActive(true);
             buttonRana.gameObject.SetActive(true);
@@ -2287,6 +2330,7 @@ namespace DungeonPlayer
         private void GoToFazilCastle()
         {
             ButtonVisibleControl(false);
+            //this.panelObjective.SetActive(false);
             this.buttonHanna.gameObject.SetActive(false);
             this.buttonDungeon.gameObject.SetActive(false);
             this.buttonRana.gameObject.SetActive(false);
@@ -2299,6 +2343,7 @@ namespace DungeonPlayer
 
         private void GoToKahlhanz()
         {
+            //this.panelObjective.SetActive(false);
             this.buttonHanna.gameObject.SetActive(false);
             this.buttonDungeon.gameObject.SetActive(false);
             this.buttonRana.gameObject.SetActive(false);
@@ -2319,6 +2364,7 @@ namespace DungeonPlayer
             {
                 ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             }
+            this.panelObjective.SetActive(true);
             this.buttonHanna.gameObject.SetActive(true);
             this.buttonDungeon.gameObject.SetActive(true);
             this.buttonRana.gameObject.SetActive(true);
@@ -2332,6 +2378,7 @@ namespace DungeonPlayer
         {
             this.groupMenu.SetActive(visible);
             this.dayLabel.gameObject.SetActive(visible);
+            this.panelObjective.SetActive(visible);
             this.buttonHanna.gameObject.SetActive(visible);
             this.buttonDungeon.gameObject.SetActive(visible);
             this.buttonRana.gameObject.SetActive(visible);
@@ -3200,6 +3247,12 @@ namespace DungeonPlayer
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             SceneDimension.CallTruthPlayBack(this);
+        }
+
+        public void tapAchievement()
+        {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ACHIEVEMENT, String.Empty, String.Empty);
+            SceneDimension.CallAchievement(this);
         }
 
         public void CallStatusPlayer()
