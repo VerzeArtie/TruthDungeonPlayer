@@ -23,22 +23,25 @@ namespace DungeonPlayer
         public static List<string> GetObjectiveList()
         {
             List<string> list = new List<string>();
+            #region "第一階層"
+            // ホームタウンで始まり
             if (GroundOne.WE.Truth_CommunicationFirstHomeTown)
             {
                 if (!GroundOne.WE.Truth_CommunicationLana1)
                 {
-                    AddEvent(Objective00001, ref list);
+                    AddEvent(Objective1001, ref list);
                 }
                 if (!GroundOne.WE.Truth_CommunicationGanz1)
                 {
-                    AddEvent(Objective00002, ref list);
+                    AddEvent(Objective1002, ref list);
                 }
                 if (!GroundOne.WE.Truth_CommunicationHanna1)
                 {
-                    AddEvent(Objective00003, ref list);
+                    AddEvent(Objective1003, ref list);
                 }
             }
 
+            // コミュニケーションを取る
             if (GroundOne.WE.Truth_CommunicationLana1 &&
                 GroundOne.WE.Truth_CommunicationGanz1 &&
                 GroundOne.WE.Truth_CommunicationHanna1)
@@ -49,48 +52,56 @@ namespace DungeonPlayer
                     !GroundOne.WE.BoardInfo13 &&
                     !GroundOne.WE.BoardInfo14)
                 {
-                    AddEvent(Objective00004, ref list);
+                    AddEvent(Objective1004, ref list);
                 }
             }
 
-            if (GroundOne.WE.BoardInfo10 || GroundOne.WE.BoardInfo11 || GroundOne.WE.BoardInfo12 || GroundOne.WE.BoardInfo13 || GroundOne.WE.BoardInfo14 || GroundOne.WE.dungeonEvent00)
+            // ダンジョン第一階層スタート
+            if (GroundOne.WE.BoardInfo10 ||
+                GroundOne.WE.BoardInfo11 || 
+                GroundOne.WE.BoardInfo12 ||
+                GroundOne.WE.BoardInfo13 ||
+                GroundOne.WE.BoardInfo14 ||
+                GroundOne.WE.dungeonEvent00)
             {
                 if (GroundOne.WE.AvailableSecondCharacter == false &&
                     GroundOne.WE.Truth_CommunicationJoinPartyLana == false)
                 {
-                    AddEvent(Objective00005, ref list);
+                    AddEvent(Objective1005, ref list);
                 }
             }
 
             // GroundOne.WE.BoardInfo11; // 特になし
 
+            // 大広間、４つの入り口
             if (GroundOne.WE.BoardInfo12)
             {
                 if (GroundOne.WE.dungeonEvent16 == false)
                 {
-                    AddEvent(Objective00006, ref list);
+                    AddEvent(Objective1006, ref list);
                     if (GroundOne.WE.dungeonEvent11KeyOpen == false)
                     {
-                        AddEvent(Objective00006_1, ref list);
+                        AddEvent(Objective1006_1, ref list);
                     }
                     if (GroundOne.WE.dungeonEvent12KeyOpen == false)
                     {
-                        AddEvent(Objective00006_2, ref list);
+                        AddEvent(Objective1006_2, ref list);
                     }
                     if (GroundOne.WE.dungeonEvent13KeyOpen == false)
                     {
-                        AddEvent(Objective00006_3, ref list);
+                        AddEvent(Objective1006_3, ref list);
                     }
                     if (GroundOne.WE.dungeonEvent14KeyOpen == false)
                     {
-                        AddEvent(Objective00006_4, ref list);
+                        AddEvent(Objective1006_4, ref list);
                     }
                 }
             }
 
             // GroundOne.WE.BoardInfo13; // 特になし
-
             // GroundOne.WE.dungeonEvent15 // 特になし
+
+            // 小広間への探索開始
             if (GroundOne.WE.dungeonEvent16)
             {
                 if (GroundOne.WE.dungeonEvent21KeyOpen == false &&
@@ -98,7 +109,7 @@ namespace DungeonPlayer
                     GroundOne.WE.dungeonEvent23KeyOpen == false &&
                     GroundOne.WE.dungeonEvent24KeyOpen == false)
                 {
-                    AddEvent(Objective00007, ref list);
+                    AddEvent(Objective1007, ref list);
                 }
             }
             // GroundOne.WE.dungeonEvent16_1NotOpen; // 特になし
@@ -110,59 +121,67 @@ namespace DungeonPlayer
             // GroundOne.WE.dungeonEvent19; // 特になし
             // GroundOne.WE.dungeonEvent20; // 特になし
 
-            if (GroundOne.WE.dungeonEvent21KeyOpen || GroundOne.WE.dungeonEvent22KeyOpen || GroundOne.WE.dungeonEvent23KeyOpen || GroundOne.WE.dungeonEvent24KeyOpen)
+            // 小広間到達してから、看板を確認
+            if (GroundOne.WE.dungeonEvent21KeyOpen ||
+                GroundOne.WE.dungeonEvent22KeyOpen ||
+                GroundOne.WE.dungeonEvent23KeyOpen ||
+                GroundOne.WE.dungeonEvent24KeyOpen)
             {
                 if (GroundOne.WE.BoardInfo14 == false)
                 {
-                    AddEvent(Objective00008, ref list);
+                    AddEvent(Objective1008, ref list);
                 }
             }
 
+            // 小広間の扉を確認する
             if (GroundOne.WE.BoardInfo14)
             {
                 if (GroundOne.WE.dungeonEvent21KeyOpen == false)
                 {
-                    AddEvent(Objective00009_1, ref list);
+                    AddEvent(Objective1009_1, ref list);
                 }
                 if (GroundOne.WE.dungeonEvent22KeyOpen == false)
                 {
-                    AddEvent(Objective00009_2, ref list);
+                    AddEvent(Objective1009_2, ref list);
                 }
                 if (GroundOne.WE.dungeonEvent25 == false)
                 {
-                    AddEvent(Objective00009_3, ref list);
+                    AddEvent(Objective1009_3, ref list);
                 }
                 if (GroundOne.WE.dungeonEvent23KeyOpen == false)
                 {
-                    AddEvent(Objective00009_4, ref list);
+                    AddEvent(Objective1009_4, ref list);
                 }
                 if (GroundOne.WE.dungeonEvent24KeyOpen == false)
                 {
-                    AddEvent(Objective00009_5, ref list);
+                    AddEvent(Objective1009_5, ref list);
                 }
             }
 
+            // ボス前の侵入への扉をチェック
             if (GroundOne.WE.dungeonEvent25)
             {
                 if (GroundOne.WE.dungeonEvent28KeyOpen == false)
                 {
-                    AddEvent(Objective00010, ref list);
+                    AddEvent(Objective1010, ref list);
                 }
             }
 
+            // ボス前の侵入への扉を解放し、ボス戦
             if (GroundOne.WE.dungeonEvent28KeyOpen)
             {
                 if (GroundOne.WE.TruthCompleteSlayBoss1 == false)
                 {
-                    AddEvent(Objective00011, ref list);
+                    AddEvent(Objective1011, ref list);
                 }
             }
 
+            // ボス戦を撃破後、第二階層へ行く
             if (GroundOne.WE.TruthCompleteSlayBoss1)
             {
                 if (GroundOne.WE.TruthCompleteArea1 == false)
                 {
-                    AddEvent(Objective00012, ref list);
+                    AddEvent(Objective1012, ref list);
                 }
             }
 
@@ -178,132 +197,199 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.dungeonEvent31 == false)
                 {
-                    AddEvent(Objective00013, ref list);
+                    AddEvent(Objective1013, ref list);
                 }
             }
 
             // dungeonEvent29
             // dungeonEvent30
-
-
+            #endregion
+            if (GroundOne.WE.TruthCompleteArea1)
+            {
+                if (!GroundOne.WE.Truth_CommunicationLana21)
+                {
+                    AddEvent(Objective2001, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationGanz21)
+                {
+                    AddEvent(Objective2002, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationHanna21)
+                {
+                    AddEvent(Objective2003, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationOl21)
+                {
+                    AddEvent(Objective2004, ref list);
+                }
+            }
+            if (GroundOne.WE.Truth_CommunicationLana21 &&
+                GroundOne.WE.Truth_CommunicationGanz21 &&
+                GroundOne.WE.Truth_CommunicationHanna21 &&
+                GroundOne.WE.Truth_CommunicationOl21)
+            {
+                if (GroundOne.WE.dungeonEvent201 == false ||
+                    GroundOne.WE.dungeonEvent202 == false ||
+                    GroundOne.WE.dungeonEvent203 == false ||
+                    GroundOne.WE.dungeonEvent204 == false)
+                {
+                    AddEvent(Objective2005, ref list);
+                }
+            }
             return list;
         }
 
         public static void RefreshObjectList()
         {
+            #region "第一階層"
             if (GroundOne.WE.Truth_CommunicationLana1)
             {
-                Remove(Objective00001);
+                Remove(Objective1001);
             }
             if (GroundOne.WE.Truth_CommunicationGanz1)
             {
-                Remove(Objective00002);
+                Remove(Objective1002);
             } 
             if (GroundOne.WE.Truth_CommunicationHanna1)
             {
-                Remove(Objective00003);
+                Remove(Objective1003);
             }
             if (GroundOne.WE.BoardInfo10 || GroundOne.WE.BoardInfo11 || GroundOne.WE.BoardInfo12 || GroundOne.WE.BoardInfo13 || GroundOne.WE.BoardInfo14)
             {
-                Remove(Objective00004);
+                Remove(Objective1004);
             }
             if (GroundOne.WE.Truth_CommunicationJoinPartyLana)
             {
-                Remove(Objective00005);
+                Remove(Objective1005);
             }
             if (GroundOne.WE.dungeonEvent11KeyOpen)
             {
-                Remove(Objective00006_1);
+                Remove(Objective1006_1);
             }
             if (GroundOne.WE.dungeonEvent12KeyOpen)
             {
-                Remove(Objective00006_2);
+                Remove(Objective1006_2);
             }
             if (GroundOne.WE.dungeonEvent13KeyOpen)
             {
-                Remove(Objective00006_3);
+                Remove(Objective1006_3);
             }
             if (GroundOne.WE.dungeonEvent14KeyOpen)
             {
-                Remove(Objective00006_4);
+                Remove(Objective1006_4);
             }
             if (GroundOne.WE.dungeonEvent16)
             {
-                Remove(Objective00006);
-                Remove(Objective00006_1);
-                Remove(Objective00006_2);
-                Remove(Objective00006_3);
-                Remove(Objective00006_4);
+                Remove(Objective1006);
+                Remove(Objective1006_1);
+                Remove(Objective1006_2);
+                Remove(Objective1006_3);
+                Remove(Objective1006_4);
             }
             if (GroundOne.WE.dungeonEvent21KeyOpen ||
                 GroundOne.WE.dungeonEvent22KeyOpen ||
                 GroundOne.WE.dungeonEvent23KeyOpen ||
                 GroundOne.WE.dungeonEvent24KeyOpen)
             {
-                Remove(Objective00007);
+                Remove(Objective1007);
             }
             if (GroundOne.WE.BoardInfo14)
             {
-                Remove(Objective00008);
+                Remove(Objective1008);
             }
             if (GroundOne.WE.dungeonEvent21KeyOpen)
             {
-                Remove(Objective00009_1);
+                Remove(Objective1009_1);
             }
             if (GroundOne.WE.dungeonEvent22KeyOpen)
             {
-                Remove(Objective00009_2);
+                Remove(Objective1009_2);
             }
             if (GroundOne.WE.dungeonEvent25)
             {
-                Remove(Objective00009_3);
+                Remove(Objective1009_3);
             }
             if (GroundOne.WE.dungeonEvent23KeyOpen)
             {
-                Remove(Objective00009_4);
+                Remove(Objective1009_4);
             }
             if (GroundOne.WE.dungeonEvent24KeyOpen)
             {
-                Remove(Objective00009_5);
+                Remove(Objective1009_5);
             }
             if (GroundOne.WE.dungeonEvent28KeyOpen)
             {
-                Remove(Objective00010);
+                Remove(Objective1010);
             }
             if (GroundOne.WE.TruthCompleteSlayBoss1)
             {
-                Remove(Objective00011);
+                Remove(Objective1011);
             }
             if (GroundOne.WE.TruthCompleteArea1)
             {
-                Remove(Objective00012);
+                Remove(Objective1012);
             }
             if (GroundOne.WE.dungeonEvent31)
             {
-                Remove(Objective00013);
+                Remove(Objective1013);
             }
+            #endregion
+            #region "第二階層"
+            if (GroundOne.WE.Truth_CommunicationLana21)
+            {
+                Remove(Objective2001);
+            }
+            if (GroundOne.WE.Truth_CommunicationGanz21)
+            {
+                Remove(Objective2002);
+            }
+            if (GroundOne.WE.Truth_CommunicationHanna21)
+            {
+                Remove(Objective2003);
+            }
+            if (GroundOne.WE.Truth_CommunicationOl21)
+            {
+                Remove(Objective2004);
+            }
+            if (GroundOne.WE.dungeonEvent201 &&
+                GroundOne.WE.dungeonEvent202 &&
+                GroundOne.WE.dungeonEvent203 &&
+                GroundOne.WE.dungeonEvent204)
+            {
+                Remove(Objective2005);
+            }
+            #endregion
         }
 
-        public const string Objective00001 = "ホームタウン：[幼なじみのラナと会話]";
-        public const string Objective00002 = "ホームタウン：[天下一品　ガンツの武具店]";
-        public const string Objective00003 = "ホームタウン：[ハンナのゆったり宿屋]";
-        public const string Objective00004 = "ダンジョン：[第一階層を探索する]";
-        public const string Objective00005 = "ホームタウン：[ラナと会話する]";
-        public const string Objective00006 = "第一階層：[中央の大広間] 入り口側の扉を４つ開く]";
-        public const string Objective00006_1 = "第一階層：[中央の大広間] 扉１を解除";
-        public const string Objective00006_2 = "第一階層：[中央の大広間] 扉２を解除";
-        public const string Objective00006_3 = "第一階層：[中央の大広間] 扉３を解除";
-        public const string Objective00006_4 = "第一階層：[中央の大広間] 扉４を解除";
-        public const string Objective00007 = "第一階層：[小広間へのルートを探索する]";
-        public const string Objective00008 = "第一階層：[小広間] 看板を確認";
-        public const string Objective00009_1 = "第一階層：[小広間] 扉１を確認";
-        public const string Objective00009_2 = "第一階層：[小広間] 扉２を確認";
-        public const string Objective00009_3 = "第一階層：[小広間] 扉３を確認";
-        public const string Objective00009_4 = "第一階層：[小広間] 扉４を確認";
-        public const string Objective00009_5 = "第一階層：[小広間] 扉５を確認";
-        public const string Objective00010 = "第一階層：[小広間] 侵入への扉を開く]";
-        public const string Objective00011 = "第一階層：[ボス戦] 絡みつくフランシス";
-        public const string Objective00012 = "第一階層：[第二階層への到達]";
-        public const string Objective00013 = "第一階層：[【始まりの地】を探索する]";
+        #region "第一階層"
+        public const string Objective1001 = "ホームタウン：[幼なじみのラナと会話]";
+        public const string Objective1002 = "ホームタウン：[天下一品　ガンツの武具店]";
+        public const string Objective1003 = "ホームタウン：[ハンナのゆったり宿屋]";
+        public const string Objective1004 = "ダンジョン：[第一階層を探索する]";
+        public const string Objective1005 = "ホームタウン：[ラナと会話する]";
+        public const string Objective1006 = "第一階層：[中央の大広間] 入り口側の扉を４つ開く]";
+        public const string Objective1006_1 = "第一階層：[中央の大広間] 扉１を解除";
+        public const string Objective1006_2 = "第一階層：[中央の大広間] 扉２を解除";
+        public const string Objective1006_3 = "第一階層：[中央の大広間] 扉３を解除";
+        public const string Objective1006_4 = "第一階層：[中央の大広間] 扉４を解除";
+        public const string Objective1007 = "第一階層：[小広間へのルートを探索する]";
+        public const string Objective1008 = "第一階層：[小広間] 看板を確認";
+        public const string Objective1009_1 = "第一階層：[小広間] 扉１を確認";
+        public const string Objective1009_2 = "第一階層：[小広間] 扉２を確認";
+        public const string Objective1009_3 = "第一階層：[小広間] 扉３を確認";
+        public const string Objective1009_4 = "第一階層：[小広間] 扉４を確認";
+        public const string Objective1009_5 = "第一階層：[小広間] 扉５を確認";
+        public const string Objective1010 = "第一階層：[小広間] 侵入への扉を開く]";
+        public const string Objective1011 = "第一階層：[ボス戦] 絡みつくフランシス";
+        public const string Objective1012 = "第一階層：[第二階層への到達]";
+        public const string Objective1013 = "第一階層：[【始まりの地】への到達]";
+        #endregion
+        #region "第二階層"
+        public const string Objective2001 = "ホームタウン：[ラナと会話]";
+        public const string Objective2002 = "ホームタウン：[ガンツと会話]";
+        public const string Objective2003 = "ホームタウン：[ハンナと会話]";
+        public const string Objective2004 = "ホームタウン：[オル・ランディスと会話]";
+        public const string Objective2005 = "ダンジョン：[第二階層を探索する]";
+        #endregion
     }
 }
