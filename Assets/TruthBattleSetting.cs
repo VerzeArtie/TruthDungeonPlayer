@@ -47,6 +47,22 @@ namespace DungeonPlayer
         //public Panel commandList;
         public Button back;
         public TruthImage dragObj;
+        public Text lblBasic;
+        public Text lblLight;
+        public Text lblShadow;
+        public Text lblFire;
+        public Text lblIce;
+        public Text lblForce;
+        public Text lblWill;
+        public Text lblActive;
+        public Text lblPassive;
+        public Text lblSoft;
+        public Text lblHard;
+        public Text lblTruth;
+        public Text lblVoid;
+        public Text lblMixSpell;
+        public Text lblMixSkill;            
+        public Text lblComplete;
 
         MainCharacter currentPlayer;
         int currentPlayerNumber = 0;
@@ -64,6 +80,26 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblBasic.text = Database.GUI_B_SETTING_BASIC;
+                lblLight.text = Database.GUI_B_SETTING_LIGHT;
+                lblShadow.text = Database.GUI_B_SETTING_SHADOW;
+                lblFire.text = Database.GUI_B_SETTING_FIRE;
+                lblIce.text = Database.GUI_B_SETTING_ICE;
+                lblForce.text = Database.GUI_B_SETTING_FORCE;
+                lblWill.text = Database.GUI_B_SETTING_WILL;
+                lblActive.text = Database.GUI_B_SETTING_ACTIVE;
+                lblPassive.text = Database.GUI_B_SETTING_PASSIVE;
+                lblSoft.text = Database.GUI_B_SETTING_SOFT;
+                lblHard.text = Database.GUI_B_SETTING_HARD;
+                lblTruth.text = Database.GUI_B_SETTING_TRUTH;
+                lblVoid.text = Database.GUI_B_SETTING_VOID;
+                lblMixSpell.text = Database.GUI_B_SETTING_MIXSPELL;
+                lblMixSkill.text = Database.GUI_B_SETTING_MIXSKILL;
+                lblComplete.text = Database.GUI_B_SETTING_COMPLETE;
+            }
 
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;

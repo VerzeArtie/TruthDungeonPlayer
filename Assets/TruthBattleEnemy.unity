@@ -20502,7 +20502,7 @@ GameObject:
   - 222: {fileID: 1091586956}
   - 114: {fileID: 1091586955}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextBattleStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20529,10 +20529,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -20540,7 +20540,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6226\u95D8\u958B\u59CB\uFF01"
+  m_Text: 'Battle
+
+    Start!'
 --- !u!222 &1091586956
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34876,7 +34878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6642\u9593\u901F\u5EA6 x1.0"
+  m_Text: TimeSpeed 3
 --- !u!222 &1811042462
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37282,7 +37284,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1079667845}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2333333
+  m_Size: 0.23333336
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39921,13 +39923,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30BF\u30FC\u30F3\uFF11\n"
+  m_Text: Turn 1
 --- !u!222 &2110059845
 CanvasRenderer:
   m_ObjectHideFlags: 0

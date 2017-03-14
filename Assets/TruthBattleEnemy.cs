@@ -355,6 +355,12 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                BattleStart.text = Database.GUI_BATTLE_GO;
+                labelBattleTurn.text = Database.GUI_BATTLE_TURN + " 1";
+            }
+
             if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
             else { Database.BATTLE_CORE_SLEEP = 10; }
 
@@ -849,15 +855,23 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.DuelMode == false)
                         {
-                            if (BattleStart.text == "戦闘中・・・")
+                            string NOW_BATTLE = "Now Battle...";
+                            string NOW_STOP = "Battle Stop";
+                            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                             {
-                                BattleStart.text = "戦闘停止";
+                                NOW_BATTLE = Database.GUI_BATTLE_RUN;
+                                NOW_STOP = Database.GUI_BATTLE_STOP;
+                            }
+
+                            if (BattleStart.text == NOW_BATTLE)
+                            {
+                                BattleStart.text = NOW_STOP;
                                 tempStopFlag = true;
                                 this.BattleMenuPanel.SetActive(true);
                             }
                             else
                             {
-                                BattleStart.text = "戦闘中・・・";
+                                BattleStart.text = NOW_BATTLE;
                                 tempStopFlag = false;
                                 this.BattleMenuPanel.SetActive(false);
                             }
@@ -4949,7 +4963,11 @@ namespace DungeonPlayer
         private void UpdateTurnEnd(bool cancelCounterClear = false)
         {
             this.BattleTurnCount++;
-            this.labelBattleTurn.text = "ターン " + BattleTurnCount.ToString();
+            this.labelBattleTurn.text = "Turn " + BattleTurnCount.ToString();
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                this.labelBattleTurn.text = Database.GUI_BATTLE_TURN + " " + BattleTurnCount.ToString();
+            }
             if (cancelCounterClear == false) { this.BattleTimeCounter = 0; }
         }
         
@@ -5585,9 +5603,15 @@ namespace DungeonPlayer
         public void BattleStart_Click()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_BATTLE_START, String.Empty, String.Empty);
-            const string NOW_BATTLE = "戦闘中・・・";
-            const string NOW_DUEL = "DUEL中・・・";
-            const string NOW_STOP = "戦闘停止";
+            string NOW_BATTLE = "Now Battle...";
+            string NOW_DUEL = "Now Duel...";
+            string NOW_STOP = "Battle Stop";
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                NOW_BATTLE = Database.GUI_BATTLE_RUN;
+                NOW_DUEL = Database.GUI_BATTLE_RUNDUEL;
+                NOW_STOP = Database.GUI_BATTLE_STOP;
+            }
 
             if ((BattleStart.text == NOW_BATTLE) ||
                 (BattleStart.text == NOW_DUEL))
@@ -8520,52 +8544,122 @@ namespace DungeonPlayer
                 case 1:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 20; }
                     else { Database.BATTLE_CORE_SLEEP = 40; }
-                    TimeSpeedLabel.text = "時間速度　１";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　１";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  1";
+                    }
                     break;
                 case 2:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 15; }
                     else { Database.BATTLE_CORE_SLEEP = 30; }
-                    TimeSpeedLabel.text = "時間速度　２";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　２";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  2";
+                    }
                     break;
                 case 3:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 10; }
                     else { Database.BATTLE_CORE_SLEEP = 20; }
-                    TimeSpeedLabel.text = "時間速度　３";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　３";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  3";
+                    }
                     break;
                 case 4:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 8; }
                     else { Database.BATTLE_CORE_SLEEP = 15; }
-                    TimeSpeedLabel.text = "時間速度　４";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　４";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  4";
+                    }
                     break;
                 case 5:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
                     else { Database.BATTLE_CORE_SLEEP = 10; }
-                    TimeSpeedLabel.text = "時間速度　５";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　５";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  5";
+                    }
                     break;
                 case 6:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 3; }
                     else { Database.BATTLE_CORE_SLEEP = 8; }
-                    TimeSpeedLabel.text = "時間速度　６";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　６";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  6";
+                    }
                     break;
                 case 7:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 1; }
                     else { Database.BATTLE_CORE_SLEEP = 5; }
-                    TimeSpeedLabel.text = "時間速度　７";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　７";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  7";
+                    }
                     break;
                 case 8:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
                     else { Database.BATTLE_CORE_SLEEP = 3; }
-                    TimeSpeedLabel.text = "時間速度　８";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　８";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  8";
+                    }
                     break;
                 case 9:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
                     else { Database.BATTLE_CORE_SLEEP = 1; }
-                    TimeSpeedLabel.text = "時間速度　９";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　９";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  9";
+                    }
                     break;
                 default:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
                     else { Database.BATTLE_CORE_SLEEP = 10; }
-                    TimeSpeedLabel.text = "時間速度　１０";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　１０";
+                    }
+                    else
+                    {
+                        TimeSpeedLabel.text = "TimeSpeed  10";
+                    }
                     break;
             }
         }

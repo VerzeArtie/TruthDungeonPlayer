@@ -30,6 +30,16 @@ namespace DungeonPlayer
         public Text[] equip;
         public GameObject[] back_equip;
         public Text mainMessage;
+
+        public Text lblPhysicalAttack;
+        public Text lblPhysicalDefense;
+        public Text lblMagicAttack;
+        public Text lblMagicDefense;
+        public Text lblBattleSpeed;
+        public Text lblBattleReaction;
+        public Text lblPotential;
+        public Text lblDrop;
+        public Text lblCancel;
         
         private MainCharacter shadow = new MainCharacter();
         public string SelectValue { get; set; }
@@ -39,7 +49,20 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
-            
+
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblPhysicalAttack.text = Database.GUI_S_BASIC_PATK;
+                lblPhysicalDefense.text = Database.GUI_S_BASIC_PDEF;
+                lblMagicAttack.text = Database.GUI_S_BASIC_MATK;
+                lblMagicDefense.text = Database.GUI_S_BASIC_MDEF;
+                lblBattleSpeed.text = Database.GUI_S_BASIC_BSPD;
+                lblBattleReaction.text = Database.GUI_S_BASIC_BRCT;
+                lblPotential.text = Database.GUI_S_BASIC_PTCL;
+                lblDrop.text = Database.GUI_S_EQUIP_DROP;
+                lblCancel.text = Database.GUI_S_EQUIP_CANCEL;
+            }
+
             ItemBackPack[] temp = GroundOne.TargetPlayer.GetBackPackInfo();
             List<ItemBackPack> currentList = new List<ItemBackPack>();
             for (int ii = 0; ii < temp.Length; ii++)

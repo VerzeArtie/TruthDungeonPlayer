@@ -204,6 +204,7 @@ namespace DungeonPlayer
             // dungeonEvent29
             // dungeonEvent30
             #endregion
+            #region "第二階層"
             if (GroundOne.WE.TruthCompleteArea1)
             {
                 if (!GroundOne.WE.Truth_CommunicationLana21)
@@ -236,6 +237,7 @@ namespace DungeonPlayer
                     AddEvent(Objective2005, ref list);
                 }
             }
+            #endregion
             return list;
         }
 

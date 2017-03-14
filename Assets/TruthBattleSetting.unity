@@ -3492,6 +3492,22 @@ MonoBehaviour:
   command5: {fileID: 0}
   back: {fileID: 0}
   dragObj: {fileID: 0}
+  lblBasic: {fileID: 191025363}
+  lblLight: {fileID: 741861611}
+  lblShadow: {fileID: 2060788169}
+  lblFire: {fileID: 1335492903}
+  lblIce: {fileID: 1123678197}
+  lblForce: {fileID: 684797101}
+  lblWill: {fileID: 439328887}
+  lblActive: {fileID: 2134851507}
+  lblPassive: {fileID: 1912265087}
+  lblSoft: {fileID: 622460975}
+  lblHard: {fileID: 673059355}
+  lblTruth: {fileID: 476825344}
+  lblVoid: {fileID: 252184408}
+  lblMixSpell: {fileID: 218397263}
+  lblMixSkill: {fileID: 1200753821}
+  lblComplete: {fileID: 759824505}
 --- !u!1 &150507030
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,7 +4783,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u57FA\u672C"
+  m_Text: Basic
 --- !u!222 &191025364
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5219,7 +5235,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8907\u5408\n\u9B54\u6CD5"
+  m_Text: 'Mix
+
+    Spell'
 --- !u!222 &218397264
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5680,7 +5698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7121\u5FC3"
+  m_Text: Mushin
 --- !u!222 &252184409
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9230,7 +9248,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7A7A"
+  m_Text: Will
 --- !u!222 &439328888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9916,7 +9934,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5FC3\u773C"
+  m_Text: Shingan
 --- !u!222 &476825345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13265,7 +13283,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u67D4"
+  m_Text: Softness
 --- !u!222 &622460976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15586,7 +15604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u525B"
+  m_Text: Hardness
 --- !u!222 &673059356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16211,7 +16229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7406"
+  m_Text: Force
 --- !u!222 &684797102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16903,7 +16921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8056"
+  m_Text: Light
 --- !u!222 &741861612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17185,7 +17203,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5B8C\u4E86"
+  m_Text: Accept
 --- !u!222 &759824506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25567,7 +25585,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6C34"
+  m_Text: Ice
 --- !u!222 &1123678198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27970,7 +27988,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8907\u5408\n\u30B9\u30AD\u30EB"
+  m_Text: 'Mix
+
+    Skill'
 --- !u!222 &1200753822
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31598,7 +31618,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u706B"
+  m_Text: Fire
 --- !u!222 &1335492904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34815,8 +34835,8 @@ RectTransform:
   m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 539.5, y: 200}
-  m_SizeDelta: {x: 80, y: 300}
+  m_AnchoredPosition: {x: 534, y: 200}
+  m_SizeDelta: {x: 85, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1464250938
 MonoBehaviour:
@@ -44193,7 +44213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9759"
+  m_Text: Passive
 --- !u!222 &1912265088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46987,7 +47007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u95C7"
+  m_Text: Shadow
 --- !u!222 &2060788170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48502,7 +48522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u52D5"
+  m_Text: Active
 --- !u!222 &2134851508
 CanvasRenderer:
   m_ObjectHideFlags: 0

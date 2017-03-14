@@ -2886,11 +2886,21 @@ namespace DungeonPlayer
         public const string ARCHIVEMENT_DUEL_LOSE_X = @"duel_lose_";
 
         // GUI text
+        #region "タイトル"
+        public const string GUI_TITLE_TUTORIAL = "チュートリアル";
+        public const string GUI_TITLE_GAMESTART = "ゲームスタート";
+        public const string GUI_TITLE_SEEKER = "シーカーモード";
+        public const string GUI_TITLE_LOAD = "ロード";
+        public const string GUI_TITLE_CONFIG = "コンフィグ";
+        public const string GUI_TITLE_EXIT = "終了";
+        #endregion
+        #region "メインメニュー"
         public const string GUI_MENU_STATUS = "ステータス";
         public const string GUI_MENU_BATTLESETTING = "バトル設定";
         public const string GUI_MENU_SAVE = "セーブ";
         public const string GUI_MENU_LOAD = "ロード";
         public const string GUI_MENU_EXIT = "ゲーム終了";
+        #endregion
         #region "ステータス画面/DUEL対戦相手"
         public const string GUI_STATUS_STATUS = "ステータス";
         public const string GUI_STATUS_BACKPACK = "バックパック";
@@ -2928,6 +2938,10 @@ namespace DungeonPlayer
 
         public const string GUI_S_BASIC_CLOSE = "閉じる";
         #endregion
+        #region "装備変更"
+        public const string GUI_S_EQUIP_DROP = "装備を外す";
+        public const string GUI_S_EQUIP_CANCEL = "キャンセル";
+        #endregion
         #region "セーブ・ロード"
         public const string GUI_SAVELOAD_SAVE = "セーブ";
         public const string GUI_SAVELOAD_LOAD = "ロード";
@@ -2958,6 +2972,32 @@ namespace DungeonPlayer
         #endregion
         #region "オブジェクティブ"
         public const string GUI_OBJECTIVE = "目標";
+        #endregion
+        #region "バトル設定"
+        public const string GUI_B_SETTING_BASIC = "基本";
+        public const string GUI_B_SETTING_LIGHT = "聖";
+        public const string GUI_B_SETTING_SHADOW = "闇";
+        public const string GUI_B_SETTING_FIRE = "火";
+        public const string GUI_B_SETTING_ICE = "水";
+        public const string GUI_B_SETTING_FORCE = "理";
+        public const string GUI_B_SETTING_WILL = "空";
+        public const string GUI_B_SETTING_ACTIVE = "動";
+        public const string GUI_B_SETTING_PASSIVE = "静";
+        public const string GUI_B_SETTING_SOFT = "柔";
+        public const string GUI_B_SETTING_HARD = "剛";
+        public const string GUI_B_SETTING_TRUTH = "心眼";
+        public const string GUI_B_SETTING_VOID = "無心";
+        public const string GUI_B_SETTING_MIXSPELL = "複合\r\n魔法";
+        public const string GUI_B_SETTING_MIXSKILL = "複合\r\nスキル";
+        public const string GUI_B_SETTING_COMPLETE = "完了";
+        #endregion
+        #region "戦闘"
+        public const string GUI_BATTLE_TURN = "ターン";
+        public const string GUI_BATTLE_SPEED = "時間速度";
+        public const string GUI_BATTLE_GO = "戦闘開始！";
+        public const string GUI_BATTLE_RUN = "戦闘中・・・";
+        public const string GUI_BATTLE_RUNDUEL = "DUEL中・・・";
+        public const string GUI_BATTLE_STOP = "戦闘停止";
         #endregion
     }
 }

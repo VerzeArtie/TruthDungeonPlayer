@@ -29,6 +29,12 @@ namespace DungeonPlayer
         public GameObject buttonTicket;
         public Text supportMessage;
         public Text GameEndMessage;
+        public Text lblTutorial;
+        public Text lblGameStart;
+        public Text lblSeeker;
+        public Text lblLoad;
+        public Text lblConfig;
+        public Text lblExit;
 
         // debug
         public Text DebugLevel;
@@ -57,6 +63,17 @@ namespace DungeonPlayer
 
             // GroundOne.WE2はゲーム全体のセーブデータであり、ここで読み込んでおく。
             Method.ReloadTruthWorldEnvironment();
+
+            // カタカナが並んで雰囲気が台無しなので、対応しない。
+            //if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            //{
+            //    lblTutorial.text = Database.GUI_TITLE_TUTORIAL;
+            //    lblGameStart.text = Database.GUI_TITLE_GAMESTART;
+            //    lblSeeker.text = Database.GUI_TITLE_SEEKER;
+            //    lblLoad.text = Database.GUI_TITLE_LOAD;
+            //    lblConfig.text = Database.GUI_TITLE_CONFIG;
+            //    lblExit.text = Database.GUI_TITLE_EXIT;
+            //}
 
             // 現実世界突入でSeekerモードを表示
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
