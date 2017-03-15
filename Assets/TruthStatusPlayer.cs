@@ -460,8 +460,8 @@ namespace DungeonPlayer
             if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.MC)
             {
                 #region "アイン・レベルアップ習得表"
-                if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
-                else if ((GroundOne.MC.Level >= 4) && (!GroundOne.MC.FreshHeal)) { GroundOne.MC.AvailableMana = true; GroundOne.MC.FreshHeal = true; ShowActiveSkillSpell(GroundOne.MC, Database.FRESH_HEAL); }
+                if ((GroundOne.MC.Level >= 2) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
+                else if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.FreshHeal)) { GroundOne.MC.AvailableMana = true; GroundOne.MC.FreshHeal = true; ShowActiveSkillSpell(GroundOne.MC, Database.FRESH_HEAL); }
                 else if ((GroundOne.MC.Level >= 5) && (!GroundOne.MC.FireBall)) { GroundOne.MC.FireBall = true; ShowActiveSkillSpell(GroundOne.MC, Database.FIRE_BALL); }
                 else if ((GroundOne.MC.Level >= 6) && (!GroundOne.MC.Protection)) { GroundOne.MC.Protection = true; ShowActiveSkillSpell(GroundOne.MC, Database.PROTECTION); }
                 else if ((GroundOne.MC.Level >= 7) && (!GroundOne.MC.DoubleSlash)) { GroundOne.MC.DoubleSlash = true; ShowActiveSkillSpell(GroundOne.MC, Database.DOUBLE_SLASH); }
@@ -529,8 +529,8 @@ namespace DungeonPlayer
             else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.SC)
             {
                 #region "ラナ・レベルアップ習得表"
-                if ((GroundOne.SC.Level >= 3) && (!GroundOne.SC.IceNeedle)) { GroundOne.SC.AvailableMana = true; GroundOne.SC.IceNeedle = true; ShowActiveSkillSpell(GroundOne.SC, Database.ICE_NEEDLE); }
-                else if ((GroundOne.SC.Level >= 4) && (!GroundOne.SC.CounterAttack)) { GroundOne.SC.AvailableSkill = true; GroundOne.SC.CounterAttack = true; ShowActiveSkillSpell(GroundOne.SC, Database.COUNTER_ATTACK); }
+                if ((GroundOne.SC.Level >= 2) && (!GroundOne.SC.IceNeedle)) { GroundOne.SC.AvailableMana = true; GroundOne.SC.IceNeedle = true; ShowActiveSkillSpell(GroundOne.SC, Database.ICE_NEEDLE); }
+                else if ((GroundOne.SC.Level >= 3) && (!GroundOne.SC.CounterAttack)) { GroundOne.SC.AvailableSkill = true; GroundOne.SC.CounterAttack = true; ShowActiveSkillSpell(GroundOne.SC, Database.COUNTER_ATTACK); }
                 else if ((GroundOne.SC.Level >= 5) && (!GroundOne.SC.DarkBlast)) { GroundOne.SC.DarkBlast = true; ShowActiveSkillSpell(GroundOne.SC, Database.DARK_BLAST); }
                 else if ((GroundOne.SC.Level >= 6) && (!GroundOne.SC.AbsorbWater)) { GroundOne.SC.AbsorbWater = true; ShowActiveSkillSpell(GroundOne.SC, Database.ABSORB_WATER); }
                 else if ((GroundOne.SC.Level >= 7) && (!GroundOne.SC.StanceOfFlow)) { GroundOne.SC.StanceOfFlow = true; ShowActiveSkillSpell(GroundOne.SC, Database.STANCE_OF_FLOW); }
