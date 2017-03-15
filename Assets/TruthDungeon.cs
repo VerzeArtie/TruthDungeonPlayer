@@ -15408,20 +15408,20 @@ namespace DungeonPlayer
         {
             float current = panelObjective.GetComponent<Image>().color.a;
             float current2 = 1.0f;
-            if (current == 0.0f)
+            if (current == 1.0f)
             {
                 current = 0.5f;
                 current2 = 1.0f;
             }
             else if (current == 0.5f)
             {
-                current = 1.0f;
-                current2 = 1.0f;
+                current = 0.0f;
+                current2 = 0.0f;
             }
             else
             {
-                current = 0.0f;
-                current2 = 0.0f;
+                current = 1.0f;
+                current2 = 1.0f;
             }
             panelObjective.GetComponent<Image>().color = new Color(current, current, current, current);
             panelObjectiveTitle.GetComponent<Image>().color = new Color(current, current, current, current);
