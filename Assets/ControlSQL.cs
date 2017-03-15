@@ -107,6 +107,8 @@ namespace DungeonPlayer
                     {
                         updateCommand += ", main_level = :main_level";
                     }
+                    string device_type = Application.platform.ToString();
+                    updateCommand += ", device_type = :device_type";
                     updateCommand += " where name = :name";
 
                     NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
@@ -128,6 +130,7 @@ namespace DungeonPlayer
                     {
                         command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
                     }
+                    command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
                     command.ExecuteNonQuery();
                 }
                 //Debug.Log("UpdateOwner(E) " + DateTime.Now);
