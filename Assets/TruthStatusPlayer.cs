@@ -140,6 +140,11 @@ namespace DungeonPlayer
         public Text lblLife;
         public Text lblMana;
         public Text lblSkill;
+        public Text lblStrength;
+        public Text lblAgility;
+        public Text lblIntelligence;
+        public Text lblStamina;
+        public Text lblMind;
         public Text lblMainWeapon;
         public Text lblSubWeapon;
         public Text lblArmor;
@@ -193,6 +198,11 @@ namespace DungeonPlayer
                 lblLife.text = Database.GUI_S_BASIC_LIFE;
                 lblMana.text = Database.GUI_S_BASIC_MANA;
                 lblSkill.text = Database.GUI_S_BASIC_SKILL;
+                lblStrength.text = Database.GUI_S_BASIC_STR;
+                lblAgility.text = Database.GUI_S_BASIC_AGI;
+                lblIntelligence.text = Database.GUI_S_BASIC_INT;
+                lblStamina.text = Database.GUI_S_BASIC_STA;
+                lblMind.text = Database.GUI_S_BASIC_MIN;
                 lblMainWeapon.text = Database.GUI_S_BASIC_MAIN;
                 lblSubWeapon.text = Database.GUI_S_BASIC_SUB;
                 lblArmor.text = Database.GUI_S_BASIC_ARMOR;
@@ -2289,44 +2299,51 @@ namespace DungeonPlayer
         private void UpdateResistStatus(MainCharacter player)
         {
             // 【後編必須】％レジスト増強も実装してください。
-            ResistLabel[0].text = Database.STRING_LIGHT;
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                ResistLabel[0].text = Database.STRING_LIGHT;
+                ResistLabel[1].text = Database.STRING_SHADOW;
+                ResistLabel[2].text = Database.STRING_FIRE;
+                ResistLabel[3].text = Database.STRING_ICE;
+                ResistLabel[4].text = Database.STRING_FORCE;
+                ResistLabel[5].text = Database.STRING_WILL;
+            }
             ResistLabelValue[0].text = "+" + player.TotalResistLight.ToString() + " (0%)";
-            ResistLabel[1].text = Database.STRING_SHADOW;
             ResistLabelValue[1].text = "+" + player.TotalResistShadow.ToString() + " (0%)";
-            ResistLabel[2].text = Database.STRING_FIRE;
             ResistLabelValue[2].text = "+" + player.TotalResistFire.ToString() + " (0%)";
-            ResistLabel[3].text = Database.STRING_ICE;
             ResistLabelValue[3].text = "+" + player.TotalResistIce.ToString() + " (0%)";
-            ResistLabel[4].text = Database.STRING_FORCE;
             ResistLabelValue[4].text = "+" + player.TotalResistForce.ToString() + " (0%)";
-            ResistLabel[5].text = Database.STRING_WILL;
             ResistLabelValue[5].text = "+" + player.TotalResistWill.ToString() + " (0%)";
 
-            ResistAbnormalStatus[0].text = Database.STRING_STUNNING;
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                ResistAbnormalStatus[0].text = Database.STRING_STUNNING;
+                ResistAbnormalStatus[1].text = Database.STRING_SILENCE;
+                ResistAbnormalStatus[2].text = Database.STRING_POISON;
+                ResistAbnormalStatus[3].text = Database.STRING_TEMPTATION;
+                ResistAbnormalStatus[4].text = Database.STRING_FROZEN;
+                ResistAbnormalStatus[5].text = Database.STRING_PARALYZE;
+                ResistAbnormalStatus[6].text = Database.STRING_SLOW;
+                ResistAbnormalStatus[7].text = Database.STRING_BLIND;
+                ResistAbnormalStatus[8].text = Database.STRING_SLIP;
+            }
+
             if (player.CheckResistStun) ResistAbnormalStatusValue[0].text = "○";
             else ResistAbnormalStatusValue[0].text = "--";
-            ResistAbnormalStatus[1].text = Database.STRING_SILENCE;
             if (player.CheckResistSilence) ResistAbnormalStatusValue[1].text = "○";
             else ResistAbnormalStatusValue[1].text = "--";
-            ResistAbnormalStatus[2].text = Database.STRING_POISON;
             if (player.CheckResistPoison) ResistAbnormalStatusValue[2].text = "○";
             else ResistAbnormalStatusValue[2].text = "--";
-            ResistAbnormalStatus[3].text = Database.STRING_TEMPTATION;
             if (player.CheckResistTemptation) ResistAbnormalStatusValue[3].text = "○";
             else ResistAbnormalStatusValue[3].text = "--";
-            ResistAbnormalStatus[4].text = Database.STRING_FROZEN;
             if (player.CheckResistFrozen) ResistAbnormalStatusValue[4].text = "○";
             else ResistAbnormalStatusValue[4].text = "--";
-            ResistAbnormalStatus[5].text = Database.STRING_PARALYZE;
             if (player.CheckResistParalyze) ResistAbnormalStatusValue[5].text = "○";
             else ResistAbnormalStatusValue[5].text = "--";
-            ResistAbnormalStatus[6].text = Database.STRING_SLOW;
             if (player.CheckResistSlow) ResistAbnormalStatusValue[6].text = "○";
             else ResistAbnormalStatusValue[6].text = "--";
-            ResistAbnormalStatus[7].text = Database.STRING_BLIND;
             if (player.CheckResistBlind) ResistAbnormalStatusValue[7].text = "○";
             else ResistAbnormalStatusValue[7].text = "--";
-            ResistAbnormalStatus[8].text = Database.STRING_SLIP;
             if (player.CheckResistSlip) ResistAbnormalStatusValue[8].text = "○";
             else ResistAbnormalStatusValue[8].text = "--";
             // [コメント] 蘇生不可は特殊なので、ステータスとして見せない。

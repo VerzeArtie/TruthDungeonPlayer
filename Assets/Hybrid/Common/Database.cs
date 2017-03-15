@@ -2922,6 +2922,12 @@ namespace DungeonPlayer
         public const string GUI_S_BASIC_MANA = "マナ";
         public const string GUI_S_BASIC_SKILL = "スキル";
 
+        public const string GUI_S_BASIC_STR = "力";
+        public const string GUI_S_BASIC_AGI = "技";
+        public const string GUI_S_BASIC_INT = "知";
+        public const string GUI_S_BASIC_STA = "体";
+        public const string GUI_S_BASIC_MIN = "心";
+
         public const string GUI_S_BASIC_MAIN = "メイン";
         public const string GUI_S_BASIC_SUB = "サブ";
         public const string GUI_S_BASIC_ARMOR = "防具";
