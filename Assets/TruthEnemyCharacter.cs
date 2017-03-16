@@ -4448,14 +4448,14 @@ namespace DungeonPlayer
                 #region "ダンジョン１階"
                 #region "エリア１"
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    SetupParameterMonster(1, 9, 1, 1, 1, 4, (int)(listExp[0]), (int)(listGold[0]), 5);
+                    SetupParameterMonster(1, 9, 1, 1, 1, 4, (int)(listExp[0]), (int)(listGold[0]), 1);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
                 case Database.ENEMY_HENSYOKU_PLANT:
-                    SetupParameterMonster(1, 8, 1, 1, 1, 4, (int)(listExp[1]), (int)(listGold[1]), 8);
+                    SetupParameterMonster(1, 8, 1, 1, 1, 4, (int)(listExp[1]), (int)(listGold[1]), 3);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
