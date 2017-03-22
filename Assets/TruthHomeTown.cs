@@ -1281,8 +1281,6 @@ namespace DungeonPlayer
                 return;
             }
 
-            Debug.Log("R: " + nowReading.ToString() + " M: " + nowMessage.Count.ToString());
-            Debug.Log("M: " + nowMessage[nowReading] + " E: " + nowEvent[nowReading].ToString());
             if (this.nowReading < this.nowMessage.Count)
             {
                 if (this.panelHide.isActiveAndEnabled == false && this.nowHideing)
@@ -1293,7 +1291,6 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(true);
 
                 MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
-                Debug.Log(" E: " + current.ToString());
                 // メッセージ反映
                 if (current == MessagePack.ActionEvent.HomeTownMessageDisplay)
                 {
