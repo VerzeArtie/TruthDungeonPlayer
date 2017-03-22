@@ -13,6 +13,8 @@ namespace DungeonPlayer
         public enum ActionEvent
         {
             None,
+            ObjectiveAdd,
+            ObjectiveRemove,
             UpdateLocationTop,
             UpdateLocationLeft,
             UpdateLocationRight,
@@ -31149,7 +31151,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-                GroundOne.MC.DeleteBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA)); eventList.Add(ActionEvent.None);
+                GroundOne.MC.DeleteBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
                 GroundOne.MC.SortByName();
                 GroundOne.WE.Truth_GiveLanaEarring = true;
             }

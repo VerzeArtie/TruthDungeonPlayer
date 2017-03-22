@@ -2321,6 +2321,8 @@ namespace DungeonPlayer
         public const string SOUND_70 = @"WordOfLife";
         public const string SOUND_71 = @"WordOfPower";
 
+        public const string SOUND_OBJECTIVE_ADD = "ObjectiveAdd";
+        public const string SOUND_OBJECTIVE_COMP = "ObjectiveComplete";
         #endregion
 
         #region "敵の名前"

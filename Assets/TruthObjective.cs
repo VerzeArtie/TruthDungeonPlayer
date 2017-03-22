@@ -15,8 +15,12 @@ namespace DungeonPlayer
                 list.Add(value);
             }
         }
-        private static void Remove(string value)
+        private static void Remove(string value, ref List<string> list)
         {
+            if (GroundOne.ObjectiveList.Contains(value))
+            {
+                list.Add(value);
+            }
             GroundOne.ObjectiveList.Remove(value);
         }
 
@@ -241,126 +245,128 @@ namespace DungeonPlayer
             return list;
         }
 
-        public static void RefreshObjectList()
+        public static List<string> RefreshObjectList()
         {
+            List<string> list = new List<string>();
             #region "第一階層"
             if (GroundOne.WE.Truth_CommunicationLana1)
             {
-                Remove(Objective1001);
+                Remove(Objective1001, ref list);
             }
             if (GroundOne.WE.Truth_CommunicationGanz1)
             {
-                Remove(Objective1002);
+                Remove(Objective1002, ref list);
             } 
             if (GroundOne.WE.Truth_CommunicationHanna1)
             {
-                Remove(Objective1003);
+                Remove(Objective1003, ref list);
             }
             if (GroundOne.WE.BoardInfo10 || GroundOne.WE.BoardInfo11 || GroundOne.WE.BoardInfo12 || GroundOne.WE.BoardInfo13 || GroundOne.WE.BoardInfo14)
             {
-                Remove(Objective1004);
+                Remove(Objective1004, ref list);
             }
             if (GroundOne.WE.Truth_CommunicationJoinPartyLana)
             {
-                Remove(Objective1005);
+                Remove(Objective1005, ref list);
             }
             if (GroundOne.WE.dungeonEvent11KeyOpen)
             {
-                Remove(Objective1006_1);
+                Remove(Objective1006_1, ref list);
             }
             if (GroundOne.WE.dungeonEvent12KeyOpen)
             {
-                Remove(Objective1006_2);
+                Remove(Objective1006_2, ref list);
             }
             if (GroundOne.WE.dungeonEvent13KeyOpen)
             {
-                Remove(Objective1006_3);
+                Remove(Objective1006_3, ref list);
             }
             if (GroundOne.WE.dungeonEvent14KeyOpen)
             {
-                Remove(Objective1006_4);
+                Remove(Objective1006_4, ref list);
             }
             if (GroundOne.WE.dungeonEvent16)
             {
-                Remove(Objective1006);
-                Remove(Objective1006_1);
-                Remove(Objective1006_2);
-                Remove(Objective1006_3);
-                Remove(Objective1006_4);
+                Remove(Objective1006, ref list);
+                Remove(Objective1006_1, ref list);
+                Remove(Objective1006_2, ref list);
+                Remove(Objective1006_3, ref list);
+                Remove(Objective1006_4, ref list);
             }
             if (GroundOne.WE.dungeonEvent21KeyOpen ||
                 GroundOne.WE.dungeonEvent22KeyOpen ||
                 GroundOne.WE.dungeonEvent23KeyOpen ||
                 GroundOne.WE.dungeonEvent24KeyOpen)
             {
-                Remove(Objective1007);
+                Remove(Objective1007, ref list);
             }
             if (GroundOne.WE.BoardInfo14)
             {
-                Remove(Objective1008);
+                Remove(Objective1008, ref list);
             }
             if (GroundOne.WE.dungeonEvent21KeyOpen)
             {
-                Remove(Objective1009_1);
+                Remove(Objective1009_1, ref list);
             }
             if (GroundOne.WE.dungeonEvent22KeyOpen)
             {
-                Remove(Objective1009_2);
+                Remove(Objective1009_2, ref list);
             }
             if (GroundOne.WE.dungeonEvent25)
             {
-                Remove(Objective1009_3);
+                Remove(Objective1009_3, ref list);
             }
             if (GroundOne.WE.dungeonEvent23KeyOpen)
             {
-                Remove(Objective1009_4);
+                Remove(Objective1009_4, ref list);
             }
             if (GroundOne.WE.dungeonEvent24KeyOpen)
             {
-                Remove(Objective1009_5);
+                Remove(Objective1009_5, ref list);
             }
             if (GroundOne.WE.dungeonEvent28KeyOpen)
             {
-                Remove(Objective1010);
+                Remove(Objective1010, ref list);
             }
             if (GroundOne.WE.TruthCompleteSlayBoss1)
             {
-                Remove(Objective1011);
+                Remove(Objective1011, ref list);
             }
             if (GroundOne.WE.TruthCompleteArea1)
             {
-                Remove(Objective1012);
+                Remove(Objective1012, ref list);
             }
             if (GroundOne.WE.dungeonEvent31)
             {
-                Remove(Objective1013);
+                Remove(Objective1013, ref list);
             }
             #endregion
             #region "第二階層"
             if (GroundOne.WE.Truth_CommunicationLana21)
             {
-                Remove(Objective2001);
+                Remove(Objective2001, ref list);
             }
             if (GroundOne.WE.Truth_CommunicationGanz21)
             {
-                Remove(Objective2002);
+                Remove(Objective2002, ref list);
             }
             if (GroundOne.WE.Truth_CommunicationHanna21)
             {
-                Remove(Objective2003);
+                Remove(Objective2003, ref list);
             }
             if (GroundOne.WE.Truth_CommunicationOl21)
             {
-                Remove(Objective2004);
+                Remove(Objective2004, ref list);
             }
             if (GroundOne.WE.dungeonEvent201 &&
                 GroundOne.WE.dungeonEvent202 &&
                 GroundOne.WE.dungeonEvent203 &&
                 GroundOne.WE.dungeonEvent204)
             {
-                Remove(Objective2005);
+                Remove(Objective2005, ref list);
             }
             #endregion
+            return list;
         }
 
         #region "第一階層"
@@ -369,11 +375,11 @@ namespace DungeonPlayer
         public const string Objective1003 = "ホームタウン：[ハンナのゆったり宿屋]";
         public const string Objective1004 = "ダンジョン：[第一階層を探索する]";
         public const string Objective1005 = "ホームタウン：[ラナと会話する]";
-        public const string Objective1006 = "第一階層：[中央の大広間] 入り口側の扉を４つ開く]";
-        public const string Objective1006_1 = "第一階層：[中央の大広間] 扉１を解除";
-        public const string Objective1006_2 = "第一階層：[中央の大広間] 扉２を解除";
-        public const string Objective1006_3 = "第一階層：[中央の大広間] 扉３を解除";
-        public const string Objective1006_4 = "第一階層：[中央の大広間] 扉４を解除";
+        public const string Objective1006 = "第一階層：[中央大広間] 入口扉を４つ解除]";
+        public const string Objective1006_1 = "第一階層：[中央大広間] 扉１を解除";
+        public const string Objective1006_2 = "第一階層：[中央大広間] 扉２を解除";
+        public const string Objective1006_3 = "第一階層：[中央大広間] 扉３を解除";
+        public const string Objective1006_4 = "第一階層：[中央大広間] 扉４を解除";
         public const string Objective1007 = "第一階層：[小広間へのルートを探索する]";
         public const string Objective1008 = "第一階層：[小広間] 看板を確認";
         public const string Objective1009_1 = "第一階層：[小広間] 扉１を確認";
@@ -393,5 +399,52 @@ namespace DungeonPlayer
         public const string Objective2004 = "ホームタウン：[オル・ランディスと会話]";
         public const string Objective2005 = "ダンジョン：[第二階層を探索する]";
         #endregion
+
+        public static int GetObjectiveExp(string src)
+        {
+            if (src == Objective1001) { return 15; }
+            if (src == Objective1002) { return 20; }
+            if (src == Objective1003) { return 25; }
+            if (src == Objective1004) { return 30; }
+            if (src == Objective1005) { return 30; }
+            if (src == Objective1006) { return 500; }
+            if (src == Objective1006_1) { return 100; }
+            if (src == Objective1006_2) { return 100; }
+            if (src == Objective1006_3) { return 100; }
+            if (src == Objective1006_4) { return 100; }
+            if (src == Objective1007) { return 300; }
+            if (src == Objective1008) { return  100; }
+            if (src == Objective1009_1) { return 400; }
+            if (src == Objective1009_2) { return 400; }
+            if (src == Objective1009_3) { return 400; }
+            if (src == Objective1009_4) { return 400; }
+            if (src == Objective1009_5) { return 400; }
+            if (src == Objective1010) { return 300; }
+            if (src == Objective1011) { return 1200; }
+            if (src == Objective1012) { return 1500; }
+            return 0;
+        }
+
+        public const int Objective1001_E = 20;
+        public const int Objective1002_E = 20;
+        public const int Objective1003_E = 20;
+        public const int Objective1004_E = 30;
+        public const int Objective1005_E = 30;
+        public const int Objective1006_E = 30;
+        public const int Objective1006_1_E = 30;
+        public const int Objective1006_2_E = 30;
+        public const int Objective1006_3_E = 30;
+        public const int Objective1006_4_E = 30;
+        public const int Objective1007_E = 30;
+        public const int Objective1008_E = 30;
+        public const int Objective1009_1_E = 30;
+        public const int Objective1009_2_E = 30;
+        public const int Objective1009_3_E = 30;
+        public const int Objective1009_4_E = 30;
+        public const int Objective1009_5_E = 30;
+        public const int Objective1010_E = 30;
+        public const int Objective1011_E = 30;
+        public const int Objective1012_E = 30;
+        public const int Objective1013_E = 30;
     }
 }

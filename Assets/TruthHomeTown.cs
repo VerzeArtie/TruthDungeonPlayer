@@ -63,7 +63,10 @@ namespace DungeonPlayer
         public Button buttonLoad;
         public Button buttonExit;
         public GameObject panelObjective;
+        public GameObject panelObjectiveTitle;
         public Text txtObjectiveTitle;
+        public GameObject panelGroupQuest;
+        public List<GameObject> panelObjectiveTxt;
         public List<Text> txtObjective;
         public Text dayLabel;
         public Image panelHide;
@@ -1278,6 +1281,8 @@ namespace DungeonPlayer
                 return;
             }
 
+            Debug.Log("R: " + nowReading.ToString() + " M: " + nowMessage.Count.ToString());
+            Debug.Log("M: " + nowMessage[nowReading] + " E: " + nowEvent[nowReading].ToString());
             if (this.nowReading < this.nowMessage.Count)
             {
                 if (this.panelHide.isActiveAndEnabled == false && this.nowHideing)
@@ -1288,6 +1293,7 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(true);
 
                 MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
+                Debug.Log(" E: " + current.ToString());
                 // メッセージ反映
                 if (current == MessagePack.ActionEvent.HomeTownMessageDisplay)
                 {
@@ -1376,6 +1382,14 @@ namespace DungeonPlayer
                     mainMessage.text = "";
                 }
                 else if (current == MessagePack.ActionEvent.PlaySound)
+                {
+                    mainMessage.text = "";
+                }
+                else if (current == MessagePack.ActionEvent.ObjectiveAdd)
+                {
+                    mainMessage.text = "";
+                }
+                else if (current == MessagePack.ActionEvent.ObjectiveRemove)
                 {
                     mainMessage.text = "";
                 }
@@ -1709,6 +1723,32 @@ namespace DungeonPlayer
                     GroundOne.PlaySoundEffect(this.nowMessage[this.nowReading]);
                     ForceSkipTapOK = true;
                 }
+                else if (current == MessagePack.ActionEvent.ObjectiveAdd)
+                {
+                    systemMessage.text = "クエスト追加\r\n" + this.nowMessage[this.nowReading];
+                    systemMessagePanel.SetActive(true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_OBJECTIVE_ADD);
+                }
+                else if (current == MessagePack.ActionEvent.ObjectiveRemove)
+                {
+                    systemMessage.text = this.nowMessage[this.nowReading] + "を完了しました！\r\n";
+                    int exp = TruthObjective.GetObjectiveExp(nowMessage[nowReading]);
+                    systemMessage.text += exp + "の経験値を獲得";
+                    systemMessagePanel.SetActive(true);
+                    if (GroundOne.MC != null && GroundOne.MC.Level < Method.GetMaxLevel())
+                    {
+                        GroundOne.MC.Exp += exp;
+                    }
+                    if (GroundOne.SC != null && GroundOne.SC.Level < Method.GetMaxLevel() && GroundOne.WE.AvailableSecondCharacter)
+                    {
+                        GroundOne.SC.Exp += exp;
+                    }
+                    if (GroundOne.TC != null && GroundOne.TC.Level < Method.GetMaxLevel() && GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        GroundOne.TC.Exp += exp;
+                    }
+                    GroundOne.PlaySoundEffect(Database.SOUND_OBJECTIVE_COMP);
+                }
                 else if (current == MessagePack.ActionEvent.Ending)
                 {
                     StartEnding();
@@ -1724,14 +1764,32 @@ namespace DungeonPlayer
 
             if (this.nowReading >= this.nowMessage.Count)
             {
-                TruthObjective.RefreshObjectList();
+                List<string> removeList = TruthObjective.RefreshObjectList();
+                if (removeList.Count > 0)
+                {
+                    Debug.Log("removeList is greater than 0.");
+                    for (int ii = 0; ii < removeList.Count; ii++)
+                    {
+                        this.nowMessage.Add(removeList[ii]); this.nowEvent.Add(MessagePack.ActionEvent.ObjectiveRemove);
+                        Debug.Log("nowmessage Adding");
+                        for (int jj = 0; jj < nowEvent.Count; jj++)
+                        {
+                            Debug.Log("nowmessage: " + nowEvent[jj]);
+                        }
+                    }
+
+                    UpdateTxtObjective();
+                    Debug.Log("removeList recall tapok");
+                    tapOK();
+                    return;
+                }
                 List<string> list = TruthObjective.GetObjectiveList();
                 // 新しく追加された文字列があれば、システムメッセージで表記する。
                 if (list.Count > 0)
                 {
                     for (int ii = 0; ii < list.Count; ii++)
                     {
-                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.HomeTownMessageDisplay);
+                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.ObjectiveAdd);
                     }
 
                     UpdateTxtObjective();
@@ -3247,6 +3305,35 @@ namespace DungeonPlayer
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             SceneDimension.CallTruthPlayBack(this);
+        }
+
+        public void tapObjective()
+        {
+            float current = panelObjective.GetComponent<Image>().color.a;
+            float current2 = 1.0f;
+            if (current == 1.0f)
+            {
+                current = 0.5f;
+                current2 = 1.0f;
+            }
+            else if (current == 0.5f)
+            {
+                current = 0.0f;
+                current2 = 0.0f;
+            }
+            else
+            {
+                current = 1.0f;
+                current2 = 1.0f;
+            }
+            panelObjective.GetComponent<Image>().color = new Color(current, current, current, current);
+            panelObjectiveTitle.GetComponent<Image>().color = new Color(current, current, current, current);
+            panelGroupQuest.GetComponent<Image>().color = new Color(current, current, current, current);
+            txtObjectiveTitle.color = new Color(0, 0, 0, current2);
+            for (int ii = 0; ii < txtObjective.Count; ii++)
+            {
+                txtObjective[ii].color = new Color(0, 0, 0, current2);
+            }
         }
 
         public void tapAchievement()
