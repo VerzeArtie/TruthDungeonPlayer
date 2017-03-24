@@ -2142,17 +2142,17 @@ namespace DungeonPlayer
             // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
             if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
             {
-                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.FullName);
                 return true;
             }
             else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
             {
-                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.FullName);
                 return true;
             }
             else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
             {
-                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.FullName);
                 return true;
             }
             return false;

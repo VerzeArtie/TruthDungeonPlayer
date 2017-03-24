@@ -219,18 +219,20 @@ namespace DungeonPlayer
             GroundOne.OnlySelectTrash = onlySelectTrash;
             GroundOne.OnlySelectTrashNewItem = newItem;
             GroundOne.CannotSelectTrash = itemName;
+            GroundOne.LevelUpCharacter = GroundOne.MC.FullName;
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
             GroundOne.Parent.Add(scene);
             Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
-        public static void CallTruthStatusPlayer(MotherForm scene, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
+        public static void CallTruthStatusPlayer(MotherForm scene, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, string characterName)
         {
             GroundOne.OnlySelectTrash = false;
             GroundOne.OnlySelectTrashNewItem = string.Empty;
             GroundOne.CannotSelectTrash = string.Empty;
             GroundOne.LevelUp = leveUp;
+            GroundOne.LevelUpCharacter = characterName;
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
             GroundOne.Parent.Add(scene);

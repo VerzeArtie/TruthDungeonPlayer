@@ -244,7 +244,7 @@ namespace DungeonPlayer
                 GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_WILL_HOLY_HAT));
                 GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_SUN_BRAVE_ARMOR));
                 GroundOne.MC.FreshHeal = true;
-                SceneDimension.CallTruthStatusPlayer(this, ref dummy1, ref dummy2, ref dummy3, GroundOne.MC.PlayerStatusColor);
+                SceneDimension.CallTruthStatusPlayer(this, ref dummy1, ref dummy2, ref dummy3, GroundOne.MC.FullName);
             }
             else if (this.selectNumber == 4)
             {

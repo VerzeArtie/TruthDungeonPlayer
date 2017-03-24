@@ -113,6 +113,7 @@ namespace DungeonPlayer
         //public static Color CurrentStatusColor = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
         public static bool LevelUpRoutine = false; // レベルアップルーチン「他のキャラクターがレベルアップしている場合、ダンジョン画面に戻った時、継続してレベルアップチェックを行う」
         public static bool LevelUp = false; // レベルアップモード画面
+        public static string LevelUpCharacter = string.Empty; // レベルアップ対象名
         public static int UpPoint = 0; // パラメタアップポイント
         public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値
         public static bool OnlySelectTrash = false; // 捨てる限定画面

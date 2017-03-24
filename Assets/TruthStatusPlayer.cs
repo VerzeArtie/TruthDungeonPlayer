@@ -220,7 +220,19 @@ namespace DungeonPlayer
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 
-            this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
+            if (GroundOne.MC.FullName == GroundOne.LevelUpCharacter)
+            {
+                this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
+            }
+            else if (GroundOne.SC.FullName == GroundOne.LevelUpCharacter)
+            {
+                this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
+            }
+            else if (GroundOne.TC.FullName == GroundOne.LevelUpCharacter)
+            {
+                this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
+            }
+
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);

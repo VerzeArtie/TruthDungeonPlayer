@@ -3348,7 +3348,7 @@ namespace DungeonPlayer
             }
 
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromHomeTown", String.Empty);
-            SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+            SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.FullName);
         }
 
         private void ShowActiveSkillSpell(MainCharacter player, string commandName)
