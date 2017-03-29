@@ -1532,9 +1532,226 @@ namespace DungeonPlayer
             #region "ダンジョンタイルをファイル名→プレハブ変換"
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             {
-                this.tileColor[ii] = Convert.ToInt32(childList[ii * 2 + 1].InnerText);
+                this.tileColor[ii] = 1;// Convert.ToInt32(childList[ii * 2 + 1].InnerText);
+                string current = "Tile1"; Convert.ToString(childList[ii * 2 + 0].InnerText);
+                int quot = ii / Database.TRUTH_DUNGEON_COLUMN;
 
-                string current = Convert.ToString(childList[ii * 2 + 0].InnerText);
+                if (GroundOne.WE.DungeonArea == 1)
+                {
+                    if (quot == 0) { current = Database.Tile1_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile1_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile1_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile1_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile1_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile1_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile1_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile1_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile1_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile1_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile1_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile1_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile1_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile1_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile1_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile1_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile1_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile1_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile1_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile1_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile1_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile1_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile1_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile1_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile1_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile1_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile1_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile1_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile1_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile1_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile1_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile1_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile1_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile1_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile1_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile1_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile1_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile1_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile1_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile1_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                else if (GroundOne.WE.DungeonArea == 2)
+                {
+                    if (quot == 0) { current = Database.Tile2_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile2_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile2_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile2_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile2_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile2_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile2_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile2_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile2_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile2_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile2_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile2_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile2_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile2_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile2_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile2_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile2_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile2_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile2_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile2_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile2_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile2_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile2_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile2_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile2_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile2_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile2_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile2_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile2_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile2_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile2_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile2_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile2_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile2_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile2_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile2_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile2_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile2_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile2_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile2_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area2_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                else if (GroundOne.WE.DungeonArea == 3)
+                {
+                    if (quot == 0) { current = Database.Tile3_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile3_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile3_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile3_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile3_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile3_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile3_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile3_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile3_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile3_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile3_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile3_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile3_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile3_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile3_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile3_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile3_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile3_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile3_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile3_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile3_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile3_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile3_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile3_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile3_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile3_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile3_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile3_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile3_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile3_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile3_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile3_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile3_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile3_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile3_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile3_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile3_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile3_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile3_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile3_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area3_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                else if (GroundOne.WE.DungeonArea == 4)
+                {
+                    if (quot == 0) { current = Database.Tile4_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile4_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile4_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile4_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile4_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile4_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile4_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile4_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile4_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile4_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile4_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile4_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile4_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile4_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile4_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile4_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile4_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile4_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile4_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile4_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile4_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile4_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile4_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile4_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile4_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile4_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile4_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile4_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile4_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile4_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile4_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile4_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile4_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile4_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile4_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile4_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile4_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile4_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile4_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile4_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area4_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                else if (GroundOne.WE.DungeonArea == 5)
+                {
+                    if (quot == 0) { current = Database.Tile5_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile5_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile5_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile5_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile5_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile5_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile5_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile5_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile5_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile5_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile5_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile5_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile5_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile5_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile5_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile5_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile5_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile5_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile5_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile5_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile5_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile5_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile5_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile5_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile5_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile5_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile5_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile5_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile5_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile5_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile5_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile5_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile5_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile5_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile5_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile5_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile5_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile5_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile5_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile5_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area5_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                
                 // １階、終わりの部屋。心層の壁解除
                 if (GroundOne.WE.dungeonEvent31 && ii == 29 * Database.TRUTH_DUNGEON_COLUMN + 50)
                 {
