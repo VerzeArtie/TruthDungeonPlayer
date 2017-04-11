@@ -7791,7 +7791,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：ああ、分かってる分かってる。ボスの特徴だろ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：珊瑚の女王。主に魔法攻撃を主力とするヤツだ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：源星・珊瑚の女王。主に魔法攻撃を主力とするヤツだ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：とは言っても、魔法主力は物理防御が低いなんて言うのは間違いだな。"); eventList.Add(ActionEvent.None);
 
