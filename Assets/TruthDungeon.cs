@@ -4073,14 +4073,14 @@ namespace DungeonPlayer
                     keyUp = false;
                     keyLeft = false;
                     keyRight = false;
-                    //System.Threading.Thread.Sleep(200);
+                    //System.Threading.Thread.Sleep(100);
                     //debug.text += "check wall end.";
                     return;
                 }
 
                 if (CheckBlueWall(direction))
                 {
-                    System.Threading.Thread.Sleep(200);
+                    System.Threading.Thread.Sleep(100);
                     return;
                 }
 
@@ -20123,6 +20123,32 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 25, 35, 3, 9);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.ObjectiveAdd)
+                {
+                    systemMessageText.text = "クエスト追加\r\n" + this.nowMessage[this.nowReading];
+                    groupSystemMessage.SetActive(true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_OBJECTIVE_ADD);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.ObjectiveRemove)
+                {
+                    systemMessageText.text = this.nowMessage[this.nowReading] + "を完了しました！\r\n";
+                    int exp = TruthObjective.GetObjectiveExp(nowMessage[nowReading]);
+                    systemMessageText.text += exp + "の経験値を獲得";
+                    groupSystemMessage.SetActive(true);
+                    if (GroundOne.MC != null && GroundOne.MC.Level < Method.GetMaxLevel())
+                    {
+                        GroundOne.MC.Exp += exp;
+                    }
+                    if (GroundOne.SC != null && GroundOne.SC.Level < Method.GetMaxLevel() && GroundOne.WE.AvailableSecondCharacter)
+                    {
+                        GroundOne.SC.Exp += exp;
+                    }
+                    if (GroundOne.TC != null && GroundOne.TC.Level < Method.GetMaxLevel() && GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        GroundOne.TC.Exp += exp;
+                    }
+                    GroundOne.PlaySoundEffect(Database.SOUND_OBJECTIVE_COMP);
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
@@ -20133,14 +20159,26 @@ namespace DungeonPlayer
 
             if (this.nowReading >= this.nowMessage.Count)
             {
-                TruthObjective.RefreshObjectList();
+                List<string> removeList = TruthObjective.RefreshObjectList();
+                if (removeList.Count > 0)
+                {
+                    for (int ii = 0; ii < removeList.Count; ii++)
+                    {
+                        this.nowMessage.Add(removeList[ii]); this.nowEvent.Add(MessagePack.ActionEvent.ObjectiveRemove);
+                    }
+
+                    UpdateTxtObjective();
+                    tapOK();
+                    return;
+                }
+
                 List<string> list = TruthObjective.GetObjectiveList();
                 // 新しく追加された文字列があれば、システムメッセージで表記する。
                 if (list.Count > 0)
                 {
                     for (int ii = 0; ii < list.Count; ii++)
                     {
-                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.HomeTownMessageDisplay);
+                        this.nowMessage.Add(list[ii]); this.nowEvent.Add(MessagePack.ActionEvent.ObjectiveAdd);
                     }
 
                     UpdateTxtObjective();
