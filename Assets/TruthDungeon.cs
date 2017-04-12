@@ -20168,7 +20168,6 @@ namespace DungeonPlayer
                     }
 
                     UpdateTxtObjective();
-                    tapOK();
                     return;
                 }
 
@@ -20182,7 +20181,6 @@ namespace DungeonPlayer
                     }
 
                     UpdateTxtObjective();
-                    tapOK();
                     return;
                 }
 

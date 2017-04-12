@@ -1764,20 +1764,12 @@ namespace DungeonPlayer
                 List<string> removeList = TruthObjective.RefreshObjectList();
                 if (removeList.Count > 0)
                 {
-                    Debug.Log("removeList is greater than 0.");
                     for (int ii = 0; ii < removeList.Count; ii++)
                     {
                         this.nowMessage.Add(removeList[ii]); this.nowEvent.Add(MessagePack.ActionEvent.ObjectiveRemove);
-                        Debug.Log("nowmessage Adding");
-                        for (int jj = 0; jj < nowEvent.Count; jj++)
-                        {
-                            Debug.Log("nowmessage: " + nowEvent[jj]);
-                        }
                     }
 
                     UpdateTxtObjective();
-                    Debug.Log("removeList recall tapok");
-                    tapOK();
                     return;
                 }
                 List<string> list = TruthObjective.GetObjectiveList();
@@ -1790,7 +1782,6 @@ namespace DungeonPlayer
                     }
 
                     UpdateTxtObjective();
-                    tapOK();
                     return;
                 }
 
