@@ -241,6 +241,173 @@ namespace DungeonPlayer
                     AddEvent(Objective2005, ref list);
                 }
             }
+            if (GroundOne.WE.dungeonEvent201 && GroundOne.WE.dungeonEvent202 && GroundOne.WE.dungeonEvent203 && GroundOne.WE.dungeonEvent204)
+            {
+                if (GroundOne.WE.dungeonEvent224 == false)
+                {
+                    AddEvent(Objective2006, ref list);
+                }
+                if (GroundOne.WE.dungeonEvent257 == false)
+                {
+                    AddEvent(Objective2007, ref list);
+                }
+                if (GroundOne.WE.dungeonEvent249 == false)
+                {
+                    AddEvent(Objective2008, ref list);
+                }
+                if (GroundOne.WE.dungeonEvent255_SlayBoss == false)
+                {
+                    AddEvent(Objective2009, ref list);
+                }
+            }
+            // 力の部屋
+            if (GroundOne.WE.dungeonEvent250)
+            {
+                if (GroundOne.WE.dungeonEvent250_SlayBoss == false)
+                {
+                    AddEvent(Objective2010, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent251)
+            {
+                if (GroundOne.WE.dungeonEvent251_SlayBoss == false)
+                {
+                    AddEvent(Objective2011, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent252)
+            {
+                if (GroundOne.WE.dungeonEvent252_SlayBoss == false)
+                {
+                    AddEvent(Objective2012, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent253)
+            {
+                if (GroundOne.WE.dungeonEvent253_SlayBoss == false)
+                {
+                    AddEvent(Objective2013, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent254)
+            {
+                if (GroundOne.WE.dungeonEvent254_SlayBoss == false)
+                {
+                    AddEvent(Objective2014, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent255)
+            {
+                if (GroundOne.WE.dungeonEvent255_SlayBoss == false)
+                {
+                    AddEvent(Objective2015, ref list);
+                }
+            }
+            // 技の部屋
+            if (GroundOne.WE.dungeonEvent233)
+            {
+                if (GroundOne.WE.dungeonEvent233_Complete == false)
+                {
+                    AddEvent(Objective2016, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent234)
+            {
+                if (GroundOne.WE.dungeonEvent234_Complete == false)
+                {
+                    AddEvent(Objective2017, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent235)
+            {
+                if (GroundOne.WE.dungeonEvent235_Complete == false)
+                {
+                    AddEvent(Objective2018, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent236)
+            {
+                if (GroundOne.WE.dungeonEvent236_Complete == false)
+                {
+                    AddEvent(Objective2019, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent237)
+            {
+                if (GroundOne.WE.dungeonEvent237_Complete == false)
+                {
+                    AddEvent(Objective2020, ref list);
+                }
+            }
+            // 知の部屋
+            if (GroundOne.WE.dungeonEvent206)
+            {
+                if (GroundOne.WE.dungeonEvent208 == false)
+                {
+                    AddEvent(Objective2021, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent208)
+            {
+                if (GroundOne.WE.dungeonEvent210 == false)
+                {
+                    AddEvent(Objective2022, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent210)
+            {
+                if (GroundOne.WE.dungeonEvent211 == false)
+                {
+                    AddEvent(Objective2023, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent211)
+            {
+                if (GroundOne.WE.dungeonEvent212 == false || GroundOne.WE.dungeonEvent213 == false || GroundOne.WE.dungeonEvent214 == false)
+                {
+                    AddEvent(Objective2024, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent212 && GroundOne.WE.dungeonEvent213 && GroundOne.WE.dungeonEvent214 && GroundOne.WE.dungeonEvent215)
+            {
+                if (GroundOne.WE.dungeonEvent219 == false)
+                {
+                    AddEvent(Objective2025, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent219)
+            {
+                if (GroundOne.WE.dungeonEvent221 == false || GroundOne.WE.dungeonEvent222 == false || GroundOne.WE.dungeonEvent223 == false)
+                {
+                    AddEvent(Objective2026, ref list);
+                }
+            }
+            if (GroundOne.WE.dungeonEvent220)
+            {
+                if (GroundOne.WE.dungeonEvent224 == false)
+                {
+                    if (GroundOne.WE2.TruthAnswerFail == false)
+                    {
+                        AddEvent(Objective2027, ref list);
+                    }
+                }
+            }
+            if (GroundOne.WE.dungeonEvent215 && GroundOne.WE.dungeonEvent219 && GroundOne.WE.dungeonEvent220 && GroundOne.WE2.TruthAnswerFail)
+            {
+                if (GroundOne.WE.dungeonEvent224 == false)
+                {
+                    AddEvent(Objective2028, ref list);
+                }
+            }
+
+            // ボス戦を撃破後、第三階層へ行く
+            if (GroundOne.WE.TruthCompleteSlayBoss2)
+            {
+                if (GroundOne.WE.TruthCommunicationCompArea2 == false)
+                {
+                    AddEvent(Objective2029, ref list);
+                }
+            }
             #endregion
             return list;
         }
@@ -365,6 +532,102 @@ namespace DungeonPlayer
             {
                 Remove(Objective2005, ref list);
             }
+            if (GroundOne.WE.dungeonEvent224)
+            {
+                Remove(Objective2006, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent257)
+            {
+                Remove(Objective2007, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent249)
+            {
+                Remove(Objective2008, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent255_SlayBoss)
+            {
+                Remove(Objective2009, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent250_SlayBoss)
+            {
+                Remove(Objective2010, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent251_SlayBoss)
+            {
+                Remove(Objective2011, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent252_SlayBoss)
+            {
+                Remove(Objective2012, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent253_SlayBoss)
+            {
+                Remove(Objective2013, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent254_SlayBoss)
+            {
+                Remove(Objective2014, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent255_SlayBoss)
+            {
+                Remove(Objective2015, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent233_Complete)
+            {
+                Remove(Objective2016, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent234_Complete)
+            {
+                Remove(Objective2017, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent235_Complete)
+            {
+                Remove(Objective2018, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent236_Complete)
+            {
+                Remove(Objective2019, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent237_Complete)
+            {
+                Remove(Objective2020, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent208)
+            {
+                Remove(Objective2021, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent210)
+            {
+                Remove(Objective2022, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent211)
+            {
+                Remove(Objective2023, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent212 && GroundOne.WE.dungeonEvent213 && GroundOne.WE.dungeonEvent214)
+            {
+                Remove(Objective2024, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent219)
+            {
+                Remove(Objective2025, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent221 && GroundOne.WE.dungeonEvent222 && GroundOne.WE.dungeonEvent223)
+            {
+                Remove(Objective2026, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent224)
+            {
+                Remove(Objective2027, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent224)
+            {
+                Remove(Objective2028, ref list);
+            }
+            if (GroundOne.WE.TruthCommunicationCompArea2)
+            {
+                Remove(Objective2029, ref list);
+            }
             #endregion
             return list;
         }
@@ -398,6 +661,31 @@ namespace DungeonPlayer
         public const string Objective2003 = "ホームタウン：[ハンナと会話]";
         public const string Objective2004 = "ホームタウン：[オル・ランディスと会話]";
         public const string Objective2005 = "ダンジョン：[第二階層を探索する]";
+        public const string Objective2006 = "第二階層：[知の部屋]を解く";
+        public const string Objective2007 = "第二階層：[技の部屋]を解く";
+        public const string Objective2008 = "第二階層：[心の部屋]を解く";
+        public const string Objective2009 = "第二階層：[力の部屋]を解く";
+        public const string Objective2010 = "第二階層：[ボス戦] 輝ける海の王子";
+        public const string Objective2011 = "第二階層：[ボス戦] 源星・珊瑚の女王";
+        public const string Objective2012 = "第二階層：[ボス戦] シェル・ザ・ソードナイト";
+        public const string Objective2013 = "第二階層：[ボス戦] ジェリーアイ【熱光】／【流冷】";
+        public const string Objective2014 = "第二階層：[ボス戦] 海星源の王";
+        public const string Objective2015 = "第二階層：[ボス戦] 大海蛇リヴィアサン";
+        public const string Objective2016 = "第二階層：[技の部屋]　俊足歩行";
+        public const string Objective2017 = "第二階層：[技の部屋]　即断即決";
+        public const string Objective2018 = "第二階層：[技の部屋]　無感呼吸";
+        public const string Objective2019 = "第二階層：[技の部屋]　浮上遊歩";
+        public const string Objective2020 = "第二階層：[技の部屋]　縦横無尽";
+        public const string Objective2021 = "第二階層：[知の部屋]　『上』";
+        public const string Objective2022 = "第二階層：[知の部屋]　『上』→『下』";
+        public const string Objective2023 = "第二階層：[知の部屋]　『上』→『下』→『左』";
+        public const string Objective2024 = "第二階層：[知の部屋]　開かれた３つの部屋";
+        public const string Objective2025 = "第二階層：[知の部屋]　『下３０　上１２５６９　左８４７』";
+        public const string Objective2026 = "第二階層：[知の部屋]　開かれた３つの部屋（PART2）";
+        public const string Objective2027 = "第二階層：[知の部屋]　『  ( >10 _6 <7 )  ( <11 ^3 )  ( _3 >7 )  』";
+        public const string Objective2028 = "第二階層：[知の部屋]　『絶対試練：汝、答えを示せ』";
+        public const string Objective2029 = "第二階層：[第三階層への到達]";
+        //public const string Objective2030 = "第二階層：[への到達]";
         #endregion
 
         public static int GetObjectiveExp(string src)
@@ -422,29 +710,38 @@ namespace DungeonPlayer
             if (src == Objective1010) { return 300; }
             if (src == Objective1011) { return 1200; }
             if (src == Objective1012) { return 1500; }
+            if (src == Objective1013) { return 1800; }
+            if (src == Objective2001) { return 1500; }
+            if (src == Objective2002) { return 1500; }
+            if (src == Objective2003) { return 1500; }
+            if (src == Objective2004) { return 1500; }
+            if (src == Objective2005) { return 2000; }
+            if (src == Objective2006) { return 8000; }
+            if (src == Objective2007) { return 8000; }
+            if (src == Objective2008) { return 8000; }
+            if (src == Objective2009) { return 8000; }
+            if (src == Objective2010) { return 4000; }
+            if (src == Objective2011) { return 6000; }
+            if (src == Objective2012) { return 7000; }
+            if (src == Objective2013) { return 10000; }
+            if (src == Objective2014) { return 12000; }
+            if (src == Objective2015) { return 15000; }
+            if (src == Objective2016) { return 4000; }
+            if (src == Objective2017) { return 6000; }
+            if (src == Objective2018) { return 8000; }
+            if (src == Objective2019) { return 10000; }
+            if (src == Objective2020) { return 12000; }
+            if (src == Objective2021) { return 4000; }
+            if (src == Objective2022) { return 5000; }
+            if (src == Objective2023) { return 6000; }
+            if (src == Objective2024) { return 7000; }
+            if (src == Objective2025) { return 8000; }
+            if (src == Objective2026) { return 9000; }
+            if (src == Objective2027) { return 10000; }
+            if (src == Objective2028) { return 12000; }
+            if (src == Objective2029) { return 15000; }
             return 0;
         }
 
-        public const int Objective1001_E = 20;
-        public const int Objective1002_E = 20;
-        public const int Objective1003_E = 20;
-        public const int Objective1004_E = 30;
-        public const int Objective1005_E = 30;
-        public const int Objective1006_E = 30;
-        public const int Objective1006_1_E = 30;
-        public const int Objective1006_2_E = 30;
-        public const int Objective1006_3_E = 30;
-        public const int Objective1006_4_E = 30;
-        public const int Objective1007_E = 30;
-        public const int Objective1008_E = 30;
-        public const int Objective1009_1_E = 30;
-        public const int Objective1009_2_E = 30;
-        public const int Objective1009_3_E = 30;
-        public const int Objective1009_4_E = 30;
-        public const int Objective1009_5_E = 30;
-        public const int Objective1010_E = 30;
-        public const int Objective1011_E = 30;
-        public const int Objective1012_E = 30;
-        public const int Objective1013_E = 30;
     }
 }

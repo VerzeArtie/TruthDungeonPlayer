@@ -3531,6 +3531,7 @@ namespace DungeonPlayer
         public static void Message12004_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE2.TruthAnswerFail = true;
+            Method.AutoSaveTruthWorldEnvironment();
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
