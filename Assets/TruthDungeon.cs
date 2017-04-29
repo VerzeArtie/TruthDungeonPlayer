@@ -268,7 +268,7 @@ namespace DungeonPlayer
             this.prefab_TileElement.transform.position = new Vector3(-99999, -99999, 0);
 
             this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.PLAYER_MARK);
-            this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, -3), Quaternion.identity) as GameObject;
 
             if (GroundOne.TutorialMode)
             {
@@ -1062,7 +1062,7 @@ namespace DungeonPlayer
                 }
 
                 this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
-                this.unknownTile.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                this.unknownTile.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), -2), Quaternion.identity) as GameObject);
             }
             #endregion
             #region "宝箱や看板などの設置"
@@ -1090,7 +1090,7 @@ namespace DungeonPlayer
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER1.Length, childList2[ii].Name.Length - OTHER1.Length));
                         int row = targetNumber / Database.TRUTH_DUNGEON_COLUMN;
                         int column = targetNumber % Database.TRUTH_DUNGEON_COLUMN;
-                        GameObject current = Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject;
+                        GameObject current = Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject;
                         if (DetectOpenTreasure(new Vector3(column, -row, 0)))
                         {
                             current.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.TREASURE_BOX_OPEN);
@@ -1103,44 +1103,44 @@ namespace DungeonPlayer
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BOARD);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER2.Length, childList2[ii].Name.Length - OTHER2.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER3))
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.UPSTAIR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER3.Length, childList2[ii].Name.Length - OTHER3.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER4))
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.DOWNSTAIR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER4.Length, childList2[ii].Name.Length - OTHER4.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER9))
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.MIRROR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER9.Length, childList2[ii].Name.Length - OTHER9.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER10))
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUEORB);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER10.Length, childList2[ii].Name.Length - OTHER10.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER11))
                     {
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FOUNTAIN);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER11.Length, childList2[ii].Name.Length - OTHER11.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
                     if (childList2[ii].Name.Contains(OTHER5))
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER5.Length, childList2[ii].Name.Length - OTHER5.Length));
                         blueWallTop[targetNumber] = true;
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_T);
-                        this.objBlueWallTop.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objBlueWallTop.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallTop[this.objBlueWallTop.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -1226,7 +1226,7 @@ namespace DungeonPlayer
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER6.Length, childList2[ii].Name.Length - OTHER6.Length));
                         blueWallLeft[targetNumber] = true;
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_L);
-                        this.objBlueWallLeft.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objBlueWallLeft.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallLeft[this.objBlueWallLeft.Count-1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -1335,7 +1335,7 @@ namespace DungeonPlayer
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER7.Length, childList2[ii].Name.Length - OTHER7.Length));
                         blueWallRight[targetNumber] = true;
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_R);
-                        this.objBlueWallRight.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objBlueWallRight.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallRight[this.objBlueWallRight.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -1444,7 +1444,7 @@ namespace DungeonPlayer
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER8.Length, childList2[ii].Name.Length - OTHER8.Length));
                         blueWallBottom[targetNumber] = true;
                         this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_B);
-                        this.objBlueWallBottom.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objBlueWallBottom.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallBottom[this.objBlueWallBottom.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -1536,7 +1536,50 @@ namespace DungeonPlayer
                 string current = "Tile1"; Convert.ToString(childList[ii * 2 + 0].InnerText);
                 int quot = ii / Database.TRUTH_DUNGEON_COLUMN;
 
-                if (GroundOne.WE.DungeonArea == 1)
+                if (GroundOne.TutorialMode)
+                {
+                    if (quot == 0) { current = Database.Tile0_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 1) { current = Database.Tile0_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 2) { current = Database.Tile0_02[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_02[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 3) { current = Database.Tile0_03[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_03[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 4) { current = Database.Tile0_04[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_04[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 5) { current = Database.Tile0_05[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_05[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 6) { current = Database.Tile0_06[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_06[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 7) { current = Database.Tile0_07[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_07[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 8) { current = Database.Tile0_08[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_08[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 9) { current = Database.Tile0_09[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_09[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 10) { current = Database.Tile0_10[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_10[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 11) { current = Database.Tile0_11[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_11[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 12) { current = Database.Tile0_12[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_12[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 13) { current = Database.Tile0_13[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_13[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 14) { current = Database.Tile0_14[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_14[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 15) { current = Database.Tile0_15[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_15[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 16) { current = Database.Tile0_16[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_16[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 17) { current = Database.Tile0_17[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_17[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 18) { current = Database.Tile0_18[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_18[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 19) { current = Database.Tile0_19[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_19[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 20) { current = Database.Tile0_20[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_20[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 21) { current = Database.Tile0_21[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_21[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 22) { current = Database.Tile0_22[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_22[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 23) { current = Database.Tile0_23[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_23[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 24) { current = Database.Tile0_24[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_24[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 25) { current = Database.Tile0_25[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_25[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 26) { current = Database.Tile0_26[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_26[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 27) { current = Database.Tile0_27[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_27[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 28) { current = Database.Tile0_28[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_28[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 29) { current = Database.Tile0_29[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_29[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 30) { current = Database.Tile0_30[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_30[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 31) { current = Database.Tile0_31[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_31[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 32) { current = Database.Tile0_32[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_32[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 33) { current = Database.Tile0_33[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_33[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 34) { current = Database.Tile0_34[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_34[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 35) { current = Database.Tile0_35[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_35[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 36) { current = Database.Tile0_36[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_36[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 37) { current = Database.Tile0_37[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_37[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 38) { current = Database.Tile0_38[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_38[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                    else if (quot == 39) { current = Database.Tile0_39[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area0_39[ii % Database.TRUTH_DUNGEON_COLUMN]; }
+                }
+                else if (GroundOne.WE.DungeonArea == 1)
                 {
                     if (quot == 0) { current = Database.Tile1_00[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_00[ii % Database.TRUTH_DUNGEON_COLUMN]; }
                     else if (quot == 1) { current = Database.Tile1_01[ii % Database.TRUTH_DUNGEON_COLUMN]; this.tileColor[ii] = Database.Area1_01[ii % Database.TRUTH_DUNGEON_COLUMN]; }
