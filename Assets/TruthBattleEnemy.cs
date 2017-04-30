@@ -361,10 +361,10 @@ namespace DungeonPlayer
                 labelBattleTurn.text = Database.GUI_BATTLE_TURN + " 1";
             }
 
-            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
-            else { Database.BATTLE_CORE_SLEEP = 10; }
+            if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
+            else { Database.BATTLE_CORE_SLEEP = 1; }
 
-            ChangeBattleSpeed(3);
+            ChangeBattleSpeed(9);
             // 最終戦ヴェルゼのシャドウマークをデフォルトでは非表示にする。
             enemy1Shadow2.gameObject.SetActive(false);
             enemy1Shadow3.gameObject.SetActive(false);
@@ -804,7 +804,10 @@ namespace DungeonPlayer
             //    this.debugB51.text = ec1.Gold.ToString();
             //}
 
-            System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
+            if (Database.BATTLE_CORE_SLEEP > 0)
+            {
+                System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
+            }
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -8542,7 +8545,7 @@ namespace DungeonPlayer
             switch (speed)
             {
                 case 1:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 20; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 25; }
                     else { Database.BATTLE_CORE_SLEEP = 40; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8554,7 +8557,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 2:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 15; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 20; }
                     else { Database.BATTLE_CORE_SLEEP = 30; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8566,7 +8569,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 3:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 10; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 15; }
                     else { Database.BATTLE_CORE_SLEEP = 20; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8578,7 +8581,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 4:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 8; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 10; }
                     else { Database.BATTLE_CORE_SLEEP = 15; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8590,7 +8593,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 5:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 8; }
                     else { Database.BATTLE_CORE_SLEEP = 10; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8602,7 +8605,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 6:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 3; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
                     else { Database.BATTLE_CORE_SLEEP = 8; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8614,7 +8617,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 7:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 1; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 3; }
                     else { Database.BATTLE_CORE_SLEEP = 5; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8626,7 +8629,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case 8:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 1; }
                     else { Database.BATTLE_CORE_SLEEP = 3; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
@@ -8650,15 +8653,15 @@ namespace DungeonPlayer
                     }
                     break;
                 default:
-                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 5; }
-                    else { Database.BATTLE_CORE_SLEEP = 10; }
+                    if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) { Database.BATTLE_CORE_SLEEP = 0; }
+                    else { Database.BATTLE_CORE_SLEEP = 1; }
                     if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
                     {
-                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　１０";
+                        TimeSpeedLabel.text = Database.GUI_BATTLE_SPEED + "　９";
                     }
                     else
                     {
-                        TimeSpeedLabel.text = "TimeSpeed  10";
+                        TimeSpeedLabel.text = "TimeSpeed  9";
                     }
                     break;
             }
