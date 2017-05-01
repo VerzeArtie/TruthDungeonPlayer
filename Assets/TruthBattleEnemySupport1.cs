@@ -529,7 +529,7 @@ namespace DungeonPlayer
                             UpdateBattleText(player.FirstName + "は" + Database.COMMON_FROZEN_BALL + "を放ってきた！\r\n");
                             System.Threading.Thread.Sleep(1000);
                             GroundOne.PlaySoundEffect("IceNeedle");
-                            NowFrozen(player, target, 3);
+                            NowFrozen(player, target, 1);
                             item = new ItemBackPack(CurrentUsingItem);
                             player.DeleteBackPack(item);
                             break;
