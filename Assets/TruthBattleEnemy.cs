@@ -7646,7 +7646,7 @@ namespace DungeonPlayer
                 this.BattleEndFlag = true;
                 this.RunAwayFlag = true;
                 BattleEndPhase();
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 return;
             }
 
@@ -7685,7 +7685,7 @@ namespace DungeonPlayer
             this.BattleEndFlag = true;
             this.RunAwayFlag = true;
             BattleEndPhase();
-            System.Threading.Thread.Sleep(200);
+            //System.Threading.Thread.Sleep(200);
         }
 
         public void GameOverYes_Click()
@@ -8318,7 +8318,7 @@ namespace DungeonPlayer
                 if (GroundOne.DuelMode)
                 {
                     UpdateBattleText("アインはDUELに敗れた！\r\n");
-                    System.Threading.Thread.Sleep(200);
+                    //System.Threading.Thread.Sleep(200);
                     GroundOne.BattleResult = GroundOne.battleResult.Ignore;
                 }
                 else
@@ -8353,7 +8353,7 @@ namespace DungeonPlayer
                         UpdateBattleText("アイン達は逃げ出した。\r\n");
                     }
                 }
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 GroundOne.BattleResult = GroundOne.battleResult.Abort;
             }
             else
@@ -8369,7 +8369,7 @@ namespace DungeonPlayer
                 {
                     GroundOne.MC.ResurrectPlayer(1);
                 }
-                System.Threading.Thread.Sleep(100);
+                //System.Threading.Thread.Sleep(100);
 
                 // 敵撃墜カウントを数える。
                 GroundOne.WE2.KillingEnemy++;
