@@ -4633,9 +4633,10 @@ namespace DungeonPlayer
             int resultValue = rd.Next(1, 101);
             if (GroundOne.WE.CompleteSlayBoss5) resultValue = 100;
 
+            Debug.Log("vigilance: " + labelVigilance.text);
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
             {
-                stepCounter += 3;
+                stepCounter += 2;
             }
             else
             {
@@ -4644,13 +4645,17 @@ namespace DungeonPlayer
             int encountBorder = 0;
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
             {
-                if (GroundOne.WE.DungeonArea == 4)
+                if (GroundOne.WE.DungeonArea == 1)
                 {
-                    encountBorder = (int)(stepCounter / 20);
+                    encountBorder = (int)(stepCounter / 40);
+                }
+                else if (GroundOne.WE.DungeonArea == 4)
+                {
+                    encountBorder = (int)(stepCounter / 40);
                 }
                 else
                 {
-                    encountBorder = (int)(stepCounter / 10);
+                    encountBorder = (int)(stepCounter / 20);
                 }
             }
             else
