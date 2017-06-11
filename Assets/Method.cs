@@ -18,6 +18,30 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        public static string ConvertToEnglishItem(string itemName)
+        {
+            if (GroundOne.Language == GroundOne.GameLanguage.English)
+            {
+                return ItemBackPack.ConvertToEnglish(itemName);
+            }
+            else
+            {
+                return itemName;
+            }
+        }
+
+        public static string ConvertToOriginItem(string sender)
+        {
+            if (GroundOne.Language == GroundOne.GameLanguage.English)
+            {
+                return ItemBackPack.ConvertToOrigin(sender);
+            }
+            else
+            {
+                return sender;
+            }
+        }
+
         // キャラクターシャドウデータをキャラクター本体データに戻す。
         public static void CopyShadowToMain()
         {

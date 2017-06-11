@@ -8579,6 +8579,192 @@ namespace DungeonPlayer
         {
             EffectStatus = false;
         }
+
+        public static string ConvertToEnglish(string itemName)
+        {
+            if (itemName == Database.POOR_HINJAKU_ARMRING)            { return Database.EN_HINJAKU_ARMRING; }
+            if (itemName == Database.POOR_USUYOGORETA_FEATHER)        { return Database.EN_USUYOGORETA_FEATHER; }
+            if (itemName == Database.POOR_NON_BRIGHT_ORB)             { return Database.EN_NON_BRIGHT_ORB; }
+            if (itemName == Database.POOR_KUKEI_BANGLE)               { return Database.EN_KUKEI_BANGLE; }
+            if (itemName == Database.POOR_SUTERARESHI_EMBLEM)         { return Database.EN_SUTERARESHI_EMBLEM; }
+            if (itemName == Database.POOR_ARIFURETA_STATUE)           { return Database.EN_ARIFURETA_STATUE; }
+            if (itemName == Database.POOR_NON_ADJUST_BELT)            { return Database.EN_NON_ADJUST_BELT; }
+            if (itemName == Database.POOR_SIMPLE_EARRING)             { return Database.EN_SIMPLE_EARRING; }
+            if (itemName == Database.POOR_KATAKUZURESHITA_FINGERRING) { return Database.EN_KATAKUZURESHITA_FINGERRING; }
+            if (itemName == Database.POOR_IROASETA_CHOKER)            { return Database.EN_IROASETA_CHOKER; }
+            if (itemName == Database.POOR_YOREYORE_MANTLE)            { return Database.EN_YOREYORE_MANTLE; }
+            if (itemName == Database.POOR_NON_HINSEI_CROWN)           { return Database.EN_NON_HINSEI_CROWN; }
+            if (itemName == Database.POOR_TUKAIFURUSARETA_SWORD)      { return Database.EN_TUKAIFURUSARETA_SWORD; }
+            if (itemName == Database.POOR_TUKAINIKUI_LONGSWORD)       { return Database.EN_TUKAINIKUI_LONGSWORD; }
+            if (itemName == Database.POOR_GATAGAKITERU_ARMOR)         { return Database.EN_GATAGAKITERU_ARMOR; }
+            if (itemName == Database.POOR_FESTERING_ARMOR)            { return Database.EN_FESTERING_ARMOR; }
+            if (itemName == Database.POOR_HINSO_SHIELD)               { return Database.EN_HINSO_SHIELD; }
+            if (itemName == Database.POOR_MUDANIOOKII_SHIELD)         { return Database.EN_MUDANIOOKII_SHIELD; }
+
+            if (itemName == Database.COMMON_RED_PENDANT)              { return Database.EN_RED_PENDANT; }
+            if (itemName == Database.COMMON_BLUE_PENDANT)             { return Database.EN_BLUE_PENDANT; }
+            if (itemName == Database.COMMON_PURPLE_PENDANT)           { return Database.EN_PURPLE_PENDANT; }
+            if (itemName == Database.COMMON_GREEN_PENDANT)            { return Database.EN_GREEN_PENDANT; }
+            if (itemName == Database.COMMON_YELLOW_PENDANT)           { return Database.EN_YELLOW_PENDANT; }
+            if (itemName == Database.COMMON_SISSO_ARMRING)            { return Database.EN_SISSO_ARMRING; }
+            if (itemName == Database.COMMON_FINE_FEATHER)             { return Database.EN_FINE_FEATHER; }
+            if (itemName == Database.COMMON_KIREINA_ORB)              { return Database.EN_KIREINA_ORB; }
+            if (itemName == Database.COMMON_FIT_BANGLE)               { return Database.EN_FIT_BANGLE; }
+            if (itemName == Database.COMMON_PRISM_EMBLEM)             { return Database.EN_PRISM_EMBLEM; }
+            if (itemName == Database.COMMON_FINE_SWORD)               { return Database.EN_FINE_SWORD; }
+            if (itemName == Database.COMMON_TWEI_SWORD)               { return Database.EN_TWEI_SWORD; }
+            if (itemName == Database.COMMON_FINE_ARMOR)               { return Database.EN_FINE_ARMOR; }
+            if (itemName == Database.COMMON_GOTHIC_PLATE)             { return Database.EN_GOTHIC_PLATE; }
+            if (itemName == Database.COMMON_FINE_SHIELD)              { return Database.EN_FINE_SHIELD; }
+            if (itemName == Database.COMMON_GRIPPING_SHIELD)          { return Database.EN_GRIPPING_SHIELD; }
+
+            if (itemName == Database.RARE_JOUSITU_BLUE_POWERRING)     { return Database.EN_JOUSITU_BLUE_POWERRING; }
+            if (itemName == Database.RARE_KOUJOUSINYADORU_RED_ORB)    { return Database.EN_KOUJOUSINYADORU_RED_ORB; }
+            if (itemName == Database.RARE_MAGICIANS_MANTLE)           { return Database.EN_MAGICIANS_MANTLE; }
+            if (itemName == Database.RARE_BEATRUSH_BANGLE)            { return Database.EN_BEATRUSH_BANGLE; }
+            if (itemName == Database.RARE_AERO_BLADE)                 { return Database.EN_AERO_BLADE; }
+            
+            if (itemName == Database.POOR_OLD_USELESS_ROD)            { return Database.EN_OLD_USELESS_ROD; }
+            if (itemName == Database.POOR_KISSAKI_MARUI_TUME)         { return Database.EN_KISSAKI_MARUI_TUME; }
+            if (itemName == Database.POOR_BATTLE_HUMUKI_BUTOUGI)      { return Database.EN_BATTLE_HUMUKI_BUTOUGI; }
+            if (itemName == Database.POOR_SIZE_AWANAI_ROBE)           { return Database.EN_SIZE_AWANAI_ROBE; }
+            if (itemName == Database.POOR_NO_CONCEPT_RING)            { return Database.EN_NO_CONCEPT_RING; }
+            if (itemName == Database.POOR_HIGHCOLOR_MANTLE)           { return Database.EN_HIGHCOLOR_MANTLE; }
+            if (itemName == Database.POOR_EIGHT_PENDANT)              { return Database.EN_EIGHT_PENDANT; }
+            if (itemName == Database.POOR_GOJASU_BELT)                { return Database.EN_GOJASU_BELT; }
+            if (itemName == Database.POOR_EGARA_HUMEI_EMBLEM)         { return Database.EN_EGARA_HUMEI_EMBLEM; }
+            if (itemName == Database.POOR_HAYATOTIRI_ORB)             { return Database.EN_HAYATOTIRI_ORB; }
+
+            if (itemName == Database.COMMON_COPPER_RING_TORA)         { return Database.EN_COPPER_RING_TORA; }
+            if (itemName == Database.COMMON_COPPER_RING_IRUKA)        { return Database.EN_COPPER_RING_IRUKA; }
+            if (itemName == Database.COMMON_COPPER_RING_UMA)          { return Database.EN_COPPER_RING_UMA; }
+            if (itemName == Database.COMMON_COPPER_RING_KUMA)         { return Database.EN_COPPER_RING_KUMA; }
+            if (itemName == Database.COMMON_COPPER_RING_HAYABUSA)     { return Database.EN_COPPER_RING_HAYABUSA; }
+            if (itemName == Database.COMMON_COPPER_RING_TAKO)         { return Database.EN_COPPER_RING_TAKO; }
+            if (itemName == Database.COMMON_COPPER_RING_USAGI)        { return Database.EN_COPPER_RING_USAGI; }
+            if (itemName == Database.COMMON_COPPER_RING_KUMO)         { return Database.EN_COPPER_RING_KUMO; }
+            if (itemName == Database.COMMON_COPPER_RING_SHIKA)        { return Database.EN_COPPER_RING_SHIKA; }
+            if (itemName == Database.COMMON_COPPER_RING_ZOU)          { return Database.EN_COPPER_RING_ZOU; }
+            if (itemName == Database.COMMON_RED_AMULET)               { return Database.EN_RED_AMULET; }
+            if (itemName == Database.COMMON_BLUE_AMULET)              { return Database.EN_BLUE_AMULET; }
+            if (itemName == Database.COMMON_PURPLE_AMULET)            { return Database.EN_PURPLE_AMULET; }
+            if (itemName == Database.COMMON_GREEN_AMULET)             { return Database.EN_GREEN_AMULET; }
+            if (itemName == Database.COMMON_YELLOW_AMULET)            { return Database.EN_YELLOW_AMULET; }
+            if (itemName == Database.COMMON_SHARP_CLAW)               { return Database.EN_SHARP_CLAW; }
+            if (itemName == Database.COMMON_LIGHT_CLAW)               { return Database.EN_LIGHT_CLAW; }
+            if (itemName == Database.COMMON_WOOD_ROD)                 { return Database.EN_WOOD_ROD; }
+            if (itemName == Database.COMMON_SHORT_SWORD)              { return Database.EN_SHORT_SWORD; }
+            if (itemName == Database.COMMON_BASTARD_SWORD)            { return Database.EN_BASTARD_SWORD; }
+            if (itemName == Database.COMMON_LETHER_CLOTHING)          { return Database.EN_LETHER_CLOTHING; }
+            if (itemName == Database.COMMON_COTTON_ROBE)              { return Database.EN_COTTON_ROBE; }
+            if (itemName == Database.COMMON_COPPER_ARMOR)             { return Database.EN_COPPER_ARMOR; }
+            if (itemName == Database.COMMON_HEAVY_ARMOR)              { return Database.EN_HEAVY_ARMOR; }
+            if (itemName == Database.COMMON_IRON_SHIELD)              { return Database.EN_IRON_SHIELD; }
+
+            if (itemName == Database.RARE_SINTYUU_RING_KUROHEBI)      { return Database.EN_SINTYUU_RING_KUROHEBI; }
+            if (itemName == Database.RARE_SINTYUU_RING_HAKUTYOU)      { return Database.EN_SINTYUU_RING_HAKUTYOU; }
+            if (itemName == Database.RARE_SINTYUU_RING_AKAHYOU)       { return Database.EN_SINTYUU_RING_AKAHYOU; }
+            if (itemName == Database.RARE_ICE_SWORD)                  { return Database.EN_ICE_SWORD; }
+            if (itemName == Database.RARE_RISING_KNUCKLE)             { return Database.EN_RISING_KNUCKLE; }
+            if (itemName == Database.RARE_AUTUMN_ROD)                 { return Database.EN_AUTUMN_ROD; }
+            if (itemName == Database.RARE_SUN_BRAVE_ARMOR)            { return Database.EN_SUN_BRAVE_ARMOR; }
+            if (itemName == Database.RARE_ESMERALDA_SHIELD)           { return Database.EN_ESMERALDA_SHIELD; }
+                            
+            return itemName;
+        }
+
+        public static string ConvertToOrigin(string itemName)
+        {
+            if (itemName == Database.EN_HINJAKU_ARMRING)            { return Database.POOR_HINJAKU_ARMRING; }
+            if (itemName == Database.EN_USUYOGORETA_FEATHER)        { return Database.POOR_USUYOGORETA_FEATHER; }
+            if (itemName == Database.EN_NON_BRIGHT_ORB)             { return Database.POOR_NON_BRIGHT_ORB; }
+            if (itemName == Database.EN_KUKEI_BANGLE)               { return Database.POOR_KUKEI_BANGLE; }
+            if (itemName == Database.EN_SUTERARESHI_EMBLEM)         { return Database.POOR_SUTERARESHI_EMBLEM; }
+            if (itemName == Database.EN_ARIFURETA_STATUE)           { return Database.POOR_ARIFURETA_STATUE; }
+            if (itemName == Database.EN_NON_ADJUST_BELT)            { return Database.POOR_NON_ADJUST_BELT; }
+            if (itemName == Database.EN_SIMPLE_EARRING)             { return Database.POOR_SIMPLE_EARRING; }
+            if (itemName == Database.EN_KATAKUZURESHITA_FINGERRING) { return Database.POOR_KATAKUZURESHITA_FINGERRING; }
+            if (itemName == Database.EN_IROASETA_CHOKER)            { return Database.POOR_IROASETA_CHOKER; }
+            if (itemName == Database.EN_YOREYORE_MANTLE)            { return Database.POOR_YOREYORE_MANTLE; }
+            if (itemName == Database.EN_NON_HINSEI_CROWN)           { return Database.POOR_NON_HINSEI_CROWN; }
+            if (itemName == Database.EN_TUKAIFURUSARETA_SWORD)      { return Database.POOR_TUKAIFURUSARETA_SWORD; }
+            if (itemName == Database.EN_TUKAINIKUI_LONGSWORD)       { return Database.POOR_TUKAINIKUI_LONGSWORD; }
+            if (itemName == Database.EN_GATAGAKITERU_ARMOR)         { return Database.POOR_GATAGAKITERU_ARMOR; }
+            if (itemName == Database.EN_FESTERING_ARMOR)            { return Database.POOR_FESTERING_ARMOR; }
+            if (itemName == Database.EN_HINSO_SHIELD)               { return Database.POOR_HINSO_SHIELD; }
+            if (itemName == Database.EN_MUDANIOOKII_SHIELD)         { return Database.POOR_MUDANIOOKII_SHIELD; }
+
+            if (itemName == Database.EN_RED_PENDANT)                { return Database.COMMON_RED_PENDANT; }
+            if (itemName == Database.EN_BLUE_PENDANT)               { return Database.COMMON_BLUE_PENDANT; }
+            if (itemName == Database.EN_PURPLE_PENDANT)             { return Database.COMMON_PURPLE_PENDANT; }
+            if (itemName == Database.EN_GREEN_PENDANT)              { return Database.COMMON_GREEN_PENDANT; }
+            if (itemName == Database.EN_YELLOW_PENDANT)             { return Database.COMMON_YELLOW_PENDANT; }
+            if (itemName == Database.EN_SISSO_ARMRING)              { return Database.COMMON_SISSO_ARMRING; }
+            if (itemName == Database.EN_FINE_FEATHER)               { return Database.COMMON_FINE_FEATHER; }
+            if (itemName == Database.EN_KIREINA_ORB)                { return Database.COMMON_KIREINA_ORB; }
+            if (itemName == Database.EN_FIT_BANGLE)                 { return Database.COMMON_FIT_BANGLE; }
+            if (itemName == Database.EN_PRISM_EMBLEM)               { return Database.COMMON_PRISM_EMBLEM; }
+            if (itemName == Database.EN_FINE_SWORD)                 { return Database.COMMON_FINE_SWORD; }
+            if (itemName == Database.EN_TWEI_SWORD)                 { return Database.COMMON_TWEI_SWORD; }
+            if (itemName == Database.EN_FINE_ARMOR)                 { return Database.COMMON_FINE_ARMOR; }
+            if (itemName == Database.EN_GOTHIC_PLATE)               { return Database.COMMON_GOTHIC_PLATE; }
+            if (itemName == Database.EN_FINE_SHIELD)                { return Database.COMMON_FINE_SHIELD; }
+            if (itemName == Database.EN_GRIPPING_SHIELD)            { return Database.COMMON_GRIPPING_SHIELD; }
+
+            if (itemName == Database.EN_JOUSITU_BLUE_POWERRING)     { return Database.RARE_JOUSITU_BLUE_POWERRING; }
+            if (itemName == Database.EN_KOUJOUSINYADORU_RED_ORB)    { return Database.RARE_KOUJOUSINYADORU_RED_ORB; }
+            if (itemName == Database.EN_MAGICIANS_MANTLE)           { return Database.RARE_MAGICIANS_MANTLE; }
+            if (itemName == Database.EN_BEATRUSH_BANGLE)            { return Database.RARE_BEATRUSH_BANGLE; }
+            if (itemName == Database.EN_AERO_BLADE)                 { return Database.RARE_AERO_BLADE; }
+            
+            if (itemName == Database.EN_OLD_USELESS_ROD)            { return Database.POOR_OLD_USELESS_ROD; }
+            if (itemName == Database.EN_KISSAKI_MARUI_TUME)         { return Database.POOR_KISSAKI_MARUI_TUME; }
+            if (itemName == Database.EN_BATTLE_HUMUKI_BUTOUGI)      { return Database.POOR_BATTLE_HUMUKI_BUTOUGI; }
+            if (itemName == Database.EN_SIZE_AWANAI_ROBE)           { return Database.POOR_SIZE_AWANAI_ROBE; }
+            if (itemName == Database.EN_NO_CONCEPT_RING)            { return Database.POOR_NO_CONCEPT_RING; }
+            if (itemName == Database.EN_HIGHCOLOR_MANTLE)           { return Database.POOR_HIGHCOLOR_MANTLE; }
+            if (itemName == Database.EN_EIGHT_PENDANT)              { return Database.POOR_EIGHT_PENDANT; }
+            if (itemName == Database.EN_GOJASU_BELT)                { return Database.POOR_GOJASU_BELT; }
+            if (itemName == Database.EN_EGARA_HUMEI_EMBLEM)         { return Database.POOR_EGARA_HUMEI_EMBLEM; }
+            if (itemName == Database.EN_HAYATOTIRI_ORB)             { return Database.POOR_HAYATOTIRI_ORB; }
+
+            if (itemName == Database.EN_COPPER_RING_TORA)           { return Database.COMMON_COPPER_RING_TORA; }
+            if (itemName == Database.EN_COPPER_RING_IRUKA)          { return Database.COMMON_COPPER_RING_IRUKA; }
+            if (itemName == Database.EN_COPPER_RING_UMA)            { return Database.COMMON_COPPER_RING_UMA; }
+            if (itemName == Database.EN_COPPER_RING_KUMA)           { return Database.COMMON_COPPER_RING_KUMA; }
+            if (itemName == Database.EN_COPPER_RING_HAYABUSA)       { return Database.COMMON_COPPER_RING_HAYABUSA; }
+            if (itemName == Database.EN_COPPER_RING_TAKO)           { return Database.COMMON_COPPER_RING_TAKO; }
+            if (itemName == Database.EN_COPPER_RING_USAGI)          { return Database.COMMON_COPPER_RING_USAGI; }
+            if (itemName == Database.EN_COPPER_RING_KUMO)           { return Database.COMMON_COPPER_RING_KUMO; }
+            if (itemName == Database.EN_COPPER_RING_SHIKA)          { return Database.COMMON_COPPER_RING_SHIKA; }
+            if (itemName == Database.EN_COPPER_RING_ZOU)            { return Database.COMMON_COPPER_RING_ZOU; }
+            if (itemName == Database.EN_RED_AMULET)                 { return Database.COMMON_RED_AMULET; }
+            if (itemName == Database.EN_BLUE_AMULET)                { return Database.COMMON_BLUE_AMULET; }
+            if (itemName == Database.EN_PURPLE_AMULET)              { return Database.COMMON_PURPLE_AMULET; }
+            if (itemName == Database.EN_GREEN_AMULET)               { return Database.COMMON_GREEN_AMULET; }
+            if (itemName == Database.EN_YELLOW_AMULET)              { return Database.COMMON_YELLOW_AMULET; }
+            if (itemName == Database.EN_SHARP_CLAW)                 { return Database.COMMON_SHARP_CLAW; }
+            if (itemName == Database.EN_LIGHT_CLAW)                 { return Database.COMMON_LIGHT_CLAW; }
+            if (itemName == Database.EN_WOOD_ROD)                   { return Database.COMMON_WOOD_ROD; }
+            if (itemName == Database.EN_SHORT_SWORD)                { return Database.COMMON_SHORT_SWORD; }
+            if (itemName == Database.EN_BASTARD_SWORD)              { return Database.COMMON_BASTARD_SWORD; }
+            if (itemName == Database.EN_LETHER_CLOTHING)            { return Database.COMMON_LETHER_CLOTHING; }
+            if (itemName == Database.EN_COTTON_ROBE)                { return Database.COMMON_COTTON_ROBE; }
+            if (itemName == Database.EN_COPPER_ARMOR)               { return Database.COMMON_COPPER_ARMOR; }
+            if (itemName == Database.EN_HEAVY_ARMOR)                { return Database.COMMON_HEAVY_ARMOR; }
+            if (itemName == Database.EN_IRON_SHIELD)                { return Database.COMMON_IRON_SHIELD; }
+
+            if (itemName == Database.EN_SINTYUU_RING_KUROHEBI)      { return Database.RARE_SINTYUU_RING_KUROHEBI; }
+            if (itemName == Database.EN_SINTYUU_RING_HAKUTYOU)      { return Database.RARE_SINTYUU_RING_HAKUTYOU; }
+            if (itemName == Database.EN_SINTYUU_RING_AKAHYOU)       { return Database.RARE_SINTYUU_RING_AKAHYOU; }
+            if (itemName == Database.EN_ICE_SWORD)                  { return Database.RARE_ICE_SWORD; }
+            if (itemName == Database.EN_RISING_KNUCKLE)             { return Database.RARE_RISING_KNUCKLE; }
+            if (itemName == Database.EN_AUTUMN_ROD)                 { return Database.RARE_AUTUMN_ROD; }
+            if (itemName == Database.EN_SUN_BRAVE_ARMOR)            { return Database.RARE_SUN_BRAVE_ARMOR; }
+            if (itemName == Database.EN_ESMERALDA_SHIELD)           { return Database.RARE_ESMERALDA_SHIELD; }            
+            
+            return itemName;
+        }
     }
 
 
