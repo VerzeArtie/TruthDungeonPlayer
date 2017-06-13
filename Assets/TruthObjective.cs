@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEditor;
+using UnityEngine;
 
 namespace DungeonPlayer
 {
@@ -409,6 +411,156 @@ namespace DungeonPlayer
                 }
             }
             #endregion
+            #region "第三階層"
+            if (GroundOne.WE.TruthCompleteArea2)
+            {
+                if (!GroundOne.WE.Truth_CommunicationLana31)
+                {
+                    AddEvent(Objective3001, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationGanz31)
+                {
+                    AddEvent(Objective3002, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationHanna31)
+                {
+                    AddEvent(Objective3003, ref list);
+                }
+                if (!GroundOne.WE.Truth_CommunicationOl31)
+                {
+                    AddEvent(Objective3004, ref list);
+                }
+                if (GroundOne.WE.Truth_CommunicationLana31)
+                {
+                    if (!GroundOne.WE.Truth_CommunicationSinikia31)
+                    {
+                        AddEvent(Objective3005, ref list);
+                    }
+                }
+                if (GroundOne.WE.Truth_CommunicationOl31)
+                {
+                    if (!GroundOne.WE.AvailableItemBank)
+                    {
+                        AddEvent(Objective3006, ref list);
+                    }
+                }
+            }
+            // 第3階層開始
+            if (GroundOne.WE.Truth_CommunicationLana31 &&
+                GroundOne.WE.Truth_CommunicationGanz31 &&
+                GroundOne.WE.Truth_CommunicationHanna31 &&
+                GroundOne.WE.Truth_CommunicationOl31 &&
+                GroundOne.WE.Truth_CommunicationSinikia31 &&
+                GroundOne.WE.AvailableItemBank)
+            {
+                if (GroundOne.WE.dungeonEvent301 == false)
+                {
+                    AddEvent(Objective3007, ref list);
+                }
+            }
+            // 鏡の間の前の2つの看板を読む
+            if (GroundOne.WE.dungeonEvent301)
+            {
+                if (GroundOne.WE.dungeonEvent302_1 == false)
+                {
+                    AddEvent(Objective3008, ref list);
+                }
+                if (GroundOne.WE.dungeonEvent302_2 == false)
+                {
+                    AddEvent(Objective3009, ref list);
+                }
+            }
+
+            // 鏡の間【探求】を走破する
+            if (GroundOne.WE.dungeonEvent302_3)
+            {
+                if (GroundOne.WE.dungeonEvent305 == false)
+                {
+                    AddEvent(Objective3010, ref list);
+                }
+            }
+
+            // 鏡の間【探求】の先へと進む
+            if (GroundOne.WE.dungeonEvent305)
+            {
+                if (GroundOne.WE.dungeonEvent326 == false)
+                {
+                    AddEvent(Objective3011, ref list);
+                }
+            }
+            // 鏡の間【迷宮】　第一の看板を読む。
+            if (GroundOne.WE.dungeonEvent308)
+            {
+                if (GroundOne.WE.dungeonEvent314 == false)
+                {
+                    AddEvent(Objective3012, ref list);
+                }
+            }
+            // 鏡の間【迷宮】　第二の看板を読む。
+            if (GroundOne.WE.dungeonEvent309)
+            {
+                if (GroundOne.WE.dungeonEvent315 == false)
+                {
+                    AddEvent(Objective3013, ref list);
+                }
+            }
+            // 鏡の間【迷宮】　第三の看板を読む。
+            if (GroundOne.WE.dungeonEvent310)
+            {
+                if (GroundOne.WE.dungeonEvent316 == false)
+                {
+                    AddEvent(Objective3014, ref list);
+                }
+            }
+            // 鏡の間【迷宮】　第四の看板を読む。
+            if (GroundOne.WE.dungeonEvent311)
+            {
+                if (GroundOne.WE.dungeonEvent317 == false)
+                {
+                    AddEvent(Objective3015, ref list);
+                }
+            }
+            // 鏡の間【迷宮】を走破する
+            if (GroundOne.WE.dungeonEvent326)
+            {
+                if (GroundOne.WE.dungeonEvent318 == false)
+                {
+                    AddEvent(Objective3016, ref list);
+                }
+            }
+            // 絶対試練
+            if (GroundOne.WE.dungeonEvent318)
+            {
+                if (GroundOne.WE.dungeonEvent312 == false)
+                {
+                    if (GroundOne.WE2.TruthWillFail == false)
+                    {
+                        AddEvent(Objective3017, ref list);
+                    }
+                    else
+                    {
+                        AddEvent(Objective3017_2, ref list);
+                    }
+                }
+            }
+            // ボス
+            if (GroundOne.WE.dungeonEvent319)
+            {
+                if (GroundOne.WE.dungeonEvent3_SlayBoss == false)
+                {
+                    AddEvent(Objective3018, ref list);
+                }
+            }
+            // 第四階層到達
+            if (GroundOne.WE.dungeonEvent3_SlayBoss == false)
+            {
+                if (GroundOne.WE.TruthCommunicationCompArea3 == false)
+                {
+                    AddEvent(Objective3019, ref list);
+                }
+            }
+            #endregion
+
             return list;
         }
 
@@ -629,14 +781,101 @@ namespace DungeonPlayer
                 Remove(Objective2029, ref list);
             }
             #endregion
+            #region "第三階層"
+            if (GroundOne.WE.Truth_CommunicationLana31)
+            {
+                Remove(Objective3001, ref list);
+            }
+            if (GroundOne.WE.Truth_CommunicationGanz31)
+            {
+                Remove(Objective3002, ref list);
+            }
+            if (GroundOne.WE.Truth_CommunicationHanna31)
+            {
+                Remove(Objective3003, ref list);
+            }
+            if (GroundOne.WE.Truth_CommunicationOl31)
+            {
+                Remove(Objective3004, ref list);
+            }
+            if (GroundOne.WE.Truth_CommunicationSinikia31)
+            {
+                Remove(Objective3005, ref list);
+            }
+            if (GroundOne.WE.AvailableItemBank)
+            {
+                Remove(Objective3006, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent301)
+            {
+                Remove(Objective3007, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent302_1)
+            {
+                Remove(Objective3008, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent302_2)
+            {
+                Remove(Objective3009, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent305)
+            {
+                Remove(Objective3010, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent326)
+            {
+                Remove(Objective3011, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent314)
+            {
+                Remove(Objective3012, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent315)
+            {
+                Remove(Objective3013, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent316)
+            {
+                Remove(Objective3014, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent317)
+            {
+                Remove(Objective3015, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent318)
+            {
+                Remove(Objective3016, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent312)
+            {
+                Remove(Objective3017, ref list);
+                Remove(Objective3017_2, ref list);
+            }
+            if (GroundOne.WE.dungeonEvent3_SlayBoss)
+            {
+                Remove(Objective3018, ref list);
+            }
+            if (GroundOne.WE.TruthCommunicationCompArea3)
+            {
+                Remove(Objective3019, ref list);
+            }
+            #endregion
+
+            Debug.Log("refreshobj: " + list.Count.ToString());
+            for (int ii = 0; ii < list.Count; ii++)
+            {
+                Debug.Log("obj: " + list[ii]);
+            }
             return list;
         }
 
+        // RefreshObjectListでクエスト完了判定をする際、同一の文字列があると終わってないクエストが
+        // 完了とみなされてしまうため、Objectiveの文字列はすべて異なる文字にする必要がある。
         #region "第一階層"
         public const string Objective1001 = "ホームタウン：[幼なじみのラナと会話]";
         public const string Objective1002 = "ホームタウン：[天下一品　ガンツの武具店]";
         public const string Objective1003 = "ホームタウン：[ハンナのゆったり宿屋]";
-        public const string Objective1004 = "ダンジョン：[第一階層を探索する]";
+        public const string Objective1004 = "ダンジョン：[第一階層を探索開始]";
         public const string Objective1005 = "ホームタウン：[ラナと会話する]";
         public const string Objective1006 = "第一階層：[中央大広間] 入口扉を４つ解除]";
         public const string Objective1006_1 = "第一階層：[中央大広間] 扉１を解除";
@@ -656,11 +895,11 @@ namespace DungeonPlayer
         public const string Objective1013 = "第一階層：[【始まりの地】への到達]";
         #endregion
         #region "第二階層"
-        public const string Objective2001 = "ホームタウン：[ラナと会話]";
-        public const string Objective2002 = "ホームタウン：[ガンツと会話]";
-        public const string Objective2003 = "ホームタウン：[ハンナと会話]";
-        public const string Objective2004 = "ホームタウン：[オル・ランディスと会話]";
-        public const string Objective2005 = "ダンジョン：[第二階層を探索する]";
+        public const string Objective2001 = "ホームタウン：[ラナと会話(階層２)]";
+        public const string Objective2002 = "ホームタウン：[ガンツと会話(階層２)]";
+        public const string Objective2003 = "ホームタウン：[ハンナと会話(階層２)]";
+        public const string Objective2004 = "ホームタウン：[オル・ランディスと会話(階層２)]";
+        public const string Objective2005 = "ダンジョン：[第二階層を探索開始]";
         public const string Objective2006 = "第二階層：[知の部屋]を解く";
         public const string Objective2007 = "第二階層：[技の部屋]を解く";
         public const string Objective2008 = "第二階層：[心の部屋]を解く";
@@ -686,6 +925,29 @@ namespace DungeonPlayer
         public const string Objective2028 = "第二階層：[知の部屋]　『絶対試練：汝、答えを示せ』";
         public const string Objective2029 = "第二階層：[第三階層への到達]";
         //public const string Objective2030 = "第二階層：[への到達]";
+        #endregion
+        #region "第三階層"
+        public const string Objective3001 = "ホームタウン：[ラナと会話(階層３)]";
+        public const string Objective3002 = "ホームタウン：[ガンツと会話(階層３)]";
+        public const string Objective3003 = "ホームタウン：[ハンナと会話(階層３)]";
+        public const string Objective3004 = "ホームタウン：[オル・ランディスと会話(階層３)]";
+        public const string Objective3005 = "ホームタウン：[ゲート裏　転送装置へ向かう]";
+        public const string Objective3006 = "ホームタウン：[ハンナの荷物小屋]";
+        public const string Objective3007 = "ダンジョン：[第三階層を探索開始]";
+        public const string Objective3008 = "第三階層：[入口の看板を探索１]";
+        public const string Objective3009 = "第三階層：[入口の看板を探索２]";
+        public const string Objective3010 = "第三階層：[鏡の間【探求】を走破する]";
+        public const string Objective3011 = "第三階層：[鏡の間【探求】の先へ進む]";
+        public const string Objective3012 = "第三階層：[鏡の間【迷宮】　第一の看板を読む]";
+        public const string Objective3013 = "第三階層：[鏡の間【迷宮】　第二の看板を読む]";
+        public const string Objective3014 = "第三階層：[鏡の間【迷宮】　第三の看板を読む]";
+        public const string Objective3015 = "第三階層：[鏡の間【迷宮】　第四の看板を読む]";
+        public const string Objective3016 = "第三階層：[鏡の間【迷宮】を走破する]";
+        public const string Objective3017 = "第三階層：[鏡の間【迷宮】の先へ進む』";
+        public const string Objective3017_2 = "第三階層：『絶対試練：汝、答えを示せ』";
+        public const string Objective3018 = "第三階層：[ボス戦] 恐鳴主ハウリング・シーザー";
+        public const string Objective3019 = "第三階層：[第四階層への到達]";
+        //public const string Objective3020 = "第三階層：[鏡の間【創成】を走破する]";
         #endregion
 
         public static int GetObjectiveExp(string src)
@@ -740,6 +1002,13 @@ namespace DungeonPlayer
             if (src == Objective2027) { return 10000; }
             if (src == Objective2028) { return 12000; }
             if (src == Objective2029) { return 15000; }
+            if (src == Objective3001) { return  3000; }
+            if (src == Objective3002) { return  3000; }
+            if (src == Objective3003) { return  3000; }
+            if (src == Objective3004) { return  3000; }
+            if (src == Objective3005) { return  3000; }
+            if (src == Objective3006) { return  3000; }
+            if (src == Objective3007) { return  5000; }
             return 0;
         }
 
