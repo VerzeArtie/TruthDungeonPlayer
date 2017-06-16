@@ -339,8 +339,6 @@ namespace DungeonPlayer
 
         int activatePlayerNumber = 0;
         List<MainCharacter> ActiveList = new List<MainCharacter>();
-        private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
-
 
         int MAX_ITEM_GAUGE = 1000;
         int currentItemGauge = 0;
@@ -1351,6 +1349,7 @@ namespace DungeonPlayer
             }
             else
             {
+                System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
                 player.BattleBarPos = rand.Next(100, 400);
                 if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
                 {
@@ -1806,11 +1805,6 @@ namespace DungeonPlayer
             }
         }
         
-        const int CURRENT_ACTION_NUM = 9;
-        const int BASIC_ACTION_NUM = 8; // 基本行動
-        const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
-        const int MIX_ACTION_NUM_2 = 30; // [警告]暫定、本来Databaseに記載するべき
-        const int ARCHETYPE_NUM = 1; // アーキタイプ
         private void UpdateBattleCommandSetting(MainCharacter player, Button[] actionButton, Image[] sorceryMark)
         {
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
@@ -5723,24 +5717,27 @@ namespace DungeonPlayer
         }
         public void PointerDownPanel()
         {
-            if (this.ActionInstantMode == false)
+            if (GroundOne.WE.AvailableInstantCommand)
             {
-                this.ActionInstantMode = true;
-                InstantModePanel.SetActive(true);
-                if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null)
+                if (this.ActionInstantMode == false)
                 {
-                    GroundOne.MC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                    GroundOne.MC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
-                }
-                if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null)
-                {
-                    GroundOne.SC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                    GroundOne.SC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
-                }
-                if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null)
-                {
-                    GroundOne.TC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                    GroundOne.TC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                    this.ActionInstantMode = true;
+                    InstantModePanel.SetActive(true);
+                    if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null)
+                    {
+                        GroundOne.MC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
+                        GroundOne.MC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                    }
+                    if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null)
+                    {
+                        GroundOne.SC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
+                        GroundOne.SC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                    }
+                    if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null)
+                    {
+                        GroundOne.TC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
+                        GroundOne.TC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                    }
                 }
             }
         }

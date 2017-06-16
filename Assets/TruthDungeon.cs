@@ -4649,6 +4649,10 @@ namespace DungeonPlayer
                 {
                     encountBorder = (int)(stepCounter / 40);
                 }
+                else if (GroundOne.WE.DungeonArea == 3)
+                {
+                    encountBorder = (int)(stepCounter / 40);
+                }
                 else if (GroundOne.WE.DungeonArea == 4)
                 {
                     encountBorder = (int)(stepCounter / 40);
