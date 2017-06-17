@@ -551,7 +551,7 @@ namespace DungeonPlayer
                 }
             }
             // 第四階層到達
-            if (GroundOne.WE.dungeonEvent3_SlayBoss == false)
+            if (GroundOne.WE.dungeonEvent3_SlayBoss)
             {
                 if (GroundOne.WE.TruthCommunicationCompArea3 == false)
                 {
