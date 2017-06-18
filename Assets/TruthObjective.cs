@@ -542,12 +542,20 @@ namespace DungeonPlayer
                     }
                 }
             }
+            // 絶対試練の先へ進む
+            if (GroundOne.WE.dungeonEvent312)
+            {
+                if (GroundOne.WE.dungeonEvent319 == false)
+                {
+                    AddEvent(Objective3018, ref list);
+                }
+            }
             // ボス
             if (GroundOne.WE.dungeonEvent319)
             {
                 if (GroundOne.WE.dungeonEvent3_SlayBoss == false)
                 {
-                    AddEvent(Objective3018, ref list);
+                    AddEvent(Objective3019, ref list);
                 }
             }
             // 第四階層到達
@@ -555,7 +563,7 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.TruthCommunicationCompArea3 == false)
                 {
-                    AddEvent(Objective3019, ref list);
+                    AddEvent(Objective3020, ref list);
                 }
             }
             #endregion
@@ -850,21 +858,20 @@ namespace DungeonPlayer
                 Remove(Objective3017, ref list);
                 Remove(Objective3017_2, ref list);
             }
-            if (GroundOne.WE.dungeonEvent3_SlayBoss)
+            if (GroundOne.WE.dungeonEvent319)
             {
                 Remove(Objective3018, ref list);
             }
-            if (GroundOne.WE.TruthCommunicationCompArea3)
+            if (GroundOne.WE.dungeonEvent3_SlayBoss)
             {
                 Remove(Objective3019, ref list);
             }
+            if (GroundOne.WE.TruthCommunicationCompArea3)
+            {
+                Remove(Objective3020, ref list);
+            }
             #endregion
 
-            Debug.Log("refreshobj: " + list.Count.ToString());
-            for (int ii = 0; ii < list.Count; ii++)
-            {
-                Debug.Log("obj: " + list[ii]);
-            }
             return list;
         }
 
@@ -937,16 +944,17 @@ namespace DungeonPlayer
         public const string Objective3009 = "第三階層：[入口の看板を探索２]";
         public const string Objective3010 = "第三階層：[鏡の間【探求】を走破する]";
         public const string Objective3011 = "第三階層：[鏡の間【探求】の先へ進む]";
-        public const string Objective3012 = "第三階層：[鏡の間【迷宮】　第一の看板を読む]";
-        public const string Objective3013 = "第三階層：[鏡の間【迷宮】　第二の看板を読む]";
-        public const string Objective3014 = "第三階層：[鏡の間【迷宮】　第三の看板を読む]";
-        public const string Objective3015 = "第三階層：[鏡の間【迷宮】　第四の看板を読む]";
+        public const string Objective3012 = "第三階層：[鏡の間【迷宮】　第一の選択を決定する]";
+        public const string Objective3013 = "第三階層：[鏡の間【迷宮】　第二の選択を決定する]";
+        public const string Objective3014 = "第三階層：[鏡の間【迷宮】　第三の選択を決定する]";
+        public const string Objective3015 = "第三階層：[鏡の間【迷宮】　第四の選択を決定する]";
         public const string Objective3016 = "第三階層：[鏡の間【迷宮】を走破する]";
         public const string Objective3017 = "第三階層：[鏡の間【迷宮】の先へ進む』";
         public const string Objective3017_2 = "第三階層：『絶対試練：汝、答えを示せ』";
-        public const string Objective3018 = "第三階層：[ボス戦] 恐鳴主ハウリング・シーザー";
-        public const string Objective3019 = "第三階層：[第四階層への到達]";
-        //public const string Objective3020 = "第三階層：[鏡の間【創成】を走破する]";
+        public const string Objective3018 = "第三階層：[鏡の間『絶対試練』の先へ進む]";
+        public const string Objective3019 = "第三階層：[ボス戦] 恐鳴主ハウリング・シーザー";
+        public const string Objective3020 = "第三階層：[第四階層への到達]";
+        //public const string Objective3021 = "第三階層：[鏡の間【創成】を走破する]";
         #endregion
 
         public static int GetObjectiveExp(string src)
@@ -1008,6 +1016,20 @@ namespace DungeonPlayer
             if (src == Objective3005) { return  3000; }
             if (src == Objective3006) { return  3000; }
             if (src == Objective3007) { return  5000; }
+            if (src == Objective3008) { return  5000; }
+            if (src == Objective3009) { return  5000; }
+            if (src == Objective3010) { return 20000; }
+            if (src == Objective3011) { return 22000; }
+            if (src == Objective3012) { return 24000; }
+            if (src == Objective3013) { return 26000; }
+            if (src == Objective3014) { return 28000; }
+            if (src == Objective3015) { return 30000; }
+            if (src == Objective3016) { return 32000; }
+            if (src == Objective3017) { return 34000; }
+            if (src == Objective3017_2) { return 34000; }
+            if (src == Objective3018) { return 35000; }
+            if (src == Objective3019) { return 50000; }
+            if (src == Objective3020) { return 55000; }
             return 0;
         }
 

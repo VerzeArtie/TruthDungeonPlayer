@@ -20316,6 +20316,22 @@ namespace DungeonPlayer
                     }
                     GroundOne.PlaySoundEffect(Database.SOUND_OBJECTIVE_COMP);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.ObjectiveRefreshCheck)
+                {
+                    List<string> removeList = TruthObjective.RefreshObjectList();
+                    if (removeList.Count > 0)
+                    {
+                        for (int ii = 0; ii < removeList.Count; ii++)
+                        {
+                            UpdateTxtObjective();
+                            systemMessageText.text = removeList[ii] + "を完了しました！\r\n";
+                            int exp = TruthObjective.GetObjectiveExp(removeList[ii]);
+                            systemMessageText.text += exp + "の経験値を獲得";
+                            groupSystemMessage.SetActive(true);
+                        }
+                        return;
+                    }
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)

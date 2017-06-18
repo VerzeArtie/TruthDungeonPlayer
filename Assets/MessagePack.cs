@@ -15,6 +15,7 @@ namespace DungeonPlayer
             None,
             ObjectiveAdd,
             ObjectiveRemove,
+            ObjectiveRefreshCheck,
             UpdateLocationTop,
             UpdateLocationLeft,
             UpdateLocationRight,
@@ -10444,6 +10445,8 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
 
                 messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ObjectiveRefreshCheck);
 
                 messageList.Add("アイン：やった！扉が開いたぜ！！"); eventList.Add(ActionEvent.None);
 
