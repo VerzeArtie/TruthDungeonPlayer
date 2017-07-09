@@ -565,6 +565,79 @@ namespace DungeonPlayer
             SceneDimension.CallTruthStatusPlayer(scene, true, itemName, cannotTrash);
         }
 
+        public static void UpdateItemImage(ItemBackPack item, Image src)
+        {
+            Texture2D current = Resources.Load<Texture2D>("ItemIcon");
+            int BASE_SIZE = 49;
+            int locX = 0;
+            int locY = 0;
+            if ((item.Type == ItemBackPack.ItemType.Weapon_Heavy) ||
+                (item.Type == ItemBackPack.ItemType.Weapon_Middle))
+            {
+                locX = 0; locY = 2;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Weapon_TwoHand)
+            {
+                locX = 1; locY = 2;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Weapon_Light)
+            {
+                locX = 2; locY = 2;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Weapon_Rod)
+            {
+                locX = 3; locY = 2;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Shield)
+            {
+                locX = 0; locY = 1;
+            }
+            else if ((item.Type == ItemBackPack.ItemType.Armor_Heavy) ||
+                        (item.Type == ItemBackPack.ItemType.Armor_Middle))
+            {
+                locX = 1; locY = 1;
+            }
+            else if ((item.Type == ItemBackPack.ItemType.Armor_Light))
+            {
+                locX = 2; locY = 1;
+            }
+            //else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Robe))
+            //{
+            //    locX = 3; locY = 1;
+            //}
+            else if ((item.Type == ItemBackPack.ItemType.Material_Equip) ||
+                        (item.Type == ItemBackPack.ItemType.Material_Food) ||
+                        (item.Type == ItemBackPack.ItemType.Material_Potion))
+            {
+                locX = 0; locY = 0;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Use_Potion)
+            {
+                locX = 1; locY = 0;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Useless)
+            {
+                locX = 2; locY = 0;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Accessory)
+            {
+                locX = 0; locY = 3;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Use_BlueOrb)
+            {
+                locX = 1; locY = 3;
+            }
+            else if (item.Type == ItemBackPack.ItemType.Use_Item)
+            {
+                locX = 2; locY = 3;
+            }
+            else
+            {
+                locX = 2; locY = 0; // same Useless
+            }
+            src.sprite = Sprite.Create(current, new Rect(BASE_SIZE * locX, BASE_SIZE * locY, BASE_SIZE, BASE_SIZE), new Vector2(0, 0));
+        }
+
         public static void UpdateBackPackLabel(MainCharacter target, GameObject[] back_Backpack, Text[] backpack, Text[] backpackStack, Image[] backpackIcon)
         {
             ItemBackPack[] backpackData = target.GetBackPackInfo();
@@ -575,14 +648,14 @@ namespace DungeonPlayer
                     if (currentNumber < backpack.Length ) { backpack[currentNumber].text = ""; }
                     if (currentNumber < backpackStack.Length) { backpackStack[currentNumber].text = ""; }
                     if (currentNumber < backpackIcon.Length) { backpackIcon[currentNumber].sprite = null; }
-                    if (currentNumber < backpack.Length) { Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]); }
+                    if (currentNumber < backpack.Length) { Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber], null); }
                     //back_Backpack[currentNumber].SetActive(false);
                 }
                 else
                 {
                     back_Backpack[currentNumber].SetActive(true);
                     backpack[currentNumber].text = backpackData[currentNumber].Name;
-                    Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber]);
+                    Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber], null);
                     backpackStack[currentNumber].text = "x" + backpackData[currentNumber].StackValue.ToString();
 
                     Texture2D current = Resources.Load<Texture2D>("ItemIcon");
@@ -670,7 +743,7 @@ namespace DungeonPlayer
         }
         
         // panel(gameobject)の色をレアに応じて変更
-        public static void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2)
+        public static void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2, Text target3)
         {
             if (item == null)
             {
@@ -684,22 +757,27 @@ namespace DungeonPlayer
                 case ItemBackPack.RareLevel.Poor:
                     target1.color = Color.white;
                     target2.gameObject.GetComponent<Image>().color = Color.gray;
+                    if (target3 != null) { target3.color = Color.white; }
                     break;
                 case ItemBackPack.RareLevel.Common:
-                    target1.color = Color.white;
+                    target1.color = Color.black;
                     target2.gameObject.GetComponent<Image>().color = UnityColor.CommonGreen;
+                    if (target3 != null) { target3.color = Color.black; }
                     break;
                 case ItemBackPack.RareLevel.Rare:
                     target1.color = Color.white;
                     target2.gameObject.GetComponent<Image>().color = UnityColor.DarkBlue;
+                    if (target3 != null) { target3.color = Color.white; }
                     break;
                 case ItemBackPack.RareLevel.Epic:
                     target1.color = Color.white;
                     target2.gameObject.GetComponent<Image>().color = UnityColor.EpicPurple;
+                    if (target3 != null) { target3.color = Color.white; }
                     break;
                 case ItemBackPack.RareLevel.Legendary: // 後編追加
                     target1.color = Color.white;
                     target2.gameObject.GetComponent<Image>().color = UnityColor.OrangeRed;
+                    if (target3 != null) { target3.color = Color.white; }
                     break;
             }
         }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 namespace DungeonPlayer
 {
@@ -32,6 +33,23 @@ namespace DungeonPlayer
             vendor = objLana.AddComponent<MainCharacter>();
             vendor.FullName = "ラナ・アミリア";
             vendor.FirstName = "ラナ";
+
+            // GUI
+            for (int ii = 0; ii < vendorItemList.Length; ii++)
+            {
+                if (vendorItemList[ii] != null)
+                {
+                    vendorItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                }
+            }
+            for (int ii = 0; ii < playerItemList.Length; ii++)
+            {
+                if (playerItemList[ii] != null)
+                {
+                    playerItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                }
+            }
+            GroupSell.SetActive(false);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
             {
@@ -115,7 +133,6 @@ namespace DungeonPlayer
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 
             UpdateBackPackLabelInterface(GroundOne.MC);
-            UpdateEquipment(GroundOne.MC);
         }
 
         protected override void CheckAndCallTruthItemDesc()
@@ -285,8 +302,10 @@ namespace DungeonPlayer
             Debug.Log("potion setupavailablelist");
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
-                equipList[ii].text = "";
-                costList[ii].text = "";
+                vendorList[ii].text = "";
+                vendorCostList[ii].text = "";
+                vendorItemList[ii].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                vendorImageList[ii].sprite = null;
             }
 
             ItemBackPack item = null;
@@ -295,62 +314,62 @@ namespace DungeonPlayer
                 case 1:
                     int ii = 0;
                     item = new ItemBackPack(Database.POOR_SMALL_RED_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.POOR_SMALL_BLUE_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.POOR_SMALL_GREEN_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.POOR_POTION_CURE_POISON);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_11)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_NATURALIZE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_12)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_MAGIC_SEAL);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_13)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_ATTACK_SEAL);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_14)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_CURE_BLIND);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_15)
                     {
                         item = new ItemBackPack(Database.RARE_POTION_MOSSGREEN_DREAM);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -358,46 +377,46 @@ namespace DungeonPlayer
                 case 2:
                     ii = 0;
                     item = new ItemBackPack(Database.COMMON_NORMAL_RED_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_NORMAL_BLUE_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_NORMAL_GREEN_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_RESIST_POISON);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_21)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_OVER_GROWTH);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_22)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_RAINBOW_IMPACT);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_23)
                     {
                         item = new ItemBackPack(Database.COMMON_POTION_BLACK_GAST);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -405,41 +424,41 @@ namespace DungeonPlayer
                 case 3:
                     ii = 0;
                     item = new ItemBackPack(Database.COMMON_LARGE_RED_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_LARGE_BLUE_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_LARGE_GREEN_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_31)
                     {
                         item = new ItemBackPack(Database.COMMON_FAIRY_BREATH);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_32)
                     {
                         item = new ItemBackPack(Database.COMMON_HEART_ACCELERATION);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_33)
                     {
                         item = new ItemBackPack(Database.RARE_SAGE_POTION_MINI);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -447,97 +466,97 @@ namespace DungeonPlayer
                 case 4:
                     ii = 0;
                     item = new ItemBackPack(Database.COMMON_HUGE_RED_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_HUGE_BLUE_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_HUGE_GREEN_POTION);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_41)
                     {
                         item = new ItemBackPack(Database.RARE_POWER_SURGE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_42)
                     {
                         item = new ItemBackPack(Database.RARE_ELEMENTAL_SEAL);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_43)
                     {
                         item = new ItemBackPack(Database.RARE_GENSEI_MAGIC_BOTTLE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_44)
                     {
                         item = new ItemBackPack(Database.RARE_GENSEI_TAIMA_KUSURI);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_45)
                     {
                         item = new ItemBackPack(Database.RARE_MIND_ILLUSION);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_46)
                     {
                         item = new ItemBackPack(Database.RARE_SHINING_AETHER);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_47)
                     {
                         item = new ItemBackPack(Database.RARE_ZETTAI_STAMINAUP);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_48)
                     {
                         item = new ItemBackPack(Database.RARE_BLACK_ELIXIR);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_49)
                     {
                         item = new ItemBackPack(Database.RARE_ZEPHER_BREATH);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.PotionAvailable_410)
                     {
                         item = new ItemBackPack(Database.RARE_COLORLESS_ANTIDOTE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -545,18 +564,19 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
-                if (equipList[ii].text != "")
+                if (vendorList[ii].text != "")
                 {
-                    ItemBackPack temp4 = new ItemBackPack(equipList[ii].text);
-                    costList[ii].text = temp4.Cost.ToString();
-                    backEquip[ii].SetActive(true);
-                    backCost[ii].SetActive(true);
+                    ItemBackPack temp4 = new ItemBackPack(vendorList[ii].text);
+                    vendorCostList[ii].text = temp4.Cost.ToString();
+                    vendorList[ii].gameObject.SetActive(true);
+                    vendorItemList[ii].SetActive(true);
                 }
                 else
                 {
-                    costList[ii].text = "";
-                    backEquip[ii].SetActive(false);
-                    backCost[ii].SetActive(false);
+                    vendorList[ii].text = "";
+                    vendorCostList[ii].text = "";
+                    vendorItemList[ii].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    vendorImageList[ii].sprite = null;
                 }
             }
         }
@@ -564,7 +584,7 @@ namespace DungeonPlayer
         protected override void OnLoadMessage()
         {
             mainMessage.text = this.vendor.GetCharacterSentence(3013);
-            yesnoMessage.text = this.vendor.GetCharacterSentence(3013);
+            //yesnoMessage.text = this.vendor.GetCharacterSentence(3013);
         }
 
         protected override void MessageExchange1(ItemBackPack backpackData, MainCharacter player)
@@ -604,7 +624,7 @@ namespace DungeonPlayer
 
         protected override void MessageExchange8(ItemBackPack backpackData)
         {
-            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3015), backpackData.Name, backpackData.Cost.ToString());
+            DescriptionText2.text = String.Format(vendor.GetCharacterSentence(3015), backpackData.Name, backpackData.Cost.ToString());
         }            
     }
 }

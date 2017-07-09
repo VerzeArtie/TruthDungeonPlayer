@@ -945,7 +945,7 @@ public class TruthSelectCharacter : MotherForm
         {
             this.weapon.text = "";
         }
-        Method.UpdateRareColor(chara.MainWeapon, weapon, back_weapon);
+        Method.UpdateRareColor(chara.MainWeapon, weapon, back_weapon, null);
 
         if (chara.SubWeapon != null)
         {
@@ -955,7 +955,7 @@ public class TruthSelectCharacter : MotherForm
         {
             this.subWeapon.text = "";
         }
-        Method.UpdateRareColor(chara.SubWeapon, subWeapon, back_subWeapon);
+        Method.UpdateRareColor(chara.SubWeapon, subWeapon, back_subWeapon, null);
 
         if (chara.MainArmor != null)
         {
@@ -965,7 +965,7 @@ public class TruthSelectCharacter : MotherForm
         {
             this.armor.text = "";
         }
-        Method.UpdateRareColor(chara.MainArmor, armor, back_armor);
+        Method.UpdateRareColor(chara.MainArmor, armor, back_armor, null);
 
         if (chara.Accessory != null)
         {
@@ -975,7 +975,7 @@ public class TruthSelectCharacter : MotherForm
         {
             this.accessory.text = "";
         }
-        Method.UpdateRareColor(chara.Accessory, accessory, back_accessory);
+        Method.UpdateRareColor(chara.Accessory, accessory, back_accessory, null);
 
         if (chara.Accessory2 != null)
         {
@@ -985,7 +985,7 @@ public class TruthSelectCharacter : MotherForm
         {
             this.accessory2.text = "";
         }
-        Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2);
+        Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2, null);
     }
 
     private void RefreshPartyMembersBattleStatus(MainCharacter player)

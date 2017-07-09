@@ -12,10 +12,11 @@ namespace DungeonPlayer
 {
     public partial class TruthEquipmentShop : MotherForm
     {
-        public GameObject filter;
-        public Text DescriptionText;
-        public GameObject groupYesNoMessage;
-        public Text yesnoMessage;
+        public GameObject GroupBuy;
+        public GameObject GroupSell;
+        public GameObject ArrowTop;
+        public GameObject ArrowDown;
+        public Text ExchangeBuySell;
         public Button btnLevel1;
         public Button btnLevel2;
         public Button btnLevel3;
@@ -26,30 +27,24 @@ namespace DungeonPlayer
         public Button btnChara3;
         public Text mainMessage;
         public Text labelTitle;
-        public Text[] equipList;
-        public Text[] costList;
-        public Text[] backpackList;
-        public Text[] backpackStack;
-        public GameObject groupVendorItem;
-        public GameObject[] backEquip;
-        public GameObject[] backCost;
-        public GameObject groupBackPack;
-        public GameObject[] back_backpackList;
-        public GameObject[] back_backpackStack;
+        public GameObject groupVendorList;
+        public GameObject groupGanz;
+        public GameObject groupSellList;
+        public GameObject groupSellGanz;
+        public GameObject characterImage;
+        public GameObject[] vendorItemList;
+        public Text[] vendorList;
+        public Text[] vendorCostList;
+        public Image[] vendorImageList;
+        public Text DescriptionText;
+        public Text DescriptionText2;
+        public GameObject[] playerItemList;
+        public Text[] playerBackpackList;
+        public Text[] playerStackList;
+        public Image[] playerImageList;
+        public Text DescriptionSell;
+        public Text DescriptionSell2;
         public Text labelGold;
-        public Button buttonYes;
-        public Button buttonNo;
-        public GameObject groupCurrentEquip;
-        public GameObject backMainWeapon;
-        public GameObject backSubWeapon;
-        public GameObject backArmor;
-        public GameObject backAccessory1;
-        public GameObject backAccessory2;
-        public Text txtMainWeapon;
-        public Text txtSubWeapon;
-        public Text txtArmor;
-        public Text txtAccessory1;
-        public Text txtAccessory2;
         public Text lblTitle;
         public Text lblItemList;
         public Text lblCost;
@@ -59,7 +54,6 @@ namespace DungeonPlayer
 
         private ItemBackPack currentSelectItem = null;
         private ItemBackPack currentSelectItem2 = null;
-        private ItemBackPack currentSelectItem3 = null;
 
         protected int MAX_EQUIPLIST = 25; // 後編編集
 
@@ -67,21 +61,40 @@ namespace DungeonPlayer
         protected MainCharacter currentPlayer;
 
         private bool firstAction = false;
+        private int MoveToSellView = 0;
+        private int MoveToBuyView = 0;
 
         public virtual void OnInitialize()
         {
-            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
-            {
-                lblTitle.text = Database.GUI_EQUIPSHOP_TITLE;
-                lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
-                lblCost.text = Database.GUI_EQUIPSHOP_COST;
-                lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
-                lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
-                lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
-            }
+            //if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            //{
+            //    lblTitle.text = Database.GUI_EQUIPSHOP_TITLE;
+            //    lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
+            //    lblCost.text = Database.GUI_EQUIPSHOP_COST;
+            //    lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
+            //    lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+            //    lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
+            //}
             GameObject objGanz = new GameObject("objGanz");
             vendor = objGanz.AddComponent<MainCharacter>();
             vendor.FirstName = "ガンツ";
+
+            // GUI
+            for (int ii = 0; ii < vendorItemList.Length; ii++)
+            {
+                if (vendorItemList[ii] != null)
+                {
+                    vendorItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                }
+            }
+            for (int ii = 0; ii < playerItemList.Length; ii++)
+            {
+                if (playerItemList[ii] != null)
+                {
+                    playerItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                }
+            }
+            GroupSell.SetActive(false);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
             {
@@ -99,7 +112,7 @@ namespace DungeonPlayer
             {
                 btnChara1.gameObject.SetActive(true);
                 btnChara2.gameObject.SetActive(true);
-                btnChara3.gameObject.SetActive(false); // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。
+                btnChara3.gameObject.SetActive(true); // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。 （2017/07/04 復活)
             }
 
             if (/*GroundOne.WE.AvailableEquipShop && */!GroundOne.WE.AvailableEquipShop2)
@@ -154,7 +167,6 @@ namespace DungeonPlayer
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 
             UpdateBackPackLabelInterface(GroundOne.MC);
-            UpdateEquipment(GroundOne.MC);
         }
 
         public override void Start()
@@ -176,6 +188,95 @@ namespace DungeonPlayer
                 CheckAndCallTruthItemDesc();
             }
 
+            if (this.MoveToSellView > 0)
+            {
+                Debug.Log("update MoveToSellView" + MoveToSellView.ToString());
+                int speed = 50;
+                if (this.MoveToSellView > 100) { speed = 80; }
+                else if (this.MoveToSellView > 50) { speed = 40; }
+                else { speed = 5; }
+                UpdatePositionX(characterImage, -speed);
+                this.MoveToSellView -= speed;
+                if (this.MoveToSellView <= 0) 
+                {
+                    this.MoveToSellView = 0;
+                    this.ExchangeBuySell.text = "<<\r\n購入\r\n画面\r\n<<";
+                    this.currentSelectItem = null;
+                    this.currentSelectItem2 = null;
+                    OnLoadMessage();
+                    GroupBuy.SetActive(false);
+                    GroupSell.SetActive(true);
+                }
+            }
+            else if (this.MoveToBuyView > 0)
+            {
+                Debug.Log("update MoveToBuyView1 : " + MoveToBuyView.ToString());
+                int speed = 50;
+                if (this.MoveToBuyView > 100) { speed = 80; }
+                else if (this.MoveToBuyView > 50) { speed = 40; }
+                else { speed = 5; }
+                UpdatePositionX(characterImage, speed);
+                Debug.Log("update MoveToBuyView2 : " + MoveToBuyView.ToString());
+                Debug.Log("update speed : " + speed.ToString());
+                this.MoveToBuyView -= speed;
+                Debug.Log("update MoveToBuyView3 : " + this.MoveToBuyView.ToString());
+                if (this.MoveToBuyView <= 0)
+                {
+                    Debug.Log("movetobuy end: " + this.MoveToBuyView.ToString());
+                    this.MoveToBuyView = 0;
+                    this.ExchangeBuySell.text = ">>\r\n売却\r\n画面\r\n>>";
+                    this.currentSelectItem = null;
+                    this.currentSelectItem2 = null;
+                    OnLoadMessage();
+                    GroupBuy.SetActive(true);
+                    GroupSell.SetActive(false);
+                }
+            }
+            else if (this.ScrollPosition > 0)
+            {
+                int speed = 20;
+                if (this.ScrollPosition > 60) { speed = 40; }
+                if (this.ScrollPosition > 100) { speed = 80; }
+                for (int ii = 0; ii < vendorItemList.Length; ii++)
+                {
+                    UpdatePositionY(vendorItemList[ii], -speed);
+                }
+                this.ScrollPosition -= speed;
+            }
+            else if (this.ScrollPosition < 0)
+            {
+                int speed = 20;
+                if (this.ScrollPosition < -60) { speed = 40; }
+                if (this.ScrollPosition < -100) { speed = 80; }
+                for (int ii = 0; ii < vendorItemList.Length; ii++)
+                {
+                    UpdatePositionY(vendorItemList[ii], speed);
+                }
+                this.ScrollPosition += speed;
+            }
+            else if (this.ScrollSellPosition > 0)
+            {
+                int speed = 20;
+                if (this.ScrollSellPosition > 60) { speed = 40; }
+                if (this.ScrollSellPosition > 100) { speed = 80; }
+                for (int ii = 0; ii < playerItemList.Length; ii++)
+                {
+                    UpdatePositionY(playerItemList[ii], -speed);
+                }
+                this.ScrollSellPosition -= speed;
+            }
+            else if (this.ScrollSellPosition < 0)
+            {
+                int speed = 20;
+                if (this.ScrollSellPosition < -60) { speed = 40; }
+                if (this.ScrollSellPosition < -100) { speed = 80; }
+                for (int ii = 0; ii < playerItemList.Length; ii++)
+                {
+                    UpdatePositionY(playerItemList[ii], speed);
+                }
+                this.ScrollSellPosition += speed;
+            }
+            
             if (Input.GetKey(KeyCode.Escape))
             {
                 nowClose = true;
@@ -195,6 +296,19 @@ namespace DungeonPlayer
                 SceneDimension.Back(this);
             }
             #endregion
+        }
+
+        private void UpdatePositionX(GameObject obj, int moveX)
+        {
+            obj.transform.localPosition = new Vector3(obj.transform.localPosition.x + moveX,
+                                               obj.transform.localPosition.y,
+                                               obj.transform.localPosition.z);
+        }
+        private void UpdatePositionY(GameObject obj, int moveY)
+        {
+            obj.transform.localPosition = new Vector3(obj.transform.localPosition.x,
+                                               obj.transform.localPosition.y + moveY,
+                                               obj.transform.localPosition.z);
         }
 
         protected virtual void CheckAndCallTruthItemDesc()
@@ -410,72 +524,21 @@ namespace DungeonPlayer
 
                 if (temp[ii + baseNumber] != null)
                 {
-                    backpackList[ii].text = temp[ii + baseNumber].Name;
-                    Method.UpdateRareColor(temp[ii + baseNumber], backpackList[ii], back_backpackList[ii]);
-                    backpackStack[ii].text = "x" + temp[ii + baseNumber].StackValue.ToString();
+                    playerBackpackList[ii].text =  temp[ii + baseNumber].Name;
+                    playerStackList[ii].text = "x" + temp[ii + baseNumber].StackValue.ToString();
+                    Method.UpdateItemImage(temp[ii + baseNumber], playerImageList[ii]);
+                    Method.UpdateRareColor(temp[ii + baseNumber], playerBackpackList[ii], playerItemList[ii], playerStackList[ii]);
                 }
                 else
                 {
-                    backpackList[ii].text = "";
-                    backpackStack[ii].text = "";
-                    back_backpackList[ii].gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
-
+                    playerBackpackList[ii].text = "";
+                    playerStackList[ii].text = "";
+                    playerImageList[ii].sprite = null;
+                    playerItemList[ii].gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
                 }
             }
         }
 
-        protected void UpdateEquipment(MainCharacter player)
-        {
-            if (player.MainWeapon != null)
-            {
-                txtMainWeapon.text = player.MainWeapon.Name;
-            }
-            else
-            {
-                txtMainWeapon.text = "";
-            }
-            Method.UpdateRareColor(player.MainWeapon, txtMainWeapon, backMainWeapon);
-
-            if (player.SubWeapon != null)
-            {
-                txtSubWeapon.text = player.SubWeapon.Name;
-            }
-            else
-            {
-                txtSubWeapon.text = "";
-            }
-            Method.UpdateRareColor(player.SubWeapon, txtSubWeapon, backSubWeapon);
-
-            if (player.MainArmor != null)
-            {
-                txtArmor.text = player.MainArmor.Name;
-            }
-            else
-            {
-                txtArmor.text = "";
-            }
-            Method.UpdateRareColor(player.MainArmor, txtArmor, backArmor);
-
-            if (player.Accessory != null)
-            {
-                txtAccessory1.text = player.Accessory.Name;
-            }
-            else
-            {
-                txtAccessory1.text = "";
-            }
-            Method.UpdateRareColor(player.Accessory, txtAccessory1, backAccessory1);
-
-            if (player.Accessory2 != null)
-            {
-                txtAccessory2.text = player.Accessory2.Name;
-            }
-            else
-            {
-                txtAccessory2.text = "";
-            }
-            Method.UpdateRareColor(player.Accessory2, txtAccessory2, backAccessory2);
-        }
 
         // after
         //protected override int SelectSellStackValue(object sender, EventArgs e, ItemBackPack backpackData, int ii)
@@ -502,20 +565,20 @@ namespace DungeonPlayer
 
         protected void SellBackPackItem(ItemBackPack backpackData, Text sender, int stack, int ii)
         {
-            int MaxStack = Convert.ToInt32(backpackStack[ii].text.Remove(0, 1), 10);
+            int MaxStack = Convert.ToInt32(playerStackList[ii].text.Remove(0, 1), 10);
             int updateWE2Value = 0;
 
             if (stack >= MaxStack)
             {
                 this.currentPlayer.DeleteBackPack(backpackData);
                 sender.text = "";
-                backpackStack[ii].text = "";
+                playerStackList[ii].text = "";
                 updateWE2Value = MaxStack;
             }
             else
             {
                 this.currentPlayer.DeleteBackPack(backpackData, stack);
-                backpackStack[ii].text = "x" + Convert.ToString(MaxStack - stack);
+                playerStackList[ii].text = "x" + Convert.ToString(MaxStack - stack);
                 updateWE2Value = MaxStack - stack;
             }
 
@@ -1354,8 +1417,10 @@ namespace DungeonPlayer
         {
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
-                equipList[ii].text = "";
-                costList[ii].text = "";
+                vendorList[ii].text = "";
+                vendorCostList[ii].text = "";
+                vendorItemList[ii].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                vendorImageList[ii].sprite = null;
             }
 
             ItemBackPack item = null;
@@ -1364,133 +1429,137 @@ namespace DungeonPlayer
                 case 1:
                     int ii = 0;
                     item = new ItemBackPack(Database.COMMON_BRONZE_SWORD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_FIT_ARMOR);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     //item = new ItemBackPack(Database.COMMON_LIGHT_SHIELD);
-                    //equipList[ii].text = item.Name;
-                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //vendorList[ii].text = item.Name;
+                    //Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
+                    //Method.UpdateItemImage(item, vendorImageList[ii]);
                     //ii++;
 
                     //item = new ItemBackPack(Database.COMMON_FINE_SWORD_1);
-                    //equipList[ii].text = item.Name;
-                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //vendorList[ii].text = item.Name;
+                    //Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
+                    //Method.UpdateItemImage(item, vendorImageList[ii]);
                     //ii++;
                     
                     item = new ItemBackPack(Database.COMMON_BASTARD_SWORD_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_FINE_ARMOR_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_FINE_SHIELD_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_LIGHT_CLAW_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_KASHI_ROD_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_LETHER_CLOTHING_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_IRON_SWORD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_KUSARI_KATABIRA);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_FLOWER_WAND);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SURVIVAL_CLAW);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SUPERIOR_CROSS);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
                     
                     item = new ItemBackPack(Database.COMMON_BLACER_OF_SYOJIN);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_ZIAI_PENDANT);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_11)
                     {
                         item = new ItemBackPack(Database.COMMON_KOUKAKU_ARMOR);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_12)
                     {
                         item = new ItemBackPack(Database.COMMON_SISSO_TUKEHANE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_13)
                     {
                         item = new ItemBackPack(Database.RARE_WAR_WOLF_BLADE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_14)
                     {
                         item = new ItemBackPack(Database.COMMON_BLUE_COPPER_ARMOR_KAI);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_15)
                     {
                         item = new ItemBackPack(Database.COMMON_RABBIT_SHOES);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
+                    ii++;
+
                     if (GroundOne.WE2.EquipAvailable_16)
                     {
                         item = new ItemBackPack(Database.RARE_MISTSCALE_SHIELD);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -1498,120 +1567,120 @@ namespace DungeonPlayer
                 case 2:
                     ii = 0;
                     item = new ItemBackPack(Database.COMMON_SMART_SWORD_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_CLAW_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_RAUGE_SWORD_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_ROD_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_SHIELD_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_PLATE_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_CLOTHING_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_SMART_ROBE_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_STEEL_SWORD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_BERSERKER_PLATE);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_MIX_HINOKI_ROD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_FACILITY_CLAW);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_BRIGHTNESS_ROBE);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_WILD_HEART_SPADE);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_21)
                     {
                         item = new ItemBackPack(Database.COMMON_WHITE_WAVE_RING);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_22)
                     {
                         item = new ItemBackPack(Database.COMMON_NEEDLE_FEATHER);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_23)
                     {
                         item = new ItemBackPack(Database.COMMON_KOUSHITU_ORB);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_24)
                     {
                         item = new ItemBackPack(Database.RARE_RED_ARM_BLADE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_25)
                     {
                         item = new ItemBackPack(Database.RARE_STRONG_SERPENT_CLAW);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_26)
                     {
                         item = new ItemBackPack(Database.RARE_STRONG_SERPENT_SHIELD);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
@@ -1620,76 +1689,76 @@ namespace DungeonPlayer
                 case 3:
                     ii = 0;
                     item = new ItemBackPack(Database.COMMON_WINTERS_HORN);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_CHILL_BONE_SHIELD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_31)
                     {
                         item = new ItemBackPack(Database.COMMON_SNOW_GUARD);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_32)
                     {
                         item = new ItemBackPack(Database.COMMON_LIZARDSCALE_ARMOR);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_33)
                     {
                         item = new ItemBackPack(Database.COMMON_STEEL_BLADE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_34)
                     {
                         item = new ItemBackPack(Database.COMMON_PENGUIN_OF_PENGUIN);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_35)
                     {
                         item = new ItemBackPack(Database.COMMON_ARGNIAN_TUNIC);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_36)
                     {
                         item = new ItemBackPack(Database.RARE_SPLASH_BARE_CLAW);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_37)
                     {
                         item = new ItemBackPack(Database.COMMON_ANIMAL_FUR_CROSS);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_38)
                     {
                         item = new ItemBackPack(Database.EPIC_GATO_HAWL_OF_GREAT);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
                     break;
@@ -1698,99 +1767,99 @@ namespace DungeonPlayer
                     ii = 0;
 
                     item = new ItemBackPack(Database.RARE_SUPERIOR_CHOSEN_ROD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_TYOU_KOU_SWORD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_TYOU_KOU_ARMOR);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_41)
                     {
                         item = new ItemBackPack(Database.RARE_HUNTERS_EYE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_42)
                     {
                         item = new ItemBackPack(Database.RARE_ONEHUNDRED_BUTOUGI);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_43)
                     {
                         item = new ItemBackPack(Database.RARE_DARKANGEL_CROSS);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_44)
                     {
                         item = new ItemBackPack(Database.RARE_DEVIL_KILLER);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_45)
                     {
                         item = new ItemBackPack(Database.RARE_TRUERED_MASTER_BLADE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_46)
                     {
                         item = new ItemBackPack(Database.RARE_VOID_HYMNSONIA);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_47)
                     {
                         item = new ItemBackPack(Database.RARE_SEAL_OF_BALANCE);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_48)
                     {
                         item = new ItemBackPack(Database.RARE_DOOMBRINGER);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
                     if (GroundOne.WE2.EquipAvailable_49)
                     {
                         item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
-                        equipList[ii].text = item.Name;
-                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
                     }
                     ii++;
 
@@ -1801,87 +1870,87 @@ namespace DungeonPlayer
 
                     //item = new ItemBackPack(Database.COMMON_GORGEOUS_RED_POTION);
                     //equipList[ii].text = item.Name;
-                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
                     //ii++;
 
                     //item = new ItemBackPack(Database.COMMON_GORGEOUS_BLUE_POTION);
                     //equipList[ii].text = item.Name;
-                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
                     //ii++;
 
                     //item = new ItemBackPack(Database.COMMON_GORGEOUS_GREEN_POTION);
                     //equipList[ii].text = item.Name;
-                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
                     //ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_2);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_3);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_4);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_5);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_6);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_7);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_8);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_9);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_ETHREAL_EDGE_SABRE);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_BLOODY_DIRTY_SCYTHE);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     item = new ItemBackPack(Database.RARE_WHITE_DIAMOND_SHIELD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    vendorList[ii].text = item.Name;
+                    SetupItemLayout(item, ii);
                     ii++;
 
                     break;
@@ -1889,22 +1958,29 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
-                if (equipList[ii].text != "")
+                if (vendorList[ii].text != "")
                 {
-                    ItemBackPack temp4 = new ItemBackPack(equipList[ii].text);
-                    costList[ii].text = temp4.Cost.ToString();
-                    backEquip[ii].SetActive(true);
-                    backCost[ii].SetActive(true);
+                    ItemBackPack temp4 = new ItemBackPack(vendorList[ii].text);
+                    vendorCostList[ii].text = temp4.Cost.ToString() + "Gold";
+                    vendorList[ii].gameObject.SetActive(true);
+                    vendorItemList[ii].SetActive(true);
                 }
                 else
                 {
-                    costList[ii].text = "";
-                    backEquip[ii].SetActive(false);
-                    backCost[ii].SetActive(false);
+                    vendorList[ii].text = "";
+                    vendorCostList[ii].text = "";
+                    vendorItemList[ii].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    vendorImageList[ii].sprite = null;
                 }
             }
         }
-        
+
+        protected void SetupItemLayout(ItemBackPack item, int ii)
+        {
+            Method.UpdateRareColor(item, vendorList[ii], vendorItemList[ii], vendorCostList[ii]);
+            Method.UpdateItemImage(item, vendorImageList[ii]);
+        }
+
         public void Equip_Click(Text sender)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYEREQUIPITEM, sender.text, String.Empty);
@@ -1921,6 +1997,8 @@ namespace DungeonPlayer
         {
             this.nowSellItem = true;
             this.currentSelectItem2 = new ItemBackPack(sender.text);
+
+            DescriptionSell.text = this.currentSelectItem2.Description;
 
             int stack = 1;
             if (currentSelectItem2.Name == "")
@@ -1949,9 +2027,9 @@ namespace DungeonPlayer
             else
             {
                 int number = 0;
-                for (int ii = 0; ii < backpackList.Length; ii++)
+                for (int ii = 0; ii < playerBackpackList.Length; ii++)
                 {
-                    if (sender.Equals(backpackList[ii]))
+                    if (sender.Equals(playerBackpackList[ii]))
                     {
                         number = ii;
                         break;
@@ -1963,9 +2041,54 @@ namespace DungeonPlayer
 
                 MessageExchange6(currentSelectItem2, stack);
             }
-            buttonYes.gameObject.SetActive(true);
-            buttonNo.gameObject.SetActive(true);
-            filter.SetActive(true);
+        }
+
+        private int ScrollPosition = 0;
+        private int ScrollPushNumber = 0;
+
+        private int ScrollSellPosition = 0;
+        private int ScrollSellNumber = 0;
+
+        public void ItemScrollUp()
+        {
+            Debug.Log("ItemScrollUp");
+            if (this.GroupBuy.activeInHierarchy)
+            {
+                if (ScrollPushNumber > 0)
+                {
+                    ScrollPosition += 140;
+                    ScrollPushNumber--;
+                }
+            }
+            else
+            {
+                if (ScrollSellNumber > 0)
+                {
+                    ScrollSellPosition += 140;
+                    ScrollSellNumber--;
+                }
+            }
+        }
+
+        public void ItemScrollDown()
+        {
+            Debug.Log("ItemScrollDown");
+            if (this.GroupBuy.activeInHierarchy)
+            {
+                if (ScrollPushNumber <= 20)
+                {
+                    ScrollPosition -= 140;
+                    ScrollPushNumber++;
+                }
+            }
+            else
+            {
+                if (ScrollSellNumber <= 15)
+                {
+                    ScrollSellPosition -= 140;
+                    ScrollSellNumber++;
+                }
+            }
         }
 
         public void EquipmentShop_Click(Text sender)
@@ -2159,38 +2282,56 @@ namespace DungeonPlayer
         protected void SetupMessageText(int number)
         {
             //if (!GroundOne.WE.AvailableEquipShop5)
+            if (this.GroupBuy.activeInHierarchy)
             {
                 mainMessage.text = vendor.GetCharacterSentence(number);
+                DescriptionText2.text = mainMessage.text;
+            }
+            else
+            {
+                mainMessage.text = vendor.GetCharacterSentence(number);
+                DescriptionSell2 .text = mainMessage.text;
             }
             //else
             //{
             //    mainMessage.text = this.currentPlayer.GetCharacterSentence(number);
             //}
-            yesnoMessage.text = mainMessage.text;
         }
         protected void SetupMessageText(int number, string arg1)
         {
             //if (!GroundOne.WE.AvailableEquipShop5)
+            if (this.GroupBuy.activeInHierarchy)
             {
                 mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1);
+                DescriptionText2.text = mainMessage.text;
+            }
+            else
+            {
+                mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1);
+                DescriptionSell2.text = mainMessage.text;
             }
             //else
             //{
             //    mainMessage.text = String.Format(this.currentPlayer.GetCharacterSentence(number), arg1);
             //}
-            yesnoMessage.text = mainMessage.text;
         }
         protected void SetupMessageText(int number, string arg1, string arg2)
         {
             //if (!GroundOne.WE.AvailableEquipShop5)
+            if (this.GroupBuy.activeInHierarchy)
             {
                 mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1, arg2);
+                DescriptionText2.text = mainMessage.text;
+            }
+            else
+            {
+                mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1, arg2);
+                DescriptionSell2.text = mainMessage.text;
             }
             //else
             //{
             //    mainMessage.text = String.Format(this.currentPlayer.GetCharacterSentence(number), arg1, arg2);
             //}
-            yesnoMessage.text = mainMessage.text;
         }
 
         protected virtual void MessageExchange1(ItemBackPack backpackData, MainCharacter player)
@@ -2230,7 +2371,7 @@ namespace DungeonPlayer
 
         protected virtual void MessageExchange8(ItemBackPack backpackData)
         {
-            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString());
+            DescriptionText2.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString());
         }
         
         private void UpdateMainMessage(string p)
@@ -2240,7 +2381,7 @@ namespace DungeonPlayer
 
         protected int SelectSellStackValue(ItemBackPack backpackData, int ii)
         {
-            int exchangeValue = Convert.ToInt32(backpackStack[ii].text.Remove(0, 1), 10);
+            int exchangeValue = Convert.ToInt32(playerStackList[ii].text.Remove(0, 1), 10);
             //if (this.IsShift) // after (個数指定売却が本当にいるかどうか、ユーザー次第）
             //{
             //    using (SelectValue sv = new SelectValue())
@@ -2262,28 +2403,32 @@ namespace DungeonPlayer
 
         private void VendorComplete()
         {
-            nowCannotBuy = false;
             nowSellItem = false;
-            filter.SetActive(false);
-            buttonYes.gameObject.SetActive(false);
-            buttonNo.gameObject.SetActive(false);
         }
 
-        bool nowCannotBuy = false;
         public void Yes_Click()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_YES, String.Empty, String.Empty);
-            if (nowCannotBuy)
+            if (this.GroupBuy.activeInHierarchy && this.currentSelectItem == null)
             {
-                // 何もしない
                 MessageExchange4();
+                return;
             }
-            else if (nowSellItem == false)
+            if (this.GroupBuy.activeInHierarchy == false && this.currentSelectItem2 == null)
+            {
+                return;
+            }
+            if (this.GroupBuy.activeInHierarchy == false && this.currentSelectItem2.Cost <= 0)
+            {
+                MessageExchange5();
+                return;
+            }
+
+            if (nowSellItem == false)
             {
                 if (GroundOne.MC.Gold < this.currentSelectItem.Cost)
                 {
                     MessageExchange1(this.currentSelectItem, GroundOne.MC);
-                    nowCannotBuy = true;
                     return;
                 }
 
@@ -2300,7 +2445,7 @@ namespace DungeonPlayer
             }
             else
             {
-                SellItem(this.currentSelectItem2, this.backpackList[0], 1, 0);
+                SellItem(this.currentSelectItem2, this.playerBackpackList[0], 1, 0);
                 UpdateBackPackLabel(this.currentPlayer);
 
                 this.currentSelectItem2 = null;
@@ -2308,53 +2453,58 @@ namespace DungeonPlayer
 
             VendorComplete();
         }
-
-        public void No_Click()
-        {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_NO, String.Empty, String.Empty);
-            MessageExchange4();
-            VendorComplete();
-        }
-
+        
         private void VendorBuyMessage(ItemBackPack backpackData)
         {
+            DescriptionText.text = backpackData.Description;
+            DescriptionText2.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString());
+
             MessageExchange8(backpackData);
-            buttonYes.gameObject.SetActive(true);
-            buttonNo.gameObject.SetActive(true);
-            filter.SetActive(true);
         }
-
-        public void tapExchange()
-        {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_EXCHANGE, String.Empty, String.Empty);
-            groupCurrentEquip.SetActive(!groupCurrentEquip.activeInHierarchy);
-            groupBackPack.SetActive(!groupCurrentEquip.activeInHierarchy);
-        }
-
+        
         public void tapLevel(int level)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_LEVEL, level.ToString(), String.Empty);
+            this.DescriptionText.text = String.Empty;
+            MessageExchange4();
+            this.currentSelectItem = null;
+            this.ScrollPosition = this.ScrollPushNumber * 140;
+            this.ScrollPushNumber = 0;
             SetupAvailableList(level);
+            this.GroupSell.SetActive(false);
+            this.MoveToBuyView = (int)(GroupSell.GetComponent<RectTransform>().rect.width / 2.0f);
         }
 
         public void tapChara1()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER1, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.MC;
-            UpdateBackPackLabel(this.currentPlayer);
+            tapChara();
         }
         public void tapChara2()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER2, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.SC;
-            UpdateBackPackLabel(this.currentPlayer);
+            tapChara();
         }
         public void tapChara3()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER3, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.TC;
-            UpdateBackPackLabel(this.currentPlayer);
+            tapChara();
         }
+        private void tapChara()
+        {
+            this.ScrollSellPosition = this.ScrollSellNumber * 140;
+            this.ScrollSellNumber = 0;
+            UpdateBackPackLabel(this.currentPlayer);
+            if (this.GroupBuy.activeInHierarchy)
+            {
+                this.GroupBuy.SetActive(false);
+                this.MoveToSellView = (int)(GroupBuy.GetComponent<RectTransform>().rect.width / 2.0f);
+            }
+        }
+
         public void PointerEnter(Text sender)
         {
             DescriptionText.text = (new ItemBackPack(sender.text)).Description;
@@ -2363,6 +2513,21 @@ namespace DungeonPlayer
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_CLOSE, String.Empty, String.Empty);
             nowClose = true;
+        }
+        public void tapSellView()
+        {
+            if (this.MoveToBuyView > 0 || this.MoveToSellView > 0) { return; }
+
+            if (this.GroupBuy.activeInHierarchy)
+            {
+                this.GroupBuy.SetActive(false);
+                this.MoveToSellView = (int)(GroupBuy.GetComponent<RectTransform>().rect.width / 2.0f);
+            }
+            else
+            {
+                this.GroupSell.SetActive(false);
+                this.MoveToBuyView = (int)(GroupSell.GetComponent<RectTransform>().rect.width / 2.0f);
+            }
         }
     }
 }

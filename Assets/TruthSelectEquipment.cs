@@ -83,18 +83,18 @@ namespace DungeonPlayer
                     if (equip[ii] != null)
                     {
                         equip[ii].text = currentList[ii].Name;
-                        Method.UpdateRareColor(currentList[ii], equip[ii], back_equip[ii]);
+                        Method.UpdateRareColor(currentList[ii], equip[ii], back_equip[ii], null);
                     }
                     else
                     {
                         equip[ii].text = "";
-                        Method.UpdateRareColor(null, equip[ii], back_equip[ii]);
+                        Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
                     }
                 }
                 else
                 {
                     equip[ii].text = "";
-                    Method.UpdateRareColor(null, equip[ii], back_equip[ii]);
+                    Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
                 }
             }
 
@@ -477,18 +477,18 @@ namespace DungeonPlayer
                     if (currentList[ii + number * MAX_LEN] != null)
                     {
                         equip[ii].text = currentList[ii + number * MAX_LEN].Name;
-                        Method.UpdateRareColor(currentList[ii + number * MAX_LEN], equip[ii], back_equip[ii]);
+                        Method.UpdateRareColor(currentList[ii + number * MAX_LEN], equip[ii], back_equip[ii], null);
                     }
                     else
                     {
                         equip[ii].text = "";
-                        Method.UpdateRareColor(null, equip[ii], back_equip[ii]);
+                        Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
                     }
                 }
                 else
                 {
                     equip[ii].text = "";
-                    Method.UpdateRareColor(null, equip[ii], back_equip[ii]);
+                    Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
                 }
             }
         }
