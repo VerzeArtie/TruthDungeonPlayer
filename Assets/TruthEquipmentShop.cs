@@ -27,7 +27,8 @@ namespace DungeonPlayer
         public Button btnChara3;
         public Text mainMessage;
         public Text labelTitle;
-        public GameObject groupVendorList;
+        public Scrollbar groupVendorBar;
+        public Scrollbar groupBackpackBar;
         public GameObject groupGanz;
         public GameObject groupSellList;
         public GameObject groupSellGanz;
@@ -84,14 +85,14 @@ namespace DungeonPlayer
             {
                 if (vendorItemList[ii] != null)
                 {
-                    vendorItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                    vendorItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
                 }
             }
             for (int ii = 0; ii < playerItemList.Length; ii++)
             {
                 if (playerItemList[ii] != null)
                 {
-                    playerItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+                    playerItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
                 }
             }
             GroupSell.SetActive(false);
@@ -2054,19 +2055,22 @@ namespace DungeonPlayer
             Debug.Log("ItemScrollUp");
             if (this.GroupBuy.activeInHierarchy)
             {
-                if (ScrollPushNumber > 0)
-                {
-                    ScrollPosition += 140;
-                    ScrollPushNumber--;
-                }
+                groupVendorBar.value += 0.04f;
+
+                //if (ScrollPushNumber > 0)
+                //{
+                //    ScrollPosition += 140;
+                //    ScrollPushNumber--;
+                //}
             }
             else
             {
-                if (ScrollSellNumber > 0)
-                {
-                    ScrollSellPosition += 140;
-                    ScrollSellNumber--;
-                }
+                groupBackpackBar.value += 0.04f;
+                //if (ScrollSellNumber > 0)
+                //{
+                //    ScrollSellPosition += 140;
+                //    ScrollSellNumber--;
+                //}
             }
         }
 
@@ -2075,19 +2079,21 @@ namespace DungeonPlayer
             Debug.Log("ItemScrollDown");
             if (this.GroupBuy.activeInHierarchy)
             {
-                if (ScrollPushNumber <= 20)
-                {
-                    ScrollPosition -= 140;
-                    ScrollPushNumber++;
-                }
+                groupVendorBar.value -= 0.04f;
+                //if (ScrollPushNumber <= 20)
+                //{
+                //    ScrollPosition -= 140;
+                //    ScrollPushNumber++;
+                //}
             }
             else
             {
-                if (ScrollSellNumber <= 15)
-                {
-                    ScrollSellPosition -= 140;
-                    ScrollSellNumber++;
-                }
+                groupBackpackBar.value -= 0.04f;
+                //if (ScrollSellNumber <= 15)
+                //{
+                //    ScrollSellPosition -= 140;
+                //    ScrollSellNumber++;
+                //}
             }
         }
 
@@ -2471,8 +2477,11 @@ namespace DungeonPlayer
             this.ScrollPosition = this.ScrollPushNumber * 140;
             this.ScrollPushNumber = 0;
             SetupAvailableList(level);
-            this.GroupSell.SetActive(false);
-            this.MoveToBuyView = (int)(GroupSell.GetComponent<RectTransform>().rect.width / 2.0f);
+            if (GroupSell.activeInHierarchy)
+            {
+                this.GroupSell.SetActive(false);
+                this.MoveToBuyView = (int)(GroupSell.GetComponent<RectTransform>().rect.width / 2.0f);
+            }
         }
 
         public void tapChara1()
