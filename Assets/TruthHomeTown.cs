@@ -1983,8 +1983,6 @@ namespace DungeonPlayer
             #region "４階開始時"
             else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationGanz41)
             {
-                GroundOne.WE.Truth_CommunicationGanz41 = true;
-
                 MessagePack.Message50007(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }

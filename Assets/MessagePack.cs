@@ -32464,7 +32464,7 @@ namespace DungeonPlayer
             {
                 detectFeltus = true;
             }
-            ItemBackPack[] backpack = GroundOne.MC.GetBackPackInfo(); eventList.Add(ActionEvent.None);
+            ItemBackPack[] backpack = GroundOne.MC.GetBackPackInfo();
             for (int ii = 0; ii < backpack.Length; ii++)
             {
                 if (backpack[ii] != null)
@@ -34691,6 +34691,8 @@ namespace DungeonPlayer
 
         public static void Message50007(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_CommunicationGanz41 = true;
+
             messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ガンツ：アインよ、相変わらず元気そうじゃの。"); eventList.Add(ActionEvent.None);
@@ -34727,7 +34729,7 @@ namespace DungeonPlayer
 
             messageList.Add("ガンツ：・・・"); eventList.Add(ActionEvent.None);
 
-            string detectName = PracticeSwordLevel(GroundOne.MC); eventList.Add(ActionEvent.None);
+            string detectName = PracticeSwordLevel(GroundOne.MC);
 
             if (detectName == Database.POOR_PRACTICE_SWORD_ZERO)
             {
