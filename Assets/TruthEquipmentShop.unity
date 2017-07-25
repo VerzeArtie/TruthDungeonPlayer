@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 293337124}
   - component: {fileID: 293337123}
   m_Layer: 5
-  m_Name: Scrollbar Vertical
+  m_Name: BackpackScrollBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3581,7 +3581,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u226B\n\u58F2\u5374\n\u753B\u9762\n\u226B"
+  m_Text: '>>
+
+
+    SELL
+
+    ITEM
+
+
+    >>'
 --- !u!222 &353651973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7276,6 +7284,9 @@ MonoBehaviour:
   lblCost: {fileID: 0}
   lblBackpack: {fileID: 0}
   lblBackpackStack: {fileID: 0}
+  lblExchange: {fileID: 353651972}
+  lblBuyButton: {fileID: 2032957155}
+  lblSellButton: {fileID: 1924028154}
   lblClose: {fileID: 2035954237}
 --- !u!1 &733671019
 GameObject:
@@ -18457,7 +18468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u58F2\u5374"
+  m_Text: SELL
 --- !u!222 &1924028155
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19287,7 +19298,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8CFC\u5165"
+  m_Text: BUY
 --- !u!222 &2032957156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20678,7 +20689,7 @@ GameObject:
   - component: {fileID: 2144837980}
   - component: {fileID: 2144837979}
   m_Layer: 5
-  m_Name: Scrollbar Vertical
+  m_Name: VendorScrollBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

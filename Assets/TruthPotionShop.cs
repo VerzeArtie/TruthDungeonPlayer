@@ -22,10 +22,13 @@ namespace DungeonPlayer
             if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
             {
                 lblTitle.text = Database.GUI_EQUIPSHOP_TITLE_POTION;
-                lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
-                lblCost.text = Database.GUI_EQUIPSHOP_COST;
-                lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
-                lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+                //lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
+                //lblCost.text = Database.GUI_EQUIPSHOP_COST;
+                //lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
+                //lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+                lblExchange.text = Database.GUI_EQUIPSHOP_TOSELL;
+                lblBuyButton.text = Database.GUI_EQUIPSHOP_BUY_BUTTON;
+                lblSellButton.text = Database.GUI_EQUIPSHOP_SELL_BUTTON;
                 lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
             }
 

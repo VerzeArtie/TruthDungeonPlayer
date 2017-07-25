@@ -51,6 +51,9 @@ namespace DungeonPlayer
         public Text lblCost;
         public Text lblBackpack;
         public Text lblBackpackStack;
+        public Text lblExchange;
+        public Text lblBuyButton;
+        public Text lblSellButton;
         public Text lblClose;
 
         private ItemBackPack currentSelectItem = null;
@@ -67,15 +70,18 @@ namespace DungeonPlayer
 
         public virtual void OnInitialize()
         {
-            //if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
-            //{
-            //    lblTitle.text = Database.GUI_EQUIPSHOP_TITLE;
-            //    lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
-            //    lblCost.text = Database.GUI_EQUIPSHOP_COST;
-            //    lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
-            //    lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
-            //    lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
-            //}
+            if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+            {
+                lblTitle.text = Database.GUI_EQUIPSHOP_TITLE;
+                //lblItemList.text = Database.GUI_EQUIPSHOP_ITEM;
+                //lblCost.text = Database.GUI_EQUIPSHOP_COST;
+                //lblBackpack.text = Database.GUI_EQUIPSHOP_BACKPACK;
+                //lblBackpackStack.text = Database.GUI_EQUIPSHOP_STACK;
+                lblExchange.text = Database.GUI_EQUIPSHOP_TOSELL;
+                lblBuyButton.text = Database.GUI_EQUIPSHOP_BUY_BUTTON;
+                lblSellButton.text = Database.GUI_EQUIPSHOP_SELL_BUTTON;
+                lblClose.text = Database.GUI_EQUIPSHOP_CLOSE;
+            }
             GameObject objGanz = new GameObject("objGanz");
             vendor = objGanz.AddComponent<MainCharacter>();
             vendor.FirstName = "ガンツ";
@@ -201,7 +207,14 @@ namespace DungeonPlayer
                 if (this.MoveToSellView <= 0) 
                 {
                     this.MoveToSellView = 0;
-                    this.ExchangeBuySell.text = "<<\r\n購入\r\n画面\r\n<<";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        this.ExchangeBuySell.text = Database.GUI_EQUIPSHOP_TOBUY;
+                    }
+                    else
+                    {
+                        this.ExchangeBuySell.text = Database.GUI_EQUIPSHOP_TOBUY_EN;
+                    }
                     this.currentSelectItem = null;
                     this.currentSelectItem2 = null;
                     OnLoadMessage();
@@ -225,7 +238,14 @@ namespace DungeonPlayer
                 {
                     Debug.Log("movetobuy end: " + this.MoveToBuyView.ToString());
                     this.MoveToBuyView = 0;
-                    this.ExchangeBuySell.text = ">>\r\n売却\r\n画面\r\n>>";
+                    if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
+                    {
+                        this.ExchangeBuySell.text = Database.GUI_EQUIPSHOP_TOSELL;
+                    }
+                    else
+                    {
+                        this.ExchangeBuySell.text = Database.GUI_EQUIPSHOP_TOSELL_EN;
+                    }
                     this.currentSelectItem = null;
                     this.currentSelectItem2 = null;
                     OnLoadMessage();

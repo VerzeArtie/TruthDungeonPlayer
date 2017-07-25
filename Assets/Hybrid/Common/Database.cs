@@ -2961,6 +2961,12 @@ namespace DungeonPlayer
         public const string GUI_EQUIPSHOP_COST = "値段";
         public const string GUI_EQUIPSHOP_BACKPACK = "バックパック";
         public const string GUI_EQUIPSHOP_STACK = "個数";
+        public const string GUI_EQUIPSHOP_TOSELL = ">>\r\n\r\n売却\r\n画面\r\n\r\n>>";
+        public const string GUI_EQUIPSHOP_TOSELL_EN = ">>\r\n\r\nSELL\r\nITEM\r\n\r\n>>";
+        public const string GUI_EQUIPSHOP_TOBUY = "<<\r\n\r\n購入\r\n画面\r\n\r\n<<";
+        public const string GUI_EQUIPSHOP_TOBUY_EN = "<<\r\n\r\nBUY\r\nITEM\r\n\r\n<<";
+        public const string GUI_EQUIPSHOP_BUY_BUTTON = "購入";
+        public const string GUI_EQUIPSHOP_SELL_BUTTON = "売却";
         public const string GUI_EQUIPSHOP_CLOSE = "店を出る";
         #endregion
         #region "ハンナの倉庫番"
