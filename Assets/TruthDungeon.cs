@@ -17976,29 +17976,29 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            objList[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-                            unknownTile[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                            objList[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                            unknownTile[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                         }
                     }
                     for (int ii = 0; ii < this.objOther.Count; ii++)
                     {
-                        this.objOther[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        this.objOther[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                     for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
                     {
-                        this.objBlueWallTop[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        this.objBlueWallTop[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                     for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
                     {
-                        this.objBlueWallBottom[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        this.objBlueWallBottom[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                     for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
                     {
-                        this.objBlueWallLeft[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        this.objBlueWallLeft[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                     for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
                     {
-                        this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                        this.objBlueWallRight[ii].GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
