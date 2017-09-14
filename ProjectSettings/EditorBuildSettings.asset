@@ -7,61 +7,91 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Title.unity
+    guid: 8182d497aad9b43368893b8457b0abfb
   - enabled: 1
     path: Assets/Tutorial.unity
+    guid: a39cfc279424d024c9994153beaf5446
   - enabled: 1
     path: Assets/GameSetting.unity
+    guid: 11feb32d3670fcc4abf36734e1f93bf3
   - enabled: 1
     path: Assets/TruthBattleSetting.unity
+    guid: 8d20fd7b8d8bb4490b4216cd548d93b0
   - enabled: 1
     path: Assets/TruthBattleEnemy.unity
+    guid: 8411dc86cd00045948d248677fef7eec
   - enabled: 1
     path: Assets/TruthHomeTown.unity
+    guid: be3a059a2723249babf8f3ce26ae99a9
   - enabled: 1
     path: Assets/TruthEquipmentShop.unity
+    guid: d52289c9764d8405b8d19cced7d6c2a9
   - enabled: 1
     path: Assets/TruthPotionShop.unity
+    guid: 82741f0a7ed3b3643b0b3509937bcc8d
   - enabled: 1
     path: Assets/TruthStatusPlayer.unity
+    guid: 6a31a91e873b546c9b64c2eca5971231
   - enabled: 1
     path: Assets/TruthDungeon.unity
+    guid: d1331262a4e515d4ca51e25ea4ad7946
   - enabled: 1
     path: Assets/TruthBattleEnemy.unity
+    guid: 8411dc86cd00045948d248677fef7eec
   - enabled: 1
     path: Assets/TruthSelectEquipment.unity
+    guid: 312d989f608141243aa6c42e25f7c224
   - enabled: 1
     path: Assets/SaveLoad.unity
+    guid: c5a6596bd7eaa6b44a1f89634c4bd7e1
   - enabled: 1
     path: Assets/TruthSkillSpellDesc.unity
+    guid: fa3be0b6b86599e4fa5208b6e6153270
   - enabled: 1
     path: Assets/TruthInformation.unity
+    guid: 3dd2d78df54a2a54b9d718e3b78155b9
   - enabled: 1
     path: Assets/TruthPlayback.unity
+    guid: 146ca6a710eba184cb7faf36e6f9d3fc
   - enabled: 1
     path: Assets/TruthAchievement.unity
+    guid: ee03ae347452b7844b2de787d24b3ec9
   - enabled: 1
     path: Assets/TruthRequestFood.unity
+    guid: 222da34d21afdce41baab147cec5a2fb
   - enabled: 1
     path: Assets/TruthDecision.unity
+    guid: 2c3be6c209b6a474dac77659c131f7b8
   - enabled: 1
     path: Assets/TruthDecision2.unity
+    guid: 5e3f0f113abb4414684e7641d3d34a43
   - enabled: 1
     path: Assets/TruthDecision3.unity
+    guid: d51c40510169c1143ab28e98ec9c0d99
   - enabled: 1
     path: Assets/TruthAnswer.unity
+    guid: 9ae25680fcba3134cbdc9930f98af27f
   - enabled: 1
     path: Assets/TruthWill.unity
+    guid: fc0f8a9aa97f23f4b8b8260410b5771b
   - enabled: 1
     path: Assets/TruthChoiceStatue.unity
+    guid: 5d400b6857a433f44a90dd72d71bdd49
   - enabled: 1
     path: Assets/TruthSelectCharacter.unity
+    guid: 592c69dbb97044344ad590ebbfe0c3f7
   - enabled: 1
     path: Assets/TruthInputRequest.unity
+    guid: 1fb25f358c8c98a4bab1d1307b9d97a8
   - enabled: 1
     path: Assets/TruthItemBank.unity
+    guid: 95acf1c0bfc7dc141a03ec98057945b7
   - enabled: 1
     path: Assets/TruthItemDesc.unity
+    guid: 1c6722339b35d5a42840fdf40e6efa19
   - enabled: 1
     path: Assets/TruthDuelRule.unity
+    guid: 39604a68f62ed3a4bae9afbd1c2cd0de
   - enabled: 1
     path: Assets/TruthDuelPlayerStatus.unity
+    guid: 452e5fef225661a43b0a18311f3f8a99
