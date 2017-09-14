@@ -20,12 +20,12 @@ namespace DungeonPlayer
         /// <param name="magicType">魔法属性</param>
         /// <param name="ignoreTargetDefense">対象の防御を無視する場合、True</param>
         /// <param name="critical">クリティカル有効フラグ</param>
-        private bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
+        protected bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
             int interval, double damage, double magnification, string soundName, int messageNumber, TruthActionCommand.MagicType magicType, bool ignoreTargetDefense, CriticalType critical)
         {
             return AbstractMagicDamage(player, target, command, interval, ref damage, magnification, soundName, messageNumber, magicType, ignoreTargetDefense, critical);
         }
-        private bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
+        protected bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
             int interval, ref double damage, double magnification, string soundName, int messageNumber, TruthActionCommand.MagicType magicType, bool ignoreTargetDefense, CriticalType critical)
         {
             if (player.CurrentShadowPact > 0) { damage = damage * 1.3f; }
@@ -40,7 +40,7 @@ namespace DungeonPlayer
 
         // [情報]：全てのＢＵＦＦ＿ＵＰ魔法は、ここへ集約されるようにしてください。
         // [警告]：ここに集約されている情報は味方プレイヤーのみを対象としています。敵味方区別無くいけるようにしてください。
-        private void PlayerBuffAbstract(MainCharacter player, MainCharacter target, string spellName, int effectTime = 0)
+        protected void PlayerBuffAbstract(MainCharacter player, MainCharacter target, string spellName, int effectTime = 0)
         {
             Debug.Log("playerbuffabstract start");
             string fileExt = "";

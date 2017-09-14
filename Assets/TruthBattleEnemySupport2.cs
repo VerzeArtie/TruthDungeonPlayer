@@ -8,7 +8,7 @@ namespace DungeonPlayer
     {
         private int FAIL_ACTION_WAIT = 100;
         private int failActionTimer = 0;
-        private void CheckStackInTheCommand()
+        protected void CheckStackInTheCommand()
         {
             if (this.NowStackInTheCommand)
             {

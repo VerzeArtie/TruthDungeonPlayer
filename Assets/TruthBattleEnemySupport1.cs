@@ -10,7 +10,7 @@ namespace DungeonPlayer
     public partial class TruthBattleEnemy : MotherForm
     {
         // 特定のターゲットを指定していない場合、敵・味方・自分を区別して、自動的にターゲットを選ぶもの
-        private bool PlayerAttackPhase(MainCharacter player, bool withoutCost, bool skipStanceDouble, bool mainPhase)
+        protected bool PlayerAttackPhase(MainCharacter player, bool withoutCost, bool skipStanceDouble, bool mainPhase)
         {
             bool _withoutCost = false;
             if (player.CurrentBlackContract > 0)
@@ -73,7 +73,7 @@ namespace DungeonPlayer
             }
         }
         // ターゲット、アクションタイプ（魔法・スキル・アイテム）、そして使用する名前が決まっている場合
-        private void PlayerAttackPhase(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CommandName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
+        protected void PlayerAttackPhase(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CommandName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
         {
             bool _withoutCost = false;
             if (player.CurrentBlackContract > 0)
@@ -111,7 +111,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerAttackPhase0(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
+        protected void PlayerAttackPhase0(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
         {
             // try-catch-finally制御でも良いが、速度性能重視とする。
             player.NowExecActionFlag = true;
@@ -126,7 +126,7 @@ namespace DungeonPlayer
 
             player.NowExecActionFlag = false;
         }
-        private void PlayerAttackPhase1(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
+        protected void PlayerAttackPhase1(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool skipStanceDouble, bool mainPhase)
         {
             // StanceOfDoubleがかかっており、かつ、StanceOfDouble経由ではない場合、前回の行動をおこなう。
             if (player.CurrentStanceOfDouble >= 1 && !skipStanceDouble)
@@ -137,7 +137,7 @@ namespace DungeonPlayer
         }
 
         // [警告] 本メソッドを直接呼んだ場合、GaleWindおよびStanceOfDoubleは適用されない。
-        private void PlayerAttackPhase2(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool mainPhase)
+        protected void PlayerAttackPhase2(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool mainPhase)
         {
             Debug.Log(PA.ToString() + " " + CurrentSpellName + " " + CurrentSkillName + " " + CurrentUsingItem);
             string fileExt = "";
@@ -4471,7 +4471,7 @@ namespace DungeonPlayer
         /////////////////////////////////////////////////////////////////////////
         // プレイヤーアクションセット                                          //
         /////////////////////////////////////////////////////////////////////////
-        private void PlayerActionSet(MainCharacter player)
+        protected void PlayerActionSet(MainCharacter player)
         {
             string commandName = player.ReserveBattleCommand;
 
@@ -4540,13 +4540,13 @@ namespace DungeonPlayer
             }
         }
 
-        private void PreExecPlayArchetype(MainCharacter player, MainCharacter target, bool withoutCost, string CurrentArchetypeName)
+        protected void PreExecPlayArchetype(MainCharacter player, MainCharacter target, bool withoutCost, string CurrentArchetypeName)
         {
             // ところで、Archetypeに消費コストは存在しないため、そのまま元核を発動する。
             ExecPlayArchetype(player, target, CurrentArchetypeName);
         }
 
-        private void ExecPlayArchetype(MainCharacter player, MainCharacter target, string CurrentArchetypeName)
+        protected void ExecPlayArchetype(MainCharacter player, MainCharacter target, string CurrentArchetypeName)
         {
             // 元核は無条件で、カウンター対象外とする。
             if (CurrentArchetypeName == Database.ARCHETYPE_EIN)
@@ -4568,7 +4568,7 @@ namespace DungeonPlayer
             player.RemoveShiningAether();
         }
 
-        private void PreExecPlaySpell(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string CurrentSpellName)
+        protected void PreExecPlaySpell(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string CurrentSpellName)
         {
             Debug.Log("Call PreExecPlaySpell start");
             if ((!withoutCost) && (player.CurrentMana < TruthActionCommand.Cost(CurrentSpellName, player)))
@@ -4606,7 +4606,7 @@ namespace DungeonPlayer
             }
         }
 
-        private bool EffectCheckDarknessCoin(MainCharacter player)
+        protected bool EffectCheckDarknessCoin(MainCharacter player)
         {
             if (((player.Accessory != null) && (player.Accessory.Name == Database.RARE_DARKNESS_COIN)) ||
                 ((player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_DARKNESS_COIN)))
@@ -4620,7 +4620,7 @@ namespace DungeonPlayer
             }
             return false;
         }
-        private void PreExecPlaySkill(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string commandName)
+        protected void PreExecPlaySkill(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string commandName)
         {
             if ((!withoutCost) && (player.CurrentSkillPoint < TruthActionCommand.Cost(commandName, player)))
             {
@@ -4661,7 +4661,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void ExecPlaySpell(MainCharacter player, MainCharacter target, string CurrentSpellName)
+        protected void ExecPlaySpell(MainCharacter player, MainCharacter target, string CurrentSpellName)
         {
             if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
             if (CheckNegateCounter(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
@@ -5049,7 +5049,7 @@ namespace DungeonPlayer
             if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); }
         }
 
-        private void ExecPlaySkill(MainCharacter player, MainCharacter target, string CurrentSkillName)
+        protected void ExecPlaySkill(MainCharacter player, MainCharacter target, string CurrentSkillName)
         {
             if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
             if (CheckCounterAttack(player, CurrentSkillName)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
@@ -5303,7 +5303,7 @@ namespace DungeonPlayer
             //if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); }
         }
 
-        private void UpdateCurrentChargeCount(MainCharacter player)
+        protected void UpdateCurrentChargeCount(MainCharacter player)
         {
             if (player.CurrentChargeCount > 0)
             {
@@ -5311,7 +5311,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void UpdateCurrentPhysicalChargeCount(MainCharacter player)
+        protected void UpdateCurrentPhysicalChargeCount(MainCharacter player)
         {
             if (player.CurrentPhysicalChargeCount > 0)
             {
@@ -5319,34 +5319,34 @@ namespace DungeonPlayer
             }
         }
 
-        private void MissNotEnoughMana(MainCharacter player)
+        protected void MissNotEnoughMana(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(17));
             AnimationDamage(0, player, 0, Color.black, false, false, "マナ不足");
         }
 
-        private void MissNotEnoughSkill(MainCharacter player)
+        protected void MissNotEnoughSkill(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(0));
             AnimationDamage(0, player, 0, Color.black, false, false, "スキル不足");
         }
-        private void MissNotEnoughInstant(MainCharacter player)
+        protected void MissNotEnoughInstant(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(127));
             AnimationDamage(0, player, 0, Color.black, false, false, "インスタント不足");
         }
-        private void MissSpellAbsoluteZero(MainCharacter player)
+        protected void MissSpellAbsoluteZero(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(76));
             AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SPELL);
         }
-        private void MissSkillAbsoluteZero(MainCharacter player)
+        protected void MissSkillAbsoluteZero(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(87));
             AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SKILL);
         }
         
-        private void PlayerMirrorImageAllAlly(MainCharacter player)
+        protected void PlayerMirrorImageAllAlly(MainCharacter player)
         {
             List<MainCharacter> group = new List<MainCharacter>();
             SetupEnemyGroup(ref group);
@@ -5365,7 +5365,7 @@ namespace DungeonPlayer
         /// <param name="player">プレーヤー</param>
         /// <param name="target">ターゲット</param>
         /// <param name="effectValue">減少倍率（0.0から1.0で指定（1.0で即死）</param>
-        private void PlayerLifeDown(MainCharacter player, MainCharacter target, double effectValue)
+        protected void PlayerLifeDown(MainCharacter player, MainCharacter target, double effectValue)
         {
             if (target.CurrentBlackElixir > 0)
             {
@@ -5376,7 +5376,7 @@ namespace DungeonPlayer
             LifeDamage(effectValue, target);
         }
 
-        private void PlayerLifeHalfMax(MainCharacter player, MainCharacter target)
+        protected void PlayerLifeHalfMax(MainCharacter player, MainCharacter target)
         {
             if (target.CurrentBlackElixir > 0)
             {
@@ -5388,7 +5388,7 @@ namespace DungeonPlayer
             LifeDamage(damage, target);
         }
 
-        private void PlayerLifeHalfCurrent(MainCharacter player, MainCharacter target, int interval = 0)
+        protected void PlayerLifeHalfCurrent(MainCharacter player, MainCharacter target, int interval = 0)
         {
             if (target.CurrentBlackElixir > 0)
             {
@@ -5408,7 +5408,7 @@ namespace DungeonPlayer
             LifeDamage(damage, target, interval);
         }
 
-        private void PlayerLifeOne(MainCharacter player, MainCharacter target)
+        protected void PlayerLifeOne(MainCharacter player, MainCharacter target)
         {
             if (target.CurrentBlackElixir > 0)
             {
@@ -5421,7 +5421,7 @@ namespace DungeonPlayer
             UpdateLife(target, damage, false, true, 0, false);
         }
 
-        private void PlayerDeath(MainCharacter player, MainCharacter target)
+        protected void PlayerDeath(MainCharacter player, MainCharacter target)
         {
             // 敵がボス系統の場合は発動しない事とする。
             if (target.GetType() == typeof(TruthEnemyCharacter))
@@ -5462,7 +5462,7 @@ namespace DungeonPlayer
             //target.DeadPlayer();
         }
 
-        private void NowPreStunning(MainCharacter target, int effectTime)
+        protected void NowPreStunning(MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5482,7 +5482,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowStunning(MainCharacter player, MainCharacter target, int effectTime, bool forceStun)
+        protected void NowStunning(MainCharacter player, MainCharacter target, int effectTime, bool forceStun)
         {
             if (target.Dead)
             {
@@ -5513,7 +5513,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowSilence(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowSilence(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5542,7 +5542,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowPoison(MainCharacter player, MainCharacter target, int effectValue, bool cumulative)
+        protected void NowPoison(MainCharacter player, MainCharacter target, int effectValue, bool cumulative)
         {
             if (target.Dead)
             {
@@ -5580,7 +5580,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowTemptation(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowTemptation(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5609,7 +5609,7 @@ namespace DungeonPlayer
             }
         }
 
-        private bool NowFrozen(MainCharacter player, MainCharacter target, int effectTime)
+        protected bool NowFrozen(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5642,7 +5642,7 @@ namespace DungeonPlayer
             return true;
         }
 
-        private bool NowParalyze(MainCharacter player, MainCharacter target, int effectTime)
+        protected bool NowParalyze(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5677,7 +5677,7 @@ namespace DungeonPlayer
             return true;
         }
 
-        private void NowSlow(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowSlow(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5706,7 +5706,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowBlind(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowBlind(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5735,7 +5735,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowSlip(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowSlip(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5764,7 +5764,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowNoResurrection(MainCharacter player, MainCharacter target, int effectTime)
+        protected void NowNoResurrection(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5788,7 +5788,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void NowNoGainLife(MainCharacter target, int effectTime)
+        protected void NowNoGainLife(MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5803,7 +5803,7 @@ namespace DungeonPlayer
             }
         }
 
-        private bool CheckResistWithItem(MainCharacter target, string itemName)
+        protected bool CheckResistWithItem(MainCharacter target, string itemName)
         {
             if ((target.MainWeapon != null) && (target.MainWeapon.Name == itemName))
             {
@@ -5835,7 +5835,7 @@ namespace DungeonPlayer
         }
 
 
-        private void NowBlinded(MainCharacter target, int effectTime)
+        protected void NowBlinded(MainCharacter target, int effectTime)
         {
             if (target.Dead)
             {
@@ -5850,7 +5850,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerAllBlind(MainCharacter player)
+        protected void PlayerAllBlind(MainCharacter player)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
@@ -5868,7 +5868,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerAllSilence(MainCharacter player)
+        protected void PlayerAllSilence(MainCharacter player)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
@@ -5886,7 +5886,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerAllStun(MainCharacter player)
+        protected void PlayerAllStun(MainCharacter player)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
@@ -5902,7 +5902,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerRandomTargetPhysicalDamage(MainCharacter player, int attackNum, int speed, double magnification)
+        protected void PlayerRandomTargetPhysicalDamage(MainCharacter player, int attackNum, int speed, double magnification)
         {
             for (int ii = 0; ii < attackNum; ii++)
             {
@@ -5916,7 +5916,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerRandomTargetDamage(MainCharacter player, int attackNum, string soundName, TruthActionCommand.MagicType type)
+        protected void PlayerRandomTargetDamage(MainCharacter player, int attackNum, string soundName, TruthActionCommand.MagicType type)
         {
             for (int ii = 0; ii < attackNum; ii++)
             {
@@ -5930,7 +5930,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerSlowAllEnemy(MainCharacter player, int effectValue)
+        protected void PlayerSlowAllEnemy(MainCharacter player, int effectValue)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
@@ -5952,7 +5952,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerPhysicalAttackAllEnemy(MainCharacter player, double damage, string soundName)
+        protected void PlayerPhysicalAttackAllEnemy(MainCharacter player, double damage, string soundName)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
@@ -5970,7 +5970,7 @@ namespace DungeonPlayer
             }
         }
         
-        private void PlayerMagicAttackAllEnemy(MainCharacter player, double damage, string soundName, TruthActionCommand.MagicType type)
+        protected void PlayerMagicAttackAllEnemy(MainCharacter player, double damage, string soundName, TruthActionCommand.MagicType type)
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {

@@ -321,21 +321,19 @@ namespace DungeonPlayer
         public Text ExpGoldText;
 
         // internal
-        int BattleSpeed = 3;
-        int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH;
-        int BattleTurnCount = 0;
+        protected int BattleSpeed = 3;
+        protected int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH;
+        protected int BattleTurnCount = 0;
 
-        bool gameStart = false;
-        bool execBattleEndPhase = false; // BattleEndPhaseが２重コールされるのを防ぐ
-        bool endBattleForMatrixDragonEnd = false; // 支配竜会話終了時に戦闘終了させるフラグ
+        protected bool gameStart = false;
+        protected bool execBattleEndPhase = false; // BattleEndPhaseが２重コールされるのを防ぐ
+        protected bool endBattleForMatrixDragonEnd = false; // 支配竜会話終了時に戦闘終了させるフラグ
 
         TruthEnemyCharacter ec1;
         TruthEnemyCharacter ec2;
         TruthEnemyCharacter ec3;
 
         MainCharacter currentPlayer;
-
-        public bool firstAction = false;
 
         int activatePlayerNumber = 0;
         List<MainCharacter> ActiveList = new List<MainCharacter>();
@@ -1171,7 +1169,7 @@ namespace DungeonPlayer
             else if (player.FirstName == Database.OL_LANDIS) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player3Arrow"); ; }
             else if (player.FirstName == Database.VERZE_ARTIE) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player4Arrow"); ; }
             else if (player.FirstName == Database.SINIKIA_KAHLHANZ) { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player5Arrow"); ; }
-            else { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player1Arrow"); }
+            else { player.MainFaceArrow.sprite = Resources.Load<Sprite>("Player3Arrow"); }
         }
         void SelectPlayerPanelColor(MainCharacter player)
         {
@@ -1193,7 +1191,7 @@ namespace DungeonPlayer
             }
         }
 
-        void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
+        protected virtual void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
             Text charaName, Text fullName, 
             Text life, Image lifeMeter, 
             Text mana, Image manaMeter,
@@ -5784,14 +5782,23 @@ namespace DungeonPlayer
         public void tapFirstCharaAction()
         {
             ChangeBaseAction(GroundOne.MC);
+            //GroundOne.MC.ActionButtonPanel.SetActive(true);
+            //GroundOne.SC.ActionButtonPanel.SetActive(false);
+            //GroundOne.TC.ActionButtonPanel.SetActive(false);
         }
         public void tapSecondCharaAction()
         {
             ChangeBaseAction(GroundOne.SC);
+            //GroundOne.MC.ActionButtonPanel.SetActive(false);
+            //GroundOne.SC.ActionButtonPanel.SetActive(true);
+            //GroundOne.TC.ActionButtonPanel.SetActive(false);
         }
         public void tapThirdCharaAction()
         {
             ChangeBaseAction(GroundOne.TC);
+            //GroundOne.MC.ActionButtonPanel.SetActive(false);
+            //GroundOne.SC.ActionButtonPanel.SetActive(false);
+            //GroundOne.TC.ActionButtonPanel.SetActive(true);
         }
 
         public void UseItem_Click(Text sender)

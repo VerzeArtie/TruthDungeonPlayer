@@ -15,7 +15,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ホーリー・ショックーのメソッド
         /// </summary>
-        private void PlayerSpellHolyShock(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellHolyShock(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.HolyShockValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "HolyShock", 23, TruthActionCommand.MagicType.Light, false, CriticalType.Random);
@@ -25,7 +25,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ダーク・ブラストのメソッド
         /// </summary>
-        private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.DarkBlastValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "DarkBlast", 27, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random);
@@ -38,7 +38,7 @@ namespace DungeonPlayer
         /// <param name="mainCharacter"></param>
         /// <param name="p"></param>
         /// <param name="p_2"></param>
-        private void PlayerSpellDevouringPlague(MainCharacter player, MainCharacter target, int interval, int magnification)
+        protected void PlayerSpellDevouringPlague(MainCharacter player, MainCharacter target, int interval, int magnification)
         {
             double damage = PrimaryLogic.DevouringPlagueValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "DevouringPlague", 29, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
@@ -51,7 +51,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ファイア・ボールのメソッド
         /// </summary>
-        private void PlayerSpellFireBall(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellFireBall(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.FireBallValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FireBall", 10, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
@@ -60,7 +60,7 @@ namespace DungeonPlayer
         /// <summary>
         /// フレイム・ストライクのメソッド
         /// </summary>
-        private void PlayerSpellFlameStrike(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellFlameStrike(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.FlameStrikeValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FlameStrike", 11, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
@@ -69,7 +69,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ヴォルカニック・ウェイヴのメソッド
         /// </summary>
-        private void PlayerSpellVolcanicWave(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellVolcanicWave(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.VolcanicWaveValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "VolcanicWave", 12, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
@@ -77,7 +77,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ラヴァ・アニヒレーションのメソッド
         /// </summary>
-        private void PlayerSpellLavaAnnihilation(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellLavaAnnihilation(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(10028));
             GroundOne.PlaySoundEffect("LavaAnnihilation");
@@ -95,7 +95,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アイス・ニードルのメソッド
         /// </summary>
-        private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.IceNeedleValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "IceNeedle", 30, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
@@ -104,7 +104,7 @@ namespace DungeonPlayer
         /// <summary>
         /// フローズン・ランスのメソッド
         /// </summary>
-        private void PlayerSpellFrozenLance(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellFrozenLance(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.FrozenLanceValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FrozenLance", 31, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
@@ -114,7 +114,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワード・オブ・パワーのメソッド
         /// </summary>
-        private void PlayerSpellWordOfPower(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellWordOfPower(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.WordOfPowerValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "WordOfPower", 33, TruthActionCommand.MagicType.Force, true, CriticalType.Random);
@@ -164,7 +164,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ホワイト・アウトのメソッド
         /// </summary>
-        private void PlayerSpellWhiteOut(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellWhiteOut(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.WhiteOutValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "WhiteOut", 34, TruthActionCommand.MagicType.Will, false, CriticalType.Random);
@@ -173,7 +173,7 @@ namespace DungeonPlayer
         /// <summary>
         /// フラッシュ・ブレイズのメソッド
         /// </summary>
-        private void PlayerSpellFlashBlaze(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellFlashBlaze(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             double damage = PrimaryLogic.FlashBlazeValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "HolyShock", 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
@@ -185,7 +185,7 @@ namespace DungeonPlayer
         /// <summary>
         /// セレスティアル・ノヴァのメソッド
         /// </summary>
-        private void PlayerSpellCelestialNova(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellCelestialNova(MainCharacter player, MainCharacter target)
         {
             if (DetectOpponentParty(player, target))
             {
@@ -201,7 +201,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ライト・デトネイターのメソッド
         /// </summary>
-        private void PlayerSpellLightDetonator(MainCharacter player, MainCharacter target, int p, int p_2)
+        protected void PlayerSpellLightDetonator(MainCharacter player, MainCharacter target, int p, int p_2)
         {
             List<MainCharacter> group = new List<MainCharacter>();
             SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.LIGHT_DETONATOR));
@@ -215,7 +215,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ゼータ・エクスプロージョンのメソッド
         /// </summary>
-        private void PlayerSpellZetaExplosion(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellZetaExplosion(MainCharacter player, MainCharacter target)
         {
             AbstractMagicDamage(player, target, 0, PrimaryLogic.ZetaExplosionValue(player, GroundOne.DuelMode), 0, Database.SOUND_ZETA_EXPLOSION, 139, TruthActionCommand.MagicType.Fire_Ice, true, CriticalType.Random);
         }
@@ -223,7 +223,7 @@ namespace DungeonPlayer
         /// <summary>
         /// チル・バーンのメソッド
         /// </summary>
-        private void PlayerSpellChillBurn(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellChillBurn(MainCharacter player, MainCharacter target)
         {
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ChillBurnValue(player, GroundOne.DuelMode), 0, "IceNeedle", 138, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.Random))
             {
@@ -234,7 +234,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ピアッシング・フレイムのメソッド
         /// </summary>
-        private void PlayerSpellPiercingFlame(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellPiercingFlame(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(182));
             AbstractMagicDamage(player, target, 0, PrimaryLogic.PiercingFlameValue(player, GroundOne.DuelMode), 0, Database.SOUND_PIERCING_FLAME, 138, TruthActionCommand.MagicType.Fire_Force, true, CriticalType.Random);
@@ -243,7 +243,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ブルー・バレットのメソッド
         /// </summary>
-        private void PlayerSpellBlueBullet(MainCharacter player, MainCharacter target, int interval, double magnification)
+        protected void PlayerSpellBlueBullet(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             UpdateBattleText(player.GetCharacterSentence(151));
             for (int ii = 0; ii < 3; ii++)
@@ -255,7 +255,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アセンダント・メテオのメソッド
         /// </summary>
-        private void PlayerSpellAscendantMeteor(MainCharacter player, MainCharacter target, int p, int p_2)
+        protected void PlayerSpellAscendantMeteor(MainCharacter player, MainCharacter target, int p, int p_2)
         {
             UpdateBattleText(player.GetCharacterSentence(133));
             for (int ii = 0; ii < 10; ii++)
@@ -267,7 +267,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スター・ライトニングのメソッド
         /// </summary>
-        private void PlayerSpellStarLightning(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellStarLightning(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(141));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.StarLightningValue(player, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Light_Will, false, CriticalType.Random))
@@ -279,7 +279,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ブラック・ファイアのメソッド
         /// </summary>
-        private void PlayerSpellBlackFire(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBlackFire(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(143));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.BlackFireValue(player, GroundOne.DuelMode), 0, "DarkBlast", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
@@ -291,7 +291,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワード・オブ・マリスのメソッド
         /// </summary>
-        private void PlayerSpellWordOfMalice(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellWordOfMalice(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(142));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.WordOfMaliceValue(player, GroundOne.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random))
@@ -303,7 +303,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エンレイジ・ブラストのメソッド
         /// </summary>
-        private void PlayerSpellEnrageBlast(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellEnrageBlast(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(144));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -321,7 +321,7 @@ namespace DungeonPlayer
         /// <summary>
         /// イモレイトのメソッド
         /// </summary>
-        private void PlayerSpellImmolate(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellImmolate(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(145));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ImmolateValue(player, GroundOne.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Fire_Will, false, CriticalType.Random))
@@ -333,7 +333,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ヴァニッシュ・ウェイヴのメソッド
         /// </summary>
-        private void PlayerSpellVanishWave(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellVanishWave(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(146));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.VanishWaveValue(player, GroundOne.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Ice_Will, false, CriticalType.Random))
@@ -345,7 +345,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アビス・アイのメソッド
         /// </summary>
-        private void PlayerSpellAbyssEye(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellAbyssEye(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(180));
             int random = AP.Math.RandomInteger(100);
@@ -377,7 +377,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ドゥーム・ブレイドのメソッド
         /// </summary>
-        private void PlayerSpellDoomBlade(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDoomBlade(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(181));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DoomBladeValue(player, GroundOne.DuelMode), 0, Database.SOUND_DOOM_BLADE, 120, TruthActionCommand.MagicType.Shadow_Will, false, CriticalType.Random))
@@ -391,7 +391,7 @@ namespace DungeonPlayer
         /// <summary>
         /// マインド・キリングのメソッド
         /// </summary>
-        private void PlayerSkillMindKilling(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillMindKilling(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(200));
             double effectValue = PrimaryLogic.MindKillingValue(player, GroundOne.DuelMode);
@@ -405,14 +405,14 @@ namespace DungeonPlayer
         /// </summary>
         /// <param name="player"></param>
         /// <param name="target"></param>
-        private void PlayerSpellGenesis(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellGenesis(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_GENESIS);
             UpdateBattleText(player.GetCharacterSentence(108));
             ExecBeforeAttackPhase(player, false);
         }
 
-        private void ExecBeforeAttackPhase(MainCharacter player, bool skipStanceDouble)
+        protected void ExecBeforeAttackPhase(MainCharacter player, bool skipStanceDouble)
         {
             if (player.BeforePA == MainCharacter.PlayerAction.None)
             {
@@ -463,7 +463,7 @@ namespace DungeonPlayer
         /// <summary>
         /// デーモニック・イグナイトのメソッド
         /// </summary>
-        private void PlayerSpellDemonicIgnite(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDemonicIgnite(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(213));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DemonicIgniteValue(player, GroundOne.DuelMode), 0, Database.SOUND_DEMONIC_IGNITE, 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
@@ -475,7 +475,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エンドレス・アンセムのメソッド
         /// </summary>
-        private void PlayerSpellEndlessAnthem(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellEndlessAnthem(MainCharacter player, MainCharacter target)
         {
             List<MainCharacter> group = new List<MainCharacter>();
             SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ENDLESS_ANTHEM));
@@ -490,7 +490,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワープ・ゲートのメソッド
         /// </summary>
-        private void PlayerSpellWarpGate(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellWarpGate(MainCharacter player, MainCharacter target)
         {
             // ゲージを進める。進めた結果、行動フェーズを超えた場合、コスト無しで行動を行い、超えた分だけさらにゲージを進める。
             GroundOne.PlaySoundEffect(Database.SOUND_WARP_GATE);
@@ -499,7 +499,7 @@ namespace DungeonPlayer
             this.nowExecutionWarpGateCounter = 0;
             this.nowExecutionWarpGate = true;
         }
-        private void ExecPlayWarpGate()
+        protected void ExecPlayWarpGate()
         {
             UpdatePlayerMainFaceArrow(this.nowExecutionWarpGatePlayer);
             double movement = PrimaryLogic.BattleSpeedValue(this.nowExecutionWarpGatePlayer, GroundOne.DuelMode);
@@ -530,7 +530,7 @@ namespace DungeonPlayer
         /// フレッシュ・ヒールのメソッド
         /// </summary>
         /// <param name="player"></param>
-        private void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
         {
             double lifeGain = PrimaryLogic.FreshHealValue(player, GroundOne.DuelMode);
             PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_FRESH_HEAL, 9);
@@ -540,7 +540,7 @@ namespace DungeonPlayer
         /// ライフ・タップのメソッド
         /// </summary>
         /// <param name="player"></param>
-        private void PlayerSpellLifeTap(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellLifeTap(MainCharacter player, MainCharacter target)
         {
             double lifeGain = PrimaryLogic.LifeTapValue(player, GroundOne.DuelMode);
             PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_LIFE_TAP, 9);
@@ -549,7 +549,7 @@ namespace DungeonPlayer
         /// <summary>
         /// サークレッド・ヒールのメソッド
         /// </summary>
-        private void PlayerSpellSacredHeal(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSacredHeal(MainCharacter player, MainCharacter target)
         {
             List<MainCharacter> group = new List<MainCharacter>();
             SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.SACRED_HEAL));
@@ -565,7 +565,7 @@ namespace DungeonPlayer
         /// クリーンジングのメソッド
         /// </summary>
         /// <param name="player"></param>
-        private void PlayerSpellCleansing(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellCleansing(MainCharacter player, MainCharacter target)
         {
             //if (player.CurrentStunning > 0 || player.CurrentSilence > 0 || player.CurrentPoison > 0 || player.CurrentParalyze > 0 || player.CurrentTemptation > 0 || player.CurrentFrozen > 0)
             //{
@@ -600,7 +600,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エンジェル・ブレスのメソッド
         /// </summary>
-        private void PlayerSpellAngelBreath(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellAngelBreath(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(177));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -642,7 +642,7 @@ namespace DungeonPlayer
         /// ピュア・プリファイケーションのメソッド
         /// </summary>
         /// <param name="player"></param>
-        private void PlayerSkillPurePurification(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillPurePurification(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(78));
             target.CurrentPreStunning = 0;
@@ -677,7 +677,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ディスペル・マジックのメソッド
         /// </summary>
-        private void PlayerSpellDispelMagic(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDispelMagic(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(48));
 
@@ -693,7 +693,7 @@ namespace DungeonPlayer
             UpdateBattleText(target.FirstName + "の能力ＵＰ型効果を全て打ち消した！\r\n");
         }
 
-        private void RemoveBuffAll(MainCharacter target)
+        protected void RemoveBuffAll(MainCharacter target)
         {
             RemoveBuffSpell(target);
             RemoveBuffSkill(target);
@@ -707,7 +707,7 @@ namespace DungeonPlayer
             target.RemoveVoiceOfAbyss();
         }
 
-        private void RemoveEffect(MainCharacter target)
+        protected void RemoveEffect(MainCharacter target)
         {
             target.RemoveDebuffEffect();
             target.RemoveBuffEffect();
@@ -729,21 +729,21 @@ namespace DungeonPlayer
             target.RemoveResistWillUp();
         }
 
-        private void RemoveBuffSpell(MainCharacter target)
+        protected void RemoveBuffSpell(MainCharacter target)
         {
             target.RemoveBuffSpell();
             RemoveTemporaryUpSpell(target);
             RemoveBuffDownSpell(target);
         }
 
-        private void RemoveBuffSkill(MainCharacter target)
+        protected void RemoveBuffSkill(MainCharacter target)
         {
             RemoveBuffUpSkill(target);
             RemoveTemporaryUpSkill(target);
             RemoveBuffDownSkill(target);
         }
 
-        private void RemoveTemporaryUpSpell(MainCharacter target)
+        protected void RemoveTemporaryUpSpell(MainCharacter target)
         {
             // 基本スペル
             target.RemoveGlory();
@@ -763,15 +763,15 @@ namespace DungeonPlayer
             target.RemoveSinFortune();
             //target.RemoveEclipseEnd();
         }
-        private void RemoveBuffDownSpell(MainCharacter target)
+        protected void RemoveBuffDownSpell(MainCharacter target)
         {
             target.RemoveDebuffSpell();
         }
-        private void RemoveBuffUpSkill(MainCharacter target)
+        protected void RemoveBuffUpSkill(MainCharacter target)
         {
             target.RemoveBuffSkill();
         }
-        private void RemoveTemporaryUpSkill(MainCharacter target)
+        protected void RemoveTemporaryUpSkill(MainCharacter target)
         {
             // 基本スキル
             target.RemoveStanceOfFlow();
@@ -784,12 +784,12 @@ namespace DungeonPlayer
             target.RemoveFutureVision();
             target.RemoveOneAuthority();
         }
-        private void RemoveBuffDownSkill(MainCharacter target)
+        protected void RemoveBuffDownSkill(MainCharacter target)
         {
             target.RemoveDebuffSkill();
         }
 
-        private void PlayerSpellTranquility(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellTranquility(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(84));
 
@@ -827,7 +827,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワード・オブ・アティチュードのメソッド
         /// </summary>
-        private void PlayerSpellWordOfAttitude(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellWordOfAttitude(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(147));
             target.CurrentInstantPoint = target.MaxInstantPoint;
@@ -837,28 +837,28 @@ namespace DungeonPlayer
 
         // 自分対象の魔法
         // グローリーのメソッド
-        private void PlayerSpellGlory(MainCharacter player)
+        protected void PlayerSpellGlory(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("Glory");
             PlayerBuffAbstract(player, player, Database.GLORY);
         }
 
         // ブラック・コントラクトのメソッド
-        private void PlayerSpellBlackContract(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBlackContract(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("BlackContract");
             PlayerBuffAbstract(player, target, Database.BLACK_CONTRACT);
         }
 
         // イモータル・レイブのメソッド
-        private void PlayerSpellImmortalRave(MainCharacter player)
+        protected void PlayerSpellImmortalRave(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("ImmortalRave");
             PlayerBuffAbstract(player, player, Database.IMMORTAL_RAVE);
         }
 
         // ゲイル・ウィンドのメソッド
-        private void PlayerSpellGaleWind(MainCharacter player)
+        protected void PlayerSpellGaleWind(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("GaleWind");
             if (player.CurrentGaleWind <= 0)
@@ -868,35 +868,35 @@ namespace DungeonPlayer
         }
 
         // エーテル・ドライブのメソッド
-        private void PlayerSpellAetherDrive(MainCharacter player)
+        protected void PlayerSpellAetherDrive(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("AetherDrive");
             PlayerBuffAbstract(player, player, Database.AETHER_DRIVE);
         }
 
         // ワン・イムーニティのメソッド
-        private void PlayerSpellOneImmunity(MainCharacter player)
+        protected void PlayerSpellOneImmunity(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("OneImmunity");
             PlayerBuffAbstract(player, player, Database.ONE_IMMUNITY);
         }
 
         // スタンス・オブ・フローのメソッド
-        private void PlayerSkillStanceOfFlow(MainCharacter player)
+        protected void PlayerSkillStanceOfFlow(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("StanceOfFlow");
             PlayerBuffAbstract(player, player, Database.STANCE_OF_FLOW);
         }
 
         //　トルゥス・ヴィジョンのメソッド
-        private void PlayerSkillTruthVision(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillTruthVision(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("TruthVision");
             PlayerBuffAbstract(player, target, Database.TRUTH_VISION);
         }
 
         // プロテクションのメソッド
-        private void PlayerSpellProtection(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellProtection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Protection");
             PlayerBuffAbstract(player, target, Database.PROTECTION);
@@ -905,37 +905,37 @@ namespace DungeonPlayer
         /// <summary>
         /// アブソーブ・ウォーターのメソッド
         /// </summary>
-        private void PlayerSpellAbsorbWater(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellAbsorbWater(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("AbsorbWater");
             PlayerBuffAbstract(player, target, Database.ABSORB_WATER);
         }
 
-        private void PlayerSpellSaintPower(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSaintPower(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("SaintPower");
             PlayerBuffAbstract(player, target, Database.SAINT_POWER);
         }
 
-        private void PlayerSpellShadowPact(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellShadowPact(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("ShadowPact");
             PlayerBuffAbstract(player, target, Database.SHADOW_PACT);
         }
 
-        private void PlayerSpellBloodyVengeance(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBloodyVengeance(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("BloodyVengeance");
             PlayerBuffAbstract(player, target, Database.BLOODY_VENGEANCE);
         }
 
-        private void PlayerSpellHeatBoost(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellHeatBoost(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("HeatBoost");
             PlayerBuffAbstract(player, target, Database.HEAT_BOOST);
         }
 
-        private void PlayerSpellRiseOfImage(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellRiseOfImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
             PlayerBuffAbstract(player, target, Database.RISE_OF_IMAGE);
@@ -947,37 +947,37 @@ namespace DungeonPlayer
             PlayerBuffAbstract(player, target, Database.PROMISED_KNOWLEDGE);
         }
 
-        private void PlayerSpellFlameAura(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellFlameAura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("FlameAura");
             PlayerBuffAbstract(player, target, Database.FLAME_AURA);
         }
 
-        private void PlayerSpellWordOfLife(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellWordOfLife(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("WordOfLife");
             PlayerBuffAbstract(player, target, Database.WORD_OF_LIFE);
         }
 
-        private void PlayerSpellWordOfFortune(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellWordOfFortune(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("WordOfFortune");
             PlayerBuffAbstract(player, target, Database.WORD_OF_FORTUNE);
         }
 
-        private void PlayerSpellMirrorImage(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellMirrorImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("MirrorImage");
             PlayerBuffAbstract(player, target, Database.MIRROR_IMAGE);
         }
 
-        private void PlayerSpellDeflection(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDeflection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Deflection");
             PlayerBuffAbstract(player, target, Database.DEFLECTION);
         }
 
-        private void PlayerSpellSigilOfHomura(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSigilOfHomura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SIGIL_OF_HOMURA);
             PlayerBuffAbstract(player, target, Database.SIGIL_OF_HOMURA);
@@ -986,7 +986,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ファンタズマル・ウィンドのメソッド
         /// </summary>
-        private void PlayerSpellPhantasmalWind(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellPhantasmalWind(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_PHANTASMAL_WIND);
             PlayerBuffAbstract(player, target, Database.PHANTASMAL_WIND);
@@ -995,13 +995,13 @@ namespace DungeonPlayer
         /// <summary>
         /// パラドックス・イメージのメソッド
         /// </summary>
-        private void PlayerSpellParadoxImage(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellParadoxImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_PARADOX_IMAGE);
             PlayerBuffAbstract(player, target, Database.PARADOX_IMAGE);
         }
 
-        private void PlayerSpellHymnContract(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellHymnContract(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_HYMN_CONTRACT);
             PlayerBuffAbstract(player, target, Database.HYMN_CONTRACT);
@@ -1010,7 +1010,7 @@ namespace DungeonPlayer
         /// <summary>
         /// サイキック・トランスのメソッド
         /// </summary>
-        private void PlayerSpellPsychicTrance(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellPsychicTrance(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
             PlayerBuffAbstract(player, target, Database.PSYCHIC_TRANCE);
@@ -1019,7 +1019,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ブラインド・ジャスティスのメソッド
         /// </summary>
-        private void PlayerSpellBlindJustice(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBlindJustice(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
             PlayerBuffAbstract(player, target, Database.BLIND_JUSTICE);
@@ -1028,7 +1028,7 @@ namespace DungeonPlayer
         /// <summary>
         /// トランッセンデント・ウィッシュのメソッド
         /// </summary>
-        private void PlayerSpellTranscendentWish(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellTranscendentWish(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
             PlayerBuffAbstract(player, target, Database.TRANSCENDENT_WISH);
@@ -1037,7 +1037,7 @@ namespace DungeonPlayer
         /// <summary>
         /// フローズン・オーラのメソッド
         /// </summary>
-        private void PlayerSpellFrozenAura(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellFrozenAura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("IceNeedle");
             PlayerBuffAbstract(player, target, Database.FROZEN_AURA);
@@ -1046,7 +1046,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スカイ・シールドのメソッド
         /// </summary>
-        private void PlayerSpellSkyShield(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSkyShield(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
             PlayerBuffAbstract(player, target, Database.SKY_SHIELD);
@@ -1055,7 +1055,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタティック・バリアのメソッド1
         /// </summary>
-        private void PlayerSpellStaticBarrier(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellStaticBarrier(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_STATIC_BARRIER);
             PlayerBuffAbstract(player, target, Database.STATIC_BARRIER);
@@ -1064,7 +1064,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エヴァー・ドロップレットのメソッド
         /// </summary>
-        private void PlayerSpellEverDroplet(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellEverDroplet(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
             PlayerBuffAbstract(player, target, Database.EVER_DROPLET);
@@ -1073,7 +1073,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ホーリー・ブレイカーのメソッド
         /// </summary>
-        private void PlayerSpellHolyBreaker(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellHolyBreaker(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
             PlayerBuffAbstract(player, target, Database.HOLY_BREAKER);
@@ -1082,7 +1082,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アウステリティ・マトリクスのメソッド
         /// </summary>
-        private void PlayerSpellAusterityMatrix(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellAusterityMatrix(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_AUSTERITY_MATRIX);
             target.RemoveBuffSpell();
@@ -1092,7 +1092,7 @@ namespace DungeonPlayer
         /// <summary>
         /// レッド・ドラゴン・ウィルのメソッド
         /// </summary>
-        private void PlayerSpellRedDragonWill(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellRedDragonWill(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_RED_DRAGON_WILL);
             PlayerBuffAbstract(player, target, Database.RED_DRAGON_WILL);
@@ -1101,7 +1101,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ブルー・ドラゴン・ウィルのメソッド
         /// </summary>
-        private void PlayerSpellBlueDragonWill(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBlueDragonWill(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_BLUE_DRAGON_WILL);
             PlayerBuffAbstract(player, target, Database.BLUE_DRAGON_WILL);
@@ -1110,7 +1110,7 @@ namespace DungeonPlayer
         /// <summary>
         /// シン・フォーチュンのメソッド
         /// </summary>
-        private void PlayerSpellSinFortune(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSinFortune(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SIN_FORTUNE);
             PlayerBuffAbstract(player, target, Database.SIN_FORTUNE);
@@ -1119,7 +1119,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ノリッシュ・センスのメソッド
         /// </summary>
-        private void PlayerSkillNourishSense(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillNourishSense(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(199));
             GroundOne.PlaySoundEffect(Database.SOUND_NOURISH_SENSE);
@@ -1129,7 +1129,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エターナル・プリゼンスのメソッド
         /// </summary>
-        private void PlayerSpellEternalPresence(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellEternalPresence(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("EternalPresence");
             PlayerBuffAbstract(player, target, Database.ETERNAL_PRESENCE);
@@ -1138,7 +1138,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ダムネーションのメソッド
         /// </summary>
-        private void PlayerSpellDamnation(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDamnation(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Damnation");
             PlayerBuffAbstract(player, target, Database.DAMNATION);
@@ -1147,7 +1147,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アブソリュート・ゼロのメソッド
         /// </summary>
-        private void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("AbsoluteZero");
             if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
@@ -1159,7 +1159,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタンス・オブ・ダブルのメソッド
         /// </summary>
-        private void PlayerSkillStanceOfDouble(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillStanceOfDouble(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(215));
             GroundOne.PlaySoundEffect(Database.SOUND_STANCE_OF_DOUBLE);
@@ -1169,7 +1169,7 @@ namespace DungeonPlayer
         /// <summary>
         /// タイムストップのメソッド
         /// </summary>
-        private void PlayerSpellTimeStop(MainCharacter player, MainCharacter target, bool immidiateEnd = false)
+        protected void PlayerSpellTimeStop(MainCharacter player, MainCharacter target, bool immidiateEnd = false)
         {
             GroundOne.PlaySoundEffect("TimeStop");
             if (player.CurrentTimeStop <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
@@ -1185,7 +1185,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ダーケン・フィールドのメソッド
         /// </summary>
-        private void PlayerSpellDarkenField(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDarkenField(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(149));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1201,7 +1201,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ブレイジング・フィールドのメソッド
         /// </summary>
-        private void PlayerSpellBlazingField(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellBlazingField(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(178));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1217,7 +1217,7 @@ namespace DungeonPlayer
         /// <summary>
         /// イグザルティッド・フィールド
         /// </summary>
-        private void PlayerSpellExaltedField(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellExaltedField(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(174));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1233,7 +1233,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワン・オーソリティのメソッド
         /// </summary>
-        private void PlayerSkillOneAuthority(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillOneAuthority(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(202));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1249,7 +1249,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ヴォルテックス・フィールド
         /// </summary>
-        private void PlayerSpellVortexField(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellVortexField(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(185));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1265,7 +1265,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スウィフト・ステップのメソッド
         /// </summary>
-        private void PlayerSkillSwiftStep(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSwiftStep(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(153));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1281,7 +1281,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ライジング・オーラのメソッド
         /// </summary>
-        private void PlayerSkillRisingAura(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillRisingAura(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(175));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1297,7 +1297,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アセンション・オーラのメソッド
         /// </summary>
-        private void PlayerSkillAscensionAura(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillAscensionAura(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(176));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1313,7 +1313,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エクリプス・エンドのメソッド
         /// </summary>
-        private void PlayerSpellEclipseEnd(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellEclipseEnd(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(210));
             GroundOne.PlaySoundEffect(Database.SOUND_ECLIPSE_END);
@@ -1327,7 +1327,7 @@ namespace DungeonPlayer
             }
         }
 
-        private void PlayerSkillFatalBlow(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillFatalBlow(MainCharacter player, MainCharacter target)
         {
             bool notOneKill = false;
             if (target.GetType() == typeof(TruthEnemyCharacter))
@@ -1360,7 +1360,7 @@ namespace DungeonPlayer
         /// <summary>
         /// セブンス・マジックのメソッド
         /// </summary>
-        private void PlayerSpellSeventhMagic(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellSeventhMagic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("TruthVision");
             PlayerBuffAbstract(player, target, Database.SEVENTH_MAGIC);
@@ -1369,7 +1369,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタンス・オブ・ミスティックのメソッド
         /// </summary>
-        private void PlayerSkillStanceOfMystic(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillStanceOfMystic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("GaleWind");
             PlayerBuffAbstract(player, target, Database.STANCE_OF_MYSTIC);
@@ -1379,7 +1379,7 @@ namespace DungeonPlayer
         /// <summary>
         /// リザレクションのメソッド
         /// </summary>
-        private void PlayerSpellResurrection(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellResurrection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Resurrection");
             UpdateBattleText(player.GetCharacterSentence(52));
@@ -1391,7 +1391,7 @@ namespace DungeonPlayer
         /// <summary>
         /// デス・ディナイのメソッド
         /// </summary>
-        private void PlayerSpellDeathDeny(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDeathDeny(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_DEATH_DENY);
             UpdateBattleText(player.GetCharacterSentence(214));
@@ -1400,7 +1400,7 @@ namespace DungeonPlayer
             NowNoResurrection(player, target, 999);
         }
 
-        private void ResurrectionLogic(MainCharacter player, MainCharacter target, string command)
+        protected void ResurrectionLogic(MainCharacter player, MainCharacter target, string command)
         {
             if (target != null)
             {
@@ -1454,7 +1454,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ストレートスマッシュのメソッド
         /// </summary>
-        private void PlayerSkillStraightSmash(MainCharacter player, MainCharacter target, int interval, bool ignoreDefense)
+        protected void PlayerSkillStraightSmash(MainCharacter player, MainCharacter target, int interval, bool ignoreDefense)
         {
             UpdateBattleText(player.GetCharacterSentence(1));
             double damage = PrimaryLogic.StraightSmashValue(player, GroundOne.DuelMode);
@@ -1468,7 +1468,7 @@ namespace DungeonPlayer
         /// <param name="target"></param>
         /// <param name="p"></param>
         /// <param name="p_2"></param>
-        private void PlayerSkillSilentRush(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSilentRush(MainCharacter player, MainCharacter target)
         {
             for (int ii = 0; ii < 3; ii++)
             {
@@ -1483,7 +1483,7 @@ namespace DungeonPlayer
         /// <summary>
         /// カルネージラッシュのメソッド
         /// </summary>
-        private void PlayerSkillCarnageRush(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillCarnageRush(MainCharacter player, MainCharacter target)
         {
             for (int ii = 0; ii < 5; ii++)
             {
@@ -1500,7 +1500,7 @@ namespace DungeonPlayer
         /// </summary>
         /// <param name="player"></param>
         /// <param name="target"></param>
-        private void PlayerSkillSoulExecution(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSoulExecution(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(188));
             //bool alreadyTruthVision = false;
@@ -1533,7 +1533,7 @@ namespace DungeonPlayer
         /// <summary>
         /// エニグマ・センスのメソッド
         /// </summary>
-        private void PlayerSkillEnigmaSense(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillEnigmaSense(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(72));
             double atkBase = PrimaryLogic.EnigmaSenseValue(player, GroundOne.DuelMode);
@@ -1543,7 +1543,7 @@ namespace DungeonPlayer
         /// <summary>
         /// クラッシング・ブローのメソッド
         /// </summary>
-        private void PlayerSkillCrushingBlow(MainCharacter player)
+        protected void PlayerSkillCrushingBlow(MainCharacter player)
         {
             PlayerNormalAttack(player, player.Target, 0, 2, false, false, 0, 0, Database.SOUND_CRUSHING_BLOW, -1, true, CriticalType.Random);
         }
@@ -1551,7 +1551,7 @@ namespace DungeonPlayer
         /// <summary>
         /// キネティック・スマッシュのメソッド
         /// </summary>
-        private void PlayerSkillKineticSmash(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillKineticSmash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(74));
             double damage = PrimaryLogic.KineticSmashValue(player, GroundOne.DuelMode);
@@ -1561,7 +1561,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ソウル・インフィニティのメソッド
         /// </summary>
-        private void PlayerSkillSoulInfinity(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSoulInfinity(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(73));
             double damage = PrimaryLogic.SoulInfinityValue(player, GroundOne.DuelMode);
@@ -1571,7 +1571,7 @@ namespace DungeonPlayer
         /// <summary>
         /// カタストロフィのメソッド
         /// </summary>
-        private void PlayerSkillCatastrophe(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillCatastrophe(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(98));
             double damage = PrimaryLogic.CatastropheValue(player, GroundOne.DuelMode);
@@ -1581,7 +1581,7 @@ namespace DungeonPlayer
         /// <summary>
         /// 朧・インパクトのメソッド
         /// </summary>
-        private void PlayerSkillOboroImpact(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillOboroImpact(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(96));
             double damage = PrimaryLogic.OboroImpactValue(player, GroundOne.DuelMode);
@@ -1592,7 +1592,7 @@ namespace DungeonPlayer
         /// <summary>
         /// インナー・インスピレーションのメソッド
         /// </summary>
-        private void PlayerSkillInnerInspiration(MainCharacter player)
+        protected void PlayerSkillInnerInspiration(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("InnerInspiration");
             double effectValue = PrimaryLogic.InnerInspirationValue(player);
@@ -1605,7 +1605,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタンス・オブ・スタンディングのメソッド
         /// </summary>
-        private void PlayerSkillStanceOfStanding(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillStanceOfStanding(MainCharacter player, MainCharacter target)
         {
             PlayerBuffAbstract(player, player, Database.STANCE_OF_STANDING);
             UpdateBattleText(player.GetCharacterSentence(56));
@@ -1613,7 +1613,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ニュートラル・スマッシュのメソッド
         /// </summary>
-        private void PlayerSkillNeutralSmash(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillNeutralSmash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(152));
             PlayerNormalAttack(player, target, 0, false, false);
@@ -1621,7 +1621,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ヴィゴー・センスのメソッド
         /// </summary>
-        private void PlayerSkillVigorSense(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillVigorSense(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(201));
             GroundOne.PlaySoundEffect("StanceOfFlow");
@@ -1631,7 +1631,7 @@ namespace DungeonPlayer
         /// <summary>
         /// サークル・スラッシュのメソッド
         /// </summary>
-        private void PlayerSkillCircleSlash(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillCircleSlash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(154));
             List<MainCharacter> group = new List<MainCharacter>();
@@ -1645,7 +1645,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ランブル・シャウトのメソッド
         /// </summary>
-        private void PlayerSkillRumbleShout(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillRumbleShout(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(155));
             target.Target = player;
@@ -1654,7 +1654,7 @@ namespace DungeonPlayer
         /// <summary>
         /// カラレス・ムーヴのメソッド
         /// </summary>
-        private void PlayerSkillColorlessMove(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillColorlessMove(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(156));
             GroundOne.PlaySoundEffect("AeroBlade");
@@ -1663,7 +1663,7 @@ namespace DungeonPlayer
         /// <summary>
         /// フューチャー・ヴィジョンのメソッド
         /// </summary>
-        private void PlayerSkillFutureVision(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillFutureVision(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(157));
             GroundOne.PlaySoundEffect("Tranquility");
@@ -1672,7 +1672,7 @@ namespace DungeonPlayer
         /// <summary>
         /// シャープ・グレアのメソッド
         /// </summary>
-        private void PlayerSkillSharpGlare(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSharpGlare(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(159));
             if (PlayerNormalAttack(player, target, 0, false, false))
@@ -1684,7 +1684,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アンノウン・ショックのメソッド
         /// </summary>
-        private void PlayerSkillUnknownShock(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillUnknownShock(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(187));
 
@@ -1704,7 +1704,7 @@ namespace DungeonPlayer
         /// <summary>
         /// サプライズ・アタックのメソッド
         /// </summary>
-        private void PlayerSkillSurpriseAttack(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillSurpriseAttack(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(161));
 
@@ -1726,7 +1726,7 @@ namespace DungeonPlayer
         /// <summary>
         /// サイキック・ウェイヴのメソッド
         /// </summary>
-        private void PlayerSkillPsychicWave(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillPsychicWave(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(162));
 
@@ -1737,7 +1737,7 @@ namespace DungeonPlayer
         /// <summary>
         /// リフレックス・スピリットのメソッド
         /// </summary>
-        private void PlayerSkillReflexSpirit(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillReflexSpirit(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(158));
             target.RemovePreStunning();
@@ -1749,7 +1749,7 @@ namespace DungeonPlayer
         /// <summary>
         /// トラスト・サイレンスのメソッド
         /// </summary>
-        private void PlayerSkillTrustSilence(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillTrustSilence(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(160));
             target.RemoveSilence();
@@ -1760,7 +1760,7 @@ namespace DungeonPlayer
         /// <summary>
         /// リカバーのメソッド
         /// </summary>
-        private void PlayerSkillRecover(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillRecover(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(163));
             target.RecoverStunning();
@@ -1771,7 +1771,7 @@ namespace DungeonPlayer
         /// <summary>
         /// バイオレント・スラッシュのメソッド
         /// </summary>
-        private void PlayerSkillViolentSlash(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillViolentSlash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(164));
             double damage = PrimaryLogic.ViolentSlashValue(player, GroundOne.DuelMode);
@@ -1780,7 +1780,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アウター・インスピレーションのメソッド
         /// </summary>
-        private void PlayerSkillOuterInspiration(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillOuterInspiration(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("WordOfLife");
             UpdateBattleText(player.GetCharacterSentence(165));
@@ -1797,7 +1797,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ディープ・ミラーのメソッド
         /// </summary>
-        private void PlayerSpellDeepMirror(MainCharacter player, MainCharacter target)
+        protected void PlayerSpellDeepMirror(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(179));
             player.CurrentDeepMirror = true;
@@ -1806,7 +1806,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタンス・オブ・サッドネスのメソッド
         /// </summary>
-        private void PlayerSkillStanceOfSuddenness(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillStanceOfSuddenness(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(166));
             player.CurrentStanceOfSuddenness = true;
@@ -1815,7 +1815,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ハーデスト・パリィのメソッド
         /// </summary>
-        private void PlayerSkillHardestParry(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillHardestParry(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(169));
             player.CurrentHardestParry = true;
@@ -1824,7 +1824,7 @@ namespace DungeonPlayer
         /// <summary>
         /// コンカシッヴ・ヒットのメソッド
         /// </summary>
-        private void PlayerSkillConcussiveHit(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillConcussiveHit(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(170));
             if (PlayerNormalAttack(player, target, 0, false, false))
@@ -1836,7 +1836,7 @@ namespace DungeonPlayer
         /// <summary>
         /// オンスロート・ヒットのメソッド
         /// </summary>
-        private void PlayerSkillOnslaughtHit(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillOnslaughtHit(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(171));
             if (PlayerNormalAttack(player, target, 0, false, false))
@@ -1848,7 +1848,7 @@ namespace DungeonPlayer
         /// <summary>
         /// インパルス・ヒットのメソッド
         /// </summary>
-        private void PlayerSkillImpulseHit(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillImpulseHit(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(172));
             if (PlayerNormalAttack(player, target, 0, false, false))
@@ -1860,7 +1860,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ハイ・エモーショナリティのメソッド
         /// </summary>
-        private void PlayerSkillHighEmotionality(MainCharacter player)
+        protected void PlayerSkillHighEmotionality(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("HighEmotionality");
             player.Target = player;
@@ -1870,7 +1870,7 @@ namespace DungeonPlayer
         /// <summary>
         /// スタンス・オブ・デスのメソッド
         /// </summary>
-        private void PlayerSkillStanceOfDeath(MainCharacter player)
+        protected void PlayerSkillStanceOfDeath(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("StanceOfDeath");
             player.Target = player;
@@ -1880,7 +1880,7 @@ namespace DungeonPlayer
         /// <summary>
         /// アンチ・スタンのメソッド
         /// </summary>
-        private void PlayerSkillAntiStun(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillAntiStun(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("AntiStun");
             player.Target = target;
@@ -1890,7 +1890,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ペインフル・インサニティ
         /// </summary>
-        private void PlayerSkillPainfulInsanity(MainCharacter player)
+        protected void PlayerSkillPainfulInsanity(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("PainfulInsanity");
             player.Target = player;
@@ -1900,7 +1900,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ナッシング・オブ・ナッシングネスのメソッド
         /// </summary>
-        private void PlayerSkillNothingOfNothingness(MainCharacter player)
+        protected void PlayerSkillNothingOfNothingness(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("NothingOfNothingness");
             player.Target = player;
@@ -1922,7 +1922,7 @@ namespace DungeonPlayer
         #endregion
         #region "無心"
 
-        private void PlayerSkillVoidExtraction(MainCharacter player)
+        protected void PlayerSkillVoidExtraction(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("VoidExtraction");
             int effectValue = Math.Max(player.Strength, Math.Max(player.Agility, Math.Max(player.Intelligence, player.Mind)));
@@ -2015,7 +2015,7 @@ namespace DungeonPlayer
         #region "心眼　無心"
         #endregion
 
-        private void PlayerSkillDoubleSlash(MainCharacter player, MainCharacter target, double magnification, bool ignoreDefense)
+        protected void PlayerSkillDoubleSlash(MainCharacter player, MainCharacter target, double magnification, bool ignoreDefense)
         {
             // 相手：カウンターアタックが入っている場合
             if (target.CurrentCounterAttack > 0)
@@ -2054,19 +2054,19 @@ namespace DungeonPlayer
         }
 
 
-        private void PlayerSkillCounterAttack(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillCounterAttack(MainCharacter player, MainCharacter target)
         {
             player.CurrentCounterAttack = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はカウンターの構えをとっている。\r\n");
         }
 
-        private void PlayerSkillNegate(MainCharacter player, MainCharacter target)
+        protected void PlayerSkillNegate(MainCharacter player, MainCharacter target)
         {
             player.CurrentNegate = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はニゲイトの構えをとっている。\r\n");
         }
 
-        private void PlayerSkillStanceOfEyes(MainCharacter player)
+        protected void PlayerSkillStanceOfEyes(MainCharacter player)
         {
             player.CurrentStanceOfEyes = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はスタンス・オブ・アイズの構えをとっている。\r\n");
@@ -2078,7 +2078,7 @@ namespace DungeonPlayer
         /// <summary>
         /// 元核：集中と断絶のメソッド
         /// </summary>
-        private void PlayerArchetypeSyutyuDanzetsu(MainCharacter player, MainCharacter target)
+        protected void PlayerArchetypeSyutyuDanzetsu(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SYUTYU_DANZETSU);
             PlayerBuffAbstract(player, player, Database.ARCHETYPE_EIN);
@@ -2087,7 +2087,7 @@ namespace DungeonPlayer
         /// <summary>
         /// 元核：循環と誓約のメソッド
         /// </summary>
-        private void PlayerArchetypeJunkanSeiyaku(MainCharacter player)
+        protected void PlayerArchetypeJunkanSeiyaku(MainCharacter player)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_JUNKAN_SEIYAKU);
             List<MainCharacter> group = new List<MainCharacter>();
@@ -2103,7 +2103,7 @@ namespace DungeonPlayer
         /// <summary>
         /// 元核：オラオラオラァ！
         /// </summary>
-        private void PlayerArchetypeOraOraOraaa(MainCharacter player)
+        protected void PlayerArchetypeOraOraOraaa(MainCharacter player)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_ORA_ORA_ORAAA);
             int num = (int)PrimaryLogic.OraOraOraaaValue(player);
@@ -2122,13 +2122,13 @@ namespace DungeonPlayer
         /// <summary>
         /// 元核：真実の破壊
         /// </summary>
-        private void PlayerArchetypeShinzitsuHakai(MainCharacter player)
+        protected void PlayerArchetypeShinzitsuHakai(MainCharacter player)
         {
             // after インスタントをX回載せる
         }
         #endregion
 
-        private void SetupAllGroup(MainCharacter player, ref List<MainCharacter> group, TruthActionCommand.TargetType targetType)
+        protected void SetupAllGroup(MainCharacter player, ref List<MainCharacter> group, TruthActionCommand.TargetType targetType)
         {
             if (targetType == TruthActionCommand.TargetType.AllyGroup)
             {
@@ -2163,14 +2163,14 @@ namespace DungeonPlayer
             }
         }
 
-        private void SetupEnemyGroup(ref List<MainCharacter> group)
+        protected void SetupEnemyGroup(ref List<MainCharacter> group)
         {
             if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
             if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
             if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
         }
 
-        private void SetupAllyGroup(ref List<MainCharacter> group)
+        protected void SetupAllyGroup(ref List<MainCharacter> group)
         {
             if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
             if (!GroundOne.DuelMode && GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
