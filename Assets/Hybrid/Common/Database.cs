@@ -1074,6 +1074,7 @@ namespace DungeonPlayer
         public static string MIRROR = @"Mirror";
         public static string BLUEORB = @"BlueOrb";
         public static string FOUNTAIN = @"Fountain";
+        public static string MARK_ENEMY = @"Enemy";
 
 
         #region "一般コマンド名称"
@@ -2715,6 +2716,9 @@ namespace DungeonPlayer
         public const string TruthWill = @"TruthWill";
         public const string TruthRequestInput = @"TruthInputRequest";
         public const string SaveLoad = @"SaveLoad";
+        public const string SinglePlayMenu = @"SinglePlayMenu";
+        public const string SingleDungeon = @"SingleDungeon";
+        public const string SingleBattleEnemy = @"SingleBattleEnemy";
 
         // コマンドタイミングのアイコン(add unity)
         public const string SorceryIcon = @"sorcery_mark";

@@ -16,13 +16,29 @@ namespace DungeonPlayer
             Application.LoadLevelAsync(Database.TruthHomeTown);
             GroundOne.Parent.Clear();
         }
-
+        public static void JumpToSinglePlayMenu()
+        {
+            GroundOne.WE.DungeonPosX = 0;
+            GroundOne.WE.DungeonPosY = 0;
+            GroundOne.StopDungeonMusic();
+            Application.LoadLevelAsync(Database.SinglePlayMenu);
+            GroundOne.Parent.Clear();
+        }
         public static void JumpToTruthDungeon(bool gotoDownstair)
         {
             GroundOne.WE.AlreadyShownEvent = false;
             GroundOne.GotoDownstair = gotoDownstair;
             GroundOne.StopDungeonMusic();
             Application.LoadLevelAsync(Database.TruthDungeon);
+            GroundOne.Parent.Clear();
+        }
+
+        public static void JumpToSingleDungeon(bool gotoDownstair)
+        {
+            GroundOne.WE.AlreadyShownEvent = false;
+            GroundOne.GotoDownstair = gotoDownstair;
+            GroundOne.StopDungeonMusic();
+            Application.LoadLevelAsync(Database.SingleDungeon);
             GroundOne.Parent.Clear();
         }
 
@@ -64,7 +80,26 @@ namespace DungeonPlayer
             SceneManager.LoadScene(Database.TruthBattleEnemy);
             GroundOne.Parent.Clear();
         }
+        public static void CallSingleBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
+        {
+            GroundOne.DuelMode = duel;
+            GroundOne.HiSpeedAnimation = hiSpeed;
+            GroundOne.FinalBattle = final;
+            GroundOne.LifeCountBattle = lifecount;
+            GroundOne.BattleResult = GroundOne.battleResult.None;
+            GroundOne.SceneName = sceneName;
+            GroundOne.StopDungeonMusic();
+            SceneManager.LoadScene(Database.SingleBattleEnemy);
+            GroundOne.Parent.Clear();
+        }
+
         public static void CallBackBattleEnemy()
+        {
+            string target = GroundOne.SceneName;
+            GroundOne.SceneName = string.Empty;
+            SceneManager.LoadScene(target);
+        }
+        public static void CallBackSingleBattleEnemy()
         {
             string target = GroundOne.SceneName;
             GroundOne.SceneName = string.Empty;
