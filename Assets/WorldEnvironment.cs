@@ -397,6 +397,7 @@ namespace DungeonPlayer
         public bool Treasure56 { get; set; } // ５階：宝箱６
         public bool Treasure57 { get; set; } // ５階：宝箱７
 
+        public int DungeonField { get; set; } // シングルダンジョンのフィールドを示す値
         public int DungeonArea { get; set; } // ダンジョン何階でセーブしたかを示す値
         public bool CompleteSlayBoss1 { get; set; } // ダンジョン１階のボスを撃破
         public bool CompleteSlayBoss2 { get; set; } // ダンジョン２階のボスを撃破
