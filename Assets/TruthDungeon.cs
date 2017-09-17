@@ -145,6 +145,7 @@ namespace DungeonPlayer
         List<GameObject> objTreasureList = new List<GameObject>();
         List<int> objTreasureNum = new List<int>();
 
+        public GameObject groupMainMessage;
         public Text mainMessage;
         public Image back_vigilance;
         public Text labelVigilance;
@@ -290,7 +291,7 @@ namespace DungeonPlayer
             else
             {
                 MOVE_INTERVAL = 40;
-                this.groupArrow.SetActive(false);
+                this.groupArrow.SetActive(true);
             }
             this.interval = MOVE_INTERVAL;
             this.MovementInterval = MOVE_INTERVAL;
@@ -2436,6 +2437,7 @@ namespace DungeonPlayer
             {
                 this.nowEncountEnemy = false;
                 mainMessage.text = "アイン：敵と遭遇だ！";
+                AppearMainMessage();
                 CancelKeyDownMovement();
                 this.execEncountEnemy = true;
             }
@@ -2861,6 +2863,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ダンジョン探索を少しやってみるか。上下左右キーを押してみてくれ。移動する事が出来るはずだ。";
+                AppearMainMessage();
             }
 
             int tilenum = Method.GetTileNumber(Player.transform.position);
@@ -3808,6 +3811,8 @@ namespace DungeonPlayer
             UpdatePlayerLocationInfo(X, Y, noSound);
             this.viewPoint = new Vector3(viewX + Database.CAMERA_WORLD_POINT_X, viewY + Database.CAMERA_WORLD_POINT_Y, Camera.main.transform.position.z);
             UpdateViewPoint(this.viewPoint.x, this.viewPoint.y);
+
+            HarfAppearMainMessage();
             //Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
         }
 
@@ -4156,6 +4161,7 @@ namespace DungeonPlayer
             CancelKeyDownMovement();
             GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
             this.mainMessage.text = message;
+            AppearMainMessage();
         }
 
         private bool CheckBlueWall(int direction) // 0:↑ 1:← 2:→ 3:↓
@@ -11851,11 +11857,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(true);
             this.GroupsubMenu.SetActive(true);
             this.GroupMenu.SetActive(true);
-            if (Application.platform == RuntimePlatform.Android ||
-                Application.platform == RuntimePlatform.IPhonePlayer)
-            {
+            //if (Application.platform == RuntimePlatform.Android ||
+            //    Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
                 this.groupArrow.SetActive(true);
-            }
+            //}
         }
 
         private void TurnToBlack()
@@ -11866,11 +11872,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(false);
             this.GroupsubMenu.SetActive(false);
             this.GroupMenu.SetActive(false);
-            if (Application.platform == RuntimePlatform.Android ||
-                Application.platform == RuntimePlatform.IPhonePlayer)
-            {
+            //if (Application.platform == RuntimePlatform.Android ||
+            //    Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
                 this.groupArrow.SetActive(false);
-            }
+            //}
         }
 
         private void TurnToWhite()
@@ -11881,11 +11887,11 @@ namespace DungeonPlayer
             this.groupPlayerList.SetActive(false);
             this.GroupsubMenu.SetActive(false);
             this.GroupMenu.SetActive(false);
-            if (Application.platform == RuntimePlatform.Android ||
-                Application.platform == RuntimePlatform.IPhonePlayer)
-            {
+            //if (Application.platform == RuntimePlatform.Android ||
+            //    Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
                 this.groupArrow.SetActive(false);
-            }
+            //}
         }
 
         private void UpdateUnknownTileArea01()
@@ -14212,6 +14218,7 @@ namespace DungeonPlayer
                                     + Database.OriginNumber[9] + " - " + Database.OriginNumber[9] + " = ○    "
                                     + Database.OriginNumber[10] + " - " + Database.OriginNumber[10] + " = ○    "
                                     + Database.OriginNumber[11] + " - " + Database.OriginNumber[11] + " = ○    ";
+                AppearMainMessage();
             }
             else if (num == 1)
             {
@@ -14233,6 +14240,7 @@ namespace DungeonPlayer
                                     + this.infinityLoopNumber[9] + " - " + this.playerLoopNumber[9] + " = " + correct[9] + "    "
                                     + this.infinityLoopNumber[10] + " - " + this.playerLoopNumber[10] + " = " + correct[10] + "    "
                                     + this.infinityLoopNumber[11] + " - " + this.playerLoopNumber[11] + " = " + correct[11] + "    ";
+                AppearMainMessage();
             }
             else
             {
@@ -14250,6 +14258,7 @@ namespace DungeonPlayer
                                     + this.infinityLoopNumber[9] + " - " + this.playerLoopNumber[9] + " = " + correct[9] + "    "
                                     + this.infinityLoopNumber[10] + " - " + this.playerLoopNumber[10] + " = " + correct[10] + "    "
                                     + this.infinityLoopNumber[11] + " - " + this.playerLoopNumber[11] + " = " + correct[11] + "    ";
+                AppearMainMessage();
             }
         }
 
@@ -15692,6 +15701,7 @@ namespace DungeonPlayer
                 (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1))
             {
                 mainMessage.text = "アイン：・・・　・・・";
+                AppearMainMessage();
                 return true;
             }
             return false;
@@ -15702,6 +15712,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：キャラクターのステータス画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
+                AppearMainMessage();
                 return;
             }
 
@@ -15714,6 +15725,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：キャラクターのバトル設定画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
+                AppearMainMessage();
                 return;
             }
             if (BlockAction()) { return; }
@@ -15725,6 +15737,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ここからゲームセーブする画面を呼び出せる。このチュートリアルではセーブは不要だ。";
+                AppearMainMessage();
                 return;
             }
 
@@ -15748,6 +15761,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ここからゲームロードする画面を呼び出せる。このチュートリアルではロードは不要だ。";
+                AppearMainMessage();
                 return;
             }
 
@@ -15822,6 +15836,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：戦闘コマンドの内容を確認してみよう。";
+                AppearMainMessage();
             }
 
             if (BlockAction()) { return; }
@@ -15835,6 +15850,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode && this.DungeonViewMode == false)
             {
                 mainMessage.text = "アイン：ダンジョン表示モードに切り替える事でマップ全体を見渡せる。移動する時と同じように上下左右キーを押してみてくれ。\r\n移動モードに戻る時は再びこのマップボタンを押してくれ。";
+                AppearMainMessage();
             }
 
             if (BlockAction()) { return; }
@@ -15876,6 +15892,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ダンジョン内で発生した会話履歴を確認する事ができる。すまねえがこのチュートリアルでは確認できないんだ。";
+                AppearMainMessage();
                 return;
             }
 
@@ -15909,6 +15926,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：街へ帰還する事が出来る。このチュートリアルではすまねえが使えないんだ。";
+                AppearMainMessage();
                 return;
             }
 
@@ -15933,12 +15951,14 @@ namespace DungeonPlayer
                 {
                     Debug.Log("Block 2");
                     mainMessage.text = "アイン：・・・　・・・";
+                    AppearMainMessage();
                 }
                 return;
             }
             else if (GroundOne.WE.dungeonEvent4_SlayBoss3)
             {
                 mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
+                AppearMainMessage();
                 return;
             }
 
@@ -15951,6 +15971,7 @@ namespace DungeonPlayer
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：赤に切り替えるとモンスターが発生しやすくなる。青に戻せばモンスターは出にくくなる。このダンジョンでは残念だがモンスターは出ないんだ。";
+                AppearMainMessage();
             }
 
             if (BlockAction()) { return; }
@@ -15964,6 +15985,45 @@ namespace DungeonPlayer
                 back_vigilance.sprite = Resources.Load<Sprite>(Database.VIGILANCE_MODE_RESOURCE);
                 labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
             }
+        }
+
+        public void TapMainMessage()
+        {
+            UpdateTransparent(groupMainMessage, mainMessage);
+        }
+
+        protected void UpdateTransparent(GameObject obj, Text txt)
+        {
+            float current = groupMainMessage.GetComponent<Image>().color.a;
+            float current2 = 1.0f;
+            if (current == 1.0f)
+            {
+                current = 0.5f;
+                current2 = 1.0f;
+            }
+            else if (current == 0.5f)
+            {
+                current = 0.0f;
+                current2 = 0.0f;
+            }
+            else
+            {
+                current = 1.0f;
+                current2 = 1.0f;
+            }
+            groupMainMessage.GetComponent<Image>().color = new Color(current, current, current, current);
+            mainMessage.color = new Color(0, 0, 0, current2);
+        }
+
+        protected void AppearMainMessage()
+        {
+            groupMainMessage.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            mainMessage.color = new Color(0, 0, 0, 1);
+        }
+        protected void HarfAppearMainMessage()
+        {
+            groupMainMessage.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+            mainMessage.color = new Color(0, 0, 0, 1);
         }
 
         public override void ExitYes()
@@ -16183,6 +16243,7 @@ namespace DungeonPlayer
                 if (currentEvent == MessagePack.ActionEvent.None)
                 {
                     mainMessage.text = "   " + this.nowMessage[this.nowReading];
+                    AppearMainMessage();
                     GroundOne.playbackMessage.Add(this.nowMessage[this.nowReading]);
                 }
 
@@ -16682,6 +16743,7 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.GoBackTutorial)
                 {
                     this.mainMessage.text = this.nowMessage[this.nowReading];
+                    AppearMainMessage();
                     yesnoSystemMessage.text = Database.exitMessage4;
                     groupYesnoSystemMessage.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
@@ -17366,6 +17428,7 @@ namespace DungeonPlayer
                     this.Filter.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                     this.mainMessage.text = this.nowMessage[this.nowReading];
+                    AppearMainMessage();
                     this.yesnoSystemMessage.text = Database.Message_GotoSkipMirror;
                     this.groupYesnoSystemMessage.SetActive(true);
                 }
@@ -17384,6 +17447,7 @@ namespace DungeonPlayer
                     this.Filter.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                     this.mainMessage.text = this.nowMessage[this.nowReading];
+                    AppearMainMessage();
                     this.yesnoSystemMessage.text = Database.Message_OriginOrNormal;
                     this.groupYesnoSystemMessage.SetActive(true);
                 }
@@ -17847,6 +17911,7 @@ namespace DungeonPlayer
                     this.Filter.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                     this.mainMessage.text = Database.Message_Floor4Area3Lever;
+                    AppearMainMessage();
                     this.yesnoSystemMessage.text = Database.Message_Floor4Area3Lever;
                     this.groupYesnoSystemMessage.SetActive(true);
                 }
@@ -17856,6 +17921,7 @@ namespace DungeonPlayer
                     this.Filter.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                     this.mainMessage.text = Database.Message_Floor4Area3Lever2;
+                    AppearMainMessage();
                     this.yesnoSystemMessage.text = Database.Message_Floor4Area3Lever2;
                     this.groupYesnoSystemMessage.SetActive(true);
                 }
