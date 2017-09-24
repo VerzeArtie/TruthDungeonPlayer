@@ -4072,7 +4072,7 @@ namespace DungeonPlayer
             }
             else
             {
-                messageList.Add("アイン：（情報も揃ったことだし、挑戦みるか！）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（情報も揃ったことだし、挑戦してみるか！）"); eventList.Add(ActionEvent.None);
             }
 
             if (GroundOne.WE.dungeonEvent215)
