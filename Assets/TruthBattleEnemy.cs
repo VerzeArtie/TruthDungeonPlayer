@@ -191,6 +191,7 @@ namespace DungeonPlayer
         public Image[] IsSorcery1;
         public GameObject player1Panel;
         public GameObject player1ActionPanel;
+        public GameObject player1Field;
 
         public Image player2Arrow;
         public Text playerActionLabel2;
@@ -215,6 +216,7 @@ namespace DungeonPlayer
         public Image[] IsSorcery2;
         public GameObject player2Panel;
         public GameObject player2ActionPanel;
+        public GameObject player2Field;
 
         public Image player3Arrow;
         public Text playerActionLabel3;
@@ -239,6 +241,7 @@ namespace DungeonPlayer
         public Image[] IsSorcery3;
         public GameObject player3Panel;
         public GameObject player3ActionPanel;
+        public GameObject player3Field;
 
         public Image enemy1Arrow;
         public Image enemy1Shadow2;
@@ -263,6 +266,7 @@ namespace DungeonPlayer
         public Text enemy1Critical;
         public Text[] KeyNumE1;
         public Image[] IsSorceryE1;
+        public GameObject enemy1Field;
 
         public Image enemy2Arrow;
         public Text enemyActionLabel2;
@@ -285,6 +289,7 @@ namespace DungeonPlayer
         public Text enemy2Critical;
         public Text[] KeyNumE2;
         public Image[] IsSorceryE2;
+        public GameObject enemy2Field;
 
         public Image enemy3Arrow;
         public Text enemyActionLabel3;
@@ -307,6 +312,7 @@ namespace DungeonPlayer
         public Text enemy3Critical;
         public Text[] KeyNumE3;
         public Image[] IsSorceryE3;
+        public GameObject enemy3Field;
 
         public GameObject BuffPanel1;
         public GameObject BuffPanel2;
@@ -338,7 +344,7 @@ namespace DungeonPlayer
         int activatePlayerNumber = 0;
         List<MainCharacter> ActiveList = new List<MainCharacter>();
 
-        int MAX_ITEM_GAUGE = 1000;
+        int MAX_ITEM_GAUGE = 500;
         int currentItemGauge = 0;
 
         bool StayOn_StanceOfFlow = false;
@@ -568,64 +574,83 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableFirstCharacter == false)
             {
                 groupPlayer1.SetActive(false);
+                player1Field.SetActive(false);
             }
             else
             {
                 groupPlayer1.SetActive(true);
+                player1Field.SetActive(true);
                 ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1Panel, player1ActionPanel, player1MainObjectBack, player1MainObject, GroundOne.MC.PlayerBattleTargetColor1, player1Arrow, null, null, player1Damage, player1Critical, ref pbBuffPlayer1, KeyNum1, IsSorcery1);
             }
             if (GroundOne.WE.AvailableSecondCharacter == false || GroundOne.DuelMode)
             {
                 groupPlayer2.SetActive(false);
+                player2Field.SetActive(false);
             }
             else
             {
                 groupPlayer2.SetActive(true);
+                player2Field.SetActive(true);
                 ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2Panel, player2ActionPanel, player2MainObjectBack, player2MainObject, GroundOne.SC.PlayerBattleTargetColor1, player2Arrow, null, null, player2Damage, player2Critical, ref pbBuffPlayer2, KeyNum2, IsSorcery2);
             }
 
             if (GroundOne.WE.AvailableThirdCharacter == false || GroundOne.DuelMode)
             {
                 groupPlayer3.SetActive(false);
+                player3Field.SetActive(false);
             }
             else
             {
                 groupPlayer3.SetActive(true);
+                player3Field.SetActive(true);
                 ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, player3LifeMeter, player3Mana, player3ManaMeter, player3Skill, player3SkillMeter, player3Instant, player3InstantMeter, player3SpecialInstant, player3SpecialInstantMeter, ActionButton3, playerActionLabel3, BuffPanel3, player3Panel, player3ActionPanel, player3MainObjectBack, player3MainObject, GroundOne.TC.PlayerBattleTargetColor1, player3Arrow, null, null, player3Damage, player3Critical, ref pbBuffPlayer3, KeyNum3, IsSorcery3);
             }
 
             if (GroundOne.enemyName1 == String.Empty)
             {
                 groupEnemy1.SetActive(false);
+                enemy1Field.SetActive(false);
                 ec1 = null;
             }
             else
             {
                 groupEnemy1.SetActive(true);
+                enemy1Field.SetActive(true);
                 ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, null, null, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, enemy1Shadow2, enemy1Shadow3, enemy1Damage, enemy1Critical, ref pbBuffEnemy1, KeyNumE1, IsSorceryE1);
             }
 
             if (GroundOne.enemyName2 == String.Empty || GroundOne.DuelMode)
             {
                 groupEnemy2.SetActive(false);
+                enemy2Field.SetActive(false);
                 ec2 = null;
             }
             else
             {
                 groupEnemy2.SetActive(true);
+                enemy2Field.SetActive(true);
                 ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, ActionButtonE2, enemyActionLabel2, PanelBuffEnemy2, null, null, enemy2MainObjectBack, enemy2MainObject, new Color(108.0f / 255.0f, 118.0f / 255.0f, 0.0f), enemy2Arrow, null, null, enemy2Damage, enemy2Critical, ref pbBuffEnemy2, KeyNumE2, IsSorceryE2);
             }
 
             if (GroundOne.enemyName3 == String.Empty || GroundOne.DuelMode)
             {
                 groupEnemy3.SetActive(false);
+                enemy3Field.SetActive(false);
                 ec3 = null;
             }
             else
             {
                 groupEnemy3.SetActive(true);
+                enemy3Field.SetActive(true);
                 ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3FullName, enemy3Life, enemy3LifeMeter, enemy3Mana, enemy3ManaMeter, enemy3Skill, enemy3SkillMeter, enemy3Instant, enemy3InstantMeter, enemy2SpecialInstant, enemy3SpecialInstantMeter, ActionButtonE3, enemyActionLabel3, PanelBuffEnemy3, null, null, enemy3MainObjectBack, enemy3MainObject, new Color(69.0f / 255.0f, 99.0f / 255.0f, 129.0f / 255.0f), enemy3Arrow, null, null, enemy3Damage, enemy3Critical, ref pbBuffEnemy3, KeyNumE3, IsSorceryE3);
             }
+
+            player1ActionPanel.SetActive(true);
+            player1InstantMeter.gameObject.SetActive(true);
+            player2ActionPanel.SetActive(false);
+            //player2InstantMeter.gameObject.SetActive(false);
+            player3ActionPanel.SetActive(false);
+            //player3InstantMeter.gameObject.SetActive(false);
 
             for (int ii = 0; ii < this.ActiveList.Count; ii++)
             {
@@ -1213,7 +1238,7 @@ namespace DungeonPlayer
             // 戦闘画面UIへの初期設定
             // MainCharacterクラス内容と戦闘画面UIの割り当て
             player.labelName = charaName;
-            player.labelName.text = player.FirstName;
+            player.labelName.text = player.FullName;
             if (fullName != null)
             {
                 player.labelFullName = fullName;
@@ -1448,66 +1473,76 @@ namespace DungeonPlayer
             // プレイヤースキル・魔法習得に応じて、アクションボタンを登録
             UpdateBattleCommandSetting(player, actionButton, sorceryMark);
 
+            // インスタントポイント０をGUIへ反映
+            UpdateInstantPoint(player);
+
             // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
             #region "敵側、名前の色と各ＵＩポジションを再配置"
             if (GroundOne.DuelMode)
             {
-                if (player == ec1 || player == ec2 || player == ec3)
+                //if (player == ec1 || player == ec2 || player == ec3)
+                //{
+                //    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 170, 0);
+                //    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
+                //    player.labelCurrentLifePoint.fontSize = 36;
+                //    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleLeft;
+                //    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(640, 220, 0);
+                //    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
+                //    player.labelName.fontSize = 30;
+                //    player.labelName.alignment = TextAnchor.MiddleCenter;
+                //    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
+                //    player.CriticalLabel.fontSize = 26;
+                //    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
+                //    player.DamageLabel.fontSize = 22;
+                //    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(130, 60, 0);
+                //    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                //    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(635, 120, 0);
+                //    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
+                //    player.ActionLabel.fontSize = 20;
+                //    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                //    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(80, 140, 0);
+                //    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
+                //    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(640, 70, 0);
+                //    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
+                //    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 25, 0);
+                //    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
+                //}
+                //else
+                //{
+                //    player.labelName.text = player.FullName;
+                //    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 170, 0);
+                //    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
+                //    player.labelCurrentLifePoint.fontSize = 36;
+                //    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleRight;
+                //    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(-640, 220, 0);
+                //    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
+                //    player.labelName.fontSize = 30;
+                //    player.labelName.alignment = TextAnchor.MiddleCenter;
+                //    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
+                //    player.CriticalLabel.fontSize = 26;
+                //    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
+                //    player.DamageLabel.fontSize = 22;
+                //    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(-130, 60, 0);
+                //    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                //    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(-635, 120, 0);
+                //    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
+                //    player.ActionLabel.fontSize = 20;
+                //    player.ActionLabel.alignment = TextAnchor.MiddleRight;
+                //    player.meterCurrentLifePoint.GetComponent<RectTransform>().pivot = new Vector2(1, 0.5f);
+                //    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-80, 140, 0);
+                //    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
+                //    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(-640, 70, 0);
+                //    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
+                //    player.meterCurrentInstantPoint.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
+                //    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 25, 0);
+                //    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
+                //}
+
+                if (player == ec1 && ec1.FullName == Database.ENEMY_LAST_SIN_VERZE_ARTIE ||
+                    player == ec1 && ec1.FullName == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 170, 0);
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
-                    player.labelCurrentLifePoint.fontSize = 36;
-                    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleLeft;
-                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(640, 220, 0);
-                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
-                    player.labelName.fontSize = 30;
-                    player.labelName.alignment = TextAnchor.MiddleCenter;
-                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
-                    player.CriticalLabel.fontSize = 26;
-                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
-                    player.DamageLabel.fontSize = 22;
-                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(130, 60, 0);
-                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(635, 120, 0);
-                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
-                    player.ActionLabel.fontSize = 20;
-                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(80, 140, 0);
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(640, 70, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 25, 0);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
-                }
-                else
-                {
-                    player.labelName.text = player.FullName;
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 170, 0);
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
-                    player.labelCurrentLifePoint.fontSize = 36;
-                    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleRight;
-                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(-640, 220, 0);
-                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
-                    player.labelName.fontSize = 30;
-                    player.labelName.alignment = TextAnchor.MiddleCenter;
-                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
-                    player.CriticalLabel.fontSize = 26;
-                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
-                    player.DamageLabel.fontSize = 22;
-                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(-130, 60, 0);
-                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(-635, 120, 0);
-                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
-                    player.ActionLabel.fontSize = 20;
-                    player.ActionLabel.alignment = TextAnchor.MiddleRight;
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().pivot = new Vector2(1, 0.5f);
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-80, 140, 0);
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(-640, 70, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 25, 0);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
+                    UpdateSpecialInstantPoint(player);
+                    player.meterCurrentSpecialInstant.gameObject.SetActive(true);
                 }
             }
 
@@ -1541,33 +1576,35 @@ namespace DungeonPlayer
                 {
                     if (player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                     {
-                        player.labelName.text = "【一階の守護者】\r\n\r\n絡みつくフランシス";
+                        player.labelName.text = "\r\n【一階の守護者】\r\n\r\n絡みつくフランシス";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_LEVIATHAN)
                     {
-                        player.labelName.text = "【二階の守護者】\r\n\r\n大海蛇リヴィアサン";
+                        player.labelName.text = "\r\n【二階の守護者】\r\n\r\n大海蛇リヴィアサン";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER)
                     {
-                        player.labelName.text = "【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
+                        player.labelName.text = "\r\n【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                     {
-                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
+                        player.labelName.text = "\r\n【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2)
                     {
-                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
+                        player.labelName.text = "\r\n【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
                     {
-                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
+                        player.labelName.text = "\r\n【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
                     }
                     else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                     {
-                        player.labelName.text = "支　配　竜";
+                        player.labelName.text = "\r\n\r\n支　配　竜";
                         Font font = (Font)(Resources.Load<Font>(Database.FONT_KOUZAN_MOUHITSU));
                         player.labelName.font = font;
+                        player.labelName.resizeTextForBestFit = false;
+                        player.labelName.fontSize = 56;
                         //player.labelCurrentSkillPoint.Visible = false;
                         //player.labelCurrentManaPoint.Visible = false;
                     }
@@ -1575,58 +1612,58 @@ namespace DungeonPlayer
 
                     if (player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
                     {
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 235, 0);
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
-                        player.labelCurrentLifePoint.fontSize = 42;
-                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 255, 0);
-                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
-                        player.labelName.fontSize = 28;
-                        player.labelName.alignment = TextAnchor.MiddleCenter;
-                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                        player.CriticalLabel.fontSize = 38;
-                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                        player.DamageLabel.fontSize = 34;
-                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 235, 0);
-                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
-                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 215, 0);
-                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
-                        player.ActionLabel.fontSize = 22;
-                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 190, 0);
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 165, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, 135, 0);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
-                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 235, 0);
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
+                        //player.labelCurrentLifePoint.fontSize = 42;
+                        //player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 255, 0);
+                        //player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        //player.labelName.fontSize = 28;
+                        //player.labelName.alignment = TextAnchor.MiddleCenter;
+                        //player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        //player.CriticalLabel.fontSize = 38;
+                        //player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        //player.DamageLabel.fontSize = 34;
+                        //player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 235, 0);
+                        //player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
+                        //player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 215, 0);
+                        //player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        //player.ActionLabel.fontSize = 22;
+                        //player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 190, 0);
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 165, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, 135, 0);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
+                        //player.labelCurrentInstantPoint.color = UnityColor.Gold;
 
                     }
                     else if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
                     {
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 75, 0);
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
-                        player.labelCurrentLifePoint.fontSize = 42;
-                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 100, 0);
-                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
-                        player.labelName.fontSize = 28;
-                        player.labelName.alignment = TextAnchor.MiddleCenter;
-                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                        player.CriticalLabel.fontSize = 38;
-                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                        player.DamageLabel.fontSize = 34;
-                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 75, 0);
-                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
-                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 65, 0);
-                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
-                        player.ActionLabel.fontSize = 22;
-                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 35, 0);
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 10, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -20, 0);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
-                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 75, 0);
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
+                        //player.labelCurrentLifePoint.fontSize = 42;
+                        //player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 100, 0);
+                        //player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        //player.labelName.fontSize = 28;
+                        //player.labelName.alignment = TextAnchor.MiddleCenter;
+                        //player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        //player.CriticalLabel.fontSize = 38;
+                        //player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        //player.DamageLabel.fontSize = 34;
+                        //player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 75, 0);
+                        //player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
+                        //player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 65, 0);
+                        //player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        //player.ActionLabel.fontSize = 22;
+                        //player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 35, 0);
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 10, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -20, 0);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
+                        //player.labelCurrentInstantPoint.color = UnityColor.Gold;
                     }
                     else if (player.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING ||
                              player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU ||
@@ -1636,47 +1673,49 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
-                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
-                        player.labelCurrentLifePoint.fontSize = 42;
-                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
-                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
-                        player.labelName.fontSize = 28;
-                        player.labelName.alignment = TextAnchor.MiddleCenter;
-                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                        player.CriticalLabel.fontSize = 38;
-                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                        player.DamageLabel.fontSize = 34;
-                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
-                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
-                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
-                        player.ActionLabel.fontSize = 24;
-                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
-                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
-                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
-                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                        //player.labelName.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
+                        //player.labelName.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
+                        //player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
+                        //player.labelCurrentLifePoint.fontSize = 42;
+                        //player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
+                        //player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        //player.labelName.fontSize = 28;
+                        //player.labelName.alignment = TextAnchor.MiddleCenter;
+                        //player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        //player.CriticalLabel.fontSize = 38;
+                        //player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        //player.DamageLabel.fontSize = 34;
+                        //player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
+                        //player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                        //player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
+                        //player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        //player.ActionLabel.fontSize = 24;
+                        //player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
+                        //player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
+                        //player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
+                        //player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        //player.labelCurrentInstantPoint.color = UnityColor.Gold;
 
-                        if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1 || 
+                        if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1 ||
                             player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2 ||
                             player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
                         {
                             player.meterCurrentManaPoint.gameObject.SetActive(true);
-                            player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 38);
-                            player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 70, 0);
+                            //player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 38);
+                            //player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 70, 0);
                         }
-                        else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                        {
-                            player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(260, 180, 0);
-                            player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(145, 110, 0);
-                            player.labelName.fontSize = 70;
-                            player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 163, 0);
-                            player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 143);
-                        }
+                        //else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                        //{
+                        //    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(260, 180, 0);
+                        //    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(145, 110, 0);
+                        //    player.labelName.fontSize = 70;
+                        //    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 163, 0);
+                        //    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 143);
+                        //}
                     }
             //        // 1024 x 768
             //        player.MainObjectButton.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MAIN_OBJ_LOC_Y);
@@ -1699,33 +1738,35 @@ namespace DungeonPlayer
             //            player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
             //        }
                 }
+                // 支配竜
                 else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
                 {
-                    player.labelName.color = UnityColor.Purple;
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
-                    player.labelCurrentLifePoint.fontSize = 42;
-                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
-                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
-                    player.labelName.fontSize = 28;
-                    player.labelName.alignment = TextAnchor.MiddleCenter;
-                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                    player.CriticalLabel.fontSize = 38;
-                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                    player.DamageLabel.fontSize = 34;
-                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
-                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
-                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
-                    player.ActionLabel.fontSize = 24;
-                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                    player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                    Debug.Log("Shihairyuu layout");
+                    //player.labelName.color = UnityColor.Purple;
+                    //player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
+                    //player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
+                    //player.labelCurrentLifePoint.fontSize = 42;
+                    //player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
+                    //player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                    //player.labelName.fontSize = 28;
+                    //player.labelName.alignment = TextAnchor.MiddleCenter;
+                    //player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                    //player.CriticalLabel.fontSize = 38;
+                    //player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                    //player.DamageLabel.fontSize = 34;
+                    //player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
+                    //player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                    //player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
+                    //player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                    //player.ActionLabel.fontSize = 24;
+                    //player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                    //player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
+                    //player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                    //player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
+                    //player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    //player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
+                    //player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    //player.labelCurrentInstantPoint.color = UnityColor.Gold;
 
                     //        player.labelName.Visible = false;
                     //        if (player.Name == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD)
@@ -5494,7 +5535,7 @@ namespace DungeonPlayer
 
                     for (int ii = 0; ii < ActiveList.Count; ii++)
                     {
-                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) 
+                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton))
                         {
                             ExecActionMethod(this.currentTargetedPlayer, ActiveList[ii], TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString), this.instantActionCommandString);
                             break;
@@ -5529,6 +5570,21 @@ namespace DungeonPlayer
                 }
                 this.currentTargetedPlayer.ReserveBattleCommand = String.Empty;
                 NowSelectingTargetOFF();
+            }
+            else
+            {
+                if (sender.Equals(player1MainObject))
+                {
+                    ChoiceFirstChara();
+                }
+                else if (sender.Equals(player2MainObject))
+                {
+                    ChoiceSecondChara();
+                }
+                else if (sender.Equals(player3MainObject))
+                {
+                    ChoiceThirdChara();
+                }
             }
         }
 
@@ -5724,17 +5780,17 @@ namespace DungeonPlayer
                     if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null)
                     {
                         GroundOne.MC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                        GroundOne.MC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                        //GroundOne.MC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
                     }
                     if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null)
                     {
                         GroundOne.SC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                        GroundOne.SC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                        //GroundOne.SC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
                     }
                     if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null)
                     {
                         GroundOne.TC.ActionButtonPanel.GetComponent<Image>().color = Color.black;
-                        GroundOne.TC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
+                        //GroundOne.TC.ManaSkillPanel.GetComponent<Image>().color = Color.black;
                     }
                 }
             }
@@ -5747,17 +5803,23 @@ namespace DungeonPlayer
                 InstantModePanel.SetActive(false);
                 if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null)
                 {
-                    GroundOne.MC.ActionButtonPanel.GetComponent<Image>().color = Color.white;
+                    GroundOne.MC.ActionButtonPanel.GetComponent<Image>().color = new Color(GroundOne.MC.PlayerBattleColor.r,
+                                                                                           GroundOne.MC.PlayerBattleColor.g,
+                                                                                           GroundOne.MC.PlayerBattleColor.b, 1);
                     SelectPlayerPanelColor(GroundOne.MC);
                 }
                 if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null)
                 {
-                    GroundOne.SC.ActionButtonPanel.GetComponent<Image>().color = Color.white;
+                    GroundOne.SC.ActionButtonPanel.GetComponent<Image>().color = new Color(GroundOne.SC.PlayerBattleColor.r,
+                                                                                           GroundOne.SC.PlayerBattleColor.g,
+                                                                                           GroundOne.SC.PlayerBattleColor.b, 1);
                     SelectPlayerPanelColor(GroundOne.SC);
                 }
                 if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null)
                 {
-                    GroundOne.TC.ActionButtonPanel.GetComponent<Image>().color = Color.white;
+                    GroundOne.TC.ActionButtonPanel.GetComponent<Image>().color = new Color(GroundOne.TC.PlayerBattleColor.r,
+                                                                                           GroundOne.TC.PlayerBattleColor.g,
+                                                                                           GroundOne.TC.PlayerBattleColor.b, 1);
                     SelectPlayerPanelColor(GroundOne.TC);
                 }
             }
@@ -5775,31 +5837,41 @@ namespace DungeonPlayer
         {
             this.currentPlayer.Target2 = GroundOne.TC;
         }
-        private void ChangeBaseAction(MainCharacter player)
-        {
-            // future function
-        }
         public void tapFirstCharaAction()
         {
-            ChangeBaseAction(GroundOne.MC);
-            //GroundOne.MC.ActionButtonPanel.SetActive(true);
-            //GroundOne.SC.ActionButtonPanel.SetActive(false);
-            //GroundOne.TC.ActionButtonPanel.SetActive(false);
+            ChoiceFirstChara();
         }
         public void tapSecondCharaAction()
         {
-            ChangeBaseAction(GroundOne.SC);
-            //GroundOne.MC.ActionButtonPanel.SetActive(false);
-            //GroundOne.SC.ActionButtonPanel.SetActive(true);
-            //GroundOne.TC.ActionButtonPanel.SetActive(false);
+            ChoiceSecondChara();
         }
         public void tapThirdCharaAction()
         {
-            ChangeBaseAction(GroundOne.TC);
-            //GroundOne.MC.ActionButtonPanel.SetActive(false);
-            //GroundOne.SC.ActionButtonPanel.SetActive(false);
-            //GroundOne.TC.ActionButtonPanel.SetActive(true);
+            ChoiceThirdChara();
         }
+
+        private void ChoiceFirstChara()
+        {
+            GroundOne.MC.ActionButtonPanel.SetActive(true);
+            GroundOne.SC.ActionButtonPanel.SetActive(false);
+            GroundOne.TC.ActionButtonPanel.SetActive(false);
+            PointerDownPanel();
+        }
+        private void ChoiceSecondChara()
+        {
+            GroundOne.MC.ActionButtonPanel.SetActive(false);
+            GroundOne.SC.ActionButtonPanel.SetActive(true);
+            GroundOne.TC.ActionButtonPanel.SetActive(false);
+            PointerDownPanel();
+        }
+        private void ChoiceThirdChara()
+        {
+            GroundOne.MC.ActionButtonPanel.SetActive(false);
+            GroundOne.SC.ActionButtonPanel.SetActive(false);
+            GroundOne.TC.ActionButtonPanel.SetActive(true);
+            PointerDownPanel();
+        }
+
 
         public void UseItem_Click(Text sender)
         {
@@ -7531,7 +7603,7 @@ namespace DungeonPlayer
             float dx = (float)player.CurrentSpecialInstant / (float)player.MaxSpecialInstant;
             if (player.labelCurrentSpecialInstant != null)
             {
-                player.labelCurrentSpecialInstant.text = player.CurrentSpecialInstant.ToString();
+                player.labelCurrentSpecialInstant.text = ((int)(player.CurrentSpecialInstant)).ToString();
             }
             if (player.meterCurrentSpecialInstant != null)
             {
