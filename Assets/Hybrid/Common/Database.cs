@@ -2816,6 +2816,7 @@ namespace DungeonPlayer
         public const string LOG_BATTLEENEMY_BATTLE_START = @"BattleEnemyBattleStart";
         public const string LOG_BATTLEENEMY_BATTLESETTING = @"BattleEnemyBattleSetting";
         public const string LOG_BATTLEENEMY_USEITEM = @"BattleEnemyUseItem";
+        public const string LOG_BATTLEENEMY_BATTLE_LOG = @"BattleLog";
         public const string LOG_BATTLEENEMY_RUNAWAY = @"BattleEnemyRunAway";
         public const string LOG_BATTLEENEMY_PLAYER = @"BattleEnemyPlayer";
         public const string LOG_BATTLEENEMY_ENEMY = @"BattleEnemyEnemy";

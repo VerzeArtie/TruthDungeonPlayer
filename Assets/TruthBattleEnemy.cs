@@ -128,7 +128,8 @@ namespace DungeonPlayer
         public Text[] backpack;
         public Text[] backpackStack;
         public Image[] backpackIcon;
-
+        public GameObject groupBattleLog;
+             
         public GameObject popupInfo;
         public Text CurrentInfo;
         public Text BattleStart;
@@ -7707,6 +7708,13 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_USEITEM, String.Empty, String.Empty);
             groupParentBackpack.SetActive(!groupParentBackpack.activeInHierarchy);
         }
+
+        public void BattleLog_Click()
+        {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_BATTLE_LOG, String.Empty, String.Empty);
+            groupBattleLog.SetActive(!groupBattleLog.activeInHierarchy);
+        }
+
         public void RunAwayButton_Click()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_RUNAWAY, String.Empty, String.Empty);
