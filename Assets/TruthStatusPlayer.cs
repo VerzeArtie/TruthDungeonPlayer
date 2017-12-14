@@ -296,7 +296,10 @@ namespace DungeonPlayer
             else
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_LEVEL_UP);
-                btnClose.gameObject.SetActive(false);
+                //btnClose.gameObject.SetActive(false);
+                lblRemain.gameObject.SetActive(true);
+                lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
+                txtClose.text = "完了";
                 if (GroundOne.CumultiveLvUpValue >= 2)
                 {
                     mainMessage.text = GroundOne.CumultiveLvUpValue.ToString() + "レベルアップ！！" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
@@ -470,6 +473,15 @@ namespace DungeonPlayer
                 if (GroundOne.CannotSelectTrash != String.Empty)
                 {
                     mainMessage.text = "アイン：いや【" + GroundOne.CannotSelectTrash + "】の入手を諦めるわけにはいかねえ。";
+                    return;
+                }
+            }
+
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint > 0)
+                {
+                    mainMessage.text = "【力】【技】【知】【体】【心】のいずれかをタップしてパラメタを割り振ってください。";
                     return;
                 }
             }
@@ -2825,6 +2837,7 @@ namespace DungeonPlayer
             {
                 mainMessage.text = "あと" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
             }
+            lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
         }
 
         private MainCharacter SelectCurrentPlayer()
