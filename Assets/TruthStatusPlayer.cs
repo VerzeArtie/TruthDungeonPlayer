@@ -32,6 +32,7 @@ namespace DungeonPlayer
         public Text txtName;
         public Text txtLevel;
         public Text txtExperience;
+        public Image imgExpGauge;
         public Text txtJobClass;
         public Text txtGold;
         public GameObject groupBtnLifeManaSkill;
@@ -128,9 +129,7 @@ namespace DungeonPlayer
         public Text lblBackpack;
         public Text lblSpell;
         public Text lblResist;
-        public Text lblName;
         public Text lblLevel;
-        public Text lblExp;
         public Text lblGold;
         public Text lblCore;
         public Text lblBasic;
@@ -186,9 +185,7 @@ namespace DungeonPlayer
                 lblBackpack.text = Database.GUI_STATUS_BACKPACK;
                 lblSpell.text = Database.GUI_STATUS_SPELL;
                 lblResist.text = Database.GUI_STATUS_RESIST;
-                lblName.text = Database.GUI_S_BASIC_NAME;
                 lblLevel.text = Database.GUI_S_BASIC_LEVEL;
-                lblExp.text = Database.GUI_S_BASIC_EXP;
                 lblGold.text = Database.GUI_S_BASIC_GOLD;
                 lblCore.text = Database.GUI_S_BASIC_CORE;
                 lblBasic.text = Database.GUI_S_BASIC_BASIC;
@@ -2197,10 +2194,13 @@ namespace DungeonPlayer
             if (chara.Level < Method.GetMaxLevel())
             {
                 this.txtExperience.text = chara.Exp.ToString() + " / " + chara.NextLevelBorder.ToString();
+                float dx = (float)chara.Exp / (float)chara.NextLevelBorder;
+                imgExpGauge.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
             else
             {
                 this.txtExperience.text = "-----" + " / " + "-----";
+                imgExpGauge.rectTransform.localScale = new Vector2(0.0f, 1.0f);
             }
 
 
