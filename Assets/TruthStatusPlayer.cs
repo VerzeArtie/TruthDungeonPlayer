@@ -2629,10 +2629,8 @@ namespace DungeonPlayer
             RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
         }
 
-        public void weapon_Click(Text sender)
+        private void ViewItemDescription(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_MAINWEAPON, String.Empty, String.Empty);
-
             if (this.ItemChoiced)
             {
                 this.ItemChoiced = false;
@@ -2648,8 +2646,13 @@ namespace DungeonPlayer
                     ItemBackPack temp = new ItemBackPack(sender.text);
                     mainMessage.text = temp.Description;
                 }
-            } 
-            
+            }
+        }
+
+        public void weapon_Click(Text sender)
+        {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_MAINWEAPON, String.Empty, String.Empty);
+            ViewItemDescription(sender);
             ChangeEquipment(0);
         }
         public void subWeapon_Click(Text sender)
@@ -2675,21 +2678,25 @@ namespace DungeonPlayer
                 mainMessage.text = targetPlayer.GetCharacterSentence(2026);
                 return;
             }
+            ViewItemDescription(sender);
             ChangeEquipment(1);
         }
         public void armor_Click(Text sender)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ARMOR, String.Empty, String.Empty);
+            ViewItemDescription(sender);
             ChangeEquipment(2);
         }
         public void accessory_Click(Text sender)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ACCESSORY1, String.Empty, String.Empty);
+            ViewItemDescription(sender);
             ChangeEquipment(3);
         }
         public void accessory2_Click(Text sender)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ACCESSORY2, String.Empty, String.Empty);
+            ViewItemDescription(sender);
             ChangeEquipment(4);
         }
 
