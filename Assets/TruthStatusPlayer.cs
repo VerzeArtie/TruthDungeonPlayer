@@ -41,8 +41,11 @@ namespace DungeonPlayer
         public GameObject btnMana;
         public GameObject btnSkill;
         public Text life;
+        public Image imgLifeGauge;
         public Text mana;
+        public Image imgManaGauge;
         public Text skill;
+        public Image imgSkillGauge;
         public Button btnStrength;
         public Button btnAgility;
         public Button btnIntelligence;
@@ -82,10 +85,15 @@ namespace DungeonPlayer
         public Text txtBattleResponse;
         public Text txtPotential;
         public Text weapon;
+        public Image imgMainWeapon;
         public Text subWeapon;
+        public Image imgSubWeapon;
         public Text armor;
+        public Image imgArmor;
         public Text accessory;
+        public Image imgAccessory1;
         public Text accessory2;
+        public Image imgAccessory2;
         public GameObject back_weapon;
         public GameObject back_subWeapon;
         public GameObject back_armor;
@@ -125,11 +133,17 @@ namespace DungeonPlayer
         public Text[] ResistLabelValue;
         public Text[] ResistAbnormalStatus;
         public Text[] ResistAbnormalStatusValue;
+        public GameObject groupLevelup;
+        public Text lblLevelUp;
+        public Text txtDescription1;
+        public Text txtDescription2;
+        public Text txtDescription3;
         public Text lblStatus;
         public Text lblBackpack;
         public Text lblSpell;
         public Text lblResist;
         public Text lblLevel;
+        public Text lblExp;
         public Text lblGold;
         public Text lblCore;
         public Text lblBasic;
@@ -186,6 +200,7 @@ namespace DungeonPlayer
                 lblSpell.text = Database.GUI_STATUS_SPELL;
                 lblResist.text = Database.GUI_STATUS_RESIST;
                 lblLevel.text = Database.GUI_S_BASIC_LEVEL;
+                lblExp.text = Database.GUI_S_BASIC_EXP;
                 lblGold.text = Database.GUI_S_BASIC_GOLD;
                 lblCore.text = Database.GUI_S_BASIC_CORE;
                 lblBasic.text = Database.GUI_S_BASIC_BASIC;
@@ -295,6 +310,7 @@ namespace DungeonPlayer
                 GroundOne.PlaySoundEffect(Database.SOUND_LEVEL_UP);
                 //btnClose.gameObject.SetActive(false);
                 lblRemain.gameObject.SetActive(true);
+                groupLevelup.SetActive(true);
                 lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
                 txtClose.text = "完了";
                 if (GroundOne.CumultiveLvUpValue >= 2)
@@ -2184,7 +2200,7 @@ namespace DungeonPlayer
             txtFood.text = "+" + addFoodValue.ToString();
             totalValue += addFoodValue;
 
-            txtTotal.text = "= " + totalValue.ToString();
+            txtTotal.text = "" + totalValue.ToString();
         }
 
         private void SettingCharacterData(MainCharacter chara)
@@ -2233,6 +2249,8 @@ namespace DungeonPlayer
 
             RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
             this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
+            float dxLife = (float)chara.CurrentLife / (float)chara.MaxLife;
+            imgLifeGauge.rectTransform.localScale = new Vector2(dxLife, 1.0f);
 
             if (chara.AvailableSkill)
             {
@@ -2241,21 +2259,31 @@ namespace DungeonPlayer
                     chara.CurrentSkillPoint = chara.MaxSkillPoint;
                 }
                 skill.text = chara.CurrentSkillPoint.ToString() + " / " + chara.MaxSkillPoint.ToString();
+                float dx = (float)chara.CurrentSkillPoint / (float)chara.MaxSkillPoint;
+                imgSkillGauge.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
 
             if (chara.AvailableMana)
             {
                 mana.text = chara.CurrentMana.ToString() + " / " + chara.MaxMana.ToString();
+                float dx = (float)chara.CurrentMana / (float)chara.MaxMana;
+                imgManaGauge.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
 
             this.weapon.text = "";
+            this.imgMainWeapon.sprite = null;
             this.subWeapon.text = "";
+            this.imgSubWeapon.sprite = null;
             this.armor.text = "";
+            this.imgArmor.sprite = null;
             this.accessory.text = "";
+            this.imgAccessory1.sprite = null;
             this.accessory2.text = "";
+            this.imgAccessory2.sprite = null;
             if (chara.MainWeapon != null)
             {
                 this.weapon.text = chara.MainWeapon.Name;
+                Method.UpdateItemImage(chara.MainWeapon, this.imgMainWeapon);
             }
             else
             {
@@ -2266,6 +2294,7 @@ namespace DungeonPlayer
             if (chara.SubWeapon != null)
             {
                 this.subWeapon.text = chara.SubWeapon.Name;
+                Method.UpdateItemImage(chara.SubWeapon, this.imgSubWeapon);
             }
             else
             {
@@ -2276,6 +2305,7 @@ namespace DungeonPlayer
             if (chara.MainArmor != null)
             {
                 this.armor.text = chara.MainArmor.Name;
+                Method.UpdateItemImage(chara.MainArmor, this.imgArmor);
             }
             else
             {
@@ -2286,6 +2316,7 @@ namespace DungeonPlayer
             if (chara.Accessory != null)
             {
                 this.accessory.text = chara.Accessory.Name;
+                Method.UpdateItemImage(chara.Accessory, this.imgAccessory1);
             }
             else
             {
@@ -2296,6 +2327,7 @@ namespace DungeonPlayer
             if (chara.Accessory2 != null)
             {
                 this.accessory2.text = chara.Accessory2.Name;
+                Method.UpdateItemImage(chara.Accessory2, this.imgAccessory2);
             }
             else
             {
@@ -2600,6 +2632,24 @@ namespace DungeonPlayer
         public void weapon_Click(Text sender)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_MAINWEAPON, String.Empty, String.Empty);
+
+            if (this.ItemChoiced)
+            {
+                this.ItemChoiced = false;
+            }
+            else
+            {
+                if (sender.text == "")
+                {
+                    mainMessage.text = "";
+                }
+                else
+                {
+                    ItemBackPack temp = new ItemBackPack(sender.text);
+                    mainMessage.text = temp.Description;
+                }
+            } 
+            
             ChangeEquipment(0);
         }
         public void subWeapon_Click(Text sender)
