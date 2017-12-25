@@ -2676,6 +2676,12 @@ namespace DungeonPlayer
         public const string DESCRIPTION_EQUIP_MATERIAL = @"【武具素材】" + "\r\n";
         public const string DESCRIPTION_POTION_MATERIAL = @"【ポーション素材】" + "\r\n";
         public const string DESCRIPTION_FOOD_MATERIAL = @"【食材】" + "\r\n";
+        public const string DESCRIPTION_WEAPON = @"【武器】";
+        public const string DESCRIPTION_SHIELD = @"【盾】";
+        public const string DESCRIPTION_ARMOR = @"【防具】";
+        public const string DESCRIPTION_ACCESSORY = @"【アクセサリ】";
+        public const string DESCRIPTION_POTION = @"【消耗品】";
+        public const string DESCRIPTION_BLUEORB = @"【専用品】";
 
         public const string MUGEN_LOOP = @"９８３２６";
 

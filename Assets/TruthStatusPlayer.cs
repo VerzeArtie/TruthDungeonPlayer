@@ -127,7 +127,17 @@ namespace DungeonPlayer
         public Text txtTargetNameCommand1;
         public Text txtTargetNameCommand2;
         public Text txtTargetNameCommand3;
+        public GameObject imgItemBackground;
+        public Text txtItemName;
+        public Text txtItemType;
+        public Text txtItemDescription;
+        public Text txtItemStrength;
+        public Text txtItemAgility;
+        public Text txtItemIntelligence;
+        public Text txtItemStamina;
+        public Text txtItemMind;
         public GameObject[] back_SpellSkill;
+        public Image[] imgSpellSkill;
         public Text[] SpellSkill;
         public Text[] ResistLabel;
         public Text[] ResistLabelValue;
@@ -135,9 +145,10 @@ namespace DungeonPlayer
         public Text[] ResistAbnormalStatusValue;
         public GameObject groupLevelup;
         public Text lblLevelUp;
-        public Text txtDescription1;
-        public Text txtDescription2;
-        public Text txtDescription3;
+        public Text txtDescription1; // max-life
+        public Text txtDescription2; // max-mana
+        public Text txtDescription3; // gain point
+        public Text txtDescription4; // new command
         public Text lblStatus;
         public Text lblBackpack;
         public Text lblSpell;
@@ -311,6 +322,10 @@ namespace DungeonPlayer
                 //btnClose.gameObject.SetActive(false);
                 lblRemain.gameObject.SetActive(true);
                 groupLevelup.SetActive(true);
+                txtDescription1.text = "最大ライフが" + player.LevelUpLifeTruth.ToString() + "上昇した！";
+                txtDescription2.text = "最大マナが" + player.LevelUpManaTruth.ToString() + "上昇した！";
+                txtDescription3.text = "コアポイントを" + player.LevelUpPointTruth.ToString() + "ポイント取得した！";
+                txtDescription4.text = "新しいコマンド習得！ + ";
                 lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
                 txtClose.text = "完了";
                 if (GroundOne.CumultiveLvUpValue >= 2)
@@ -751,7 +766,6 @@ namespace DungeonPlayer
 
         public void Use_Click()
         {
-            groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
 
             this.ItemChoiced = true;
@@ -1554,7 +1568,6 @@ namespace DungeonPlayer
 
         public void Handover_Click()
         {
-            groupChoice.SetActive(false);
             //backpackFilter.SetActive(false); // ExecHandOverの続きがある。
 
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
@@ -1572,7 +1585,7 @@ namespace DungeonPlayer
                 btnTargetName2.gameObject.SetActive(GroundOne.WE.AvailableSecondCharacter);
                 btnTargetName3.gameObject.SetActive(GroundOne.WE.AvailableThirdCharacter);
 
-                groupTarget.gameObject.transform.position = this.currentPosition;
+                //groupTarget.gameObject.transform.position = this.currentPosition;
                 groupTarget.SetActive(true);
                 return;
             }
@@ -1582,7 +1595,6 @@ namespace DungeonPlayer
         {
             this.ItemChoiced = true;
 
-            groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
@@ -1609,8 +1621,6 @@ namespace DungeonPlayer
 
         public void WhoTarget_View()
         {
-            groupChoice.SetActive(false);
-
             whoTarget1.text = GroundOne.MC.FirstName;
             whoTarget2.text = GroundOne.SC.FirstName;
             whoTarget3.text = GroundOne.TC.FirstName;
@@ -1618,7 +1628,7 @@ namespace DungeonPlayer
             btnWhoTarget2.gameObject.SetActive(GroundOne.WE.AvailableSecondCharacter);
             btnWhoTarget3.gameObject.SetActive(GroundOne.WE.AvailableThirdCharacter);
 
-            groupWhoTarget.gameObject.transform.position = this.currentPosition;
+            //groupWhoTarget.gameObject.transform.position = this.currentPosition;
             groupWhoTarget.SetActive(true);
             return;
         }
@@ -1786,6 +1796,10 @@ namespace DungeonPlayer
                     break;
                 }
             }
+
+            ViewItemDescription(this.currentSelect);
+            return;
+
             groupChoice.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
             this.currentPosition = Input.mousePosition;
             groupChoice.SetActive(true);
@@ -2170,7 +2184,6 @@ namespace DungeonPlayer
         
         public void HideAllChild()
         {
-            groupChoice.SetActive(false);
             groupTarget.SetActive(false);
             groupWhoTarget.SetActive(false);
             backpackFilter.SetActive(false);
@@ -2345,11 +2358,20 @@ namespace DungeonPlayer
         private void UpdateSpellSkillLabel(MainCharacter target)
         {
             // コマンド習得に応じて、ボタンを見せる。
-            back_SpellSkill[0].SetActive(target.FreshHeal);
-            back_SpellSkill[1].SetActive(target.LifeTap);
-            back_SpellSkill[2].SetActive(target.Resurrection);
-            back_SpellSkill[3].SetActive(target.CelestialNova);
-            back_SpellSkill[4].SetActive(target.SacredHeal);
+            if (target.FreshHeal == false) { SpellSkill[0].text = ""; imgSpellSkill[0].gameObject.SetActive(false); }
+            else { SpellSkill[0].text = Database.FRESH_HEAL; imgSpellSkill[0].gameObject.SetActive(true); }
+
+            if (target.LifeTap == false) { SpellSkill[1].text = ""; imgSpellSkill[1].gameObject.SetActive(false); }
+            else { SpellSkill[1].text = Database.LIFE_TAP; imgSpellSkill[1].gameObject.SetActive(true); }
+            
+            if (target.Resurrection == false) { SpellSkill[2].text = ""; imgSpellSkill[2].gameObject.SetActive(false); }
+            else { SpellSkill[2].text = Database.RESURRECTION; imgSpellSkill[2].gameObject.SetActive(true); }
+            
+            if (target.CelestialNova == false) { SpellSkill[3].text = ""; imgSpellSkill[3].gameObject.SetActive(false); }
+            else { SpellSkill[3].text = Database.CELESTIAL_NOVA; imgSpellSkill[3].gameObject.SetActive(true); }
+            
+            if (target.SacredHeal == false) { SpellSkill[4].text = ""; imgSpellSkill[4].gameObject.SetActive(false); }
+            else { SpellSkill[4].text = Database.SACRED_HEAL; imgSpellSkill[4].gameObject.SetActive(true); }
         }
 
         private void UpdateResistStatus(MainCharacter player)
@@ -2458,6 +2480,10 @@ namespace DungeonPlayer
             if (player.Dead)
             {
                 mainMessage.text = "【" + player.FirstName + "は死んでしまっているため、魔法詠唱ができない。】";
+                return;
+            }
+            if (sender.text == null || sender.text == String.Empty)
+            {
                 return;
             }
 
@@ -2639,12 +2665,82 @@ namespace DungeonPlayer
             {
                 if (sender.text == "")
                 {
+                    txtItemName.text = "";
+                    Method.UpdateRareColor(null, null, imgItemBackground, null);
+                    txtItemType.text = "";
                     mainMessage.text = "";
+                    txtItemDescription.text = "";
                 }
                 else
                 {
                     ItemBackPack temp = new ItemBackPack(sender.text);
+                    txtItemName.text = sender.text;
+                    Method.UpdateRareColor(temp, txtItemName, imgItemBackground, null);
+                    if (temp.BuffUpStrength <= 0) { txtItemStrength.text = "----"; }
+                    else { txtItemStrength.text = temp.BuffUpStrength.ToString(); }
+
+                    if (temp.BuffUpAgility <= 0) { txtItemAgility.text = "----"; }
+                    else { txtItemAgility.text = temp.BuffUpAgility.ToString(); }
+
+                    if (temp.BuffUpIntelligence <= 0) { txtItemIntelligence.text = "----"; }
+                    else { txtItemIntelligence.text = temp.BuffUpIntelligence.ToString(); }
+
+                    if (temp.BuffUpStamina <= 0) { txtItemStamina.text = "----"; }
+                    else { txtItemStamina.text = temp.BuffUpStamina.ToString(); }
+
+                    if (temp.BuffUpMind <= 0) { txtItemMind.text = "----"; }
+                    else { txtItemMind.text = temp.BuffUpMind.ToString(); }
+
+                    if (temp.Type == ItemBackPack.ItemType.Material_Equip)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_EQUIP_MATERIAL;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Material_Food)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_FOOD_MATERIAL;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Material_Potion)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_POTION_MATERIAL;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Weapon_Heavy ||
+                             temp.Type == ItemBackPack.ItemType.Weapon_Light ||
+                             temp.Type == ItemBackPack.ItemType.Weapon_Middle ||
+                             temp.Type == ItemBackPack.ItemType.Weapon_Rod ||
+                             temp.Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_WEAPON;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Armor_Heavy ||
+                             temp.Type == ItemBackPack.ItemType.Armor_Light ||
+                             temp.Type == ItemBackPack.ItemType.Armor_Middle)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_ARMOR;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Accessory)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_ACCESSORY;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Shield)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_SHIELD;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Use_Potion ||
+                             temp.Type == ItemBackPack.ItemType.Use_Item)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_POTION;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Use_BlueOrb)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_BLUEORB;
+                    }
+                    else if (temp.Type == ItemBackPack.ItemType.Useless || temp.Type == ItemBackPack.ItemType.None)
+                    {
+                        txtItemType.text = Database.DESCRIPTION_SELL_ONLY;
+                    }
+
                     mainMessage.text = temp.Description;
+                    txtItemDescription.text = temp.Description;
                 }
             }
         }
