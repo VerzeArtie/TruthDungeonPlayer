@@ -8528,7 +8528,9 @@ namespace DungeonPlayer
                     if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.MC.LevelUpPointTruth;
+                        GroundOne.UpLifePointMC += GroundOne.MC.LevelUpLifeTruth;
                         GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                        GroundOne.UpManaPointMC += GroundOne.MC.LevelUpManaTruth;
                         GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
                         GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
                         GroundOne.MC.Level += 1;
@@ -8563,7 +8565,9 @@ namespace DungeonPlayer
                     if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.SC.LevelUpPointTruth;
+                        GroundOne.UpLifePointSC += GroundOne.SC.LevelUpLifeTruth;
                         GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
+                        GroundOne.UpManaPointSC += GroundOne.SC.LevelUpManaTruth;
                         GroundOne.SC.BaseMana += GroundOne.SC.LevelUpManaTruth;
                         GroundOne.SC.Exp = GroundOne.SC.Exp - GroundOne.SC.NextLevelBorder;
                         GroundOne.SC.Level += 1;
@@ -8598,7 +8602,9 @@ namespace DungeonPlayer
                     if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.TC.LevelUpPointTruth;
+                        GroundOne.UpLifePointTC += GroundOne.TC.LevelUpLifeTruth;
                         GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;
+                        GroundOne.UpManaPointTC += GroundOne.TC.LevelUpManaTruth;
                         GroundOne.TC.BaseMana += GroundOne.TC.LevelUpManaTruth;
                         GroundOne.TC.Exp = GroundOne.TC.Exp - GroundOne.TC.NextLevelBorder;
                         GroundOne.TC.Level += 1;

@@ -115,6 +115,12 @@ namespace DungeonPlayer
         public static bool LevelUp = false; // レベルアップモード画面
         public static string LevelUpCharacter = string.Empty; // レベルアップ対象名
         public static int UpPoint = 0; // パラメタアップポイント
+        public static int UpLifePointMC = 0; // Max Life Gain (view only)
+        public static int UpManaPointMC = 0; // Max Mana Gain (view only)
+        public static int UpLifePointSC = 0; // Max Life Gain (view only)
+        public static int UpManaPointSC = 0; // Max Mana Gain (view only)
+        public static int UpLifePointTC = 0; // Max Life Gain (view only)
+        public static int UpManaPointTC = 0; // Max Mana Gain (view only)
         public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値
         public static bool OnlySelectTrash = false; // 捨てる限定画面
         public static string OnlySelectTrashNewItem = string.Empty; // 捨てる限定画面で入手予定の新しいアイテム名

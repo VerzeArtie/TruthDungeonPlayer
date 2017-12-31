@@ -322,11 +322,29 @@ namespace DungeonPlayer
                 //btnClose.gameObject.SetActive(false);
                 lblRemain.gameObject.SetActive(true);
                 groupLevelup.SetActive(true);
-                txtDescription1.text = "最大ライフが" + player.LevelUpLifeTruth.ToString() + "上昇した！";
-                txtDescription2.text = "最大マナが" + player.LevelUpManaTruth.ToString() + "上昇した！";
-                txtDescription3.text = "コアポイントを" + player.LevelUpPointTruth.ToString() + "ポイント取得した！";
-                txtDescription4.text = "新しいコマンド習得！ + ";
-                lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
+                int currentLifeUp = GroundOne.UpLifePointMC;
+                int currentManaUp = GroundOne.UpManaPointMC;
+                if (GroundOne.MC.FullName == GroundOne.LevelUpCharacter)
+                {
+                    currentLifeUp = GroundOne.UpLifePointMC;
+                    currentManaUp = GroundOne.UpManaPointMC;
+                }
+                else if (GroundOne.SC.FullName == GroundOne.LevelUpCharacter)
+                {
+                    currentLifeUp = GroundOne.UpLifePointSC;
+                    currentManaUp = GroundOne.UpManaPointSC;
+                }
+                else if (GroundOne.TC.FullName == GroundOne.LevelUpCharacter)
+                {
+                    currentLifeUp = GroundOne.UpLifePointTC;
+                    currentManaUp = GroundOne.UpManaPointTC;
+                }
+
+                txtDescription1.text = "最大ライフが " + currentLifeUp.ToString() + " 上昇した！";
+                txtDescription2.text = "最大マナが " + currentManaUp.ToString() + " 上昇した！";
+                txtDescription3.text = "コアポイントを" + GroundOne.UpPoint.ToString() + " ポイント取得した！";
+                txtDescription4.text = "";//新しいコマンド習得！ + ";
+                lblRemain.text = "残り " + GroundOne.UpPoint.ToString() + " ポイント割り振ってください。";
                 txtClose.text = "完了";
                 if (GroundOne.CumultiveLvUpValue >= 2)
                 {
@@ -582,6 +600,8 @@ namespace DungeonPlayer
                 {
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
+                    GroundOne.UpLifePointMC = 0;
+                    GroundOne.UpManaPointMC = 0;
                     GroundOne.UpPoint = 0;
                     GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);
@@ -650,6 +670,8 @@ namespace DungeonPlayer
                 {
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
+                    GroundOne.UpLifePointSC = 0;
+                    GroundOne.UpManaPointSC = 0;
                     GroundOne.UpPoint = 0;
                     GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);
@@ -700,6 +722,8 @@ namespace DungeonPlayer
                 {
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
+                    GroundOne.UpLifePointTC = 0;
+                    GroundOne.UpManaPointTC = 0;
                     GroundOne.UpPoint = 0;
                     GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);

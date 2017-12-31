@@ -7835,7 +7835,7 @@ namespace DungeonPlayer
                 switch (this.level)
                 {
                     case 1:
-                        upPoint = 0;
+                        upPoint = 15;
                         break;
                     case 2:
                         upPoint = 15;

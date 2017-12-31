@@ -747,8 +747,8 @@ namespace DungeonPlayer
         {
             if (item == null)
             {
-                target1.color = Color.white;
-                target2.gameObject.GetComponent<Image>().color = Color.white;
+                if (target1 != null) { target1.color = Color.white; }
+                if (target2 != null) { target2.gameObject.GetComponent<Image>().color = Color.white; }
                 return;
             }
 
