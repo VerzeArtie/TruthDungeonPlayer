@@ -16,12 +16,12 @@ namespace DungeonPlayer
             Application.LoadLevelAsync(Database.TruthHomeTown);
             GroundOne.Parent.Clear();
         }
-        public static void JumpToSinglePlayMenu()
+        public static void JumpToSingleHomeTown()
         {
             GroundOne.WE.DungeonPosX = 0;
             GroundOne.WE.DungeonPosY = 0;
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.SinglePlayMenu);
+            Application.LoadLevelAsync(Database.SingleHomeTown);
             GroundOne.Parent.Clear();
         }
         public static void JumpToTruthDungeon(bool gotoDownstair)

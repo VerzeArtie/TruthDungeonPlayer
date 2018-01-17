@@ -37,15 +37,23 @@ namespace DungeonPlayer
         private static GameObject objMC = null;
         private static GameObject objSC = null;
         private static GameObject objTC = null;
+        private static GameObject objP1 = null;
+        private static GameObject objP2 = null;
+        private static GameObject objP3 = null;
         private static GameObject objWE = null;
         private static GameObject objWE2 = null;
+        private static GameObject objWE3 = null;
         private static GameObject objSQL = null;
 
         public static MainCharacter MC = null;
         public static MainCharacter SC = null;
         public static MainCharacter TC = null;
+        public static MainCharacter P1 = null;
+        public static MainCharacter P2 = null;
+        public static MainCharacter P3 = null;
         public static WorldEnvironment WE = null;
         public static TruthWorldEnvironment WE2 = null; // ゲームストーリー全体のワールド環境フラグ
+        public static SingleWorldEnvironment WE3 = null; // シングルモードのワールド環境フラグ
         public static ControlSQL SQL = null;
 
         public static bool[] Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
@@ -185,10 +193,18 @@ namespace DungeonPlayer
             SC = null;
             GameObject.DestroyObject(TC);
             TC = null;
+            GameObject.DestroyObject(P1);
+            P1 = null;
+            GameObject.DestroyObject(P2);
+            P2 = null;
+            GameObject.DestroyObject(P3);
+            P3 = null;
             GameObject.DestroyObject(WE);
             WE = null;
             GameObject.DestroyObject(WE2);
             WE2 = null;
+            GameObject.DestroyObject(WE3);
+            WE3 = null;
             GameObject.DestroyObject(SQL);
             SQL = null;
             GameObject.DestroyObject(objMC);
@@ -201,6 +217,8 @@ namespace DungeonPlayer
             objWE = null;
             GameObject.DestroyObject(objWE2);
             objWE2 = null;
+            GameObject.DestroyObject(objWE3);
+            objWE3 = null;
             GameObject.DestroyObject(objSQL);
             objSQL = null;
             GameObject.DestroyObject(ShadowMC);
@@ -251,8 +269,12 @@ namespace DungeonPlayer
             objMC = new GameObject("objMC");
             objSC = new GameObject("objSC");
             objTC = new GameObject("objTC");
+            objP1 = new GameObject("objP1");
+            objP2 = new GameObject("objP2");
+            objP3 = new GameObject("objP3");
             objWE = new GameObject("objWE");
             objWE2 = new GameObject("objWE2");
+            objWE3 = new GameObject("objWE3");
             objSQL = new GameObject("objSQL");
 
             if (FromGameLoad == false)
@@ -272,6 +294,7 @@ namespace DungeonPlayer
             WE.DungeonArea = 1;
             WE.AvailableFirstCharacter = true;
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
+            WE3 = objWE3.AddComponent<SingleWorldEnvironment>();
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.AvailableMana = true;
@@ -282,11 +305,63 @@ namespace DungeonPlayer
             TC = objTC.AddComponent<MainCharacter>();
             TC.AvailableMana = true;
             TC.AvailableSkill = true;
+            P1 = objP1.AddComponent<MainCharacter>();
+            P1.AvailableMana = true;
+            P1.AvailableSkill = true;
+            P2 = objP2.AddComponent<MainCharacter>();
+            P2.AvailableMana = true;
+            P2.AvailableSkill = true;
+            P3 = objP3.AddComponent<MainCharacter>();
+            P3.AvailableMana = true;
+            P3.AvailableSkill = true;
 
             SQL = objSQL.AddComponent<ControlSQL>();
             SQL.SetupSql();
 
             // debug
+            //P1.FirstName = "New Character 1";
+            //P1.FullName = "New Character 1";
+            //P1.Strength = 1;
+            //P1.Agility = 2;
+            //P1.Intelligence = 3;
+            //P1.Stamina = 4;
+            //P1.Mind = 5;
+            //P1.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+            //P1.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
+            //P1.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
+            //P1.MaxGain();
+            //P1.BattleActionCommandList[0] = Database.ATTACK_EN;
+            //P1.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
+            //P2.FirstName = "New Character 2";
+            //P2.FullName = "New Character 2";
+            //P2.Level = 2;
+            //P2.Strength = 6;
+            //P2.Agility = 7;
+            //P2.Intelligence = 8;
+            //P2.Stamina = 9;
+            //P2.Mind = 10;
+            //P2.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+            //P2.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
+            //P2.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
+            //P2.MaxGain();
+            //P2.BattleActionCommandList[0] = Database.ATTACK_EN;
+            //P2.BattleActionCommandList[1] = Database.DEFENSE_EN;
+
+            //P3.FirstName = "New Character 3";
+            //P3.FullName = "New Character 3";
+            //P3.Level = 3;
+            //P3.Strength = 11;
+            //P3.Agility = 12;
+            //P3.Intelligence = 13;
+            //P3.Stamina = 14;
+            //P3.Mind = 15;
+            //P3.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+            //P3.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
+            //P3.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
+            //P3.MaxGain();
+            //P3.BattleActionCommandList[0] = Database.ATTACK_EN;
+            //P3.BattleActionCommandList[1] = Database.DEFENSE_EN;
             //WE.AvailablePotionshop = true;
             //WE.AvailableEquipShop = true;
             //WE.AvailableEquipShop2 = true;
@@ -613,8 +688,12 @@ namespace DungeonPlayer
             UnityEngine.Object.DontDestroyOnLoad(MC);
             UnityEngine.Object.DontDestroyOnLoad(SC);
             UnityEngine.Object.DontDestroyOnLoad(TC);
+            UnityEngine.Object.DontDestroyOnLoad(P1);
+            UnityEngine.Object.DontDestroyOnLoad(P2);
+            UnityEngine.Object.DontDestroyOnLoad(P3);
             UnityEngine.Object.DontDestroyOnLoad(WE);
             UnityEngine.Object.DontDestroyOnLoad(WE2);
+            UnityEngine.Object.DontDestroyOnLoad(WE3);
             UnityEngine.Object.DontDestroyOnLoad(sound);
             UnityEngine.Object.DontDestroyOnLoad(soundSource);
             UnityEngine.Object.DontDestroyOnLoad(bgm);

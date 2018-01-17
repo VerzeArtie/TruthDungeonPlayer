@@ -2031,6 +2031,55 @@ namespace DungeonPlayer
                 xmlWriter2.Close();
             }
         }
+        public static void AutoSaveSingleWorldEnvironment()
+        {
+            XmlTextWriter xmlWriter = new XmlTextWriter(Method.PathForRootFile(Database.WE3_FILE), Encoding.UTF8);
+            try
+            {
+                xmlWriter.WriteStartDocument();
+                xmlWriter.WriteWhitespace("\r\n");
+
+                xmlWriter.WriteStartElement("Body");
+                xmlWriter.WriteElementString("DateTime", DateTime.Now.ToString());
+                xmlWriter.WriteWhitespace("\r\n");
+
+                // ワールド環境
+                xmlWriter.WriteStartElement("SingleWorldEnvironment");
+                xmlWriter.WriteWhitespace("\r\n");
+                if (GroundOne.WE3 != null)
+                {
+                    Type typeWE = GroundOne.WE3.GetType();
+                    foreach (PropertyInfo pi in typeWE.GetProperties())
+                    {
+                        if (pi.PropertyType == typeof(System.Int32))
+                        {
+                            xmlWriter.WriteElementString(pi.Name, ((System.Int32)(pi.GetValue(GroundOne.WE3, null))).ToString());
+                            xmlWriter.WriteWhitespace("\r\n");
+                        }
+                        else if (pi.PropertyType == typeof(System.String))
+                        {
+                            xmlWriter.WriteElementString(pi.Name, (string)(pi.GetValue(GroundOne.WE3, null)));
+                            xmlWriter.WriteWhitespace("\r\n");
+                        }
+                        else if (pi.PropertyType == typeof(System.Boolean))
+                        {
+                            xmlWriter.WriteElementString(pi.Name, ((System.Boolean)pi.GetValue(GroundOne.WE3, null)).ToString());
+                            xmlWriter.WriteWhitespace("\r\n");
+                        }
+                    }
+                }
+                xmlWriter.WriteEndElement();
+                xmlWriter.WriteWhitespace("\r\n");
+
+                xmlWriter.WriteEndElement();
+                xmlWriter.WriteWhitespace("\r\n");
+                xmlWriter.WriteEndDocument();
+            }
+            finally
+            {
+                xmlWriter.Close();
+            }
+        }
         // 現実世界の自動セーブ
         public static void AutoSaveRealWorld()
         {
