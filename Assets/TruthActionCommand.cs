@@ -313,10 +313,10 @@ namespace DungeonPlayer
             // 基本
             ssName[0] = Database.ATTACK_EN;
             ssName[1] = Database.DEFENSE_EN;
-            ssName[2] = Database.STAY_EN;
-            ssName[3] = Database.WEAPON_SPECIAL_EN;
-            ssName[4] = Database.WEAPON_SPECIAL_LEFT_EN;
-            ssName[5] = Database.TAMERU_EN;
+            ssName[2] = Database.TAMERU_EN;
+            ssName[3] = Database.STAY_EN;
+            ssName[4] = Database.WEAPON_SPECIAL_EN;
+            ssName[5] = Database.WEAPON_SPECIAL_LEFT_EN;
             ssName[6] = Database.ACCESSORY_SPECIAL_EN;
             ssName[7] = Database.ACCESSORY_SPECIAL2_EN;
 
