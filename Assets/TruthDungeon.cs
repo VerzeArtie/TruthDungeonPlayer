@@ -691,6 +691,7 @@ namespace DungeonPlayer
 
                 if (UpdateCheckLevelUp()) { return; }
 
+                #region "フェルトゥーシュのレベルアップ"
                 // after
                 //  bool alreadyPlayBackMusic = false;
                 //  if (GroundOne.WE.AvailableFirstCharacter)
@@ -1056,6 +1057,7 @@ namespace DungeonPlayer
                 //  }
                 //  SetupPlayerStatus();
                 //  return true;
+                #endregion
             }
             #endregion
             #endregion
