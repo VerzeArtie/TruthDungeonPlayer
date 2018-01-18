@@ -7117,7 +7117,6 @@ namespace DungeonPlayer
 
         public void buttonTargetPlayer_Click(Button sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_PLAYER, sender.name, String.Empty);
             if (this.NowSelectingTarget)
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
@@ -7200,7 +7199,6 @@ namespace DungeonPlayer
 
         public void buttonTargetEnemy_Click(Button sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_ENEMY, sender.name, String.Empty);
             if (this.NowSelectingTarget)
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
@@ -7263,7 +7261,6 @@ namespace DungeonPlayer
 
         public void BattleStart_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_BATTLE_START, String.Empty, String.Empty);
             string NOW_BATTLE = "Now Battle...";
             string NOW_DUEL = "Now Duel...";
             string NOW_STOP = "Battle Stop";
@@ -7339,17 +7336,14 @@ namespace DungeonPlayer
 
         public void tapActionButton(Button obj)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             ActionCommand(false, GroundOne.P1, obj.name);
         }
         public void tapActionButton2(Button obj)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             ActionCommand(false, GroundOne.P2, obj.name);
         }
         public void tapActionButton3(Button obj)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             ActionCommand(false, GroundOne.P3, obj.name);
         }
 
@@ -9314,19 +9308,16 @@ namespace DungeonPlayer
 
         public void UseItemButton_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_USEITEM, String.Empty, String.Empty);
             groupParentBackpack.SetActive(!groupParentBackpack.activeInHierarchy);
         }
 
         public void BattleLog_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_BATTLE_LOG, String.Empty, String.Empty);
             groupBattleLog.SetActive(!groupBattleLog.activeInHierarchy);
         }
 
         public void RunAwayButton_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_RUNAWAY, String.Empty, String.Empty);
             if (this.cannotRunAway)
             {
                 txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは今逃げられない状態にいる。\r\n");

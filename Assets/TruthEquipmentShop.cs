@@ -2004,14 +2004,14 @@ namespace DungeonPlayer
 
         public void Equip_Click(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYEREQUIPITEM, sender.text, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYEREQUIPITEM, sender.text, String.Empty);
             SelectSellItem(sender);
         }
 
         bool nowSellItem = false;
         public void Backpack_Click(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYERITEM, sender.text, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYERITEM, sender.text, String.Empty);
             SelectSellItem(sender);
         }
         private void SelectSellItem(Text sender)
@@ -2119,7 +2119,7 @@ namespace DungeonPlayer
 
         public void EquipmentShop_Click(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_VENDORITEM, sender.text, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_VENDORITEM, sender.text, String.Empty);
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
             //if (!GroundOne.WE.AvailableEquipShop5)
             {
@@ -2434,7 +2434,7 @@ namespace DungeonPlayer
 
         public void Yes_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_YES, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_YES, String.Empty, String.Empty);
             if (this.GroupBuy.activeInHierarchy && this.currentSelectItem == null)
             {
                 MessageExchange4();
@@ -2490,7 +2490,7 @@ namespace DungeonPlayer
         
         public void tapLevel(int level)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_LEVEL, level.ToString(), String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_LEVEL, level.ToString(), String.Empty);
             this.DescriptionText.text = String.Empty;
             MessageExchange4();
             this.currentSelectItem = null;
@@ -2506,19 +2506,19 @@ namespace DungeonPlayer
 
         public void tapChara1()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER1, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER1, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.MC;
             tapChara();
         }
         public void tapChara2()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER2, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER2, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.SC;
             tapChara();
         }
         public void tapChara3()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER3, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER3, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.TC;
             tapChara();
         }
@@ -2540,7 +2540,7 @@ namespace DungeonPlayer
         }
         public void tapExit()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_CLOSE, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_CLOSE, String.Empty, String.Empty);
             nowClose = true;
         }
         public void tapSellView()

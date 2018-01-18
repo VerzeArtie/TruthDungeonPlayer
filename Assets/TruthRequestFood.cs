@@ -324,14 +324,14 @@ namespace DungeonPlayer
             else if (sender.text == "III") { number = 3; }
             else if (sender.text == "IV") { number = 4; }
             else if (sender.text == "V") { number = 5; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_NUMBER, number.ToString(), string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_NUMBER, number.ToString(), string.Empty);
             SetupAvailableList(number);
         }
 
 
         public void button1_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[0].text, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[0].text, string.Empty);
             if (FoodTextList[0].text == Database.FOOD_KATUCARRY)
             {
                 DescriptionText.text = TruthRequestFood.DESC_11;
@@ -354,7 +354,7 @@ namespace DungeonPlayer
 
         public void button2_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[1].text, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[1].text, string.Empty);
             if (FoodTextList[1].text == Database.FOOD_OLIVE_AND_ONION)
             {
                 DescriptionText.text = TruthRequestFood.DESC_12;
@@ -377,7 +377,7 @@ namespace DungeonPlayer
 
         public void button3_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[2].text, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[2].text, string.Empty);
             if (FoodTextList[2].text == Database.FOOD_INAGO_AND_TAMAGO)
             {
                 DescriptionText.text = TruthRequestFood.DESC_13;
@@ -401,7 +401,7 @@ namespace DungeonPlayer
 
         public void button4_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[3].text, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[3].text, string.Empty);
             if (FoodTextList[3].text == Database.FOOD_USAGI)
             {
                 DescriptionText.text = TruthRequestFood.DESC_14;
@@ -424,7 +424,7 @@ namespace DungeonPlayer
 
         public void button5_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[4].text, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[4].text, string.Empty);
             if (FoodTextList[4].text == Database.FOOD_SANMA)
             {
                 DescriptionText.text = TruthRequestFood.DESC_15;
@@ -447,7 +447,7 @@ namespace DungeonPlayer
 
         public void Order_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
             if (this.CurrentSelect == Database.FOOD_KATUCARRY)
             {
                 EatFood(5, 0, 0, 5, 0);

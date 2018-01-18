@@ -703,7 +703,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(Database.LOG_GAME_START, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_GAME_START, String.Empty, String.Empty);
             GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_TRY);
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
@@ -756,7 +756,7 @@ namespace DungeonPlayer
                 GroupSystemMessage.SetActive(true);
                 return;
             }
-            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, String.Empty, String.Empty);                
+            //GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, String.Empty, String.Empty);                
             this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(this, false, false);
         }
@@ -764,20 +764,20 @@ namespace DungeonPlayer
         public void Config_Click()
         {
             GroundOne.TutorialMode = false;
-            GroundOne.SQL.UpdateOwner(Database.LOG_CONFIG, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_CONFIG, String.Empty, String.Empty);
             SceneDimension.CallGameSetting(this);
         }
 
         public void Exit_Click()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, String.Empty, String.Empty);
             Application.Quit();
         }
 
         public void Seeker_Click()
         {
             GroundOne.TutorialMode = false;
-            GroundOne.SQL.UpdateOwner(Database.LOG_START_SEEKER, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_START_SEEKER, String.Empty, String.Empty);
             GroundOne.WE2.StartSeeker = true;
             Method.AutoSaveTruthWorldEnvironment();
 

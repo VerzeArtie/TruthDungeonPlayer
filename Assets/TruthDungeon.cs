@@ -15719,7 +15719,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
             SceneDimension.CallTruthStatusPlayer(this, false, string.Empty, string.Empty);
         }
         public void tapBattleSetting()
@@ -15731,7 +15731,7 @@ namespace DungeonPlayer
                 return;
             }
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
@@ -15744,7 +15744,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15768,7 +15768,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15790,7 +15790,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 Method.AutoSaveTruthWorldEnvironment();
@@ -15842,7 +15842,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
             this.back_playback.SetActive(false);
             base.BookManual_Click();
         }
@@ -15856,7 +15856,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_VIEW_DUNGEON, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_VIEW_DUNGEON, String.Empty, String.Empty);
             this.back_playback.SetActive(false);
             this.DungeonViewMode = !this.DungeonViewMode;
             if (this.DungeonViewMode)
@@ -15899,7 +15899,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             SceneDimension.CallTruthPlayBack(this);
             //if (!this.back_playback.activeInHierarchy)
             //{
@@ -15933,7 +15933,7 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
-            GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 if (GroundOne.WE2.SeekerEvent821)

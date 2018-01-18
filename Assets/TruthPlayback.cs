@@ -45,7 +45,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK_CLOSE, string.Empty, string.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK_CLOSE, string.Empty, string.Empty);
 
             SceneDimension.Back(this);
         }

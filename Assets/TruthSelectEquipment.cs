@@ -495,13 +495,13 @@ namespace DungeonPlayer
 
         public void tapNumber(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_NUMBER, sender.text, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_NUMBER, sender.text, String.Empty);
             ViewBackPack(Convert.ToInt32(sender.text) - 1);
         }
 
         public void tapEquip(Text sender)
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_EQUIP, sender.text, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_EQUIP, sender.text, String.Empty);
             if ((sender.text != string.Empty) ||
                 (sender.text != ""))
             {
@@ -580,12 +580,12 @@ namespace DungeonPlayer
         }
         public void tapCancel()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_CANCEL, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_CANCEL, String.Empty, String.Empty);
             SceneDimension.Back(this);
         }
         public void tapDropEquip()
         {
-            GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_DROP, String.Empty, String.Empty);
+            //GroundOne.SQL.UpdateOwner(Database.LOG_SELECTEQUIP_DROP, String.Empty, String.Empty);
             ItemBackPack[] tempBackPack = GroundOne.TargetPlayer.GetBackPackInfo();
             int count = 0;
             if (tempBackPack != null)
