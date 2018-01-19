@@ -1157,11 +1157,11 @@ namespace DungeonPlayer
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
         {
             #region "ダンジョンマップをXMLから読み込み"
-            XmlDocument xml = new XmlDocument();
-            TextAsset filename = (TextAsset)Resources.Load(xmlFileName);
-            xml.LoadXml(filename.text);
+            //XmlDocument xml = new XmlDocument();
+            //TextAsset filename = (TextAsset)Resources.Load(xmlFileName);
+            //xml.LoadXml(filename.text);
 
-            XmlNodeList currentList = xml.GetElementsByTagName("TileData");
+            //XmlNodeList currentList = xml.GetElementsByTagName("TileData");
             //XmlNodeList childList = currentList[0].ChildNodes;
             //Debug.Log("childlist count " + childList.Count.ToString() + "\r\n");
 
@@ -1193,8 +1193,15 @@ namespace DungeonPlayer
             #region "宝箱や看板などの設置"
             try
             {
-                XmlNodeList currentList2 = xml.GetElementsByTagName("OtherData");
-                XmlNodeList childList2 = currentList2[0].ChildNodes;
+                string[] childList2 = Database.Content1;
+                if (GroundOne.TutorialMode) { childList2 = Database.Content0; }
+                else if (GroundOne.WE.DungeonArea == 1) { childList2 = Database.Content1; }
+                else if (GroundOne.WE.DungeonArea == 2) { childList2 = Database.Content2; }
+                else if (GroundOne.WE.DungeonArea == 3) { childList2 = Database.Content3; }
+                else if (GroundOne.WE.DungeonArea == 4) { childList2 = Database.Content4; }
+                else if (GroundOne.WE.DungeonArea == 5) { childList2 = Database.Content5; }
+                //XmlNodeList currentList2 = xml.GetElementsByTagName("OtherData");
+                //XmlNodeList childList2 = currentList2[0].ChildNodes;
 
                 string OTHER1 = "TreasureInfo";
                 string OTHER2 = "BoardInfo";
@@ -1208,11 +1215,11 @@ namespace DungeonPlayer
                 string OTHER10 = "BlueOrbInfo";
                 string OTHER11 = "FountainInfo";
 
-                for (int ii = 0; ii < childList2.Count; ii++)
+                for (int ii = 0; ii < childList2.Length; ii++)
                 {
-                    if (childList2[ii].Name.Contains(OTHER1))
+                    if (childList2[ii].Contains(OTHER1))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER1.Length, childList2[ii].Name.Length - OTHER1.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER1.Length, childList2[ii].Length - OTHER1.Length));
                         int row = targetNumber / Database.TRUTH_DUNGEON_COLUMN;
                         int column = targetNumber % Database.TRUTH_DUNGEON_COLUMN;
                         GameObject current = null;
@@ -1228,39 +1235,39 @@ namespace DungeonPlayer
                         this.objTreasureList.Add(current);
                         this.objTreasureNum.Add(targetNumber);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER2))
+                    else if (childList2[ii].Contains(OTHER2))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER2.Length, childList2[ii].Name.Length - OTHER2.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER2.Length, childList2[ii].Length - OTHER2.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.BOARD), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER3))
+                    else if (childList2[ii].Contains(OTHER3))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER3.Length, childList2[ii].Name.Length - OTHER3.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER3.Length, childList2[ii].Length - OTHER3.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.UPSTAIR), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER4))
+                    else if (childList2[ii].Contains(OTHER4))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER4.Length, childList2[ii].Name.Length - OTHER4.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER4.Length, childList2[ii].Length - OTHER4.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.DOWNSTAIR), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER9))
+                    else if (childList2[ii].Contains(OTHER9))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER9.Length, childList2[ii].Name.Length - OTHER9.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER9.Length, childList2[ii].Length - OTHER9.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.MIRROR), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER10))
+                    else if (childList2[ii].Contains(OTHER10))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER10.Length, childList2[ii].Name.Length - OTHER10.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER10.Length, childList2[ii].Length - OTHER10.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.BLUEORB), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    else if (childList2[ii].Name.Contains(OTHER11))
+                    else if (childList2[ii].Contains(OTHER11))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER11.Length, childList2[ii].Name.Length - OTHER11.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER11.Length, childList2[ii].Length - OTHER11.Length));
                         this.objOther.Add(Instantiate(SelectObjectFromString(Database.FOUNTAIN), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                     }
-                    if (childList2[ii].Name.Contains(OTHER5))
+                    if (childList2[ii].Contains(OTHER5))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER5.Length, childList2[ii].Name.Length - OTHER5.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER5.Length, childList2[ii].Length - OTHER5.Length));
                         blueWallTop[targetNumber] = true;
                         this.objBlueWallTop.Add(Instantiate(SelectObjectFromString(Database.BLUE_WALL_T), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallTop[this.objBlueWallTop.Count - 1].name = "bluewall_" + targetNumber.ToString();
@@ -1343,12 +1350,12 @@ namespace DungeonPlayer
                             this.objBlueWallTop[this.objBlueWallTop.Count - 1].SetActive(false);
                         }
                     }
-                    if (childList2[ii].Name.Contains(OTHER6))
+                    if (childList2[ii].Contains(OTHER6))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER6.Length, childList2[ii].Name.Length - OTHER6.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER6.Length, childList2[ii].Length - OTHER6.Length));
                         blueWallLeft[targetNumber] = true;
                         this.objBlueWallLeft.Add(Instantiate(SelectObjectFromString(Database.BLUE_WALL_L), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
-                        this.objBlueWallLeft[this.objBlueWallLeft.Count-1].name = "bluewall_" + targetNumber.ToString();
+                        this.objBlueWallLeft[this.objBlueWallLeft.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
                         if (GroundOne.WE.DungeonArea == 1)
@@ -1451,9 +1458,9 @@ namespace DungeonPlayer
                             this.objBlueWallLeft[this.objBlueWallLeft.Count - 1].SetActive(false);
                         }
                     }
-                    if (childList2[ii].Name.Contains(OTHER7))
+                    if (childList2[ii].Contains(OTHER7))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER7.Length, childList2[ii].Name.Length - OTHER7.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER7.Length, childList2[ii].Length - OTHER7.Length));
                         blueWallRight[targetNumber] = true;
                         this.objBlueWallRight.Add(Instantiate(SelectObjectFromString(Database.BLUE_WALL_R), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallRight[this.objBlueWallRight.Count - 1].name = "bluewall_" + targetNumber.ToString();
@@ -1559,9 +1566,9 @@ namespace DungeonPlayer
                             this.objBlueWallRight[this.objBlueWallRight.Count - 1].SetActive(false);
                         }
                     }
-                    if (childList2[ii].Name.Contains(OTHER8))
+                    if (childList2[ii].Contains(OTHER8))
                     {
-                        int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER8.Length, childList2[ii].Name.Length - OTHER8.Length));
+                        int targetNumber = Convert.ToInt32(childList2[ii].Substring(OTHER8.Length, childList2[ii].Length - OTHER8.Length));
                         blueWallBottom[targetNumber] = true;
                         this.objBlueWallBottom.Add(Instantiate(SelectObjectFromString(Database.BLUE_WALL_B), new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), -1), Quaternion.identity) as GameObject);
                         this.objBlueWallBottom[this.objBlueWallBottom.Count - 1].name = "bluewall_" + targetNumber.ToString();
