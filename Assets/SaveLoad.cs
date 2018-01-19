@@ -731,6 +731,34 @@ namespace DungeonPlayer
                     this.nowAutoKill = true;
                 }
             }
+
+            // セーブデータをサーバーへ転送する。
+            try
+            {
+                Debug.Log("Call UpdateSaveData");
+                using (FileStream fs = new FileStream(Method.pathForDocumentsFile(targetFileName), FileMode.Open))
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        byte[] save_current = br.ReadBytes((int)fs.Length);
+                        using (FileStream fs2 = new FileStream(Method.PathForRootFile(Database.WE2_FILE), FileMode.Open))
+                        {
+                            using (BinaryReader br2 = new BinaryReader(fs2))
+                            {
+                                byte[] save_we2 = br2.ReadBytes((int)fs2.Length);
+                                GroundOne.SQL.UpdaeSaveData(save_current, save_we2);
+                            }
+                        }
+                    }
+                }
+                
+                Debug.Log("Call UpdateSaveData ok");
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("ExecSave error: " + ex.ToString());
+            }
+
         }
 
         private void ExecLoad(Text sender, string targetFileName, bool forceLoad)
