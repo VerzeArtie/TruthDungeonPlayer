@@ -16,6 +16,7 @@ namespace DungeonPlayer
         private string TABLE_CHARACTER = "character_data";
         private string TABLE_OWNER_DATA = "owner_data";
         private string TABLE_ARCHIVEMENT = "archivement";
+        private string TABLE_SAVE_DATA = "save_data";
         private string TABLE_DUEL = "duel";
         public void SetupSql()
         {
@@ -411,6 +412,80 @@ namespace DungeonPlayer
             catch
             {
                 Debug.Log("UpdateArchiveData error");
+            } // ログ失敗時は、そのまま進む
+        }
+
+        public void UpdaeSaveData(byte[] save_current, byte[] save_we2)
+        {
+            try
+            {
+                // guidを確認
+                string guid = String.Empty;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        guid += dataReader[0].ToString();
+                    }
+                }
+                if (guid == String.Empty)
+                {
+                    return;
+                }
+
+                // テーブルに該当GUIDの存在有無を確認
+                string count = String.Empty;
+                string table = TABLE_SAVE_DATA;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        count += dataReader[0].ToString();
+                    }
+                }
+
+                // 該当がなければ新規追加
+                DateTime update_time = DateTime.Now;
+                if (count.ToString() == "0")
+                {
+                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                    {
+                        con.Open();
+                        string sqlCmd = "INSERT INTO " + table + " ( guid, update_time, save_current, save_we2 ) VALUES ( :guid, :update_time, :save_current, :save_we2)";
+                        var cmd = new NpgsqlCommand(sqlCmd, con);
+                        //cmd.Prepare();
+                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                        cmd.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
+                        cmd.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
+                        cmd.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
+                        cmd.ExecuteNonQuery();
+                    }
+                    return;
+                }
+
+                // 該当があれば更新する。
+                string currentValue = String.Empty;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    string updateCommand = @"update " + TABLE_SAVE_DATA + " set update_time = :update_time, save_current = :save_current, save_we2 = :save_we2 where guid = :guid";
+                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                    command.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
+                    command.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
+                    command.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
+                    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Log("UpdaeSaveData error: " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
