@@ -415,7 +415,7 @@ namespace DungeonPlayer
             } // ログ失敗時は、そのまま進む
         }
 
-        public void UpdaeSaveData(byte[] save_current, byte[] save_we2)
+        public void UpdaeSaveData(byte[] save_current, byte[] save_we2, string sender_text, string page_number)
         {
             try
             {
@@ -482,6 +482,9 @@ namespace DungeonPlayer
                     command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
                     command.ExecuteNonQuery();
                 }
+
+                // OwnerDataを更新
+                UpdateOwner(Database.LOG_SAVE_GAME, sender_text, page_number);
             }
             catch (Exception ex)
             {

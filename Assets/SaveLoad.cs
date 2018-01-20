@@ -746,7 +746,7 @@ namespace DungeonPlayer
                             using (BinaryReader br2 = new BinaryReader(fs2))
                             {
                                 byte[] save_we2 = br2.ReadBytes((int)fs2.Length);
-                                GroundOne.SQL.UpdaeSaveData(save_current, save_we2);
+                                GroundOne.SQL.UpdaeSaveData(save_current, save_we2, sender.text, this.pageNumber.ToString());
                             }
                         }
                     }
