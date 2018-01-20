@@ -1174,7 +1174,7 @@ namespace DungeonPlayer
 
         private void LoadDuelColosseum()
         {
-            DuelResultText.text = "戦歴　" + GroundOne.WE2.DuelWin.ToString() + " 勝" + GroundOne.WE2.DuelLose.ToString() + " 敗";
+            DuelResultText.text = "戦歴　" + GroundOne.WE2.DuelWin.ToString() + "  勝" + GroundOne.WE2.DuelLose.ToString() + "  敗";
 
             if (GroundOne.WE2.DuelWin >= 21)
             {
