@@ -665,6 +665,7 @@ namespace DungeonPlayer
         }
             	
 	    public void tapDungeon() {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ここからダンジョンスタートだ。ここから先は本編でプレイしてみてくれ。";
@@ -884,6 +885,7 @@ namespace DungeonPlayer
 
         public void tapCommunicationLana()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ラナ：本編では気が向いたら、私に声をかけてね♪";
@@ -1104,6 +1106,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapDuel() {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ランディス：気安くDUELボタンを押してんじゃねぇ、本編で遭遇したらブッ飛ばすからな。";
@@ -1243,6 +1246,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ラナ：バトルコマンドを設定する事が出来るわ。詳しくは別のチュートリアルで確認してね。";
@@ -1886,6 +1890,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapShop() {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ガンツ：準備中の札がお前さんには見えんのか。本編になってからまた来なさい。";
@@ -2085,6 +2090,7 @@ namespace DungeonPlayer
         
         public void tapPotionShop()
         {
+            if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_POTION_SHOP, String.Empty, String.Empty);
             this.Filter.SetActive(true);
             SceneDimension.CallPotionShop(this);
@@ -2092,6 +2098,7 @@ namespace DungeonPlayer
 
         public void tapGate()
         {
+            if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_TRANSPORT_GATE, String.Empty, String.Empty);
             #region "ファージル宮殿 or カールハンツ爵の訓練場を選択"
             if (GroundOne.WE.AvailableFazilCastle)
@@ -2443,6 +2450,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapInn() {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ハンナ：あら、予定外の客が来たわね。すまないけど、本編になってから来てちょうだい。";
@@ -2608,6 +2616,7 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ラナ：ゲームをセーブする画面を呼び出すわ。このチュートリアルではセーブ不要よ。";
@@ -2629,6 +2638,7 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "ラナ：ゲームをセーブする画面を呼び出すわ。このチュートリアルではロード不要よ。";
@@ -3245,6 +3255,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 SceneDimension.JumpToTitle();
@@ -3283,18 +3294,21 @@ namespace DungeonPlayer
 
         public void tapBookManual()
         {
+            if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
             SceneDimension.CallTruthBookManual(this);
         }
 
         public void tapPlayback()
         {
+            if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             SceneDimension.CallTruthPlayBack(this);
         }
 
         public void tapObjective()
         {
+            if (CheckPushButtonShortly) { return; }
             float current = panelObjective.GetComponent<Image>().color.a;
             float current2 = 1.0f;
             if (current == 1.0f)
@@ -3324,6 +3338,7 @@ namespace DungeonPlayer
 
         public void tapAchievement()
         {
+            if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_ACHIEVEMENT, String.Empty, String.Empty);
             SceneDimension.CallAchievement(this);
         }

@@ -14,6 +14,7 @@ namespace DungeonPlayer
         public GameObject groupYesnoSystemMessage;
         public GameObject Filter;
         public ItemBackPack GettingNewItem;
+        protected DateTime pushTime = DateTime.Now; // ボタン連打防止
 
         public virtual void Start()
         {
@@ -146,6 +147,21 @@ namespace DungeonPlayer
             }
 
             return getOK;
+        }
+
+        protected bool CheckPushButtonShortly
+        {
+            get {
+                if (DateTime.Now - pushTime < new TimeSpan(0, 0, 2))
+                {
+                    Debug.Log("push timing is very short, then no action. " + DateTime.Now);
+                    return true;
+                }
+
+                this.pushTime = DateTime.Now;
+                return false;
+
+            }
         }
     }
 }

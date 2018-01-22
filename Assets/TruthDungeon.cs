@@ -15718,6 +15718,7 @@ namespace DungeonPlayer
 
         public void tapStatus()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：キャラクターのステータス画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
@@ -15731,6 +15732,7 @@ namespace DungeonPlayer
         }
         public void tapBattleSetting()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：キャラクターのバトル設定画面を開く事ができる。詳しくは別のチュートリアルで確認してみてくれ。";
@@ -15743,6 +15745,7 @@ namespace DungeonPlayer
         }
         public void tapSave()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ここからゲームセーブする画面を呼び出せる。このチュートリアルではセーブは不要だ。";
@@ -15767,6 +15770,7 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ここからゲームロードする画面を呼び出せる。このチュートリアルではロードは不要だ。";
@@ -15789,6 +15793,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 MessagePack.MessageBackToTutorial_Exit(ref nowMessage, ref nowEvent);
@@ -15842,6 +15847,7 @@ namespace DungeonPlayer
 
         public override void BookManual_Click()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：戦闘コマンドの内容を確認してみよう。";
@@ -15856,6 +15862,7 @@ namespace DungeonPlayer
 
         public void DungeonView_Click()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode && this.DungeonViewMode == false)
             {
                 mainMessage.text = "アイン：ダンジョン表示モードに切り替える事でマップ全体を見渡せる。移動する時と同じように上下左右キーを押してみてくれ。\r\n移動モードに戻る時は再びこのマップボタンを押してくれ。";
@@ -15898,6 +15905,7 @@ namespace DungeonPlayer
 
         public void PlayBack_Click()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：ダンジョン内で発生した会話履歴を確認する事ができる。すまねえがこのチュートリアルでは確認できないんだ。";
@@ -15932,6 +15940,7 @@ namespace DungeonPlayer
 
         public void BlueOrb_Click()
         {
+            if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：街へ帰還する事が出来る。このチュートリアルではすまねえが使えないんだ。";
@@ -15977,6 +15986,7 @@ namespace DungeonPlayer
 
         public void PathfindingMode_Click()
         {
+            //if (CheckPushButtonShortly) { return; }
             if (GroundOne.TutorialMode)
             {
                 mainMessage.text = "アイン：赤に切り替えるとモンスターが発生しやすくなる。青に戻せばモンスターは出にくくなる。このダンジョンでは残念だがモンスターは出ないんだ。";
@@ -15998,6 +16008,7 @@ namespace DungeonPlayer
 
         public void TapMainMessage()
         {
+            //if (CheckPushButtonShortly) { return; }
             UpdateTransparent(groupMainMessage, mainMessage);
         }
 
