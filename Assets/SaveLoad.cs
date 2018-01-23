@@ -28,6 +28,7 @@ namespace DungeonPlayer
         private string MESSAGE_1 = @"DungeonPlayerクリアデータです。本編ではロードできません。";
         private string MESSAGE_2 = @"保存が完了しました。";
         private string MESSAGE_OVERWRITE = @"既にデータが存在します。上書きしてセーブしますか？";
+        private string MESSAGE_NOWLOADING = @"しばらくお待ちください...";
 
         private bool nowAutoKill = false;
         private int autoKillTimer = 0;
@@ -38,6 +39,20 @@ namespace DungeonPlayer
         private int pageNumber = 1;
         private string[] filenameList = null;
         private DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
+
+        public Image pbSandglass;
+        private Sprite imageSandglass;
+        private CurrentPhase currentPhase = CurrentPhase.None;
+        private Text txtSender;
+        private bool forceSave = false;
+
+        private enum CurrentPhase
+        {
+            None,
+            Save,
+            Load,
+            Complete,
+        }
 
         // Use this for initialization
         public override void Start()
@@ -97,12 +112,39 @@ namespace DungeonPlayer
 
             }
             PageMove((newNumber - 1)/buttonText.Length + 1);
+
+            int BASE_SIZE_X = 152;
+            int BASE_SIZE_Y = 211;
+            this.imageSandglass = Sprite.Create(Resources.Load<Texture2D>("SandGlassIcon"), new Rect(0, 0, BASE_SIZE_X, BASE_SIZE_Y), new Vector2(0, 0));
+            this.pbSandglass.sprite = this.imageSandglass;
         }
 
         // Update is called once per frame
         public override void Update()
         {
             base.Update();
+
+            if (this.currentPhase == CurrentPhase.None)
+            {
+                // no action
+            }
+            else if (this.currentPhase == CurrentPhase.Save || this.currentPhase == CurrentPhase.Load)
+            {
+                ExecSaveLoad();
+            }
+            else
+            {
+                if (GroundOne.SaveMode)
+                {
+                    this.systemMessage.text = MESSAGE_2;
+                }
+                else
+                {
+                    this.systemMessage.text = "ゲームデータの読み込みが完了しました。";
+                }
+                this.pbSandglass.gameObject.SetActive(false);
+            }
+
             if (this.nowAutoKill)
             {
                 this.autoKillTimer++;
@@ -179,6 +221,52 @@ namespace DungeonPlayer
         {
             Debug.Log(sender.text);
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_NUMBER, sender.text, String.Empty);
+
+            this.txtSender = sender;
+            this.systemMessage.text = MESSAGE_NOWLOADING;
+            this.pbSandglass.sprite = this.imageSandglass;
+
+            if (GroundOne.SaveMode)
+            {
+                string targetFileName = String.Empty;
+                for (int ii = 0; ii < buttonText.Length; ii++)
+                {
+                    if (this.txtSender.Equals(buttonText[ii]))
+                    {
+                        targetFileName = ((ii + 1) + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_";
+                        break;
+                    }
+                }
+                bool result = TryExecSave(this.txtSender, targetFileName);
+                if (result == false)
+                {
+                    return;
+                }
+            }
+
+            this.back_SystemMessage.SetActive(true);
+            StartCoroutine(WaitOnly());
+        }
+
+        private IEnumerator WaitOnly()
+        {
+            yield return new WaitForEndOfFrame();
+
+            if (GroundOne.SaveMode)
+            {
+                this.currentPhase = CurrentPhase.Save;
+            }
+            else
+            {
+                this.currentPhase = CurrentPhase.Load;
+            }
+
+            yield return null;
+        }
+
+        private void ExecSaveLoad()
+        {
+            Debug.Log("ExecSaveLoad(S)");
             //
             // セーブ！！！
             //
@@ -187,32 +275,34 @@ namespace DungeonPlayer
                 string targetFileName = String.Empty;
                 for (int ii = 0; ii < buttonText.Length; ii++)
                 {
-                    if (sender.Equals(buttonText[ii]))
+                    if (this.txtSender.Equals(buttonText[ii]))
                     {
                         targetFileName = ((ii + 1) + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_";
                         break;
                     }
                 }
-                ExecSave((Text)sender, targetFileName, false); // 後編移動
+                ExecSave(this.txtSender, targetFileName, this.forceSave); // 後編移動
+                this.forceSave = false;
             }
             //
             // ロード！！！
             //
             else
             {
-                if (((Text)sender).text == String.Empty) return;
+                if ((this.txtSender).text == String.Empty) { return; }
 
                 string targetFileName = String.Empty;
                 for (int ii = 0; ii < buttonText.Length; ii++)
                 {
-                    if (sender.Equals(buttonText[ii]))
+                    if (this.txtSender.Equals(buttonText[ii]))
                     {
                         targetFileName = (ii + 1 + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_";
                         break;
                     }
                 }
-                ExecLoad((Text)sender, targetFileName, false); // 後編移動
+                ExecLoad(this.txtSender, targetFileName, false); // 後編移動
             }
+            this.currentPhase = CurrentPhase.Complete;
         }
 
         public override void ExitYes()
@@ -221,7 +311,12 @@ namespace DungeonPlayer
             if (this.yesnoSystemMessage.text == this.MESSAGE_OVERWRITE)
             {
                 HideAllChild();
-                ExecSave(this.currentSaveText, this.currentTargetFileName, true);
+                this.systemMessage.text = MESSAGE_NOWLOADING;
+                this.pbSandglass.sprite = this.imageSandglass;
+                this.back_SystemMessage.SetActive(true);
+
+                this.forceSave = true;
+                StartCoroutine(WaitOnly());
             }
         }
 
@@ -239,6 +334,23 @@ namespace DungeonPlayer
         public void RealWorldSave()
         {
             ExecSave(null, Database.WorldSaveNum, true);
+        }
+
+        private bool TryExecSave(Text sender, string targetFileName)
+        {
+            foreach (string overwriteData in System.IO.Directory.GetFiles(Method.PathForSaveFile(), "*.xml"))
+            {
+                if (overwriteData.Contains(targetFileName))
+                {
+                    this.currentSaveText = sender;
+                    this.currentTargetFileName = targetFileName;
+                    this.yesnoSystemMessage.text = this.MESSAGE_OVERWRITE;
+                    this.groupYesnoSystemMessage.SetActive(true);
+                    this.Filter.SetActive(true);
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void ExecSave(Text sender, string targetFileName, bool forceSave)
@@ -1160,6 +1272,7 @@ namespace DungeonPlayer
             this.groupYesnoSystemMessage.SetActive(false);
             this.back_SystemMessage.SetActive(false);
             this.Filter.SetActive(false);
+            this.currentPhase = CurrentPhase.None;
             this.systemMessage.text = "";
         }
 
