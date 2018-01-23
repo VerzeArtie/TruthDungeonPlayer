@@ -275,7 +275,8 @@ namespace DungeonPlayer
             upPoint = 0;
             cumultivaLvUpValue = 0;
 
-            Application.LoadLevelAdditiveAsync(Database.TruthStatusPlayer);
+            SceneManager.LoadSceneAsync(Database.TruthStatusPlayer, LoadSceneMode.Additive);
+            //Application.LoadLevelAdditiveAsync(Database.TruthStatusPlayer);
         }
 
         public static void CallTruthSkillSpellDesc(MotherForm scene, string playerName, string commandName)
