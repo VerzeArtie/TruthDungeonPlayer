@@ -31588,11 +31588,11 @@ namespace DungeonPlayer
 
             if (Application.platform == RuntimePlatform.Android)
             {
-                messageList.Add("【戦闘中、画面左下のプレイヤーパネルを押しっぱなしにした状態にすると使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+                messageList.Add("【戦闘中、プレイヤーパネルを押下した状態でアクションを選択する事で使用できます】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
             }
             else if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                messageList.Add("【戦闘中、画面左下のプレイヤーパネルを押しっぱなしにした状態にすると使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+                messageList.Add("【戦闘中、プレイヤーパネルを押下した状態でアクションを選択する事で使用できます】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
             }
             else
             {
