@@ -411,7 +411,7 @@ namespace DungeonPlayer
                 {
                     TutorialMessageText.text  = "　　　戦闘コマンドは、インスタントタイミングで使えるものがあります。\r\n";
                     TutorialMessageText.text += "　　　戦闘コマンドの下のインスタントゲージを確認し、ゲージが溜まるのを待ちます。\r\n";
-                    TutorialMessageText.text += "　　　ゲージが溜まったら、左下のキャラクターエリアをプッシュした状態にしてください。\r\n";
+                    TutorialMessageText.text += "　　　ゲージが溜まったら、プレイヤーパネルをプッシュした状態にしてください。\r\n";
                     TutorialMessageText.text += "　　　その状態で「プロテクション」などをタップし、アインを選択します。\r\n";
                     TutorialMessageText.text += "　　　メイン行動ではないタイミングで即座にアクションを行うことが出来るようになります。\r\n";
                 }
