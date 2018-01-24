@@ -13,7 +13,7 @@ namespace DungeonPlayer
             GroundOne.WE.DungeonPosX = 0;
             GroundOne.WE.DungeonPosY = 0;
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.TruthHomeTown);
+            SceneManager.LoadSceneAsync(Database.TruthHomeTown);
             GroundOne.Parent.Clear();
         }
         public static void JumpToSingleHomeTown()
@@ -21,7 +21,7 @@ namespace DungeonPlayer
             GroundOne.WE.DungeonPosX = 0;
             GroundOne.WE.DungeonPosY = 0;
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.SingleHomeTown);
+            SceneManager.LoadSceneAsync(Database.SingleHomeTown);
             GroundOne.Parent.Clear();
         }
         public static void JumpToTruthDungeon(bool gotoDownstair)
@@ -29,7 +29,7 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyShownEvent = false;
             GroundOne.GotoDownstair = gotoDownstair;
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.TruthDungeon);
+            SceneManager.LoadSceneAsync(Database.TruthDungeon);
             GroundOne.Parent.Clear();
         }
 
@@ -38,7 +38,7 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyShownEvent = false;
             GroundOne.GotoDownstair = gotoDownstair;
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.SingleDungeon);
+            SceneManager.LoadSceneAsync(Database.SingleDungeon);
             GroundOne.Parent.Clear();
         }
 
@@ -46,26 +46,26 @@ namespace DungeonPlayer
         {
             GroundOne.ReInitializeGroundOne(false);
             GroundOne.StopDungeonMusic();
-            Application.LoadLevelAsync(Database.Title);
+            SceneManager.LoadSceneAsync(Database.Title);
             GroundOne.Parent.Clear();
         }
 
         public static void CallTutorial(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.Tutorial);
+            SceneManager.LoadSceneAsync(Database.Tutorial, LoadSceneMode.Additive);
         }
 
         public static void CallGameSetting( MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.GameSetting);
+            SceneManager.LoadSceneAsync(Database.GameSetting, LoadSceneMode.Additive);
         }
 
 		public static void CallDungeonTicket(MotherForm scene)
 		{
 			GroundOne.Parent.Add (scene);
-			Application.LoadLevelAdditiveAsync(Database.DungeonTicket);
+            SceneManager.LoadSceneAsync(Database.DungeonTicket, LoadSceneMode.Additive);
 		}
 
         public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
@@ -109,83 +109,83 @@ namespace DungeonPlayer
         public static void CallTruthPlayBack(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthPlayback);
+            SceneManager.LoadSceneAsync(Database.TruthPlayback, LoadSceneMode.Additive);
         }
 
         public static void CallAchievement(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthAchievement);
+            SceneManager.LoadSceneAsync(Database.TruthAchievement, LoadSceneMode.Additive);
         }
 
         public static void CallTruthBookManual(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthInformation);
+            SceneManager.LoadSceneAsync(Database.TruthInformation, LoadSceneMode.Additive);
         }
 
         public static void CallTruthSelectCharacter(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthSelectCharacter);
+            SceneManager.LoadSceneAsync(Database.TruthSelectCharacter, LoadSceneMode.Additive);
         }
 
         public static void CallTruthChoiceStatue(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthChoiceStatue);
+            SceneManager.LoadSceneAsync(Database.TruthChoiceStatue, LoadSceneMode.Additive);
         }
 
         public static void CallTruthWill(MotherForm scene)
         {
             GroundOne.GodSeuqence = false;
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthWill);
+            SceneManager.LoadSceneAsync(Database.TruthWill, LoadSceneMode.Additive);
         }
 
         public static void CallTruthAnswer(MotherForm scene)
         {
             GroundOne.GodSeuqence = false;
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthAnswer);
+            SceneManager.LoadSceneAsync(Database.TruthAnswer, LoadSceneMode.Additive);
         }
 
         public static void CallTruthInputRequest(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthRequestInput);
+            SceneManager.LoadSceneAsync(Database.TruthRequestInput, LoadSceneMode.Additive);
         }
 
         public static void CallTruthDuelPlayerStatus(MotherForm scene, string duelPlayerName)
         {
             GroundOne.Parent.Add(scene);
             GroundOne.DuelPlayerName = duelPlayerName;
-            Application.LoadLevelAdditiveAsync(Database.TruthDuelPlayerStatus);
+            SceneManager.LoadSceneAsync(Database.TruthDuelPlayerStatus, LoadSceneMode.Additive);
         }
 
         public static void CallTruthDuelRule(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthDuelRule);
+            SceneManager.LoadSceneAsync(Database.TruthDuelRule, LoadSceneMode.Additive);
         }
 
         public static void CallTruthItemDesc(MotherForm scene, string itemNameTitle)
         {
             GroundOne.Parent.Add(scene);
             GroundOne.ItemNameTitle = itemNameTitle;
-            Application.LoadLevelAdditiveAsync(Database.TruthItemDesc);
+            SceneManager.LoadSceneAsync(Database.TruthItemDesc, LoadSceneMode.Additive);
         }
 
         public static void CallTruthDecision(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthDecision);
+            SceneManager.LoadSceneAsync(Database.TruthDecision, LoadSceneMode.Additive);
         }
 
         public static void CallTruthDecision3(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthDecision3);
+            SceneManager.LoadSceneAsync(Database.TruthDecision3, LoadSceneMode.Additive);
         }
 
         public static void CallTruthDecision2(MotherForm scene, string message, string textTop, string textLeft, string textRight, string textBottom, bool permutation)
@@ -197,38 +197,38 @@ namespace DungeonPlayer
             GroundOne.Decision2_BottomText = textBottom;
             GroundOne.Decision2_SelectPermutation = permutation;
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthDecision2);
+            SceneManager.LoadSceneAsync(Database.TruthDecision2, LoadSceneMode.Additive);
         }
 
         public static void CallDuelRule(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthDuelRule);
+            SceneManager.LoadSceneAsync(Database.TruthDuelRule, LoadSceneMode.Additive);
         }
         
         public static void CallRequestFood(string src, MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthRequestFood);
+            SceneManager.LoadSceneAsync(Database.TruthRequestFood, LoadSceneMode.Additive);
         }
         
         public static void CallItemBank(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthItemBank);
+            SceneManager.LoadSceneAsync(Database.TruthItemBank, LoadSceneMode.Additive);
         }
 
         public static void CallPotionShop(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthPotionShop);
+            SceneManager.LoadSceneAsync(Database.TruthPotionShop, LoadSceneMode.Additive);
         }
 
         public static void CallSaveLoadWithSaveOnly()
         {
             GroundOne.SaveMode = true;
             GroundOne.SaveAndExit = true;
-            Application.LoadLevelAdditiveAsync(Database.SaveLoad);
+            SceneManager.LoadSceneAsync(Database.SaveLoad, LoadSceneMode.Additive);
         }
 
         public static void CallSaveLoad(MotherForm scene, bool SaveMode, bool AfterBacktoTitle)
@@ -238,7 +238,7 @@ namespace DungeonPlayer
             GroundOne.Parent.Add(scene);
             GroundOne.SaveAndExit = false;
             scene.Filter.SetActive(true);
-            Application.LoadLevelAdditiveAsync(Database.SaveLoad);
+            SceneManager.LoadSceneAsync(Database.SaveLoad, LoadSceneMode.Additive);
         }
 
         public static void CallTruthSelectEquipment(MotherForm scene, int equipType, MainCharacter targetPlayer)
@@ -246,7 +246,7 @@ namespace DungeonPlayer
             GroundOne.EquipType = equipType;
             GroundOne.TargetPlayer = targetPlayer;
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthSelectEquipment);
+            SceneManager.LoadSceneAsync(Database.TruthSelectEquipment, LoadSceneMode.Additive);
         }
 
         public static void CallTruthStatusPlayer(MotherForm scene, bool onlySelectTrash, string newItem, string itemName)
@@ -259,7 +259,7 @@ namespace DungeonPlayer
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthStatusPlayer);
+            SceneManager.LoadSceneAsync(Database.TruthStatusPlayer, LoadSceneMode.Additive);
         }
         public static void CallTruthStatusPlayer(MotherForm scene, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, string characterName)
         {
@@ -276,7 +276,6 @@ namespace DungeonPlayer
             cumultivaLvUpValue = 0;
 
             SceneManager.LoadSceneAsync(Database.TruthStatusPlayer, LoadSceneMode.Additive);
-            //Application.LoadLevelAdditiveAsync(Database.TruthStatusPlayer);
         }
 
         public static void CallTruthSkillSpellDesc(MotherForm scene, string playerName, string commandName)
@@ -284,19 +283,19 @@ namespace DungeonPlayer
             GroundOne.Parent.Add(scene);
             GroundOne.playerName = playerName;
             GroundOne.SpellSkillName = commandName;
-            Application.LoadLevelAdditiveAsync(Database.TruthSkillSpellDesc);
+            SceneManager.LoadSceneAsync(Database.TruthSkillSpellDesc, LoadSceneMode.Additive);
         }
 
         public static void CallTruthEquipmentShop(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthEquipmentShop);
+            SceneManager.LoadSceneAsync(Database.TruthEquipmentShop, LoadSceneMode.Additive);
         }
 
         public static void CallTruthBattleSetting(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);
-            Application.LoadLevelAdditiveAsync(Database.TruthBattleSetting);
+            SceneManager.LoadSceneAsync(Database.TruthBattleSetting, LoadSceneMode.Additive);
         }
 
         public static void Back(MotherForm scene)
@@ -308,12 +307,12 @@ namespace DungeonPlayer
                 GroundOne.Parent[GroundOne.Parent.Count - 1].SceneBack();
                 GroundOne.Parent.RemoveAt(GroundOne.Parent.Count - 1);
             }
-            Application.UnloadLevel(sceneName);
+            SceneManager.UnloadSceneAsync(sceneName);
         }
         
         public static void BackSuddenly(MotherForm scene)
         {
-            Application.UnloadLevel(scene.GetType().Name);
+            SceneManager.UnloadSceneAsync(scene.GetType().Name);
 
             if (GroundOne.Parent.Count > 0)
             {
