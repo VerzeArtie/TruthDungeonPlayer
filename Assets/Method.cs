@@ -510,6 +510,31 @@ namespace DungeonPlayer
                     player.DeleteBackPack(backpackData, 1, currentNumber);
                     mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
                     break;
+
+                case Database.POOR_SMALL_BLUE_POTION:
+                case Database.COMMON_NORMAL_BLUE_POTION:
+                case Database.COMMON_LARGE_BLUE_POTION:
+                case Database.COMMON_HUGE_BLUE_POTION:
+                case Database.COMMON_GORGEOUS_BLUE_POTION:
+                case Database.RARE_PERFECT_BLUE_POTION:
+                    effect = backpackData.UseIt();
+                    player.CurrentMana += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    break;
+
+                case Database.POOR_SMALL_GREEN_POTION:
+                case Database.COMMON_NORMAL_GREEN_POTION:
+                case Database.COMMON_LARGE_GREEN_POTION:
+                case Database.COMMON_HUGE_GREEN_POTION:
+                case Database.COMMON_GORGEOUS_GREEN_POTION:
+                case Database.RARE_PERFECT_GREEN_POTION:
+                    effect = backpackData.UseIt();
+                    player.CurrentSkillPoint += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    break;
+
             }
         }
 

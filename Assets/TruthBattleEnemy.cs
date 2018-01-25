@@ -22,6 +22,9 @@ namespace DungeonPlayer
         bool ActionInstantMode = false;
         string instantActionCommandString = String.Empty;
 
+        bool nowUsingItem = false;
+        string usingItemName = String.Empty;
+
         bool nowStackAnimation = false;
         int nowStackAnimationCounter = 0;
 
@@ -937,6 +940,11 @@ namespace DungeonPlayer
                 ExecAnimation();
                 //Debug.Log("nowAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowUsingItem)
+            {
+                ExecUseItem(this.usingItemName);
+                return;
             }
             if (this.nowStackAnimation)
             {
@@ -5209,7 +5217,7 @@ namespace DungeonPlayer
                     {
                         ((TruthEnemyCharacter)ActiveList[ii]).DetectDeath = true;
                         UpdateBattleText(ActiveList[ii].FirstName + "は死の至る刹那、深淵の防壁を作りだした！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "深淵の防壁");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "深淵の防壁");
                         ActiveList[ii].CurrentLife = 1;
                         UpdateLife(ActiveList[ii]);
                         ActiveList[ii].CurrentTheAbyssWall = Database.INFINITY;
@@ -5219,7 +5227,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveGenseiTaima();
                         UpdateBattleText(ActiveList[ii].FirstName + "に対して退魔の効果が発動し、致死の狭間で生き残った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "致死回避！");
                         ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife / 2;
                         UpdateLife(ActiveList[ii]);
                     }
@@ -5235,7 +5243,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveShadowBible();
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間でみなぎる生命力を感じ取った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "致死回避！");
                         ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife;
                         UpdateLife(ActiveList[ii]);
                         NowNoResurrection(ActiveList[ii], ActiveList[ii], 999);
@@ -5244,7 +5252,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveAfterReviveHalf();
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "致死回避！");
                         ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife / 2.0f);
                         UpdateLife(ActiveList[ii]);
                     }
@@ -5262,7 +5270,7 @@ namespace DungeonPlayer
                         {
                             UpdateBattleText(ActiveList[ii].GetCharacterSentence(216));
                             System.Threading.Thread.Sleep(1000);
-                            AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "生命復活");
+                            AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "生命復活");
                             ActiveList[ii].RemoveDebuffEffect();
                             ActiveList[ii].RemoveDebuffParam();
                             ActiveList[ii].RemoveDebuffSkill();
@@ -5277,7 +5285,7 @@ namespace DungeonPlayer
                     else if (CheckResurrectWithItem(ActiveList[ii], Database.RARE_TAMATEBAKO_AKIDAMA))
                     {
                         UpdateBattleText(Database.RARE_TAMATEBAKO_AKIDAMA + "が淡く光り始めた！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "復活");
 
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
                         ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife * 0.1f);
@@ -5873,16 +5881,9 @@ namespace DungeonPlayer
             PointerDownPanel();
         }
 
-
-        public void UseItem_Click(Text sender)
+        public void ExecUseItem(string itemName)
         {
             MainCharacter player = this.currentPlayer;
-            if (player.Dead)
-            {
-                txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
-                return;
-            }
-
             // バックパック画面を開いて、消耗品アイテムを使用する。
             Debug.Log("ItemGauge: " + UseItemGauge.rectTransform.localScale.x);
             if (UseItemGauge.rectTransform.localScale.x < 1.0f)
@@ -5905,7 +5906,7 @@ namespace DungeonPlayer
             int currentNumber = 0;
             for (int ii = 0; ii < backpack.Length; ii++)
             {
-                if (backpack[ii].Equals(sender))
+                if (backpack[ii].text == itemName)
                 {
                     currentNumber = ii;
                     Debug.Log("currentNumber is " + currentNumber.ToString());
@@ -5913,7 +5914,8 @@ namespace DungeonPlayer
                 }
             }
 
-            Method.UseItem(player, sender.text, currentNumber, txtBattleMessage);
+            Method.UseItem(player, itemName, currentNumber, txtBattleMessage);
+            AnimationDamage(0, player, 0, Color.black, false, false, "アイテム使用");
             UpdateLife(player);
             UpdateMana(player);
             UpdateSkillPoint(player);
@@ -5922,6 +5924,22 @@ namespace DungeonPlayer
 
             this.currentItemGauge = 0;
             UpdateUseItemGauge();
+            this.usingItemName = String.Empty;
+            this.nowUsingItem = false;
+        }
+
+        public void UseItem_Click(Text sender)
+        {
+            MainCharacter player = this.currentPlayer;
+            if (player.Dead)
+            {
+                txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
+                return;
+            }
+
+            this.groupParentBackpack.SetActive(false);
+            this.usingItemName = sender.text;
+            this.nowUsingItem = true;
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
