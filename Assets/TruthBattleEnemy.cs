@@ -5914,7 +5914,9 @@ namespace DungeonPlayer
                 }
             }
 
-            Method.UseItem(player, itemName, currentNumber, txtBattleMessage);
+            List<MainCharacter> group = new List<MainCharacter>();
+            SetupAllyGroup(ref group);
+            Method.UseItem(group, player, itemName, currentNumber, txtBattleMessage);
             AnimationDamage(0, player, 0, Color.black, false, false, "アイテム使用");
             UpdateLife(player);
             UpdateMana(player);
@@ -7724,6 +7726,7 @@ namespace DungeonPlayer
         public void UseItemButton_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_USEITEM, String.Empty, String.Empty);
+            Method.UpdateBackPackLabel(this.currentPlayer, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
             groupParentBackpack.SetActive(!groupParentBackpack.activeInHierarchy);
         }
 

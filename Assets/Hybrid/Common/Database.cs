@@ -1517,6 +1517,7 @@ namespace DungeonPlayer
         public const string COMMON_TUUKAI_DRINK_WATER = @"痛快ドリンクの原液";
         public const string RARE_ROD_OF_STRENGTH = @"力の杖";
         public const string RARE_SOUJUTENSHI_NO_GOFU = @"蒼授天使の護符";
+        public const string RARE_SINSEISUI = @"神聖水";
         #endregion
 
         #region "３階のランダムドロップ"

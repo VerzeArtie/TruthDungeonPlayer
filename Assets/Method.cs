@@ -488,7 +488,7 @@ namespace DungeonPlayer
             }
         }
 
-        public static void UseItem(MainCharacter player, string itemName, int currentNumber, Text mainMessage)
+        public static void UseItem(List<MainCharacter> allyList, MainCharacter player, string itemName, int currentNumber, Text mainMessage)
         {
             ItemBackPack backpackData = new ItemBackPack(itemName);
 
@@ -535,6 +535,293 @@ namespace DungeonPlayer
                     mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
                     break;
 
+                case Database.COMMON_REVIVE_POTION_MINI:
+                    for (int ii = 0; ii < allyList.Count; ii++)
+                    {
+                        if (allyList[ii].Dead)
+                        {
+                            player.DeleteBackPack(backpackData, 1, currentNumber);
+                            allyList[ii].ResurrectPlayer(1);
+                            mainMessage.text = allyList[ii].GetCharacterSentence(2016);
+                            break;
+                        }                            
+                    }
+                    break;
+
+                case Database.COMMON_POTION_RESIST_FIRE:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentResistFireUp = Database.INFINITY;
+                    player.CurrentResistFireUpValue = 50;
+                    player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_POTION_MAGIC_SEAL:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyMagicAttack = 1.05f;
+                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_POTION_ATTACK_SEAL:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyPhysicalAttack = 1.05f;
+                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                    break;
+
+                case Database.POOR_POTION_CURE_POISON:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentPoison = 0;
+                    player.CurrentPoisonValue = 0;
+                    player.DeBuff(player.pbPoison);
+                    break;
+
+                case Database.COMMON_POTION_NATURALIZE:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentPoison = 0;
+                    player.CurrentPoisonValue = 0;
+                    player.DeBuff(player.pbPoison);
+                    player.CurrentSlow = 0;
+                    player.DeBuff(player.pbSlow);
+                    break;
+
+                case Database.COMMON_POTION_CURE_BLIND:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentBlind = 0;
+                    player.DeBuff(player.pbBlind);
+                    break;
+
+                case Database.RARE_POTION_MOSSGREEN_DREAM:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveSlow();
+                    player.RemovePoison();
+                    player.RemoveBlind();
+                    break;
+
+                case Database.RARE_DRYAD_SAGE_POTION:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyBattleSpeed = 1.05f;
+                    player.AmplifyBattleResponse = 1.05f;
+                    player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                    player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_RESIST_POISON:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentPoison = 0;
+                    player.CurrentPoisonValue = 0;
+                    player.DeBuff(player.pbPoison);
+                    player.ResistPoison = true;
+                    player.ActivateBuff(player.pbResistPoison, Database.BaseResourceFolder + "ResistPoison", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_POTION_OVER_GROWTH:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentStaminaUp = Database.INFINITY;
+                    player.CurrentStaminaUpValue = 100; // スタミナUPは内部処理で10倍されてるため、ここでは1000/10で100
+                    player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_POTION_RAINBOW_IMPACT:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemovePhysicalAttackDown();
+                    player.RemoveMagicAttackDown();
+                    break;
+
+                case Database.COMMON_POTION_BLACK_GAST:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyMagicAttack = 1.07f;
+                    player.AmplifyPhysicalAttack = 1.07f;
+                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_SOUKAI_DRINK_SS:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyMagicAttack = 1.07f;
+                    player.AmplifyBattleSpeed = 1.07f;
+                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                    player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_TUUKAI_DRINK_DD:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.AmplifyPhysicalAttack = 1.07f;
+                    player.AmplifyBattleSpeed = 1.07f;
+                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                    player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_FAIRY_BREATH:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveSilence();
+                    player.ResistSilence = true;
+                    player.ActivateBuff(player.pbResistSilence, Database.BaseResourceFolder + "ResistSilence", Database.INFINITY);
+                    break;
+
+                case Database.COMMON_HEART_ACCELERATION:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveParalyze();
+                    player.ResistParalyze = true;
+                    player.ActivateBuff(player.pbResistParalyze, Database.BaseResourceFolder + "ResistParalyze", Database.INFINITY);
+                    break;
+
+                case Database.RARE_SAGE_POTION_MINI:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveDebuffEffect();
+                    player.RemoveDebuffParam();
+                    player.RemoveDebuffSpell();
+                    player.RemoveDebuffSkill();
+                    player.CurrentSagePotionMini = Database.INFINITY;
+                    player.CurrentNoResurrection = Database.INFINITY;
+                    player.ActivateBuff(player.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection", Database.INFINITY);
+                    break;
+
+                case Database.RARE_POWER_SURGE:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.BuffUpStrength(600);
+                    player.BuffUpStamina(400);
+                    player.BuffUpAmplifyPhysicalAttack(1.20f);
+                    break;
+
+                case Database.RARE_ZEPHER_BREATH:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.BuffUpAgility(600);
+                    player.BuffUpIntelligence(400);
+                    player.BuffUpAmplifyBattleSpeed(1.20f);
+                    break;
+
+                case Database.RARE_GENSEI_MAGIC_BOTTLE:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.BuffUpIntelligence(600);
+                    player.BuffUpMind(400);
+                    player.BuffUpAmplifyMagicAttack(1.20f);
+                    break;
+
+                case Database.RARE_ZETTAI_STAMINAUP:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.BuffUpStrength(200);
+                    player.BuffUpIntelligence(200);
+                    player.BuffUpStamina(600);
+                    player.BuffUpAmplifyPhysicalDefence(1.10f);
+                    player.BuffUpAmplifyMagicDefense(1.10f);
+                    break;
+
+                case Database.RARE_MIND_ILLUSION:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.BuffUpStrength(100);
+                    player.BuffUpAgility(100);
+                    player.BuffUpIntelligence(100);
+                    player.BuffUpStamina(100);
+                    player.BuffUpMind(600);
+                    player.BuffUpAmplifyPotential(1.20f);
+                    break;
+
+                case Database.RARE_GENSEI_TAIMA_KUSURI:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentGenseiTaima = Database.INFINITY;
+                    player.ActivateBuff(player.pbGenseiTaima, Database.BaseResourceFolder + Database.ITEMCOMMAND_GENSEI_TAIMA, Database.INFINITY);
+                    break;
+
+                case Database.RARE_SHINING_AETHER:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentShiningAether = 2; // 次のターンまで有効
+                    player.ActivateBuff(player.pbShiningAether, Database.BaseResourceFolder + Database.ITEMCOMMAND_SHINING_AETHER, 2);
+                    break;
+
+                case Database.RARE_BLACK_ELIXIR:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.CurrentBlackElixir = Database.INFINITY;
+                    player.CurrentBlackElixirValue = player.MaxLife / 2;
+                    player.CurrentLife += player.CurrentBlackElixirValue;
+                    player.ActivateBuff(player.pbBlackElixir, Database.BaseResourceFolder + Database.ITEMCOMMAND_BLACK_ELIXIR, Database.INFINITY);
+                    break;
+
+                case Database.RARE_ELEMENTAL_SEAL:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveDebuffEffect();
+                    player.CurrentElementalSeal = Database.INFINITY;
+                    player.ActivateBuff(player.pbElementalSeal, Database.BaseResourceFolder + Database.ITEMCOMMAND_ELEMENTAL_SEAL, Database.INFINITY);
+                    break;
+
+                case Database.RARE_COLORLESS_ANTIDOTE:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    player.RemoveDebuffParam();
+                    player.CurrentColorlessAntidote = Database.INFINITY;
+                    player.ActivateBuff(player.pbColorlessAntidote, Database.BaseResourceFolder + Database.ITEMCOMMAND_COLORLESS_ANTIDOTE, Database.INFINITY);
+                    break;
+
+                case Database.RARE_TOTAL_HIYAKU_KASSEI:
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    int maxValue = Math.Max(player.Strength,
+                                    Math.Max(player.Agility,
+                                            player.Intelligence));
+                    if (maxValue == player.Strength)
+                    {
+                        player.BuffStrength_Hiyaku_Kassei = maxValue;
+                    }
+                    else if (maxValue == player.Agility)
+                    {
+                        player.BuffAgility_Hiyaku_Kassei = maxValue;
+                    }
+                    else if (maxValue == player.Intelligence)
+                    {
+                        player.BuffIntelligence_Hiyaku_Kassei = maxValue;
+                    }
+                    // todo [ ActivateBuffはなくてもよい？ ]
+                    break;
+
+                case Database.RARE_SINSEISUI:
+                    if (!GroundOne.WE.AlreadyUseSyperSaintWater)
+                    {
+                        GroundOne.WE.AlreadyUseSyperSaintWater = true;
+                        player.CurrentLife += (int)((double)player.MaxLife * 0.3F);
+                        player.CurrentMana += (int)((double)player.MaxMana * 0.3F);
+                        player.CurrentSkillPoint += (int)((double)player.MaxSkillPoint * 0.3F);
+                        mainMessage.text = player.GetCharacterSentence(2009);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2010);
+                    }
+                    break;
+
+                case Database.RARE_PURE_WATER:
+                    if (!GroundOne.WE.AlreadyUsePureWater)
+                    {
+                        GroundOne.WE.AlreadyUsePureWater = true;
+                        player.CurrentLife = (int)((double)player.MaxLife);
+                        mainMessage.text = player.GetCharacterSentence(2027);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2028);
+                    }
+                    break;
+
+                case Database.RARE_REVIVE_POTION:
+                    if (!GroundOne.WE.AlreadyUseRevivePotion)
+                    {
+                        for (int ii = 0; ii < allyList.Count; ii++)
+                        {
+                            if (allyList[ii].Dead)
+                            {
+                                player.DeleteBackPack(backpackData, 1, currentNumber);
+
+                                GroundOne.WE.AlreadyUseRevivePotion = true;
+                                allyList[ii].ResurrectPlayer(allyList[ii].MaxLife / 2);
+                                mainMessage.text = allyList[ii].GetCharacterSentence(2016);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2010);
+                    }
+                    break;
+
+                default:
+                    mainMessage.text = player.GetCharacterSentence(2032);
+                    break;
             }
         }
 

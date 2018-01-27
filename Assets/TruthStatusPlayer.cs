@@ -879,7 +879,7 @@ namespace DungeonPlayer
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.AmplifyMagicAttack = 1.05f;
-                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
                     }
                     else
                     {
@@ -892,7 +892,7 @@ namespace DungeonPlayer
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.AmplifyPhysicalAttack = 1.05f;
-                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
                     }
                     else
                     {
@@ -981,7 +981,7 @@ namespace DungeonPlayer
                         player.CurrentPoisonValue = 0;
                         player.DeBuff(player.pbPoison);
                         player.ResistPoison = true;
-                        player.ActivateBuff(player.pbResistPoison, Database.BaseResourceFolder + "ResistPoison.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbResistPoison, Database.BaseResourceFolder + "ResistPoison", Database.INFINITY);
                     }
                     else
                     {
@@ -1076,7 +1076,7 @@ namespace DungeonPlayer
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.RemoveSilence();
                         player.ResistSilence = true;
-                        player.ActivateBuff(player.pbResistSilence, Database.BaseResourceFolder + "ResistSilence.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbResistSilence, Database.BaseResourceFolder + "ResistSilence", Database.INFINITY);
                     }
                     else
                     {
@@ -1090,7 +1090,7 @@ namespace DungeonPlayer
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.RemoveParalyze();
                         player.ResistParalyze = true;
-                        player.ActivateBuff(player.pbResistParalyze, Database.BaseResourceFolder + "ResistParalyze.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbResistParalyze, Database.BaseResourceFolder + "ResistParalyze", Database.INFINITY);
                     }
                     else
                     {
@@ -1108,7 +1108,7 @@ namespace DungeonPlayer
                         player.RemoveDebuffSkill();
                         player.CurrentSagePotionMini = Database.INFINITY;
                         player.CurrentNoResurrection = Database.INFINITY;
-                        player.ActivateBuff(player.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection", Database.INFINITY);
                     }
                     else
                     {
@@ -1289,7 +1289,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "神聖水": // ２階アイテム
+                case Database.RARE_SINSEISUI: // ２階アイテム
                     if (!GroundOne.WE.AlreadyUseSyperSaintWater)
                     {
                         GroundOne.WE.AlreadyUseSyperSaintWater = true;

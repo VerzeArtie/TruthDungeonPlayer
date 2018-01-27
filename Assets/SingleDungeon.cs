@@ -1635,6 +1635,9 @@ namespace DungeonPlayer
         bool ActionInstantMode = false;
         string instantActionCommandString = String.Empty;
 
+        bool nowUsingItem = false;
+        string usingItemName = String.Empty;
+
         bool nowStackAnimation = false;
         int nowStackAnimationCounter = 0;
 
@@ -2546,6 +2549,11 @@ namespace DungeonPlayer
                 ExecAnimation();
                 //Debug.Log("nowAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowUsingItem)
+            {
+                ExecUseItem(this.usingItemName);
+                return;
             }
             if (this.nowStackAnimation)
             {
@@ -7476,16 +7484,9 @@ namespace DungeonPlayer
             PointerDownPanel();
         }
 
-
-        public void UseItem_Click(Text sender)
+        public void ExecUseItem(string itemName)
         {
             MainCharacter player = this.currentPlayer;
-            if (player.Dead)
-            {
-                txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
-                return;
-            }
-
             // バックパック画面を開いて、消耗品アイテムを使用する。
             Debug.Log("ItemGauge: " + UseItemGauge.rectTransform.localScale.x);
             if (UseItemGauge.rectTransform.localScale.x < 1.0f)
@@ -7508,7 +7509,7 @@ namespace DungeonPlayer
             int currentNumber = 0;
             for (int ii = 0; ii < backpack.Length; ii++)
             {
-                if (backpack[ii].Equals(sender))
+                if (backpack[ii].text == itemName)
                 {
                     currentNumber = ii;
                     Debug.Log("currentNumber is " + currentNumber.ToString());
@@ -7516,7 +7517,10 @@ namespace DungeonPlayer
                 }
             }
 
-            Method.UseItem(player, sender.text, currentNumber, txtBattleMessage);
+            List<MainCharacter> group = new List<MainCharacter>();
+            SetupAllyGroup(ref group);
+            Method.UseItem(group, player, itemName, currentNumber, txtBattleMessage);
+            AnimationDamage(0, player, 0, Color.black, false, false, "アイテム使用");
             UpdateLife(player);
             UpdateMana(player);
             UpdateSkillPoint(player);
@@ -7525,6 +7529,22 @@ namespace DungeonPlayer
 
             this.currentItemGauge = 0;
             UpdateUseItemGauge();
+            this.usingItemName = String.Empty;
+            this.nowUsingItem = false;
+        }
+
+        public void UseItem_Click(Text sender)
+        {
+            MainCharacter player = this.currentPlayer;
+            if (player.Dead)
+            {
+                txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
+                return;
+            }
+
+            this.groupParentBackpack.SetActive(false);
+            this.usingItemName = sender.text;
+            this.nowUsingItem = true;
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
