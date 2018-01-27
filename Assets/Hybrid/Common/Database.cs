@@ -958,7 +958,7 @@ namespace DungeonPlayer
         #endregion
 
         #region "素材ファイル集"
-        public const string JUNK_FIREDAMAGE = @"FireDamage.bmp";
+        public const string JUNK_FIREDAMAGE = @"FireDamage";
         #endregion
 
         public static int MAINPLAYER_FIRST_STRENGTH = 5;
