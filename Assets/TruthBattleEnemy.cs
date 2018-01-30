@@ -2401,6 +2401,10 @@ namespace DungeonPlayer
         }
         private void UpdatePlayerInstantPoint(MainCharacter player)
         {
+            if (GroundOne.WE.AvailableInstantCommand == false)
+            {
+                return;
+            }
             if (player.CurrentFrozen > 0)
             {
                 return;
