@@ -135,16 +135,16 @@ namespace DungeonPlayer
 
             if (GroundOne.DuelMode && GroundOne.enemyName1 == Database.VERZE_ARTIE)
             {
-                BlackOut(); 
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
+                BlackOut();
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
             }
             else if (!GroundOne.WE.AlreadyRest)
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
             }
             else
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             }
 
             if (GroundOne.TruthHomeTown_NowExit)
@@ -1320,17 +1320,17 @@ namespace DungeonPlayer
                         buttonGanz.gameObject.SetActive(false);
                         buttonPotion.gameObject.SetActive(false);
                         buttonDuel.gameObject.SetActive(false);
-                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+                        UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
                     }
                     else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
                     {
                         if (!GroundOne.WE.AlreadyRest)
                         {
-                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
                         }
                         else
                         {
-                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
                         }
                         panelObjective.SetActive(true);
                         buttonHanna.gameObject.SetActive(true);
@@ -1437,13 +1437,11 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownMorning)
                 {
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-                    this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_MORNING);
+                    UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownNight)
                 {
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
-                    this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_NIGHT);
+                    UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownDuelSelect)
                 {
@@ -1490,7 +1488,7 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGotoFirstPlace)
                 {
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
+                    UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownExecRestInn)
                 {
@@ -1862,11 +1860,11 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AlreadyRest)
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
             }
             else
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             } 
             cam.backgroundColor = Color.white;
             groupMenu.gameObject.SetActive(true);
@@ -2083,7 +2081,7 @@ namespace DungeonPlayer
             TurnToNormal();
             GroundOne.WE.Truth_CommunicationSecondHomeTown = true;
             GroundOne.WE.AlreadyRest = true;
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             cam.backgroundColor = Color.white;
             ExecRestInn();
         }
@@ -2389,7 +2387,7 @@ namespace DungeonPlayer
             this.buttonPotion.gameObject.SetActive(false);
             this.buttonDuel.gameObject.SetActive(false);
             this.buttonShinikia.gameObject.SetActive(false);
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE);
+            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE);
         }
 
         private void GoToKahlhanz()
@@ -2402,18 +2400,18 @@ namespace DungeonPlayer
             this.buttonPotion.gameObject.SetActive(false);
             this.buttonDuel.gameObject.SetActive(false);
             this.buttonShinikia.gameObject.SetActive(false);
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
         }
 
         private void BackToTown()
         {
             if (!GroundOne.WE.AlreadyRest)
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
             }
             else
             {
-                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             }
             this.panelObjective.SetActive(true);
             this.buttonHanna.gameObject.SetActive(true);
@@ -2559,7 +2557,7 @@ namespace DungeonPlayer
         }
         private void ExecRestInn(bool noAction)
         {
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            UpdateBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
 
             GroundOne.WE.AlreadyRest = true;
             // [警告]：オブジェクトの参照が全ての場合、クラスにメソッドを用意してそれをコールした方がいい。
@@ -3921,26 +3919,36 @@ namespace DungeonPlayer
             return OpponentDuelist;
         }
 
-        private void ChangeBackgroundData(string filename, float darkValue = 0)
+        private void UpdateBackgroundData(string filename)
         {
-            Debug.Log("ChangeBackgroundData (S): " + filename);
             if (filename == null || filename == string.Empty || filename == "")
             {
                 Debug.Log("filename == null || filename == string.Empty");
-                this.backgroundData = null;
+                return;
+            }
+            if (filename == Database.BaseResourceFolder + Database.BACKGROUND_MORNING)
+            {
+                this.backgroundData.sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                this.backgroundData.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                this.backgroundData.gameObject.SetActive(true);
+            }
+            else if (filename == Database.BaseResourceFolder + Database.BACKGROUND_EVENING)
+            {
+                this.backgroundData.sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                this.backgroundData.color = new Color(191.0f / 255.0f, 139.0f / 255.0f, 25.0f / 255.0f, 1.0f);
+                this.backgroundData.gameObject.SetActive(true);
+            }
+            else if (filename == Database.BaseResourceFolder + Database.BACKGROUND_NIGHT)
+            {
+                this.backgroundData.sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                this.backgroundData.color = new Color(33.0f / 255.0f, 53.0f / 255.0f, 132.0f / 255.0f, 1.0f);
+                this.backgroundData.gameObject.SetActive(true);
             }
             else
             {
-                Sprite current = Resources.Load<Sprite>(filename);
+                this.backgroundData.sprite = Resources.Load<Sprite>(filename);
+                this.backgroundData.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 this.backgroundData.gameObject.SetActive(true);
-                if (darkValue > 0)
-                {
-                }
-                else
-                {
-                    Debug.Log("update backgrounddata Sprite current");
-                    this.backgroundData.sprite = current;
-                }
             }
         }
 
