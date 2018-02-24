@@ -29,6 +29,7 @@ namespace DungeonPlayer
             
         public Text[] equip;
         public GameObject[] back_equip;
+        public Image[] imgEquip;
         public Text mainMessage;
 
         public Text lblPhysicalAttack;
@@ -84,17 +85,20 @@ namespace DungeonPlayer
                     {
                         equip[ii].text = currentList[ii].Name;
                         Method.UpdateRareColor(currentList[ii], equip[ii], back_equip[ii], null);
+                        Method.UpdateItemImage(currentList[ii], imgEquip[ii]);
                     }
                     else
                     {
                         equip[ii].text = "";
                         Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
+                        imgEquip[ii].sprite = null;
                     }
                 }
                 else
                 {
                     equip[ii].text = "";
                     Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
+                    imgEquip[ii].sprite = null;
                 }
             }
 
@@ -478,17 +482,20 @@ namespace DungeonPlayer
                     {
                         equip[ii].text = currentList[ii + number * MAX_LEN].Name;
                         Method.UpdateRareColor(currentList[ii + number * MAX_LEN], equip[ii], back_equip[ii], null);
+                        Method.UpdateItemImage(currentList[ii], imgEquip[ii]);
                     }
                     else
                     {
                         equip[ii].text = "";
                         Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
+                        imgEquip[ii].sprite = null;
                     }
                 }
                 else
                 {
                     equip[ii].text = "";
                     Method.UpdateRareColor(null, equip[ii], back_equip[ii], null);
+                    imgEquip[ii].sprite = null;
                 }
             }
         }

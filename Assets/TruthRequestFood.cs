@@ -22,32 +22,78 @@ namespace DungeonPlayer
         public Text DescriptionText;
         public Text lblTitle;
         public Text lblClose;
+        public List<Text> txtFoodValue;
 
         public string CurrentSelect { get; set; }
 
-        private const string DESC_11 = "か・・・辛い！！でもウマイ！！\r\n　実はハンナが客に応じて辛い配分を全調整してるとの事。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５\r\n  技\r\n  知\r\n  体＋５\r\n  心";
-        private const string DESC_12 = "ほんのりとするオリーブの香りと、アッサリ味に仕立ててあるオニオン味のスープ。非常に好評のため定番メニューの一つとなっている。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知\r\n  体＋５\r\n  心＋５";
-        private const string DESC_13 = "味自体が非常に絶妙で美味しく、歯ごたえも非常に良い。問題はその見た目だが・・・。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋５\r\n  体\r\n  心＋５";
-        private const string DESC_14 = "ウサギ独特の臭みを無くし、肉の旨みは残してある。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５\r\n  技＋５\r\n  知\r\n  体\r\n  心";
-        private const string DESC_15 = "魚本来の味を引き出しており、かつ、煮物と非常にマッチしてる。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋５\r\n  知＋５\r\n  体\r\n  心";
+        private static string DESC_11 = DESC_11_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５\r\n  技\r\n  知\r\n  体＋５\r\n  心";
+        private static string DESC_12 = DESC_12_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知\r\n  体＋５\r\n  心＋５";
+        private static string DESC_13 = DESC_13_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋５\r\n  体\r\n  心＋５";
+        private static string DESC_14 = DESC_14_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５\r\n  技＋５\r\n  知\r\n  体\r\n  心";
+        private static string DESC_15 = DESC_15_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋５\r\n  知＋５\r\n  体\r\n  心";
 
-        private const string DESC_21 = "新鮮な魚介類の素材を細切りにして散りばめてあるグラタン。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋３０\r\n  知\r\n  体＋２０\r\n  心";
-        private const string DESC_22 = "魚介類独特の臭みを完全に除去し、質の高いテンプラに仕上げられている。大きさ／柔らかさ／食べごたえ共に申し分なく、腹いっぱい食べられる。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２０\r\n  技\r\n  知\r\n  体＋３０\r\n  心";
-        private const string DESC_23 = "真実は闇の中にこそ潜む。味だけは保証されてるらしい・・・。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋２０\r\n  体\r\n  心＋３０";
-        private const string DESC_24 = "魚とは思えないような歯ごたえのあるジンギスカン。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋３０\r\n  技\r\n  知\r\n  体\r\n  心＋２０";
-        private const string DESC_25 = "真っ赤なスパゲッティだが、実は全然辛く無いらしい。\r\n　素材の原色を駆使し、着色は一切行ってないそうだ。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋３０\r\n  体＋２０\r\n  心";
+        private static string DESC_21 = DESC_21_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋３０\r\n  知\r\n  体＋２０\r\n  心";
+        private static string DESC_22 = DESC_22_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２０\r\n  技\r\n  知\r\n  体＋３０\r\n  心";
+        private static string DESC_23 = DESC_23_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋２０\r\n  体\r\n  心＋３０";
+        private static string DESC_24 = DESC_24_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋３０\r\n  技\r\n  知\r\n  体\r\n  心＋２０";
+        private static string DESC_25 = DESC_25_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋３０\r\n  体＋２０\r\n  心";
 
-        private const string DESC_31 = "カリっと天ぷら粉で焼き上げた野菜天ぷら。\r\n野菜であることを忘れてしまうぐらい、非常に香ばしい食感が残る。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋８０\r\n  体\r\n  心＋６０";
-        private const string DESC_32 = "固くて歯ごたえの悪いアザラシ肉を十分にほぐし、凍らせた後、焼き、塩をまぶした究極の一品\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋８０\r\n  知＋６０\r\n  体＋６０\r\n  心";
-        private const string DESC_33 = "冬の季節、急激な温度変化により身が引き締まったビーフを使用したカレーライス。臭みは一切感じない。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋８０\r\n  技\r\n  知\r\n  体＋８０\r\n  心＋４０";
-        private const string DESC_34 = "肉、魚、豆、味噌汁、ご飯、煎茶。全てが揃ったバランスの良い定食。\r\nハンナおばさん自慢の定食。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５０\r\n  技＋５０\r\n  知＋５０\r\n  体＋５０\r\n  心＋５０";
-        private const string DESC_35 = "何という青さ・・・見ただけで凍えてしまいそうだ。\r\n　食べた時の口いっぱいに広がる感触は一級品のデザートそのものである。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋１５０\r\n  体＋１００\r\n  心";
+        private static string DESC_31 = DESC_31_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋８０\r\n  体\r\n  心＋６０";
+        private static string DESC_32 = DESC_32_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋８０\r\n  知＋６０\r\n  体＋６０\r\n  心";
+        private static string DESC_33 = DESC_33_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋８０\r\n  技\r\n  知\r\n  体＋８０\r\n  心＋４０";
+        private static string DESC_34 = DESC_34_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋５０\r\n  技＋５０\r\n  知＋５０\r\n  体＋５０\r\n  心＋５０";
+        private static string DESC_35 = DESC_35_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技\r\n  知＋１５０\r\n  体＋１００\r\n  心";
 
-        private const string DESC_41 = "真っ黒な色のスパゲッティ\r\n見た目がかなり不気味だが・・・スパイスの効いた香りがする。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋２５０\r\n  知＋２５０\r\n  体\r\n  心＋２５０";
-        private const string DESC_42 = "ハンバーグの中に小さめに切り刻んだピーナッツが入っている\r\nフワフワとしたジューシーな肉とカリっとしたピーナッツが食欲をそそる。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  技\r\n  知\r\n  体＋２５０\r\n  心＋２５０";
-        private const string DESC_43 = "表面に真っ赤なトウガラシがかけられているヒレステーキ。\r\nその裏には実はほんのりとハチミツが隠し味として入っており、食べた者には辛さと甘さが同時に響き渡る\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  知＋２５０\r\n  知\r\n  体＋２５０";
-        private const string DESC_44 = "１番人気のトースト定食といえば、このオレンジトースト。\r\nふんだんに塗られたオレンジジャムとホワイトクリームを乗せたバカでかいトーストは男女問わず人気の一品である。\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋２５０\r\n  知＋２５０\r\n  体＋２５０\r\n  心";
-        private const string DESC_45 = "食物の匂いが全くしない闇の鍋\r\n　ハンナ叔母さん曰く、美味しいモノはちゃんと入っているとの事。それを信じて食べるしか選択肢は無い。\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  技＋２５０\r\n  知\r\n  体\r\n  心＋２５０";
+        private static string DESC_41 = DESC_41_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋２５０\r\n  知＋２５０\r\n  体\r\n  心＋２５０";
+        private static string DESC_42 = DESC_42_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  技\r\n  知\r\n  体＋２５０\r\n  心＋２５０";
+        private static string DESC_43 = DESC_43_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  知＋２５０\r\n  知\r\n  体＋２５０";
+        private static string DESC_44 = DESC_44_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力\r\n  技＋２５０\r\n  知＋２５０\r\n  体＋２５０\r\n  心";
+        private static string DESC_45 = DESC_45_MINI + "\r\n\r\n食べた次の日は、以下の効果。\r\n  力＋２５０\r\n  技＋２５０\r\n  知\r\n  体\r\n  心＋２５０";
+
+        private const string DESC_11_MINI = "か・・・辛い！！でもウマイ！！\r\n　実はハンナが客に応じて辛い配分を全調整してるとの事。";
+        private const string DESC_12_MINI = "ほんのりとするオリーブの香りと、アッサリ味に仕立ててあるオニオン味のスープ。非常に好評のため定番メニューの一つとなっている。";
+        private const string DESC_13_MINI = "味自体が非常に絶妙で美味しく、歯ごたえも非常に良い。問題はその見た目だが・・・。";
+        private const string DESC_14_MINI = "ウサギ独特の臭みを無くし、肉の旨みは残してある。歯ごたえがかなりあるが、噛めばかむほど味が出る。";
+        private const string DESC_15_MINI = "魚本来の味を引き出しており、かつ、煮物と非常にマッチしてる。";
+
+        private const string DESC_21_MINI = "新鮮な魚介類の素材を細切りにして散りばめてあるグラタン。";
+        private const string DESC_22_MINI = "魚介類独特の臭みを完全に除去し、質の高いテンプラに仕上げられている。大きさ／柔らかさ／食べごたえ共に申し分なく、腹いっぱい食べられる。";
+        private const string DESC_23_MINI = "真実は闇の中にこそ潜む。味だけは保証されてるらしい・・・。";
+        private const string DESC_24_MINI = "魚とは思えないような歯ごたえのあるジンギスカン。食べた後の後味は良く、何度でも食べたくなる味付け。";
+        private const string DESC_25_MINI = "真っ赤なスパゲッティだが、実は全然辛く無いらしい。\r\n　素材の原色を駆使し、着色は一切行ってないそうだ。";
+
+        private const string DESC_31_MINI = "カリっと天ぷら粉で焼き上げた野菜天ぷら。\r\n野菜であることを忘れてしまうぐらい、非常に香ばしい食感が残る。";
+        private const string DESC_32_MINI = "固くて歯ごたえの悪いアザラシ肉を十分にほぐし、凍らせた後、焼き、塩をまぶした究極の一品。";
+        private const string DESC_33_MINI = "冬の季節、急激な温度変化により身が引き締まったビーフを使用したカレーライス。臭みは一切感じない。";
+        private const string DESC_34_MINI = "肉、魚、豆、味噌汁、ご飯、煎茶。全てが揃ったバランスの良い定食。\r\nハンナおばさん自慢の定食。";
+        private const string DESC_35_MINI = "何という青さ・・・見ただけで凍えてしまいそうだ。\r\n　食べた時の口いっぱいに広がる感触は一級品のデザートそのものである。";
+
+        private const string DESC_41_MINI = "真っ黒な色のスパゲッティ\r\n見た目がかなり不気味だが・・・スパイスの効いた香りがする。";
+        private const string DESC_42_MINI = "ハンバーグの中に小さめに切り刻んだピーナッツが入っている\r\nフワフワとしたジューシーな肉とカリっとしたピーナッツが食欲をそそる。";
+        private const string DESC_43_MINI = "表面に真っ赤なトウガラシがかけられているヒレステーキ。\r\nその裏には実はほんのりとハチミツが隠し味として入っており、食べた者には辛さと甘さが同時に響き渡る。";
+        private const string DESC_44_MINI = "１番人気のトースト定食といえば、このオレンジトースト。\r\nふんだんに塗られたオレンジジャムとホワイトクリームを乗せたバカでかいトーストは男女問わず人気の一品である。";
+        private const string DESC_45_MINI = "食物の匂いが全くしない闇の鍋\r\n　ハンナ叔母さん曰く、美味しいモノはちゃんと入っているとの事。それを信じて食べるしか選択肢は無い。";
+
+        private int[] FOOD_11_VALUE = { 5, 0, 0, 5, 0 };
+        private int[] FOOD_12_VALUE = { 0, 0, 0, 5, 5 };
+        private int[] FOOD_13_VALUE = { 0, 0, 5, 0, 5 };
+        private int[] FOOD_14_VALUE = { 5, 5, 0, 0, 0 };
+        private int[] FOOD_15_VALUE = { 0, 5, 5, 0, 0 };
+        private int[] FOOD_21_VALUE = { 0, 30, 0, 20, 0 };
+        private int[] FOOD_22_VALUE = { 20, 0, 0, 30, 0 };
+        private int[] FOOD_23_VALUE = { 0, 0, 20, 0, 30 };
+        private int[] FOOD_24_VALUE = { 30, 0, 0, 0, 20 };
+        private int[] FOOD_25_VALUE = { 0, 0, 30, 20, 0 };
+        private int[] FOOD_31_VALUE = { 0, 0, 80, 0, 60 };
+        private int[] FOOD_32_VALUE = { 0, 80, 60, 60, 0 };
+        private int[] FOOD_33_VALUE = { 80, 0, 0, 80, 40 };
+        private int[] FOOD_34_VALUE = { 50, 50, 50, 50, 50 };
+        private int[] FOOD_35_VALUE = { 0, 0, 150, 100, 0 };
+        private int[] FOOD_41_VALUE = { 0, 250, 250, 0, 250 };
+        private int[] FOOD_42_VALUE = { 250, 0, 0, 250, 250 };
+        private int[] FOOD_43_VALUE = { 250, 0, 250, 250, 0 };
+        private int[] FOOD_44_VALUE = { 0, 250, 250, 250, 0 };
+        private int[] FOOD_45_VALUE = { 250, 250, 0, 0, 250 };
 
         // Use this for initialization
         public override void Start()
@@ -334,19 +380,23 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[0].text, string.Empty);
             if (FoodTextList[0].text == Database.FOOD_KATUCARRY)
             {
-                DescriptionText.text = TruthRequestFood.DESC_11;
+                DescriptionText.text = TruthRequestFood.DESC_11_MINI;
+                UpdateFoodValue(FOOD_11_VALUE);
             }
             else if (FoodTextList[0].text == Database.FOOD_FISH_GURATAN)
             {
-                DescriptionText.text = TruthRequestFood.DESC_21;
+                DescriptionText.text = TruthRequestFood.DESC_21_MINI;
+                UpdateFoodValue(FOOD_21_VALUE);
             }
             else if (FoodTextList[0].text == Database.FOOD_HINYARI_YASAI)
             {
-                DescriptionText.text = TruthRequestFood.DESC_31;
+                DescriptionText.text = TruthRequestFood.DESC_31_MINI;
+                UpdateFoodValue(FOOD_31_VALUE);
             }
             else if (FoodTextList[0].text == Database.FOOD_BLACK_BUTTER_SPAGHETTI)
             {
-                DescriptionText.text = TruthRequestFood.DESC_41;
+                DescriptionText.text = TruthRequestFood.DESC_41_MINI;
+                UpdateFoodValue(FOOD_41_VALUE);
             }
             TitleText.text = FoodTextList[0].text;
             this.CurrentSelect = TitleText.text;
@@ -357,19 +407,23 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[1].text, string.Empty);
             if (FoodTextList[1].text == Database.FOOD_OLIVE_AND_ONION)
             {
-                DescriptionText.text = TruthRequestFood.DESC_12;
+                DescriptionText.text = TruthRequestFood.DESC_12_MINI;
+                UpdateFoodValue(FOOD_12_VALUE);
             }
             else if (FoodTextList[1].text == Database.FOOD_SEA_TENPURA)
             {
-                DescriptionText.text = TruthRequestFood.DESC_22;
+                DescriptionText.text = TruthRequestFood.DESC_22_MINI;
+                UpdateFoodValue(FOOD_22_VALUE);
             }
             else if (FoodTextList[1].text == Database.FOOD_AZARASI_SHIOYAKI)
             {
-                DescriptionText.text = TruthRequestFood.DESC_32;
+                DescriptionText.text = TruthRequestFood.DESC_32_MINI;
+                UpdateFoodValue(FOOD_32_VALUE);
             }
             else if (FoodTextList[1].text == Database.FOOD_KOROKORO_PIENUS_HAMBURG)
             {
-                DescriptionText.text = TruthRequestFood.DESC_42;
+                DescriptionText.text = TruthRequestFood.DESC_42_MINI;
+                UpdateFoodValue(FOOD_42_VALUE);
             }
             TitleText.text = FoodTextList[1].text;
             this.CurrentSelect = TitleText.text;
@@ -380,19 +434,23 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[2].text, string.Empty);
             if (FoodTextList[2].text == Database.FOOD_INAGO_AND_TAMAGO)
             {
-                DescriptionText.text = TruthRequestFood.DESC_13;
+                DescriptionText.text = TruthRequestFood.DESC_13_MINI;
+                UpdateFoodValue(FOOD_13_VALUE);
             }
             else if (FoodTextList[2].text == Database.FOOD_TRUTH_YAMINABE_1)
             {
-                DescriptionText.text = TruthRequestFood.DESC_23;
+                DescriptionText.text = TruthRequestFood.DESC_23_MINI;
+                UpdateFoodValue(FOOD_23_VALUE);
             }
             else if (FoodTextList[2].text == Database.FOOD_WINTER_BEEF_CURRY)
             {
-                DescriptionText.text = TruthRequestFood.DESC_33;
+                DescriptionText.text = TruthRequestFood.DESC_33_MINI;
+                UpdateFoodValue(FOOD_33_VALUE);
             }
             else if (FoodTextList[2].text == Database.FOOD_PIRIKARA_HATIMITSU_STEAK)
             {
-                DescriptionText.text = TruthRequestFood.DESC_43;
+                DescriptionText.text = TruthRequestFood.DESC_43_MINI;
+                UpdateFoodValue(FOOD_43_VALUE);
             }
             TitleText.text = FoodTextList[2].text;
             this.CurrentSelect = TitleText.text;
@@ -404,19 +462,23 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[3].text, string.Empty);
             if (FoodTextList[3].text == Database.FOOD_USAGI)
             {
-                DescriptionText.text = TruthRequestFood.DESC_14;
+                DescriptionText.text = TruthRequestFood.DESC_14_MINI;
+                UpdateFoodValue(FOOD_14_VALUE);
             }
             else if (FoodTextList[3].text == Database.FOOD_OSAKANA_ZINGISKAN)
             {
-                DescriptionText.text = TruthRequestFood.DESC_24;
+                DescriptionText.text = TruthRequestFood.DESC_24_MINI;
+                UpdateFoodValue(FOOD_24_VALUE);
             }
             else if (FoodTextList[3].text == Database.FOOD_GATTURI_GOZEN)
             {
-                DescriptionText.text = TruthRequestFood.DESC_34;
+                DescriptionText.text = TruthRequestFood.DESC_34_MINI;
+                UpdateFoodValue(FOOD_34_VALUE);
             }
             else if (FoodTextList[3].text == Database.FOOD_HUNWARI_ORANGE_TOAST)
             {
-                DescriptionText.text = TruthRequestFood.DESC_44;
+                DescriptionText.text = TruthRequestFood.DESC_44_MINI;
+                UpdateFoodValue(FOOD_44_VALUE);
             }
             TitleText.text = FoodTextList[3].text;
             this.CurrentSelect = TitleText.text;
@@ -427,22 +489,30 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[4].text, string.Empty);
             if (FoodTextList[4].text == Database.FOOD_SANMA)
             {
-                DescriptionText.text = TruthRequestFood.DESC_15;
+                DescriptionText.text = TruthRequestFood.DESC_15_MINI;
             }
             else if (FoodTextList[4].text == Database.FOOD_RED_HOT_SPAGHETTI)
             {
-                DescriptionText.text = TruthRequestFood.DESC_25;
+                DescriptionText.text = TruthRequestFood.DESC_25_MINI;
             }
             else if (FoodTextList[4].text == Database.FOOD_KOGOERU_DESSERT)
             {
-                DescriptionText.text = TruthRequestFood.DESC_35;
+                DescriptionText.text = TruthRequestFood.DESC_35_MINI;
             }
             else if (FoodTextList[4].text == Database.FOOD_TRUTH_YAMINABE_2)
             {
-                DescriptionText.text = TruthRequestFood.DESC_45;
+                DescriptionText.text = TruthRequestFood.DESC_45_MINI;
             }
             TitleText.text = FoodTextList[4].text;
             this.CurrentSelect = TitleText.text;
+        }
+
+        private void UpdateFoodValue(int[] foodValue)
+        {
+            for (int ii = 0; ii < txtFoodValue.Count; ii++)
+            {
+                txtFoodValue[ii].text = "+" + foodValue[ii].ToString();
+            }
         }
 
         public void Order_Click()
@@ -450,86 +520,86 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
             if (this.CurrentSelect == Database.FOOD_KATUCARRY)
             {
-                EatFood(5, 0, 0, 5, 0);
+                EatFood(FOOD_11_VALUE[0], FOOD_11_VALUE[1], FOOD_11_VALUE[2], FOOD_11_VALUE[3], FOOD_11_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_OLIVE_AND_ONION)
             {
-                EatFood(0, 0, 0, 5, 5);
+                EatFood(FOOD_12_VALUE[0], FOOD_12_VALUE[1], FOOD_12_VALUE[2], FOOD_12_VALUE[3], FOOD_12_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_INAGO_AND_TAMAGO)
             {
-                EatFood(0, 0, 5, 0, 5);
+                EatFood(FOOD_13_VALUE[0], FOOD_13_VALUE[1], FOOD_13_VALUE[2], FOOD_13_VALUE[3], FOOD_13_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_USAGI)
             {
-                EatFood(5, 5, 0, 0, 0);
+                EatFood(FOOD_14_VALUE[0], FOOD_14_VALUE[1], FOOD_14_VALUE[2], FOOD_14_VALUE[3], FOOD_14_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_SANMA)
             {
-                EatFood(0, 5, 5, 0, 0);
+                EatFood(FOOD_15_VALUE[0], FOOD_15_VALUE[1], FOOD_15_VALUE[2], FOOD_15_VALUE[3], FOOD_15_VALUE[4]);
             }
             // ２階
             else if (this.CurrentSelect == Database.FOOD_FISH_GURATAN)
             {
-                EatFood(0, 30, 0, 20, 0);
+                EatFood(FOOD_21_VALUE[0], FOOD_21_VALUE[1], FOOD_21_VALUE[2], FOOD_21_VALUE[3], FOOD_21_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_SEA_TENPURA)
             {
-                EatFood(20, 0, 0, 30, 0);
+                EatFood(FOOD_22_VALUE[0], FOOD_22_VALUE[1], FOOD_22_VALUE[2], FOOD_22_VALUE[3], FOOD_22_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_TRUTH_YAMINABE_1)
             {
-                EatFood(0, 0, 20, 0, 30);
+                EatFood(FOOD_23_VALUE[0], FOOD_23_VALUE[1], FOOD_23_VALUE[2], FOOD_23_VALUE[3], FOOD_23_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_OSAKANA_ZINGISKAN)
             {
-                EatFood(30, 0, 0, 0, 20);
+                EatFood(FOOD_24_VALUE[0], FOOD_24_VALUE[1], FOOD_24_VALUE[2], FOOD_24_VALUE[3], FOOD_24_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_RED_HOT_SPAGHETTI)
             {
-                EatFood(0, 0, 30, 20, 0);
+                EatFood(FOOD_25_VALUE[0], FOOD_25_VALUE[1], FOOD_25_VALUE[2], FOOD_25_VALUE[3], FOOD_25_VALUE[4]);
             }
             // ３階
             else if (this.CurrentSelect == Database.FOOD_HINYARI_YASAI)
             {
-                EatFood(0, 0, 80, 0, 60);
+                EatFood(FOOD_31_VALUE[0], FOOD_31_VALUE[1], FOOD_31_VALUE[2], FOOD_31_VALUE[3], FOOD_31_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_AZARASI_SHIOYAKI)
             {
-                EatFood(0, 80, 60, 60, 0);
+                EatFood(FOOD_32_VALUE[0], FOOD_32_VALUE[1], FOOD_32_VALUE[2], FOOD_32_VALUE[3], FOOD_32_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_WINTER_BEEF_CURRY)
             {
-                EatFood(80, 0, 0, 80, 40);
+                EatFood(FOOD_33_VALUE[0], FOOD_33_VALUE[1], FOOD_33_VALUE[2], FOOD_33_VALUE[3], FOOD_33_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_GATTURI_GOZEN)
             {
-                EatFood(50, 50, 50, 50, 50);
+                EatFood(FOOD_34_VALUE[0], FOOD_34_VALUE[1], FOOD_34_VALUE[2], FOOD_34_VALUE[3], FOOD_34_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_KOGOERU_DESSERT)
             {
-                EatFood(0, 0, 150, 100, 0);
+                EatFood(FOOD_35_VALUE[0], FOOD_35_VALUE[1], FOOD_35_VALUE[2], FOOD_35_VALUE[3], FOOD_35_VALUE[4]);
             }
             // ４階
             else if (this.CurrentSelect == Database.FOOD_BLACK_BUTTER_SPAGHETTI)
             {
-                EatFood(0, 250, 250, 0, 250);
+                EatFood(FOOD_41_VALUE[0], FOOD_41_VALUE[1], FOOD_41_VALUE[2], FOOD_41_VALUE[3], FOOD_41_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_KOROKORO_PIENUS_HAMBURG)
             {
-                EatFood(250, 0, 0, 250, 250);
+                EatFood(FOOD_42_VALUE[0], FOOD_42_VALUE[1], FOOD_42_VALUE[2], FOOD_42_VALUE[3], FOOD_42_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_PIRIKARA_HATIMITSU_STEAK)
             {
-                EatFood(250, 0, 250, 250, 0);
+                EatFood(FOOD_43_VALUE[0], FOOD_43_VALUE[1], FOOD_43_VALUE[2], FOOD_43_VALUE[3], FOOD_43_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_HUNWARI_ORANGE_TOAST)
             {
-                EatFood(0, 250, 250, 250, 0);
+                EatFood(FOOD_44_VALUE[0], FOOD_44_VALUE[1], FOOD_44_VALUE[2], FOOD_44_VALUE[3], FOOD_44_VALUE[4]);
             }
             else if (this.CurrentSelect == Database.FOOD_TRUTH_YAMINABE_2)
             {
-                EatFood(250, 250, 0, 0, 250);
+                EatFood(FOOD_45_VALUE[0], FOOD_45_VALUE[1], FOOD_45_VALUE[2], FOOD_45_VALUE[3], FOOD_45_VALUE[4]);
             }
 
             ((TruthHomeTown)GroundOne.Parent[GroundOne.Parent.Count - 1]).currentRequestFood = this.CurrentSelect;
