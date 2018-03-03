@@ -327,35 +327,51 @@ namespace DungeonPlayer
                     }
                 }
             }
-
-            switch (GroundOne.SpellSkillName)
+            else
             {
-                case Database.STRAIGHT_SMASH:
-                    SetupEffectFactor(false, true, true, false, false, false);
-                    break;
-                case Database.INNER_INSPIRATION:
-                    SetupEffectFactor(false, false, false, false, false, true);
-                    break;
-                case Database.WORD_OF_LIFE:
-                    SetupEffectFactor(false, false, false, true, false, true);
-                    break;
-                case Database.ENIGMA_SENSE:
-                    SetupEffectFactor(false, true, true, true, false, false);
-                    break;
-                case Database.BLACK_CONTRACT:
-                    SetupEffectFactor(false, false, false, false, false, true);
-                    break;
+                switch (GroundOne.SpellSkillName)
+                {
+                    case Database.STRAIGHT_SMASH:
+                        SetupEffectFactor(false, true, true, false, false, false);
+                        break;
+                    case Database.INNER_INSPIRATION:
+                        SetupEffectFactor(false, false, false, false, false, true);
+                        break;
+                    case Database.WORD_OF_LIFE:
+                        SetupEffectFactor(false, false, false, true, false, true);
+                        break;
+                    case Database.ENIGMA_SENSE:
+                        SetupEffectFactor(false, true, true, true, false, false);
+                        break;
+                    case Database.BLACK_CONTRACT:
+                        SetupEffectFactor(false, false, false, false, false, true);
+                        break;
+                    default:
+                        SetupEffectFactor(false, false, false, false, false, false);
+                        break;
+                }
             }
         }
 
         private void SetupEffectFactor(bool weapon, bool strength, bool agility, bool intelligence, bool stamina, bool mind)
         {
-            if (weapon) { pbWeapon.sprite = Resources.Load<Sprite>(Database.WeaponIcon); }
-            if (strength) { pbStrength.sprite = Resources.Load<Sprite>(Database.StrengthIcon); }
-            if (agility) { pbAgility.sprite = Resources.Load<Sprite>(Database.AgilityhIcon); }
-            if (intelligence) { pbIntelligence.sprite = Resources.Load<Sprite>(Database.IntelligenceIcon); }
-            if (stamina) { pbStamina.sprite = Resources.Load<Sprite>(Database.StaminaIcon); }
-            if (mind) { pbMind.sprite = Resources.Load<Sprite>(Database.MindIcon); }
+            if (weapon) { pbWeapon.color = new Color(pbWeapon.color.r, pbWeapon.color.g, pbWeapon.color.b, 1.0f); }
+            else { pbWeapon.color = new Color(pbWeapon.color.r, pbWeapon.color.g, pbWeapon.color.b, 0.1f); }
+
+            if (strength) { pbStrength.color = new Color(pbStrength.color.r, pbStrength.color.g, pbStrength.color.b, 1.0f); }
+            else { pbStrength.color = new Color(pbStrength.color.r, pbStrength.color.g, pbStrength.color.b, 0.1f); }
+
+            if (agility) { pbAgility.color = new Color(pbAgility.color.r, pbAgility.color.g, pbAgility.color.b, 1.0f); }
+            else { pbAgility.color = new Color(pbAgility.color.r, pbAgility.color.g, pbAgility.color.b, 0.1f); }
+
+            if (intelligence) { pbIntelligence.color = new Color(pbIntelligence.color.r, pbIntelligence.color.g, pbIntelligence.color.b, 1.0f); }
+            else { pbIntelligence.color = new Color(pbIntelligence.color.r, pbIntelligence.color.g, pbIntelligence.color.b, 0.1f); }
+
+            if (stamina) { pbStamina.color = new Color(pbStamina.color.r, pbStamina.color.g, pbStamina.color.b, 1.0f); }
+            else { pbStamina.color = new Color(pbStamina.color.r, pbStamina.color.g, pbStamina.color.b, 0.1f); }
+
+            if (mind) { pbMind.color = new Color(pbMind.color.r, pbMind.color.g, pbMind.color.b, 1.0f); }
+            else { pbMind.color = new Color(pbMind.color.r, pbMind.color.g, pbMind.color.b, 0.1f); }
         }
 
         public void Close_Click()
