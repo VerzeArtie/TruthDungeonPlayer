@@ -614,6 +614,25 @@ namespace DungeonPlayer
         public const string ITEMCOMMAND_COLORLESS_ANTIDOTE = @"ColorlessAntidote";
         #endregion
 
+        #region "スタイル名称"
+        public static string STYLE_SWORD_DANCER = "Sword-Dancer";
+        public static string STYLE_THE_GRADIATOR = "The-Gradiator";
+        public static string STYLE_FIRE_WALKER = "Fire-Walker";
+        public static string STYLE_ICE_WALKER = "Ice-Walker";
+        public static string STYLE_MYSTIC_ENHANCER = "Mystic-Enhancer";
+        public static string STYLE_BRAVE_SEEKER = "Brave-Seeker";
+        public static string STYLE_ORACLE_COMMANDER = "Oracle-Commander";
+        public static string STYLE_THE_DEFENDER = "The-Defender";
+        public static string STYLE_ROYAL_KNIGHT = "Royal-Knight";
+        public static string STYLE_VOICE_CALLER = "Voice-Caller";
+        public static string STYLE_SHADOW_ROUGE = "Shadow-Rouge";
+        public static string STYLE_BIRD_RANGER = "Bird-Ranger";
+        public static string STYLE_AERIAL_HUNTER = "Aerial-Hunter";
+        public static string STYLE_MAGE_BREAKER = "Mage-Breaker";
+        public static string STYLE_HIGH_PRIEST = "High-Priest";
+        public static string STYLE_BATTLE_SAGE = "Battle-Sage";
+        #endregion
+
         #region "魔法消費コスト"
         // [聖]
         public static int FRESH_HEAL_COST = 20;
@@ -1026,6 +1045,9 @@ namespace DungeonPlayer
 
         #region "後編用に新しく作成されるデータ集"
         public static int MAX_PARTY_MEMBER = 3;
+
+        public static int SOUL_ATTRIBUTE_NUM = 16;
+        public static int MAX_SOUL_ATTRIBUTE = 99;
 
         public static int CHARACTER_MAX_LEVEL1 = 20;
         public static int CHARACTER_MAX_LEVEL2 = 35; // 後編２階まで
