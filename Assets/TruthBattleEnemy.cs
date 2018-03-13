@@ -2387,7 +2387,7 @@ namespace DungeonPlayer
                 return false;
             }
 
-            player.CurrentInstantPoint = 0;
+            player.ResetInstantPoint();
             UpdateInstantPoint(player);
             return true;
         }
@@ -4678,6 +4678,7 @@ namespace DungeonPlayer
             {
                 if (!ActiveList[ii].Dead)
                 {
+                    // 敵専用の能力のため、実質スタイルによる上昇はない
                     if (ActiveList[ii].CurrentEternalDroplet > 0)
                     {
                         double effectValue = PrimaryLogic.EternalDropletValue_A(ActiveList[ii]);
@@ -5949,14 +5950,7 @@ namespace DungeonPlayer
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
-        private void AbstractMagicAttack(MainCharacter player, MainCharacter target, string command, double value)
-        {
-            if (player.CurrentShadowPact > 0) { value = value * 1.3f; }
-            target.CurrentLife -= (int)value;
-            if (target.CurrentLife < 0) { target.CurrentLife = 0; }
-            UpdateLife(target);
-            UpdateBattleText(player.labelName.text + " " + command + " " + ((int)value).ToString() + " \n");
-        }
+
         // 通常攻撃
         private bool PlayerNormalAttack(MainCharacter player, MainCharacter target, double magnification, bool ignoreDefense, bool ignoreDoubleAttack)
         {
@@ -5998,10 +5992,15 @@ namespace DungeonPlayer
                         if (ii == 0)
                         {
                             damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
+                            if (player.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                            {
+                                damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Gradiator] * 0.05f);
+                            }
                         }
                         else
                         {
                             damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, GroundOne.DuelMode);
+                            damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Sword_Dancer] * 0.02f);
                         }
                     }
                     else
@@ -6047,11 +6046,11 @@ namespace DungeonPlayer
 
                     if (target.CurrentProtection > 0 && player.CurrentTruthVision <= 0)
                     {
-                        damage = (int)((float)damage / 1.5F);
+                        damage = damage / 1.5F;
                     }
                     if (target.CurrentEternalPresence > 0 && player.CurrentTruthVision <= 0)
                     {
-                        damage = damage * 0.8F;
+                        damage = damage / 1.25F;
                     }
                     if (target.CurrentExaltedField > 0 && player.CurrentTruthVision <= 0)
                     {
@@ -6059,7 +6058,7 @@ namespace DungeonPlayer
                     }
                     if (target.CurrentAetherDrive > 0 && player.CurrentTruthVision <= 0)
                     {
-                        damage = damage * 0.5f;
+                        damage = damage / 2.0f;
                     }
 
                     if (ignoreDefense == false)
@@ -6079,6 +6078,7 @@ namespace DungeonPlayer
                                 {
                                     if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                     {
+                                        damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
                                         damage = damage / 4.0f;
                                     }
                                     else
@@ -6497,7 +6497,22 @@ namespace DungeonPlayer
                                 }
                                 else
                                 {
-                                    additional = (int)((float)additional / 3.0F);
+                                    if (target.SubWeapon != null)
+                                    {
+                                        if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
+                                        {
+                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                            additional = (int)((float)additional / 4.0F);
+                                        }
+                                        else
+                                        {
+                                            additional = (int)((float)additional / 3.0F);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        additional = (int)((float)additional / 3.0F);
+                                    }
                                 }
                             }
                             if (target.CurrentOneImmunity > 0 && (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0))
@@ -6531,7 +6546,22 @@ namespace DungeonPlayer
                                 }
                                 else
                                 {
-                                    additional = (int)((float)additional / 3.0F);
+                                    if (target.SubWeapon != null)
+                                    {
+                                        if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
+                                        {
+                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                            additional = (int)((float)additional / 4.0F);
+                                        }
+                                        else
+                                        {
+                                            additional = (int)((float)additional / 3.0F);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        additional = (int)((float)additional / 3.0F);
+                                    }
                                 }
                             }
                             if (target.CurrentOneImmunity > 0 && (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0))
@@ -6672,6 +6702,15 @@ namespace DungeonPlayer
                 }
             }
 
+            if (TruthActionCommand.IsFire(magicType))
+            {
+                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Fire_Walker] * 0.03f);
+            }
+            if (TruthActionCommand.IsIce(magicType))
+            {
+                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Ice_Walker] * 0.03f);
+            }
+
             // ダメージ「＋」追加
             if ((magicType == TruthActionCommand.MagicType.Light) ||
                 (magicType == TruthActionCommand.MagicType.Light_Fire) ||
@@ -6741,7 +6780,14 @@ namespace DungeonPlayer
             }
             else
             {
-                damage -= PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
+                double current = PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
+                if (player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] > 0)
+                {
+                    double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * 0.02f;
+                    if (reduce >= 1.0f) { reduce = 1.0f;}
+                    current = current * (1.0f - reduce);
+                }
+                damage -= current;
                 if (damage <= 0.0f) damage = 0.0f;
 
                 if (target.CurrentAbsorbWater > 0 && player.CurrentTruthVision <= 0)
@@ -6750,7 +6796,7 @@ namespace DungeonPlayer
                 }
                 if (target.CurrentEternalPresence > 0 && player.CurrentTruthVision <= 0)
                 {
-                    damage = damage * 0.8F;
+                    damage = damage / 1.25F;
                 }
                 if (target.CurrentExaltedField > 0 && player.CurrentTruthVision <= 0)
                 {
@@ -6772,6 +6818,7 @@ namespace DungeonPlayer
                         {
                             if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                             {
+                                damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
                                 damage = damage / 4.0f;
                             }
                             else
@@ -7643,7 +7690,7 @@ namespace DungeonPlayer
             {
                 return;
             }
-            player.CurrentInstantPoint = 0;
+            player.ResetInstantPoint();
 
             PlayerExecCommand(player, target, command);
         }

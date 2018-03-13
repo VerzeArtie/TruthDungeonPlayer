@@ -351,7 +351,7 @@ namespace DungeonPlayer
                                         )
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『カウンターアタック』を発動だ。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -367,7 +367,7 @@ namespace DungeonPlayer
                                         )
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『ニゲイト』を発動だ。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -385,7 +385,7 @@ namespace DungeonPlayer
                                     if (((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand)))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：あめぇんだよ、ザコアイン！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -396,7 +396,7 @@ namespace DungeonPlayer
                                     //if (ActiveList[ii].CurrentSaintPower <= 0)
                                     //{
                                     //    UpdateBattleText(ec1.FirstName + "：パワーアップだ！！\r\n");
-                                    //    ActiveList[ii].CurrentInstantPoint = 0;
+                                    //    ActiveList[ii].ResetInstantPoint();
                                     //    ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                     //    ActiveList[ii].StackTarget = ActiveList[ii];
                                     //    ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -410,7 +410,7 @@ namespace DungeonPlayer
                                     //        (pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.ENIGMA_SENSE))
                                     //    {
                                     //        UpdateBattleText(ec1.FirstName + "：あめぇんだよ、ザコアイン！\r\n");
-                                    //        ActiveList[ii].CurrentInstantPoint = 0;
+                                    //        ActiveList[ii].ResetInstantPoint();
                                     //        ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                     //        ActiveList[ii].StackTarget = ActiveList[ii];
                                     //        ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -421,7 +421,7 @@ namespace DungeonPlayer
                                     //else
                                     //{
                                     //    UpdateBattleText(ec1.FirstName + "：食らえや！！\r\n");
-                                    //    ActiveList[ii].CurrentInstantPoint = 0;
+                                    //    ActiveList[ii].ResetInstantPoint();
                                     //    ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                     //    ActiveList[ii].StackTarget = GroundOne.MC;
                                     //    ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -455,7 +455,7 @@ namespace DungeonPlayer
                                             (existItem))
                                         {
                                             UpdateBattleText(ec1.FirstName + "：ヒャハハハ、待ってましたぁ！ライフ回復ってかぁ！？\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseItem;
@@ -465,7 +465,7 @@ namespace DungeonPlayer
                                         else
                                         {
                                             UpdateBattleText(ec1.FirstName + "：『カウンターアタック』ってかぁ！？ッヒャハハハ！\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -477,7 +477,7 @@ namespace DungeonPlayer
                                     {
                                         if (GroundOne.MC.CurrentDarkenField <= 0)
                                         {
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -486,7 +486,7 @@ namespace DungeonPlayer
                                         }
                                         else
                                         {
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -514,7 +514,7 @@ namespace DungeonPlayer
                                     if (((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand)) && (ActiveList[ii].CurrentCounterAttack <= 0))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：すみませんが、カウンターさせてもらいます。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -529,7 +529,7 @@ namespace DungeonPlayer
                                         else
                                         {
                                             UpdateBattleText(ec1.FirstName + "：それを喰らうわけには行きませんね、ミラーイメージです。\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -551,7 +551,7 @@ namespace DungeonPlayer
                                 {
                                     if (ActiveList[ii].CurrentInstantPoint >= ActiveList[ii].MaxInstantPoint)
                                     {
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -569,7 +569,7 @@ namespace DungeonPlayer
                                     if (((pa == MainCharacter.PlayerAction.UseSkill) && (TruthActionCommand.IsDamage(actionCommand))))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：ッフン、喰らってたまるか、そんなもの！！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -587,7 +587,7 @@ namespace DungeonPlayer
                                     if (((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand)) && (ActiveList[ii].CurrentCounterAttack <= 0))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：ッフ、カウンターアタック。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -602,7 +602,7 @@ namespace DungeonPlayer
                                         else
                                         {
                                             UpdateBattleText(ec1.FirstName + "：ッフ、ミラーイメージ。\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -621,7 +621,7 @@ namespace DungeonPlayer
                                     if (((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand)) && (ActiveList[ii].CurrentCounterAttack <= 0))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：食らってなるものか、カウンターをさせてもらおう。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -636,7 +636,7 @@ namespace DungeonPlayer
                                         else
                                         {
                                             UpdateBattleText(ec1.FirstName + "：食らってなるものか、ニゲイトをさせてもらおう。\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -679,7 +679,7 @@ namespace DungeonPlayer
                                         UpdateBattleText(ec1.FirstName + "：では、こちらも動き出させてもらう。\r\n");
                                         if (ActiveList[ii].CurrentPromisedKnowledge <= 0)
                                         {
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -687,7 +687,7 @@ namespace DungeonPlayer
                                         }
                                         else if (ActiveList[ii].CurrentWordOfLife <= 0)
                                         {
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = ActiveList[ii];
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -695,7 +695,7 @@ namespace DungeonPlayer
                                         }
                                         else
                                         {
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -721,7 +721,7 @@ namespace DungeonPlayer
                                         if (pa == MainCharacter.PlayerAction.UseSpell && GroundOne.MC.CurrentSilence <= 0)
                                         {
                                             UpdateBattleText(ec1.FirstName + "：沈黙してもらいます。\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -732,7 +732,7 @@ namespace DungeonPlayer
                                     else if (((pa == MainCharacter.PlayerAction.UseSpell) && TruthActionCommand.IsHeal(actionCommand)))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：カウンターしておきましょう。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -746,7 +746,7 @@ namespace DungeonPlayer
                                         {
                                             if (ActiveList[ii].CurrentPromisedKnowledge <= 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = ActiveList[ii];
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -754,7 +754,7 @@ namespace DungeonPlayer
                                             }
                                             else if (ActiveList[ii].CurrentRiseOfImage <= 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = ActiveList[ii];
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -762,7 +762,7 @@ namespace DungeonPlayer
                                             }
                                             else if (ActiveList[ii].CurrentBloodyVengeance <= 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = ActiveList[ii];
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -770,7 +770,7 @@ namespace DungeonPlayer
                                             }
                                             else if (ActiveList[ii].CurrentHeatBoost <= 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = ActiveList[ii];
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -778,7 +778,7 @@ namespace DungeonPlayer
                                             }
                                             else if (GroundOne.MC.CurrentMana > 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -786,7 +786,7 @@ namespace DungeonPlayer
                                             }
                                             else
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -797,7 +797,7 @@ namespace DungeonPlayer
                                         {
                                             if (GroundOne.MC.CurrentWordOfMalice <= 0) // 戦闘反応
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -805,7 +805,7 @@ namespace DungeonPlayer
                                             }
                                             else if (GroundOne.MC.CurrentImmolate <= 0) // 物理防御
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -813,7 +813,7 @@ namespace DungeonPlayer
                                             }
                                             else if (GroundOne.MC.CurrentBlackFire <= 0) // 魔法防御
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -821,7 +821,7 @@ namespace DungeonPlayer
                                             }
                                             else if (GroundOne.MC.CurrentMana > 0)
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -829,7 +829,7 @@ namespace DungeonPlayer
                                             }
                                             else
                                             {
-                                                ActiveList[ii].CurrentInstantPoint = 0;
+                                                ActiveList[ii].ResetInstantPoint();
                                                 ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                                 ActiveList[ii].StackTarget = GroundOne.MC;
                                                 ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -856,7 +856,7 @@ namespace DungeonPlayer
                                         if (ActiveList[ii].CurrentSkillPoint >= Database.NEGATE_COST)
                                         {
                                             UpdateBattleText(ec1.FirstName + "：止められるわけにはいかないわ、Negate！\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -866,7 +866,7 @@ namespace DungeonPlayer
                                     }
                                     else if ((ActiveList[ii].CurrentOneImmunity <= 0) && (ActiveList[ii].CurrentMana >= Database.ONE_IMMUNITY_COST))
                                     {
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -876,7 +876,7 @@ namespace DungeonPlayer
                                     else if (pa == MainCharacter.PlayerAction.UseSpell && !TruthActionCommand.IsDamage(actionCommand))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：それもカウンターさせてもらうわ、DeepMirrorよ！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -886,7 +886,7 @@ namespace DungeonPlayer
                                     else if (pa == MainCharacter.PlayerAction.UseSpell)
                                     {
                                         UpdateBattleText(ec1.FirstName + "：沈黙させるわ、VanishWave！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -909,7 +909,7 @@ namespace DungeonPlayer
                                     if ((pa == MainCharacter.PlayerAction.UseSpell) && (ActiveList[ii].CurrentSkillPoint >= Database.NEGATE_COST) && (actionCommand != Database.WORD_OF_POWER))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：それは止めさせてもらおう、Negateだ。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -919,7 +919,7 @@ namespace DungeonPlayer
                                     else if ((pa == MainCharacter.PlayerAction.UseSpell) && (ActiveList[ii].CurrentMana >= Database.VANISH_WAVE_COST))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：沈黙させてもらうぞ、VanishWaveだ。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -928,7 +928,7 @@ namespace DungeonPlayer
                                     }
                                     else if ((ActiveList[ii].CurrentOneImmunity <= 0) && (ActiveList[ii].CurrentMana >= Database.ONE_IMMUNITY_COST))
                                     {
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -938,7 +938,7 @@ namespace DungeonPlayer
                                     else if (pa == MainCharacter.PlayerAction.UseSpell && !TruthActionCommand.IsDamage(actionCommand))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：ッフ、DeepMirrorだ。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -961,7 +961,7 @@ namespace DungeonPlayer
                                     if ((pa == MainCharacter.PlayerAction.UseSpell) && (ActiveList[ii].CurrentSkillPoint >= Database.HARDEST_PARRY_COST) && (actionCommand == Database.WORD_OF_POWER))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：ケッ、パリィ発動！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -971,7 +971,7 @@ namespace DungeonPlayer
                                     else if (TruthActionCommand.IsHeal(actionCommand) && (ActiveList[ii].CurrentMana >= Database.DEMONIC_IGNITE_COST))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：させっかよ、ディーモ！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -985,7 +985,7 @@ namespace DungeonPlayer
                                     else if ((pa == MainCharacter.PlayerAction.UseSpell) && (ActiveList[ii].CurrentSkillPoint >= Database.NEGATE_COST))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：あめぇ、ニゲイト！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -995,7 +995,7 @@ namespace DungeonPlayer
                                     else if ((pa == MainCharacter.PlayerAction.UseSkill) && (TruthActionCommand.IsDamage(actionCommand)) && (ActiveList[ii].CurrentSkillPoint >= Database.COUNTER_ATTACK_COST))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：あめぇ、カウンター！\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1027,7 +1027,7 @@ namespace DungeonPlayer
                                     if (pa == MainCharacter.PlayerAction.UseSpell && !TruthActionCommand.IsDamage(actionCommand))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：甘いですね、DeepMirror。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1039,7 +1039,7 @@ namespace DungeonPlayer
                                         if (ActiveList[ii].CurrentSkillPoint >= Database.NEGATE_COST)
                                         {
                                             UpdateBattleText(ec1.FirstName + "：ックク、Negateです。\r\n");
-                                            ActiveList[ii].CurrentInstantPoint = 0;
+                                            ActiveList[ii].ResetInstantPoint();
                                             ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                             ActiveList[ii].StackTarget = GroundOne.MC;
                                             ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1050,7 +1050,7 @@ namespace DungeonPlayer
                                     else if (actionCommand == Database.PIERCING_FLAME && !ec1.DetectCannotBeSilence)
                                     {
                                         UpdateBattleText(ec1.FirstName + "：少し黙っていてもらいましょう、VanishWave。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1060,7 +1060,7 @@ namespace DungeonPlayer
                                     else if (actionCommand == Database.PIERCING_FLAME && ActiveList[ii].CurrentSkillPoint >= Database.NEGATE_COST)
                                     {
                                         UpdateBattleText(ec1.FirstName + "：ックク、Negateです。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1069,7 +1069,7 @@ namespace DungeonPlayer
                                     }
                                     else if ((ActiveList[ii].CurrentOneImmunity <= 0) && (ActiveList[ii].CurrentMana >= Database.ONE_IMMUNITY_COST))
                                     {
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = ActiveList[ii];
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1083,7 +1083,7 @@ namespace DungeonPlayer
                                     else if (pa == MainCharacter.PlayerAction.UseSpell)
                                     {
                                         UpdateBattleText(ec1.FirstName + "：少し黙っていてもらいましょう、VanishWave。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1101,7 +1101,7 @@ namespace DungeonPlayer
                                     if ((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『カウンターアタック』。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1111,7 +1111,7 @@ namespace DungeonPlayer
                                     else if ((pa == MainCharacter.PlayerAction.UseSpell) && (actionCommand == Database.PROMISED_KNOWLEDGE))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『ディープ・ミラー』。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1122,7 +1122,7 @@ namespace DungeonPlayer
                                         ((pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.PSYCHIC_WAVE)))
                                     {
                                         //UpdateBattleText(ec1.FirstName + "：『ディープ・ミラー』。\r\n");
-                                        //ActiveList[ii].CurrentInstantPoint = 0;
+                                        //ActiveList[ii].ResetInstantPoint();
                                         //ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         //ActiveList[ii].StackTarget = GroundOne.MC;
                                         //ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
@@ -1130,7 +1130,7 @@ namespace DungeonPlayer
                                         //ActiveList[ii].StackActivation = true;
 
                                         UpdateBattleText(ec1.FirstName + "：『スタンスオブ・アイズ』。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1138,7 +1138,7 @@ namespace DungeonPlayer
                                         ActiveList[ii].StackActivation = true;
 
                                         //UpdateBattleText(ec1.FirstName + "：『カウンターアタック』。\r\n");
-                                        //ActiveList[ii].CurrentInstantPoint = 0;
+                                        //ActiveList[ii].ResetInstantPoint();
                                         //ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         //ActiveList[ii].StackTarget = GroundOne.MC;
                                         //ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1146,7 +1146,7 @@ namespace DungeonPlayer
                                         //ActiveList[ii].StackActivation = true;
 
                                         //UpdateBattleText(ec1.FirstName + "：『ニゲイト』。\r\n");
-                                        //ActiveList[ii].CurrentInstantPoint = 0;
+                                        //ActiveList[ii].ResetInstantPoint();
                                         //ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         //ActiveList[ii].StackTarget = GroundOne.MC;
                                         //ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
@@ -1165,7 +1165,7 @@ namespace DungeonPlayer
                                         )
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『カウンターアタック』。\r\n");
-                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].ResetInstantPoint();
                                         ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         ActiveList[ii].StackTarget = GroundOne.MC;
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;

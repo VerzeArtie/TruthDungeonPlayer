@@ -10,6 +10,9 @@ namespace DungeonPlayer
     public class TruthRequestFood : MotherForm
     {
         // GUI
+        public GameObject groupFoodMenu;
+        public GameObject groupSoulPoint;
+
         public GameObject groupNew;
         public Text txtNewTitle;
         public Text txtNewDescription;
@@ -120,12 +123,28 @@ namespace DungeonPlayer
             CheckNewContents();
             
             button1_Click();
+
+            ConstructSoulPointView();
         }
 
         // Update is called once per frame
         void Update()
         {
 
+        }
+
+        public void TapSwitchView(int num)
+        {
+            if (num == 0)
+            {
+                groupFoodMenu.SetActive(true);
+                groupSoulPoint.SetActive(false);
+            }
+            else
+            {
+                groupFoodMenu.SetActive(false);
+                groupSoulPoint.SetActive(true);
+            }
         }
 
         public void TapNewClose()
@@ -621,6 +640,133 @@ namespace DungeonPlayer
                 group[ii].BuffMind_Food = mindUp;
                 group[ii].MaxGain();
             }
+        }
+
+        // ソウルポイントの割り振り
+        public Text txtAvailableAttributes;
+        public Text[] txtSoulValues;
+        public Text[] txtSoulAttributeName;
+        public GameObject groupSoulDescription;
+        public Text txtSoulDescription;
+        public GameObject filter;
+
+        private void ConstructSoulPointView()
+        {
+            string[] soulAttributeName = TruthActionCommand.GetSoulAttributeName();
+            for (int ii = 0; ii < txtSoulAttributeName.Length; ii++)
+            {
+                txtSoulAttributeName[ii].text = soulAttributeName[ii];
+            }
+
+            for (int ii = 0; ii < txtSoulValues.Length; ii++)
+            {
+                txtSoulValues[ii].text = GroundOne.MC.CurrentSoulAttributes[ii].ToString();
+            }
+            UpdateAvailablePoints();
+        }
+        public void TapSoulDescription(int number)
+        {
+            if (number == (int)TruthActionCommand.SoulStyle.Sword_Dancer)
+            {
+                txtSoulDescription.text = "二刀流のサブウェポンのダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
+            }
+            else if (number == (int)TruthActionCommand.SoulStyle.The_Gradiator)
+            {
+                txtSoulDescription.text = "両手剣の最大ダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 5.0f + "% 上昇";
+            }
+            else if (number == (int)TruthActionCommand.SoulStyle.Fire_Walker)
+            {
+                txtSoulDescription.text = "炎魔法のダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + "% 上昇";
+            }
+            else if (number == (int)TruthActionCommand.SoulStyle.Ice_Walker)
+            {
+                txtSoulDescription.text = "氷魔法のダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + "% 上昇";
+            }
+            //else if (number == (int)TruthActionCommand.SoulStyle.Mystic_Enhancer)
+            //{
+            //    txtSoulDescription.text = "自分に上昇BUFFがかかっている場合、増加率が" + GroundOne.MC.CurrentSoulAttributes[number] * 0.05f + "% 上昇";
+            //}
+            //else if (number == (int)TruthActionCommand.SoulStyle.Brave_Seeker)
+            //{
+            //    txtSoulDescription.text = "スタン、麻痺、凍結状態が解除される確率が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
+            //}
+            else if (number == (int)TruthActionCommand.SoulStyle.Oracle_Commander)
+            {
+                txtSoulDescription.text = "杖装備時、「ためる」コマンドの威力増強が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
+            }
+            else if (number == (int)TruthActionCommand.SoulStyle.The_Defender)
+            {
+                txtSoulDescription.text = "盾装備時、防御姿勢のダメージ軽減が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + "% 上昇";
+            }
+            //else if (number == (int)TruthActionCommand.SoulStyle.Royal_Knight)
+            //{
+            //    txtSoulDescription.text = "聖属性のスペル威力が " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + " %上昇";
+            //}
+            //else if (number == (int)TruthActionCommand.SoulStyle.Voice_Caller)
+            //{
+            //    txtSoulDescription.text = "ライフ回復量が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
+            //}
+            //else if (number == (int)TruthActionCommand.SoulStyle.Shadow_Rouge)
+            //{
+            //    txtSoulDescription.text = "連続ヒットを有するコマンドのダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
+            //}
+            //else if (number == (int)TruthActionCommand.SoulStyle.Bird_Ranger)
+            //{
+            //    txtSoulDescription.text = "暗闇、誘惑、猛毒状態が解除される確率が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %上昇";
+            //}
+            //else if (number == (int)TruthActionCommand.SoulStyle.Aerial_Hunter)
+            //{
+            //    txtSoulDescription.text = "クリティカルヒット率が " + GroundOne.MC.CurrentSoulAttributes[number] * 0.5f + " %上昇";
+            //}
+            else if (number == (int)TruthActionCommand.SoulStyle.Mage_Breaker)
+            {
+                txtSoulDescription.text = "魔法ダメージの場合、ターゲットの魔法防御を" + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %無視";
+            }
+            //else if (number == (int)TruthActionCommand.SoulStyle.High_Priest)
+            //{
+            //    txtSoulDescription.text = "回復魔法の回復量が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %上昇";
+            //}
+            else if (number == (int)TruthActionCommand.SoulStyle.Battle_Sage)
+            {
+                txtSoulDescription.text = "インスタントコマンド消費率を " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %軽減";
+            }
+
+
+            groupSoulDescription.SetActive(true);
+            filter.SetActive(true);
+        }
+        public void HideFilter()
+        {
+            groupSoulDescription.SetActive(false);
+            filter.SetActive(false);
+        }
+        public void TapFactorPlus(int number)
+        {
+            Debug.Log("CurrentSoulFragment: " + GroundOne.MC.CurrentSoulFragment.ToString());
+            Debug.Log("GroundOne.MC.CurrentSoulAttributes[number]: " + GroundOne.MC.CurrentSoulAttributes[number].ToString());
+            if (GroundOne.MC.CurrentSoulFragment <= 0) { Debug.Log("return 0");  return; }
+            if (GroundOne.MC.CurrentSoulAttributes[number] >= Database.MAX_SOUL_ATTRIBUTE) { Debug.Log("return 1"); return; }
+
+            GroundOne.MC.CurrentSoulAttributes[number] += 1;
+            Debug.Log("GroundOne.MC.CurrentSoulAttributes[number]: " + GroundOne.MC.CurrentSoulAttributes[number].ToString());
+            txtSoulValues[number].text = GroundOne.MC.CurrentSoulAttributes[number].ToString();
+
+            UpdateAvailablePoints();
+        }
+        public void TapFactorMinus(int number)
+        {
+            if (GroundOne.MC.CurrentSoulFragment >= GroundOne.MC.MaxSoulFragment) { return; }
+            if (GroundOne.MC.CurrentSoulAttributes[number] <= 0) { return; }
+
+            GroundOne.MC.CurrentSoulAttributes[number] -= 1;
+            txtSoulValues[number].text = GroundOne.MC.CurrentSoulAttributes[number].ToString();
+
+            UpdateAvailablePoints();
+        }
+
+        private void UpdateAvailablePoints()
+        {
+            txtAvailableAttributes.text = "Available Soul Points: " + GroundOne.MC.CurrentSoulFragment.ToString();
         }
     }
 }

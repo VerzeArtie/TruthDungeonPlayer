@@ -269,7 +269,7 @@ namespace DungeonPlayer
             {
                 if (player.CurrentPhysicalChargeCount > 0)
                 {
-                    result = result * (double)(player.CurrentPhysicalChargeCount + 1.0F);
+                    result = result * (double)(1.0F + player.CurrentPhysicalChargeCount);
                 }
 
                 if (player.AmplifyPhysicalAttack > 0.0f)
@@ -281,7 +281,7 @@ namespace DungeonPlayer
             {
                 if (!ignoreChargeCount && (player.CurrentChargeCount > 0))
                 {
-                    result = result * (double)(player.CurrentChargeCount + 1.0F);
+                    result = result * (double)(1.0F + player.CurrentChargeCount + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Oracle_Commander] * 0.02f);
                 }
                 if (player.AmplifyMagicAttack > 0.0f) // 「警告」魔法攻撃増強で回復も増強するのか？
                 {
@@ -359,6 +359,7 @@ namespace DungeonPlayer
             if ((player.Accessory != null) && (player.Accessory.AmplifyPhysicalDefense != 0.0f)) result = result * player.Accessory.AmplifyPhysicalDefense;
             if ((player.Accessory2 != null) && (player.Accessory2.AmplifyPhysicalDefense != 0.0f)) result = result * player.Accessory2.AmplifyPhysicalDefense;
 
+            // Mystic_EnhancerはBUFFによる上昇のみを対象とする。（自分自身の防御減少の対象にはならない）
             if (player.CurrentBlindJustice > 0)
             {
                 result = result * 0.70f;
@@ -434,6 +435,7 @@ namespace DungeonPlayer
             if ((player.Accessory != null) && (player.Accessory.AmplifyMagicDefense != 0.0f)) result = result * player.Accessory.AmplifyMagicDefense;
             if ((player.Accessory2 != null) && (player.Accessory2.AmplifyMagicDefense != 0.0f)) result = result * player.Accessory2.AmplifyMagicDefense;
 
+            // Mystic_EnhancerはBUFFによる上昇のみを対象とする。（自分自身の防御減少の対象にはならない）
             if (player.CurrentDarkenField > 0)
             {
                 result = result * 0.80f;

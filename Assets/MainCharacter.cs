@@ -247,6 +247,36 @@ namespace DungeonPlayer
             get { return gold; }
             set { gold = value; }
         }
+        public int CurrentSoulFragment
+        {
+            get
+            {
+                int result = MaxSoulFragment;
+                for (int ii = 0; ii < CurrentSoulAttributes.Length; ii++)
+                {
+                    result -= CurrentSoulAttributes[ii];
+                }
+                if (result <= 0) { result = 0; }
+                return result;
+            }
+        }
+        public int MaxSoulFragment
+        {
+            get
+            {
+                return this.level - 1; 
+            }
+        }
+        [SerializeField]
+        protected int[] currentSoulAttributes = new int[Database.SOUL_ATTRIBUTE_NUM];
+        public int[] CurrentSoulAttributes
+        {
+            get
+            {
+                return currentSoulAttributes;
+            }
+        }
+
         public int CurrentLife
         {
             get { return currentLife; }
@@ -3160,6 +3190,12 @@ namespace DungeonPlayer
                 if (this.labelName != null) { this.labelName.color = Color.black; }
                 if (this.labelCurrentLifePoint != null) { this.labelCurrentLifePoint.color = Color.black; this.labelCurrentLifePoint.text = CurrentLife.ToString(); }
             }
+        }
+
+        public void ResetInstantPoint()
+        {
+            this.currentInstantPoint = 0;
+            this.currentInstantPoint += this.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Battle_Sage] * 0.01F * this.MaxSkillPoint;
         }
 
         public string GetCharacterSentence(int sentenceNumber)

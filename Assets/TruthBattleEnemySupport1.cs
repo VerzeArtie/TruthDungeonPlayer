@@ -4597,7 +4597,7 @@ namespace DungeonPlayer
 
                     if (TruthActionCommand.GetTimingType(CurrentSpellName) == TruthActionCommand.TimingType.Sorcery)
                     {
-                        player.CurrentInstantPoint = 0;
+                        player.ResetInstantPoint();
                         UseInstantPoint(player);
                     }
                 }
@@ -4652,7 +4652,7 @@ namespace DungeonPlayer
 
                     if (TruthActionCommand.GetTimingType(commandName) == TruthActionCommand.TimingType.Sorcery)
                     {
-                        player.CurrentInstantPoint = 0;
+                        player.ResetInstantPoint();
                         UseInstantPoint(player);
                     }
                 }

@@ -6,38 +6,6 @@ namespace DungeonPlayer
 {
     public partial class TruthBattleEnemy : MotherForm
     {
-        /// <summary>
-        /// 魔法ダメージのロジック
-        /// </summary>
-        /// <param name="player">対象元</param>
-        /// <param name="target">対象相手</param>
-        /// <param name="command">コマンド名</param>
-        /// <param name="interval">発動後のインターバル</param>
-        /// <param name="damage">ダメージ</param> // ref参照　DevouringPlagueの参照元で回復量に逆算したものを使用するため
-        /// <param name="magnification">増減倍率、０の場合は増減しない</param>
-        /// <param name="soundName">効果音ファイル名</param>
-        /// <param name="messageNumber">魔法ダメージメッセージ</param>
-        /// <param name="magicType">魔法属性</param>
-        /// <param name="ignoreTargetDefense">対象の防御を無視する場合、True</param>
-        /// <param name="critical">クリティカル有効フラグ</param>
-        protected bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
-            int interval, double damage, double magnification, string soundName, int messageNumber, TruthActionCommand.MagicType magicType, bool ignoreTargetDefense, CriticalType critical)
-        {
-            return AbstractMagicDamage(player, target, command, interval, ref damage, magnification, soundName, messageNumber, magicType, ignoreTargetDefense, critical);
-        }
-        protected bool AbstractMagicDamage(MainCharacter player, MainCharacter target, string command,
-            int interval, ref double damage, double magnification, string soundName, int messageNumber, TruthActionCommand.MagicType magicType, bool ignoreTargetDefense, CriticalType critical)
-        {
-            if (player.CurrentShadowPact > 0) { damage = damage * 1.3f; }
-            target.CurrentLife -= (int)damage;
-            if (target.CurrentLife < 0) { target.CurrentLife = 0; }
-            UpdateLife(target);
-            UpdateBattleText(player.labelName.text + " to " + target.labelName.text + " " + command + " " + ((int)damage).ToString() + " \n");
-
-            return true;
-        }
-
-
         // [情報]：全てのＢＵＦＦ＿ＵＰ魔法は、ここへ集約されるようにしてください。
         // [警告]：ここに集約されている情報は味方プレイヤーのみを対象としています。敵味方区別無くいけるようにしてください。
         protected void PlayerBuffAbstract(MainCharacter player, MainCharacter target, string spellName, int effectTime = 0)
@@ -557,7 +525,7 @@ namespace DungeonPlayer
                         player.BuffStamina_HighEmotionality = (int)plusValue;
                         //player.BuffMind_HighEmotionality = player.Mind / 3;
 
-                        PlayerAbstractLifeGain(player, player, 0, (int)plusValue * 10, 0, String.Empty, 5002);
+                        PlayerAbstractLifeGain(player, player, 0, (int)plusValue, 0, String.Empty, 5002); // plusValue * 10を撤廃(2018/03/13)
 
                         player.CurrentHighEmotionality = effectTime;
                         target.ActivateBuff(target.pbHighEmotionality, Database.BaseResourceFolder + spellName, effectTime);
