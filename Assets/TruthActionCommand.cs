@@ -13,17 +13,17 @@ namespace DungeonPlayer
             The_Gradiator,
             Fire_Walker,
             Ice_Walker,
-            Mystic_Enhancer,
-            Brave_Seeker,
+            //Mystic_Enhancer,
+            //Brave_Seeker,
             Oracle_Commander,
             The_Defender,
-            Royal_Knight,
-            Voice_Caller,
-            Shadow_Rouge,
-            Bird_Ranger,
-            Aerial_Hunter,
+            //Royal_Knight,
+            //Voice_Caller,
+            //Shadow_Rouge,
+            //Bird_Ranger,
+            //Aerial_Hunter,
             Mage_Breaker,
-            High_Priest,
+            //High_Priest,
             Battle_Sage,
         }
 
@@ -4806,24 +4806,25 @@ namespace DungeonPlayer
         public static string[] GetSoulAttributeName()
         {
             string[] result = new string[Database.SOUL_ATTRIBUTE_NUM];
+            int counter = 0;
 
             // 基本
-            result[0] = Database.STYLE_SWORD_DANCER;
-            result[1] = Database.STYLE_THE_GRADIATOR;
-            result[2] = Database.STYLE_FIRE_WALKER;
-            result[3] = Database.STYLE_ICE_WALKER;
-            result[4] = Database.STYLE_MYSTIC_ENHANCER;
-            result[5] = Database.STYLE_BRAVE_SEEKER;
-            result[6] = Database.STYLE_ORACLE_COMMANDER;
-            result[7] = Database.STYLE_THE_DEFENDER;
-            result[8] = Database.STYLE_ROYAL_KNIGHT;
-            result[9] = Database.STYLE_VOICE_CALLER;
-            result[10] = Database.STYLE_SHADOW_ROUGE;
-            result[11] = Database.STYLE_BIRD_RANGER;
-            result[12] = Database.STYLE_AERIAL_HUNTER;
-            result[13] = Database.STYLE_MAGE_BREAKER;
-            result[14] = Database.STYLE_HIGH_PRIEST;
-            result[15] = Database.STYLE_BATTLE_SAGE;
+            result[counter] = Database.STYLE_SWORD_DANCER; counter++;
+            result[counter] = Database.STYLE_THE_GRADIATOR; counter++;
+            result[counter] = Database.STYLE_FIRE_WALKER; counter++;
+            result[counter] = Database.STYLE_ICE_WALKER; counter++;
+            //result[counter] = Database.STYLE_MYSTIC_ENHANCER; counter++;
+            //result[counter] = Database.STYLE_BRAVE_SEEKER; counter++;
+            result[counter] = Database.STYLE_ORACLE_COMMANDER; counter++;
+            result[counter] = Database.STYLE_THE_DEFENDER; counter++;
+            //result[counter] = Database.STYLE_ROYAL_KNIGHT; counter++;
+            //result[counter] = Database.STYLE_VOICE_CALLER; counter++;
+            //result[counter] = Database.STYLE_SHADOW_ROUGE; counter++;
+            //result[counter] = Database.STYLE_BIRD_RANGER; counter++;
+            //result[counter] = Database.STYLE_AERIAL_HUNTER; counter++;
+            result[counter] = Database.STYLE_MAGE_BREAKER; counter++;
+            //result[counter] = Database.STYLE_HIGH_PRIEST; counter++;
+            result[counter] = Database.STYLE_BATTLE_SAGE; counter++;
             return result;
         }
     }

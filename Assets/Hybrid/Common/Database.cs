@@ -1046,7 +1046,7 @@ namespace DungeonPlayer
         #region "後編用に新しく作成されるデータ集"
         public static int MAX_PARTY_MEMBER = 3;
 
-        public static int SOUL_ATTRIBUTE_NUM = 16;
+        public static int SOUL_ATTRIBUTE_NUM = 8;
         public static int MAX_SOUL_ATTRIBUTE = 99;
 
         public static int CHARACTER_MAX_LEVEL1 = 20;
