@@ -124,7 +124,8 @@ namespace DungeonPlayer
             
             button1_Click();
 
-            ConstructSoulPointView();
+            InitializeSoulPointView();
+            ConstructSoulPointView(GroundOne.MC);
         }
 
         // Update is called once per frame
@@ -323,6 +324,8 @@ namespace DungeonPlayer
 
         private void SetupAvailableList(int level)
         {
+            const string FOOD_UNKNOWN = "？？？";
+
             if (level == 1)
             {
                 FoodTextList[0].text = Database.FOOD_KATUCARRY;
@@ -333,9 +336,9 @@ namespace DungeonPlayer
 
                 FoodButtonList[0].gameObject.SetActive(true);
                 FoodButtonList[1].gameObject.SetActive(true);
-                if (GroundOne.WE2.FoodAvailable_11) FoodButtonList[2].gameObject.SetActive(true); else FoodButtonList[2].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_12) FoodButtonList[3].gameObject.SetActive(true); else FoodButtonList[3].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_13) FoodButtonList[4].gameObject.SetActive(true); else FoodButtonList[4].gameObject.SetActive(false);
+                if (GroundOne.WE2.FoodAvailable_11) FoodButtonList[2].gameObject.SetActive(true); else FoodTextList[2].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_12) FoodButtonList[3].gameObject.SetActive(true); else FoodTextList[3].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_13) FoodButtonList[4].gameObject.SetActive(true); else FoodTextList[4].text = FOOD_UNKNOWN;
             }
             else if (level == 2)
             {
@@ -346,10 +349,10 @@ namespace DungeonPlayer
                 FoodTextList[4].text = Database.FOOD_RED_HOT_SPAGHETTI;
 
                 FoodButtonList[0].gameObject.SetActive(true);
-                if (GroundOne.WE2.FoodAvailable_21) FoodButtonList[1].gameObject.SetActive(true); else FoodButtonList[1].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_22) FoodButtonList[2].gameObject.SetActive(true); else FoodButtonList[2].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_23) FoodButtonList[3].gameObject.SetActive(true); else FoodButtonList[3].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_24) FoodButtonList[4].gameObject.SetActive(true); else FoodButtonList[4].gameObject.SetActive(false);
+                if (GroundOne.WE2.FoodAvailable_21) FoodButtonList[1].gameObject.SetActive(true); else FoodTextList[1].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_22) FoodButtonList[2].gameObject.SetActive(true); else FoodTextList[2].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_23) FoodButtonList[3].gameObject.SetActive(true); else FoodTextList[3].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_24) FoodButtonList[4].gameObject.SetActive(true); else FoodTextList[4].text = FOOD_UNKNOWN;
             }
             else if (level == 3)
             {
@@ -360,10 +363,10 @@ namespace DungeonPlayer
                 FoodTextList[4].text = Database.FOOD_KOGOERU_DESSERT;
 
                 FoodButtonList[0].gameObject.SetActive(true);
-                if (GroundOne.WE2.FoodAvailable_31) FoodButtonList[1].gameObject.SetActive(true); else FoodButtonList[1].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_32) FoodButtonList[2].gameObject.SetActive(true); else FoodButtonList[2].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_33) FoodButtonList[3].gameObject.SetActive(true); else FoodButtonList[3].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_34) FoodButtonList[4].gameObject.SetActive(true); else FoodButtonList[4].gameObject.SetActive(false);
+                if (GroundOne.WE2.FoodAvailable_31) FoodButtonList[1].gameObject.SetActive(true); else FoodTextList[1].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_32) FoodButtonList[2].gameObject.SetActive(true); else FoodTextList[2].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_33) FoodButtonList[3].gameObject.SetActive(true); else FoodTextList[3].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_34) FoodButtonList[4].gameObject.SetActive(true); else FoodTextList[4].text = FOOD_UNKNOWN;
             }
             else if (level == 4)
             {
@@ -374,10 +377,10 @@ namespace DungeonPlayer
                 FoodTextList[4].text = Database.FOOD_TRUTH_YAMINABE_2;
 
                 FoodButtonList[0].gameObject.SetActive(true);
-                if (GroundOne.WE2.FoodAvailable_41) FoodButtonList[1].gameObject.SetActive(true); else FoodButtonList[1].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_42) FoodButtonList[2].gameObject.SetActive(true); else FoodButtonList[2].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_43) FoodButtonList[3].gameObject.SetActive(true); else FoodButtonList[3].gameObject.SetActive(false);
-                if (GroundOne.WE2.FoodAvailable_44) FoodButtonList[4].gameObject.SetActive(true); else FoodButtonList[4].gameObject.SetActive(false);
+                if (GroundOne.WE2.FoodAvailable_41) FoodButtonList[1].gameObject.SetActive(true); else FoodTextList[1].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_42) FoodButtonList[2].gameObject.SetActive(true); else FoodTextList[2].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_43) FoodButtonList[3].gameObject.SetActive(true); else FoodTextList[3].text = FOOD_UNKNOWN;
+                if (GroundOne.WE2.FoodAvailable_44) FoodButtonList[4].gameObject.SetActive(true); else FoodTextList[4].text = FOOD_UNKNOWN;
             }
         }
 
@@ -392,7 +395,6 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_NUMBER, number.ToString(), string.Empty);
             SetupAvailableList(number);
         }
-
 
         public void button1_Click()
         {
@@ -416,6 +418,10 @@ namespace DungeonPlayer
             {
                 DescriptionText.text = TruthRequestFood.DESC_41_MINI;
                 UpdateFoodValue(FOOD_41_VALUE);
+            }
+            else
+            {
+                return;
             }
             TitleText.text = FoodTextList[0].text;
             this.CurrentSelect = TitleText.text;
@@ -444,6 +450,10 @@ namespace DungeonPlayer
                 DescriptionText.text = TruthRequestFood.DESC_42_MINI;
                 UpdateFoodValue(FOOD_42_VALUE);
             }
+            else
+            {
+                return;
+            }
             TitleText.text = FoodTextList[1].text;
             this.CurrentSelect = TitleText.text;
         }
@@ -470,6 +480,10 @@ namespace DungeonPlayer
             {
                 DescriptionText.text = TruthRequestFood.DESC_43_MINI;
                 UpdateFoodValue(FOOD_43_VALUE);
+            }
+            else
+            {
+                return;
             }
             TitleText.text = FoodTextList[2].text;
             this.CurrentSelect = TitleText.text;
@@ -499,6 +513,10 @@ namespace DungeonPlayer
                 DescriptionText.text = TruthRequestFood.DESC_44_MINI;
                 UpdateFoodValue(FOOD_44_VALUE);
             }
+            else
+            {
+                return;
+            }
             TitleText.text = FoodTextList[3].text;
             this.CurrentSelect = TitleText.text;
         }
@@ -521,6 +539,10 @@ namespace DungeonPlayer
             else if (FoodTextList[4].text == Database.FOOD_TRUTH_YAMINABE_2)
             {
                 DescriptionText.text = TruthRequestFood.DESC_45_MINI;
+            }
+            else
+            {
+                return;
             }
             TitleText.text = FoodTextList[4].text;
             this.CurrentSelect = TitleText.text;
@@ -646,127 +668,100 @@ namespace DungeonPlayer
         public Text txtAvailableAttributes;
         public Text[] txtSoulValues;
         public Text[] txtSoulAttributeName;
-        public GameObject groupSoulDescription;
-        public Text txtSoulDescription;
-        public GameObject filter;
+        public Text[] txtSoulAttributeDesc;
+        public Image[] backColors;
+        public Button btnFirstChara;
+        public Button btnSecondChara;
+        public Button btnThirdChara;
+        public GameObject btnCharacterGroup;
+        MainCharacter currentPlayer = null;
 
-        private void ConstructSoulPointView()
+        private void InitializeSoulPointView()
+        {
+            this.currentPlayer = GroundOne.MC;
+            if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
+            if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
+            if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                btnCharacterGroup.SetActive(true);
+            }
+            else
+            {
+                btnCharacterGroup.SetActive(false);
+            }
+        }
+        private void ConstructSoulPointView(MainCharacter player)
         {
             string[] soulAttributeName = TruthActionCommand.GetSoulAttributeName();
+            string[] soulAttributeDesc = TruthActionCommand.GetSoulAttributeDesc();
+            double[] soulAttributeValue = TruthActionCommand.GetSoulAttributeValue();
             for (int ii = 0; ii < txtSoulAttributeName.Length; ii++)
             {
                 txtSoulAttributeName[ii].text = soulAttributeName[ii];
+                txtSoulAttributeDesc[ii].text = String.Format(soulAttributeDesc[ii], this.currentPlayer.CurrentSoulAttributes[ii] * soulAttributeValue[ii]);
+                backColors[ii].color = this.currentPlayer.PlayerStatusColor;
             }
 
             for (int ii = 0; ii < txtSoulValues.Length; ii++)
             {
-                txtSoulValues[ii].text = GroundOne.MC.CurrentSoulAttributes[ii].ToString();
+                txtSoulValues[ii].text = player.CurrentSoulAttributes[ii].ToString();
             }
             UpdateAvailablePoints();
         }
-        public void TapSoulDescription(int number)
+
+        public void FirstChara_Click()
         {
-            if (number == (int)TruthActionCommand.SoulStyle.Sword_Dancer)
-            {
-                txtSoulDescription.text = "二刀流のサブウェポンのダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
-            }
-            else if (number == (int)TruthActionCommand.SoulStyle.The_Gradiator)
-            {
-                txtSoulDescription.text = "両手剣の最大ダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 5.0f + "% 上昇";
-            }
-            else if (number == (int)TruthActionCommand.SoulStyle.Fire_Walker)
-            {
-                txtSoulDescription.text = "炎魔法のダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + "% 上昇";
-            }
-            else if (number == (int)TruthActionCommand.SoulStyle.Ice_Walker)
-            {
-                txtSoulDescription.text = "氷魔法のダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + "% 上昇";
-            }
-            //else if (number == (int)TruthActionCommand.SoulStyle.Mystic_Enhancer)
-            //{
-            //    txtSoulDescription.text = "自分に上昇BUFFがかかっている場合、増加率が" + GroundOne.MC.CurrentSoulAttributes[number] * 0.05f + "% 上昇";
-            //}
-            //else if (number == (int)TruthActionCommand.SoulStyle.Brave_Seeker)
-            //{
-            //    txtSoulDescription.text = "スタン、麻痺、凍結状態が解除される確率が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
-            //}
-            else if (number == (int)TruthActionCommand.SoulStyle.Oracle_Commander)
-            {
-                txtSoulDescription.text = "杖装備時、「ためる」コマンドの威力増強が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
-            }
-            else if (number == (int)TruthActionCommand.SoulStyle.The_Defender)
-            {
-                txtSoulDescription.text = "盾装備時、防御姿勢のダメージ軽減が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + "% 上昇";
-            }
-            //else if (number == (int)TruthActionCommand.SoulStyle.Royal_Knight)
-            //{
-            //    txtSoulDescription.text = "聖属性のスペル威力が " + GroundOne.MC.CurrentSoulAttributes[number] * 3.0f + " %上昇";
-            //}
-            //else if (number == (int)TruthActionCommand.SoulStyle.Voice_Caller)
-            //{
-            //    txtSoulDescription.text = "ライフ回復量が " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
-            //}
-            //else if (number == (int)TruthActionCommand.SoulStyle.Shadow_Rouge)
-            //{
-            //    txtSoulDescription.text = "連続ヒットを有するコマンドのダメージが " + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %上昇";
-            //}
-            //else if (number == (int)TruthActionCommand.SoulStyle.Bird_Ranger)
-            //{
-            //    txtSoulDescription.text = "暗闇、誘惑、猛毒状態が解除される確率が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %上昇";
-            //}
-            //else if (number == (int)TruthActionCommand.SoulStyle.Aerial_Hunter)
-            //{
-            //    txtSoulDescription.text = "クリティカルヒット率が " + GroundOne.MC.CurrentSoulAttributes[number] * 0.5f + " %上昇";
-            //}
-            else if (number == (int)TruthActionCommand.SoulStyle.Mage_Breaker)
-            {
-                txtSoulDescription.text = "魔法ダメージの場合、ターゲットの魔法防御を" + GroundOne.MC.CurrentSoulAttributes[number] * 2.0f + " %無視";
-            }
-            //else if (number == (int)TruthActionCommand.SoulStyle.High_Priest)
-            //{
-            //    txtSoulDescription.text = "回復魔法の回復量が " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %上昇";
-            //}
-            else if (number == (int)TruthActionCommand.SoulStyle.Battle_Sage)
-            {
-                txtSoulDescription.text = "インスタントコマンド消費率を " + GroundOne.MC.CurrentSoulAttributes[number] * 1.0f + " %軽減";
-            }
-
-
-            groupSoulDescription.SetActive(true);
-            filter.SetActive(true);
+            this.currentPlayer = GroundOne.MC;
+            ConstructSoulPointView(this.currentPlayer);
         }
-        public void HideFilter()
+
+        public void SecondChara_Click()
         {
-            groupSoulDescription.SetActive(false);
-            filter.SetActive(false);
+            this.currentPlayer = GroundOne.SC;
+            ConstructSoulPointView(this.currentPlayer);
+        }
+
+        public void ThirdChara_Click()
+        {
+            this.currentPlayer = GroundOne.TC;
+            ConstructSoulPointView(this.currentPlayer);
+        }
+        private void UpdateSoulAttributeDesc(int number)
+        {
+            string[] soulAttributeDesc = TruthActionCommand.GetSoulAttributeDesc();
+            double[] soulAttributeValue = TruthActionCommand.GetSoulAttributeValue();
+            txtSoulAttributeDesc[number].text = String.Format(soulAttributeDesc[number], this.currentPlayer.CurrentSoulAttributes[number] * soulAttributeValue[number]);
         }
         public void TapFactorPlus(int number)
         {
-            Debug.Log("CurrentSoulFragment: " + GroundOne.MC.CurrentSoulFragment.ToString());
-            Debug.Log("GroundOne.MC.CurrentSoulAttributes[number]: " + GroundOne.MC.CurrentSoulAttributes[number].ToString());
-            if (GroundOne.MC.CurrentSoulFragment <= 0) { Debug.Log("return 0");  return; }
-            if (GroundOne.MC.CurrentSoulAttributes[number] >= Database.MAX_SOUL_ATTRIBUTE) { Debug.Log("return 1"); return; }
+            Debug.Log("CurrentSoulFragment: " + this.currentPlayer.CurrentSoulFragment.ToString());
+            Debug.Log("this.currentPlayer.CurrentSoulAttributes[number]: " + this.currentPlayer.CurrentSoulAttributes[number].ToString());
+            if (this.currentPlayer.CurrentSoulFragment <= 0) { Debug.Log("return 0"); return; }
+            if (this.currentPlayer.CurrentSoulAttributes[number] >= Database.MAX_SOUL_ATTRIBUTE) { Debug.Log("return 1"); return; }
 
-            GroundOne.MC.CurrentSoulAttributes[number] += 1;
-            Debug.Log("GroundOne.MC.CurrentSoulAttributes[number]: " + GroundOne.MC.CurrentSoulAttributes[number].ToString());
-            txtSoulValues[number].text = GroundOne.MC.CurrentSoulAttributes[number].ToString();
+            this.currentPlayer.CurrentSoulAttributes[number] += 1;
+            Debug.Log("this.currentPlayer.CurrentSoulAttributes[number]: " + this.currentPlayer.CurrentSoulAttributes[number].ToString());
+            txtSoulValues[number].text = this.currentPlayer.CurrentSoulAttributes[number].ToString();
 
             UpdateAvailablePoints();
+            UpdateSoulAttributeDesc(number);
         }
         public void TapFactorMinus(int number)
         {
-            if (GroundOne.MC.CurrentSoulFragment >= GroundOne.MC.MaxSoulFragment) { return; }
-            if (GroundOne.MC.CurrentSoulAttributes[number] <= 0) { return; }
+            if (this.currentPlayer.CurrentSoulFragment >= this.currentPlayer.MaxSoulFragment) { return; }
+            if (this.currentPlayer.CurrentSoulAttributes[number] <= 0) { return; }
 
-            GroundOne.MC.CurrentSoulAttributes[number] -= 1;
-            txtSoulValues[number].text = GroundOne.MC.CurrentSoulAttributes[number].ToString();
+            this.currentPlayer.CurrentSoulAttributes[number] -= 1;
+            txtSoulValues[number].text = this.currentPlayer.CurrentSoulAttributes[number].ToString();
 
             UpdateAvailablePoints();
+            UpdateSoulAttributeDesc(number);
         }
 
         private void UpdateAvailablePoints()
         {
-            txtAvailableAttributes.text = "Available Soul Points: " + GroundOne.MC.CurrentSoulFragment.ToString();
+            txtAvailableAttributes.text = "Available Soul Points: " + this.currentPlayer.CurrentSoulFragment.ToString();
         }
     }
 }

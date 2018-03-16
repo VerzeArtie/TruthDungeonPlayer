@@ -4827,5 +4827,41 @@ namespace DungeonPlayer
             result[counter] = Database.STYLE_BATTLE_SAGE; counter++;
             return result;
         }
+        public static string[] GetSoulAttributeDesc()
+        {
+            string[] result = new string[Database.SOUL_ATTRIBUTE_NUM];
+            int counter = 0;
+            result[counter] = "二刀流のサブウェポンのダメージが {0} % 上昇"; counter++;
+            result[counter] = "両手剣のダメージが {0} % 上昇"; counter++;
+            result[counter] = "炎魔法のダメージが {0} % 上昇"; counter++;
+            result[counter] = "氷魔法のダメージが {0} % 上昇"; counter++;
+            result[counter] = "杖装備時、「ためる」コマンドの威力が {0} % 上昇"; counter++;
+            result[counter] = "盾装備時、「防御」コマンドのダメージ軽減が {0} % 上昇"; counter++;
+            result[counter] = "魔法ダメージを与える際、対象の魔法防御を {0} % 無視"; counter++;
+            result[counter] = "インスタントコマンドの消費率を {0} % 軽減"; counter++;
+            return result;
+        }
+        public static double[] GetSoulAttributeValue()
+        {
+            double[] result = new double[Database.SOUL_ATTRIBUTE_NUM];
+            int counter = 0;
+            result[counter] = 2.0f; counter++;
+            result[counter] = 3.0f; counter++;
+            result[counter] = 2.0f; counter++;
+            result[counter] = 2.0f; counter++;
+            //result[counter] = "自分に上昇BUFFがかかっている場合、増加率が" + this.currentPlayer.CurrentSoulAttributes[number] * 0.05f + "% 上昇";
+            //result[counter] = "スタン、麻痺、凍結状態が解除される確率が " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
+            result[counter] = 2.0f; counter++;
+            result[counter] = 1.0f; counter++;
+            //result[counter] = "聖属性のスペル威力が " + this.currentPlayer.CurrentSoulAttributes[number] * 3.0f + " %上昇";
+            //result[counter] = "ライフ回復量が " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + " %上昇";
+            //result[counter] = "連続ヒットを有するコマンドのダメージが " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + " %上昇";
+            //result[counter] = "暗闇、誘惑、猛毒状態が解除される確率が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
+            //result[counter] = "クリティカルヒット率が " + this.currentPlayer.CurrentSoulAttributes[number] * 0.5f + " %上昇";
+            result[counter] = 2.0f; counter++;
+            //result[counter] = "回復魔法の回復量が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
+            result[counter] = 1.0f; counter++;
+            return result;
+        }
     }
 }
