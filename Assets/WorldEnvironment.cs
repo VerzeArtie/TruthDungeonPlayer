@@ -1401,6 +1401,7 @@ namespace DungeonPlayer
         public bool Truth_CommunicationGanz32 { get; set; } // ŒÃ‘ã‰h÷‚ÌŠ²‚Ì’f•Ğ‚ğ”„‹p‚·‚é
         public bool Truth_CommunicationGanz41 { get; set; } // ‚SŠKˆÈ~
 
+        public bool Truth_CommunicationHanna0 { get; set; } // ‰‰ñƒŒƒxƒ‹ƒAƒbƒv‚Åh‰®‚ÉŒ¾‚Á‚½ê‡‚ÌSoul-Style
         public bool Truth_CommunicationHanna1 { get; set; }
         public bool Truth_CommunicationHanna2 { get; set; }
         public bool Truth_CommunicationHanna3 { get; set; }

@@ -35495,6 +35495,41 @@ namespace DungeonPlayer
             messageList.Add(""); eventList.Add(ActionEvent.DungeonSeekerEvent603);
         }
 
+        public static void Message60007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：叔母さん、今日はもう宿屋で休もうと思ってるんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：あいよ、部屋はもう用意してあるからね。ゆっくりするんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、サンキュー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：おや、レベルアップしているようだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、と言ってもまだレベル " + GroundOne.MC.ToString() + " だけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、じゃあ宿屋で休む時は、ソウル・スタイルポイントを割り振っておくんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ソウル・スタイル？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：そう、自分としてのスタイルを磨くのさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：毎日の練習も大事だけど、寝る前に少しイメージする。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：そうすると、身体も自然とそうなっていくもんさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうか・・・確かにそうかもしれないな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サンキューな、ハンナ叔母さん。少しやってみるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：選ぶスタイルによって、武具や戦闘コマンド影響するから、まずは見てみるんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ポイントの割り振りに関してはどうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：どのスタイルに振っても良いし、。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.Truth_CommunicationHanna0 = true;
+        }
+
         public static void Message69993(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("ハンナ：荷物倉庫かい？ホラ、コッチだよ。"); eventList.Add(ActionEvent.None);
