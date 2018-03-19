@@ -674,6 +674,7 @@ namespace DungeonPlayer
         public Button btnSecondChara;
         public Button btnThirdChara;
         public GameObject btnCharacterGroup;
+        public Text txtCurrentName;
         MainCharacter currentPlayer = null;
 
         private void InitializeSoulPointView()
@@ -685,6 +686,16 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableSecondCharacter)
             {
                 btnCharacterGroup.SetActive(true);
+                btnSecondChara.gameObject.SetActive(true);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    btnThirdChara.gameObject.SetActive(true);
+                }
+                else
+                {
+                    btnThirdChara.gameObject.SetActive(false);
+                }
             }
             else
             {
@@ -708,6 +719,7 @@ namespace DungeonPlayer
                 txtSoulValues[ii].text = player.CurrentSoulAttributes[ii].ToString();
             }
             UpdateAvailablePoints();
+            txtCurrentName.text = currentPlayer.FullName;
         }
 
         public void FirstChara_Click()
