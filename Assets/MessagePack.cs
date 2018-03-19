@@ -35505,27 +35505,57 @@ namespace DungeonPlayer
 
             messageList.Add("ハンナ：おや、レベルアップしているようだね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、と言ってもまだレベル " + GroundOne.MC.ToString() + " だけどな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、と言ってもまだレベル " + GroundOne.MC.Level.ToString() + " だけどな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：アイン、じゃあ宿屋で休む時は、ソウル・スタイルポイントを割り振っておくんだね。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：アイン、じゃあ宿屋で休む時は、ソウル・スタイルのポイントを割り振っておくんだね。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ソウル・スタイル？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：そう、自分としてのスタイルを磨くのさ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：ソウル・スタイルとは、自分自身の基本的なスタイルの事を指しているんだよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：毎日の練習も大事だけど、寝る前に少しイメージする。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：毎日の練習も大事だけど、寝る前に少しだけ自分のなりたい姿をイメージする。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ハンナ：そうすると、身体も自然とそうなっていくもんさ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：そうか・・・確かにそうかもしれないな！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：そうか・・・なるほどな・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：サンキューな、ハンナ叔母さん。少しやってみるぜ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：選ぶスタイルによって、武具や戦闘コマンド影響するから、まずは見てみるんだね。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：選ぶスタイルによって、武具や戦闘コマンドに色々と影響するからね。ゆっくり決めるんだよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ポイントの割り振りに関してはどうなるんだ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、わかった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：どのスタイルに振っても良いし、。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：それで、ポイントの割り振りに関してはどうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：好きようにするんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：レベルアップしたらポイントが増えていくのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、その通りだね。１レベルアップ毎で１ポイントだよ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：割り振った後で、再度振り直しは可能なのか？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ハンナ：ああ、可能だよ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：いつでも割り振りのやり直しはできる？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ハンナ：残念だけど、そいつは無理だね。この宿屋で休む時だけイメージしていきな。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：そっか、まあそこはそうだよな。了解了解。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ハンナ：アッハハハ、考え過ぎは良くないよ。適当さも入れて好きな様にするんだね。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：ハハハ・・・そうだな。じゃあまずは好きに選んでみるぜ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ハンナ：ま、ご飯食べて元気にやってくんだね。ホラ、夕飯メニューを決めておくれ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("【宿屋メニューでソウル・ポイントを割り振れる様になりました】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+			messageList.Add("【ソウル・ポイントは宿屋のみで割り振りが行えます】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             GroundOne.WE.Truth_CommunicationHanna0 = true;
         }

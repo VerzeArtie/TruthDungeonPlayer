@@ -2467,6 +2467,7 @@ namespace DungeonPlayer
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna0 && GroundOne.MC.Level >= 2)
             {
                 MessagePack.Message60007(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
             #region "オル・ランディス遭遇前後"
