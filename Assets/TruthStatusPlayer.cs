@@ -2248,6 +2248,7 @@ namespace DungeonPlayer
             {
                 this.txtExperience.text = chara.Exp.ToString() + " / " + chara.NextLevelBorder.ToString();
                 float dx = (float)chara.Exp / (float)chara.NextLevelBorder;
+                if (dx >= 1.0f) { dx = 1.0f; }
                 imgExpGauge.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
             else
