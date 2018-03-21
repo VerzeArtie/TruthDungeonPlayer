@@ -6078,8 +6078,7 @@ namespace DungeonPlayer
                                 {
                                     if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                     {
-                                        damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
-                                        damage = damage / 4.0f;
+                                        damage = damage / (4.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                                     }
                                     else
                                     {
@@ -6501,8 +6500,7 @@ namespace DungeonPlayer
                                     {
                                         if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                         {
-                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
-                                            additional = (int)((float)additional / 4.0F);
+                                            additional = (int)((float)additional / (4.0F + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue));
                                         }
                                         else
                                         {
@@ -6550,8 +6548,7 @@ namespace DungeonPlayer
                                     {
                                         if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                         {
-                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
-                                            additional = (int)((float)additional / 4.0F);
+                                            additional = (int)((float)additional / (4.0F + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue));
                                         }
                                         else
                                         {
@@ -6781,12 +6778,12 @@ namespace DungeonPlayer
             else
             {
                 double current = PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
-                if (player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] > 0)
-                {
-                    double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * TruthActionCommand.MageBreakerValue;
-                    if (reduce >= 1.0f) { reduce = 1.0f;}
-                    current = current * (1.0f - reduce);
-                }
+
+                double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * TruthActionCommand.MageBreakerValue;
+                if (reduce >= 1.0f) { reduce = 1.0f; }
+                if (reduce <= 0.0f) { reduce = 0.0f; }
+                current = current * (1.0f - reduce);
+                
                 damage -= current;
                 if (damage <= 0.0f) damage = 0.0f;
 
@@ -6818,8 +6815,7 @@ namespace DungeonPlayer
                         {
                             if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                             {
-                                damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
-                                damage = damage / 4.0f;
+                                damage = damage / (4.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                             }
                             else
                             {
