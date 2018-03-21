@@ -4860,9 +4860,9 @@ namespace DungeonPlayer
             //result[counter] = "連続ヒットを有するコマンドのダメージが " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + " %上昇";
             //result[counter] = "暗闇、誘惑、猛毒状態が解除される確率が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
             //result[counter] = "クリティカルヒット率が " + this.currentPlayer.CurrentSoulAttributes[number] * 0.5f + " %上昇";
-            result[counter] = 2.0f; counter++; // Mage-Breaker
+            result[counter] = 1.0f; counter++; // Mage-Breaker
             //result[counter] = "回復魔法の回復量が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
-            result[counter] = 1.0f; counter++; // Battle-Sage
+            result[counter] = 0.5f; counter++; // Battle-Sage
             return result;
         }
 

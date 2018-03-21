@@ -6778,11 +6778,14 @@ namespace DungeonPlayer
             else
             {
                 double current = PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
+                //Debug.Log("MagicDefense: " + current.ToString());
 
                 double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * TruthActionCommand.MageBreakerValue;
+                //Debug.Log("reduce: " + reduce.ToString());
                 if (reduce >= 1.0f) { reduce = 1.0f; }
                 if (reduce <= 0.0f) { reduce = 0.0f; }
                 current = current * (1.0f - reduce);
+                //Debug.Log("MagicDefense2: " + current.ToString());
                 
                 damage -= current;
                 if (damage <= 0.0f) damage = 0.0f;
