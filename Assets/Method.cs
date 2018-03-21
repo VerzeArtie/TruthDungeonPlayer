@@ -2408,10 +2408,20 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableThirdCharacter)
             {
                 GroundOne.WE.AvailableThirdCharacter = false;
+                // オルとヴェルゼは再度復帰する予定はないため、ここで一旦ソウルポイントをクリアする。
+                for (int ii = 0; ii < player.CurrentSoulAttributes.Length; ii++)
+                {
+                    player.CurrentSoulAttributes[ii] = 0;
+                }
             }
             else if (GroundOne.WE.AvailableSecondCharacter)
             {
                 GroundOne.WE.AvailableSecondCharacter = false;
+                // ラナの場合、再度復帰する予定があるため、ここで一旦ソウルポイントはクリアしない。
+                //for (int ii = 0; ii < player.CurrentSoulAttributes.Length; ii++)
+                //{
+                //    player.CurrentSoulAttributes[ii] = 0;
+                //}
             }
 
             string[] itemBank = new string[Database.MAX_ITEM_BANK];
