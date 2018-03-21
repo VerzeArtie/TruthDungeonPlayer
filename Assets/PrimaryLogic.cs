@@ -281,7 +281,7 @@ namespace DungeonPlayer
             {
                 if (!ignoreChargeCount && (player.CurrentChargeCount > 0))
                 {
-                    result = result * (double)(1.0F + player.CurrentChargeCount + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Oracle_Commander] * 0.02f);
+                    result = result * (double)(1.0F + player.CurrentChargeCount + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Oracle_Commander] * TruthActionCommand.OracleCommanderValue);
                 }
                 if (player.AmplifyMagicAttack > 0.0f) // 「警告」魔法攻撃増強で回復も増強するのか？
                 {

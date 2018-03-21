@@ -5994,13 +5994,13 @@ namespace DungeonPlayer
                             damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                             if (player.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand)
                             {
-                                damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Gradiator] * 0.05f);
+                                damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Gradiator] * TruthActionCommand.TheGradiatorValue);
                             }
                         }
                         else
                         {
                             damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, GroundOne.DuelMode);
-                            damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Sword_Dancer] * 0.02f);
+                            damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Sword_Dancer] * TruthActionCommand.SwordDancerValue);
                         }
                     }
                     else
@@ -6078,7 +6078,7 @@ namespace DungeonPlayer
                                 {
                                     if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                     {
-                                        damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                        damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                                         damage = damage / 4.0f;
                                     }
                                     else
@@ -6501,7 +6501,7 @@ namespace DungeonPlayer
                                     {
                                         if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                         {
-                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                                             additional = (int)((float)additional / 4.0F);
                                         }
                                         else
@@ -6550,7 +6550,7 @@ namespace DungeonPlayer
                                     {
                                         if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                                         {
-                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                            additional = additional / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                                             additional = (int)((float)additional / 4.0F);
                                         }
                                         else
@@ -6704,11 +6704,11 @@ namespace DungeonPlayer
 
             if (TruthActionCommand.IsFire(magicType))
             {
-                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Fire_Walker] * 0.03f);
+                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Fire_Walker] * TruthActionCommand.FireWalkerValue);
             }
             if (TruthActionCommand.IsIce(magicType))
             {
-                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Ice_Walker] * 0.03f);
+                damage = damage * (1.00f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Ice_Walker] * TruthActionCommand.IceWalkerValue);
             }
 
             // ダメージ「＋」追加
@@ -6783,7 +6783,7 @@ namespace DungeonPlayer
                 double current = PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
                 if (player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] > 0)
                 {
-                    double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * 0.02f;
+                    double reduce = player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Mage_Breaker] * TruthActionCommand.MageBreakerValue;
                     if (reduce >= 1.0f) { reduce = 1.0f;}
                     current = current * (1.0f - reduce);
                 }
@@ -6818,7 +6818,7 @@ namespace DungeonPlayer
                         {
                             if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
                             {
-                                damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * 0.01f);
+                                damage = damage / (1.0f + target.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Defender] * TruthActionCommand.TheDefenderValue);
                                 damage = damage / 4.0f;
                             }
                             else

@@ -3195,7 +3195,7 @@ namespace DungeonPlayer
         public void ResetInstantPoint()
         {
             this.currentInstantPoint = 0;
-            this.currentInstantPoint += this.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Battle_Sage] * 0.01F * this.MaxSkillPoint;
+            this.currentInstantPoint += this.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.Battle_Sage] * TruthActionCommand.BattleSageValue * this.MaxSkillPoint;
         }
 
         public string GetCharacterSentence(int sentenceNumber)

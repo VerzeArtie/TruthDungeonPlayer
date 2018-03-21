@@ -4827,6 +4827,7 @@ namespace DungeonPlayer
             result[counter] = Database.STYLE_BATTLE_SAGE; counter++;
             return result;
         }
+
         public static string[] GetSoulAttributeDesc()
         {
             string[] result = new string[Database.SOUL_ATTRIBUTE_NUM];
@@ -4841,27 +4842,61 @@ namespace DungeonPlayer
             result[counter] = "インスタントコマンドの消費率を {0} % 軽減"; counter++;
             return result;
         }
+
         public static double[] GetSoulAttributeValue()
         {
             double[] result = new double[Database.SOUL_ATTRIBUTE_NUM];
             int counter = 0;
-            result[counter] = 2.0f; counter++;
-            result[counter] = 3.0f; counter++;
-            result[counter] = 2.0f; counter++;
-            result[counter] = 2.0f; counter++;
+            result[counter] = 2.0f; counter++; // Sword-Dancer
+            result[counter] = 3.0f; counter++; // The-Gradiator
+            result[counter] = 2.0f; counter++; // Fire-Walker
+            result[counter] = 2.0f; counter++; // Ice-Walker
             //result[counter] = "自分に上昇BUFFがかかっている場合、増加率が" + this.currentPlayer.CurrentSoulAttributes[number] * 0.05f + "% 上昇";
             //result[counter] = "スタン、麻痺、凍結状態が解除される確率が " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + "% 上昇";
-            result[counter] = 2.0f; counter++;
-            result[counter] = 1.0f; counter++;
+            result[counter] = 2.0f; counter++; // Oracle-Commander
+            result[counter] = 1.0f; counter++; // The-Defender
             //result[counter] = "聖属性のスペル威力が " + this.currentPlayer.CurrentSoulAttributes[number] * 3.0f + " %上昇";
             //result[counter] = "ライフ回復量が " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + " %上昇";
             //result[counter] = "連続ヒットを有するコマンドのダメージが " + this.currentPlayer.CurrentSoulAttributes[number] * 2.0f + " %上昇";
             //result[counter] = "暗闇、誘惑、猛毒状態が解除される確率が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
             //result[counter] = "クリティカルヒット率が " + this.currentPlayer.CurrentSoulAttributes[number] * 0.5f + " %上昇";
-            result[counter] = 2.0f; counter++;
+            result[counter] = 2.0f; counter++; // Mage-Breaker
             //result[counter] = "回復魔法の回復量が " + this.currentPlayer.CurrentSoulAttributes[number] * 1.0f + " %上昇";
-            result[counter] = 1.0f; counter++;
+            result[counter] = 1.0f; counter++; // Battle-Sage
             return result;
+        }
+
+        public static double SwordDancerValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Sword_Dancer] * 0.01f; }
+        }
+        public static double TheGradiatorValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.The_Gradiator] * 0.01f; }
+        }
+        public static double FireWalkerValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Fire_Walker] * 0.01f; }
+        }
+        public static double IceWalkerValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Ice_Walker] * 0.01f; }
+        }
+        public static double OracleCommanderValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Oracle_Commander] * 0.01f; }
+        }
+        public static double TheDefenderValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.The_Defender] * 0.01f; }
+        }
+        public static double MageBreakerValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Mage_Breaker] * 0.01f; }
+        }
+        public static double BattleSageValue
+        {
+            get { return GetSoulAttributeValue()[(int)SoulStyle.Battle_Sage] * 0.01f; }
         }
     }
 }
