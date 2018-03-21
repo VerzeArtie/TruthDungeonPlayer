@@ -482,9 +482,9 @@ namespace DungeonPlayer
                 }
                 // e 後編追加
 
-                // バックパック
                 if (GroundOne.MC != null)
                 {
+                    // バックパック
                     ItemBackPack[] backpackInfo = GroundOne.MC.GetBackPackInfo();
                     for (int ii = 0; ii < backpackInfo.Length; ii++)
                     {
@@ -497,6 +497,14 @@ namespace DungeonPlayer
                             xmlWriter.WriteWhitespace("\r\n");
                             // e 後編編集
                         }
+                    }
+
+                    // ソウル・ポイント
+                    int[] soulAttributes = GroundOne.MC.CurrentSoulAttributes;
+                    for (int ii = 0; ii < soulAttributes.Length; ii++)
+                    {
+                        xmlWriter.WriteElementString("SoulAttribute" + ii.ToString(), soulAttributes[ii].ToString());
+                        xmlWriter.WriteWhitespace("\r\n");
                     }
                 }
                 xmlWriter.WriteEndElement();
@@ -569,9 +577,9 @@ namespace DungeonPlayer
                 }
                 // e 後編追加
 
-                // バックパック
                 if (GroundOne.SC != null)
                 {
+                    // バックパック
                     ItemBackPack[] backpackInfo = GroundOne.SC.GetBackPackInfo();
                     for (int ii = 0; ii < backpackInfo.Length; ii++)
                     {
@@ -584,6 +592,14 @@ namespace DungeonPlayer
                             xmlWriter.WriteWhitespace("\r\n");
                             // e 後編編集
                         }
+                    }
+
+                    // ソウル・ポイント
+                    int[] soulAttributes = GroundOne.SC.CurrentSoulAttributes;
+                    for (int ii = 0; ii < soulAttributes.Length; ii++)
+                    {
+                        xmlWriter.WriteElementString("SoulAttribute" + ii.ToString(), soulAttributes[ii].ToString());
+                        xmlWriter.WriteWhitespace("\r\n");
                     }
                 }
                 xmlWriter.WriteEndElement();
@@ -658,9 +674,9 @@ namespace DungeonPlayer
                 }
                 // e 後編追加
 
-                // バックパック
                 if (GroundOne.TC != null)
                 {
+                    // バックパック
                     ItemBackPack[] backpackInfo = GroundOne.TC.GetBackPackInfo();
                     for (int ii = 0; ii < backpackInfo.Length; ii++)
                     {
@@ -673,6 +689,14 @@ namespace DungeonPlayer
                             xmlWriter.WriteWhitespace("\r\n");
                             // e 後編編集
                         }
+                    }
+
+                    // ソウル・ポイント
+                    int[] soulAttributes = GroundOne.TC.CurrentSoulAttributes;
+                    for (int ii = 0; ii < soulAttributes.Length; ii++)
+                    {
+                        xmlWriter.WriteElementString("SoulAttribute" + ii.ToString(), soulAttributes[ii].ToString());
+                        xmlWriter.WriteWhitespace("\r\n");
                     }
                 }
                 xmlWriter.WriteEndElement();
@@ -1037,6 +1061,7 @@ namespace DungeonPlayer
             // s 後編編集
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             {
+
                 XmlNodeList temp = xml.GetElementsByTagName("BackPack" + ii.ToString());
                 foreach (XmlNode node in temp)
                 {
@@ -1109,6 +1134,26 @@ namespace DungeonPlayer
                 }
             }
             // e 後編編集
+            for (int ii = 0; ii < Database.SOUL_ATTRIBUTE_NUM; ii++)
+            {
+                XmlNodeList temp = xml.GetElementsByTagName("SoulAttribute" + ii.ToString());
+                foreach (XmlNode node in temp)
+                {
+                    if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
+                    {
+                        GroundOne.MC.CurrentSoulAttributes[ii] = Convert.ToInt32(node.InnerText);
+                    }
+                    else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
+                    {
+                        GroundOne.SC.CurrentSoulAttributes[ii] = Convert.ToInt32(node.InnerText);
+                    }
+                    else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
+                    {
+                        GroundOne.TC.CurrentSoulAttributes[ii] = Convert.ToInt32(node.InnerText);
+                    }
+                }
+            }
+
             Debug.Log("ExecLoad 4 " + DateTime.Now);
 
             Type type = GroundOne.MC.GetType();
