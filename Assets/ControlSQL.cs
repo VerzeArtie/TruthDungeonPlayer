@@ -509,16 +509,18 @@ namespace DungeonPlayer
             {
                 System.Guid guid = System.Guid.NewGuid();
                 DateTime create_time = DateTime.Now;
+                string device_type = Application.platform.ToString();
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     Debug.Log("CreateOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
-                    string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time ) VALUES ( :name, :guid, :create_time )";
+                    string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time, device_type ) VALUES ( :name, :guid, :create_time, :device_type )";
                     var cmd = new NpgsqlCommand(sqlCmd, con);
                     //cmd.Prepare();
                     cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
                     cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
                     cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
+                    cmd.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
                     cmd.ExecuteNonQuery();
                 }
             }
