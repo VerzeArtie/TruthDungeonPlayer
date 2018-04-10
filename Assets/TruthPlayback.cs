@@ -27,7 +27,7 @@ namespace DungeonPlayer
                 item.transform.SetParent(content.transform, false);
                 item.GetComponentInChildren<Text>().text = GroundOne.playbackMessage[ii];
                 item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y - HEIGHT * ii, item.transform.localPosition.z);
-
+                item.SetActive(true);
                 // 個数に応じて、コンテンツ長さを延長する。
                 if (ii > 0)
                 {

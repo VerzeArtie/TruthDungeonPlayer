@@ -38,20 +38,20 @@ namespace DungeonPlayer
             vendor.FirstName = "ラナ";
 
             // GUI
-            for (int ii = 0; ii < vendorItemList.Length; ii++)
-            {
-                if (vendorItemList[ii] != null)
-                {
-                    vendorItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
-                }
-            }
-            for (int ii = 0; ii < playerItemList.Length; ii++)
-            {
-                if (playerItemList[ii] != null)
-                {
-                    playerItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
-                }
-            }
+            //for (int ii = 0; ii < vendorItemList.Length; ii++)
+            //{
+            //    if (vendorItemList[ii] != null)
+            //    {
+            //        vendorItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+            //    }
+            //}
+            //for (int ii = 0; ii < playerItemList.Length; ii++)
+            //{
+            //    if (playerItemList[ii] != null)
+            //    {
+            //        playerItemList[ii].transform.localPosition = new Vector3(0, -140 * ii, 0);
+            //    }
+            //}
             GroupSell.SetActive(false);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)

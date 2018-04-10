@@ -87,20 +87,20 @@ namespace DungeonPlayer
             vendor.FirstName = "ガンツ";
 
             // GUI
-            for (int ii = 0; ii < vendorItemList.Length; ii++)
-            {
-                if (vendorItemList[ii] != null)
-                {
-                    vendorItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
-                }
-            }
-            for (int ii = 0; ii < playerItemList.Length; ii++)
-            {
-                if (playerItemList[ii] != null)
-                {
-                    playerItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
-                }
-            }
+            //for (int ii = 0; ii < vendorItemList.Length; ii++)
+            //{
+            //    if (vendorItemList[ii] != null)
+            //    {
+            //        vendorItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
+            //    }
+            //}
+            //for (int ii = 0; ii < playerItemList.Length; ii++)
+            //{
+            //    if (playerItemList[ii] != null)
+            //    {
+            //        playerItemList[ii].transform.localPosition = new Vector3(5, -5 + (-140 * ii), 0);
+            //    }
+            //}
             GroupSell.SetActive(false);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
@@ -2119,6 +2119,10 @@ namespace DungeonPlayer
 
         public void EquipmentShop_Click(Text sender)
         {
+            if (sender.text == null || sender.text == String.Empty)
+            {
+                return;
+            }
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_VENDORITEM, sender.text, String.Empty);
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
             //if (!GroundOne.WE.AvailableEquipShop5)
