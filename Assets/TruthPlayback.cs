@@ -28,11 +28,9 @@ namespace DungeonPlayer
                 item.GetComponentInChildren<Text>().text = GroundOne.playbackMessage[ii];
                 item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y - HEIGHT * ii, item.transform.localPosition.z);
                 item.SetActive(true);
+
                 // 個数に応じて、コンテンツ長さを延長する。
-                if (ii > 0)
-                {
-                    rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + HEIGHT);
-                }
+                rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + HEIGHT);
             }
             // 最後に余白を追加しておく。
             rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + MARGIN);
