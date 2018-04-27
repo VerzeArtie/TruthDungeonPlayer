@@ -5992,7 +5992,7 @@ namespace DungeonPlayer
                         if (ii == 0)
                         {
                             damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
-                            if (player.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                            if (player.MainWeapon != null && player.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand)
                             {
                                 damage = damage * (1.0f + player.CurrentSoulAttributes[(int)TruthActionCommand.SoulStyle.The_Gradiator] * TruthActionCommand.TheGradiatorValue);
                             }
