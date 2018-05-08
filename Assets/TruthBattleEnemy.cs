@@ -8514,7 +8514,7 @@ namespace DungeonPlayer
             else
             {
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
-                if (GroundOne.DuelMode == false)
+                if (GroundOne.DuelMode == false && GroundOne.EnableBattleReward)
                 {
                     UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
                     ExpGoldDisplay(ec1.Exp, ec1.Gold);
@@ -8539,7 +8539,7 @@ namespace DungeonPlayer
                     }
                 }
 
-                if (GroundOne.DuelMode == false)
+                if (GroundOne.DuelMode == false && GroundOne.EnableBattleReward)
                 {
                     GetExpAndGold();
 

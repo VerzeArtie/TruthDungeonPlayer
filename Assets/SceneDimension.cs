@@ -68,12 +68,16 @@ namespace DungeonPlayer
             SceneManager.LoadSceneAsync(Database.DungeonTicket, LoadSceneMode.Additive);
 		}
 
-        public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
+        public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount, bool enableReward, bool callFromMQ, int area, int stage)
         {
             GroundOne.DuelMode = duel;
             GroundOne.HiSpeedAnimation = hiSpeed;
             GroundOne.FinalBattle = final;
             GroundOne.LifeCountBattle = lifecount;
+            GroundOne.EnableBattleReward = enableReward;
+            GroundOne.CallFromMonsterQuest = callFromMQ;
+            GroundOne.MQ_AreaNumber = area;
+            GroundOne.MQ_StageNumber = stage;
             GroundOne.BattleResult = GroundOne.battleResult.None;
             GroundOne.SceneName = sceneName;
             GroundOne.StopDungeonMusic();
@@ -222,6 +226,12 @@ namespace DungeonPlayer
         {
             GroundOne.Parent.Add(scene);
             SceneManager.LoadSceneAsync(Database.TruthPotionShop, LoadSceneMode.Additive);
+        }
+
+        public static void CallMonsterQuest(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            SceneManager.LoadSceneAsync(Database.TruthMonsterQuest, LoadSceneMode.Additive);
         }
 
         public static void CallSaveLoadWithSaveOnly()

@@ -20493,19 +20493,19 @@ namespace DungeonPlayer
             if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
                 GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
             {
-                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, false, false);
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, false, false, true, false, 0, 0);
             }
             else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
             {
-                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, false);
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, false, true, false, 0, 0);
             }
             else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-            { 
-                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, true);
+            {
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, true, true, true, true, true, false, 0, 0);
             }
             else
             {
-                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false, true, false, 0, 0);
             }
         }
 

@@ -420,7 +420,7 @@ namespace DungeonPlayer
             }
 
 
-            SceneDimension.CallTruthBattleEnemy(Database.Title, GroundOne.DuelMode, false, false, false);
+            SceneDimension.CallTruthBattleEnemy(Database.Title, GroundOne.DuelMode, false, false, false, true, false, 0, 0);
         }
 
     }

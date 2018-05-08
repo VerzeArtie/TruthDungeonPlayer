@@ -641,7 +641,7 @@ namespace DungeonPlayer
             {
                 GroundOne.enemyName3 = txtName.text;
             }
-            SceneDimension.CallTruthBattleEnemy(Database.Title, toggleDuel.isOn, false, false, false);
+            SceneDimension.CallTruthBattleEnemy(Database.Title, toggleDuel.isOn, false, false, false, true, false, 0, 0);
         }
 
         public void tapExit()
