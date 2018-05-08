@@ -766,6 +766,8 @@ namespace DungeonPlayer
 
         #region "後編"
 
+        public bool AlreadyMonsterQuestComplete { get; set; } // 1回モンスター討伐にクリアしたら、その日は連続で出来ない事とする。
+
         public bool AlreadyDuelComplete { get; set; }
 
         public bool AlreadyGetOneDayItem { get; set; }
@@ -1351,6 +1353,7 @@ namespace DungeonPlayer
         public bool AvailableMixSpellSkill { get; set; }
         public bool AvailableArchetypeCommand { get; set; } // 潜在奥義の発動可能
         public bool AvailableBackGate { get; set; }
+        public bool AvailableMonsterQuest { get; set; } // モンスター討伐（1F初めからサンディを追加）
 
         public bool AlreadyCommunicateFazilCastle { get; set; } // ファージル宮殿でイベント済
         public bool alreadyCommunicateCahlhanz { get; set; } // ホームタウンでカール爵と会話済
@@ -1660,6 +1663,211 @@ namespace DungeonPlayer
         public string ItemBank99Stack { get; set; }
         public string ItemBank100 { get; set; }
         public string ItemBank100Stack { get; set; }
+
+        public bool AvailableMonsterQuest1 { get; set; }
+        public bool AvailableMonsterQuest2 { get; set; }
+        public bool AvailableMonsterQuest3 { get; set; }
+        public bool AvailableMonsterQuest4 { get; set; }
+        public bool AvailableMonsterQuest5 { get; set; }
+
+        public bool MQ_Complete1_1 { get; set; }
+        public bool MQ_Complete1_2 { get; set; }
+        public bool MQ_Complete1_3 { get; set; }
+        public bool MQ_Complete1_4 { get; set; }
+        public bool MQ_Complete1_5 { get; set; }
+        public bool MQ_Complete1_6 { get; set; }
+        public bool MQ_Complete1_7 { get; set; }
+        public bool MQ_Complete1_8 { get; set; }
+        public bool MQ_Complete1_9 { get; set; }
+        public bool MQ_Complete1_10 { get; set; }
+        public bool MQ_Complete1_11 { get; set; }
+        public bool MQ_Complete1_12 { get; set; }
+        public bool MQ_Complete1_13 { get; set; }
+        public bool MQ_Complete2_1 { get; set; }
+        public bool MQ_Complete2_2 { get; set; }
+        public bool MQ_Complete2_3 { get; set; }
+        public bool MQ_Complete2_4 { get; set; }
+        public bool MQ_Complete2_5 { get; set; }
+        public bool MQ_Complete2_6 { get; set; }
+        public bool MQ_Complete2_7 { get; set; }
+        public bool MQ_Complete2_8 { get; set; }
+        public bool MQ_Complete2_9 { get; set; }
+        public bool MQ_Complete2_10 { get; set; }
+        public bool MQ_Complete2_11 { get; set; }
+        public bool MQ_Complete2_12 { get; set; }
+        public bool MQ_Complete3_1 { get; set; }
+        public bool MQ_Complete3_2 { get; set; }
+        public bool MQ_Complete3_3 { get; set; }
+        public bool MQ_Complete3_4 { get; set; }
+        public bool MQ_Complete3_5 { get; set; }
+        public bool MQ_Complete3_6 { get; set; }
+        public bool MQ_Complete3_7 { get; set; }
+        public bool MQ_Complete3_8 { get; set; }
+        public bool MQ_Complete3_9 { get; set; }
+        public bool MQ_Complete3_10 { get; set; }
+        public bool MQ_Complete3_11 { get; set; }
+        public bool MQ_Complete3_12 { get; set; }
+        public bool MQ_Complete4_1 { get; set; }
+        public bool MQ_Complete4_2 { get; set; }
+        public bool MQ_Complete4_3 { get; set; }
+        public bool MQ_Complete4_4 { get; set; }
+        public bool MQ_Complete4_5 { get; set; }
+        public bool MQ_Complete4_6 { get; set; }
+        public bool MQ_Complete4_7 { get; set; }
+        public bool MQ_Complete4_8 { get; set; }
+        public bool MQ_Complete4_9 { get; set; }
+        public bool MQ_Complete4_10 { get; set; }
+        public bool MQ_Complete4_11 { get; set; }
+        public bool MQ_Complete4_12 { get; set; }
+
+        public bool MQ_Reward1_1_1 { get; set; }
+        public bool MQ_Reward1_1_2 { get; set; }
+        public bool MQ_Reward1_1_3 { get; set; }
+        public bool MQ_Reward1_2_1 { get; set; }
+        public bool MQ_Reward1_2_2 { get; set; }
+        public bool MQ_Reward1_2_3 { get; set; }
+        public bool MQ_Reward1_3_1 { get; set; }
+        public bool MQ_Reward1_3_2 { get; set; }
+        public bool MQ_Reward1_3_3 { get; set; }
+        public bool MQ_Reward1_4_1 { get; set; }
+        public bool MQ_Reward1_4_2 { get; set; }
+        public bool MQ_Reward1_4_3 { get; set; }
+        public bool MQ_Reward1_5_1 { get; set; }
+        public bool MQ_Reward1_5_2 { get; set; }
+        public bool MQ_Reward1_5_3 { get; set; }
+        public bool MQ_Reward1_6_1 { get; set; }
+        public bool MQ_Reward1_6_2 { get; set; }
+        public bool MQ_Reward1_6_3 { get; set; }
+        public bool MQ_Reward1_7_1 { get; set; }
+        public bool MQ_Reward1_7_2 { get; set; }
+        public bool MQ_Reward1_7_3 { get; set; }
+        public bool MQ_Reward1_8_1 { get; set; }
+        public bool MQ_Reward1_8_2 { get; set; }
+        public bool MQ_Reward1_8_3 { get; set; }
+        public bool MQ_Reward1_9_1 { get; set; }
+        public bool MQ_Reward1_9_2 { get; set; }
+        public bool MQ_Reward1_9_3 { get; set; }
+        public bool MQ_Reward1_10_1 { get; set; }
+        public bool MQ_Reward1_10_2 { get; set; }
+        public bool MQ_Reward1_10_3 { get; set; }
+        public bool MQ_Reward1_11_1 { get; set; }
+        public bool MQ_Reward1_11_2 { get; set; }
+        public bool MQ_Reward1_11_3 { get; set; }
+        public bool MQ_Reward1_12_1 { get; set; }
+        public bool MQ_Reward1_12_2 { get; set; }
+        public bool MQ_Reward1_12_3 { get; set; }
+        public bool MQ_Reward1_13_1 { get; set; }
+        public bool MQ_Reward1_13_2 { get; set; }
+        public bool MQ_Reward1_13_3 { get; set; }
+        public bool MQ_Reward2_1_1 { get; set; }
+        public bool MQ_Reward2_1_2 { get; set; }
+        public bool MQ_Reward2_1_3 { get; set; }
+        public bool MQ_Reward2_2_1 { get; set; }
+        public bool MQ_Reward2_2_2 { get; set; }
+        public bool MQ_Reward2_2_3 { get; set; }
+        public bool MQ_Reward2_3_1 { get; set; }
+        public bool MQ_Reward2_3_2 { get; set; }
+        public bool MQ_Reward2_3_3 { get; set; }
+        public bool MQ_Reward2_4_1 { get; set; }
+        public bool MQ_Reward2_4_2 { get; set; }
+        public bool MQ_Reward2_4_3 { get; set; }
+        public bool MQ_Reward2_5_1 { get; set; }
+        public bool MQ_Reward2_5_2 { get; set; }
+        public bool MQ_Reward2_5_3 { get; set; }
+        public bool MQ_Reward2_6_1 { get; set; }
+        public bool MQ_Reward2_6_2 { get; set; }
+        public bool MQ_Reward2_6_3 { get; set; }
+        public bool MQ_Reward2_7_1 { get; set; }
+        public bool MQ_Reward2_7_2 { get; set; }
+        public bool MQ_Reward2_7_3 { get; set; }
+        public bool MQ_Reward2_8_1 { get; set; }
+        public bool MQ_Reward2_8_2 { get; set; }
+        public bool MQ_Reward2_8_3 { get; set; }
+        public bool MQ_Reward2_9_1 { get; set; }
+        public bool MQ_Reward2_9_2 { get; set; }
+        public bool MQ_Reward2_9_3 { get; set; }
+        public bool MQ_Reward2_10_1 { get; set; }
+        public bool MQ_Reward2_10_2 { get; set; }
+        public bool MQ_Reward2_10_3 { get; set; }
+        public bool MQ_Reward2_11_1 { get; set; }
+        public bool MQ_Reward2_11_2 { get; set; }
+        public bool MQ_Reward2_11_3 { get; set; }
+        public bool MQ_Reward2_12_1 { get; set; }
+        public bool MQ_Reward2_12_2 { get; set; }
+        public bool MQ_Reward2_12_3 { get; set; }
+        public bool MQ_Reward3_1_1 { get; set; }
+        public bool MQ_Reward3_1_2 { get; set; }
+        public bool MQ_Reward3_1_3 { get; set; }
+        public bool MQ_Reward3_2_1 { get; set; }
+        public bool MQ_Reward3_2_2 { get; set; }
+        public bool MQ_Reward3_2_3 { get; set; }
+        public bool MQ_Reward3_3_1 { get; set; }
+        public bool MQ_Reward3_3_2 { get; set; }
+        public bool MQ_Reward3_3_3 { get; set; }
+        public bool MQ_Reward3_4_1 { get; set; }
+        public bool MQ_Reward3_4_2 { get; set; }
+        public bool MQ_Reward3_4_3 { get; set; }
+        public bool MQ_Reward3_5_1 { get; set; }
+        public bool MQ_Reward3_5_2 { get; set; }
+        public bool MQ_Reward3_5_3 { get; set; }
+        public bool MQ_Reward3_6_1 { get; set; }
+        public bool MQ_Reward3_6_2 { get; set; }
+        public bool MQ_Reward3_6_3 { get; set; }
+        public bool MQ_Reward3_7_1 { get; set; }
+        public bool MQ_Reward3_7_2 { get; set; }
+        public bool MQ_Reward3_7_3 { get; set; }
+        public bool MQ_Reward3_8_1 { get; set; }
+        public bool MQ_Reward3_8_2 { get; set; }
+        public bool MQ_Reward3_8_3 { get; set; }
+        public bool MQ_Reward3_9_1 { get; set; }
+        public bool MQ_Reward3_9_2 { get; set; }
+        public bool MQ_Reward3_9_3 { get; set; }
+        public bool MQ_Reward3_10_1 { get; set; }
+        public bool MQ_Reward3_10_2 { get; set; }
+        public bool MQ_Reward3_10_3 { get; set; }
+        public bool MQ_Reward3_11_1 { get; set; }
+        public bool MQ_Reward3_11_2 { get; set; }
+        public bool MQ_Reward3_11_3 { get; set; }
+        public bool MQ_Reward3_12_1 { get; set; }
+        public bool MQ_Reward3_12_2 { get; set; }
+        public bool MQ_Reward3_12_3 { get; set; }
+        public bool MQ_Reward4_1_1 { get; set; }
+        public bool MQ_Reward4_1_2 { get; set; }
+        public bool MQ_Reward4_1_3 { get; set; }
+        public bool MQ_Reward4_2_1 { get; set; }
+        public bool MQ_Reward4_2_2 { get; set; }
+        public bool MQ_Reward4_2_3 { get; set; }
+        public bool MQ_Reward4_3_1 { get; set; }
+        public bool MQ_Reward4_3_2 { get; set; }
+        public bool MQ_Reward4_3_3 { get; set; }
+        public bool MQ_Reward4_4_1 { get; set; }
+        public bool MQ_Reward4_4_2 { get; set; }
+        public bool MQ_Reward4_4_3 { get; set; }
+        public bool MQ_Reward4_5_1 { get; set; }
+        public bool MQ_Reward4_5_2 { get; set; }
+        public bool MQ_Reward4_5_3 { get; set; }
+        public bool MQ_Reward4_6_1 { get; set; }
+        public bool MQ_Reward4_6_2 { get; set; }
+        public bool MQ_Reward4_6_3 { get; set; }
+        public bool MQ_Reward4_7_1 { get; set; }
+        public bool MQ_Reward4_7_2 { get; set; }
+        public bool MQ_Reward4_7_3 { get; set; }
+        public bool MQ_Reward4_8_1 { get; set; }
+        public bool MQ_Reward4_8_2 { get; set; }
+        public bool MQ_Reward4_8_3 { get; set; }
+        public bool MQ_Reward4_9_1 { get; set; }
+        public bool MQ_Reward4_9_2 { get; set; }
+        public bool MQ_Reward4_9_3 { get; set; }
+        public bool MQ_Reward4_10_1 { get; set; }
+        public bool MQ_Reward4_10_2 { get; set; }
+        public bool MQ_Reward4_10_3 { get; set; }
+        public bool MQ_Reward4_11_1 { get; set; }
+        public bool MQ_Reward4_11_2 { get; set; }
+        public bool MQ_Reward4_11_3 { get; set; }
+        public bool MQ_Reward4_12_1 { get; set; }
+        public bool MQ_Reward4_12_2 { get; set; }
+        public bool MQ_Reward4_12_3 { get; set; }
+
         #endregion
 
         public void InitializeItemBankData()

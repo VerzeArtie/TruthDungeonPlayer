@@ -95,3 +95,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthDuelPlayerStatus.unity
     guid: 452e5fef225661a43b0a18311f3f8a99
+  - enabled: 1
+    path: Assets/TruthMonsterQuest.unity
+    guid: 6a32a13a717cda445a7c955d88ec641b

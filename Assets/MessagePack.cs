@@ -213,6 +213,7 @@ namespace DungeonPlayer
             HomeTownCallRequestFood,
             HomeTownButtonHidden,
             HomeTownMessageDisplay,
+            HomeTownRewardDisplay,
             HomeTownYesNoMessageDisplay,
             HomeTownShowActiveSkillSpell,
             HomeTownShowActiveSkillSpellSC,
@@ -43498,5 +43499,111 @@ namespace DungeonPlayer
         #endregion
         #endregion
 
+        #region "モンスター討伐"
+        public static void Message100001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ん、なんだここは・・・なんか立札に紙が幾つか貼り付けてあるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("？？？：アイン・ウォーレンスよ！よくぞ、参られた！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うお！・・・いきなりデカイ声で現れたな。誰だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：我が名はエガルト・サンディと申す！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：ファージル宮殿の衛兵として、この近隣を見回っている！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：今後ともよろしくお願い申す！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おお。よろしくな、サンディ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ところで、そこの貼り付けてある紙は、なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：見たところ、何かモンスター名が記述されている様だが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：よくぞ、気が付いてくれた！アイン・ウォーレンスよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ま、まあこんだけ目立つところに書いてあれば大概気づくけどな。ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：昨今ではファージル周辺区域において、頻繁にモンスターが発生している状況である！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：本来であれば！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：このサンディが！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：全モンスターを討伐したいところではあるが！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：ッグ・・・ッググ・・・！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：待て待て、そうリキむなって。一人で全部片づけるのは難しいだろうさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だから、この張り紙でモンスター討伐募集ってことなんだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：誠に申し訳ないが、そういう事である！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よし、じゃあ分かった！俺も少しだけ参加してみようかと思う。やってみても良いか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：誠か！！参加していただけると、大変助かり申す！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一応確認なんだが、参加資格とかはあるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：そのような制限は特に設けてはいない！安心めされよ！アイン・ウォーレンスどの！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いきなり強いモンスターと戦っても大丈夫なのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：申し訳ないが、ある程度のレベル制限は設けてある！少しレベルアップしてから挑まれるがよい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そっか、わかった。ありがとうな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっ、もう一つだけ。万が一・・・討伐にしくじった場合はどうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：復活した状態で再度やり直しは可能である！安心して挑まれるがよい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オーケー。じゃあ早速やってみるとするぜ！ありがとな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：アイン・ウォーレンスよ！気を付けて行くがよい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.Message_MonsterQuestAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            GroundOne.WE.AvailableMonsterQuest = true;
+        }
+
+        public static void Message100002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っしゃ、無事に倒せたようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、今回は成功だ。問題なくやって退けたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：よくぞやってくれた！それでは、報酬を受け取るがよい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownRewardDisplay);
+
+            GroundOne.WE.AlreadyMonsterQuestComplete = true;
+        }
+
+        public static void Message100003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：あっ、ちょっと待ってくれ。バックパックが今大量で入りきらないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：心配ご無用！報酬はこちらで保管しておくので、必要に応じて、受け取りに来られたし！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪いな、じゃあまた後で取りに行くから、よろしく頼んだ。"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message100004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っつつ・・・しまったな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：すまねぇ、ちょっと今回は無理だったみたいだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：気にされる事はない！また今度挑戦されるがよい"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AlreadyMonsterQuestComplete = true;
+        }
+
+        #endregion
     }
 }

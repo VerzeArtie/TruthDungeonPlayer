@@ -91,6 +91,8 @@ namespace DungeonPlayer
         public static bool HiSpeedAnimation = false; // 通常ダメージアニメーションを早めるために使用
         public static bool FinalBattle = false; // 最終戦闘、スタックコマンドの動作を早めるために使用
         public static bool LifeCountBattle = false; // 最終戦闘でライフカウントを表現するために使用
+        public static bool EnableBattleReward = true; // モンスター撃破後の報酬有無（デフォルトTrue、モンスター討伐ではFalse指定）
+        public static bool CallFromMonsterQuest = false; // モンスター討伐から呼び出された戦闘シーンであることを示すフラグ
         public static battleResult BattleResult = battleResult.None;
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;
@@ -183,6 +185,10 @@ namespace DungeonPlayer
         // TruthDuelPlayerStatus
         public static string DuelPlayerName;
         
+        // TruthMonsterQuest
+        public static int MQ_AreaNumber = 0;
+        public static int MQ_StageNumber = 0;
+
         public static void ReInitializeGroundOne(bool FromGameLoad)
         {
             Debug.Log("ReInitializeGroundOne (S)");
