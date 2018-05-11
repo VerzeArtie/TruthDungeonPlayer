@@ -4132,6 +4132,21 @@ namespace DungeonPlayer
             txtRewardResult[2].text = MQ_REWARD[currentStage, 0];
             txtRewardResult[3].text = MQ_REWARD[currentStage, 1];
             txtRewardResult[4].text = MQ_REWARD[currentStage, 2];
+            for (int ii = 0; ii < txtRewardResult.Count; ii++)
+            {
+                if (ii == 0)
+                {
+                    imgRewardResult[ii].sprite = Resources.Load<Sprite>("MedalGold");
+                }
+                else if (ii == 1)
+                {
+                    imgRewardResult[ii].sprite = Resources.Load<Sprite>("MedalExp");
+                }
+                else
+                {
+                    Method.UpdateItemImage(new ItemBackPack(txtRewardResult[ii].text), imgRewardResult[ii]);
+                }
+            }
             groupBattleResult.SetActive(true);
 
             GroundOne.MC.Gold += MQ_GOLD[currentStage];
