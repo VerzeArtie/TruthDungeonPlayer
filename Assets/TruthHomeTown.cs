@@ -4134,6 +4134,20 @@ namespace DungeonPlayer
             txtRewardResult[4].text = MQ_REWARD[currentStage, 2];
             groupBattleResult.SetActive(true);
 
+            GroundOne.MC.Gold += MQ_GOLD[currentStage];
+            if (GroundOne.MC != null && GroundOne.WE.AvailableFirstCharacter)
+            {
+                GroundOne.MC.Exp += MQ_EXP[currentStage];
+            }
+            if (GroundOne.SC != null && GroundOne.WE.AvailableSecondCharacter)
+            {
+                GroundOne.SC.Exp += MQ_EXP[currentStage];
+            }
+            if (GroundOne.TC != null && GroundOne.WE.AvailableThirdCharacter)
+            {
+                GroundOne.TC.Exp += MQ_EXP[currentStage];
+            }
+
             if (currentArea == 0 && currentStage == 0) { GroundOne.WE.MQ_Complete1_1 = true; }
             if (currentArea == 0 && currentStage == 1) { GroundOne.WE.MQ_Complete1_2 = true; }
             if (currentArea == 0 && currentStage == 2) { GroundOne.WE.MQ_Complete1_3 = true; }

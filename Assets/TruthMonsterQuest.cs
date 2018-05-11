@@ -38,6 +38,8 @@ namespace DungeonPlayer
         public List<Image> imgRewardResult;
         public GameObject groupSystemMessage;
         public Text txtResultFailMessage;
+        public GameObject objItemInfo;
+        public Text txtItemDesc;
 
         private int areaNumber = 1;
         private int stageNumber = 0;
@@ -1271,6 +1273,43 @@ namespace DungeonPlayer
             }
 
             Debug.Log("TapItemReward(E)");
+        }
+
+        public void TapItemInfo(int num)
+        {
+            Debug.Log("TapItemReward: " + num.ToString());
+
+            int stageNumber = num / 3;
+            int itemNumber = num % 3;
+            string[,] MQ_REWARD = Database.MQ_FLOOR1_REWARD;
+            if (areaNumber == 0)
+            {
+                MQ_REWARD = Database.MQ_FLOOR1_REWARD;
+            }
+            else if (areaNumber == 1)
+            {
+                MQ_REWARD = Database.MQ_FLOOR2_REWARD;
+            }
+            else if (areaNumber == 2)
+            {
+                MQ_REWARD = Database.MQ_FLOOR3_REWARD;
+            }
+            else if (areaNumber == 3)
+            {
+                MQ_REWARD = Database.MQ_FLOOR4_REWARD;
+            }
+
+            string targetItemName = MQ_REWARD[stageNumber, itemNumber];
+            // 空文字やNULLアイテムは未登録のため、何もしない。
+            if (targetItemName == null || targetItemName == String.Empty || targetItemName == "")
+            {
+                return;
+            }
+            ItemBackPack item = new ItemBackPack(targetItemName);
+            if (item == null) { return; }
+            if (item.Name == String.Empty || item.Name == "") { return; }
+
+            txtMainMessage.text = "報酬 ＜ " + item.Name + " ＞  " + item.Description;
         }
 
         public void TapFilterClose()
