@@ -37996,7 +37996,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：要件は簡単だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：討伐の依頼は入ってないか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：通常モンスターじゃなくて、ボス級のモンスター討伐依頼は入ってないか？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("国王エルミ：あるよ。それがどうしたんだい？"); eventList.Add(ActionEvent.None);
 
@@ -38008,7 +38008,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、それが一番助かる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("国王エルミ：それでは、近衛兵に対して、アイン・ウォーレンスの討伐依頼申請受諾権利を認める事を伝えておこう。"); eventList.Add(ActionEvent.None);
+            messageList.Add("国王エルミ：それでは、近衛兵に対して、アイン・ウォーレンスのボスモンスター討伐依頼申請受諾権利を認める事を伝えておこう。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("王妃ファラ：エルミ。この件なら既に、謁見前に近衛兵サンディに伝えておきましたよ。"); eventList.Add(ActionEvent.None);
 
@@ -38052,7 +38052,14 @@ namespace DungeonPlayer
 
             messageList.Add("　　　『　城門ゲート前にて・・・　』"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ええと、近衛兵サンディさんは・・・と・・・"); eventList.Add(ActionEvent.None);
+            if (GroundOne.WE.AvailableMonsterQuest)
+            {
+                messageList.Add("アイン：ええと、サンディは・・・と・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ええと、近衛兵サンディさんは・・・と・・・"); eventList.Add(ActionEvent.None);
+            }
 
             messageList.Add("　　【近衛兵：アイン・ウォーレンス！　アイン・ウォーレンスはこの場に居るか！！】"); eventList.Add(ActionEvent.None);
 
@@ -38060,7 +38067,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　【近衛兵：アイン・ウォーレンスに通達する！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　【近衛兵：今この時より、アイン・ウォーレンスに討伐依頼申請の受理を行う権利を与える事とする！】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【近衛兵：今この時より、アイン・ウォーレンスにボスモンスター討伐依頼申請の受理を行う権利を与える事とする！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　【近衛兵：討伐依頼のリストは、この私エガルト・サンディが所持している！！】"); eventList.Add(ActionEvent.None);
 
@@ -38072,17 +38079,27 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：あぁ・・・じゃあとりあえず、一つだけ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：えっと、次からはサンディって呼んでも良いか？"); eventList.Add(ActionEvent.None);
+            if (GroundOne.WE.AvailableMonsterQuest)
+            {
+                messageList.Add("アイン：俺達とは、通常のモンスター討伐の時、合ってるよな。今まで通りサンディって呼んでも良いか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：おーい近衛兵って呼ぶのも何となく変だしな。構わないか？"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：近衛兵って呼び方に戻すのもなんだか気が引けるしな。構わないか？"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：えっと、次からはサンディって呼んでも良いか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おーい近衛兵って呼ぶのも何となく変だしな。構わないか？"); eventList.Add(ActionEvent.None);
+            }
+
 
             messageList.Add("　　【近衛兵：承知いたした！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　【近衛兵：それでは以降、私の事はサンディと呼ぶが良い！！】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【近衛兵：それでは、私の事はサンディと呼ぶが良い！！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：おーし、サンキューサンキュー。じゃあよろしくな！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ちょっと、良い感じのトコ悪いんだけど、肝心の討伐依頼リストは見ておかないの？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：ちょっと、良い感じのトコ悪いんだけど、肝心のボスモンスター討伐依頼リストは見ておかないの？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ん？ああ、それも大事なんだけどな。今回はひとまずココまでって事にさせてくれ。悪いな。"); eventList.Add(ActionEvent.None);
 
@@ -38434,9 +38451,9 @@ namespace DungeonPlayer
         public static void Message70020(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             // after (モンスター討伐システムを作ってください)
-            messageList.Add("アイン：よお、サンディ。良かったら討伐リストを見せてくれないか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：よお、サンディ。良かったらボスモンスター討伐リストを見せてくれないか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：【すまぬが、討伐リストは未だ作られておらぬ！】"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【すまぬが、ボスモンスター討伐リストは未だ作られておらぬ！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("サンディ：【今しばらく待たれよ！】"); eventList.Add(ActionEvent.None);
 
@@ -43504,15 +43521,15 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：ん、なんだここは・・・なんか立札に紙が幾つか貼り付けてあるな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("？？？：アイン・ウォーレンスよ！よくぞ、参られた！"); eventList.Add(ActionEvent.None);
+            messageList.Add("？？？：【アイン・ウォーレンスよ！よくぞ、参られた！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：うお！・・・いきなりデカイ声で現れたな。誰だ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：我が名はエガルト・サンディと申す！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【我が名はエガルト・サンディと申す！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：ファージル宮殿の衛兵として、この近隣を見回っている！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【ファージル宮殿の近衛兵として、この近隣を見回っている！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：今後ともよろしくお願い申す！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【今後ともよろしくお願い申す！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：お、おお。よろしくな、サンディ。"); eventList.Add(ActionEvent.None);
 
@@ -43520,47 +43537,47 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：見たところ、何かモンスター名が記述されている様だが・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：よくぞ、気が付いてくれた！アイン・ウォーレンスよ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【よくぞ、気が付いてくれた！アイン・ウォーレンスよ！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ま、まあこんだけ目立つところに書いてあれば大概気づくけどな。ハハハ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：昨今ではファージル周辺区域において、頻繁にモンスターが発生している状況である！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【昨今ではファージル周辺区域において、頻繁にモンスターが発生している状況である！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：本来であれば！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【本来であれば！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：このサンディが！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【このサンディが！！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：全モンスターを討伐したいところではあるが！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【全てのモンスターを討伐したいところではあるが！！！】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：ッグ・・・ッググ・・・！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：（ッグ・・・ッググ・・・！！！）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：待て待て、そうリキむなって。一人で全部片づけるのは難しいだろうさ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：だから、この張り紙でモンスター討伐募集ってことなんだろ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：誠に申し訳ないが、そういう事である！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【誠に申し訳ないが、そういう事である！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：よし、じゃあ分かった！俺も少しだけ参加してみようかと思う。やってみても良いか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：誠か！！参加していただけると、大変助かり申す！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【誠か！！参加していただけると、大変助かり申す！！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：一応確認なんだが、参加資格とかはあるのか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：そのような制限は特に設けてはいない！安心めされよ！アイン・ウォーレンスどの！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【そのような制限は特に設けてはいない！安心めされよ！アイン・ウォーレンスどの！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：いきなり強いモンスターと戦っても大丈夫なのか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：申し訳ないが、ある程度のレベル制限は設けてある！少しレベルアップしてから挑まれるがよい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【申し訳ないが、ある程度のレベル制限は設けてある！少しレベルアップしてから挑まれるがよい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：そっか、わかった。ありがとうな！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：あっ、もう一つだけ。万が一・・・討伐にしくじった場合はどうなるんだ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：復活した状態で再度やり直しは可能である！安心して挑まれるがよい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【復活した状態で再度やり直しは可能である！安心して挑まれるがよい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：オーケー。じゃあ早速やってみるとするぜ！ありがとな！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：アイン・ウォーレンスよ！気を付けて行くがよい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【アイン・ウォーレンスよ！気を付けて行くがよい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add(Database.Message_MonsterQuestAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -43571,11 +43588,11 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：っしゃ、無事に倒せたようだな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、今回は成功だ。問題なくやって退けたぜ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：よくぞやってくれた！それでは、報酬を受け取るがよい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【よくぞやってくれた！それでは、報酬を受け取るがよい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownRewardDisplay);
 
@@ -43586,7 +43603,7 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：あっ、ちょっと待ってくれ。バックパックが今大量で入りきらないんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：心配ご無用！報酬はこちらで保管しておくので、必要に応じて、受け取りに来られたし！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【心配ご無用！報酬はこちらで保管しておくので、必要に応じて、受け取りに来られたし！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：悪いな、じゃあまた後で取りに行くから、よろしく頼んだ。"); eventList.Add(ActionEvent.None);
         }
@@ -43595,11 +43612,11 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：っつつ・・・しまったな・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【アイン・ウォーレンスよ！よくぞ戻られた！状況を報告していただきたい！】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：すまねぇ、ちょっと今回は無理だったみたいだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サンディ：気にされる事はない！また今度挑戦されるがよい"); eventList.Add(ActionEvent.None);
+            messageList.Add("サンディ：【気にされる事はない！また今度挑戦されるがよい！】"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AlreadyMonsterQuestComplete = true;
         }
