@@ -2348,6 +2348,8 @@ namespace DungeonPlayer
 
         public const string SOUND_OBJECTIVE_ADD = "ObjectiveAdd";
         public const string SOUND_OBJECTIVE_COMP = "ObjectiveComplete";
+
+        public const string SOUND_MQ_REWARD = "MonsterQuestReward";
         #endregion
 
         #region "敵の名前"

@@ -386,6 +386,23 @@ namespace DungeonPlayer
                 mainMessage.text = "";
                 GroundOne.CallFromMonsterQuest = false;
 
+                // 全回復しておく
+                if (GroundOne.MC != null)
+                {
+                    GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife);
+                    GroundOne.MC.MaxGain();
+                }
+                if (GroundOne.SC != null)
+                {
+                    GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife);
+                    GroundOne.SC.MaxGain();
+                }
+                if (GroundOne.TC != null)
+                {
+                    GroundOne.TC.ResurrectPlayer(GroundOne.TC.MaxLife);
+                    GroundOne.TC.MaxGain();
+                }
+
                 if (GroundOne.BattleResult == GroundOne.battleResult.OK)
                 {
                     GroundOne.WE.AlreadyMonsterQuestComplete = true;
@@ -4147,6 +4164,7 @@ namespace DungeonPlayer
                     Method.UpdateItemImage(new ItemBackPack(txtRewardResult[ii].text), imgRewardResult[ii]);
                 }
             }
+            GroundOne.PlaySoundEffect(Database.SOUND_MQ_REWARD);
             groupBattleResult.SetActive(true);
 
             GroundOne.MC.Gold += MQ_GOLD[currentStage];
