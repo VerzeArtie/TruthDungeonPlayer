@@ -2648,14 +2648,14 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "断空")
                                 {
                                     UpdateBattleText(player.FirstName + "：フシュウウゥゥゥゥウウウゥゥ！！\r\n");
-                                    PlayerNormalAttack(player, target, 10.0f, 0, false, false, 0, 0, "KineticSmash", -1, false, CriticalType.None);
+                                    PlayerNormalAttack(player, target, 6.0f, 0, false, false, 0, 0, "KineticSmash", -1, false, CriticalType.None);
                                 }
                                 else if (player.ActionLabel.text == "アイス・トルネード")
                                 {
                                     UpdateBattleText(player.FirstName + "：ッゴアアァァアァァァァアア！！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
-                                    for (int ii = 0; ii < group.Count * 3; ii++)
+                                    for (int ii = 0; ii < 3; ii++)
                                     {
                                         int randomValue = AP.Math.RandomInteger(group.Count);
                                         PlayerNormalAttack(player, group[randomValue], 0, 0, false, false, 0, 10, string.Empty, -1, false, CriticalType.None);
