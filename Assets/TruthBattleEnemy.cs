@@ -8476,6 +8476,11 @@ namespace DungeonPlayer
                     //System.Threading.Thread.Sleep(200);
                     GroundOne.BattleResult = GroundOne.battleResult.Ignore;
                 }
+                else if (GroundOne.EnableBattleReward == false)
+                {
+                    UpdateBattleText("モンスター討伐に失敗した！\r\n");
+                    GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+                }
                 else
                 {
                     UpdateBattleText("全滅しました・・・もう一度この戦闘をやり直しますか？\r\n");
