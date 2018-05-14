@@ -4318,6 +4318,7 @@ namespace DungeonPlayer
                     if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Reward1_10_2 = true; }
                     if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Reward1_11_2 = true; }
                     if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Reward1_12_2 = true; }
+                    if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Reward1_13_2 = true; }
                     // 2F
                     if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Reward2_1_2 = true; }
                     if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Reward2_2_2 = true; }
@@ -4381,6 +4382,7 @@ namespace DungeonPlayer
                     if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Reward1_10_3 = true; }
                     if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Reward1_11_3 = true; }
                     if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Reward1_12_3 = true; }
+                    if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Reward1_13_3 = true; }
                     // 2F
                     if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Reward2_1_3 = true; }
                     if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Reward2_2_3 = true; }
