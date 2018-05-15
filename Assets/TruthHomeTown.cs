@@ -389,7 +389,7 @@ namespace DungeonPlayer
                 // 全回復しておく
                 if (GroundOne.MC != null)
                 {
-                    GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife);
+                    GroundOne.MC.ResurrectPlayer(GroundOne.MC.MaxLife);
                     GroundOne.MC.MaxGain();
                 }
                 if (GroundOne.SC != null)
