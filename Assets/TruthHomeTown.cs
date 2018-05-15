@@ -4167,6 +4167,7 @@ namespace DungeonPlayer
             GroundOne.PlaySoundEffect(Database.SOUND_MQ_REWARD);
             groupBattleResult.SetActive(true);
 
+            // Gold, Expを反映
             GroundOne.MC.Gold += MQ_GOLD[currentStage];
             if (GroundOne.MC != null && GroundOne.WE.AvailableFirstCharacter)
             {
@@ -4181,250 +4182,44 @@ namespace DungeonPlayer
                 GroundOne.TC.Exp += MQ_EXP[currentStage];
             }
 
-            if (currentArea == 0 && currentStage == 0) { GroundOne.WE.MQ_Complete1_1 = true; }
-            if (currentArea == 0 && currentStage == 1) { GroundOne.WE.MQ_Complete1_2 = true; }
-            if (currentArea == 0 && currentStage == 2) { GroundOne.WE.MQ_Complete1_3 = true; }
-            if (currentArea == 0 && currentStage == 3) { GroundOne.WE.MQ_Complete1_4 = true; }
-            if (currentArea == 0 && currentStage == 4) { GroundOne.WE.MQ_Complete1_5 = true; }
-            if (currentArea == 0 && currentStage == 5) { GroundOne.WE.MQ_Complete1_6 = true; }
-            if (currentArea == 0 && currentStage == 6) { GroundOne.WE.MQ_Complete1_7 = true; }
-            if (currentArea == 0 && currentStage == 7) { GroundOne.WE.MQ_Complete1_8 = true; }
-            if (currentArea == 0 && currentStage == 8) { GroundOne.WE.MQ_Complete1_9 = true; }
-            if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Complete1_10 = true; }
-            if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Complete1_11 = true; }
-            if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Complete1_12 = true; }
-            if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Complete1_13 = true; }
-            if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Complete2_1 = true; }
-            if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Complete2_2 = true; }
-            if (currentArea == 1 && currentStage == 2) { GroundOne.WE.MQ_Complete2_3 = true; }
-            if (currentArea == 1 && currentStage == 3) { GroundOne.WE.MQ_Complete2_4 = true; }
-            if (currentArea == 1 && currentStage == 4) { GroundOne.WE.MQ_Complete2_5 = true; }
-            if (currentArea == 1 && currentStage == 5) { GroundOne.WE.MQ_Complete2_6 = true; }
-            if (currentArea == 1 && currentStage == 6) { GroundOne.WE.MQ_Complete2_7 = true; }
-            if (currentArea == 1 && currentStage == 7) { GroundOne.WE.MQ_Complete2_8 = true; }
-            if (currentArea == 1 && currentStage == 8) { GroundOne.WE.MQ_Complete2_9 = true; }
-            if (currentArea == 1 && currentStage == 9) { GroundOne.WE.MQ_Complete2_10 = true; }
-            if (currentArea == 1 && currentStage == 10) { GroundOne.WE.MQ_Complete2_11 = true; }
-            if (currentArea == 1 && currentStage == 11) { GroundOne.WE.MQ_Complete2_12 = true; }
-            if (currentArea == 2 && currentStage == 0) { GroundOne.WE.MQ_Complete3_1 = true; }
-            if (currentArea == 2 && currentStage == 1) { GroundOne.WE.MQ_Complete3_2 = true; }
-            if (currentArea == 2 && currentStage == 2) { GroundOne.WE.MQ_Complete3_3 = true; }
-            if (currentArea == 2 && currentStage == 3) { GroundOne.WE.MQ_Complete3_4 = true; }
-            if (currentArea == 2 && currentStage == 4) { GroundOne.WE.MQ_Complete3_5 = true; }
-            if (currentArea == 2 && currentStage == 5) { GroundOne.WE.MQ_Complete3_6 = true; }
-            if (currentArea == 2 && currentStage == 6) { GroundOne.WE.MQ_Complete3_7 = true; }
-            if (currentArea == 2 && currentStage == 7) { GroundOne.WE.MQ_Complete3_8 = true; }
-            if (currentArea == 2 && currentStage == 8) { GroundOne.WE.MQ_Complete3_9 = true; }
-            if (currentArea == 2 && currentStage == 9) { GroundOne.WE.MQ_Complete3_10 = true; }
-            if (currentArea == 2 && currentStage == 10) { GroundOne.WE.MQ_Complete3_11 = true; }
-            if (currentArea == 2 && currentStage == 11) { GroundOne.WE.MQ_Complete3_12 = true; }
-            if (currentArea == 3 && currentStage == 0) { GroundOne.WE.MQ_Complete4_1 = true; }
-            if (currentArea == 3 && currentStage == 1) { GroundOne.WE.MQ_Complete4_2 = true; }
-            if (currentArea == 3 && currentStage == 2) { GroundOne.WE.MQ_Complete4_3 = true; }
-            if (currentArea == 3 && currentStage == 3) { GroundOne.WE.MQ_Complete4_4 = true; }
-            if (currentArea == 3 && currentStage == 4) { GroundOne.WE.MQ_Complete4_5 = true; }
-            if (currentArea == 3 && currentStage == 5) { GroundOne.WE.MQ_Complete4_6 = true; }
-            if (currentArea == 3 && currentStage == 6) { GroundOne.WE.MQ_Complete4_7 = true; }
-            if (currentArea == 3 && currentStage == 7) { GroundOne.WE.MQ_Complete4_8 = true; }
-            if (currentArea == 3 && currentStage == 8) { GroundOne.WE.MQ_Complete4_9 = true; }
-            if (currentArea == 3 && currentStage == 9) { GroundOne.WE.MQ_Complete4_10 = true; }
-            if (currentArea == 3 && currentStage == 10) { GroundOne.WE.MQ_Complete4_11 = true; }
-            if (currentArea == 3 && currentStage == 11) { GroundOne.WE.MQ_Complete4_12 = true; }
+            // 報酬アイテムを反映
+            bool[, ,] rewardData = new bool[Database.MQ_AREA_NUM, Database.MQ_STAGE_NUM, Database.MQ_TREASURE_NUM];
+            bool[,] rewardComplete = new bool[Database.MQ_AREA_NUM, Database.MQ_STAGE_NUM];
+            Method.GetRewardData(ref rewardComplete, ref rewardData);
+
+            for (int ii = 0; ii < Database.MQ_AREA_NUM; ii++)
+            {
+                for (int jj = 0; jj < Database.MQ_STAGE_NUM; jj++)
+                {
+                    if (currentArea == ii && currentStage == jj) { rewardComplete[ii, jj] = true; }
+                }
+            }
 
             bool failGetReward = false;
-            if (MQ_REWARD[currentStage, 0] != String.Empty)
+            // エリアがii, ステージがjj, 宝箱がkkで統一しているため、一番初めのfor文だが、変数はkkとする。
+            for (int kk = 0; kk < Database.MQ_TREASURE_NUM; kk++)
             {
-                ItemBackPack reward = new ItemBackPack(MQ_REWARD[currentStage, 0]);
-                if (GetNewItem(reward) == false)
+                if (MQ_REWARD[currentStage, kk] != String.Empty)
                 {
-                    failGetReward = true;
-                }
-                else
-                {
-                    // [コメント] 芋プログラミングだが、良しとする。（初版設計のセーブデータが配列を嫌っているため、新規作成ではない限り、そのルールに即する）
-                    if (currentArea == 0 && currentStage == 0) { GroundOne.WE.MQ_Reward1_1_1 = true; }
-                    if (currentArea == 0 && currentStage == 1) { GroundOne.WE.MQ_Reward1_2_1 = true; }
-                    if (currentArea == 0 && currentStage == 2) { GroundOne.WE.MQ_Reward1_3_1 = true; }
-                    if (currentArea == 0 && currentStage == 3) { GroundOne.WE.MQ_Reward1_4_1 = true; }
-                    if (currentArea == 0 && currentStage == 4) { GroundOne.WE.MQ_Reward1_5_1 = true; }
-                    if (currentArea == 0 && currentStage == 5) { GroundOne.WE.MQ_Reward1_6_1 = true; }
-                    if (currentArea == 0 && currentStage == 6) { GroundOne.WE.MQ_Reward1_7_1 = true; }
-                    if (currentArea == 0 && currentStage == 7) { GroundOne.WE.MQ_Reward1_8_1 = true; }
-                    if (currentArea == 0 && currentStage == 8) { GroundOne.WE.MQ_Reward1_9_1 = true; }
-                    if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Reward1_10_1 = true; }
-                    if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Reward1_11_1 = true; }
-                    if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Reward1_12_1 = true; }
-                    if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Reward1_13_1 = true; }
-                    // 2F
-                    if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Reward2_1_1 = true; }
-                    if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Reward2_2_1 = true; }
-                    if (currentArea == 1 && currentStage == 2) { GroundOne.WE.MQ_Reward2_3_1 = true; }
-                    if (currentArea == 1 && currentStage == 3) { GroundOne.WE.MQ_Reward2_4_1 = true; }
-                    if (currentArea == 1 && currentStage == 4) { GroundOne.WE.MQ_Reward2_5_1 = true; }
-                    if (currentArea == 1 && currentStage == 5) { GroundOne.WE.MQ_Reward2_6_1 = true; }
-                    if (currentArea == 1 && currentStage == 6) { GroundOne.WE.MQ_Reward2_7_1 = true; }
-                    if (currentArea == 1 && currentStage == 7) { GroundOne.WE.MQ_Reward2_8_1 = true; }
-                    if (currentArea == 1 && currentStage == 8) { GroundOne.WE.MQ_Reward2_9_1 = true; }
-                    if (currentArea == 1 && currentStage == 9) { GroundOne.WE.MQ_Reward2_10_1 = true; }
-                    if (currentArea == 1 && currentStage == 10) { GroundOne.WE.MQ_Reward2_11_1 = true; }
-                    if (currentArea == 1 && currentStage == 11) { GroundOne.WE.MQ_Reward2_12_1 = true; }
-                    // 3F
-                    if (currentArea == 2 && currentStage == 0) { GroundOne.WE.MQ_Reward3_1_1 = true; }
-                    if (currentArea == 2 && currentStage == 1) { GroundOne.WE.MQ_Reward3_2_1 = true; }
-                    if (currentArea == 2 && currentStage == 2) { GroundOne.WE.MQ_Reward3_3_1 = true; }
-                    if (currentArea == 2 && currentStage == 3) { GroundOne.WE.MQ_Reward3_4_1 = true; }
-                    if (currentArea == 2 && currentStage == 4) { GroundOne.WE.MQ_Reward3_5_1 = true; }
-                    if (currentArea == 2 && currentStage == 5) { GroundOne.WE.MQ_Reward3_6_1 = true; }
-                    if (currentArea == 2 && currentStage == 6) { GroundOne.WE.MQ_Reward3_7_1 = true; }
-                    if (currentArea == 2 && currentStage == 7) { GroundOne.WE.MQ_Reward3_8_1 = true; }
-                    if (currentArea == 2 && currentStage == 8) { GroundOne.WE.MQ_Reward3_9_1 = true; }
-                    if (currentArea == 2 && currentStage == 9) { GroundOne.WE.MQ_Reward3_10_1 = true; }
-                    if (currentArea == 2 && currentStage == 10) { GroundOne.WE.MQ_Reward3_11_1 = true; }
-                    if (currentArea == 2 && currentStage == 11) { GroundOne.WE.MQ_Reward3_12_1 = true; }
-                    // 4F
-                    if (currentArea == 3 && currentStage == 0) { GroundOne.WE.MQ_Reward4_1_1 = true; }
-                    if (currentArea == 3 && currentStage == 1) { GroundOne.WE.MQ_Reward4_2_1 = true; }
-                    if (currentArea == 3 && currentStage == 2) { GroundOne.WE.MQ_Reward4_3_1 = true; }
-                    if (currentArea == 3 && currentStage == 3) { GroundOne.WE.MQ_Reward4_4_1 = true; }
-                    if (currentArea == 3 && currentStage == 4) { GroundOne.WE.MQ_Reward4_5_1 = true; }
-                    if (currentArea == 3 && currentStage == 5) { GroundOne.WE.MQ_Reward4_6_1 = true; }
-                    if (currentArea == 3 && currentStage == 6) { GroundOne.WE.MQ_Reward4_7_1 = true; }
-                    if (currentArea == 3 && currentStage == 7) { GroundOne.WE.MQ_Reward4_8_1 = true; }
-                    if (currentArea == 3 && currentStage == 8) { GroundOne.WE.MQ_Reward4_9_1 = true; }
-                    if (currentArea == 3 && currentStage == 9) { GroundOne.WE.MQ_Reward4_10_1 = true; }
-                    if (currentArea == 3 && currentStage == 10) { GroundOne.WE.MQ_Reward4_11_1 = true; }
-                    if (currentArea == 3 && currentStage == 11) { GroundOne.WE.MQ_Reward4_12_1 = true; }
+                    ItemBackPack reward = new ItemBackPack(MQ_REWARD[currentStage, kk]);
+                    if (GetNewItem(reward) == false)
+                    {
+                        failGetReward = true;
+                    }
+                    else
+                    {
+                        for (int ii = 0; ii < Database.MQ_AREA_NUM; ii++)
+                        {
+                            for (int jj = 0; jj < Database.MQ_STAGE_NUM; jj++)
+                            {
+                                if (currentArea == ii && currentStage == jj) { rewardData[ii, jj, kk] = true; }
+                            }
+                        }
+                    }
                 }
             }
-            if (MQ_REWARD[currentStage, 1] != String.Empty)
-            {
-                ItemBackPack reward = new ItemBackPack(MQ_REWARD[currentStage, 1]);
-                if (GetNewItem(reward) == false)
-                {
-                    failGetReward = true;
-                }
-                else
-                {
-                    // [コメント] 芋プログラミングだが、良しとする。（初版設計のセーブデータが配列を嫌っているため、新規作成ではない限り、そのルールに即する）
-                    if (currentArea == 0 && currentStage == 0) { GroundOne.WE.MQ_Reward1_1_2 = true; }
-                    if (currentArea == 0 && currentStage == 1) { GroundOne.WE.MQ_Reward1_2_2 = true; }
-                    if (currentArea == 0 && currentStage == 2) { GroundOne.WE.MQ_Reward1_3_2 = true; }
-                    if (currentArea == 0 && currentStage == 3) { GroundOne.WE.MQ_Reward1_4_2 = true; }
-                    if (currentArea == 0 && currentStage == 4) { GroundOne.WE.MQ_Reward1_5_2 = true; }
-                    if (currentArea == 0 && currentStage == 5) { GroundOne.WE.MQ_Reward1_6_2 = true; }
-                    if (currentArea == 0 && currentStage == 6) { GroundOne.WE.MQ_Reward1_7_2 = true; }
-                    if (currentArea == 0 && currentStage == 7) { GroundOne.WE.MQ_Reward1_8_2 = true; }
-                    if (currentArea == 0 && currentStage == 8) { GroundOne.WE.MQ_Reward1_9_2 = true; }
-                    if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Reward1_10_2 = true; }
-                    if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Reward1_11_2 = true; }
-                    if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Reward1_12_2 = true; }
-                    if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Reward1_13_2 = true; }
-                    // 2F
-                    if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Reward2_1_2 = true; }
-                    if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Reward2_2_2 = true; }
-                    if (currentArea == 1 && currentStage == 2) { GroundOne.WE.MQ_Reward2_3_2 = true; }
-                    if (currentArea == 1 && currentStage == 3) { GroundOne.WE.MQ_Reward2_4_2 = true; }
-                    if (currentArea == 1 && currentStage == 4) { GroundOne.WE.MQ_Reward2_5_2 = true; }
-                    if (currentArea == 1 && currentStage == 5) { GroundOne.WE.MQ_Reward2_6_2 = true; }
-                    if (currentArea == 1 && currentStage == 6) { GroundOne.WE.MQ_Reward2_7_2 = true; }
-                    if (currentArea == 1 && currentStage == 7) { GroundOne.WE.MQ_Reward2_8_2 = true; }
-                    if (currentArea == 1 && currentStage == 8) { GroundOne.WE.MQ_Reward2_9_2 = true; }
-                    if (currentArea == 1 && currentStage == 9) { GroundOne.WE.MQ_Reward2_10_2 = true; }
-                    if (currentArea == 1 && currentStage == 10) { GroundOne.WE.MQ_Reward2_11_2 = true; }
-                    if (currentArea == 1 && currentStage == 11) { GroundOne.WE.MQ_Reward2_12_2 = true; }
-                    // 3F
-                    if (currentArea == 2 && currentStage == 0) { GroundOne.WE.MQ_Reward3_1_2 = true; }
-                    if (currentArea == 2 && currentStage == 1) { GroundOne.WE.MQ_Reward3_2_2 = true; }
-                    if (currentArea == 2 && currentStage == 2) { GroundOne.WE.MQ_Reward3_3_2 = true; }
-                    if (currentArea == 2 && currentStage == 3) { GroundOne.WE.MQ_Reward3_4_2 = true; }
-                    if (currentArea == 2 && currentStage == 4) { GroundOne.WE.MQ_Reward3_5_2 = true; }
-                    if (currentArea == 2 && currentStage == 5) { GroundOne.WE.MQ_Reward3_6_2 = true; }
-                    if (currentArea == 2 && currentStage == 6) { GroundOne.WE.MQ_Reward3_7_2 = true; }
-                    if (currentArea == 2 && currentStage == 7) { GroundOne.WE.MQ_Reward3_8_2 = true; }
-                    if (currentArea == 2 && currentStage == 8) { GroundOne.WE.MQ_Reward3_9_2 = true; }
-                    if (currentArea == 2 && currentStage == 9) { GroundOne.WE.MQ_Reward3_10_2 = true; }
-                    if (currentArea == 2 && currentStage == 10) { GroundOne.WE.MQ_Reward3_11_2 = true; }
-                    if (currentArea == 2 && currentStage == 11) { GroundOne.WE.MQ_Reward3_12_2 = true; }
-                    // 4F
-                    if (currentArea == 3 && currentStage == 0) { GroundOne.WE.MQ_Reward4_1_2 = true; }
-                    if (currentArea == 3 && currentStage == 1) { GroundOne.WE.MQ_Reward4_2_2 = true; }
-                    if (currentArea == 3 && currentStage == 2) { GroundOne.WE.MQ_Reward4_3_2 = true; }
-                    if (currentArea == 3 && currentStage == 3) { GroundOne.WE.MQ_Reward4_4_2 = true; }
-                    if (currentArea == 3 && currentStage == 4) { GroundOne.WE.MQ_Reward4_5_2 = true; }
-                    if (currentArea == 3 && currentStage == 5) { GroundOne.WE.MQ_Reward4_6_2 = true; }
-                    if (currentArea == 3 && currentStage == 6) { GroundOne.WE.MQ_Reward4_7_2 = true; }
-                    if (currentArea == 3 && currentStage == 7) { GroundOne.WE.MQ_Reward4_8_2 = true; }
-                    if (currentArea == 3 && currentStage == 8) { GroundOne.WE.MQ_Reward4_9_2 = true; }
-                    if (currentArea == 3 && currentStage == 9) { GroundOne.WE.MQ_Reward4_10_2 = true; }
-                    if (currentArea == 3 && currentStage == 10) { GroundOne.WE.MQ_Reward4_11_2 = true; }
-                    if (currentArea == 3 && currentStage == 11) { GroundOne.WE.MQ_Reward4_12_2 = true; }
-                }
-            }
-            if (MQ_REWARD[currentStage, 2] != String.Empty)
-            {
-                ItemBackPack reward = new ItemBackPack(MQ_REWARD[currentStage, 2]);
-                if (GetNewItem(reward) == false)
-                {
-                    failGetReward = true;
-                }
-                else
-                {
-                    // [コメント] 芋プログラミングだが、良しとする。（初版設計のセーブデータが配列を嫌っているため、新規作成ではない限り、そのルールに即する）
-                    if (currentArea == 0 && currentStage == 0) { GroundOne.WE.MQ_Reward1_1_3 = true; }
-                    if (currentArea == 0 && currentStage == 1) { GroundOne.WE.MQ_Reward1_2_3 = true; }
-                    if (currentArea == 0 && currentStage == 2) { GroundOne.WE.MQ_Reward1_3_3 = true; }
-                    if (currentArea == 0 && currentStage == 3) { GroundOne.WE.MQ_Reward1_4_3 = true; }
-                    if (currentArea == 0 && currentStage == 4) { GroundOne.WE.MQ_Reward1_5_3 = true; }
-                    if (currentArea == 0 && currentStage == 5) { GroundOne.WE.MQ_Reward1_6_3 = true; }
-                    if (currentArea == 0 && currentStage == 6) { GroundOne.WE.MQ_Reward1_7_3 = true; }
-                    if (currentArea == 0 && currentStage == 7) { GroundOne.WE.MQ_Reward1_8_3 = true; }
-                    if (currentArea == 0 && currentStage == 8) { GroundOne.WE.MQ_Reward1_9_3 = true; }
-                    if (currentArea == 0 && currentStage == 9) { GroundOne.WE.MQ_Reward1_10_3 = true; }
-                    if (currentArea == 0 && currentStage == 10) { GroundOne.WE.MQ_Reward1_11_3 = true; }
-                    if (currentArea == 0 && currentStage == 11) { GroundOne.WE.MQ_Reward1_12_3 = true; }
-                    if (currentArea == 0 && currentStage == 12) { GroundOne.WE.MQ_Reward1_13_3 = true; }
-                    // 2F
-                    if (currentArea == 1 && currentStage == 0) { GroundOne.WE.MQ_Reward2_1_3 = true; }
-                    if (currentArea == 1 && currentStage == 1) { GroundOne.WE.MQ_Reward2_2_3 = true; }
-                    if (currentArea == 1 && currentStage == 2) { GroundOne.WE.MQ_Reward2_3_3 = true; }
-                    if (currentArea == 1 && currentStage == 3) { GroundOne.WE.MQ_Reward2_4_3 = true; }
-                    if (currentArea == 1 && currentStage == 4) { GroundOne.WE.MQ_Reward2_5_3 = true; }
-                    if (currentArea == 1 && currentStage == 5) { GroundOne.WE.MQ_Reward2_6_3 = true; }
-                    if (currentArea == 1 && currentStage == 6) { GroundOne.WE.MQ_Reward2_7_3 = true; }
-                    if (currentArea == 1 && currentStage == 7) { GroundOne.WE.MQ_Reward2_8_3 = true; }
-                    if (currentArea == 1 && currentStage == 8) { GroundOne.WE.MQ_Reward2_9_3 = true; }
-                    if (currentArea == 1 && currentStage == 9) { GroundOne.WE.MQ_Reward2_10_3 = true; }
-                    if (currentArea == 1 && currentStage == 10) { GroundOne.WE.MQ_Reward2_11_3 = true; }
-                    if (currentArea == 1 && currentStage == 11) { GroundOne.WE.MQ_Reward2_12_3 = true; }
-                    // 3F
-                    if (currentArea == 2 && currentStage == 0) { GroundOne.WE.MQ_Reward3_1_3 = true; }
-                    if (currentArea == 2 && currentStage == 1) { GroundOne.WE.MQ_Reward3_2_3 = true; }
-                    if (currentArea == 2 && currentStage == 2) { GroundOne.WE.MQ_Reward3_3_3 = true; }
-                    if (currentArea == 2 && currentStage == 3) { GroundOne.WE.MQ_Reward3_4_3 = true; }
-                    if (currentArea == 2 && currentStage == 4) { GroundOne.WE.MQ_Reward3_5_3 = true; }
-                    if (currentArea == 2 && currentStage == 5) { GroundOne.WE.MQ_Reward3_6_3 = true; }
-                    if (currentArea == 2 && currentStage == 6) { GroundOne.WE.MQ_Reward3_7_3 = true; }
-                    if (currentArea == 2 && currentStage == 7) { GroundOne.WE.MQ_Reward3_8_3 = true; }
-                    if (currentArea == 2 && currentStage == 8) { GroundOne.WE.MQ_Reward3_9_3 = true; }
-                    if (currentArea == 2 && currentStage == 9) { GroundOne.WE.MQ_Reward3_10_3 = true; }
-                    if (currentArea == 2 && currentStage == 10) { GroundOne.WE.MQ_Reward3_11_3 = true; }
-                    if (currentArea == 2 && currentStage == 11) { GroundOne.WE.MQ_Reward3_12_3 = true; }
-                    // 4F
-                    if (currentArea == 3 && currentStage == 0) { GroundOne.WE.MQ_Reward4_1_3 = true; }
-                    if (currentArea == 3 && currentStage == 1) { GroundOne.WE.MQ_Reward4_2_3 = true; }
-                    if (currentArea == 3 && currentStage == 2) { GroundOne.WE.MQ_Reward4_3_3 = true; }
-                    if (currentArea == 3 && currentStage == 3) { GroundOne.WE.MQ_Reward4_4_3 = true; }
-                    if (currentArea == 3 && currentStage == 4) { GroundOne.WE.MQ_Reward4_5_3 = true; }
-                    if (currentArea == 3 && currentStage == 5) { GroundOne.WE.MQ_Reward4_6_3 = true; }
-                    if (currentArea == 3 && currentStage == 6) { GroundOne.WE.MQ_Reward4_7_3 = true; }
-                    if (currentArea == 3 && currentStage == 7) { GroundOne.WE.MQ_Reward4_8_3 = true; }
-                    if (currentArea == 3 && currentStage == 8) { GroundOne.WE.MQ_Reward4_9_3 = true; }
-                    if (currentArea == 3 && currentStage == 9) { GroundOne.WE.MQ_Reward4_10_3 = true; }
-                    if (currentArea == 3 && currentStage == 10) { GroundOne.WE.MQ_Reward4_11_3 = true; }
-                    if (currentArea == 3 && currentStage == 11) { GroundOne.WE.MQ_Reward4_12_3 = true; }
-                }
+            Method.SetRewardData(rewardComplete, rewardData);
 
-            }
             this.MQ_FailGetReward = failGetReward;
         }
     }

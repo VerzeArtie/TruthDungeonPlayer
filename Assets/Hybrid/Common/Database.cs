@@ -3844,6 +3844,9 @@ namespace DungeonPlayer
         #endregion
 
         #region "モンスター討伐"
+        public const int MQ_AREA_NUM = 5;
+        public const int MQ_STAGE_NUM = 20;
+        public const int MQ_TREASURE_NUM = 3;
         public static string[] MQ_FLOOR1_NAME = { @"ビートルの掃除",
                                                   @"マンティス撃退",
                                                   @"マンドラゴラ討伐",

@@ -44,6 +44,9 @@ namespace DungeonPlayer
         private int areaNumber = 1;
         private int stageNumber = 0;
 
+        private bool[, ,] rewardData = new bool[Database.MQ_AREA_NUM, Database.MQ_STAGE_NUM, Database.MQ_TREASURE_NUM];
+        private bool[,] rewardComplete = new bool[Database.MQ_AREA_NUM, Database.MQ_STAGE_NUM];
+
         public override void Start()
         {
             base.Start();
@@ -90,6 +93,8 @@ namespace DungeonPlayer
 
             GroundOne.battleResult result = GroundOne.BattleResult;
             GroundOne.BattleResult = GroundOne.battleResult.None;
+
+            Method.GetRewardData(ref rewardComplete, ref rewardData);
 
             TapArea(0);
             TapStage(0);
@@ -262,132 +267,18 @@ namespace DungeonPlayer
                 }
             }
 
-            if (num == 0)
+            for (int ii = 0; ii < Database.MQ_STAGE_NUM; ii++)
             {
-                imgStar[0].gameObject.SetActive(GroundOne.WE.MQ_Complete1_1);
-                imgStar[1].gameObject.SetActive(GroundOne.WE.MQ_Complete1_2);
-                imgStar[2].gameObject.SetActive(GroundOne.WE.MQ_Complete1_3);
-                imgStar[3].gameObject.SetActive(GroundOne.WE.MQ_Complete1_4);
-                imgStar[4].gameObject.SetActive(GroundOne.WE.MQ_Complete1_5);
-                imgStar[5].gameObject.SetActive(GroundOne.WE.MQ_Complete1_6);
-                imgStar[6].gameObject.SetActive(GroundOne.WE.MQ_Complete1_7);
-                imgStar[7].gameObject.SetActive(GroundOne.WE.MQ_Complete1_8);
-                imgStar[8].gameObject.SetActive(GroundOne.WE.MQ_Complete1_9);
-                imgStar[9].gameObject.SetActive(GroundOne.WE.MQ_Complete1_10);
-                imgStar[10].gameObject.SetActive(GroundOne.WE.MQ_Complete1_11);
-                imgStar[11].gameObject.SetActive(GroundOne.WE.MQ_Complete1_12);
-                imgStar[12].gameObject.SetActive(GroundOne.WE.MQ_Complete1_13);
-
-                int counter = 0;
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_1, GroundOne.WE.MQ_Reward1_1_1, GroundOne.WE.MQ_Reward1_1_2, GroundOne.WE.MQ_Reward1_1_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_2, GroundOne.WE.MQ_Reward1_2_1, GroundOne.WE.MQ_Reward1_2_2, GroundOne.WE.MQ_Reward1_2_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_3, GroundOne.WE.MQ_Reward1_3_1, GroundOne.WE.MQ_Reward1_3_2, GroundOne.WE.MQ_Reward1_3_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_4, GroundOne.WE.MQ_Reward1_4_1, GroundOne.WE.MQ_Reward1_4_2, GroundOne.WE.MQ_Reward1_4_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_5, GroundOne.WE.MQ_Reward1_5_1, GroundOne.WE.MQ_Reward1_5_2, GroundOne.WE.MQ_Reward1_5_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_6, GroundOne.WE.MQ_Reward1_6_1, GroundOne.WE.MQ_Reward1_6_2, GroundOne.WE.MQ_Reward1_6_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_7, GroundOne.WE.MQ_Reward1_7_1, GroundOne.WE.MQ_Reward1_7_2, GroundOne.WE.MQ_Reward1_7_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_8, GroundOne.WE.MQ_Reward1_8_1, GroundOne.WE.MQ_Reward1_8_2, GroundOne.WE.MQ_Reward1_8_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_9, GroundOne.WE.MQ_Reward1_9_1, GroundOne.WE.MQ_Reward1_9_2, GroundOne.WE.MQ_Reward1_9_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_10, GroundOne.WE.MQ_Reward1_10_1, GroundOne.WE.MQ_Reward1_10_2, GroundOne.WE.MQ_Reward1_10_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_11, GroundOne.WE.MQ_Reward1_11_1, GroundOne.WE.MQ_Reward1_11_2, GroundOne.WE.MQ_Reward1_11_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_12, GroundOne.WE.MQ_Reward1_12_1, GroundOne.WE.MQ_Reward1_12_2, GroundOne.WE.MQ_Reward1_12_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete1_13, GroundOne.WE.MQ_Reward1_13_1, GroundOne.WE.MQ_Reward1_13_2, GroundOne.WE.MQ_Reward1_13_3);
-            }
-            else if (num == 1)
-            {
-                imgStar[0].gameObject.SetActive(GroundOne.WE.MQ_Complete2_1);
-                imgStar[1].gameObject.SetActive(GroundOne.WE.MQ_Complete2_2);
-                imgStar[2].gameObject.SetActive(GroundOne.WE.MQ_Complete2_3);
-                imgStar[3].gameObject.SetActive(GroundOne.WE.MQ_Complete2_4);
-                imgStar[4].gameObject.SetActive(GroundOne.WE.MQ_Complete2_5);
-                imgStar[5].gameObject.SetActive(GroundOne.WE.MQ_Complete2_6);
-                imgStar[6].gameObject.SetActive(GroundOne.WE.MQ_Complete2_7);
-                imgStar[7].gameObject.SetActive(GroundOne.WE.MQ_Complete2_8);
-                imgStar[8].gameObject.SetActive(GroundOne.WE.MQ_Complete2_9);
-                imgStar[9].gameObject.SetActive(GroundOne.WE.MQ_Complete2_10);
-                imgStar[10].gameObject.SetActive(GroundOne.WE.MQ_Complete2_11);
-                imgStar[11].gameObject.SetActive(GroundOne.WE.MQ_Complete2_12);
-
-                int counter = 0;
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_1, GroundOne.WE.MQ_Reward2_1_1, GroundOne.WE.MQ_Reward2_1_2, GroundOne.WE.MQ_Reward2_1_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_2, GroundOne.WE.MQ_Reward2_2_1, GroundOne.WE.MQ_Reward2_2_2, GroundOne.WE.MQ_Reward2_2_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_3, GroundOne.WE.MQ_Reward2_3_1, GroundOne.WE.MQ_Reward2_3_2, GroundOne.WE.MQ_Reward2_3_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_4, GroundOne.WE.MQ_Reward2_4_1, GroundOne.WE.MQ_Reward2_4_2, GroundOne.WE.MQ_Reward2_4_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_5, GroundOne.WE.MQ_Reward2_5_1, GroundOne.WE.MQ_Reward2_5_2, GroundOne.WE.MQ_Reward2_5_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_6, GroundOne.WE.MQ_Reward2_6_1, GroundOne.WE.MQ_Reward2_6_2, GroundOne.WE.MQ_Reward2_6_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_7, GroundOne.WE.MQ_Reward2_7_1, GroundOne.WE.MQ_Reward2_7_2, GroundOne.WE.MQ_Reward2_7_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_8, GroundOne.WE.MQ_Reward2_8_1, GroundOne.WE.MQ_Reward2_8_2, GroundOne.WE.MQ_Reward2_8_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_9, GroundOne.WE.MQ_Reward2_9_1, GroundOne.WE.MQ_Reward2_9_2, GroundOne.WE.MQ_Reward2_9_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_10, GroundOne.WE.MQ_Reward2_10_1, GroundOne.WE.MQ_Reward2_10_2, GroundOne.WE.MQ_Reward2_10_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_11, GroundOne.WE.MQ_Reward2_11_1, GroundOne.WE.MQ_Reward2_11_2, GroundOne.WE.MQ_Reward2_11_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete2_12, GroundOne.WE.MQ_Reward2_12_1, GroundOne.WE.MQ_Reward2_12_2, GroundOne.WE.MQ_Reward2_12_3);
-            }
-            else if (num == 2)
-            {
-                imgStar[0].gameObject.SetActive(GroundOne.WE.MQ_Complete3_1);
-                imgStar[1].gameObject.SetActive(GroundOne.WE.MQ_Complete3_2);
-                imgStar[2].gameObject.SetActive(GroundOne.WE.MQ_Complete3_3);
-                imgStar[3].gameObject.SetActive(GroundOne.WE.MQ_Complete3_4);
-                imgStar[4].gameObject.SetActive(GroundOne.WE.MQ_Complete3_5);
-                imgStar[5].gameObject.SetActive(GroundOne.WE.MQ_Complete3_6);
-                imgStar[6].gameObject.SetActive(GroundOne.WE.MQ_Complete3_7);
-                imgStar[7].gameObject.SetActive(GroundOne.WE.MQ_Complete3_8);
-                imgStar[8].gameObject.SetActive(GroundOne.WE.MQ_Complete3_9);
-                imgStar[9].gameObject.SetActive(GroundOne.WE.MQ_Complete3_10);
-                imgStar[10].gameObject.SetActive(GroundOne.WE.MQ_Complete3_11);
-                imgStar[11].gameObject.SetActive(GroundOne.WE.MQ_Complete3_12);
-
-                int counter = 0;
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_1, GroundOne.WE.MQ_Reward3_1_1, GroundOne.WE.MQ_Reward3_1_2, GroundOne.WE.MQ_Reward3_1_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_2, GroundOne.WE.MQ_Reward3_2_1, GroundOne.WE.MQ_Reward3_2_2, GroundOne.WE.MQ_Reward3_2_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_3, GroundOne.WE.MQ_Reward3_3_1, GroundOne.WE.MQ_Reward3_3_2, GroundOne.WE.MQ_Reward3_3_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_4, GroundOne.WE.MQ_Reward3_4_1, GroundOne.WE.MQ_Reward3_4_2, GroundOne.WE.MQ_Reward3_4_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_5, GroundOne.WE.MQ_Reward3_5_1, GroundOne.WE.MQ_Reward3_5_2, GroundOne.WE.MQ_Reward3_5_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_6, GroundOne.WE.MQ_Reward3_6_1, GroundOne.WE.MQ_Reward3_6_2, GroundOne.WE.MQ_Reward3_6_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_7, GroundOne.WE.MQ_Reward3_7_1, GroundOne.WE.MQ_Reward3_7_2, GroundOne.WE.MQ_Reward3_7_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_8, GroundOne.WE.MQ_Reward3_8_1, GroundOne.WE.MQ_Reward3_8_2, GroundOne.WE.MQ_Reward3_8_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_9, GroundOne.WE.MQ_Reward3_9_1, GroundOne.WE.MQ_Reward3_9_2, GroundOne.WE.MQ_Reward3_9_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_10, GroundOne.WE.MQ_Reward3_10_1, GroundOne.WE.MQ_Reward3_10_2, GroundOne.WE.MQ_Reward3_10_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_11, GroundOne.WE.MQ_Reward3_11_1, GroundOne.WE.MQ_Reward3_11_2, GroundOne.WE.MQ_Reward3_11_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete3_12, GroundOne.WE.MQ_Reward3_12_1, GroundOne.WE.MQ_Reward3_12_2, GroundOne.WE.MQ_Reward3_12_3);
-            }
-            else if (num == 3)
-            {
-                imgStar[0].gameObject.SetActive(GroundOne.WE.MQ_Complete4_1);
-                imgStar[1].gameObject.SetActive(GroundOne.WE.MQ_Complete4_2);
-                imgStar[2].gameObject.SetActive(GroundOne.WE.MQ_Complete4_3);
-                imgStar[3].gameObject.SetActive(GroundOne.WE.MQ_Complete4_4);
-                imgStar[4].gameObject.SetActive(GroundOne.WE.MQ_Complete4_5);
-                imgStar[5].gameObject.SetActive(GroundOne.WE.MQ_Complete4_6);
-                imgStar[6].gameObject.SetActive(GroundOne.WE.MQ_Complete4_7);
-                imgStar[7].gameObject.SetActive(GroundOne.WE.MQ_Complete4_8);
-                imgStar[8].gameObject.SetActive(GroundOne.WE.MQ_Complete4_9);
-                imgStar[9].gameObject.SetActive(GroundOne.WE.MQ_Complete4_10);
-                imgStar[10].gameObject.SetActive(GroundOne.WE.MQ_Complete4_11);
-                imgStar[11].gameObject.SetActive(GroundOne.WE.MQ_Complete4_12);
-
-                int counter = 0;
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_1, GroundOne.WE.MQ_Reward4_1_1, GroundOne.WE.MQ_Reward4_1_2, GroundOne.WE.MQ_Reward4_1_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_2, GroundOne.WE.MQ_Reward4_2_1, GroundOne.WE.MQ_Reward4_2_2, GroundOne.WE.MQ_Reward4_2_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_3, GroundOne.WE.MQ_Reward4_3_1, GroundOne.WE.MQ_Reward4_3_2, GroundOne.WE.MQ_Reward4_3_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_4, GroundOne.WE.MQ_Reward4_4_1, GroundOne.WE.MQ_Reward4_4_2, GroundOne.WE.MQ_Reward4_4_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_5, GroundOne.WE.MQ_Reward4_5_1, GroundOne.WE.MQ_Reward4_5_2, GroundOne.WE.MQ_Reward4_5_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_6, GroundOne.WE.MQ_Reward4_6_1, GroundOne.WE.MQ_Reward4_6_2, GroundOne.WE.MQ_Reward4_6_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_7, GroundOne.WE.MQ_Reward4_7_1, GroundOne.WE.MQ_Reward4_7_2, GroundOne.WE.MQ_Reward4_7_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_8, GroundOne.WE.MQ_Reward4_8_1, GroundOne.WE.MQ_Reward4_8_2, GroundOne.WE.MQ_Reward4_8_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_9, GroundOne.WE.MQ_Reward4_9_1, GroundOne.WE.MQ_Reward4_9_2, GroundOne.WE.MQ_Reward4_9_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_10, GroundOne.WE.MQ_Reward4_10_1, GroundOne.WE.MQ_Reward4_10_2, GroundOne.WE.MQ_Reward4_10_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_11, GroundOne.WE.MQ_Reward4_11_1, GroundOne.WE.MQ_Reward4_11_2, GroundOne.WE.MQ_Reward4_11_3);
-                GroupControlBoxView(ref counter, GroundOne.WE.MQ_Complete4_12, GroundOne.WE.MQ_Reward4_12_1, GroundOne.WE.MQ_Reward4_12_2, GroundOne.WE.MQ_Reward4_12_3);
+                imgStar[ii].gameObject.SetActive(rewardComplete[num, ii]);
+                GroupControlBoxView(ii, rewardComplete[num, ii], rewardData[num, ii, 0], rewardData[num, ii, 1], rewardData[num, ii, 2]);
             }
         }
 
-        private void GroupControlBoxView(ref int counter, bool check1, bool check2_1, bool check2_2, bool check2_3)
+        private void GroupControlBoxView(int counter, bool check1, bool check2_1, bool check2_2, bool check2_3)
         {
             ControlBoxView(txtReward1[counter], imgBox1[counter], check1, check2_1);
             ControlBoxView(txtReward2[counter], imgBox2[counter], check1, check2_2);
             ControlBoxView(txtReward3[counter], imgBox3[counter], check1, check2_3);
-            counter++;
         }
 
         private void ControlBoxView(Text txtReward, Image imgBox, bool check1, bool check2)
@@ -469,58 +360,13 @@ namespace DungeonPlayer
             // すでにクリアしているモンスター討伐は対象外。
             string message = @"サンディ：そのモンスター討伐はすでにクリアしておられる！他を選択されるがよい！";
             // 1F
-            if (GroundOne.WE.MQ_Complete1_1 && areaNumber == 0 && stageNumber == 0) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_2 && areaNumber == 0 && stageNumber == 1) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_3 && areaNumber == 0 && stageNumber == 2) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_4 && areaNumber == 0 && stageNumber == 3) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_5 && areaNumber == 0 && stageNumber == 4) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_6 && areaNumber == 0 && stageNumber == 5) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_7 && areaNumber == 0 && stageNumber == 6) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_8 && areaNumber == 0 && stageNumber == 7) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_9 && areaNumber == 0 && stageNumber == 8) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_10 && areaNumber == 0 && stageNumber == 9) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_11 && areaNumber == 0 && stageNumber == 10) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_12 && areaNumber == 0 && stageNumber == 11) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete1_13 && areaNumber == 0 && stageNumber == 12) { txtMainMessage.text = message; return; }
-            // 2F
-            if (GroundOne.WE.MQ_Complete2_1 && areaNumber == 1 && stageNumber == 0) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_2 && areaNumber == 1 && stageNumber == 1) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_3 && areaNumber == 1 && stageNumber == 2) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_4 && areaNumber == 1 && stageNumber == 3) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_5 && areaNumber == 1 && stageNumber == 4) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_6 && areaNumber == 1 && stageNumber == 5) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_7 && areaNumber == 1 && stageNumber == 6) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_8 && areaNumber == 1 && stageNumber == 7) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_9 && areaNumber == 1 && stageNumber == 8) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_10 && areaNumber == 1 && stageNumber == 9) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_11 && areaNumber == 1 && stageNumber == 10) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete2_12 && areaNumber == 1 && stageNumber == 11) { txtMainMessage.text = message; return; }
-            // 3F
-            if (GroundOne.WE.MQ_Complete3_1 && areaNumber == 2 && stageNumber == 0) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_2 && areaNumber == 2 && stageNumber == 1) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_3 && areaNumber == 2 && stageNumber == 2) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_4 && areaNumber == 2 && stageNumber == 3) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_5 && areaNumber == 2 && stageNumber == 4) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_6 && areaNumber == 2 && stageNumber == 5) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_7 && areaNumber == 2 && stageNumber == 6) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_8 && areaNumber == 2 && stageNumber == 7) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_9 && areaNumber == 2 && stageNumber == 8) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_10 && areaNumber == 2 && stageNumber == 9) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_11 && areaNumber == 2 && stageNumber == 10) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete3_12 && areaNumber == 2 && stageNumber == 11) { txtMainMessage.text = message; return; }
-            // 4F
-            if (GroundOne.WE.MQ_Complete4_1 && areaNumber == 3 && stageNumber == 0) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_2 && areaNumber == 3 && stageNumber == 1) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_3 && areaNumber == 3 && stageNumber == 2) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_4 && areaNumber == 3 && stageNumber == 3) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_5 && areaNumber == 3 && stageNumber == 4) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_6 && areaNumber == 3 && stageNumber == 5) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_7 && areaNumber == 3 && stageNumber == 6) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_8 && areaNumber == 3 && stageNumber == 7) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_9 && areaNumber == 3 && stageNumber == 8) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_10 && areaNumber == 3 && stageNumber == 9) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_11 && areaNumber == 3 && stageNumber == 10) { txtMainMessage.text = message; return; }
-            if (GroundOne.WE.MQ_Complete4_12 && areaNumber == 3 && stageNumber == 11) { txtMainMessage.text = message; return; }
+            for (int ii = 0; ii < Database.MQ_AREA_NUM; ii++)
+            {
+                for (int jj = 0; jj < Database.MQ_STAGE_NUM; jj++)
+                {
+                    if (areaNumber == ii && rewardComplete[ii, jj] && stageNumber == jj) { txtMainMessage.text = message; return; }
+                }
+            }
 
             if (GroundOne.WE.AlreadyMonsterQuestComplete)
             {
@@ -942,159 +788,23 @@ namespace DungeonPlayer
                 return;
             }
 
-            if ((areaNumber == 0 && stageNumber == 0 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_1_1) ||
-                (areaNumber == 0 && stageNumber == 0 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_1_1) ||
-                (areaNumber == 0 && stageNumber == 0 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_1_1) || 
-                (areaNumber == 0 && stageNumber == 1 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_2_1) ||
-                (areaNumber == 0 && stageNumber == 1 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_2_2) ||
-                (areaNumber == 0 && stageNumber == 1 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_2_3) ||
-                (areaNumber == 0 && stageNumber == 2 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_3_1) ||
-                (areaNumber == 0 && stageNumber == 2 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_3_2) ||
-                (areaNumber == 0 && stageNumber == 2 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_3_3) ||
-                (areaNumber == 0 && stageNumber == 3 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_4_1) ||
-                (areaNumber == 0 && stageNumber == 3 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_4_2) ||
-                (areaNumber == 0 && stageNumber == 3 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_4_3) ||
-                (areaNumber == 0 && stageNumber == 4 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_5_1) ||
-                (areaNumber == 0 && stageNumber == 4 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_5_2) ||
-                (areaNumber == 0 && stageNumber == 4 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_5_3) ||
-                (areaNumber == 0 && stageNumber == 5 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_6_1) ||
-                (areaNumber == 0 && stageNumber == 5 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_6_2) ||
-                (areaNumber == 0 && stageNumber == 5 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_6_3) ||
-                (areaNumber == 0 && stageNumber == 6 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_7_1) ||
-                (areaNumber == 0 && stageNumber == 6 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_7_2) ||
-                (areaNumber == 0 && stageNumber == 6 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_7_3) ||
-                (areaNumber == 0 && stageNumber == 7 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_8_1) ||
-                (areaNumber == 0 && stageNumber == 7 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_8_2) ||
-                (areaNumber == 0 && stageNumber == 7 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_8_3) ||
-                (areaNumber == 0 && stageNumber == 8 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_9_1) ||
-                (areaNumber == 0 && stageNumber == 8 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_9_2) ||
-                (areaNumber == 0 && stageNumber == 8 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_9_3) ||
-                (areaNumber == 0 && stageNumber == 9 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_10_1) ||
-                (areaNumber == 0 && stageNumber == 9 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_10_2) ||
-                (areaNumber == 0 && stageNumber == 9 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_10_3) ||
-                (areaNumber == 0 && stageNumber == 10 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_11_1) ||
-                (areaNumber == 0 && stageNumber == 10 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_11_2) ||
-                (areaNumber == 0 && stageNumber == 10 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_11_3) ||
-                (areaNumber == 0 && stageNumber == 11 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_12_1) ||
-                (areaNumber == 0 && stageNumber == 11 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_12_2) ||
-                (areaNumber == 0 && stageNumber == 11 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_12_3) ||
-                (areaNumber == 0 && stageNumber == 12 && itemNumber == 0 && GroundOne.WE.MQ_Reward1_13_1) ||
-                (areaNumber == 0 && stageNumber == 12 && itemNumber == 1 && GroundOne.WE.MQ_Reward1_13_2) ||
-                (areaNumber == 0 && stageNumber == 12 && itemNumber == 2 && GroundOne.WE.MQ_Reward1_13_3) ||
-                (areaNumber == 1 && stageNumber == 0 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_1_1) ||
-                (areaNumber == 1 && stageNumber == 0 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_1_1) ||
-                (areaNumber == 1 && stageNumber == 0 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_1_1) ||
-                (areaNumber == 1 && stageNumber == 1 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_2_1) ||
-                (areaNumber == 1 && stageNumber == 1 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_2_2) ||
-                (areaNumber == 1 && stageNumber == 1 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_2_3) ||
-                (areaNumber == 1 && stageNumber == 2 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_3_1) ||
-                (areaNumber == 1 && stageNumber == 2 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_3_2) ||
-                (areaNumber == 1 && stageNumber == 2 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_3_3) ||
-                (areaNumber == 1 && stageNumber == 3 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_4_1) ||
-                (areaNumber == 1 && stageNumber == 3 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_4_2) ||
-                (areaNumber == 1 && stageNumber == 3 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_4_3) ||
-                (areaNumber == 1 && stageNumber == 4 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_5_1) ||
-                (areaNumber == 1 && stageNumber == 4 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_5_2) ||
-                (areaNumber == 1 && stageNumber == 4 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_5_3) ||
-                (areaNumber == 1 && stageNumber == 5 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_6_1) ||
-                (areaNumber == 1 && stageNumber == 5 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_6_2) ||
-                (areaNumber == 1 && stageNumber == 5 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_6_3) ||
-                (areaNumber == 1 && stageNumber == 6 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_7_1) ||
-                (areaNumber == 1 && stageNumber == 6 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_7_2) ||
-                (areaNumber == 1 && stageNumber == 6 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_7_3) ||
-                (areaNumber == 1 && stageNumber == 7 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_8_1) ||
-                (areaNumber == 1 && stageNumber == 7 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_8_2) ||
-                (areaNumber == 1 && stageNumber == 7 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_8_3) ||
-                (areaNumber == 1 && stageNumber == 8 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_9_1) ||
-                (areaNumber == 1 && stageNumber == 8 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_9_2) ||
-                (areaNumber == 1 && stageNumber == 8 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_9_3) ||
-                (areaNumber == 1 && stageNumber == 9 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_10_1) ||
-                (areaNumber == 1 && stageNumber == 9 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_10_2) ||
-                (areaNumber == 1 && stageNumber == 9 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_10_3) ||
-                (areaNumber == 1 && stageNumber == 10 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_11_1) ||
-                (areaNumber == 1 && stageNumber == 10 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_11_2) ||
-                (areaNumber == 1 && stageNumber == 10 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_11_3) ||
-                (areaNumber == 1 && stageNumber == 11 && itemNumber == 0 && GroundOne.WE.MQ_Reward2_12_1) ||
-                (areaNumber == 1 && stageNumber == 11 && itemNumber == 1 && GroundOne.WE.MQ_Reward2_12_2) ||
-                (areaNumber == 1 && stageNumber == 11 && itemNumber == 2 && GroundOne.WE.MQ_Reward2_12_3) ||
-                (areaNumber == 2 && stageNumber == 0 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_1_1) ||
-                (areaNumber == 2 && stageNumber == 0 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_1_1) ||
-                (areaNumber == 2 && stageNumber == 0 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_1_1) ||
-                (areaNumber == 2 && stageNumber == 1 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_2_1) ||
-                (areaNumber == 2 && stageNumber == 1 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_2_2) ||
-                (areaNumber == 2 && stageNumber == 1 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_2_3) ||
-                (areaNumber == 2 && stageNumber == 2 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_3_1) ||
-                (areaNumber == 2 && stageNumber == 2 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_3_2) ||
-                (areaNumber == 2 && stageNumber == 2 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_3_3) ||
-                (areaNumber == 2 && stageNumber == 3 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_4_1) ||
-                (areaNumber == 2 && stageNumber == 3 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_4_2) ||
-                (areaNumber == 2 && stageNumber == 3 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_4_3) ||
-                (areaNumber == 2 && stageNumber == 4 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_5_1) ||
-                (areaNumber == 2 && stageNumber == 4 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_5_2) ||
-                (areaNumber == 2 && stageNumber == 4 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_5_3) ||
-                (areaNumber == 2 && stageNumber == 5 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_6_1) ||
-                (areaNumber == 2 && stageNumber == 5 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_6_2) ||
-                (areaNumber == 2 && stageNumber == 5 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_6_3) ||
-                (areaNumber == 2 && stageNumber == 6 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_7_1) ||
-                (areaNumber == 2 && stageNumber == 6 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_7_2) ||
-                (areaNumber == 2 && stageNumber == 6 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_7_3) ||
-                (areaNumber == 2 && stageNumber == 7 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_8_1) ||
-                (areaNumber == 2 && stageNumber == 7 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_8_2) ||
-                (areaNumber == 2 && stageNumber == 7 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_8_3) ||
-                (areaNumber == 2 && stageNumber == 8 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_9_1) ||
-                (areaNumber == 2 && stageNumber == 8 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_9_2) ||
-                (areaNumber == 2 && stageNumber == 8 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_9_3) ||
-                (areaNumber == 2 && stageNumber == 9 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_10_1) ||
-                (areaNumber == 2 && stageNumber == 9 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_10_2) ||
-                (areaNumber == 2 && stageNumber == 9 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_10_3) ||
-                (areaNumber == 2 && stageNumber == 10 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_11_1) ||
-                (areaNumber == 2 && stageNumber == 10 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_11_2) ||
-                (areaNumber == 2 && stageNumber == 10 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_11_3) ||
-                (areaNumber == 2 && stageNumber == 11 && itemNumber == 0 && GroundOne.WE.MQ_Reward3_12_1) ||
-                (areaNumber == 2 && stageNumber == 11 && itemNumber == 1 && GroundOne.WE.MQ_Reward3_12_2) ||
-                (areaNumber == 2 && stageNumber == 11 && itemNumber == 2 && GroundOne.WE.MQ_Reward3_12_3) ||
-                (areaNumber == 3 && stageNumber == 0 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_1_1) ||
-                (areaNumber == 3 && stageNumber == 0 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_1_1) ||
-                (areaNumber == 3 && stageNumber == 0 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_1_1) ||
-                (areaNumber == 3 && stageNumber == 1 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_2_1) ||
-                (areaNumber == 3 && stageNumber == 1 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_2_2) ||
-                (areaNumber == 3 && stageNumber == 1 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_2_3) ||
-                (areaNumber == 3 && stageNumber == 2 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_3_1) ||
-                (areaNumber == 3 && stageNumber == 2 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_3_2) ||
-                (areaNumber == 3 && stageNumber == 2 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_3_3) ||
-                (areaNumber == 3 && stageNumber == 3 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_4_1) ||
-                (areaNumber == 3 && stageNumber == 3 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_4_2) ||
-                (areaNumber == 3 && stageNumber == 3 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_4_3) ||
-                (areaNumber == 3 && stageNumber == 4 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_5_1) ||
-                (areaNumber == 3 && stageNumber == 4 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_5_2) ||
-                (areaNumber == 3 && stageNumber == 4 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_5_3) ||
-                (areaNumber == 3 && stageNumber == 5 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_6_1) ||
-                (areaNumber == 3 && stageNumber == 5 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_6_2) ||
-                (areaNumber == 3 && stageNumber == 5 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_6_3) ||
-                (areaNumber == 3 && stageNumber == 6 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_7_1) ||
-                (areaNumber == 3 && stageNumber == 6 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_7_2) ||
-                (areaNumber == 3 && stageNumber == 6 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_7_3) ||
-                (areaNumber == 3 && stageNumber == 7 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_8_1) ||
-                (areaNumber == 3 && stageNumber == 7 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_8_2) ||
-                (areaNumber == 3 && stageNumber == 7 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_8_3) ||
-                (areaNumber == 3 && stageNumber == 8 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_9_1) ||
-                (areaNumber == 3 && stageNumber == 8 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_9_2) ||
-                (areaNumber == 3 && stageNumber == 8 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_9_3) ||
-                (areaNumber == 3 && stageNumber == 9 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_10_1) ||
-                (areaNumber == 3 && stageNumber == 9 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_10_2) ||
-                (areaNumber == 3 && stageNumber == 9 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_10_3) ||
-                (areaNumber == 3 && stageNumber == 10 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_11_1) ||
-                (areaNumber == 3 && stageNumber == 10 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_11_2) ||
-                (areaNumber == 3 && stageNumber == 10 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_11_3) ||
-                (areaNumber == 3 && stageNumber == 11 && itemNumber == 0 && GroundOne.WE.MQ_Reward4_12_1) ||
-                (areaNumber == 3 && stageNumber == 11 && itemNumber == 1 && GroundOne.WE.MQ_Reward4_12_2) ||
-                (areaNumber == 3 && stageNumber == 11 && itemNumber == 2 && GroundOne.WE.MQ_Reward4_12_3)
-                )
+            // すでに報酬を受け渡している場合は、完了済みとみなし、何も渡さず終了する。
+            for (int ii = 0; ii < Database.MQ_AREA_NUM; ii++)
             {
-                txtMainMessage.text = @"サンディ：アイン・ウォーレンスよ！申し訳ないが、【 " + targetItemName + " 】は既に受け渡しが完了されている！";
-                return;
+                for (int jj = 0; jj < Database.MQ_STAGE_NUM; jj++)
+                {
+                    for (int kk = 0; kk < Database.MQ_TREASURE_NUM; kk++)
+                    {
+                        if (areaNumber == ii && stageNumber == jj && itemNumber == kk && rewardData[ii, jj, kk])
+                        {
+                            txtMainMessage.text = @"サンディ：アイン・ウォーレンスよ！申し訳ないが、【 " + targetItemName + " 】は既に受け渡しが完了されている！";
+                            return;
+                        }
+                    }
+                }
             }
 
+            // バックパックに入り切らない場合は、何も渡さず終了する。
             ItemBackPack item = new ItemBackPack(targetItemName);
             bool result = GetNewItem(item);
             if (result == false)
@@ -1104,173 +814,26 @@ namespace DungeonPlayer
             }
 
             txtMainMessage.text = @"サンディ：アイン・ウォーレンスよ！" + targetItemName + "を受け取るが良い！";
-            if (areaNumber == 0)
-            {
-                if (itemNumber == 0) { UpdateBoxOpen(imgBox3[stageNumber], true); }
-                else if (itemNumber == 1) { UpdateBoxOpen(imgBox2[stageNumber], true); }
-                else if (itemNumber == 2) { UpdateBoxOpen(imgBox3[stageNumber], true); }
-                else { Debug.Log("Irregular routine: " + itemNumber.ToString()); }
+            if (itemNumber == 0) { UpdateBoxOpen(imgBox1[stageNumber], true); }
+            else if (itemNumber == 1) { UpdateBoxOpen(imgBox2[stageNumber], true); }
+            else if (itemNumber == 2) { UpdateBoxOpen(imgBox3[stageNumber], true); }
+            else { Debug.Log("Irregular routine: " + itemNumber.ToString()); }
 
-                if (stageNumber == 0 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_1_1 = true; }
-                if (stageNumber == 0 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_1_2 = true; }
-                if (stageNumber == 0 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_1_3 = true; }
-                if (stageNumber == 1 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_2_1 = true; }
-                if (stageNumber == 1 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_2_2 = true; }
-                if (stageNumber == 1 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_2_3 = true; }
-                if (stageNumber == 2 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_3_1 = true; }
-                if (stageNumber == 2 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_3_2 = true; }
-                if (stageNumber == 2 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_3_3 = true; }
-                if (stageNumber == 3 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_4_1 = true; }
-                if (stageNumber == 3 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_4_2 = true; }
-                if (stageNumber == 3 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_4_3 = true; }
-                if (stageNumber == 4 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_5_1 = true; }
-                if (stageNumber == 4 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_5_2 = true; }
-                if (stageNumber == 4 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_5_3 = true; }
-                if (stageNumber == 5 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_6_1 = true; }
-                if (stageNumber == 5 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_6_2 = true; }
-                if (stageNumber == 5 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_6_3 = true; }
-                if (stageNumber == 6 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_7_1 = true; }
-                if (stageNumber == 6 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_7_2 = true; }
-                if (stageNumber == 6 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_7_3 = true; }
-                if (stageNumber == 7 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_8_1 = true; }
-                if (stageNumber == 7 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_8_2 = true; }
-                if (stageNumber == 7 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_8_3 = true; }
-                if (stageNumber == 8 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_9_1 = true; }
-                if (stageNumber == 8 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_9_2 = true; }
-                if (stageNumber == 8 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_9_3 = true; }
-                if (stageNumber == 9 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_10_1 = true; }
-                if (stageNumber == 9 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_10_2 = true; }
-                if (stageNumber == 9 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_10_3 = true; }
-                if (stageNumber == 10 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_11_1 = true; }
-                if (stageNumber == 10 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_11_2 = true; }
-                if (stageNumber == 10 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_11_3 = true; }
-                if (stageNumber == 11 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_12_1 = true; }
-                if (stageNumber == 11 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_12_2 = true; }
-                if (stageNumber == 11 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_12_3 = true; }
-                if (stageNumber == 12 && itemNumber == 0) { GroundOne.WE.MQ_Reward1_13_1 = true; }
-                if (stageNumber == 12 && itemNumber == 1) { GroundOne.WE.MQ_Reward1_13_2 = true; }
-                if (stageNumber == 12 && itemNumber == 2) { GroundOne.WE.MQ_Reward1_13_3 = true; }
-            }
-            else if (areaNumber == 1)
+            // フラグを更新する。
+            for (int ii = 0; ii < Database.MQ_AREA_NUM; ii++)
             {
-                if (stageNumber == 0 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_1_1 = true; }
-                if (stageNumber == 0 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_1_2 = true; }
-                if (stageNumber == 0 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_1_3 = true; }
-                if (stageNumber == 1 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_2_1 = true; }
-                if (stageNumber == 1 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_2_2 = true; }
-                if (stageNumber == 1 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_2_3 = true; }
-                if (stageNumber == 2 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_3_1 = true; }
-                if (stageNumber == 2 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_3_2 = true; }
-                if (stageNumber == 2 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_3_3 = true; }
-                if (stageNumber == 3 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_4_1 = true; }
-                if (stageNumber == 3 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_4_2 = true; }
-                if (stageNumber == 3 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_4_3 = true; }
-                if (stageNumber == 4 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_5_1 = true; }
-                if (stageNumber == 4 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_5_2 = true; }
-                if (stageNumber == 4 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_5_3 = true; }
-                if (stageNumber == 5 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_6_1 = true; }
-                if (stageNumber == 5 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_6_2 = true; }
-                if (stageNumber == 5 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_6_3 = true; }
-                if (stageNumber == 6 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_7_1 = true; }
-                if (stageNumber == 6 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_7_2 = true; }
-                if (stageNumber == 6 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_7_3 = true; }
-                if (stageNumber == 7 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_8_1 = true; }
-                if (stageNumber == 7 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_8_2 = true; }
-                if (stageNumber == 7 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_8_3 = true; }
-                if (stageNumber == 8 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_9_1 = true; }
-                if (stageNumber == 8 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_9_2 = true; }
-                if (stageNumber == 8 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_9_3 = true; }
-                if (stageNumber == 9 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_10_1 = true; }
-                if (stageNumber == 9 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_10_2 = true; }
-                if (stageNumber == 9 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_10_3 = true; }
-                if (stageNumber == 10 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_11_1 = true; }
-                if (stageNumber == 10 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_11_2 = true; }
-                if (stageNumber == 10 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_11_3 = true; }
-                if (stageNumber == 11 && itemNumber == 0) { GroundOne.WE.MQ_Reward2_12_1 = true; }
-                if (stageNumber == 11 && itemNumber == 1) { GroundOne.WE.MQ_Reward2_12_2 = true; }
-                if (stageNumber == 11 && itemNumber == 2) { GroundOne.WE.MQ_Reward2_12_3 = true; }
+                for (int jj = 0; jj < Database.MQ_STAGE_NUM; jj++)
+                {
+                    for (int kk = 0; kk < Database.MQ_TREASURE_NUM; kk++)
+                    {
+                        if (areaNumber == ii && stageNumber == jj && itemNumber == kk)
+                        {
+                            rewardData[ii, jj, kk] = true;
+                        }
+                    }
+                }
             }
-            else if (areaNumber == 2)
-            {
-                if (stageNumber == 0 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_1_1 = true; }
-                if (stageNumber == 0 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_1_2 = true; }
-                if (stageNumber == 0 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_1_3 = true; }
-                if (stageNumber == 1 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_2_1 = true; }
-                if (stageNumber == 1 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_2_2 = true; }
-                if (stageNumber == 1 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_2_3 = true; }
-                if (stageNumber == 2 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_3_1 = true; }
-                if (stageNumber == 2 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_3_2 = true; }
-                if (stageNumber == 2 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_3_3 = true; }
-                if (stageNumber == 3 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_4_1 = true; }
-                if (stageNumber == 3 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_4_2 = true; }
-                if (stageNumber == 3 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_4_3 = true; }
-                if (stageNumber == 4 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_5_1 = true; }
-                if (stageNumber == 4 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_5_2 = true; }
-                if (stageNumber == 4 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_5_3 = true; }
-                if (stageNumber == 5 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_6_1 = true; }
-                if (stageNumber == 5 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_6_2 = true; }
-                if (stageNumber == 5 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_6_3 = true; }
-                if (stageNumber == 6 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_7_1 = true; }
-                if (stageNumber == 6 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_7_2 = true; }
-                if (stageNumber == 6 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_7_3 = true; }
-                if (stageNumber == 7 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_8_1 = true; }
-                if (stageNumber == 7 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_8_2 = true; }
-                if (stageNumber == 7 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_8_3 = true; }
-                if (stageNumber == 8 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_9_1 = true; }
-                if (stageNumber == 8 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_9_2 = true; }
-                if (stageNumber == 8 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_9_3 = true; }
-                if (stageNumber == 9 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_10_1 = true; }
-                if (stageNumber == 9 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_10_2 = true; }
-                if (stageNumber == 9 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_10_3 = true; }
-                if (stageNumber == 10 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_11_1 = true; }
-                if (stageNumber == 10 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_11_2 = true; }
-                if (stageNumber == 10 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_11_3 = true; }
-                if (stageNumber == 11 && itemNumber == 0) { GroundOne.WE.MQ_Reward3_12_1 = true; }
-                if (stageNumber == 11 && itemNumber == 1) { GroundOne.WE.MQ_Reward3_12_2 = true; }
-                if (stageNumber == 11 && itemNumber == 2) { GroundOne.WE.MQ_Reward3_12_3 = true; }
-            }
-            else if (areaNumber == 3)
-            {
-                if (stageNumber == 0 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_1_1 = true; }
-                if (stageNumber == 0 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_1_2 = true; }
-                if (stageNumber == 0 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_1_3 = true; }
-                if (stageNumber == 1 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_2_1 = true; }
-                if (stageNumber == 1 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_2_2 = true; }
-                if (stageNumber == 1 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_2_3 = true; }
-                if (stageNumber == 2 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_3_1 = true; }
-                if (stageNumber == 2 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_3_2 = true; }
-                if (stageNumber == 2 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_3_3 = true; }
-                if (stageNumber == 3 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_4_1 = true; }
-                if (stageNumber == 3 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_4_2 = true; }
-                if (stageNumber == 3 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_4_3 = true; }
-                if (stageNumber == 4 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_5_1 = true; }
-                if (stageNumber == 4 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_5_2 = true; }
-                if (stageNumber == 4 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_5_3 = true; }
-                if (stageNumber == 5 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_6_1 = true; }
-                if (stageNumber == 5 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_6_2 = true; }
-                if (stageNumber == 5 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_6_3 = true; }
-                if (stageNumber == 6 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_7_1 = true; }
-                if (stageNumber == 6 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_7_2 = true; }
-                if (stageNumber == 6 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_7_3 = true; }
-                if (stageNumber == 7 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_8_1 = true; }
-                if (stageNumber == 7 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_8_2 = true; }
-                if (stageNumber == 7 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_8_3 = true; }
-                if (stageNumber == 8 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_9_1 = true; }
-                if (stageNumber == 8 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_9_2 = true; }
-                if (stageNumber == 8 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_9_3 = true; }
-                if (stageNumber == 9 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_10_1 = true; }
-                if (stageNumber == 9 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_10_2 = true; }
-                if (stageNumber == 9 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_10_3 = true; }
-                if (stageNumber == 10 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_11_1 = true; }
-                if (stageNumber == 10 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_11_2 = true; }
-                if (stageNumber == 10 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_11_3 = true; }
-                if (stageNumber == 11 && itemNumber == 0) { GroundOne.WE.MQ_Reward4_12_1 = true; }
-                if (stageNumber == 11 && itemNumber == 1) { GroundOne.WE.MQ_Reward4_12_2 = true; }
-                if (stageNumber == 11 && itemNumber == 2) { GroundOne.WE.MQ_Reward4_12_3 = true; }
-            }
-            else if (areaNumber == 4)
-            {
-            }
+            Method.SetRewardData(rewardComplete, rewardData);
 
             Debug.Log("TapItemReward(E)");
         }
