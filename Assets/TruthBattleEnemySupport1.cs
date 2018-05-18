@@ -1687,7 +1687,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "貪欲な咬みつき")
                                 {
                                     UpdateBattleText(player.FirstName + "はそこら中を対象にして噛み付いてきた！\r\n");
-                                    PlayerRandomTargetPhysicalDamage(player, 10, 20, 1.2F);
+                                    PlayerRandomTargetPhysicalDamage(player, 3, 20, 1.2F);
                                 }
                                 else if (player.ActionLabel.text == "ヴァイオレンス・テール")
                                 {
