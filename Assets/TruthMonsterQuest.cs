@@ -99,6 +99,10 @@ namespace DungeonPlayer
             TapArea(0);
             TapStage(0);
 
+            if (GroundOne.WE.AlreadyMonsterQuestComplete)
+            {
+                txtMainMessage.text = @"サンディ：モンスター討伐は本日すでに実施済みである！明日に備えて体調を整えるがよい！";
+            }
             Debug.Log("MonsterQuest Start(E)");
         }
         private void UpdateLevelView(bool b1, bool b2, bool b3)
@@ -537,7 +541,7 @@ namespace DungeonPlayer
                 {
                     GroundOne.enemyName1 = Database.ENEMY_EIGHT_EIGHT;
                     GroundOne.enemyName2 = Database.ENEMY_EDGED_HIGH_SHARK;
-                    GroundOne.enemyName3 = Database.ENEMY_EDGED_HIGH_SHARK;
+                    GroundOne.enemyName3 = Database.ENEMY_GOEI_HERMIT_CLUB;
                 }
             }
             // 3F
@@ -634,70 +638,70 @@ namespace DungeonPlayer
                 {
                     GroundOne.enemyName1 = Database.ENEMY_FALLEN_SEEKER;
                     GroundOne.enemyName2 = Database.ENEMY_ELDER_ASSASSIN;
-                    GroundOne.enemyName3 = Database.ENEMY_GENAN_HUNTER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 2)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_MEPHISTO_RIGHTARM;
-                    GroundOne.enemyName2 = Database.ENEMY_FALLEN_SEEKER;
-                    GroundOne.enemyName3 = Database.ENEMY_ELDER_ASSASSIN;
+                    GroundOne.enemyName2 = Database.ENEMY_BEAST_MASTER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 // 4-2
                 else if (stageNumber == 3)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_EXECUTIONER;
                     GroundOne.enemyName2 = Database.ENEMY_MARIONETTE_NEMESIS;
-                    GroundOne.enemyName3 = Database.ENEMY_DARK_MESSENGER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 4)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_BLACKFIRE_MASTER_BLADE;
                     GroundOne.enemyName2 = Database.ENEMY_MASTER_LOAD;
-                    GroundOne.enemyName3 = Database.ENEMY_DARK_MESSENGER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 5)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_SIN_THE_DARKELF;
-                    GroundOne.enemyName2 = Database.ENEMY_BLACKFIRE_MASTER_BLADE;
-                    GroundOne.enemyName3 = Database.ENEMY_MARIONETTE_NEMESIS;
+                    GroundOne.enemyName2 = Database.ENEMY_DARK_MESSENGER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 // 4-3
                 else if (stageNumber == 6)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_ARC_DEMON;
                     GroundOne.enemyName2 = Database.ENEMY_SUN_STRIDER;
-                    GroundOne.enemyName3 = Database.ENEMY_ARC_DEMON;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 7)
                 {
-                    GroundOne.enemyName1 = Database.ENEMY_GO_FLAME_SLASHER;
-                    GroundOne.enemyName2 = Database.ENEMY_UNDEAD_WYVERN;
-                    GroundOne.enemyName3 = Database.ENEMY_BALANCE_IDLE;
+                    GroundOne.enemyName1 = Database.ENEMY_BALANCE_IDLE;
+                    GroundOne.enemyName2 = Database.ENEMY_GO_FLAME_SLASHER;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 8)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_DEVIL_CHILDREN;
-                    GroundOne.enemyName2 = Database.ENEMY_ARC_DEMON;
-                    GroundOne.enemyName3 = Database.ENEMY_UNDEAD_WYVERN;
+                    GroundOne.enemyName2 = Database.ENEMY_UNDEAD_WYVERN;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 // 4-4
                 else if (stageNumber == 9)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_HOWLING_HORROR;
                     GroundOne.enemyName2 = Database.ENEMY_PAIN_ANGEL;
-                    GroundOne.enemyName3 = Database.ENEMY_CHAOS_WARDEN;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 10)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_DREAD_KNIGHT;
-                    GroundOne.enemyName2 = Database.ENEMY_DREAD_KNIGHT;
-                    GroundOne.enemyName3 = Database.ENEMY_CHAOS_WARDEN;
+                    GroundOne.enemyName2 = Database.ENEMY_CHAOS_WARDEN;
+                    GroundOne.enemyName3 = String.Empty;
                 }
                 else if (stageNumber == 11)
                 {
                     GroundOne.enemyName1 = Database.ENEMY_DOOM_BRINGER;
-                    GroundOne.enemyName2 = Database.ENEMY_DREAD_KNIGHT;
-                    GroundOne.enemyName3 = Database.ENEMY_PAIN_ANGEL;
+                    GroundOne.enemyName2 = Database.ENEMY_PAIN_ANGEL;
+                    GroundOne.enemyName3 = String.Empty;
                 }
             }
             // 5F
