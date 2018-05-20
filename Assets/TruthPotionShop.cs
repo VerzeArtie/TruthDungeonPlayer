@@ -346,7 +346,7 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.PotionAvailable_12)
                     {
-                        item = new ItemBackPack(Database.COMMON_POTION_MAGIC_SEAL);
+                        item = new ItemBackPack(Database.COMMON_POTION_RESIST_FIRE);
                         vendorList[ii].text = item.Name;
                         SetupItemLayout(item, ii);
                     }
@@ -354,7 +354,7 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.PotionAvailable_13)
                     {
-                        item = new ItemBackPack(Database.COMMON_POTION_ATTACK_SEAL);
+                        item = new ItemBackPack(Database.COMMON_POTION_MAGIC_SEAL);
                         vendorList[ii].text = item.Name;
                         SetupItemLayout(item, ii);
                     }
@@ -362,7 +362,7 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.PotionAvailable_14)
                     {
-                        item = new ItemBackPack(Database.COMMON_POTION_CURE_BLIND);
+                        item = new ItemBackPack(Database.COMMON_POTION_ATTACK_SEAL);
                         vendorList[ii].text = item.Name;
                         SetupItemLayout(item, ii);
                     }
@@ -370,7 +370,24 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.PotionAvailable_15)
                     {
+                        item = new ItemBackPack(Database.COMMON_POTION_CURE_BLIND);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
+                    }
+                    ii++;
+
+                    
+                    if (GroundOne.WE2.PotionAvailable_16)
+                    {
                         item = new ItemBackPack(Database.RARE_POTION_MOSSGREEN_DREAM);
+                        vendorList[ii].text = item.Name;
+                        SetupItemLayout(item, ii);
+                    }
+                    ii++;
+
+                    if (GroundOne.WE2.PotionAvailable_17)
+                    {
+                        item = new ItemBackPack(Database.RARE_DRYAD_SAGE_POTION);
                         vendorList[ii].text = item.Name;
                         SetupItemLayout(item, ii);
                     }

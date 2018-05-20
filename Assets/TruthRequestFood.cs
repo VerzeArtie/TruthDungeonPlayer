@@ -527,18 +527,22 @@ namespace DungeonPlayer
             if (FoodTextList[4].text == Database.FOOD_SANMA)
             {
                 DescriptionText.text = TruthRequestFood.DESC_15_MINI;
+                UpdateFoodValue(FOOD_15_VALUE);
             }
             else if (FoodTextList[4].text == Database.FOOD_RED_HOT_SPAGHETTI)
             {
                 DescriptionText.text = TruthRequestFood.DESC_25_MINI;
+                UpdateFoodValue(FOOD_15_VALUE);
             }
             else if (FoodTextList[4].text == Database.FOOD_KOGOERU_DESSERT)
             {
                 DescriptionText.text = TruthRequestFood.DESC_35_MINI;
+                UpdateFoodValue(FOOD_15_VALUE);
             }
             else if (FoodTextList[4].text == Database.FOOD_TRUTH_YAMINABE_2)
             {
                 DescriptionText.text = TruthRequestFood.DESC_45_MINI;
+                UpdateFoodValue(FOOD_15_VALUE);
             }
             else
             {
