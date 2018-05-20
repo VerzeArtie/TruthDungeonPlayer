@@ -3409,23 +3409,30 @@ namespace DungeonPlayer
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
-                                    PlayerDeath(player, current);
+                                    if (AP.Math.RandomInteger(2) == 0)
+                                    {
+                                        PlayerDeath(player, current);
+                                    }
+                                    else
+                                    {
+                                        PlayerLifeOne(player, current);
+                                    }
                                 }
                                 else if (player.ActionLabel.text == "深淵の理")
                                 {
                                     UpdateBattleText(player.FirstName + "：ヤミへのコトワリ、シンエンへシズメ\r\n");
-                                    BuffDownPhysicalAttack(target, 2500.0F);
-                                    BuffDownMagicAttack(target, 2500.0F);
-                                    BuffDownPhysicalDefense(target, 600.0F);
-                                    BuffDownMagicDefense(target, 600.0F);
-                                    BuffDownBattleSpeed(target, 2.5F);
-                                    BuffDownBattleReaction(target, 7.0F);
-                                    BuffDownPotential(target, 1.0F);
+                                    BuffDownPhysicalAttack(target, 1000.0F);
+                                    BuffDownMagicAttack(target, 1000.0F);
+                                    BuffDownPhysicalDefense(target, 500.0F);
+                                    BuffDownMagicDefense(target, 500.0F);
+                                    BuffDownBattleSpeed(target, 1.5F);
+                                    BuffDownBattleReaction(target, 3.0F);
+                                    BuffDownPotential(target, 0.5F);
                                 }
                                 else if (player.ActionLabel.text == "ギガント・スレイヤー")
                                 {
                                     UpdateBattleText(player.FirstName + "：このイチゲキにて、クチハテよ\r\n");
-                                    PlayerNormalAttack(player, target, 10.0F, 2, false, false, 0, 0, Database.SOUND_LAVA_ANNIHILATION, -1, false, CriticalType.None);
+                                    PlayerNormalAttack(player, target, 6.0F, 2, false, false, 0, 0, Database.SOUND_LAVA_ANNIHILATION, -1, false, CriticalType.None);
                                 }
                                 break;
 
@@ -3583,7 +3590,7 @@ namespace DungeonPlayer
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
-                                        PlayerBuffAbstract(player, group[ii], Database.ABSOLUTE_ZERO);
+                                        PlayerBuffAbstract(player, group[ii], Database.ABSOLUTE_ZERO, 1);
                                     }
                                     ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
                                 }
