@@ -739,6 +739,9 @@ namespace DungeonPlayer
                 }
             }
 
+            // 効果音を鳴らす
+            GroundOne.PlaySoundEffect(Database.SOUND_MQ_BEGIN);
+
             // 全回復しておく
             if (GroundOne.MC != null)
             {
