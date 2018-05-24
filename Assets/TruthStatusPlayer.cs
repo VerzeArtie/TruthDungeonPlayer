@@ -1634,7 +1634,7 @@ namespace DungeonPlayer
                 if (GroundOne.OnlySelectTrash)
                 {
                     GetNewItem(new ItemBackPack(GroundOne.OnlySelectTrashNewItem));
-                    SceneDimension.JumpToTruthDungeon(false);
+                    SceneDimension.Back(this);
                 }
             }
             else
