@@ -16,6 +16,7 @@ namespace DungeonPlayer
         public Text TextAccount = null;
         public Button LanguageEngligh = null;
         public Button LanguageJapanese = null;
+        public Text SupportMessage = null;
 
         public override void Start()
         {
@@ -70,6 +71,30 @@ namespace DungeonPlayer
             {
                 GroundOne.Language = GroundOne.GameLanguage.Japanese;
             }
+        }
+
+        public void ChangeAccountName(Text txt)
+        {
+            if (txt.text.Length < 2)
+            {
+                SupportMessage.text = "Please enter 2 or more characters.";
+                SupportMessage.gameObject.SetActive(true);
+                return;
+            }
+
+            if (GroundOne.SQL.ExistOwnerName(txt.text))
+            {
+                SupportMessage.text = "A character with that name already exists.";
+                SupportMessage.gameObject.SetActive(true);
+                return;
+            }
+            GroundOne.SQL.ChangeOwnerName("ChangeAccountName", string.Empty, string.Empty, txt.text);
+            GroundOne.WE2.Account = txt.text;
+            Method.AutoSaveTruthWorldEnvironment();
+            this.TextAccount.text = "AccountID: " + GroundOne.WE2.Account;
+
+            SupportMessage.text = "Account name has been changed.";
+            SupportMessage.gameObject.SetActive(true);
         }
 
         public void tapClose()

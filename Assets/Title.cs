@@ -651,22 +651,34 @@ namespace DungeonPlayer
 
         public void tapAccountOK(Text account)
         {
-            if (account.text.Length < 2)
+            System.Guid guid = System.Guid.NewGuid();
+            CreateAccount(account.text, guid);
+        }
+
+        public void tapAccountSkip()
+        {
+            System.Guid guid = System.Guid.NewGuid();
+            CreateAccount(guid.ToString(), guid);
+        }
+
+        private void CreateAccount(string accountName, System.Guid guid)
+        {
+            if (accountName.Length < 2)
             {
                 supportMessage.text = "Please enter 2 or more characters.";
                 supportMessage.gameObject.SetActive(true);
                 return;
             }
 
-            if (GroundOne.SQL.ExistOwnerName(account.text))
+            if (GroundOne.SQL.ExistOwnerName(accountName))
             {
                 supportMessage.text = "A character with that name already exists.";
                 supportMessage.gameObject.SetActive(true);
                 return;
             }
 
-            GroundOne.SQL.CreateOwner(account.text);
-            GroundOne.WE2.Account = account.text;
+            GroundOne.SQL.CreateOwner(accountName, guid);
+            GroundOne.WE2.Account = accountName;
             Method.AutoSaveTruthWorldEnvironment();
             groupAccount.SetActive(false);
             GroupMenu.SetActive(true);
