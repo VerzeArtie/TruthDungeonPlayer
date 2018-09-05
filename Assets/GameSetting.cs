@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Xml;
-using UnityEngine.Purchasing;
 
 namespace DungeonPlayer
 {
