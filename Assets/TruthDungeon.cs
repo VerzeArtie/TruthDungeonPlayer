@@ -67,6 +67,35 @@ namespace DungeonPlayer
         public GameObject[] TILEINFO_42;
         public GameObject[] TILEINFO_43;
         public GameObject[] TILEINFO_44;
+        public GameObject[] TILEINFO_46;
+        public GameObject[] TILEINFO_47;
+        public GameObject[] TILEINFO_48;
+        public GameObject[] TILEINFO_49;
+        public GameObject[] TILEINFO_50;
+        public GameObject[] TILEINFO_51;
+        public GameObject[] TILEINFO_52;
+        public GameObject[] TILEINFO_53;
+        public GameObject[] TILEINFO_54;
+        public GameObject[] TILEINFO_55;
+        public GameObject[] TILEINFO_56;
+        public GameObject[] TILEINFO_57;
+        public GameObject[] TILEINFO_58;
+        public GameObject[] TILEINFO_59;
+        public GameObject[] TILEINFO_60;
+        public GameObject[] TILEINFO_61;
+        public GameObject[] TILEINFO_62;
+        public GameObject[] TILEINFO_63;
+        public GameObject[] TILEINFO_64;
+        public GameObject[] TILEINFO_65;
+        public GameObject[] TILEINFO_66;
+        public GameObject[] TILEINFO_67;
+        public GameObject[] TILEINFO_68;
+        public GameObject[] TILEINFO_69;
+        public GameObject[] TILEINFO_70;
+        public GameObject[] TILEINFO_71;
+        public GameObject[] TILEINFO_72;
+        public GameObject[] TILEINFO_73;
+        public GameObject[] TILEINFO_74;
         public GameObject OBJ_FOUNTAIN;
         public GameObject OBJ_BLUEWALL_T;
         public GameObject OBJ_BLUEWALL_L;
@@ -1139,6 +1168,35 @@ namespace DungeonPlayer
             if (src == Database.TILEINFO_42) { return TILEINFO_42[area]; }
             if (src == Database.TILEINFO_43) { return TILEINFO_43[area]; }
             if (src == Database.TILEINFO_44) { return TILEINFO_44[area]; }
+            if (src == Database.TILEINFO_46) { return TILEINFO_46[area]; }
+            if (src == Database.TILEINFO_47) { return TILEINFO_47[area]; }
+            if (src == Database.TILEINFO_48) { return TILEINFO_48[area]; }
+            if (src == Database.TILEINFO_49) { return TILEINFO_49[area]; }
+            if (src == Database.TILEINFO_50) { return TILEINFO_50[area]; }
+            if (src == Database.TILEINFO_51) { return TILEINFO_51[area]; }
+            if (src == Database.TILEINFO_52) { return TILEINFO_52[area]; }
+            if (src == Database.TILEINFO_53) { return TILEINFO_53[area]; }
+            if (src == Database.TILEINFO_54) { return TILEINFO_54[area]; }
+            if (src == Database.TILEINFO_55) { return TILEINFO_55[area]; }
+            if (src == Database.TILEINFO_56) { return TILEINFO_56[area]; }
+            if (src == Database.TILEINFO_57) { return TILEINFO_57[area]; }
+            if (src == Database.TILEINFO_58) { return TILEINFO_58[area]; }
+            if (src == Database.TILEINFO_59) { return TILEINFO_59[area]; }
+            if (src == Database.TILEINFO_60) { return TILEINFO_60[area]; }
+            if (src == Database.TILEINFO_61) { return TILEINFO_61[area]; }
+            if (src == Database.TILEINFO_62) { return TILEINFO_62[area]; }
+            if (src == Database.TILEINFO_63) { return TILEINFO_63[area]; }
+            if (src == Database.TILEINFO_64) { return TILEINFO_64[area]; }
+            if (src == Database.TILEINFO_65) { return TILEINFO_65[area]; }
+            if (src == Database.TILEINFO_66) { return TILEINFO_66[area]; }
+            if (src == Database.TILEINFO_67) { return TILEINFO_67[area]; }
+            if (src == Database.TILEINFO_68) { return TILEINFO_68[area]; }
+            if (src == Database.TILEINFO_69) { return TILEINFO_69[area]; }
+            if (src == Database.TILEINFO_70) { return TILEINFO_70[area]; }
+            if (src == Database.TILEINFO_71) { return TILEINFO_71[area]; }
+            if (src == Database.TILEINFO_72) { return TILEINFO_72[area]; }
+            if (src == Database.TILEINFO_73) { return TILEINFO_73[area]; }
+            if (src == Database.TILEINFO_74) { return TILEINFO_74[area]; }
             if (src == Database.TREASURE_BOX) { return TILEINFO_9[area]; }
             if (src == Database.TREASURE_BOX_OPEN) { return TILEINFO_9_2; }
             if (src == Database.BOARD) { return TILEINFO_12[area]; }
