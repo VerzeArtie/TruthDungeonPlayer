@@ -1258,7 +1258,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_VORTEX_FIELD);
-                NowSlow(player, group[ii], 4);
+                NowSlow(player, group[ii], 3);
             }
         }
 
