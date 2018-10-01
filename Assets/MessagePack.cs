@@ -28119,6 +28119,59 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
 
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                messageList.Add("アイン：しかし、妙なんだよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何がよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：結局さ。あのよく分からないレバーは何だったんだろうな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：触っても特に何も反応が無かったわよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：空中文字とか出ててさ。演出がすごかったわりに当たりが無かったよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：次の階で何か影響が出るとかじゃないかしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どうだろうな。そうだと良いんだが。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：ハンナ叔母さん。豪華なごちそうありがとうございます♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：はいよ、今日の夕飯はいつもより豪華にしておいたからね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、ありがとうございます♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おぉぉ！これはスゲェ！いただきます！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ＜＜＜　アインとラナが夕飯を食べた後・・・　＞＞＞"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：ふう、もう食えないぜ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：礼を言うなら、アンタのお師匠さんに言っておくんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っへ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ見えて裏からコッソリ差し入れしてんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッマジかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：（声マネ）『ランディス：お祝いだぁ？クソくだらねぇ、勝手にやってろ』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：とか何とか行って即行でどっかに行っちまったよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフフ、ランディスさんってやっぱり良い人じゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あの自分絶対史上主義のボケ師匠に限ってか・・・ハハハ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：礼とかはいいから、また殴られてくるんだね、アッハハハ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハ、ッハハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン。ところで１階で思い出していた話について少し聞かせておくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っえ・・っと、１階ですか？"); eventList.Add(ActionEvent.None);
+
             // ８レバーが全てFalse、かつ
             // 真実解の部屋へ到達していない場合、BADEND
             if ((!GroundOne.WE2.TruthAnswer2_1) &&
@@ -28131,59 +28184,6 @@ namespace DungeonPlayer
                 (!GroundOne.WE2.TruthAnswer2_8) &&
                 (!GroundOne.WE2.TruthRecollection2))
             {
-                if (!GroundOne.WE2.TruthAnswer2_OK)
-                {
-                    messageList.Add("アイン：しかし、妙なんだよな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：何がよ？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：結局さ。あのよく分からないレバーは何だったんだろうな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：触っても特に何も反応が無かったわよね。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：空中文字とか出ててさ。演出がすごかったわりに当たりが無かったよな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：次の階で何か影響が出るとかじゃないかしら？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：どうだろうな。そうだと良いんだが。"); eventList.Add(ActionEvent.None);
-                }
-
-                messageList.Add("ラナ：ハンナ叔母さん。豪華なごちそうありがとうございます♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：はいよ、今日の夕飯はいつもより豪華にしておいたからね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：あ、ありがとうございます♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：おぉぉ！これはスゲェ！いただきます！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アインとラナが夕飯を食べた後 ・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                messageList.Add("アイン：ふう、もう食えないぜ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：礼を言うなら、アンタのお師匠さんに言っておくんだね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：っへ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：ああ見えて裏からコッソリ差し入れしてんだよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ッマジかよ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：（声マネ）『ランディス：お祝いだぁ？クソくだらねぇ、勝手にやってろ』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：とか何とか行って即行でどっかに行っちまったよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：フフフ、ランディスさんってやっぱり良い人じゃない。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：あの自分絶対史上主義のボケ師匠に限ってか・・・ハハハ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：礼とかはいいから、また殴られてくるんだね、アッハハハ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ハ、ッハハハハ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：アイン。ところで１階で思い出していた話について少し聞かせておくれ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：っえ・・っと、１階ですか？"); eventList.Add(ActionEvent.None);
-
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
@@ -28202,76 +28202,27 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：１階で思い出した話？"); eventList.Add(ActionEvent.None);
 
+                messageList.Add("アイン：１階ではまあ色々あったが、普通にクリアしてきた。そのつもりだが・・・"); eventList.Add(ActionEvent.None);
+
                 messageList.Add("アイン：２階を解いたこの時になって、いきなり何を・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
 
                 messageList.Add("アイン：・・・　何か忘れてる気がする　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：俺、何やってたんだっけ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：何だったっけ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：まあいいや、ひとまずダンジョンの最下層へ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(" ～　THE　END　～　（虚構へ）"); eventList.Add(ActionEvent.None);
 
                 GroundOne.WE2.TruthBadEnd2 = true;
             }
             // それ以外はGOOD
             else
             {
-                if (!GroundOne.WE2.TruthAnswer2_OK)
-                {
-                    messageList.Add("アイン：しかし、妙なんだよな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：何がよ？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：結局さ。あのよく分からないレバーは何だったんだろうな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：触っても特に何も反応が無かったわよね。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：空中文字とか出ててさ。演出がすごかったわりに当たりが無かったよな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：次の階で何か影響が出るとかじゃないかしら？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：どうだろうな。そうだと良いんだが。"); eventList.Add(ActionEvent.None);
-                }
-
-                messageList.Add("ラナ：ハンナ叔母さん。豪華なごちそうありがとうございます♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：はいよ、今日の夕飯はいつもより豪華にしておいたからね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：あ、ありがとうございます♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：おぉぉ！これはスゲェ！いただきます！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アインとラナが夕飯を食べた後・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                messageList.Add("アイン：ふう、もう食えないぜ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：礼を言うなら、アンタのお師匠さんに言っておくんだね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：っへ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：ああ見えて裏からコッソリ差し入れしてんだよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ッマジかよ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：フフフ、ランディスさんってやっぱり良い人じゃない。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：あの自分絶対史上主義のボケ師匠に限ってか・・・ハハハ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：礼とかはいいから、また殴られてくるんだね、アッハハハ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ハ、ッハハハハ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ハンナ：アイン。ところで１階で思い出していた話について少し聞かせておくれ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：っえ・・っと、１階ですか？"); eventList.Add(ActionEvent.None);
-
                 messageList.Add("アイン：ええっと、あれ？　何だったっけ、ラナ！？"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("ラナ：ちょっと何でソコで私に振ってんのよ。　自分で思い出しなさいよね。"); eventList.Add(ActionEvent.None);
@@ -33076,7 +33027,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：そうじゃないのよ。トリガードイベント型スキルなのよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っは？鳥が土居とベント？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っは？鳥ガードイベント？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：ト・リ・ガ・－・ド・イ・ベ・ン・ト"); eventList.Add(ActionEvent.None);
 
@@ -33194,17 +33145,13 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：効果の対象は自分自身限定よ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：効果の内容は、対象へ沈黙/暗闇/誘惑に対する耐性（効果を防ぐ）を付与する。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：効果の内容は、沈黙/暗闇/誘惑を解除するんだけど・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：効果をかけられた時にそれがかかるのではなく、かかった瞬間に効果が取り除かれる。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：こういう負の効果に関する影響自体がスキルを発動できなくするのはあるわよね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：言ってみれば、予め準備しておいて、体制を整えておくような感じになるわね。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：でも、今回習得するスキルはそういった負の効果に掛かった状態でも必ず発動出来るようになっているのよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ちなみに、この効果は一度キリ。一旦沈黙や暗闇効果がかけられた場合、即座に解消となるわ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：重ねがけも出来ないみたいだから、過度な期待は出来ないかも知れないわね。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：インスタントタイミングでも出来るからとっさにかけるのがベストなタイミングになりそうよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：インスタントタイミングでいつでも打てるから、負の効果がかかったらすぐに発動してみると良いはずよ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：・・・って、ちょっと・・・そこ聞いてる？"); eventList.Add(ActionEvent.None);
 
@@ -33856,11 +33803,11 @@ namespace DungeonPlayer
 
             messageList.Add("カール：『心眼』と『無心』の選択は、他の『静』『動』、または『柔』『剛』と比べても極めて困難。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：昔から、アインよりも私の方が優れていたんです。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：昔は、アインよりも私の方が優れていたんです。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：でも今は、そうじゃない。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：私、分かってるです、資質はアインの方が高いこと。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：私、分かってるです、元々の資質はアインの方が高いという事を・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：でも、こんな所で置いてけぼりにはなれない。私の方が難易度の高いのをやってのけなければ"); eventList.Add(ActionEvent.None);
 
