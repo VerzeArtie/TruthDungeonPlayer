@@ -3905,11 +3905,11 @@ namespace DungeonPlayer
             if (command == Database.CELESTIAL_NOVA) { return "対象が敵の場合、対象に" + PowerResult("知", 4.5, 4000, 5000) + "の【聖】ダメージを与える。対象が味方の場合、対象のライフを" + PowerResult("知", 5.0, 8000, 10000) + "回復する。"; }
 
             if (command == Database.DARK_BLAST) { return "対象に" + PowerResult("知", 2.6, 30, 35) + "の【闇】ダメージを与える。"; }
-            if (command == Database.SHADOW_PACT) { return "魔法攻撃力を" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.SHADOW_PACT) { return "対象の魔法攻撃力を" + PowerResult(1.5) + "上昇させる。"; }
             if (command == Database.LIFE_TAP) { return "対象のライフを" + PowerResult("知", 4.0, 40, 50) + "の分だけ回復する。"; }
-            if (command == Database.BLACK_CONTRACT) { return "本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\nスキル、魔法の発動コストを０にする。"; }
-            if (command == Database.DEVOURING_PLAGUE) { return "対象に" + PowerResult("知", 2.0, 120, 135) + "の【闇】ダメージあたえ、その分だけ自分のライフを回復する。"; }
-            if (command == Database.BLOODY_VENGEANCE) { return "【力】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
+            if (command == Database.BLACK_CONTRACT) { return "本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\nスキル、魔法の発動コストを０にする。本効果は３ターン持続される。"; }
+            if (command == Database.DEVOURING_PLAGUE) { return "対象に" + PowerResult("知", 2.0, 120, 135) + "の【闇】ダメージをあたえ、その分だけ自分のライフを回復する。"; }
+            if (command == Database.BLOODY_VENGEANCE) { return "対象の【力】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.DAMNATION) { return "ターンが進む度に、対象に《最大ライフ／心》の【闇】ダメージを与える。\r\n心が1以上：10 + 10*(心/100)\r\n心が100以上：20 + 20*(心/300)\r\n心が400以上：34 + 18*(心/600)\r\n心が1000以上：52 + 22*(心/2500)\r\n心が3500以上：74 + 26*(心/6500)\r\n"; }
 
             if (command == Database.FIRE_BALL) { return "対象に" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
@@ -3946,7 +3946,7 @@ namespace DungeonPlayer
 
             if (command == Database.PSYCHIC_TRANCE) { return "対象の魔法攻撃力を" + PowerResult(1.7) + "上昇させ、魔法防御力を" + PowerResult(0.7) + "に減少させる。"; }
             if (command == Database.BLIND_JUSTICE) { return "対象の物理攻撃力を" + PowerResult(1.7) + "上昇させ、物理防御力を" + PowerResult(0.7) + "に減少させる。"; }
-            if (command == Database.TRANSCENDENT_WISH) { return "本効果が持続している間、力/技/知/体/心パラメタをそれぞれ" + PowerResult(1.5) + "上昇させる。本効果が切れた場合、対象者は死亡する。"; }
+            if (command == Database.TRANSCENDENT_WISH) { return "本効果が持続している間、力/技/知/体/心パラメタをそれぞれ" + PowerResult(1.5) + "上昇させる。本効果が切れた場合、対象者は死亡する。本効果は３ターン持続される。"; }
 
             if (command == Database.FLASH_BLAZE) { return "対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。そして、対象者に【フラッシュブレイズ】カウンターが置かれる。\r\n\r\nターン進行により【フラッシュブレイズ】カウンターが取り除かれた時、対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。"; }
             if (command == Database.LIGHT_DETONATOR) { return "すべての敵に" + PowerResult("知", 3.0, 750, 1000) + "の【聖/火】ダメージを与える。"; }
@@ -3997,7 +3997,7 @@ namespace DungeonPlayer
             if (command == Database.AUSTERITY_MATRIX) { return "対象の正のＢＵＦＦ効果を全て解除し、AusterityMatrixのＢＵＦＦを付与する。\r\n\r\nAusterityMatrixのＢＵＦＦがある間は、正のＢＵＦＦ効果は付与できなくなる。"; }
 
             if (command == Database.VANISH_WAVE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【水/空】ダメージを与える。\r\n加えて、対象に【沈黙】効果を与える。本効果は３ターン持続される。"; }
-            if (command == Database.VORTEX_FIELD) { return "すべての敵に【鈍化】効果を与える。本効果は４ターン持続される。"; }
+            if (command == Database.VORTEX_FIELD) { return "すべての敵に【鈍化】効果を与える。本効果は３ターン持続される。"; }
             if (command == Database.BLUE_DRAGON_WILL) { return "対象の【水】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
 
             if (command == Database.SEVENTH_MAGIC) { return "対象の物理攻撃の基を【力】から【知】へ転換する。\r\n\r\n魔法攻撃の基を【知】から【力】へ転換する。"; }
@@ -4025,12 +4025,12 @@ namespace DungeonPlayer
             if (command == Database.CATASTROPHE) { return "対象の【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
             if (command == Database.TRUTH_VISION) { return "自分にTruthVisionのＢＵＦＦを付与する。この状態で、自分から敵へダメージを与える場合、\r\n対象の敵がダメージを減少させるＢＵＦＦがかかっている場合、その効果を無視する。"; }
-            if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、【体】パラメタを" + PowerResult(1.2) + "上昇させる。本効果は３ターン持続される。"; }
+            if (command == Database.HIGH_EMOTIONALITY) { return "自分にHighEmotionalityのＢＵＦＦを付与する。本効果が持続している間、【体】パラメタを" + PowerResult(1.2) + "上昇させる。本効果は３ターン持続される。"; }
             if (command == Database.STANCE_OF_EYES) { return "対象のインスタントをカウンターする。"; }
             if (command == Database.PAINFUL_INSANITY) { return "ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
 
             if (command == Database.NEGATE) { return "対象のインスタントが魔法である場合、その魔法詠唱をカウンターする。"; }
-            if (command == Database.VOID_EXTRACTION) { return "対象の力、技、知、心のうち、最も高いパラメタを２倍にする。"; }
+            if (command == Database.VOID_EXTRACTION) { return "対象の力、技、知、心のうち、最も高いパラメタを２倍にする。この効果は３ターン持続される。"; }
             if (command == Database.CARNAGE_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを５回連続で与える。"; }
             if (command == Database.NOTHING_OF_NOTHINGNESS) { return "対象の魔法およびスキルがカウンターされなくなる。\r\n\r\n正のＢＵＦＦ効果が解除されなくなる。\r\n\r\nAusterityMatrixのBUFF効果は付与されなくなる。"; }
 
