@@ -2024,11 +2024,17 @@ namespace DungeonPlayer
                 // ２階、心の部屋。心層の壁解除
                 if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE.dungeonEvent249)
                 {
-                    if ((ii == 5 * Database.TRUTH_DUNGEON_COLUMN + 28) ||
-                        (ii == 6 * Database.TRUTH_DUNGEON_COLUMN + 28) ||
-                        (ii == 7 * Database.TRUTH_DUNGEON_COLUMN + 28))
+                    if (ii == 5 * Database.TRUTH_DUNGEON_COLUMN + 28)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_72;
+                    }
+                    if (ii == 6 * Database.TRUTH_DUNGEON_COLUMN + 28)
+                    {
+                        current = Database.TILEINFO_46;
+                    }
+                    if (ii == 7 * Database.TRUTH_DUNGEON_COLUMN + 28)
+                    {
+                        current = Database.TILEINFO_74;
                     }
                 }
                 // ２階、技の部屋、隠し通路の壁解除
@@ -2036,7 +2042,7 @@ namespace DungeonPlayer
                 {
                     if (ii == 36 * Database.TRUTH_DUNGEON_COLUMN + 59)
                     {
-                        current = Database.TILEINFO_21;
+                        current = Database.TILEINFO_64;
                     }
                 }
 
@@ -3923,9 +3929,25 @@ namespace DungeonPlayer
             switch (targetTileInfo[Method.GetTileNumber(Player.transform.position)])
             {
                 case Database.TILEINFO_13:
+                case Database.TILEINFO_46:
+                case Database.TILEINFO_51:
+                case Database.TILEINFO_52:
+                case Database.TILEINFO_53:
+                case Database.TILEINFO_54:
+                case Database.TILEINFO_67:
+                case Database.TILEINFO_68:
+                case Database.TILEINFO_69:
+                case Database.TILEINFO_70:
+                case Database.TILEINFO_71:
+                case Database.TILEINFO_72:
+                case Database.TILEINFO_73:
+                case Database.TILEINFO_74:
                     // とくになし
                     break;
                 case Database.TILEINFO_24:
+                case Database.TILEINFO_47:
+                case Database.TILEINFO_59:
+                case Database.TILEINFO_60:
                     if (direction == 0)
                     {
                         WallHit(WallHitMessage);
@@ -3933,6 +3955,9 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_16:
+                case Database.TILEINFO_48:
+                case Database.TILEINFO_61:
+                case Database.TILEINFO_62:
                     if (direction == 1)
                     {
                         WallHit(WallHitMessage);
@@ -3940,6 +3965,9 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_21:
+                case Database.TILEINFO_49:
+                case Database.TILEINFO_63:
+                case Database.TILEINFO_64:
                     if (direction == 2)
                     {
                         WallHit(WallHitMessage);
@@ -3947,6 +3975,9 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_14:
+                case Database.TILEINFO_50:
+                case Database.TILEINFO_65:
+                case Database.TILEINFO_66:
                     if (direction == 3)
                     {
                         WallHit(WallHitMessage);
@@ -3968,6 +3999,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_26:
+                case Database.TILEINFO_55:
                     if (direction == 0 || direction == 1)
                     {
                         // ４階、36、34、上方向を無視
@@ -3988,6 +4020,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_30:
+                case Database.TILEINFO_56:
                     if (direction == 0 || direction == 2)
                     {
                         // ４階、35、29、右方向を無視
@@ -4053,6 +4086,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_17:
+                case Database.TILEINFO_57:
                     if (direction == 1 || direction == 3)
                     {
                         // ４階、39、40、左方向を無視
@@ -4083,6 +4117,7 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.TILEINFO_22:
+                case Database.TILEINFO_58:
                     if (direction == 2 || direction == 3)
                     {
                         WallHit(WallHitMessage);
