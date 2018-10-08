@@ -2051,7 +2051,7 @@ namespace DungeonPlayer
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 26 + 13)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_52;
                     }
                 }
 
@@ -2060,35 +2060,35 @@ namespace DungeonPlayer
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 19 + 44)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_52;
                     }
                 }
                 if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent440)
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 21 + 20)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_54;
                     }
                 }
                 if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent476)
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 34 + 22)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_53;
                     }
                 }
                 if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent489)
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 32 + 46)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_51;
                     }
                 }
                 if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE2.SeekerEvent1)
                 {
                     if (ii == Database.TRUTH_DUNGEON_COLUMN * 21 + 46)
                     {
-                        current = Database.TILEINFO_13;
+                        current = Database.TILEINFO_54;
                     }
                 }
 
@@ -16646,8 +16646,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor2FinalRoomOpen)
                 {
-                    objList[26 * Database.TRUTH_DUNGEON_COLUMN + 13].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo2[26 * Database.TRUTH_DUNGEON_COLUMN + 13] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_52;
+                    objList[26 * Database.TRUTH_DUNGEON_COLUMN + 13].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo2[26 * Database.TRUTH_DUNGEON_COLUMN + 13] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_11)
                 {
@@ -16703,19 +16704,23 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor1MindRoomOpen1)
                 {
-                    objList[29 * Database.TRUTH_DUNGEON_COLUMN + 50].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_21);
-                    tileInfo[29 * Database.TRUTH_DUNGEON_COLUMN + 50] = Database.TILEINFO_21;
+                    string tileName = Database.TILEINFO_21;
+                    objList[29 * Database.TRUTH_DUNGEON_COLUMN + 50].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo[29 * Database.TRUTH_DUNGEON_COLUMN + 50] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor2MindRoomOpen1)
                 {
-                    objList[5 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo2[5 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_72;
+                    objList[5 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo2[5 * Database.TRUTH_DUNGEON_COLUMN + 28] = tileName;
 
-                    objList[6 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo2[6 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
+                    string tileName2 = Database.TILEINFO_46;
+                    objList[6 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName2);
+                    tileInfo2[6 * Database.TRUTH_DUNGEON_COLUMN + 28] = tileName2;
 
-                    objList[7 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo2[7 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
+                    string tileName3 = Database.TILEINFO_74;
+                    objList[7 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName3);
+                    tileInfo2[7 * Database.TRUTH_DUNGEON_COLUMN + 28] = tileName3;
 
                     UpdateUnknownTileArea2_10();
 
@@ -16946,35 +16951,35 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomNormal4)
                 {
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_26);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_55);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
+                    objList[33 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_47);
 
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_52);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_46);
 
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_17);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
-                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 36].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_57);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 37].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 38].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 39].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 40].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 41].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 42].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 43].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
+                    objList[35 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_50);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomUpdate4)
                 {
@@ -17036,7 +17041,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilitySecretOpen)
                 {
-                    objList[36 * Database.TRUTH_DUNGEON_COLUMN + 59].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_21);
+                    string tileName = Database.TILEINFO_64;
+                    objList[36 * Database.TRUTH_DUNGEON_COLUMN + 59].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo2[7 * Database.TRUTH_DUNGEON_COLUMN + 28] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor2)
                 {
@@ -17939,8 +17946,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallA1)
                 {
-                    objList[19 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo4[19 * Database.TRUTH_DUNGEON_COLUMN + 44] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_52;
+                    objList[19 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo4[19 * Database.TRUTH_DUNGEON_COLUMN + 44] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea421)
                 {
@@ -18000,8 +18008,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallB1)
                 {
-                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 20].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 20] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_54;
+                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 20].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 20] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea423)
                 {
@@ -18067,8 +18076,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallC1)
                 {
-                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 22].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo4[34 * Database.TRUTH_DUNGEON_COLUMN + 22] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_53;
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 22].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo4[34 * Database.TRUTH_DUNGEON_COLUMN + 22] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea433)
                 {
@@ -18121,8 +18131,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallD1)
                 {
-                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_51;
+                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea443)
                 {
@@ -18131,10 +18142,12 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4BlockWallD1)
                 {
-                    objList[31 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_19);
-                    tileInfo4[31 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_19;
-                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_24;
+                    string tileName1 = Database.TILEINFO_19;
+                    objList[31 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName1);
+                    tileInfo4[31 * Database.TRUTH_DUNGEON_COLUMN + 46] = tileName1;
+                    string tileName2 = Database.TILEINFO_24;
+                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName2);
+                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = tileName2;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4InvalidateBlack)
                 {
@@ -18196,8 +18209,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallE1)
                 {
-                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_13;
+                    string tileName = Database.TILEINFO_54;
+                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + tileName);
+                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 46] = tileName;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDungeonFive)
                 {
