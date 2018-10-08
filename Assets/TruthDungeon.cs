@@ -4601,6 +4601,11 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_3 &&
                  currentTileInfo != Database.TILEINFO_32 &&
                  currentTileInfo != Database.TILEINFO_38 &&
+                 currentTileInfo != Database.TILEINFO_47 &&
+                 currentTileInfo != Database.TILEINFO_55 &&
+                 currentTileInfo != Database.TILEINFO_56 &&
+                 currentTileInfo != Database.TILEINFO_59 &&
+                 currentTileInfo != Database.TILEINFO_60 &&
                  blueWallTop[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
@@ -4628,6 +4633,12 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_20 &&
                  currentTileInfo != Database.TILEINFO_33 &&
                  currentTileInfo != Database.TILEINFO_35 &&
+                 currentTileInfo != Database.TILEINFO_48 &&
+                 currentTileInfo != Database.TILEINFO_55 &&
+                 currentTileInfo != Database.TILEINFO_57 &&
+                 currentTileInfo != Database.TILEINFO_61 &&
+                 currentTileInfo != Database.TILEINFO_62 &&
+
                  blueWallLeft[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - 1].activeInHierarchy)
@@ -4656,6 +4667,11 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_20 &&
                  currentTileInfo != Database.TILEINFO_23 &&
                  currentTileInfo != Database.TILEINFO_37 &&
+                 currentTileInfo != Database.TILEINFO_49 &&
+                 currentTileInfo != Database.TILEINFO_56 &&
+                 currentTileInfo != Database.TILEINFO_58 &&
+                 currentTileInfo != Database.TILEINFO_63 &&
+                 currentTileInfo != Database.TILEINFO_64 &&
                  blueWallRight[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + 1].activeInHierarchy)
@@ -4685,6 +4701,11 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_42 &&
                  currentTileInfo != Database.TILEINFO_35 &&
                  currentTileInfo != Database.TILEINFO_37 &&
+                 currentTileInfo != Database.TILEINFO_50 &&
+                 currentTileInfo != Database.TILEINFO_57 &&
+                 currentTileInfo != Database.TILEINFO_58 &&
+                 currentTileInfo != Database.TILEINFO_65 &&
+                 currentTileInfo != Database.TILEINFO_66 &&
                  blueWallBottom[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
