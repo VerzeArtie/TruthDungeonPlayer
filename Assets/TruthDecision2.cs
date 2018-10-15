@@ -16,6 +16,7 @@ namespace DungeonPlayer
         }
 
         // GUI
+        public GameObject grpNormal;
         public GameObject back_buttonTop;
         public GameObject back_buttonLeft;
         public GameObject back_buttonRight;
@@ -24,6 +25,15 @@ namespace DungeonPlayer
         public Text buttonLeft;
         public Text buttonRight;
         public Text buttonBottom;
+        public GameObject grpPermutation;
+        public GameObject back_button1;
+        public GameObject back_button2;
+        public GameObject back_button3;
+        public GameObject back_button4;
+        public Text button1;
+        public Text button2;
+        public Text button3;
+        public Text button4;
         public Text mainMessage;
 
         private bool Permutation1 = false;
@@ -39,13 +49,20 @@ namespace DungeonPlayer
             buttonLeft.text = GroundOne.Decision2_LeftText;
             buttonRight.text = GroundOne.Decision2_RightText;
             buttonBottom.text = GroundOne.Decision2_BottomText;
+            button1.text = GroundOne.Decision2_TopText;
+            button2.text = GroundOne.Decision2_LeftText;
+            button3.text = GroundOne.Decision2_RightText;
+            button4.text = GroundOne.Decision2_BottomText;
 
             if (GroundOne.Decision2_SelectPermutation)
             {
-                back_buttonTop.transform.position = new Vector3(364, 300, 0);
-                back_buttonLeft.transform.position = new Vector3(216, 300, 0);
-                back_buttonRight.transform.position = new Vector3(68, 300, 0);
-                back_buttonBottom.transform.position = new Vector3(512, 300, 0);
+                grpNormal.SetActive(false);
+                grpPermutation.SetActive(true);
+            }
+            else
+            {
+                grpNormal.SetActive(true);
+                grpPermutation.SetActive(false);
             }
         }
 
@@ -58,9 +75,9 @@ namespace DungeonPlayer
         {
             if (GroundOne.Decision2_SelectPermutation)
             {
-                if (back_buttonTop.GetComponent<Image>().color != Color.red)
+                if (back_button1.GetComponent<Image>().color != Color.red)
                 {
-                    back_buttonTop.GetComponent<Image>().color = Color.red;
+                    back_button1.GetComponent<Image>().color = Color.red;
                     this.Permutation1 = true;
                     CheckPermutationEnd();
                 }
@@ -76,9 +93,9 @@ namespace DungeonPlayer
         {
             if (GroundOne.Decision2_SelectPermutation)
             {
-                if (back_buttonLeft.GetComponent<Image>().color != Color.red)
+                if (back_button2.GetComponent<Image>().color != Color.red)
                 {
-                    back_buttonLeft.GetComponent<Image>().color = Color.red;
+                    back_button2.GetComponent<Image>().color = Color.red;
                     if (Permutation1)
                     {
                         Permutation2 = true;
@@ -97,9 +114,9 @@ namespace DungeonPlayer
         {
             if (GroundOne.Decision2_SelectPermutation)
             {
-                if (back_buttonRight.GetComponent<Image>().color != Color.red)
+                if (back_button3.GetComponent<Image>().color != Color.red)
                 {
-                    back_buttonRight.GetComponent<Image>().color = Color.red;
+                    back_button3.GetComponent<Image>().color = Color.red;
                     if (Permutation2)
                     {
                         Permutation3 = true;
@@ -118,9 +135,9 @@ namespace DungeonPlayer
         {
             if (GroundOne.Decision2_SelectPermutation)
             {
-                if (back_buttonBottom.GetComponent<Image>().color != Color.red)
+                if (back_button4.GetComponent<Image>().color != Color.red)
                 {
-                    back_buttonBottom.GetComponent<Image>().color = Color.red;
+                    back_button4.GetComponent<Image>().color = Color.red;
                     if (Permutation3)
                     {
                         Permutation4 = true;
@@ -137,10 +154,10 @@ namespace DungeonPlayer
 
         private void CheckPermutationEnd()
         {
-            if (back_buttonTop.GetComponent<Image>().color == Color.red &&
-                back_buttonLeft.GetComponent<Image>().color == Color.red &&
-                back_buttonRight.GetComponent<Image>().color == Color.red &&
-                back_buttonBottom.GetComponent<Image>().color == Color.red)
+            if (back_button1.GetComponent<Image>().color == Color.red &&
+                back_button2.GetComponent<Image>().color == Color.red &&
+                back_button3.GetComponent<Image>().color == Color.red &&
+                back_button4.GetComponent<Image>().color == Color.red)
             {
                 if (Permutation1 && Permutation2 && Permutation3 && Permutation4)
                 {
