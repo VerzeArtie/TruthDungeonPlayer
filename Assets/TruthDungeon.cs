@@ -12019,7 +12019,7 @@ namespace DungeonPlayer
 
         private void UpdateUnknownTileArea01()
         {
-            for (int ii = 37; ii <= 44; ii++)
+            for (int ii = 37; ii <= 45; ii++)
             {
                 for (int jj = 16; jj <= 24; jj++)
                 {
