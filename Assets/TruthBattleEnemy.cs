@@ -389,10 +389,10 @@ namespace DungeonPlayer
             {
                 if (GroundOne.TutorialLevel == 1)
                 {
-                    TutorialMessageText.text  = "　　　右下の【戦闘開始】ボタンを押してください。戦闘中は各プレイヤーのゲージが右へ進みます。\r\n";
+                    TutorialMessageText.text  = "　　　メニューバーにある【GO】ボタンを押してください。戦闘中は各プレイヤーのゲージが右へ進みます。\r\n";
                     TutorialMessageText.text += "　　　プレイヤーの位置が右端に来た時、メイン行動が行われます。\r\n";
-                    TutorialMessageText.text += "　　　戦闘を一旦停止させたい場合は、右下の【戦闘停止】ボタンを押してください。\r\n";
-                    TutorialMessageText.text += "　　　また、戦闘速度は右下のスライドバーで調整できます。";
+                    TutorialMessageText.text += "　　　戦闘を一旦停止させたい場合は、ふたたび【GO】ボタンを押してください。\r\n";
+                    TutorialMessageText.text += "　　　";
                 }
                 else if (GroundOne.TutorialLevel == 2)
                 {
