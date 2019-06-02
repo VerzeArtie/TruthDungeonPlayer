@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Npgsql;
-using NpgsqlTypes;
+//using Npgsql;
+//using NpgsqlTypes;
 using System.Data;
 using UnityEngine;
 
@@ -48,24 +48,24 @@ namespace DungeonPlayer
 
             string table = TABLE_OWNER_DATA;
             string jsonData = String.Empty;
-            try
-            {
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    //Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        jsonData += dataReader[0].ToString();
-                    }
-                }
-            }
-            catch
-            {
-                Debug.Log("SelectOwner error");
-            } // ログ失敗時は、そのまま進む
+            //try
+            //{
+            //    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+            //    {
+            //        //Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
+            //        con.Open();
+            //        NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
+            //        var dataReader = cmd.ExecuteReader();
+            //        while (dataReader.Read())
+            //        {
+            //            jsonData += dataReader[0].ToString();
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //    Debug.Log("SelectOwner error");
+            //} // ログ失敗時は、そのまま進む
 
             return jsonData;
         }
@@ -80,75 +80,75 @@ namespace DungeonPlayer
                 string main_level = String.Empty;
                 string guid = String.Empty;
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        guid += dataReader[0].ToString();
-                    }
-                }
-                if (guid == String.Empty)
-                {
-                    return;
-                }
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        guid += dataReader[0].ToString();
+                //    }
+                //}
+                //if (guid == String.Empty)
+                //{
+                //    return;
+                //}
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
 
-                    DateTime update_time = DateTime.Now;
-                    string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
-                    if (name != string.Empty)
-                    {
-                        updateCommand += ", name = :name";
-                    }
-                    if (main_event != string.Empty)
-                    {
-                        updateCommand += ", main_event = :main_event";
-                    }
-                    if (sub_event != string.Empty)
-                    {
-                        updateCommand += ", sub_event = :sub_event";
-                    }
-                    if (current_field != string.Empty)
-                    {
-                        updateCommand += ", current_field = :current_field";
-                    }
-                    if (main_level != string.Empty)
-                    {
-                        updateCommand += ", main_level = :main_level";
-                    }
-                    string device_type = Application.platform.ToString();
-                    updateCommand += ", device_type = :device_type";
-                    updateCommand += " where guid = :guid";
+                //    DateTime update_time = DateTime.Now;
+                //    string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
+                //    if (name != string.Empty)
+                //    {
+                //        updateCommand += ", name = :name";
+                //    }
+                //    if (main_event != string.Empty)
+                //    {
+                //        updateCommand += ", main_event = :main_event";
+                //    }
+                //    if (sub_event != string.Empty)
+                //    {
+                //        updateCommand += ", sub_event = :sub_event";
+                //    }
+                //    if (current_field != string.Empty)
+                //    {
+                //        updateCommand += ", current_field = :current_field";
+                //    }
+                //    if (main_level != string.Empty)
+                //    {
+                //        updateCommand += ", main_level = :main_level";
+                //    }
+                //    string device_type = Application.platform.ToString();
+                //    updateCommand += ", device_type = :device_type";
+                //    updateCommand += " where guid = :guid";
 
-                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                    command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
-                    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
-                    if (main_event != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
-                    }
-                    if (sub_event != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
-                    }
-                    if (current_field != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
-                    }
-                    if (main_level != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
-                    }
-                    command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
-                    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
-                }
+                //    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                //    command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
+                //    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
+                //    if (main_event != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
+                //    }
+                //    if (sub_event != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
+                //    }
+                //    if (current_field != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
+                //    }
+                //    if (main_level != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
+                //    }
+                //    command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
+                //    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                //    command.ExecuteNonQuery();
+                //}
             }
             catch
             {
@@ -163,64 +163,64 @@ namespace DungeonPlayer
 
             try
             {
-                //Debug.Log("UpdateOwner(S) " + DateTime.Now);
-                string name = GroundOne.WE2.Account;
-                string main_level = String.Empty;
+                ////Debug.Log("UpdateOwner(S) " + DateTime.Now);
+                //string name = GroundOne.WE2.Account;
+                //string main_level = String.Empty;
 
-                if (GroundOne.MC != null)
-                {
-                    main_level = GroundOne.MC.Level.ToString();
-                }
+                //if (GroundOne.MC != null)
+                //{
+                //    main_level = GroundOne.MC.Level.ToString();
+                //}
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    //Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
-                    DateTime update_time = DateTime.Now;
-                    string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
-                    if (main_event != string.Empty)
-                    {
-                        updateCommand += ", main_event = :main_event";
-                    }
-                    if (sub_event != string.Empty)
-                    {
-                        updateCommand += ", sub_event = :sub_event";
-                    }
-                    if (current_field != string.Empty)
-                    {
-                        updateCommand += ", current_field = :current_field";
-                    }
-                    if (main_level != string.Empty)
-                    {
-                        updateCommand += ", main_level = :main_level";
-                    }
-                    string device_type = Application.platform.ToString();
-                    updateCommand += ", device_type = :device_type";
-                    updateCommand += " where name = :name";
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    //Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
+                //    con.Open();
+                //    DateTime update_time = DateTime.Now;
+                //    string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
+                //    if (main_event != string.Empty)
+                //    {
+                //        updateCommand += ", main_event = :main_event";
+                //    }
+                //    if (sub_event != string.Empty)
+                //    {
+                //        updateCommand += ", sub_event = :sub_event";
+                //    }
+                //    if (current_field != string.Empty)
+                //    {
+                //        updateCommand += ", current_field = :current_field";
+                //    }
+                //    if (main_level != string.Empty)
+                //    {
+                //        updateCommand += ", main_level = :main_level";
+                //    }
+                //    string device_type = Application.platform.ToString();
+                //    updateCommand += ", device_type = :device_type";
+                //    updateCommand += " where name = :name";
 
-                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                    command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
-                    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
-                    if (main_event != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
-                    }
-                    if (sub_event != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
-                    }
-                    if (current_field != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
-                    }
-                    if (main_level != string.Empty)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
-                    }
-                    command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
-                    command.ExecuteNonQuery();
-                }
-                //Debug.Log("UpdateOwner(E) " + DateTime.Now);
+                //    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                //    command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
+                //    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
+                //    if (main_event != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
+                //    }
+                //    if (sub_event != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
+                //    }
+                //    if (current_field != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
+                //    }
+                //    if (main_level != string.Empty)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter("main_level", DbType.String) { Value = main_level });
+                //    }
+                //    command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
+                //    command.ExecuteNonQuery();
+                //}
+                ////Debug.Log("UpdateOwner(E) " + DateTime.Now);
             }
             catch
             {
@@ -239,175 +239,175 @@ namespace DungeonPlayer
                 string main_level = String.Empty;
                 string guid = String.Empty;
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        guid += dataReader[0].ToString();
-                    }
-                }
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        guid += dataReader[0].ToString();
+                //    }
+                //}
 
-                if (guid == String.Empty)
-                {
-                    return;
-                }
+                //if (guid == String.Empty)
+                //{
+                //    return;
+                //}
 
-                string count = String.Empty;
-                string table = TABLE_CHARACTER;
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        count += dataReader[0].ToString();
-                    }
-                }
+                //string count = String.Empty;
+                //string table = TABLE_CHARACTER;
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        count += dataReader[0].ToString();
+                //    }
+                //}
 
-                DateTime last_update = DateTime.Now;
-                if (count.ToString() == "0")
-                {
-                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                    {
-                        con.Open();
-                        string sqlCmd = "INSERT INTO " + table + " ( guid, last_update ) VALUES ( :guid, :last_update )";
-                        var cmd = new NpgsqlCommand(sqlCmd, con);
-                        //cmd.Prepare();
-                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
-                        cmd.Parameters.Add(new NpgsqlParameter("last_update", NpgsqlDbType.Timestamp) { Value = last_update });
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                //DateTime last_update = DateTime.Now;
+                //if (count.ToString() == "0")
+                //{
+                //    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //    {
+                //        con.Open();
+                //        string sqlCmd = "INSERT INTO " + table + " ( guid, last_update ) VALUES ( :guid, :last_update )";
+                //        var cmd = new NpgsqlCommand(sqlCmd, con);
+                //        //cmd.Prepare();
+                //        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                //        cmd.Parameters.Add(new NpgsqlParameter("last_update", NpgsqlDbType.Timestamp) { Value = last_update });
+                //        cmd.ExecuteNonQuery();
+                //    }
+                //}
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    DateTime update_time = DateTime.Now;
-                    List<string> valueData = new List<string>();
-                    List<string> parameter = new List<string>();
-                    string updateCommand = @"update " + table + " set available_second = :available_second, available_third = :available_third";
-                    parameter.Add("available_second");
-                    parameter.Add("available_third");
-                    if (GroundOne.WE.AvailableSecondCharacter) { valueData.Add("true"); }
-                    else { valueData.Add("false"); }
-                    if (GroundOne.WE.AvailableThirdCharacter) { valueData.Add("true"); }
-                    else { valueData.Add("false"); }
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    DateTime update_time = DateTime.Now;
+                //    List<string> valueData = new List<string>();
+                //    List<string> parameter = new List<string>();
+                //    string updateCommand = @"update " + table + " set available_second = :available_second, available_third = :available_third";
+                //    parameter.Add("available_second");
+                //    parameter.Add("available_third");
+                //    if (GroundOne.WE.AvailableSecondCharacter) { valueData.Add("true"); }
+                //    else { valueData.Add("false"); }
+                //    if (GroundOne.WE.AvailableThirdCharacter) { valueData.Add("true"); }
+                //    else { valueData.Add("false"); }
 
-                    string[] list1 = { "first_name", "first_level", "first_strength", "first_agility", "first_intelligence", "first_stamina", "first_mind",
-                                       "first_mainweapon", "first_subweapon", "first_armor", "first_accessory1", "first_accessory2",
-                                     };
-                    if (GroundOne.MC != null)
-                    {
-                        for (int ii = 0; ii < list1.Length; ii++)
-                        {
-                            parameter.Add(list1[ii]);
-                        }
-                        for (int ii = 0; ii < list1.Length; ii++)
-                        {
-                            updateCommand += ",";
-                            updateCommand += " " + list1[ii] + " = :" + list1[ii];
-                        }
+                //    string[] list1 = { "first_name", "first_level", "first_strength", "first_agility", "first_intelligence", "first_stamina", "first_mind",
+                //                       "first_mainweapon", "first_subweapon", "first_armor", "first_accessory1", "first_accessory2",
+                //                     };
+                //    if (GroundOne.MC != null)
+                //    {
+                //        for (int ii = 0; ii < list1.Length; ii++)
+                //        {
+                //            parameter.Add(list1[ii]);
+                //        }
+                //        for (int ii = 0; ii < list1.Length; ii++)
+                //        {
+                //            updateCommand += ",";
+                //            updateCommand += " " + list1[ii] + " = :" + list1[ii];
+                //        }
 
-                        valueData.Add(GroundOne.MC.FullName);
-                        valueData.Add(GroundOne.MC.Level.ToString());
-                        valueData.Add(GroundOne.MC.Strength.ToString());
-                        valueData.Add(GroundOne.MC.Agility.ToString());
-                        valueData.Add(GroundOne.MC.Intelligence.ToString());
-                        valueData.Add(GroundOne.MC.Stamina.ToString());
-                        valueData.Add(GroundOne.MC.Mind.ToString());
-                        if (GroundOne.MC.MainWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.MC.MainWeapon.Name); }
-                        if (GroundOne.MC.SubWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.MC.SubWeapon.Name); }
-                        if (GroundOne.MC.MainArmor == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.MC.MainArmor.Name); }
-                        if (GroundOne.MC.Accessory == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.MC.Accessory.Name); }
-                        if (GroundOne.MC.Accessory2 == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.MC.Accessory2.Name); }
-                    }
+                //        valueData.Add(GroundOne.MC.FullName);
+                //        valueData.Add(GroundOne.MC.Level.ToString());
+                //        valueData.Add(GroundOne.MC.Strength.ToString());
+                //        valueData.Add(GroundOne.MC.Agility.ToString());
+                //        valueData.Add(GroundOne.MC.Intelligence.ToString());
+                //        valueData.Add(GroundOne.MC.Stamina.ToString());
+                //        valueData.Add(GroundOne.MC.Mind.ToString());
+                //        if (GroundOne.MC.MainWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.MC.MainWeapon.Name); }
+                //        if (GroundOne.MC.SubWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.MC.SubWeapon.Name); }
+                //        if (GroundOne.MC.MainArmor == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.MC.MainArmor.Name); }
+                //        if (GroundOne.MC.Accessory == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.MC.Accessory.Name); }
+                //        if (GroundOne.MC.Accessory2 == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.MC.Accessory2.Name); }
+                //    }
 
-                    string[] list2 = { "second_name", "second_level", "second_strength", "second_agility", "second_intelligence", "second_stamina", "second_mind",
-                                      "second_mainweapon", "second_subweapon", "second_armor", "second_accessory1", "second_accessory2",
-                                     };
-                    if (GroundOne.SC != null)
-                    {
-                        for (int ii = 0; ii < list2.Length; ii++)
-                        {
-                            parameter.Add(list2[ii]);
-                        }
-                        for (int ii = 0; ii < list2.Length; ii++)
-                        {
-                            updateCommand += ",";
-                            updateCommand += " " + list2[ii] + " = :" + list2[ii];
-                        }
-                        valueData.Add(GroundOne.SC.FullName);
-                        valueData.Add(GroundOne.SC.Level.ToString());
-                        valueData.Add(GroundOne.SC.Strength.ToString());
-                        valueData.Add(GroundOne.SC.Agility.ToString());
-                        valueData.Add(GroundOne.SC.Intelligence.ToString());
-                        valueData.Add(GroundOne.SC.Stamina.ToString());
-                        valueData.Add(GroundOne.SC.Mind.ToString());
-                        if (GroundOne.SC.MainWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.SC.MainWeapon.Name); }
-                        if (GroundOne.SC.SubWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.SC.SubWeapon.Name); }
-                        if (GroundOne.SC.MainArmor == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.SC.MainArmor.Name); }
-                        if (GroundOne.SC.Accessory == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.SC.Accessory.Name); }
-                        if (GroundOne.SC.Accessory2 == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.SC.Accessory2.Name); }
-                    }
-                    string[] list3 = { "third_name", "third_level", "third_strength", "third_agility", "third_intelligence", "third_stamina", "third_mind",
-                                       "third_mainweapon", "third_subweapon", "third_armor", "third_accessory1", "third_accessory2",
-                                     };
-                    if (GroundOne.TC != null)
-                    {
-                        for (int ii = 0; ii < list3.Length; ii++)
-                        {
-                            parameter.Add(list3[ii]);
-                        }
+                //    string[] list2 = { "second_name", "second_level", "second_strength", "second_agility", "second_intelligence", "second_stamina", "second_mind",
+                //                      "second_mainweapon", "second_subweapon", "second_armor", "second_accessory1", "second_accessory2",
+                //                     };
+                //    if (GroundOne.SC != null)
+                //    {
+                //        for (int ii = 0; ii < list2.Length; ii++)
+                //        {
+                //            parameter.Add(list2[ii]);
+                //        }
+                //        for (int ii = 0; ii < list2.Length; ii++)
+                //        {
+                //            updateCommand += ",";
+                //            updateCommand += " " + list2[ii] + " = :" + list2[ii];
+                //        }
+                //        valueData.Add(GroundOne.SC.FullName);
+                //        valueData.Add(GroundOne.SC.Level.ToString());
+                //        valueData.Add(GroundOne.SC.Strength.ToString());
+                //        valueData.Add(GroundOne.SC.Agility.ToString());
+                //        valueData.Add(GroundOne.SC.Intelligence.ToString());
+                //        valueData.Add(GroundOne.SC.Stamina.ToString());
+                //        valueData.Add(GroundOne.SC.Mind.ToString());
+                //        if (GroundOne.SC.MainWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.SC.MainWeapon.Name); }
+                //        if (GroundOne.SC.SubWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.SC.SubWeapon.Name); }
+                //        if (GroundOne.SC.MainArmor == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.SC.MainArmor.Name); }
+                //        if (GroundOne.SC.Accessory == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.SC.Accessory.Name); }
+                //        if (GroundOne.SC.Accessory2 == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.SC.Accessory2.Name); }
+                //    }
+                //    string[] list3 = { "third_name", "third_level", "third_strength", "third_agility", "third_intelligence", "third_stamina", "third_mind",
+                //                       "third_mainweapon", "third_subweapon", "third_armor", "third_accessory1", "third_accessory2",
+                //                     };
+                //    if (GroundOne.TC != null)
+                //    {
+                //        for (int ii = 0; ii < list3.Length; ii++)
+                //        {
+                //            parameter.Add(list3[ii]);
+                //        }
 
-                        for (int ii = 0; ii < list3.Length; ii++)
-                        {
-                            updateCommand += ",";
-                            updateCommand += " " + list3[ii] + " = :" + list3[ii];
-                        }
-                        valueData.Add(GroundOne.TC.FullName);
-                        valueData.Add(GroundOne.TC.Level.ToString());
-                        valueData.Add(GroundOne.TC.Strength.ToString());
-                        valueData.Add(GroundOne.TC.Agility.ToString());
-                        valueData.Add(GroundOne.TC.Intelligence.ToString());
-                        valueData.Add(GroundOne.TC.Stamina.ToString());
-                        valueData.Add(GroundOne.TC.Mind.ToString());
-                        if (GroundOne.TC.MainWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.TC.MainWeapon.Name); }
-                        if (GroundOne.TC.SubWeapon == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.TC.SubWeapon.Name); }
-                        if (GroundOne.TC.MainArmor == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.TC.MainArmor.Name); }
-                        if (GroundOne.TC.Accessory == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.TC.Accessory.Name); }
-                        if (GroundOne.TC.Accessory2 == null) { valueData.Add("( no item )"); }
-                        else { valueData.Add(GroundOne.TC.Accessory2.Name); }
-                    }
-                    updateCommand += ", last_update = :last_update";
-                    updateCommand += " where guid = :guid";
+                //        for (int ii = 0; ii < list3.Length; ii++)
+                //        {
+                //            updateCommand += ",";
+                //            updateCommand += " " + list3[ii] + " = :" + list3[ii];
+                //        }
+                //        valueData.Add(GroundOne.TC.FullName);
+                //        valueData.Add(GroundOne.TC.Level.ToString());
+                //        valueData.Add(GroundOne.TC.Strength.ToString());
+                //        valueData.Add(GroundOne.TC.Agility.ToString());
+                //        valueData.Add(GroundOne.TC.Intelligence.ToString());
+                //        valueData.Add(GroundOne.TC.Stamina.ToString());
+                //        valueData.Add(GroundOne.TC.Mind.ToString());
+                //        if (GroundOne.TC.MainWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.TC.MainWeapon.Name); }
+                //        if (GroundOne.TC.SubWeapon == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.TC.SubWeapon.Name); }
+                //        if (GroundOne.TC.MainArmor == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.TC.MainArmor.Name); }
+                //        if (GroundOne.TC.Accessory == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.TC.Accessory.Name); }
+                //        if (GroundOne.TC.Accessory2 == null) { valueData.Add("( no item )"); }
+                //        else { valueData.Add(GroundOne.TC.Accessory2.Name); }
+                //    }
+                //    updateCommand += ", last_update = :last_update";
+                //    updateCommand += " where guid = :guid";
 
-                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                    for (int ii = 0; ii < parameter.Count; ii++)
-                    {
-                        command.Parameters.Add(new NpgsqlParameter(parameter[ii], NpgsqlDbType.Varchar) { Value = valueData[ii] });
-                    }
-                    command.Parameters.Add(new NpgsqlParameter("last_update", DbType.DateTime) { Value = last_update });
-                    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
-                }
+                //    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                //    for (int ii = 0; ii < parameter.Count; ii++)
+                //    {
+                //        command.Parameters.Add(new NpgsqlParameter(parameter[ii], NpgsqlDbType.Varchar) { Value = valueData[ii] });
+                //    }
+                //    command.Parameters.Add(new NpgsqlParameter("last_update", DbType.DateTime) { Value = last_update });
+                //    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                //    command.ExecuteNonQuery();
+                //}
             }
             catch (Exception ex)
             {
@@ -422,78 +422,78 @@ namespace DungeonPlayer
 
             try
             {
-                string guid = String.Empty;
+                //string guid = String.Empty;
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    Debug.Log("UpdateArchiveData timeout: " + con.ConnectionTimeout);
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        guid += dataReader[0].ToString();
-                    }
-                }
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    Debug.Log("UpdateArchiveData timeout: " + con.ConnectionTimeout);
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        guid += dataReader[0].ToString();
+                //    }
+                //}
 
-                if (guid == String.Empty)
-                {
-                    return;
-                }
+                //if (guid == String.Empty)
+                //{
+                //    return;
+                //}
 
-                string count = String.Empty;
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        count += dataReader[0].ToString();
-                    }
-                }
+                //string count = String.Empty;
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        count += dataReader[0].ToString();
+                //    }
+                //}
 
-                DateTime update_time = DateTime.Now;
-                if (count.ToString() == "0")
-                {
-                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                    {
-                        con.Open();
-                        string sqlCmd = "INSERT INTO " + table + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
-                        var cmd = new NpgsqlCommand(sqlCmd, con);
-                        //cmd.Prepare();
-                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
-                        cmd.Parameters.Add(new NpgsqlParameter(archive_name, NpgsqlDbType.Timestamp) { Value = update_time });
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                else
-                {
-                    string currentValue = String.Empty;
-                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                    {
-                        con.Open();
-                        NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + table + " where guid = '" + guid + "'", con);
-                        var dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
-                        {
-                            currentValue += dataReader[0].ToString();
-                        }
-                    }
+                //DateTime update_time = DateTime.Now;
+                //if (count.ToString() == "0")
+                //{
+                //    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //    {
+                //        con.Open();
+                //        string sqlCmd = "INSERT INTO " + table + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
+                //        var cmd = new NpgsqlCommand(sqlCmd, con);
+                //        //cmd.Prepare();
+                //        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                //        cmd.Parameters.Add(new NpgsqlParameter(archive_name, NpgsqlDbType.Timestamp) { Value = update_time });
+                //        cmd.ExecuteNonQuery();
+                //    }
+                //}
+                //else
+                //{
+                //    string currentValue = String.Empty;
+                //    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //    {
+                //        con.Open();
+                //        NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + table + " where guid = '" + guid + "'", con);
+                //        var dataReader = cmd.ExecuteReader();
+                //        while (dataReader.Read())
+                //        {
+                //            currentValue += dataReader[0].ToString();
+                //        }
+                //    }
 
-                    if (currentValue == String.Empty)
-                    {
-                        using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                        {
-                            con.Open();
-                            string updateCommand = @"update " + table + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
-                            NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                            command.Parameters.Add(new NpgsqlParameter(archive_name, DbType.DateTime) { Value = update_time });
-                            command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                }
+                //    if (currentValue == String.Empty)
+                //    {
+                //        using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //        {
+                //            con.Open();
+                //            string updateCommand = @"update " + table + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
+                //            NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                //            command.Parameters.Add(new NpgsqlParameter(archive_name, DbType.DateTime) { Value = update_time });
+                //            command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                //            command.ExecuteNonQuery();
+                //        }
+                //    }
+                //}
             }
             catch
             {
@@ -505,72 +505,72 @@ namespace DungeonPlayer
         {
             try
             {
-                // guidを確認
-                string guid = String.Empty;
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        guid += dataReader[0].ToString();
-                    }
-                }
-                if (guid == String.Empty)
-                {
-                    return;
-                }
+                //// guidを確認
+                //string guid = String.Empty;
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        guid += dataReader[0].ToString();
+                //    }
+                //}
+                //if (guid == String.Empty)
+                //{
+                //    return;
+                //}
 
-                // テーブルに該当GUIDの存在有無を確認
-                string count = String.Empty;
-                string table = TABLE_SAVE_DATA;
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        count += dataReader[0].ToString();
-                    }
-                }
+                //// テーブルに該当GUIDの存在有無を確認
+                //string count = String.Empty;
+                //string table = TABLE_SAVE_DATA;
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        count += dataReader[0].ToString();
+                //    }
+                //}
 
-                // 該当がなければ新規追加
-                DateTime update_time = DateTime.Now;
-                if (count.ToString() == "0")
-                {
-                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                    {
-                        con.Open();
-                        string sqlCmd = "INSERT INTO " + table + " ( guid, update_time, save_current, save_we2 ) VALUES ( :guid, :update_time, :save_current, :save_we2)";
-                        var cmd = new NpgsqlCommand(sqlCmd, con);
-                        //cmd.Prepare();
-                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
-                        cmd.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
-                        cmd.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
-                        cmd.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
-                        cmd.ExecuteNonQuery();
-                    }
-                    return;
-                }
+                //// 該当がなければ新規追加
+                //DateTime update_time = DateTime.Now;
+                //if (count.ToString() == "0")
+                //{
+                //    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //    {
+                //        con.Open();
+                //        string sqlCmd = "INSERT INTO " + table + " ( guid, update_time, save_current, save_we2 ) VALUES ( :guid, :update_time, :save_current, :save_we2)";
+                //        var cmd = new NpgsqlCommand(sqlCmd, con);
+                //        //cmd.Prepare();
+                //        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                //        cmd.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
+                //        cmd.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
+                //        cmd.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
+                //        cmd.ExecuteNonQuery();
+                //    }
+                //    return;
+                //}
 
-                // 該当があれば更新する。
-                string currentValue = String.Empty;
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    string updateCommand = @"update " + TABLE_SAVE_DATA + " set update_time = :update_time, save_current = :save_current, save_we2 = :save_we2 where guid = :guid";
-                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                    command.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
-                    command.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
-                    command.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
-                    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
-                }
+                //// 該当があれば更新する。
+                //string currentValue = String.Empty;
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    string updateCommand = @"update " + TABLE_SAVE_DATA + " set update_time = :update_time, save_current = :save_current, save_we2 = :save_we2 where guid = :guid";
+                //    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                //    command.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
+                //    command.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
+                //    command.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
+                //    command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                //    command.ExecuteNonQuery();
+                //}
 
-                // OwnerDataを更新
-                UpdateOwner(Database.LOG_SAVE_GAME, sender_text, page_number);
+                //// OwnerDataを更新
+                //UpdateOwner(Database.LOG_SAVE_GAME, sender_text, page_number);
             }
             catch (Exception ex)
             {
@@ -593,26 +593,26 @@ namespace DungeonPlayer
 
             try
             {
-                if (name == String.Empty)
-                {
-                    name = guid.ToString();
-                }
+                //if (name == String.Empty)
+                //{
+                //    name = guid.ToString();
+                //}
 
-                DateTime create_time = DateTime.Now;
-                string device_type = Application.platform.ToString();
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    Debug.Log("CreateOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
-                    string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time, device_type ) VALUES ( :name, :guid, :create_time, :device_type )";
-                    var cmd = new NpgsqlCommand(sqlCmd, con);
-                    //cmd.Prepare();
-                    cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
-                    cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
-                    cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
-                    cmd.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
-                    cmd.ExecuteNonQuery();
-                }
+                //DateTime create_time = DateTime.Now;
+                //string device_type = Application.platform.ToString();
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    Debug.Log("CreateOwner timeout: " + con.ConnectionTimeout);
+                //    con.Open();
+                //    string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time, device_type ) VALUES ( :name, :guid, :create_time, :device_type )";
+                //    var cmd = new NpgsqlCommand(sqlCmd, con);
+                //    //cmd.Prepare();
+                //    cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
+                //    cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                //    cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
+                //    cmd.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
+                //    cmd.ExecuteNonQuery();
+                //}
             }
             catch
             {
@@ -622,31 +622,32 @@ namespace DungeonPlayer
 
         public bool ExistOwnerName(string name)
         {
+            return false;
             // if (GroundOne.SupportLog == false) { return false; }
 
             try
             {
-                string existName = String.Empty;
+                //string existName = String.Empty;
 
-                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
-                {
-                    con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select name from " + TABLE_OWNER_DATA + " where name = '" + name + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        existName += dataReader[0].ToString();
-                    }
-                }
+                //using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                //{
+                //    con.Open();
+                //    NpgsqlCommand cmd = new NpgsqlCommand(@"select name from " + TABLE_OWNER_DATA + " where name = '" + name + "'", con);
+                //    var dataReader = cmd.ExecuteReader();
+                //    while (dataReader.Read())
+                //    {
+                //        existName += dataReader[0].ToString();
+                //    }
+                //}
 
-                if (existName == name)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                //if (existName == name)
+                //{
+                //    return true;
+                //}
+                //else
+                //{
+                //    return false;
+                //}
 
             }
             catch
