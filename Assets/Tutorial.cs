@@ -85,7 +85,7 @@ namespace DungeonPlayer
             Debug.Log("Battle_Click");
             this.selectNumber = 2;
             this.groupLevel.SetActive(true);
-            this.panelDescription2.SetActive(true);
+            //this.panelDescription2.SetActive(true);
 
             this.description.text = "戦闘時の基本的な操作を練習します。\r\n";
             this.description.text += "\r\n";
