@@ -33763,7 +33763,7 @@ namespace DungeonPlayer
 
             messageList.Add("カール：我の見切りでは、貴女ラナ・アミリアは完全逆属性または逆性質の扱いに苦しんでおる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：それって今来て分かったって事ですよね？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：それって、今ここに来て分かったって事ですよね？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：貴君が初めに連れて来た時からである。"); eventList.Add(ActionEvent.None);
 
@@ -39727,8 +39727,8 @@ namespace DungeonPlayer
 
             // 「コメント」初回設計で後編３人目をヴェルゼアーティでセーブしてしまっているため、
             // ここで再設定しなければならなくなった。
-            GroundOne.TC.FullName = "オル・ランディス";
-            GroundOne.TC.FirstName = "ランディス";
+            GroundOne.TC.FullName = Database.OL_LANDIS_FULL;
+            GroundOne.TC.FirstName = Database.OL_LANDIS;
             GroundOne.TC.Strength = Database.OL_LANDIS_FIRST_STRENGTH;
             GroundOne.TC.Agility = Database.OL_LANDIS_FIRST_AGILITY;
             GroundOne.TC.Intelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;
