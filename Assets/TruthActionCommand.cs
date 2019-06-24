@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using DungeonPlayer;
+using System.Collections.Generic;
 
 namespace DungeonPlayer
 {
@@ -133,6 +134,358 @@ namespace DungeonPlayer
             Down,
             TurnUp,
             TurnDown,
+        }
+
+        public static List<string> GetBasicCommandList(MainCharacter currentPlayer)
+        {
+            List<string> list = new List<string>();
+            list.Add(Database.ATTACK_EN);
+            list.Add(Database.DEFENSE_EN);
+            list.Add(Database.TAMERU_EN);
+            list.Add(Database.STAY_EN);
+            list.Add(Database.WEAPON_SPECIAL_EN);
+            list.Add(Database.WEAPON_SPECIAL_LEFT_EN);
+            list.Add(Database.ACCESSORY_SPECIAL_EN);
+            list.Add(Database.ACCESSORY_SPECIAL2_EN);
+            return list;
+        }
+
+        public static List<string> GetActionCommandList(MainCharacter currentPlayer)
+        {
+            List<string> list = new List<string>();
+
+            if (currentPlayer.FullName == Database.EIN_WOLENCE_FULL)
+            {
+                if (currentPlayer.StraightSmash) { list.Add(Database.STRAIGHT_SMASH); }
+                if (currentPlayer.FreshHeal) { list.Add(Database.FRESH_HEAL); }
+                if (currentPlayer.fireball) { list.Add(Database.FIRE_BALL); }
+                if (currentPlayer.Protection) { list.Add(Database.PROTECTION); }
+                if (currentPlayer.DoubleSlash) { list.Add(Database.DOUBLE_SLASH); }
+                if (currentPlayer.FlameAura) { list.Add(Database.FLAME_AURA); }
+                if (currentPlayer.StanceOfStanding) { list.Add(Database.STANCE_OF_STANDING); }
+                if (currentPlayer.WordOfPower) { list.Add(Database.WORD_OF_POWER); }
+                if (currentPlayer.HolyShock) { list.Add(Database.HOLY_SHOCK); }
+                if (currentPlayer.TruthVision) { list.Add(Database.TRUTH_VISION); }
+                if (currentPlayer.HeatBoost) { list.Add(Database.HEAT_BOOST); }
+                if (currentPlayer.SaintPower) { list.Add(Database.SAINT_POWER); }
+                if (currentPlayer.GaleWind) { list.Add(Database.GALE_WIND); }
+                if (currentPlayer.InnerInspiration) { list.Add(Database.INNER_INSPIRATION); }
+                if (currentPlayer.WordOfLife) { list.Add(Database.WORD_OF_LIFE); }
+                if (currentPlayer.FlameStrike) { list.Add(Database.FLAME_STRIKE); }
+                if (currentPlayer.HighEmotionality) { list.Add(Database.HIGH_EMOTIONALITY); }
+                if (currentPlayer.WordOfFortune) { list.Add(Database.WORD_OF_FORTUNE); }
+                if (currentPlayer.EnrageBlast) { list.Add(Database.ENRAGE_BLAST); }
+                if (currentPlayer.HolyBreaker) { list.Add(Database.HOLY_BREAKER); }
+                if (currentPlayer.Glory) { list.Add(Database.GLORY); }
+                if (currentPlayer.VolcanicWave) { list.Add(Database.VOLCANIC_WAVE); }
+                if (currentPlayer.AetherDrive) { list.Add(Database.AETHER_DRIVE); }
+                if (currentPlayer.CircleSlash) { list.Add(Database.CIRCLE_SLASH); }
+                if (currentPlayer.ViolentSlash) { list.Add(Database.VIOLENT_SLASH); }
+                if (currentPlayer.RumbleShout) { list.Add(Database.RUMBLE_SHOUT); }
+                if (currentPlayer.WordOfAttitude) { list.Add(Database.WORD_OF_ATTITUDE); }
+                if (currentPlayer.SkyShield) { list.Add(Database.SKY_SHIELD); }
+                if (currentPlayer.FrozenAura) { list.Add(Database.FROZEN_AURA); }
+                if (currentPlayer.SharpGlare) { list.Add(Database.SHARP_GLARE); }
+                if (currentPlayer.ReflexSpirit) { list.Add(Database.REFLEX_SPIRIT); }
+                if (currentPlayer.NeutralSmash) { list.Add(Database.NEUTRAL_SMASH); }
+                if (currentPlayer.CrushingBlow) { list.Add(Database.CRUSHING_BLOW); }
+                if (currentPlayer.KineticSmash) { list.Add(Database.KINETIC_SMASH); }
+                if (currentPlayer.StanceOfEyes) { list.Add(Database.STANCE_OF_EYES); }
+                if (currentPlayer.Resurrection) { list.Add(Database.RESURRECTION); }
+                if (currentPlayer.Syutyu_Danzetsu) { list.Add(Database.ARCHETYPE_EIN); }
+                if (currentPlayer.StaticBarrier) { list.Add(Database.STATIC_BARRIER); }
+                if (currentPlayer.Genesis) { list.Add(Database.GENESIS); }
+                if (currentPlayer.LightDetonator) { list.Add(Database.LIGHT_DETONATOR); }
+                if (currentPlayer.ImmortalRave) { list.Add(Database.IMMORTAL_RAVE); }
+                if (currentPlayer.ExaltedField) { list.Add(Database.EXALTED_FIELD); }
+                if (currentPlayer.PiercingFlame) { list.Add(Database.PIERCING_FLAME); }
+                if (currentPlayer.SacredHeal) { list.Add(Database.SACRED_HEAL); }
+                if (currentPlayer.RisingAura) { list.Add(Database.RISING_AURA); }
+                if (currentPlayer.ChillBurn) { list.Add(Database.CHILL_BURN); }
+                if (currentPlayer.SoulInfinity) { list.Add(Database.SOUL_INFINITY); }
+                if (currentPlayer.HymnContract) { list.Add(Database.HYMN_CONTRACT); }
+                if (currentPlayer.Catastrophe) { list.Add(Database.CATASTROPHE); }
+                if (currentPlayer.CelestialNova) { list.Add(Database.CELESTIAL_NOVA); }
+                if (currentPlayer.OnslaughtHit) { list.Add(Database.ONSLAUGHT_HIT); }
+                if (currentPlayer.PainfulInsanity) { list.Add(Database.PAINFUL_INSANITY); }
+                if (currentPlayer.LavaAnnihilation) { list.Add(Database.LAVA_ANNIHILATION); }
+                if (currentPlayer.ConcussiveHit) { list.Add(Database.CONCUSSIVE_HIT); }
+                if (currentPlayer.EternalPresence) { list.Add(Database.ETERNAL_PRESENCE); }
+                if (currentPlayer.AusterityMatrix) { list.Add(Database.AUSTERITY_MATRIX); }
+                if (currentPlayer.SigilOfHomura) { list.Add(Database.SIGIL_OF_HOMURA); }
+                if (currentPlayer.EverDroplet) { list.Add(Database.EVER_DROPLET); }
+                if (currentPlayer.ONEAuthority) { list.Add(Database.ONE_AUTHORITY); }
+                if (currentPlayer.AscendantMeteor) { list.Add(Database.ASCENDANT_METEOR); }
+                if (currentPlayer.FatalBlow) { list.Add(Database.FATAL_BLOW); }
+                if (currentPlayer.StanceOfDouble) { list.Add(Database.STANCE_OF_DOUBLE); }
+                if (currentPlayer.ZetaExplosion) { list.Add(Database.ZETA_EXPLOSION); }
+            }
+            else if (currentPlayer.FullName == Database.RANA_AMILIA_FULL)
+            {
+                if (currentPlayer.IceNeedle) { list.Add(Database.ICE_NEEDLE); }
+                if (currentPlayer.CounterAttack) { list.Add(Database.COUNTER_ATTACK); }
+                if (currentPlayer.DarkBlast) { list.Add(Database.DARK_BLAST); }
+                if (currentPlayer.AbsorbWater) { list.Add(Database.ABSORB_WATER); }
+                if (currentPlayer.StanceOfFlow) { list.Add(Database.STANCE_OF_FLOW); }
+                if (currentPlayer.ShadowPact) { list.Add(Database.SHADOW_PACT); }
+                if (currentPlayer.DispelMagic) { list.Add(Database.DISPEL_MAGIC); }
+                if (currentPlayer.LifeTap) { list.Add(Database.LIFE_TAP); }
+                if (currentPlayer.PurePurification) { list.Add(Database.PURE_PURIFICATION); }
+                if (currentPlayer.EnigmaSence) { list.Add(Database.ENIGMA_SENSE); }
+                if (currentPlayer.BlackContract) { list.Add(Database.BLACK_CONTRACT); }
+                if (currentPlayer.Cleansing) { list.Add(Database.CLEANSING); }
+                if (currentPlayer.Negate) { list.Add(Database.NEGATE); }
+                if (currentPlayer.FrozenLance) { list.Add(Database.FROZEN_LANCE); }
+                if (currentPlayer.RiseOfImage) { list.Add(Database.RISE_OF_IMAGE); }
+                if (currentPlayer.Deflection) { list.Add(Database.DEFLECTION); }
+                if (currentPlayer.Tranquility) { list.Add(Database.TRANQUILITY); }
+                if (currentPlayer.VoidExtraction) { list.Add(Database.VOID_EXTRACTION); }
+                if (currentPlayer.BlueBullet) { list.Add(Database.BLUE_BULLET); }
+                if (currentPlayer.VanishWave) { list.Add(Database.VANISH_WAVE); }
+                if (currentPlayer.DarkenField) { list.Add(Database.DARKEN_FIELD); }
+                if (currentPlayer.DevouringPlague) { list.Add(Database.DEVOURING_PLAGUE); }
+                if (currentPlayer.MirrorImage) { list.Add(Database.MIRROR_IMAGE); }
+                if (currentPlayer.OneImmunity) { list.Add(Database.ONE_IMMUNITY); }
+                if (currentPlayer.FutureVision) { list.Add(Database.FUTURE_VISION); }
+                if (currentPlayer.Recover) { list.Add(Database.RECOVER); }
+                if (currentPlayer.TrustSilence) { list.Add(Database.TRUST_SILENCE); }
+                if (currentPlayer.SkyShield) { list.Add(Database.SKY_SHIELD); }
+                if (currentPlayer.StarLightning) { list.Add(Database.STAR_LIGHTNING); }
+                if (currentPlayer.PsychicTrance) { list.Add(Database.PSYCHIC_TRANCE); }
+                if (currentPlayer.PsychicWave) { list.Add(Database.PSYCHIC_WAVE); }
+                if (currentPlayer.SharpGlare) { list.Add(Database.SHARP_GLARE); }
+                if (currentPlayer.StanceOfSuddenness) { list.Add(Database.STANCE_OF_SUDDENNESS); }
+                if (currentPlayer.AntiStun) { list.Add(Database.ANTI_STUN); }
+                if (currentPlayer.SilentRush) { list.Add(Database.SILENT_RUSH); }
+                if (currentPlayer.CarnageRush) { list.Add(Database.CARNAGE_RUSH); }
+                if (currentPlayer.BloodyVengeance) { list.Add(Database.BLOODY_VENGEANCE); }
+                if (currentPlayer.SacredHeal) { list.Add(Database.SACRED_HEAL); }
+                if (currentPlayer.WhiteOut) { list.Add(Database.WHITE_OUT); }
+                if (currentPlayer.DeepMirror) { list.Add(Database.DEEP_MIRROR); }
+                if (currentPlayer.PromisedKnowledge) { list.Add(Database.PROMISED_KNOWLEDGE); }
+                if (currentPlayer.DoomBlade) { list.Add(Database.DOOM_BLADE); }
+                if (currentPlayer.VortexField) { list.Add(Database.VORTEX_FIELD); }
+                if (currentPlayer.AngelBreath) { list.Add(Database.ANGEL_BREATH); }
+                if (currentPlayer.UnknownShock) { list.Add(Database.UNKNOWN_SHOCK); }
+                if (currentPlayer.BlindJustice) { list.Add(Database.BLIND_JUSTICE); }
+                if (currentPlayer.StanceOfDeath) { list.Add(Database.STANCE_OF_DEATH); }
+                if (currentPlayer.EclipseEnd) { list.Add(Database.ECLIPSE_END); }
+                if (currentPlayer.OboroImpact) { list.Add(Database.OBORO_IMPACT); }
+                if (currentPlayer.Damnation) { list.Add(Database.DAMNATION); }
+                if (currentPlayer.MindKilling) { list.Add(Database.MIND_KILLING); }
+                if (currentPlayer.NothingOfNothingness) { list.Add(Database.NOTHING_OF_NOTHINGNESS); } // 文字はみ出る
+                if (currentPlayer.AbsoluteZero) { list.Add(Database.ABSOLUTE_ZERO); }
+                if (currentPlayer.NourishSense) { list.Add(Database.NOURISH_SENSE); }
+                if (currentPlayer.TimeStop) { list.Add(Database.TIME_STOP); }
+                if (currentPlayer.EverDroplet) { list.Add(Database.EVER_DROPLET); }
+                if (currentPlayer.BlueDragonWill) { list.Add(Database.BLUE_DRAGON_WILL); }
+                if (currentPlayer.EndlessAnthem) { list.Add(Database.ENDLESS_ANTHEM); }
+                if (currentPlayer.ImpulseHit) { list.Add(Database.IMPULSE_HIT); }
+                if (currentPlayer.DeathDeny) { list.Add(Database.DEATH_DENY); }
+                if (currentPlayer.ConcussiveHit) { list.Add(Database.CONCUSSIVE_HIT); }
+                if (currentPlayer.SoulExecution) { list.Add(Database.SOUL_EXECUTION); }
+                if (currentPlayer.TranscendentWish) { list.Add(Database.TRANSCENDENT_WISH); }
+            }
+            else if (currentPlayer.FullName == Database.OL_LANDIS_FULL)
+            {
+                if (currentPlayer.StraightSmash) { list.Add(Database.STRAIGHT_SMASH); }
+                if (currentPlayer.FireBall) { list.Add(Database.FIRE_BALL); }
+                if (currentPlayer.DarkBlast) { list.Add(Database.DARK_BLAST); }
+                if (currentPlayer.DoubleSlash) { list.Add(Database.DOUBLE_SLASH); }
+                if (currentPlayer.ShadowPact) { list.Add(Database.SHADOW_PACT); }
+                if (currentPlayer.FlameAura) { list.Add(Database.FLAME_AURA); }
+                if (currentPlayer.StanceOfStanding) { list.Add(Database.STANCE_OF_STANDING); }
+                if (currentPlayer.DispelMagic) { list.Add(Database.DISPEL_MAGIC); }
+                if (currentPlayer.LifeTap) { list.Add(Database.LIFE_TAP); }
+                if (currentPlayer.HeatBoost) { list.Add(Database.HEAT_BOOST); }
+                if (currentPlayer.Negate) { list.Add(Database.NEGATE); }
+                if (currentPlayer.BlackContract) { list.Add(Database.BLACK_CONTRACT); }
+                if (currentPlayer.InnerInspiration) { list.Add(Database.INNER_INSPIRATION); }
+                if (currentPlayer.RiseOfImage) { list.Add(Database.RISE_OF_IMAGE); }
+                if (currentPlayer.Deflection) { list.Add(Database.DEFLECTION); }
+                if (currentPlayer.FlameStrike) { list.Add(Database.FLAME_STRIKE); }
+                if (currentPlayer.Tranquility) { list.Add(Database.TRANQUILITY); }
+                if (currentPlayer.VoidExtraction) { list.Add(Database.VOID_EXTRACTION); }
+                if (currentPlayer.BlackFire) { list.Add(Database.BLACK_FIRE); }
+                if (currentPlayer.Immolate) { list.Add(Database.IMMOLATE); }
+                if (currentPlayer.DarkenField) { list.Add(Database.DARKEN_FIELD); }
+                if (currentPlayer.DevouringPlague) { list.Add(Database.DEVOURING_PLAGUE); }
+                if (currentPlayer.VolcanicWave) { list.Add(Database.VOLCANIC_WAVE); }
+                if (currentPlayer.OneImmunity) { list.Add(Database.ONE_IMMUNITY); }
+                if (currentPlayer.CircleSlash) { list.Add(Database.CIRCLE_SLASH); }
+                if (currentPlayer.OuterInspiration) { list.Add(Database.OUTER_INSPIRATION); }
+                if (currentPlayer.ColorlessMove) { list.Add(Database.COLORLESS_MOVE); }
+                if (currentPlayer.WordOfMalice) { list.Add(Database.WORD_OF_MALICE); }
+                if (currentPlayer.EnrageBlast) { list.Add(Database.ENRAGE_BLAST); }
+                if (currentPlayer.SwiftStep) { list.Add(Database.SWIFT_STEP); }
+                if (currentPlayer.Recover) { list.Add(Database.RECOVER); }
+                if (currentPlayer.SurpriseAttack) { list.Add(Database.SURPRISE_ATTACK); }
+                if (currentPlayer.SeventhMagic) { list.Add(Database.SEVENTH_MAGIC); }
+            }
+            else if (currentPlayer.FullName == Database.VERZE_ARTIE_FULL)
+            {
+                if (currentPlayer.FireBall) { list.Add(Database.FIRE_BALL); }
+                if (currentPlayer.StraightSmash) { list.Add(Database.STRAIGHT_SMASH); }
+                if (currentPlayer.CounterAttack) { list.Add(Database.COUNTER_ATTACK); }
+                if (currentPlayer.FreshHeal) { list.Add(Database.FRESH_HEAL); }
+                if (currentPlayer.StanceOfFlow) { list.Add(Database.STANCE_OF_FLOW); }
+                if (currentPlayer.DispelMagic) { list.Add(Database.DISPEL_MAGIC); }
+                if (currentPlayer.WordOfPower) { list.Add(Database.WORD_OF_POWER); }
+                if (currentPlayer.EnigmaSence) { list.Add(Database.ENIGMA_SENSE); }
+                if (currentPlayer.BlackContract) { list.Add(Database.BLACK_CONTRACT); }
+                if (currentPlayer.Cleansing) { list.Add(Database.CLEANSING); }
+                if (currentPlayer.GaleWind) { list.Add(Database.GALE_WIND); }
+                if (currentPlayer.Deflection) { list.Add(Database.DEFLECTION); }
+                if (currentPlayer.Negate) { list.Add(Database.NEGATE); }
+                if (currentPlayer.InnerInspiration) { list.Add(Database.INNER_INSPIRATION); }
+                if (currentPlayer.FrozenLance) { list.Add(Database.FROZEN_LANCE); }
+                if (currentPlayer.Tranquility) { list.Add(Database.TRANQUILITY); }
+                if (currentPlayer.WordOfFortune) { list.Add(Database.WORD_OF_FORTUNE); }
+                if (currentPlayer.SkyShield) { list.Add(Database.SKY_SHIELD); }
+                if (currentPlayer.NeutralSmash) { list.Add(Database.NEUTRAL_SMASH); }
+                if (currentPlayer.Glory) { list.Add(Database.GLORY); }
+                if (currentPlayer.BlackFire) { list.Add(Database.BLACK_FIRE); }
+                if (currentPlayer.SurpriseAttack) { list.Add(Database.SURPRISE_ATTACK); }
+                if (currentPlayer.MirrorImage) { list.Add(Database.MIRROR_IMAGE); }
+                if (currentPlayer.WordOfMalice) { list.Add(Database.WORD_OF_MALICE); }
+                if (currentPlayer.StanceOfSuddenness) { list.Add(Database.STANCE_OF_SUDDENNESS); }
+                if (currentPlayer.CrushingBlow) { list.Add(Database.CRUSHING_BLOW); }
+                if (currentPlayer.Immolate) { list.Add(Database.IMMOLATE); }
+                if (currentPlayer.AetherDrive) { list.Add(Database.AETHER_DRIVE); }
+                if (currentPlayer.TrustSilence) { list.Add(Database.TRUST_SILENCE); }
+                if (currentPlayer.WordOfAttitude) { list.Add(Database.WORD_OF_ATTITUDE); }
+                if (currentPlayer.OneImmunity) { list.Add(Database.ONE_IMMUNITY); }
+                if (currentPlayer.AntiStun) { list.Add(Database.ANTI_STUN); }
+                if (currentPlayer.FutureVision) { list.Add(Database.FUTURE_VISION); }
+                if (currentPlayer.StanceOfEyes) { list.Add(Database.STANCE_OF_EYES); }
+                if (currentPlayer.SwiftStep) { list.Add(Database.SWIFT_STEP); }
+                if (currentPlayer.Resurrection) { list.Add(Database.RESURRECTION); }
+                if (currentPlayer.BlindJustice) { list.Add(Database.BLIND_JUSTICE); }
+                if (currentPlayer.Genesis) { list.Add(Database.GENESIS); }
+                if (currentPlayer.DeepMirror) { list.Add(Database.DEEP_MIRROR); }
+                if (currentPlayer.ImmortalRave) { list.Add(Database.IMMORTAL_RAVE); }
+                if (currentPlayer.DoomBlade) { list.Add(Database.DOOM_BLADE); }
+                if (currentPlayer.CarnageRush) { list.Add(Database.CARNAGE_RUSH); }
+                if (currentPlayer.ChillBurn) { list.Add(Database.CHILL_BURN); }
+                if (currentPlayer.WhiteOut) { list.Add(Database.WHITE_OUT); }
+                if (currentPlayer.PhantasmalWind) { list.Add(Database.PHANTASMAL_WIND); }
+                if (currentPlayer.PainfulInsanity) { list.Add(Database.PAINFUL_INSANITY); }
+                if (currentPlayer.FatalBlow) { list.Add(Database.FATAL_BLOW); }
+                if (currentPlayer.StaticBarrier) { list.Add(Database.STATIC_BARRIER); }
+                if (currentPlayer.StanceOfDeath) { list.Add(Database.STANCE_OF_DEATH); }
+                if (currentPlayer.EverDroplet) { list.Add(Database.EVER_DROPLET); }
+                if (currentPlayer.Catastrophe) { list.Add(Database.CATASTROPHE); }
+                if (currentPlayer.CelestialNova) { list.Add(Database.CELESTIAL_NOVA); }
+                if (currentPlayer.MindKilling) { list.Add(Database.MIND_KILLING); }
+                if (currentPlayer.NothingOfNothingness) { list.Add(Database.NOTHING_OF_NOTHINGNESS); }
+                if (currentPlayer.AbsoluteZero) { list.Add(Database.ABSOLUTE_ZERO); }
+                if (currentPlayer.AusterityMatrix) { list.Add(Database.AUSTERITY_MATRIX); }
+                if (currentPlayer.VigorSense) { list.Add(Database.VIGOR_SENSE); }
+                if (currentPlayer.LavaAnnihilation) { list.Add(Database.LAVA_ANNIHILATION); }
+                if (currentPlayer.EclipseEnd) { list.Add(Database.ECLIPSE_END); }
+                if (currentPlayer.TimeStop) { list.Add(Database.TIME_STOP); }
+                if (currentPlayer.SinFortune) { list.Add(Database.SIN_FORTUNE); }
+                if (currentPlayer.DemonicIgnite) { list.Add(Database.DEMONIC_IGNITE); }
+                if (currentPlayer.StanceOfDouble) { list.Add(Database.STANCE_OF_DOUBLE); }
+                if (currentPlayer.WarpGate) { list.Add(Database.WARP_GATE); }
+                if (currentPlayer.StanceOfMystic) { list.Add(Database.STANCE_OF_MYSTIC); }
+                if (currentPlayer.SoulExecution) { list.Add(Database.SOUL_EXECUTION); }
+                if (currentPlayer.ZetaExplosion) { list.Add(Database.ZETA_EXPLOSION); }
+            }
+            else if (currentPlayer.FullName == Database.SINIKIA_KAHLHANZ_FULL)
+            {
+                if (currentPlayer.FreshHeal) { list.Add(Database.FRESH_HEAL); }
+                if (currentPlayer.Protection) { list.Add(Database.PROTECTION); }
+                if (currentPlayer.HolyShock) { list.Add(Database.HOLY_SHOCK); }
+                if (currentPlayer.SaintPower) { list.Add(Database.SAINT_POWER); }
+                if (currentPlayer.Glory) { list.Add(Database.GLORY); }
+                if (currentPlayer.Resurrection) { list.Add(Database.RESURRECTION); }
+                if (currentPlayer.CelestialNova) { list.Add(Database.CELESTIAL_NOVA); }
+                if (currentPlayer.DarkBlast) { list.Add(Database.DARK_BLAST); }
+                if (currentPlayer.ShadowPact) { list.Add(Database.SHADOW_PACT); }
+                if (currentPlayer.LifeTap) { list.Add(Database.LIFE_TAP); }
+                if (currentPlayer.BlackContract) { list.Add(Database.BLACK_CONTRACT); }
+                if (currentPlayer.DevouringPlague) { list.Add(Database.DEVOURING_PLAGUE); }
+                if (currentPlayer.BloodyVengeance) { list.Add(Database.BLOODY_VENGEANCE); }
+                if (currentPlayer.Damnation) { list.Add(Database.DAMNATION); }
+                if (currentPlayer.FireBall) { list.Add(Database.FIRE_BALL); }
+                if (currentPlayer.FlameAura) { list.Add(Database.FLAME_AURA); }
+                if (currentPlayer.HeatBoost) { list.Add(Database.HEAT_BOOST); }
+                if (currentPlayer.FlameStrike) { list.Add(Database.FLAME_STRIKE); }
+                if (currentPlayer.VolcanicWave) { list.Add(Database.VOLCANIC_WAVE); }
+                if (currentPlayer.ImmortalRave) { list.Add(Database.IMMORTAL_RAVE); }
+                if (currentPlayer.LavaAnnihilation) { list.Add(Database.LAVA_ANNIHILATION); }
+                if (currentPlayer.IceNeedle) { list.Add(Database.ICE_NEEDLE); }
+                if (currentPlayer.AbsorbWater) { list.Add(Database.ABSORB_WATER); }
+                if (currentPlayer.Cleansing) { list.Add(Database.CLEANSING); }
+                if (currentPlayer.FrozenLance) { list.Add(Database.FROZEN_LANCE); }
+                if (currentPlayer.MirrorImage) { list.Add(Database.MIRROR_IMAGE); }
+                if (currentPlayer.PromisedKnowledge) { list.Add(Database.PROMISED_KNOWLEDGE); }
+                if (currentPlayer.AbsoluteZero) { list.Add(Database.ABSOLUTE_ZERO); }
+                if (currentPlayer.WordOfPower) { list.Add(Database.WORD_OF_POWER); }
+                if (currentPlayer.GaleWind) { list.Add(Database.GALE_WIND); }
+                if (currentPlayer.WordOfLife) { list.Add(Database.WORD_OF_LIFE); }
+                if (currentPlayer.WordOfFortune) { list.Add(Database.WORD_OF_FORTUNE); }
+                if (currentPlayer.AetherDrive) { list.Add(Database.AETHER_DRIVE); }
+                if (currentPlayer.Genesis) { list.Add(Database.GENESIS); }
+                if (currentPlayer.EternalPresence) { list.Add(Database.ETERNAL_PRESENCE); }
+                if (currentPlayer.DispelMagic) { list.Add(Database.DISPEL_MAGIC); }
+                if (currentPlayer.RiseOfImage) { list.Add(Database.RISE_OF_IMAGE); }
+                if (currentPlayer.Deflection) { list.Add(Database.DEFLECTION); }
+                if (currentPlayer.Tranquility) { list.Add(Database.TRANQUILITY); }
+                if (currentPlayer.OneImmunity) { list.Add(Database.ONE_IMMUNITY); }
+                if (currentPlayer.WhiteOut) { list.Add(Database.WHITE_OUT); }
+                if (currentPlayer.TimeStop) { list.Add(Database.TIME_STOP); }
+                if (currentPlayer.CounterAttack) { list.Add(Database.COUNTER_ATTACK); }
+                if (currentPlayer.StanceOfFlow) { list.Add(Database.STANCE_OF_FLOW); }
+                if (currentPlayer.Negate) { list.Add(Database.NEGATE); }
+                if (currentPlayer.PsychicTrance) { list.Add(Database.PSYCHIC_TRANCE); }
+                if (currentPlayer.BlindJustice) { list.Add(Database.BLIND_JUSTICE); }
+                if (currentPlayer.TranscendentWish) { list.Add(Database.TRANSCENDENT_WISH); }
+                if (currentPlayer.FlashBlaze) { list.Add(Database.FLASH_BLAZE); }
+                if (currentPlayer.LightDetonator) { list.Add(Database.LIGHT_DETONATOR); }
+                if (currentPlayer.AscendantMeteor) { list.Add(Database.ASCENDANT_METEOR); }
+                if (currentPlayer.SkyShield) { list.Add(Database.SKY_SHIELD); }
+                if (currentPlayer.SacredHeal) { list.Add(Database.SACRED_HEAL); }
+                if (currentPlayer.EverDroplet) { list.Add(Database.EVER_DROPLET); }
+                if (currentPlayer.HolyBreaker) { list.Add(Database.HOLY_BREAKER); }
+                if (currentPlayer.ExaltedField) { list.Add(Database.EXALTED_FIELD); }
+                if (currentPlayer.HymnContract) { list.Add(Database.HYMN_CONTRACT); }
+                if (currentPlayer.StarLightning) { list.Add(Database.STAR_LIGHTNING); }
+                if (currentPlayer.AngelBreath) { list.Add(Database.ANGEL_BREATH); }
+                if (currentPlayer.EndlessAnthem) { list.Add(Database.ENDLESS_ANTHEM); }
+                if (currentPlayer.BlackFire) { list.Add(Database.BLACK_FIRE); }
+                if (currentPlayer.BlazingField) { list.Add(Database.BLAZING_FIELD); }
+                if (currentPlayer.DemonicIgnite) { list.Add(Database.DEMONIC_IGNITE); }
+                if (currentPlayer.BlueBullet) { list.Add(Database.BLUE_BULLET); }
+                if (currentPlayer.DeepMirror) { list.Add(Database.DEEP_MIRROR); }
+                if (currentPlayer.DeathDeny) { list.Add(Database.DEATH_DENY); }
+                if (currentPlayer.WordOfMalice) { list.Add(Database.WORD_OF_MALICE); }
+                if (currentPlayer.AbyssEye) { list.Add(Database.ABYSS_EYE); }
+                if (currentPlayer.SinFortune) { list.Add(Database.SIN_FORTUNE); }
+                if (currentPlayer.DarkenField) { list.Add(Database.DARKEN_FIELD); }
+                if (currentPlayer.DoomBlade) { list.Add(Database.DOOM_BLADE); }
+                if (currentPlayer.EclipseEnd) { list.Add(Database.ECLIPSE_END); }
+                if (currentPlayer.FrozenAura) { list.Add(Database.FROZEN_AURA); }
+                if (currentPlayer.ChillBurn) { list.Add(Database.CHILL_BURN); }
+                if (currentPlayer.ZetaExplosion) { list.Add(Database.ZETA_EXPLOSION); }
+                if (currentPlayer.EnrageBlast) { list.Add(Database.ENRAGE_BLAST); }
+                if (currentPlayer.PiercingFlame) { list.Add(Database.PIERCING_FLAME); }
+                if (currentPlayer.SigilOfHomura) { list.Add(Database.SIGIL_OF_HOMURA); }
+                if (currentPlayer.Immolate) { list.Add(Database.IMMOLATE); }
+                if (currentPlayer.PhantasmalWind) { list.Add(Database.PHANTASMAL_WIND); }
+                if (currentPlayer.RedDragonWill) { list.Add(Database.RED_DRAGON_WILL); }
+                if (currentPlayer.WordOfAttitude) { list.Add(Database.WORD_OF_ATTITUDE); }
+                if (currentPlayer.StaticBarrier) { list.Add(Database.STATIC_BARRIER); }
+                if (currentPlayer.AusterityMatrix) { list.Add(Database.AUSTERITY_MATRIX); }
+                if (currentPlayer.VanishWave) { list.Add(Database.VANISH_WAVE); }
+                if (currentPlayer.VortexField) { list.Add(Database.VORTEX_FIELD); }
+                if (currentPlayer.BlueDragonWill) { list.Add(Database.BLUE_DRAGON_WILL); }
+                if (currentPlayer.SeventhMagic) { list.Add(Database.SEVENTH_MAGIC); }
+                if (currentPlayer.ParadoxImage) { list.Add(Database.PARADOX_IMAGE); }
+                if (currentPlayer.WarpGate) { list.Add(Database.WARP_GATE); }
+            }
+            return list;
         }
 
         public static bool[] GetAvailableActionList(MainCharacter currentPlayer)
@@ -2156,6 +2509,22 @@ namespace DungeonPlayer
             else if (commandName == Database.TAMERU_EN)
             {
                 return Database.TAMERU_JP;
+            }
+            else if (commandName == Database.ACCESSORY_SPECIAL_EN)
+            {
+                return Database.ACCESSORY_SPECIAL_JP;
+            }
+            else if (commandName == Database.ACCESSORY_SPECIAL2_EN)
+            {
+                return Database.ACCESSORY_SPECIAL2_JP;
+            }
+            else if (commandName == Database.WEAPON_SPECIAL_EN)
+            {
+                return Database.WEAPON_SPECIAL_JP;
+            }
+            else if (commandName == Database.WEAPON_SPECIAL_LEFT_EN)
+            {
+                return Database.WEAPON_SPECIAL_LEFT_JP;
             }
             else if (commandName == Database.FRESH_HEAL)
             {
