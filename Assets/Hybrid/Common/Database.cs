@@ -3074,6 +3074,8 @@ namespace DungeonPlayer
         public const string GUI_B_SETTING_VOID = "無心";
         public const string GUI_B_SETTING_MIXSPELL = "複合\r\n魔法";
         public const string GUI_B_SETTING_MIXSKILL = "複合\r\nスキル";
+        public const string GUI_B_SETTING_BASIC_COMMAND = "基本コマンド";
+        public const string GUI_B_SETTING_ADVANCED_COMMAND = "魔法／スキル";
         public const string GUI_B_SETTING_COMPLETE = "完了";
         #endregion
         #region "戦闘"

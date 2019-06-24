@@ -9,119 +9,39 @@ namespace DungeonPlayer
 {
     public class TruthBattleSetting : MotherForm
     {
-        public GameObject btnMixSpell;
-        public GameObject btnMixSkill;
-        public GameObject groupTypeBasic;
-        public GameObject groupTypeSpell;
-        public GameObject groupTypeSkill;
-        public GameObject groupTypeMixSpell;
-        public GameObject groupTypeMixSkill;
-        public GameObject groupCommandBasic;
-        public GameObject groupCommandSpell;
-        public GameObject groupCommandSkill;
-        public GameObject groupCommandMixSpell;
-        public GameObject groupCommandMixSkill;
-        public GameObject groupListBasic;
-        public GameObject groupListSpell;
-        public GameObject groupListSkill;
-        public GameObject groupListMixSpell;
-        public GameObject groupListMixSkill;
-        public GameObject groupStandardCommand;
-        public GameObject groupItemCommand;
-        public GameObject groupArchitypeCommand;
-        public GameObject groupLightSpell;
-        public GameObject groupShadowSpell;
-        public GameObject groupFireSpell;
-        public GameObject groupIceSpell;
-        public GameObject groupForceSpell;
-        public GameObject groupWillSpell;
-        public GameObject groupActiveSkill;
-        public GameObject groupPassiveSkill;
-        public GameObject groupSoftSkill;
-        public GameObject groupHardSkill;
-        public GameObject groupTruthSkill;
-        public GameObject groupVoidSkill;
-        public GameObject groupLightShadow;
-        public GameObject groupLightFire;
-        public GameObject groupLightIce;
-        public GameObject groupLightForce;
-        public GameObject groupLightWill;
-        public GameObject groupShadowFire;
-        public GameObject groupShadowIce;
-        public GameObject groupShadowForce;
-        public GameObject groupShadowWill;
-        public GameObject groupFireIce;
-        public GameObject groupFireForce;
-        public GameObject groupFireWill;
-        public GameObject groupIceForce;
-        public GameObject groupIceWill;
-        public GameObject groupForceWill;
-        public GameObject groupActivePassive;
-        public GameObject groupActiveSoft;
-        public GameObject groupActiveHard;
-        public GameObject groupActiveTruth;
-        public GameObject groupActiveVoid;
-        public GameObject groupPassiveSoft;
-        public GameObject groupPassiveHard;
-        public GameObject groupPassiveTruth;
-        public GameObject groupPassiveVoid;
-        public GameObject groupSoftHard;
-        public GameObject groupSoftTruth;
-        public GameObject groupSoftVoid;
-        public GameObject groupHardTruth;
-        public GameObject groupHardVoid;
-        public GameObject groupTruthVoid;
-        public GameObject groupArcheType;
+        public GameObject nodeActionCommand;
+        public GameObject group_MC;
+        public GameObject group_SC;
+        public GameObject group_TC;
+        public GameObject group_MC_Basic;
+        public GameObject group_SC_Basic;
+        public GameObject group_TC_Basic;
+        public GameObject contentActionCommand_MC;
+        public GameObject contentBasicCommand_MC;
+        public GameObject contentActionCommand_SC;
+        public GameObject contentBasicCommand_SC;
+        public GameObject contentActionCommand_TC;
+        public GameObject contentBasicCommand_TC;
         public GameObject btnCharacterGroup;
         public Button btnFirstChara;
+        public Text txtFirstChara;
         public Button btnSecondChara;
+        public Text txtSecondChara;
         public Button btnThirdChara;
+        public Text txtThirdChara;
         public Text commandName;
         public Text commandNameEn;
+        public Text commandAttributeType;
         public Text commandCost;
         public Text commandTarget;
         public Text commandTiming;
         public Text description;
-        public Image[] pbAction;
-        public Image[] pbSorcery;
         public Image[] pbCurrentAction;
         public Image[] pbCurrentActionSorcery;
         public Image moveActionBox;
         public Image moveActionBoxSorcery;
-        public GameObject panelBasic;
-        public Text txtBasic;
-        public GameObject panelSpell;
-        public Text txtSpell;
-        public GameObject panelSkill;
-        public Text txtSkill;
-        public GameObject panelClass;
-        public Text txtClass;
-        public Button btnBasic;
-        public Button btnSpell;
-        public Button btnExit;
-        public Button btnClass;
-        public Button command1;
-        public Button command2;
-        public Button command3;
-        public Button command4;
-        public Button command5;
-        //public Panel commandList;
-        public Button back;
-        public Text lblBasic;
-        public Text lblLight;
-        public Text lblShadow;
-        public Text lblFire;
-        public Text lblIce;
-        public Text lblForce;
-        public Text lblWill;
-        public Text lblActive;
-        public Text lblPassive;
-        public Text lblSoft;
-        public Text lblHard;
-        public Text lblTruth;
-        public Text lblVoid;
-        public Text lblMixSpell;
-        public Text lblMixSkill;            
+        public Text lblBasicCommand;
+        public Text lblAdvancedCommand;
         public Text lblComplete;
 
         MainCharacter currentPlayer;
@@ -130,10 +50,9 @@ namespace DungeonPlayer
         private Vector3 offset;
 
         const int CURRENT_ACTION_NUM = 9;
-        const int BASIC_ACTION_NUM = 8; // 基本行動
-        const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
-        const int MIX_ACTION_NUM_2 = 30; // [警告]暫定、本来Databaseに記載するべき
-        const int ARCHETYPE_NUM = 1; // アーキタイプ
+
+        private float moveAnimation = 0.0f;
+        private float moveAnimationValue = 0.0f;
 
         // Use this for initialization
         public override void Start()
@@ -142,35 +61,41 @@ namespace DungeonPlayer
 
             if (GroundOne.Language == GroundOne.GameLanguage.Japanese)
             {
-                lblBasic.text = Database.GUI_B_SETTING_BASIC;
-                lblLight.text = Database.GUI_B_SETTING_LIGHT;
-                lblShadow.text = Database.GUI_B_SETTING_SHADOW;
-                lblFire.text = Database.GUI_B_SETTING_FIRE;
-                lblIce.text = Database.GUI_B_SETTING_ICE;
-                lblForce.text = Database.GUI_B_SETTING_FORCE;
-                lblWill.text = Database.GUI_B_SETTING_WILL;
-                lblActive.text = Database.GUI_B_SETTING_ACTIVE;
-                lblPassive.text = Database.GUI_B_SETTING_PASSIVE;
-                lblSoft.text = Database.GUI_B_SETTING_SOFT;
-                lblHard.text = Database.GUI_B_SETTING_HARD;
-                lblTruth.text = Database.GUI_B_SETTING_TRUTH;
-                lblVoid.text = Database.GUI_B_SETTING_VOID;
-                lblMixSpell.text = Database.GUI_B_SETTING_MIXSPELL;
-                lblMixSkill.text = Database.GUI_B_SETTING_MIXSKILL;
+                lblBasicCommand.text = Database.GUI_B_SETTING_BASIC_COMMAND;
+                lblAdvancedCommand.text = Database.GUI_B_SETTING_ADVANCED_COMMAND;
                 lblComplete.text = Database.GUI_B_SETTING_COMPLETE;
             }
 
             this.currentPlayer = GroundOne.MC;
             this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
 
-            if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
-            if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
-            if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
-
-            this.btnMixSpell.SetActive(GroundOne.WE.AvailableMixSpellSkill);
-            this.btnMixSkill.SetActive(GroundOne.WE.AvailableMixSpellSkill);
-
-            this.groupArcheType.SetActive(GroundOne.WE.AvailableArchetypeCommand);
+            if (GroundOne.MC != null)
+            {
+                btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor;
+                txtFirstChara.text = GroundOne.MC.FirstName;
+                List<string> commandList = TruthActionCommand.GetActionCommandList(GroundOne.MC);
+                ConstructActionCommandView(GroundOne.MC, contentActionCommand_MC, commandList);
+                List<string> basicList = TruthActionCommand.GetBasicCommandList(GroundOne.MC);
+                ConstructActionCommandView(GroundOne.MC, contentBasicCommand_MC, basicList);
+            }
+            if (GroundOne.SC != null)
+            {
+                btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor;
+                txtSecondChara.text = GroundOne.SC.FirstName;
+                List<string> commandList = TruthActionCommand.GetActionCommandList(GroundOne.SC);
+                ConstructActionCommandView(GroundOne.SC, contentActionCommand_SC, commandList);
+                List<string> basicList = TruthActionCommand.GetBasicCommandList(GroundOne.SC);
+                ConstructActionCommandView(GroundOne.SC, contentBasicCommand_SC, basicList);
+            }
+            if (GroundOne.TC != null)
+            {
+                btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor;
+                txtThirdChara.text = GroundOne.TC.FirstName;
+                List<string> commandList = TruthActionCommand.GetActionCommandList(GroundOne.TC);
+                ConstructActionCommandView(GroundOne.TC, contentActionCommand_TC, commandList);
+                List<string> basicList = TruthActionCommand.GetBasicCommandList(GroundOne.TC);
+                ConstructActionCommandView(GroundOne.TC, contentBasicCommand_TC, basicList);
+            }
 
             if (GroundOne.DuelMode)
             {
@@ -198,11 +123,67 @@ namespace DungeonPlayer
                 }
             }
 
-            SetupAllIcon();
-
-            TapBasicList(0);
+            FirstChara_Click();
         }
-        
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (this.moveAnimation > 0.0f)
+            {
+                moveAnimation -= 1.0f;
+                moveAnimationValue *= 0.5f;
+                RectTransform rect = GetCurrentContent().GetComponent<RectTransform>();
+                rect.position = new Vector3(rect.position.x + moveAnimationValue, rect.position.y);
+            }
+        }
+
+        private void ConstructActionCommandView(MainCharacter player, GameObject contentAC, List<string> commandList)
+        {
+            int offset = 50;
+            int width = 320;
+            for (int ii = 0; ii < commandList.Count; ii++)
+            {
+                GameObject obj = Instantiate(this.nodeActionCommand, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                obj.name = commandList[ii];
+                obj.transform.SetParent(contentAC.transform);
+                obj.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                RectTransform rect = obj.GetComponent<RectTransform>();
+                rect.anchoredPosition = new Vector3(offset + width * ii, 0);
+                obj.SetActive(true);
+
+                RectTransform contentRectAC = contentAC.GetComponent<RectTransform>();
+
+                // 個数に応じて、コンテンツ長さを延長する。
+                contentRectAC.sizeDelta = new Vector2(contentRectAC.sizeDelta.x + width, contentRectAC.sizeDelta.y);
+
+                Image[] imgList = obj.GetComponentsInChildren<Image>();
+                Image imgIsSorcery = null;
+                for (int jj = 0; jj < imgList.Length; jj++)
+                {
+                    if (imgList[jj].name == "IsSorcery")
+                    {
+                        imgIsSorcery = imgList[jj];
+                        Image img = obj.GetComponent<Image>();
+                        Method.SetupActionButton(img.gameObject, imgIsSorcery, commandList[ii]);
+                        break;
+                    }
+                }
+
+                Text[] txtList = obj.GetComponentsInChildren<Text>();
+                for (int jj = 0; jj < txtList.Length; jj++)
+                {
+                    if (txtList[jj].name == "txtName")
+                    {
+                        txtList[jj].text = commandList[ii];
+                        break;
+                    }
+                }
+            }
+
+        }
+
         public void TruthBattleSetting_MouseMove(Button sender)
         {
             moveActionBox.gameObject.SetActive(true);
@@ -217,6 +198,7 @@ namespace DungeonPlayer
             float positionX = Input.mousePosition.x;
             float positionY = Input.mousePosition.y;
 
+            Debug.Log("pbCurrentAction " + pbCurrentAction.Length.ToString());
             for (int ii = 0; ii < CURRENT_ACTION_NUM; ii++)
             {
                 float width = (pbCurrentAction[ii].GetComponent<RectTransform>()).rect.width;
@@ -228,6 +210,14 @@ namespace DungeonPlayer
                     this.currentPlayer.BattleActionCommandList[ii] = sender.name;
                     break;
                 }
+            }
+        }
+
+        private void RefleshCurrentActionCommand(MainCharacter player)
+        {
+            for (int ii = 0; ii < player.BattleActionCommandList.Length; ii++)
+            {
+                Method.SetupActionButton(pbCurrentAction[ii].gameObject, pbCurrentActionSorcery[ii], currentPlayer.BattleActionCommandList[ii]);
             }
         }
 
@@ -258,6 +248,93 @@ namespace DungeonPlayer
         {
         }
 
+        private GameObject GetCurrentContent()
+        {
+            GameObject content = null;
+            if (currentPlayer.Equals(GroundOne.MC))
+            {
+                if (group_MC.activeInHierarchy)
+                {
+                    content = contentActionCommand_MC;
+                }
+                else
+                {
+                    content = contentBasicCommand_MC;
+                }
+            }
+            else if (currentPlayer.Equals(GroundOne.SC))
+            {
+                if (group_SC.activeInHierarchy)
+                {
+                    content = contentActionCommand_SC;
+                }
+                else
+                {
+                    content = contentBasicCommand_SC;
+                }
+            }
+            else if (currentPlayer.Equals(GroundOne.TC))
+            {
+                if (group_TC.activeInHierarchy)
+                {
+                    content = contentActionCommand_TC;
+                }
+                else
+                {
+                    content = contentBasicCommand_TC;
+                }
+            }
+            else
+            {
+                if (group_MC.activeInHierarchy)
+                {
+                    content = contentActionCommand_MC;
+                }
+                else
+                {
+                    content = contentBasicCommand_MC;
+                }
+            }
+            return content;
+        }
+
+        public void tapArrowLeft()
+        {
+            if (this.moveAnimation <= 0.0f)
+            {
+                this.moveAnimation = 20.0f;
+                RectTransform rect = GetCurrentContent().GetComponent<RectTransform>();
+                if (rect.position.x >= -1.0f)
+                {
+                    Debug.Log("left tap, but greater than -1.0f: " + rect.position.x.ToString());
+                    this.moveAnimationValue = +10;
+                }
+                else
+                {
+                    this.moveAnimationValue = +Screen.width;
+                }
+            }
+        }
+        public void tapArrowRight()
+        {
+            if (this.moveAnimation <= 0.0f)
+            {
+                this.moveAnimation = 20.0f;
+                List<string> list = TruthActionCommand.GetActionCommandList(currentPlayer);
+                RectTransform rect = GetCurrentContent().GetComponent<RectTransform>();
+                CanvasScaler scaler = GameObject.Find("Canvas").gameObject.GetComponent<CanvasScaler>();
+                float diff = -rect.sizeDelta.x - rect.localPosition.x + (scaler.referenceResolution.x);
+                if (diff > -12.0f) // 現実的な調整
+                {
+                    this.moveAnimationValue = -10;
+                }
+                else
+                {
+                    this.moveAnimationValue = -Screen.width;
+                }
+            }
+        }
+
         public void tapExit()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_CLOSE, String.Empty, String.Empty);
@@ -269,6 +346,25 @@ namespace DungeonPlayer
             string command = sender.name;
             this.commandName.text = TruthActionCommand.ConvertToJapanese(command);
             this.commandNameEn.text = sender.name;
+
+            switch (TruthActionCommand.GetAttribute(command))
+            {
+                case TruthActionCommand.Attribute.Spell:
+                    this.commandAttributeType.text = "魔法";
+                    break;
+                case TruthActionCommand.Attribute.Skill:
+                    this.commandAttributeType.text = "スキル";
+                    break;
+                case TruthActionCommand.Attribute.Archetype:
+                    this.commandAttributeType.text = "元核";
+                    break;
+                case TruthActionCommand.Attribute.None:
+                case TruthActionCommand.Attribute.NormalAttack:
+                default:
+                    this.commandAttributeType.text = "通常コマンド";
+                    break;
+            }
+
             this.commandCost.text = "消費コスト : " + TruthActionCommand.GetCost(sender.name).ToString();
 
             switch (TruthActionCommand.GetTargetType(command))
@@ -316,41 +412,19 @@ namespace DungeonPlayer
             }
             this.description.text = TruthActionCommand.GetDescription(command);
         }
-
-        private void SetupAllIcon()
-        {
-            string[] ssName = TruthActionCommand.GetActionList(currentPlayer);
-            bool[] ssAvailable = TruthActionCommand.GetAvailableActionList(currentPlayer);
-            for (int ii = 0; ii < Database.TOTAL_COMMAND_NUM; ii++)
-            {
-                try { 
-                    if (ssAvailable[ii]) {
-                        pbAction[ii].gameObject.SetActive(true);
-                        Method.SetupActionButton(pbAction[ii].gameObject, pbSorcery[ii], ssName[ii]);
-                    }
-                    else
-                    {
-                        pbAction[ii].gameObject.SetActive(false);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Debug.Log(ex.ToString());
-                }
-            }
-
-            for (int ii = 0; ii < currentPlayer.BattleActionCommandList.Length; ii++)
-            {
-                Method.SetupActionButton(pbCurrentAction[ii].gameObject, pbCurrentActionSorcery[ii], currentPlayer.BattleActionCommandList[ii]);
-            }
-        }
         
         public void FirstChara_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERFIRST, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.MC;
             this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
-            SetupAllIcon();
+            RefleshCurrentActionCommand(this.currentPlayer);
+            group_MC.SetActive(true);
+            group_SC.SetActive(false);
+            group_TC.SetActive(false);
+            group_MC_Basic.SetActive(false);
+            group_SC_Basic.SetActive(false);
+            group_TC_Basic.SetActive(false);
         }
 
         public void SecondChara_Click()
@@ -358,7 +432,13 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERSECOND, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.SC;
             this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
-            SetupAllIcon();
+            RefleshCurrentActionCommand(this.currentPlayer);
+            group_MC.SetActive(false);
+            group_SC.SetActive(true);
+            group_TC.SetActive(false);
+            group_MC_Basic.SetActive(false);
+            group_SC_Basic.SetActive(false);
+            group_TC_Basic.SetActive(false);
         }
 
         public void ThirdChara_Click()
@@ -366,161 +446,56 @@ namespace DungeonPlayer
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERTHIRD, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.TC;
             this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
-            SetupAllIcon();
+            RefleshCurrentActionCommand(this.currentPlayer);
+            group_MC.SetActive(false);
+            group_SC.SetActive(false);
+            group_TC.SetActive(true);
+            group_MC_Basic.SetActive(false);
+            group_SC_Basic.SetActive(false);
+            group_TC_Basic.SetActive(false);
         }
 
-        public void TapCommandType(int num)
+        public void TapBasicType()
         {
-            int COMMAND_TYPE = 5;
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < COMMAND_TYPE; ii++)
+            if (group_MC.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_MC_Basic.SetActive(true);
+                group_MC.SetActive(false);
+                return;
             }
-            UpdateGroupType(list[0], list[1], list[2], list[3], list[4]);
-
-            if (num == 0) { TapBasicList(0); }
-            else if (num == 1) { TapSpellList(0); }
-            else if (num == 2) { TapSkillList(0); }
-            else if (num == 3) { TapMixSpellList(0); }
-            else if (num == 4) { TapMixSkillList(0); }
-        }
-        private void UpdateGroupType(bool g1, bool g2, bool g3, bool g4, bool g5)
-        {
-            groupTypeBasic.SetActive(g1);
-            groupTypeSpell.SetActive(g2);
-            groupTypeSkill.SetActive(g3);
-            groupTypeMixSpell.SetActive(g4);
-            groupTypeMixSkill.SetActive(g5);
-
-            groupListBasic.SetActive(g1);
-            groupListSpell.SetActive(g2);
-            groupListSkill.SetActive(g3);
-            groupListMixSpell.SetActive(g4);
-            groupListMixSkill.SetActive(g5);
-        }
-
-        public void TapBasicList(int num)
-        {
-            int BASIC_COMMAND_NUM = 3;
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < BASIC_COMMAND_NUM; ii++)
+            if (group_SC.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_SC_Basic.SetActive(true);
+                group_SC.SetActive(false);
+                return;
             }
-            UpdateGroupBasic(list[0], list[1], list[2]);
-        }
-
-        private void UpdateGroupBasic(bool g1, bool g2, bool g3)
-        {
-            groupStandardCommand.SetActive(g1);
-            groupItemCommand.SetActive(g2);
-            groupArchitypeCommand.SetActive(g3);
-        }
-
-        public void TapSpellList(int num)
-        {
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < Database.SPELL_MAX_NUM; ii++)
+            if (group_TC.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_TC_Basic.SetActive(true);
+                group_TC.SetActive(false);
+                return;
             }
-            UpdateGroupSpell(list[0], list[1], list[2], list[3], list[4], list[5]);
         }
-
-        private void UpdateGroupSpell(bool g1, bool g2, bool g3, bool g4, bool g5, bool g6)
+        public void TapAdvancedType()
         {
-            groupLightSpell.SetActive(g1);
-            groupShadowSpell.SetActive(g2);
-            groupFireSpell.SetActive(g3);
-            groupIceSpell.SetActive(g4);
-            groupForceSpell.SetActive(g5);
-            groupWillSpell.SetActive(g6);
-        }
-
-        public void TapSkillList(int num)
-        {
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < Database.SKILL_TYPE_NUM; ii++)
+            if (group_MC_Basic.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_MC.SetActive(true);
+                group_MC_Basic.SetActive(false);
+                return;
             }
-            UpdateGroupSkill(list[0], list[1], list[2], list[3], list[4], list[5]);
-
-        }
-        private void UpdateGroupSkill(bool g1, bool g2, bool g3, bool g4, bool g5, bool g6)
-        {
-            groupActiveSkill.SetActive(g1);
-            groupPassiveSkill.SetActive(g2);
-            groupSoftSkill.SetActive(g3);
-            groupHardSkill.SetActive(g4);
-            groupTruthSkill.SetActive(g5);
-            groupVoidSkill.SetActive(g6);
-        }
-
-        public void TapMixSpellList(int num)
-        {
-            int MIX_SPELL_NUM = 15;
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < MIX_SPELL_NUM; ii++)
+            if (group_SC_Basic.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_SC.SetActive(true);
+                group_SC_Basic.SetActive(false);
+                return;
             }
-            UpdateGroupMixSpell(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14]);
-        }
-        private void UpdateGroupMixSpell(bool g1, bool g2, bool g3, bool g4, bool g5, bool g6, bool g7, bool g8, bool g9, bool g10, bool g11, bool g12, bool g13, bool g14, bool g15)
-        {
-            groupLightShadow.SetActive(g1);
-            groupLightFire.SetActive(g2);
-            groupLightIce.SetActive(g3);
-            groupLightForce.SetActive(g4);
-            groupLightWill.SetActive(g5);
-            groupShadowFire.SetActive(g6);
-            groupShadowIce.SetActive(g7);
-            groupShadowForce.SetActive(g8);
-            groupShadowWill.SetActive(g9);
-            groupFireIce.SetActive(g10);
-            groupFireForce.SetActive(g11);
-            groupFireWill.SetActive(g12);
-            groupIceForce.SetActive(g13);
-            groupIceWill.SetActive(g14);
-            groupForceWill.SetActive(g15);
-        }
-
-        public void TapMixSkillList(int num)
-        {
-            int MIX_SKILL_NUM = 15;
-            List<bool> list = new List<bool>();
-            for (int ii = 0; ii < MIX_SKILL_NUM; ii++)
+            if (group_TC_Basic.activeInHierarchy)
             {
-                if (ii == num) { list.Add(true); }
-                else { list.Add(false); }
+                group_TC.SetActive(true);
+                group_TC_Basic.SetActive(false);
+                return;
             }
-            UpdateGroupMixSkill(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11], list[12], list[13], list[14]);
-        }
-
-        private void UpdateGroupMixSkill(bool g1, bool g2, bool g3, bool g4, bool g5, bool g6, bool g7, bool g8, bool g9, bool g10, bool g11, bool g12, bool g13, bool g14, bool g15)
-        {
-            groupActivePassive.SetActive(g1);
-            groupActiveSoft.SetActive(g2);
-            groupActiveHard.SetActive(g3);
-            groupActiveTruth.SetActive(g4);
-            groupActiveVoid.SetActive(g5);
-            groupPassiveSoft.SetActive(g6);
-            groupPassiveHard.SetActive(g7);
-            groupPassiveTruth.SetActive(g8);
-            groupPassiveVoid.SetActive(g9);
-            groupSoftHard.SetActive(g10);
-            groupSoftTruth.SetActive(g11);
-            groupSoftVoid.SetActive(g12);
-            groupHardTruth.SetActive(g13);
-            groupHardVoid.SetActive(g14);
-            groupTruthVoid.SetActive(g15);
         }
     }
 }
