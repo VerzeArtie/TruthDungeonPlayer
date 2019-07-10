@@ -1361,7 +1361,7 @@ namespace DungeonPlayer
                             #region "２階"
                             case Database.ENEMY_DAGGER_FISH:
                                 UpdateBattleText(player.FirstName + "は見境なく噛み付いてきた！\r\n");
-                                PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
+                                PlayerRandomTargetPhysicalDamage(player, 3, 20, 0);
                                 break;
 
                             case Database.ENEMY_SIPPU_FLYING_FISH:

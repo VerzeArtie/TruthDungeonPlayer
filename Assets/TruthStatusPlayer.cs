@@ -182,6 +182,9 @@ namespace DungeonPlayer
         public Text lblBattleReaction;
         public Text lblPotential;
         public Text lblClose;
+        public Text lblBackpackUse;
+        public Text lblBackpackHandover;
+        public Text lblBackpackDisband;
 
         ItemBackPack[] backpackData = null;
 
@@ -239,6 +242,9 @@ namespace DungeonPlayer
                 lblBattleReaction.text = Database.GUI_S_BASIC_BRCT;
                 lblPotential.text = Database.GUI_S_BASIC_PTCL;
                 lblClose.text = Database.GUI_S_BASIC_CLOSE;
+                lblBackpackUse.text = Database.GUI_S_BACKPACK_USE;
+                lblBackpackHandover.text = Database.GUI_S_BACKPACK_HANDOVER;
+                lblBackpackDisband.text = Database.GUI_S_BACKPACK_DISBAND;
             }
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();

@@ -3016,6 +3016,10 @@ namespace DungeonPlayer
         public const string GUI_S_BASIC_PTCL = "潜在能力";
 
         public const string GUI_S_BASIC_CLOSE = "閉じる";
+
+        public const string GUI_S_BACKPACK_USE = "使う";
+        public const string GUI_S_BACKPACK_HANDOVER = "渡す";
+        public const string GUI_S_BACKPACK_DISBAND = "捨てる";
         #endregion
         #region "装備変更"
         public const string GUI_S_EQUIP_DROP = "装備を外す";
