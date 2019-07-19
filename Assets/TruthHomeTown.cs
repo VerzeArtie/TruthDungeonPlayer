@@ -2697,6 +2697,7 @@ namespace DungeonPlayer
 
             GroundOne.WE.AlreadyCommunicateFazilCastle = false;
 
+            bool detectAction = false;
             if (noAction == false)
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
@@ -2710,8 +2711,14 @@ namespace DungeonPlayer
                 GroundOne.OpponentDuelist = WhoisDuelPlayer();
                 if (GroundOne.OpponentDuelist != string.Empty)
                 {
+                    detectAction = true;
                     DuelSupportMessage(SupportType.Begin, GroundOne.OpponentDuelist);
                 }
+            }
+
+            if (detectAction == false)
+            {
+                Method.ExecSave(null, Database.AutoSaveNum, true);
             }
         }
 
