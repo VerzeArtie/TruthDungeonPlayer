@@ -39,6 +39,7 @@ namespace DungeonPlayer
         private int pageNumber = 1;
         private string[] filenameList = null;
         private DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
+        private DateTime newDateTimeAuto = new DateTime(1, 1, 1, 0, 0, 0);
 
         public Image pbSandglass;
         private Sprite imageSandglass;
@@ -100,18 +101,32 @@ namespace DungeonPlayer
             for (int ii = 0; ii < filenameList.Length; ii++)
             {
                 string targetString = System.IO.Path.GetFileName(filenameList[ii]);
-                if (Convert.ToInt32(targetString.Substring(0, 3)) >= 999) { continue; } // オートセーブは検査対象外
+                if (Convert.ToInt32(targetString.Substring(0, 3)) >= Database.WORLD_SAVE_NUM) { continue; } // オートセーブは検査対象外
 
                 string DateTimeString = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2);
                 DateTime targetDateTime = DateTime.Parse(DateTimeString);
-                if (targetDateTime > newDateTime)
+
+                // 手動セーブと自動セーブの二つを記憶する。
+                int currentNumber = Convert.ToInt32(targetString.Substring(0, 3));
+                if (targetDateTime > newDateTime && currentNumber <= 200)
                 {
                     newDateTime = targetDateTime;
-                    newNumber = Convert.ToInt32(targetString.Substring(0, 3));
+                    newNumber = currentNumber;
                 }
-
+                if (targetDateTime > newDateTimeAuto && currentNumber > 200)
+                {
+                    newDateTimeAuto = targetDateTime;
+                    //newNumber = currentNumber; // 自動セーブはページ自動移動の範囲に含めない。
+                }
             }
-            PageMove((newNumber - 1)/buttonText.Length + 1);
+
+            PageMove((newNumber - 1) / buttonText.Length + 1);
+
+            if (GroundOne.SaveMode)
+            {
+                buttonPage[20].enabled = false;
+                buttonPage[20].gameObject.SetActive(false);
+            }
 
             int BASE_SIZE_X = 152;
             int BASE_SIZE_Y = 211;
@@ -188,8 +203,13 @@ namespace DungeonPlayer
                         DateTime targetDateTime = DateTime.Parse(DateTimeString);
                         if (targetDateTime.Equals(this.newDateTime))
                         {
-                            back_button[jj].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
+                            back_button[jj].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.SAVELOAD_NEW);
                         }
+                        if (targetDateTime.Equals(this.newDateTimeAuto))
+                        {
+                            back_button[jj].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.SAVELOAD_NEW_AUTO);
+                        }
+
 
                         if (targetString.Substring(21, 1) == "6")
                         {
@@ -214,7 +234,14 @@ namespace DungeonPlayer
             Debug.Log("txtNumber: " + txtNumber.text.ToString());
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_PAGE, txtNumber.text, String.Empty);
 
-            PageMove(Convert.ToInt32(txtNumber.text));
+            if (txtNumber.text == "A")
+            {
+                PageMove(Database.AUTOSAVE_PAGE_NUM);
+            }
+            else
+            {
+                PageMove(Convert.ToInt32(txtNumber.text));
+            }
         }
 
         public void tapButton(Text sender)
@@ -849,7 +876,7 @@ namespace DungeonPlayer
                     {
                         if (sender.Equals(buttonText[ii]))
                         {
-                            back_button[ii].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
+                            back_button[ii].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.SAVELOAD_NEW);
                         }
                     }
                 }

@@ -1794,7 +1794,7 @@ namespace DungeonPlayer
                 //    {
                 //        if (sender.Equals(buttonText[ii]))
                 //        {
-                //            back_button[ii].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
+                //            back_button[ii].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.SAVELOAD_NEW);
                 //        }
                 //    }
                 //}

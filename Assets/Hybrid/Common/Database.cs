@@ -927,6 +927,11 @@ namespace DungeonPlayer
         public static string GameSettingFileName = Environment.CurrentDirectory + @"\" + @"GameSetting.xml";
 
         public static string WorldSaveNum = "999_";
+        public static int WORLD_SAVE_NUM = 999;
+        public static string AutoSaveNum = "210_";
+        public static int AUTOSAVE_PAGE_NUM = 21;
+        public static string SAVELOAD_NEW = "SaveLoadNew2";
+        public static string SAVELOAD_NEW_AUTO = "SaveLoadNewAuto";
         #endregion
 
         #region "戦闘、敵のBuffUp汎用"

@@ -623,6 +623,8 @@ namespace DungeonPlayer
 
                 PlayMusic_14();
 
+                bool detectTapOK = false;
+
                 // todo レベルアップできなくなるのでは？要確認
                 // ボスに勝利した時、フラグ更新を行う。
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
@@ -632,79 +634,94 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
                 {
                     MessagePack.Message12044_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
                 {
                     MessagePack.Message12045_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
                 {
                     MessagePack.Message12046_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
                 {
                     MessagePack.Message12047_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
                 {
                     MessagePack.Message12048_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss2 = true;
                     MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
                 {
                     MessagePack.Message12066_4(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss3 = true;
                     MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
                 {
                     MessagePack.Message13122_4(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                 {
                     MessagePack.Message14040_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
                 {
                     MessagePack.Message14066_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
                 {
                     MessagePack.Message14097_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss5 = true;
                     MessagePack.Message15006_2(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
                 {
                     MessagePack.Message16018_Success(ref this.nowMessage, ref this.nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
                 {
                     MessagePack.Message16045_Success(ref nowMessage, ref nowEvent);
+                    detectTapOK = true;
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
@@ -719,6 +736,11 @@ namespace DungeonPlayer
                 }
 
                 if (UpdateCheckLevelUp()) { return; }
+
+                if (detectTapOK == false)
+                {
+                    Method.ExecSave(null, Database.AutoSaveNum, true);
+                }
 
                 #region "フェルトゥーシュのレベルアップ"
                 // after
@@ -20910,6 +20932,7 @@ namespace DungeonPlayer
         {
             CancelKeyDownMovement();
 
+            Method.ExecSave(null, Database.AutoSaveNum, true);
             SceneDimension.JumpToTruthHomeTown();
         }
 
