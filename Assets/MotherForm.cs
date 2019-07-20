@@ -81,6 +81,7 @@ namespace DungeonPlayer
             else if (yesnoSystemMessage.text == Database.exitMessage3)
             {
                 GroundOne.TruthHomeTown_NowExit = false;
+                Method.ExecSave(null, Database.AutoSaveNum, true);
                 SceneDimension.JumpToTruthHomeTown();
             }
             else if (yesnoSystemMessage.text == Database.exitMessage4)

@@ -20931,7 +20931,6 @@ namespace DungeonPlayer
         public void CallHomeTown()
         {
             CancelKeyDownMovement();
-
             Method.ExecSave(null, Database.AutoSaveNum, true);
             SceneDimension.JumpToTruthHomeTown();
         }
