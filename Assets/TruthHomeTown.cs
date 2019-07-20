@@ -2795,8 +2795,16 @@ namespace DungeonPlayer
             if (yesnoSystemMessage.text == Database.Request_Inn)
             {
                 yesnoSystemMessage.text = "";
-                MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
-                NormalTapOK();
+                if (this.currentRequestFood != string.Empty)
+                {
+                    MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
+                    this.currentRequestFood = string.Empty;
+                    NormalTapOK();
+                }
+                else
+                {
+                    mainMessage.text = "アイン：さて、何すっかな";
+                }
             }
             else if (this.forceSaveCall)
             {
@@ -3395,6 +3403,7 @@ namespace DungeonPlayer
             else
             {
                 // 通常セーブ
+                yesnoSystemMessage.text = Database.exitMessage1;
                 this.Filter.SetActive(true);
                 this.groupYesnoSystemMessage.SetActive(true);
             }

@@ -560,6 +560,11 @@ namespace DungeonPlayer
             }
         }
 
+        public void Cancel_Click()
+        {
+            SceneDimension.Back(this);
+        }
+
         public void Order_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
