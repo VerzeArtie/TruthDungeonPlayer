@@ -22,6 +22,8 @@ public class TruthWill : MotherForm {
 
     public void Button_Click(Button sender)
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         if (sender.Equals(buttonList[this.selectCounter]) == false)
         {
             failFlag = true;
