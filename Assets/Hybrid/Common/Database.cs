@@ -2309,6 +2309,7 @@ namespace DungeonPlayer
         public const string SOUND_DEVOURING_PLAGUE = @"DevouringPlague";
 
         public const string SOUND_LEVEL_UP = @"LvUp";
+        public const string SOUND_SELECT_TAP = @"SelectTap";
 
         // ここから下はサウンドファイル名称を直接記述したものをナンバリング
         public const string SOUND_1 = @"AbsoluteZero";
