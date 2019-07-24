@@ -57,11 +57,13 @@ namespace DungeonPlayer
 
         public void ChangeSupportLog(Toggle toggle)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             GroundOne.SupportLog = toggle.isOn;
         }
 
         public void ChangeLanguage(int number)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (number == 2)
             {
                 GroundOne.Language = GroundOne.GameLanguage.English;
@@ -74,6 +76,7 @@ namespace DungeonPlayer
 
         public void ChangeAccountName(Text txt)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (txt.text.Length < 2)
             {
                 SupportMessage.text = "Please enter 2 or more characters.";
@@ -98,6 +101,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             try
             {
                 //this.battleSpeed = battleSpeedBar.Value;

@@ -520,6 +520,7 @@ namespace DungeonPlayer
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_CLOSE, String.Empty, String.Empty);
             //GroundOne.SQL.UpdateCharacter();
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.OnlySelectTrash)
             {
                 if (GroundOne.CannotSelectTrash != String.Empty)
@@ -543,6 +544,8 @@ namespace DungeonPlayer
 
         public void SpellSkillDesc_Close_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.MC)
             {
                 #region "アイン・レベルアップ習得表"
@@ -796,6 +799,8 @@ namespace DungeonPlayer
 
         public void Use_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             backpackFilter.SetActive(false);
 
             this.ItemChoiced = true;
@@ -1598,6 +1603,8 @@ namespace DungeonPlayer
 
         public void Handover_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             //backpackFilter.SetActive(false); // ExecHandOverの続きがある。
 
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
@@ -1623,6 +1630,8 @@ namespace DungeonPlayer
 
         public void Trash_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             this.ItemChoiced = true;
 
             backpackFilter.SetActive(false);
@@ -1815,6 +1824,8 @@ namespace DungeonPlayer
                 mainMessage.text = player.GetCharacterSentence(2023);
                 return;
             }
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             this.currentSelect = sender;
             for (int ii = 0; ii < backpack.Length; ii++)
@@ -2505,6 +2516,8 @@ namespace DungeonPlayer
 
         public void btnSomeSpellSkill_Click(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
             #region "使用不可のブロック"
@@ -2843,11 +2856,13 @@ namespace DungeonPlayer
                 return;
             }
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthSelectEquipment(this, equipType, targetPlayer);
         }
         
         public void FirstChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.MC.GetCharacterSentence(2002);
@@ -2872,6 +2887,7 @@ namespace DungeonPlayer
 
         public void SecondChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.SC.GetCharacterSentence(2002);
@@ -2896,6 +2912,7 @@ namespace DungeonPlayer
 
         public void ThirdChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.TC.GetCharacterSentence(2002);
@@ -2942,6 +2959,8 @@ namespace DungeonPlayer
                 mainMessage.text = targetPlayer.GetCharacterSentence(2031);
                 return;
             }
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             if (viewNumber == 0)
             {
@@ -3048,6 +3067,8 @@ namespace DungeonPlayer
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
@@ -3069,6 +3090,8 @@ namespace DungeonPlayer
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
@@ -3089,6 +3112,8 @@ namespace DungeonPlayer
         public void buttonIntelligence_Click()
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
@@ -3115,6 +3140,8 @@ namespace DungeonPlayer
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
@@ -3137,6 +3164,8 @@ namespace DungeonPlayer
         public void buttonMind_Click()
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
@@ -3198,6 +3227,8 @@ namespace DungeonPlayer
 
         public void plus1_Click(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             int plus = 0;
             if (sender.text == "+1") { plus = 1; }
@@ -3236,6 +3267,8 @@ namespace DungeonPlayer
 
         public void btnUpReset_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
             SettingCharacterData(player);

@@ -27,6 +27,7 @@ namespace DungeonPlayer
         {
             if (this.numberList.Count >= inputData.Length) { return; }
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.numberList.Insert(0, Convert.ToInt32(txt.text));
 
             for (int ii = 0; ii < this.numberList.Count; ii++)
@@ -37,6 +38,7 @@ namespace DungeonPlayer
 
         public void tapReset()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.numberList.Clear();
             for (int ii = 0; ii < inputData.Length; ii++)
             {
@@ -46,6 +48,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             int inputValue = 0;
             for (int ii = 0; ii < inputData.Length; ii++)
             {

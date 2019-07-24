@@ -85,6 +85,7 @@ namespace DungeonPlayer
 
         private void button1_Click(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             bool tutorialSkill = false;
             Color targetColor = Color.white;
             if (sender.text == "聖")
@@ -560,6 +561,7 @@ namespace DungeonPlayer
 
         private void button7_Click(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (sender.text == "？？？") return;
             if (sender.text == "") return;
 
@@ -618,6 +620,7 @@ namespace DungeonPlayer
         // spell, skill, mixspell, mixskill, architect
         public void tapAttribute(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (sender.text == "魔法")
             {
                 groupElement.SetActive(true);
@@ -715,16 +718,19 @@ namespace DungeonPlayer
 
         public void tapElement(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             button1_Click(sender);
             tapActionCommand(CommandButtonText[0]);
         }
 
         public void tapActionCommand(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             button7_Click(sender);
         }
         public void tapClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
     }

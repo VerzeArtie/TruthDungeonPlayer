@@ -140,6 +140,8 @@ namespace DungeonPlayer
             string[] MQ_ICON = Database.MQ_FLOOR1_ICON;
             string[,] MQ_REWARD = Database.MQ_FLOOR1_REWARD;
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (num == 0)
             {
                 current = new Color(125.0f / 255.0f, 249.0f / 255.0f, 151.0f / 255.0f);
@@ -320,6 +322,8 @@ namespace DungeonPlayer
         {
             Debug.Log("TapStage: " + num.ToString());
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             string[] MQ_NAME = Database.MQ_FLOOR1_NAME;
             int[] MQ_REQUIRE = Database.MQ_FLOOR1_REQUIRE;
 
@@ -375,6 +379,7 @@ namespace DungeonPlayer
             if (GroundOne.WE.AlreadyMonsterQuestComplete)
             {
                 txtMainMessage.text = @"サンディ：モンスター討伐は本日すでに実施済みである！明日に備えて体調を整えるがよい！";
+                GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
                 return;
             }
 
@@ -768,6 +773,8 @@ namespace DungeonPlayer
         {
             Debug.Log("TapItemReward: " + num.ToString());
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             int stageNumber = num / 3;
             int itemNumber = num % 3;
             string[,] MQ_REWARD = Database.MQ_FLOOR1_REWARD;
@@ -849,6 +856,8 @@ namespace DungeonPlayer
         {
             Debug.Log("TapItemReward: " + num.ToString());
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             int stageNumber = num / 3;
             int itemNumber = num % 3;
             string[,] MQ_REWARD = Database.MQ_FLOOR1_REWARD;
@@ -884,12 +893,15 @@ namespace DungeonPlayer
 
         public void TapFilterClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             this.Filter.SetActive(false);
             this.groupSystemMessage.SetActive(false);
         }
 
         public void TapClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
     }

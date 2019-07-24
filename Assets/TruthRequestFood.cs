@@ -136,6 +136,8 @@ namespace DungeonPlayer
 
         public void TapSwitchView(int num)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (num == 0)
             {
                 groupFoodMenu.SetActive(true);
@@ -150,6 +152,8 @@ namespace DungeonPlayer
 
         public void TapNewClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             this.groupNew.SetActive(false);
             CheckNewContents();
         }
@@ -386,6 +390,8 @@ namespace DungeonPlayer
 
         public void LevelButton_Click(Text sender)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             int number = 1;
             if (sender.text == "I") { number = 1; }
             else if (sender.text == "II") { number = 2; }
@@ -399,6 +405,8 @@ namespace DungeonPlayer
         public void button1_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[0].text, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (FoodTextList[0].text == Database.FOOD_KATUCARRY)
             {
                 DescriptionText.text = TruthRequestFood.DESC_11_MINI;
@@ -430,6 +438,8 @@ namespace DungeonPlayer
         public void button2_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[1].text, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (FoodTextList[1].text == Database.FOOD_OLIVE_AND_ONION)
             {
                 DescriptionText.text = TruthRequestFood.DESC_12_MINI;
@@ -461,6 +471,8 @@ namespace DungeonPlayer
         public void button3_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[2].text, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (FoodTextList[2].text == Database.FOOD_INAGO_AND_TAMAGO)
             {
                 DescriptionText.text = TruthRequestFood.DESC_13_MINI;
@@ -493,6 +505,8 @@ namespace DungeonPlayer
         public void button4_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[3].text, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (FoodTextList[3].text == Database.FOOD_USAGI)
             {
                 DescriptionText.text = TruthRequestFood.DESC_14_MINI;
@@ -524,6 +538,8 @@ namespace DungeonPlayer
         public void button5_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[4].text, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (FoodTextList[4].text == Database.FOOD_SANMA)
             {
                 DescriptionText.text = TruthRequestFood.DESC_15_MINI;
@@ -562,12 +578,15 @@ namespace DungeonPlayer
 
         public void Cancel_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
 
         public void Order_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (this.CurrentSelect == Database.FOOD_KATUCARRY)
             {
                 EatFood(FOOD_11_VALUE[0], FOOD_11_VALUE[1], FOOD_11_VALUE[2], FOOD_11_VALUE[3], FOOD_11_VALUE[4]);
@@ -733,18 +752,21 @@ namespace DungeonPlayer
 
         public void FirstChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.MC;
             ConstructSoulPointView(this.currentPlayer);
         }
 
         public void SecondChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.SC;
             ConstructSoulPointView(this.currentPlayer);
         }
 
         public void ThirdChara_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.TC;
             ConstructSoulPointView(this.currentPlayer);
         }
@@ -758,6 +780,8 @@ namespace DungeonPlayer
         {
             Debug.Log("CurrentSoulFragment: " + this.currentPlayer.CurrentSoulFragment.ToString());
             Debug.Log("this.currentPlayer.CurrentSoulAttributes[number]: " + this.currentPlayer.CurrentSoulAttributes[number].ToString());
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (this.currentPlayer.CurrentSoulFragment <= 0) { Debug.Log("return 0"); return; }
             if (this.currentPlayer.CurrentSoulAttributes[number] >= Database.MAX_SOUL_ATTRIBUTE) { Debug.Log("return 1"); return; }
 
@@ -770,6 +794,8 @@ namespace DungeonPlayer
         }
         public void TapFactorMinus(int number)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (this.currentPlayer.CurrentSoulFragment >= this.currentPlayer.MaxSoulFragment) { return; }
             if (this.currentPlayer.CurrentSoulAttributes[number] <= 0) { return; }
 

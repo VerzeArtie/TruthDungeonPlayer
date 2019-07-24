@@ -33,6 +33,8 @@ namespace DungeonPlayer
         
         public void Home_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Home_Click");
             this.selectNumber = 0;
             this.groupLevel.SetActive(false);
@@ -56,6 +58,8 @@ namespace DungeonPlayer
 
         public void Dungeon_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Dungeon_Click");
             this.selectNumber = 1;
             this.groupLevel.SetActive(false);
@@ -82,6 +86,8 @@ namespace DungeonPlayer
 
         public void Battle_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Battle_Click");
             this.selectNumber = 2;
             this.groupLevel.SetActive(true);
@@ -105,6 +111,8 @@ namespace DungeonPlayer
 
         public void Status_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Status_Click");
             this.selectNumber = 3;
             this.groupLevel.SetActive(false);
@@ -131,6 +139,8 @@ namespace DungeonPlayer
 
         public void Duel_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Duel_Click");
             this.selectNumber = 5;
             this.groupLevel.SetActive(false);
@@ -157,6 +167,8 @@ namespace DungeonPlayer
 
         public void Level_Click(int level)
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             Debug.Log("Level_Click");
             this.selectLevel = level;
             GroundOne.TutorialLevel = level;
@@ -184,6 +196,8 @@ namespace DungeonPlayer
 
         public void GoTutorial_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             GroundOne.TutorialMode = true;
 
             if (this.selectNumber == 0)
@@ -254,6 +268,8 @@ namespace DungeonPlayer
     
         public void Close_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             GroundOne.TutorialMode = false;
             GroundOne.ReInitializeGroundOne(false);
             Method.ReloadTruthWorldEnvironment();
@@ -262,6 +278,8 @@ namespace DungeonPlayer
 
         public void enemy_click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.SC.FirstName = Database.RANA_AMILIA;

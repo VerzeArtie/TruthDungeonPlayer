@@ -694,6 +694,8 @@ public class TruthSelectCharacter : MotherForm
 
     public void btnReset_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         this.playerList.Clear();
         selected1.text = "";
         selected2.text = "";
@@ -711,11 +713,15 @@ public class TruthSelectCharacter : MotherForm
 
     public void choice_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         SelectOrAdd(this.currentPlayer);
     }
 
     public void btnFix_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         GroundOne.WE.AvailableSecondCharacter = true;
         GroundOne.WE.AvailableThirdCharacter = true;
         GroundOne.SC = playerList[0];
@@ -1032,17 +1038,19 @@ public class TruthSelectCharacter : MotherForm
 
     public void FirstChara_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
         SelectOrAdd(GroundOne.SC);
     }
 
-
     public void SecondChara_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
         SelectOrAdd(GroundOne.TC);
     }
 
     public void ThirdChara_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
         SelectOrAdd(this.b_fc);
     }
 
@@ -1075,6 +1083,8 @@ public class TruthSelectCharacter : MotherForm
     {
         if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         // 通常レベルアップ＋１のロジック
         if (GroundOne.LevelUp)
         {
@@ -1105,6 +1115,8 @@ public class TruthSelectCharacter : MotherForm
     {
         if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         // 通常レベルアップ＋１のロジック
         if (GroundOne.LevelUp)
         {
@@ -1133,6 +1145,8 @@ public class TruthSelectCharacter : MotherForm
     public void buttonIntelligence_Click()
     {
         if (GroundOne.UpPoint <= 0) { return; } // add unity
+
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
         // 通常レベルアップ＋１のロジック
         if (GroundOne.LevelUp)
@@ -1175,6 +1189,8 @@ public class TruthSelectCharacter : MotherForm
     {
         if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         // 通常レベルアップ＋１のロジック
         if (GroundOne.LevelUp)
         {
@@ -1206,6 +1222,8 @@ public class TruthSelectCharacter : MotherForm
     public void buttonMind_Click()
     {
         if (GroundOne.UpPoint <= 0) { return; } // add unity
+
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
         // 通常レベルアップ＋１のロジック
         if (GroundOne.LevelUp)
@@ -1274,6 +1292,8 @@ public class TruthSelectCharacter : MotherForm
 
     public void plus1_Click(Text sender)
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
         int plus = 0;
         if (sender.text == "+1") { plus = 1; }
@@ -1311,6 +1331,8 @@ public class TruthSelectCharacter : MotherForm
 
     public void btnUpReset_Click()
     {
+        GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
         ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
         SettingCharacterData(player);

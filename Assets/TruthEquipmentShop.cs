@@ -2005,6 +2005,7 @@ namespace DungeonPlayer
         public void Equip_Click(Text sender)
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYEREQUIPITEM, sender.text, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SelectSellItem(sender);
         }
 
@@ -2012,6 +2013,7 @@ namespace DungeonPlayer
         public void Backpack_Click(Text sender)
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYERITEM, sender.text, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SelectSellItem(sender);
         }
         private void SelectSellItem(Text sender)
@@ -2073,6 +2075,7 @@ namespace DungeonPlayer
         public void ItemScrollUp()
         {
             Debug.Log("ItemScrollUp");
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (this.GroupBuy.activeInHierarchy)
             {
                 groupVendorBar.value += 0.04f;
@@ -2097,6 +2100,7 @@ namespace DungeonPlayer
         public void ItemScrollDown()
         {
             Debug.Log("ItemScrollDown");
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (this.GroupBuy.activeInHierarchy)
             {
                 groupVendorBar.value -= 0.04f;
@@ -2124,6 +2128,8 @@ namespace DungeonPlayer
                 return;
             }
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_VENDORITEM, sender.text, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
             //if (!GroundOne.WE.AvailableEquipShop5)
             {
@@ -2439,6 +2445,7 @@ namespace DungeonPlayer
         public void Yes_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_YES, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (this.GroupBuy.activeInHierarchy && this.currentSelectItem == null)
             {
                 MessageExchange4();
@@ -2495,6 +2502,7 @@ namespace DungeonPlayer
         public void tapLevel(int level)
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_LEVEL, level.ToString(), String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.DescriptionText.text = String.Empty;
             MessageExchange4();
             this.currentSelectItem = null;
@@ -2528,6 +2536,7 @@ namespace DungeonPlayer
         }
         private void tapChara()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.ScrollSellPosition = this.ScrollSellNumber * 140;
             this.ScrollSellNumber = 0;
             UpdateBackPackLabel(this.currentPlayer);
@@ -2545,11 +2554,14 @@ namespace DungeonPlayer
         public void tapExit()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_CLOSE, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             nowClose = true;
         }
         public void tapSellView()
         {
             if (this.MoveToBuyView > 0 || this.MoveToSellView > 0) { return; }
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             if (this.GroupBuy.activeInHierarchy)
             {

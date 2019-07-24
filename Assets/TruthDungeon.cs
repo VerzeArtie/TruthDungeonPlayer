@@ -15864,6 +15864,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromDungeon", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthStatusPlayer(this, false, string.Empty, string.Empty);
         }
         public void tapBattleSetting()
@@ -15877,6 +15878,7 @@ namespace DungeonPlayer
             }
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromDungeon", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
@@ -15891,6 +15893,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromDungeon", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15916,6 +15919,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromDungeon", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -15939,6 +15943,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromDungeon", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 Method.AutoSaveTruthWorldEnvironment();
@@ -15954,6 +15959,7 @@ namespace DungeonPlayer
 
         public void tapObjective()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             float current = panelObjective.GetComponent<Image>().color.a;
             float current2 = 1.0f;
             if (current == 1.0f)
@@ -15992,6 +15998,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.back_playback.SetActive(false);
             base.BookManual_Click();
         }
@@ -16051,6 +16058,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthPlayBack(this);
             //if (!this.back_playback.activeInHierarchy)
             //{
@@ -16086,6 +16094,7 @@ namespace DungeonPlayer
 
             if (BlockAction()) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_BACKTO_TOWN, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 if (GroundOne.WE2.SeekerEvent821)
@@ -16130,6 +16139,9 @@ namespace DungeonPlayer
             }
 
             if (BlockAction()) { return; }
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
             {
                 back_vigilance.sprite = Resources.Load<Sprite>(Database.FINDENEMY_MODE_RESOURCE);
@@ -16186,6 +16198,7 @@ namespace DungeonPlayer
         {
             base.ExitYes();
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (yesnoSystemMessage.text == Database.Message_SaveRequest1)
             {
                 SceneDimension.CallSaveLoad(this, true, true);
@@ -16341,6 +16354,7 @@ namespace DungeonPlayer
         {
             base.ExitNo();
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (yesnoSystemMessage.text == Database.Message_SaveRequest1)
             {
                 yesnoSystemMessage.text = Database.Message_SaveRequest2;

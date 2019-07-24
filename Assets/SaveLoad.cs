@@ -233,6 +233,7 @@ namespace DungeonPlayer
         {
             Debug.Log("txtNumber: " + txtNumber.text.ToString());
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_PAGE, txtNumber.text, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             if (txtNumber.text == "A")
             {
@@ -248,6 +249,7 @@ namespace DungeonPlayer
         {
             Debug.Log(sender.text);
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_NUMBER, sender.text, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             this.txtSender = sender;
             this.systemMessage.text = MESSAGE_NOWLOADING;
@@ -1351,6 +1353,7 @@ namespace DungeonPlayer
         public void tapExit()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_CLOSE, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (this.systemMessage.text == this.MESSAGE_1 || this.systemMessage.text == this.MESSAGE_2)
             {
                 HideAllChild();

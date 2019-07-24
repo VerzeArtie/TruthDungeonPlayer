@@ -376,6 +376,8 @@ namespace DungeonPlayer
 
         public void Close_Click()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             SceneDimension.BackSuddenly(this);
         }
     }

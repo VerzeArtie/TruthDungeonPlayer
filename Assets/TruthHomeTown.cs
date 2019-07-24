@@ -718,6 +718,8 @@ namespace DungeonPlayer
                 return;
             }
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (!GroundOne.WE2.RealWorld && GroundOne.WE.GameDay <= 1 && (!GroundOne.WE.AlreadyCommunicate || !GroundOne.WE.Truth_CommunicationGanz1 || !GroundOne.WE.Truth_CommunicationHanna1 || !GroundOne.WE.Truth_CommunicationLana1))
             {
                 MessagePack.Message30000(ref nowMessage, ref nowEvent);
@@ -945,6 +947,8 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_TALK_LANA, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             if (GroundOne.WE.AlreadyCommunicate)
             {
                 if (!GroundOne.WE.AlreadyRest)
@@ -1166,6 +1170,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_DUEL_ENTRANCE, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             GroundOne.OpponentDuelist = WhoisDuelPlayer();
             #region "Duel申請中"
             if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
@@ -1306,6 +1311,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromHomeTown", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthBattleSetting(this);
         }
 
@@ -1965,6 +1971,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_EQUIP_SHOP, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableEquipShop2 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableEquipShop3 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea3) GroundOne.WE.AvailableEquipShop4 = true; // 前編で既に周知のため、解説は不要。
@@ -2160,6 +2167,7 @@ namespace DungeonPlayer
             if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_POTION_SHOP, String.Empty, String.Empty);
             this.Filter.SetActive(true);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallPotionShop(this);
         }
 
@@ -2167,6 +2175,7 @@ namespace DungeonPlayer
         {
             if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_TRANSPORT_GATE, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             #region "ファージル宮殿 or カールハンツ爵の訓練場を選択"
             if (GroundOne.WE.AvailableFazilCastle)
             {
@@ -2188,6 +2197,8 @@ namespace DungeonPlayer
                 mainMessage.text = "サンディ：アイン・ウォーレンスよ！申し訳ないが、ここから先は本編にて訪れていただきたい！";
                 return;
             }
+
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
 
             GroundOne.WE.AvailableMonsterQuest1 = true;
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableMonsterQuest2 = true;
@@ -2551,6 +2562,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_INN, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             #region "一日目"
             if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1)
             {
@@ -2730,8 +2742,9 @@ namespace DungeonPlayer
                 mainMessage.text = "ラナ：ゲームをセーブする画面を呼び出すわ。このチュートリアルではセーブ不要よ。";
                 return;
             }
- 
+
             //GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromHomeTown", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -2754,6 +2767,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromHomeTown", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -3379,6 +3393,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromHomeTown", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 // 現実世界
@@ -3413,6 +3428,7 @@ namespace DungeonPlayer
         {
             if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthBookManual(this);
         }
 
@@ -3420,12 +3436,15 @@ namespace DungeonPlayer
         {
             if (CheckPushButtonShortly) { return; }
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthPlayBack(this);
         }
 
         public void tapObjective()
         {
             if (CheckPushButtonShortly) { return; }
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             float current = panelObjective.GetComponent<Image>().color.a;
             float current2 = 1.0f;
             if (current == 1.0f)
@@ -3483,6 +3502,7 @@ namespace DungeonPlayer
             }
 
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromHomeTown", String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.FullName);
         }
 

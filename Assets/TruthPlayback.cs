@@ -45,6 +45,8 @@ namespace DungeonPlayer
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK_CLOSE, string.Empty, string.Empty);
 
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
+
             SceneDimension.Back(this);
         }
     }	

@@ -214,6 +214,7 @@ namespace DungeonPlayer
         }
         public void tapExit()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
 

@@ -27,6 +27,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
     }

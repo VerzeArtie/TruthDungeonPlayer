@@ -338,6 +338,7 @@ namespace DungeonPlayer
         public void tapExit()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_CLOSE, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             SceneDimension.Back(this);
         }
 
@@ -416,6 +417,7 @@ namespace DungeonPlayer
         public void FirstChara_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERFIRST, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.MC;
             this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
             RefleshCurrentActionCommand(this.currentPlayer);
@@ -430,6 +432,7 @@ namespace DungeonPlayer
         public void SecondChara_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERSECOND, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.SC;
             this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
             RefleshCurrentActionCommand(this.currentPlayer);
@@ -444,6 +447,7 @@ namespace DungeonPlayer
         public void ThirdChara_Click()
         {
             //GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERTHIRD, String.Empty, String.Empty);
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             this.currentPlayer = GroundOne.TC;
             this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
             RefleshCurrentActionCommand(this.currentPlayer);
@@ -457,6 +461,7 @@ namespace DungeonPlayer
 
         public void TapBasicType()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (group_MC.activeInHierarchy)
             {
                 group_MC_Basic.SetActive(true);
@@ -478,6 +483,7 @@ namespace DungeonPlayer
         }
         public void TapAdvancedType()
         {
+            GroundOne.PlaySoundEffect(Database.SOUND_SELECT_TAP);
             if (group_MC_Basic.activeInHierarchy)
             {
                 group_MC.SetActive(true);
