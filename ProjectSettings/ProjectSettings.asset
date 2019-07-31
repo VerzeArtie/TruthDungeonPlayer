@@ -167,7 +167,7 @@ PlayerSettings:
     tvOS: com.altomo.truthdungeonplayer
   buildNumber:
     iPhone: 22
-  AndroidBundleVersionCode: 22
+  AndroidBundleVersionCode: 23
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

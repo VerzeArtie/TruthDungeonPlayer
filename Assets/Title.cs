@@ -809,5 +809,10 @@ namespace DungeonPlayer
 		{
 			SceneDimension.CallDungeonTicket(this);
 		}
+
+        public void PrivacyPolicy_Click()
+        {
+            Application.OpenURL(@"http://altomosoft.sakura.ne.jp/privacypolicy/PrivacyPolicy.html");
+        }
     }
 }
