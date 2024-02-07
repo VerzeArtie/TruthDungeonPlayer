@@ -812,7 +812,7 @@ namespace DungeonPlayer
 
         public void PrivacyPolicy_Click()
         {
-            Application.OpenURL(@"http://altomosoft.sakura.ne.jp/privacypolicy/PrivacyPolicy.html");
+            Application.OpenURL(@"http://altomosoft.com/privacypolicy/PrivacyPolicy.html");
         }
     }
 }
