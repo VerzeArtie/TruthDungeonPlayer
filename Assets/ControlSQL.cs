@@ -52,12 +52,12 @@ namespace DungeonPlayer
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     //Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        jsonData += dataReader[0].ToString();
+                        jsonData += dataReader.Result[0].ToString();
                     }
                 }
             }
@@ -81,13 +81,13 @@ namespace DungeonPlayer
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
 
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        guid += dataReader[0].ToString();
+                        guid += dataReader.Result[0].ToString();
                     }
                 }
                 if (guid == String.Empty)
@@ -97,7 +97,7 @@ namespace DungeonPlayer
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
 
                     DateTime update_time = DateTime.Now;
                     string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
@@ -146,7 +146,7 @@ namespace DungeonPlayer
                     }
                     command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
                     command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQueryAsync().Wait();
                 }
             }
             catch
@@ -174,7 +174,7 @@ namespace DungeonPlayer
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     //Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
+                    con.OpenAsync().Wait();
                     DateTime update_time = DateTime.Now;
                     string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
                     if (main_event != string.Empty)
@@ -199,7 +199,7 @@ namespace DungeonPlayer
 
                     NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
                     command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
-                    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
+                    command.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time }); // Fix-Issue ( DbType.DateTime is incorrect )
                     if (main_event != string.Empty)
                     {
                         command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
@@ -219,11 +219,10 @@ namespace DungeonPlayer
                     command.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
                     command.ExecuteNonQuery();
                 }
-                //Debug.Log("UpdateOwner(E) " + DateTime.Now);
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.Log("UpdateOwner error... " + DateTime.Now);
+                Debug.Log("UpdateOwner error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
@@ -240,12 +239,12 @@ namespace DungeonPlayer
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        guid += dataReader[0].ToString();
+                        guid += dataReader.Result[0].ToString();
                     }
                 }
 
@@ -258,12 +257,12 @@ namespace DungeonPlayer
                 string table = TABLE_CHARACTER;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        count += dataReader[0].ToString();
+                        count += dataReader.Result[0].ToString();
                     }
                 }
 
@@ -272,19 +271,19 @@ namespace DungeonPlayer
                 {
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
-                        con.Open();
+                        con.OpenAsync().Wait();
                         string sqlCmd = "INSERT INTO " + table + " ( guid, last_update ) VALUES ( :guid, :last_update )";
                         var cmd = new NpgsqlCommand(sqlCmd, con);
                         //cmd.Prepare();
                         cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
                         cmd.Parameters.Add(new NpgsqlParameter("last_update", NpgsqlDbType.Timestamp) { Value = last_update });
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryAsync().Wait();
                     }
                 }
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     DateTime update_time = DateTime.Now;
                     List<string> valueData = new List<string>();
                     List<string> parameter = new List<string>();
@@ -403,9 +402,9 @@ namespace DungeonPlayer
                     {
                         command.Parameters.Add(new NpgsqlParameter(parameter[ii], NpgsqlDbType.Varchar) { Value = valueData[ii] });
                     }
-                    command.Parameters.Add(new NpgsqlParameter("last_update", DbType.DateTime) { Value = last_update });
+                    command.Parameters.Add(new NpgsqlParameter("last_update", NpgsqlDbType.Timestamp) { Value = last_update }); // Fix-issue ( DbType.DateTime is incorrect )
                     command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQueryAsync().Wait();
                 }
             }
             catch (Exception ex)
@@ -426,12 +425,12 @@ namespace DungeonPlayer
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     Debug.Log("UpdateArchiveData timeout: " + con.ConnectionTimeout);
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        guid += dataReader[0].ToString();
+                        guid += dataReader.Result[0].ToString();
                     }
                 }
 
@@ -443,12 +442,12 @@ namespace DungeonPlayer
                 string count = String.Empty;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        count += dataReader[0].ToString();
+                        count += dataReader.Result[0].ToString();
                     }
                 }
 
@@ -457,13 +456,13 @@ namespace DungeonPlayer
                 {
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
-                        con.Open();
+                        con.OpenAsync().Wait();
                         string sqlCmd = "INSERT INTO " + table + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
                         var cmd = new NpgsqlCommand(sqlCmd, con);
                         //cmd.Prepare();
                         cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
                         cmd.Parameters.Add(new NpgsqlParameter(archive_name, NpgsqlDbType.Timestamp) { Value = update_time });
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryAsync().Wait();
                     }
                 }
                 else
@@ -471,12 +470,12 @@ namespace DungeonPlayer
                     string currentValue = String.Empty;
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
-                        con.Open();
+                        con.OpenAsync().Wait();
                         NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + table + " where guid = '" + guid + "'", con);
-                        var dataReader = cmd.ExecuteReader();
-                        while (dataReader.Read())
+                        var dataReader = cmd.ExecuteReaderAsync();
+                        while (dataReader.Result.Read())
                         {
-                            currentValue += dataReader[0].ToString();
+                            currentValue += dataReader.Result[0].ToString();
                         }
                     }
 
@@ -484,12 +483,12 @@ namespace DungeonPlayer
                     {
                         using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                         {
-                            con.Open();
+                            con.OpenAsync().Wait();
                             string updateCommand = @"update " + table + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
                             NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
                             command.Parameters.Add(new NpgsqlParameter(archive_name, DbType.DateTime) { Value = update_time });
                             command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                            command.ExecuteNonQuery();
+                            command.ExecuteNonQueryAsync().Wait();
                         }
                     }
                 }
@@ -508,12 +507,12 @@ namespace DungeonPlayer
                 string guid = String.Empty;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        guid += dataReader[0].ToString();
+                        guid += dataReader.Result[0].ToString();
                     }
                 }
                 if (guid == String.Empty)
@@ -526,12 +525,12 @@ namespace DungeonPlayer
                 string table = TABLE_SAVE_DATA;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        count += dataReader[0].ToString();
+                        count += dataReader.Result[0].ToString();
                     }
                 }
 
@@ -541,7 +540,7 @@ namespace DungeonPlayer
                 {
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
-                        con.Open();
+                        con.OpenAsync().Wait();
                         string sqlCmd = "INSERT INTO " + table + " ( guid, update_time, save_current, save_we2 ) VALUES ( :guid, :update_time, :save_current, :save_we2)";
                         var cmd = new NpgsqlCommand(sqlCmd, con);
                         //cmd.Prepare();
@@ -549,7 +548,7 @@ namespace DungeonPlayer
                         cmd.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
                         cmd.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
                         cmd.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryAsync().Wait();
                     }
                     return;
                 }
@@ -558,18 +557,21 @@ namespace DungeonPlayer
                 string currentValue = String.Empty;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     string updateCommand = @"update " + TABLE_SAVE_DATA + " set update_time = :update_time, save_current = :save_current, save_we2 = :save_we2 where guid = :guid";
                     NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
                     command.Parameters.Add(new NpgsqlParameter("update_time", NpgsqlDbType.Timestamp) { Value = update_time });
                     command.Parameters.Add(new NpgsqlParameter("save_current", NpgsqlDbType.Bytea) { Value = save_current });
                     command.Parameters.Add(new NpgsqlParameter("save_we2", NpgsqlDbType.Bytea) { Value = save_we2 });
                     command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQueryAsync().Wait();
                 }
 
                 // OwnerDataを更新
                 UpdateOwner(Database.LOG_SAVE_GAME, sender_text, page_number);
+
+                // CharacterDataを更新
+                UpdateCharacter(); // add 2024/02/07
             }
             catch (Exception ex)
             {
@@ -602,39 +604,39 @@ namespace DungeonPlayer
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     Debug.Log("CreateOwner timeout: " + con.ConnectionTimeout);
-                    con.Open();
+                    con.OpenAsync().Wait();
                     string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time, device_type ) VALUES ( :name, :guid, :create_time, :device_type )";
                     var cmd = new NpgsqlCommand(sqlCmd, con);
                     //cmd.Prepare();
                     cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
-                    cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                    cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid.ToString() }); // Fix-issue ( guid(direct) is incorrect )
                     cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
                     cmd.Parameters.Add(new NpgsqlParameter("device_type", DbType.String) { Value = device_type });
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryAsync().Wait();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.Log("CreateOwner error");
+                Debug.Log("CreateOwner error: " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
         public bool ExistOwnerName(string name)
         {
             // if (GroundOne.SupportLog == false) { return false; }
-
             try
             {
                 string existName = String.Empty;
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    con.Open();
+                    con.OpenAsync().Wait();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select name from " + TABLE_OWNER_DATA + " where name = '" + name + "'", con);
-                    var dataReader = cmd.ExecuteReader();
-                    while (dataReader.Read())
+
+                    var dataReader = cmd.ExecuteReaderAsync();
+                    while (dataReader.Result.Read())
                     {
-                        existName += dataReader[0].ToString();
+                        existName += dataReader.Result[0].ToString();
                     }
                 }
 
