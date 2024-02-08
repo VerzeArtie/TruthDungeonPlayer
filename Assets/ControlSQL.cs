@@ -19,7 +19,7 @@ namespace DungeonPlayer
         private string TABLE_DUEL = "duel";
         public void SetupSql()
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
 
             try
             {
@@ -36,14 +36,14 @@ namespace DungeonPlayer
                 this.connection = connection;
 
             }
-            catch {
-                Debug.Log("SetupSql error");
+            catch (Exception ex) {
+                Debug.Log("SetupSql error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
         public string SelectOwner(string name)
         {
-            if (GroundOne.SupportLog == false) { return String.Empty; }
+            // if (GroundOne.SupportLog == false) { return String.Empty; }
 
             string table = TABLE_OWNER_DATA;
             string jsonData = String.Empty;
@@ -61,9 +61,9 @@ namespace DungeonPlayer
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.Log("SelectOwner error");
+                Debug.Log("SelectOwner error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
 
             return jsonData;
@@ -71,7 +71,7 @@ namespace DungeonPlayer
 
         public void ChangeOwnerName(string main_event, string sub_event, string current_field, string name)
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
@@ -149,15 +149,15 @@ namespace DungeonPlayer
                     command.ExecuteNonQueryAsync().Wait();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.Log("ChangeOwnerName error... " + DateTime.Now);
+                Debug.Log("ChangeOwnerName error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
         public void UpdateOwner(string main_event, string sub_event, string current_field)
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
@@ -228,7 +228,7 @@ namespace DungeonPlayer
 
         public void UpdateCharacter()
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
@@ -415,7 +415,7 @@ namespace DungeonPlayer
 
         private void UpdateArchiveData(string table, string archive_name)
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
             if (GroundOne.SQL == null) { return; }
 
             try
@@ -493,9 +493,9 @@ namespace DungeonPlayer
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Debug.Log("UpdateArchiveData error");
+                Debug.Log("UpdateArchiveData error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
@@ -575,7 +575,7 @@ namespace DungeonPlayer
             }
             catch (Exception ex)
             {
-                Debug.Log("UpdaeSaveData error: " + ex.ToString());
+                Debug.Log("UpdaeSaveData error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
@@ -590,7 +590,7 @@ namespace DungeonPlayer
 
         public void CreateOwner(string name, System.Guid guid)
         {
-            if (GroundOne.SupportLog == false) { return; }
+            // if (GroundOne.SupportLog == false) { return; }
 
             try
             {
@@ -617,7 +617,7 @@ namespace DungeonPlayer
             }
             catch (Exception ex)
             {
-                Debug.Log("CreateOwner error: " + ex.ToString());
+                Debug.Log("CreateOwner error... " + DateTime.Now + " " + ex.ToString());
             } // ログ失敗時は、そのまま進む
         }
 
@@ -650,8 +650,9 @@ namespace DungeonPlayer
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.Log("ExistOwnerName error... " + DateTime.Now + " " + ex.ToString());
                 return false;
             } // 取得失敗時は名前がぶつかっている可能性があるが、ひとまず通しとする。
         }
