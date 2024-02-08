@@ -153,7 +153,7 @@ namespace DungeonPlayer
         protected bool CheckPushButtonShortly
         {
             get {
-                if (DateTime.Now - pushTime < new TimeSpan(0, 0, 2))
+                if (DateTime.Now - pushTime < new TimeSpan(0, 0, 1)) // change 2024/02/08 ( 2 -> 1 )
                 {
                     Debug.Log("push timing is very short, then no action. " + DateTime.Now);
                     return true;
