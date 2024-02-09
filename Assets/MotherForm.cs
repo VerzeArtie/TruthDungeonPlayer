@@ -18,6 +18,7 @@ namespace DungeonPlayer
 
         public virtual void Start()
         {
+            Application.targetFrameRate = 60;
             GroundOne.InitializeGroundOne(false);
 
             //if (GroundOne.WE2 != null && GroundOne.SQL != null && GroundOne.WE2.Account != String.Empty)
