@@ -194,7 +194,7 @@ namespace DungeonPlayer
             GameObject obj = new GameObject();
             Text element = obj.AddComponent<Text>();
             element.fontStyle = FontStyle.Normal;
-            Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+            Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "LegacyRuntime.ttf");
 
             element.font = ArialFont;
             element.transform.SetParent(parent.transform);

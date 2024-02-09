@@ -80,7 +80,7 @@ namespace DungeonPlayer
             txtCounter.rectTransform.pivot = new Vector2(0.5f, 0.5f);
             txtCounter.rectTransform.sizeDelta = new Vector2(0, 0);
             txtCounter.alignment = TextAnchor.UpperCenter;
-            txtCounter.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+            txtCounter.font = (Font)Resources.GetBuiltinResource(typeof(Font), "LegacyRuntime.ttf");
             txtCounter.color = Color.blue;
             txtCounter.text = this.count.ToString();
             txtCounter.gameObject.SetActive(true);
@@ -96,7 +96,7 @@ namespace DungeonPlayer
             txtCumulative.rectTransform.pivot = new Vector2(0.5f, 0.5f);
             txtCumulative.rectTransform.sizeDelta = new Vector2(0, 0);
             txtCumulative.alignment = TextAnchor.LowerCenter;
-            txtCumulative.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+            txtCumulative.font = (Font)Resources.GetBuiltinResource(typeof(Font), "LegacyRuntime.ttf");
             txtCumulative.color = Color.red;
             txtCumulative.text = this.cumulative.ToString();
             txtCumulative.gameObject.SetActive(true);
