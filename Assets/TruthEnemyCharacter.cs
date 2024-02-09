@@ -3069,11 +3069,11 @@ namespace DungeonPlayer
                     {
                         SetupActionWisely(this, this, Database.DEFLECTION);
                     }
-                    else if (target.CurrentBlueDragonWill > 0 && this.CurrentRedDragonWill <= 0 && this.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH - RESPONSE_BORDER)
+                    else if (this.CurrentBlueDragonWill > 0 && this.CurrentRedDragonWill <= 0 && this.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH - RESPONSE_BORDER)
                     {
                         SetupActionWisely(this, this, Database.RED_DRAGON_WILL);
                     }
-                    else if (this.CurrentRedDragonWill > 0 && target.CurrentBlueDragonWill <= 0 && this.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH - RESPONSE_BORDER)
+                    else if (this.CurrentRedDragonWill > 0 && this.CurrentBlueDragonWill <= 0 && this.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH - RESPONSE_BORDER)
                     {
                         SetupActionWisely(this, this, Database.BLUE_DRAGON_WILL);
                     }
